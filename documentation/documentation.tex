@@ -1,0 +1,80 @@
+\documentclass{article}
+ 
+%encoding
+%--------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+%--------------------------------------
+ 
+%German-specific commands
+%--------------------------------------
+\usepackage[ngerman]{babel}
+%--------------------------------------
+ 
+%Hyphenation rules
+%--------------------------------------
+\usepackage{hyphenat}
+
+%--------------------------------------
+% enable bookmarks
+\usepackage{bookmark}
+%--------------------------------------
+%Use Case packages
+%--------------------------------------
+\usepackage{longtable,array}
+\setlength\extrarowheight{3pt}
+%--------------------------------------
+
+% title 
+\usepackage{blindtext}
+\title{KKK Project\thanks{No procrastination}}
+\date{2019\\ July}
+\author{
+  Witzany, Jan\\
+  \texttt{first1.last1@xxxxx.com}
+  \and
+  Luick, Bastian\\
+  \texttt{first2.last2@xxxxx.com}
+  \and
+  Boottawong, Juti\\
+  \texttt{first2.last2@xxxxx.com	}
+}
+%--------------------------------------
+\begin{document}
+\begin{titlepage}
+\maketitle
+\input{Content/abstract}
+\end{titlepage}
+\tableofcontents						% Inhaltsverzeichnis
+
+\vspace{2cm} %Add a 2cm space
+ 
+
+\input{Content/mission_vision}
+
+\input{Content/user_profiles}
+
+\input{Content/system_requirements}
+
+\input{Content/mini_stories}
+
+\input{Content/site_lang}
+
+\input{Content/herm}
+
+\input{Content/bpmn}
+
+\input{Content/technology}
+
+\input{Content/framework}
+
+\input{Content/front}
+
+\input{Content/back}
+
+\input{Content/obstacle}
+
+\input{Content/outlook}
+  
+\end{document}

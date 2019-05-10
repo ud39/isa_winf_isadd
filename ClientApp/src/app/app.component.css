@@ -1,0 +1,24 @@
+@media (max-width: 767px) {
+  /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */
+  .body-content {
+    padding-top: 50px;
+  }
+}
+div.container{
+  alignment: center;
+  background-color: red;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-height:600px;
+    max-width: 75%;
+    overflow-y: auto;
+    margin-top: 3%;
+  }
+}
+
+body{
+  padding: 40px;
+  background-color: ghostwhite;
+}

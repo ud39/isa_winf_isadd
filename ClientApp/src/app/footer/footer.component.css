@@ -1,0 +1,21 @@
+#footer{
+  list-style: none;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+#footer li{
+  display:inline-block;
+  border-right: black solid 1px;
+  padding-right: 1%;
+}
+
+#footer li:nth-child(2){
+  margin-left: 1%;
+}
+
+#footer-container{
+  background-color: gray;
+}

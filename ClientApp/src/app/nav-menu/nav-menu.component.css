@@ -1,0 +1,115 @@
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+html {
+  font-size: 14px;
+}
+div.container{
+  padding: 0;
+}
+
+li.nav-item{
+  list-style-position:inside;
+  border: 1px solid whitesmoke;
+}
+
+li.nav-item a{
+  color:black;
+  text-shadow: gray;
+}
+
+li.nav-item a:hover{
+  background:black;
+  color:white;
+}
+
+li.nav-item.link-active{
+  background:black;
+}
+li.nav-item.link-active a{
+  color:white;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+  app-nav-menu{
+    clear: both;
+  }
+  .navbar{
+    float:none;
+    left: 35%;
+    top:0;
+    margin: 0 auto;
+    display: inline;
+    table-layout: fixed;
+    position: fixed;
+    padding: 0;
+    clear:both;
+  }
+
+  .navbar-collapse{
+    justify-content: center;
+  }
+
+  #login-dropdown{
+    display: inline-block;
+    margin-top: 1px;
+    margin-right: 2px;
+    padding: 0px 50px;
+    font-size: 18px;
+    font-family: "Bitter",serif;
+    line-height: 1;
+    appearance: none;
+    box-shadow: none;
+    border-radius: 0;
+    position: fixed;
+    top:0;
+    right:0;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    border-bottom: black solid 1px;
+  }
+
+  #login-dropdown-content {
+    position: relative;
+    display: inline-block;
+  }
+
+  #login-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    right:0%;
+    margin-top: 5px;
+  }
+
+  #login-dropdown:hover #login-dropdown-content{
+    display: block;
+  }
+
+  #login-dropdown .login-dropdown-content-permanent{
+    display: block;
+  }
+
+
+
+  #btn-login-logout:focus{
+    outline: none;
+  }
+
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+

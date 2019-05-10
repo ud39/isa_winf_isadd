@@ -1,0 +1,287 @@
+<application>
+  <component name="SettingsState">
+    <option name="projects">
+      <list>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/Eff_Alg.git" />
+          <option name="name" value="Eff_Alg" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/Eff_Alg.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/fortprog-prak.git" />
+          <option name="name" value="fortprog-prak" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/fortprog-prak.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/jwi_Ba15.git" />
+          <option name="name" value="jwi_Ba15" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/jwi_Ba15.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/stu120353/isa_winf_isadd.git" />
+          <option name="name" value="ISA_WInf_ISADD" />
+          <option name="namespace" value="stu120353" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:stu120353/isa_winf_isadd.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/stu126263/informations-und-wissensmanagement.git" />
+          <option name="name" value="Informations und Wissensmanagement" />
+          <option name="namespace" value="stu126263" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:stu126263/informations-und-wissensmanagement.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/Eff_Alg.git" />
+          <option name="name" value="Eff_Alg" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/Eff_Alg.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/fortprog-prak.git" />
+          <option name="name" value="fortprog-prak" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/fortprog-prak.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/jwi_Ba15.git" />
+          <option name="name" value="jwi_Ba15" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/jwi_Ba15.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/stu120353/isa_winf_isadd.git" />
+          <option name="name" value="ISA_WInf_ISADD" />
+          <option name="namespace" value="stu120353" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:stu120353/isa_winf_isadd.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/stu126263/informations-und-wissensmanagement.git" />
+          <option name="name" value="Informations und Wissensmanagement" />
+          <option name="namespace" value="stu126263" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:stu126263/informations-und-wissensmanagement.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/Eff_Alg.git" />
+          <option name="name" value="Eff_Alg" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/Eff_Alg.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/fortprog-prak.git" />
+          <option name="name" value="fortprog-prak" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/fortprog-prak.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/jwi_Ba15.git" />
+          <option name="name" value="jwi_Ba15" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/jwi_Ba15.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/stu120353/isa_winf_isadd.git" />
+          <option name="name" value="ISA_WInf_ISADD" />
+          <option name="namespace" value="stu120353" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:stu120353/isa_winf_isadd.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/stu126263/informations-und-wissensmanagement.git" />
+          <option name="name" value="Informations und Wissensmanagement" />
+          <option name="namespace" value="stu126263" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:stu126263/informations-und-wissensmanagement.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/Eff_Alg.git" />
+          <option name="name" value="Eff_Alg" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/Eff_Alg.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/fortprog-prak.git" />
+          <option name="name" value="fortprog-prak" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/fortprog-prak.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/jwi_Ba15.git" />
+          <option name="name" value="jwi_Ba15" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/jwi_Ba15.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/stu120353/isa_winf_isadd.git" />
+          <option name="name" value="ISA_WInf_ISADD" />
+          <option name="namespace" value="stu120353" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:stu120353/isa_winf_isadd.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/stu126263/informations-und-wissensmanagement.git" />
+          <option name="name" value="Informations und Wissensmanagement" />
+          <option name="namespace" value="stu126263" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:stu126263/informations-und-wissensmanagement.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/Eff_Alg.git" />
+          <option name="name" value="Eff_Alg" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/Eff_Alg.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/fortprog-prak.git" />
+          <option name="name" value="fortprog-prak" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/fortprog-prak.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/jwi_Ba15.git" />
+          <option name="name" value="jwi_Ba15" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/jwi_Ba15.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/stu120353/isa_winf_isadd.git" />
+          <option name="name" value="ISA_WInf_ISADD" />
+          <option name="namespace" value="stu120353" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:stu120353/isa_winf_isadd.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/stu126263/informations-und-wissensmanagement.git" />
+          <option name="name" value="Informations und Wissensmanagement" />
+          <option name="namespace" value="stu126263" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:stu126263/informations-und-wissensmanagement.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/Eff_Alg.git" />
+          <option name="name" value="Eff_Alg" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/Eff_Alg.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/fortprog-prak.git" />
+          <option name="name" value="fortprog-prak" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/fortprog-prak.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/jwi_Ba15.git" />
+          <option name="name" value="jwi_Ba15" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/jwi_Ba15.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/stu120353/isa_winf_isadd.git" />
+          <option name="name" value="ISA_WInf_ISADD" />
+          <option name="namespace" value="stu120353" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:stu120353/isa_winf_isadd.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/stu126263/informations-und-wissensmanagement.git" />
+          <option name="name" value="Informations und Wissensmanagement" />
+          <option name="namespace" value="stu126263" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:stu126263/informations-und-wissensmanagement.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/Eff_Alg.git" />
+          <option name="name" value="Eff_Alg" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/Eff_Alg.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/fortprog-prak.git" />
+          <option name="name" value="fortprog-prak" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/fortprog-prak.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/jwi_Ba15.git" />
+          <option name="name" value="jwi_Ba15" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/jwi_Ba15.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/stu120353/isa_winf_isadd.git" />
+          <option name="name" value="ISA_WInf_ISADD" />
+          <option name="namespace" value="stu120353" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:stu120353/isa_winf_isadd.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/stu126263/informations-und-wissensmanagement.git" />
+          <option name="name" value="Informations und Wissensmanagement" />
+          <option name="namespace" value="stu126263" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:stu126263/informations-und-wissensmanagement.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/Eff_Alg.git" />
+          <option name="name" value="Eff_Alg" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/Eff_Alg.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/fortprog-prak.git" />
+          <option name="name" value="fortprog-prak" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/fortprog-prak.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/jwi_Ba15.git" />
+          <option name="name" value="jwi_Ba15" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/jwi_Ba15.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/stu120353/isa_winf_isadd.git" />
+          <option name="name" value="ISA_WInf_ISADD" />
+          <option name="namespace" value="stu120353" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:stu120353/isa_winf_isadd.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/stu126263/informations-und-wissensmanagement.git" />
+          <option name="name" value="Informations und Wissensmanagement" />
+          <option name="namespace" value="stu126263" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:stu126263/informations-und-wissensmanagement.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/Eff_Alg.git" />
+          <option name="name" value="Eff_Alg" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/Eff_Alg.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/fortprog-prak.git" />
+          <option name="name" value="fortprog-prak" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/fortprog-prak.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/jwi/jwi_Ba15.git" />
+          <option name="name" value="jwi_Ba15" />
+          <option name="namespace" value="jwi" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:jwi/jwi_Ba15.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/stu120353/isa_winf_isadd.git" />
+          <option name="name" value="ISA_WInf_ISADD" />
+          <option name="namespace" value="stu120353" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:stu120353/isa_winf_isadd.git" />
+        </ProjectDto>
+        <ProjectDto>
+          <option name="httpUrl" value="https://git.informatik.uni-kiel.de/stu126263/informations-und-wissensmanagement.git" />
+          <option name="name" value="Informations und Wissensmanagement" />
+          <option name="namespace" value="stu126263" />
+          <option name="sshUrl" value="git@git.informatik.uni-kiel.de:stu126263/informations-und-wissensmanagement.git" />
+        </ProjectDto>
+      </list>
+    </option>
+    <option name="gitlabServers">
+      <list>
+        <GitlabServer>
+          <option name="apiToken" value="WXmxrp_dHnzgWUy4HffY" />
+          <option name="apiUrl" value="https://git.informatik.uni-kiel.de/" />
+          <option name="repositoryUrl" value="git.informatik.uni-kiel.de" />
+        </GitlabServer>
+      </list>
+    </option>
+  </component>
+</application>
