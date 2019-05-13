@@ -1,4 +1,4 @@
-BRANCH-OFFICE
+COFFEE_SHOP - <Name+ADRESS>
 rating(google, own(total, coffee_selection, facilities, feelgood factor, service), tripsadviser)
 wlan
 name
@@ -31,54 +31,55 @@ facility_category
 franchise/'Onkel Tom Laden'
 
 
-EVENT
+EVENT -<eventID>
+eventD
 date
 name
 description
-adress
+LOCATION
 access_fee
 
 COMPANY
 company_name
 
-PRICE_CLASS
-class(low, average, high)
+PRICE_CLASS(low, average, high)
 
-POI
+POI -<Name, ADRESS>
 name
 adress
+description
 
-BUS_STATION
+BUS_STATION -<NAME>
 name
 line
 
-EQUIPMENT/Accesory
+EQUIPMENT/Accesory -<MANUFACTURER, NAME, YEAR>
 name
 category
 price_range
-manufactur
+manufacturer
+description
+year
+
+LOCATION -<ADRESS>
+adress
 description
 
-LOCATION
-adress
-name
-
-COFFEE_DRINKS
+COFFEE_DRINK -<NAME>
 name
 warm/cold
 description
 
 
 
-PREPARTION
-press_style
+PREPARTION -<schwacher Enity: COFFEE_DRINK + NAME>
+type(press_style,roasting,filtering)
 description
-roasting
-filtering
 
 
 
-BEANS
+
+BEANS -<NAME, MANUFACTURER>
 name
 provenance
 sorte
@@ -88,23 +89,31 @@ description
 price_range
 
 
-BLENDS
+BLENDS <NAME, PROVIDER>
 name
-manufactur
+provider
 description
 provenance
 price_range
 
 
-USER
+ROLE -<EMAIL>
 email
 password
 [name]
 
 
+EQUIPMENT_CATEGORY -<NAME>
+name
+
+
+ARTICLE -<ARTICLEID>
+articleID
 
 
 
+
+------------------------------
 SEARCH_by_Name /Quick_search
 company_name + adress
 POI
