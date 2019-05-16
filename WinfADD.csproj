@@ -27,6 +27,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="documentation\Content\BPMN" />
+      <Folder Include="documentation\Content\Templates" />
       <Folder Include="Models\Interfaces" />
     </ItemGroup>
 

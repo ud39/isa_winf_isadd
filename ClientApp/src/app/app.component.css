@@ -6,7 +6,7 @@
 }
 div.container{
   alignment: center;
-  background-color: red;
+  background-color: dimgray;
 }
 
 @media (min-width: 1200px) {
@@ -16,9 +16,12 @@ div.container{
     overflow-y: auto;
     margin-top: 3%;
   }
+
 }
 
-body{
+body {
   padding: 40px;
   background-color: ghostwhite;
 }
+
+

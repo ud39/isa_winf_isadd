@@ -9,19 +9,19 @@
       <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]='{"show": isExpanded}'>
         <ul class="navbar-nav flex-grow">
           <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-            <a class="nav-link" [routerLink]='["/"]'>SHOPS</a>
+            <a class="nav-link" [routerLink]='["/"]'>Shops</a>
           </li>
           <li class="nav-item" [routerLinkActive]='["link-active"]'>
-            <a class="nav-link" [routerLink]='["/counter"]'>COFFEE</a>
+            <a class="nav-link" [routerLink]='["/counter"]'>Kaffee</a>
           </li>
           <li class="nav-item" [routerLinkActive]='["link-active"]'>
-            <a class="nav-link" [routerLink]='["/fetch-data"]'>EQUIPMENT</a>
+            <a class="nav-link" [routerLink]='["/fetch-data"]'>Equipment</a>
           </li>
           <li class="nav-item" [routerLinkActive]='["link-active"]'>
-            <a class="nav-link" [routerLink]='["/events"]'>EVENTS</a>
+            <a class="nav-link" [routerLink]='["/events"]'>Events</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link">ABOUT US</a>
+            <a class="nav-link">Über uns</a>
           </li>
         </ul>
       </div>
@@ -37,9 +37,10 @@
             <input type="text" class="form-control" id="passwort" required>
             <label for="passwort">Passwort</label>
           </div>
-          <button id="btn-login-logout">
+          <button id="btn-login-logout" class="nav-btn-login">
             Login
           </button>
+          <button id="btn-register" class="nav-btn-login" [routerLink]='["/registration"]'>Registierung</button>
         </form>
       </div>
       </div>

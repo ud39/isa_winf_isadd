@@ -1,0 +1,33 @@
+.form-control,
+.form-control:focus{
+  background: transparent;
+  border: none;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  padding: 0;
+  border-bottom: lightskyblue 1px solid;
+  width: 70%;
+
+}
+
+.container {
+  width: 500px;
+  clear: both;
+}
+
+.container input {
+  width: 100%;
+  clear: both;
+}
+
+.star{
+  color:red;
+  font-size: 5px;
+  vertical-align: text-top;
+}
+
+.underline{
+  width: auto;
+  color: red;
+}

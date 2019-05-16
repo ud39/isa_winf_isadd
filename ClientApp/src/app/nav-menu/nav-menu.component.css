@@ -102,10 +102,12 @@ li.nav-item.link-active a{
   }
 
 
-
-  #btn-login-logout:focus{
+  #btn-login-logout:focus,
+  #btn-register{
     outline: none;
   }
+
+  
 
 }
 

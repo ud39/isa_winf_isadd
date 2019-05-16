@@ -1,3 +1,37 @@
-<p>
-  registration works!
-</p>
+<div>
+  <h1 id="h1register"> Registrierung </h1>
+  <span class="underline"></span>
+</div>
+
+<div class="container">
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <input id="register-email" type="text" maxlength="30" formControlName="Email" class="form-control" [ngClass]="{ 'is-invalid': submitted && formForRegister.Email.errors }" />
+    <div *ngIf="submitted && formForRegister.Email.errors" class="invalid-feedback">
+      <div *ngIf="formForRegister.Email.errors.required">
+        Email
+      </div>
+    </div>
+    <span class="underline"></span>
+    <label for="register-email">Email<span class="star">&#x2605;</span></label>
+
+    <input id="register-password" type="text" formControlName="Email" class="form-control" [ngClass]="{ 'is-invalid': submitted && formForRegister.Email.errors }" />
+    <div *ngIf="submitted && formForRegister.Email.errors" class="invalid-feedback">
+      <div *ngIf="formForRegister.Email.errors.required">
+        Email
+      </div>
+    </div>
+    <span class="underline"></span>
+    <label for="register-password">Passwort<span class="star">&#x2605;</span></label>
+
+    <input id="register-password-again" type="text" formControlName="Email" class="form-control" [ngClass]="{ 'is-invalid': submitted && formForRegister.Email.errors }" />
+    <div *ngIf="submitted && formForRegister.Email.errors" class="invalid-feedback">
+      <div *ngIf="formForRegister.Email.errors.required">
+        Email
+      </div>
+    </div>
+    <span class="underline"></span>
+    <label for="register-password-again">Passwort nochmal eingeben<span class="star">&#x2605;</span></label>
+  </div>
+</form>
+</div>
