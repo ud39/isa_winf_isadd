@@ -1,18 +1,18 @@
 \section{Requirement}
 \subsection{User Requirements}
 \subsubsection{User Types}
-Possible properties of every user type: vegan, possiblity to use own mug, reuseable mug, can speak and read german, every user can paid by cash, age 16-35.
-\textbf{Roles} \{Content Provider(Admin, ContentManager), User (All user types) \}\\\\
+Possible properties of every user type: vegan, possibility to use own mug, reusable mug, can speak and read German, every user can paid by cash, age 16-35.
+\textbf{Roles} \{Content Provider(Admin, ContentManager), User (All user types) \}\\
 \textbf{Admin}\\
 Preferences: List of registered user and List of content \\
-Behavior: Interact throught desktop with webapplication for various task\\
+Behavior: Interact through desktop with web application for various task\\
 Constraints: \\
-Demands: Access to all content and user Information possibility to delete User and add content manager.\\
+Demands: Access to all content and user information possibility to delete user and add content manager.\\
 Tasks: \{CRUD of all content and user account\}\\
 \textbf{Content Manager}\\
-Preferences: Concrete and specifc input options.(saved options)\\
+Preferences: Concrete and specific input options.(saved options)\\
 Behavior: Want to upload a bulk of content and previews his inputs. Watch out for changes in the coffee shops.\\
-Constraints:  must have Preview\\
+Constraints:  must have preview of create or edit content\\
 Demands: Input pages for various content.\\
 Tasks: \{CRUD content\}\\
 \textbf{Students}\\
@@ -22,21 +22,21 @@ Constraints:  low funds, short on time.\\
 Demands: Student wants to drink coffee and possibly a place to work.\\
 Tasks: \{filtering, search, look up, navigation, delete own profile, change own mail, rate shops\}\\
 \textbf{Coffee fanatics}\\
-Preferences: High quality coffee, parking lot, wlan, prefeeable possiblity to see coffee making process, have a list of favorites  \\
+Preferences: High quality coffee, parking lot, wlan, preferable possibility to see coffee making process, have a list of favorites  \\
 Behavior: User desktop and mobile devices to find misc. information about coffee shops in Kiel. Is content with paying more than average coffee price for high quality coffee.\\
-                 Alwasy looking for new shops and coffee beverages. \\
+                 Always looking for new shops and coffee beverages. \\
 Constraints: No big companies or franchises. \\
-Demands: Fanatics to experience novel coffee specialities in kiel and buy coffee making utensils.\\
+Demands: Fanatics to experience novel coffee specialities in kiel and buy coffee making utensils.\newpage
 \textbf{Tourists}\\
-Preferences: near by current location, card payment \\
-Behavior: use mobile devices to find coffee shops in Kiel to relax and drink coffee. Is usually near sights. \\
+Preferences: Nearby current location, card payment \\
+Behaviour: Use mobile devices to find coffee shops in Kiel to relax and drink coffee. Is usually near sights. \\
 Constraints: Low mobility, doesn't know localities, short on time, no big companies or franchises. \\
-Demands: Local cafe\\
+Demands: Local cafe shops that are nearby\\
 
 \subsubsection{User Stories}
 
 \begin{longtable}{| p{3.5cm} | p{9cm} |}
-\caption{User Story: User filtering optionsl}\label{chap3:tab1}\\[12pt]
+\caption{User Story: User filtering options}\label{chap3:tab1}\\[12pt]
 \endfirsthead
 \multicolumn{2}{c}{\tablename\ \thetable\ -- \textit{Continued from previous page}}\\[12pt]
 \hline
@@ -61,7 +61,7 @@ Created by:& KKK \hspace{2cm}\vrule\ Date created: \date{\today} \vrule\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
-Actors &
+Roles &
 Students\newline
 Coffee fanatic\newline
 Tourists\\
@@ -90,7 +90,7 @@ Trigger: & Search button\\
 % --------------------------------------------------------------------------------------------------------------
 Flow: &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}
-\item Click on avaiable filtering options
+\item Click on available filtering options
 \item filtering results are showed 
 \item browse through list
 \end{enumerate}\\
@@ -124,7 +124,7 @@ Flow: &\mbox{}\par\vspace{-\baselineskip}
 
 \hline
 % --------------------------------------------------------------------------------------------------------------
-User Story ID: & 3\\
+User Story ID: & 2\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
@@ -136,20 +136,20 @@ Created by:& KKK \hspace{2cm}\vrule\ Date created: \date{\today} \vrule\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
-Actors &
+Roles &
 Student\newline
 Tourist\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
-Description: & User are on a break and are looking for a nearby coffee shop and use quick search function\\
+Description: & User is on a break and are looking for a nearby coffee shop and use quick search function\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
 Preconditions: &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}
-\item Is on our Landing Page
-\item User mobile devices 
+\item Is on our landing page
+\item Click quick search button 
 \end{enumerate}\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
@@ -196,7 +196,7 @@ Normal flow: &\mbox{}\par\vspace{-\baselineskip}
 
 \hline
 % --------------------------------------------------------------------------------------------------------------
-User Story ID: & 4\\
+User Story ID: & 3\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
@@ -207,7 +207,7 @@ User Story Name: & Evaluate coffee shop\\
 Created by:& KKK \hspace{2cm}\vrule\ Date created: \date{\today} \vrule\\% --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
-Actors &
+Roles &
 Student\newline
 Coffee fanatic\\
 % --------------------------------------------------------------------------------------------------------------
@@ -225,7 +225,7 @@ Preconditions: &\mbox{}\par\vspace{-\baselineskip}
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
-Postconditions: & Can see his rating about the shop. \\
+Postconditions: & Can see his evaluation about the shop. \\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
@@ -268,7 +268,7 @@ Normal flow: &\mbox{}\par\vspace{-\baselineskip}
 
 \hline
 % --------------------------------------------------------------------------------------------------------------
-User Story ID: & 5\\
+User Story ID: & 4\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
@@ -279,13 +279,13 @@ User Story Name: & Search equipment\\
 Created by:& KKK \hspace{2cm}\vrule\ Date created: \date{\today} \vrule\\% --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
-Actors &
+Roles &
 Coffee fanatic\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
 Description: &
-Is on the equipment subpage and select filtrering options.\\
+Is on the equipment subpage and select filtering options.\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
@@ -342,7 +342,7 @@ Flow: &\mbox{}\par\vspace{-\baselineskip}
 
 \hline
 % --------------------------------------------------------------------------------------------------------------
-User Story ID: & 6\\
+User Story ID: & 5\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
@@ -353,7 +353,7 @@ User Story Name: & Edit review\\
 Created by:& KKK \hspace{2cm}\vrule\ Date created: \date{\today} \vrule\\% --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
-Actors &
+Roles &
 All\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
@@ -375,7 +375,7 @@ Postconditions: & Review was edited \\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
-Trigger: &  star symbol on the shop page\\
+Trigger: &  Star symbol on the shop page\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
@@ -417,7 +417,7 @@ Normal flow: &\mbox{}\par\vspace{-\baselineskip}
 
 \hline
 % --------------------------------------------------------------------------------------------------------------
-User Story ID: & 7\\
+User Story ID: & 6\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
@@ -428,7 +428,7 @@ User Story Name: & Manage Content\\
 Created by:& KKK \hspace{2cm}\vrule\ Date created: \date{\today} \vrule\\ % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
-Actors &
+Roles &
 Content-Manager\newline
 Admin\\
 % --------------------------------------------------------------------------------------------------------------
@@ -490,18 +490,18 @@ Flow: &\mbox{}\par\vspace{-\baselineskip}
 
 \hline
 % --------------------------------------------------------------------------------------------------------------
-User Stories ID: & 9\\
+User Story ID: & 7\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
-User Stories Name: & Login\\
+User Story Name: & Login\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
 Created by:& KKK \hspace{2cm}\vrule\ Date created: \date{\today} \vrule\\%% --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
-Actors &
+Roles &
 Student\newline
 Coffee fanatic\newline
 Tourist\newline
@@ -524,11 +524,11 @@ Preconditions: &\mbox{}\par\vspace{-\baselineskip}
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
-Postconditions: & User is logged in the system and is automaticly redirect to account last page. And has access to the corresponding functinonality.\\
+Postconditions: & User is logged in the system and is redirect to account last page. And has access to the corresponding functionality.\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
-Trigger: & The doctor logs in the system and presses the \textit{Login} button\\
+Trigger: & Login button\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
@@ -571,18 +571,18 @@ Normal flow: &\mbox{}\par\vspace{-\baselineskip}
 
 \hline
 % --------------------------------------------------------------------------------------------------------------
-User Stories ID: & 10\\
+User Story ID: & 8\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
-User Stories Name: & Registeration\\
+User Story Name: & Registration\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
 Created by:& KKK \hspace{2cm}\vrule\ Date created: \date{\today} \vrule\\%% --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
-Actors &
+Roles &
 Student\newline
 Tourist\newline
 Coffee fanatic\\
@@ -597,7 +597,7 @@ User register on the website.\\
 Preconditions: &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}
 \item Is on the registration page.
-\item Fill out formular with correct data 
+\item Fill out formula with correct data 
 \end{enumerate}\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
@@ -646,7 +646,7 @@ Flow: &\mbox{}\par\vspace{-\baselineskip}
 
 \hline
 % --------------------------------------------------------------------------------------------------------------
-User Story ID: & 11\\
+User Story ID: & 9\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
@@ -658,7 +658,7 @@ Created by:& KKK \hspace{2cm}\vrule\ Date created: \date{\today} \vrule\\%
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
-Actors &
+Roles &
 User\newline
 Admin\\
 % --------------------------------------------------------------------------------------------------------------
@@ -676,17 +676,19 @@ Preconditions: &\mbox{}\par\vspace{-\baselineskip}
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
-Postconditions: & Is automatic logged out and all evaluation of the user are deleted. Delete action on user database\\
+Postconditions: & Is automatic logged out of application and all reviews of the user are deleted.\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
-Trigger: & Delete button and popup verification\\
+Trigger: & Delete button \\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
 Flow: &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}
-\item the doctor clicks on the \textit{Patients} icon;
+\item User clicked on delete button.
+\item Verify in popup his deletion request.
+\item Click delete button.
 \end{enumerate}\\
 %% --------------------------------------------------------------------------------------------------------------
 %\hline
@@ -718,7 +720,7 @@ Flow: &\mbox{}\par\vspace{-\baselineskip}
 
 \hline
 % --------------------------------------------------------------------------------------------------------------
-User Story ID: & 12\\
+User Story ID: & 10\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
@@ -729,12 +731,12 @@ User Story Name: & Manage registered user\\
 Created by:& KKK \hspace{2cm}\vrule\ Date created: \date{\today} \vrule\\%% --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
-Actors &
+Roles &
 Admin\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
-Description: & Admin create content-manager and delete everyother account \\
+Description: & Admin create content-manager and delete every other account \\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
@@ -758,7 +760,7 @@ Flow: &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}
 \item Select user account
 \item Click delete button
-\item Pop up
+\item Popup
 \item Select yes 
 \end{enumerate}\\
 %% --------------------------------------------------------------------------------------------------------------
@@ -792,7 +794,7 @@ Flow: &\mbox{}\par\vspace{-\baselineskip}
 
 \hline
 % --------------------------------------------------------------------------------------------------------------
-User Story ID: & 12\\
+User Story ID: & 11\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
@@ -803,7 +805,7 @@ User Story Name: & Logout\\
 Created by:& KKK \hspace{2cm}\vrule\ Date created: \date{\today} \vrule\\%% --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
-Actors &
+Roles &
 All\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
@@ -819,7 +821,7 @@ Preconditions: &\mbox{}\par\vspace{-\baselineskip}
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------
-Postconditions: & Is loggout\\
+Postconditions: & Is logout\\
 % --------------------------------------------------------------------------------------------------------------
 \hline
 % --------------------------------------------------------------------------------------------------------------

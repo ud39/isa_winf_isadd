@@ -1,9 +1,120 @@
 \section{HERM-SCHEMAS}
+\begin{figure}[ht]
 \includegraphics[
     page=1,
     width=\textwidth,
     height=\textheight,
     keepaspectratio
-]{Content/HERM/Herm_coffee.jpg}
+]{Content/HERM/Herm_coffee16_05.png}
 \vfill
+\caption{Simplify domain model}
+\end{figure}
+COFFEE\_SHOP - <Name, ADRESS>\\
+rating(google, own(total, coffee\_selection, facilities, feelgood factor, service), tripsadviser)\\
+wlan\\
+name\\
+address\\
+opening time\\
+vegan\\
+disabled-friendly\\
+fair\_trade\\
+price\_range\\
+accessory\\
+eco sustainability(seal)\\
+website\\
+event\\
+seats\\
+child\_friendly\\
+workstation\\
+coffee\_types\\
+art\\
+pets\_friendly\\
+food(warm, cold)\\
+branch\\
+blend\\
+beans\\
+equipment\\
+founding\_year\\
+description\\
+facility\_category\\
+franchise Onkel Tom Laden\\
+
+
+EVENT -<eventID>\\
+eventID\\
+date\\
+name\\
+description\\
+LOCATION\\
+access\_fee\\
+
+COMPANY\\
+company\_name\\
+
+%PRICE\_CLASS(low, average, high)\\
+
+POI -<Name, ADDRESS>\\
+name\\
+address\\
+description\\
+
+BUS\_STATION -<NAME>\\
+name\\
+line\\
+
+EQUIPMENT -<MANUFACTURER, NAME, YEAR>\\
+name\\
+category\\
+price\_range\\
+manufacturer\\
+description\\
+year\\
+
+LOCATION -<ADDRESS>\\
+address\\
+description\\
+
+COFFEE\_DRINK -<NAME>\\
+name\\
+warm/cold\\
+description\\
+
+
+
+PREPARATION -<schwacher Enity: COFFEE\_DRINK + NAME>\\
+type(press\_style,roasting,filtering)\\
+description\\
+
+
+
+
+BEANS -<NAME, MANUFACTURER>\\
+name\\
+provenance\\
+sort\\
+fair\_trade\\
+manufacturer\\
+description\\
+price\_range\\
+
+BLENDS <NAME, PROVIDER>\\
+name\\
+provider\\
+description\\
+provenance\\
+price\_range\\
+
+
+ROLE -<EMAIL>\\
+email\\
+password\\
+name\\
+
+
+EQUIPMENT\_CATEGORY -<NAME>\\
+name\\
+
+
+ARTICLE -<ARTICLEID>\\
+articleID\\
 \newpage
