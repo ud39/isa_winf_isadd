@@ -1,4 +1,4 @@
-COFFEE_SHOP - <Name+ADRESS>
+﻿COFFEE_SHOP - <Name, ADRESS>
 rating(google, own(total, coffee_selection, facilities, feelgood factor, service), tripsadviser)
 wlan
 name
