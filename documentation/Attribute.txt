@@ -1,74 +1,73 @@
-﻿COFFEE_SHOP - <Name, ADRESS>
-rating(google, own(total, coffee_selection, facilities, feelgood factor, service), tripsadviser)
-wlan
-name
-adress
-opening time
-vagan
-hanycaped_friendly
-bus_station
-POI
-fair_trade
-price_range
-accessory
-eco sustainability(siegel)
-website
-event
-seats
-child_friendly
-workstation
-coffe_types
-art
-pets_friendly
-food(warm, cold)
-branch
-blend
-beans
-equipment
-founding_year
-description
-facility_category
-franchise/'Onkel Tom Laden'
+﻿COFFEE_SHOP - <Name, ADDRESS>
+
+wlan                        Boolean
+name                        VARCHAR
+address                    (Strasse, Plz, Ortsname, Hausnummer)
+opening_time                <weedkday, opentime, closetime> 
+hanycaped_friendly          Boolean
+fair_trade                  Boolean
+price_range                 VARCHAR
+eco sustainability(siegel)  Boolean
+website                     VARCHAR
+seats                       VARCHAR
+child_friendly              Boolean
+workstation                 Boolean          
+art                         Boolean
+pets_friendly               Boolean
+food(warm, cold)            VARCHAR              
+founding_year               INTEGER(4)
+description                 Blob
+outdoor                     Boolean           
+franchise/'Onkel Tom Laden' Boolean
+price_class                 VARCHAR --(low, average, high)
+
+rating                      Integer --(google, own(total, coffee_selection, facilities, feelgood factor, service), tripsadviser)
+vagan                       Boolean --in offers coffe_drink
+coffe_types                 VARCHAR --in offers coffe_drink 
+branch                      VARCHAR --in COMPANY
 
 
 EVENT -<eventID>
-eventD
-date
-name
-description
-LOCATION
-access_fee
+eventID                     INTEGER             
+time                        Time --<begin, end>
+name                        VARCHAR
+description                 Bolb
+access_fee                  <INTEGER>
 
-COMPANY
-company_name
+COMPANY -<company_name>
+company_name                VARCHAR
 
-PRICE_CLASS(low, average, high)
 
-POI -<Name, ADRESS>
-name
-adress
-description
+
+POI -<Name, ADDRESS>
+name                        VARCHAR
+address                     (Strasse, Plz, Ortsname, Hausnummer)
+description                 Blob
 
 BUS_STATION -<NAME>
-name
-line
+name                       VARCHAR
+line                       INTEGER
 
-EQUIPMENT/Accesory -<MANUFACTURER, NAME, YEAR>
-name
-category
-price_range
-manufacturer
-description
-year
+EQUIPMENT -<MANUFACTURER, NAME, YEAR>
+name                        VARCHAR
+category                    VARCHAR
+price_class                 VARCHAR                 
+manufacturer                VARCHAR
+description                 Blob
+year_of_origin              INTEGER
 
-LOCATION -<ADRESS>
-adress
-description
+LOCATION -<ADDRESS>
+address                     (Plz, Ortsname, Strasse, [Hausnummer], [Description])
+description                 Blob
 
 COFFEE_DRINK -<NAME>
+name                        VARCHAR
+warm/cold                   VARCHAR
+description                 Blob
+
+COFFEE_DRINK_TYP
 name
-warm/cold
-description
+
 
 
 
@@ -80,35 +79,46 @@ description
 
 
 BEANS -<NAME, MANUFACTURER>
-name
-provenance
-sorte
-fair_trade
-manufactur
-description
-price_range
+name                        VARCHAR
+provenance                  VARCHAR
+sorte                       VARCHAR
+fair_trade                  Boolean
+manufactur                  VARCHAR
+description                 Blob
+price_range                 <INTEGER, INTEGER>
 
 
 BLENDS <NAME, PROVIDER>
-name
-provider
-description
-provenance
-price_range
+name                        VARCHAR
+provider                    VARCHAR
+description                 Blob
+provenance                  VARCHAR
+price_range                 <INTEGER, INTEGER>
 
 
-ROLE -<EMAIL>
-email
-password
-[name]
+ACTOR -<EMAIL>
+email                       VARCHAR --complex?
+password                    VARCHAR
+name                        VARCHAR
 
 
 EQUIPMENT_CATEGORY -<NAME>
-name
+name                        VARCHAR
 
 
 ARTICLE -<ARTICLEID>
-articleID
+articleID                   INTEGER
+
+
+
+
+
+
+
+
+
+
+
 
 
 
