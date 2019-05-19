@@ -11,6 +11,12 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { ContentListComponent } from './content-list/content-list.component';
+import { ShopComponent } from './shop/shop.component';
+import { ArticleComponent } from './article/article.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +26,13 @@ import { RegistrationComponent } from './registration/registration.component';
     CounterComponent,
     FetchDataComponent,
     FooterComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ContentListComponent,
+    ShopComponent,
+    ArticleComponent,
+    AboutUsComponent,
+    UserProfileComponent,
+    AdminProfileComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
@@ -30,7 +42,8 @@ import { RegistrationComponent } from './registration/registration.component';
       {path: '', component: HomeComponent, pathMatch: 'full'},
       {path: 'counter', component: CounterComponent},
       {path: 'fetch-data', component: FetchDataComponent},
-      {path: 'registration', component: RegistrationComponent}
+      {path: 'registration', component: RegistrationComponent},
+      {path: 'shop', component: ShopComponent}
     ]),
     ReactiveFormsModule
   ],

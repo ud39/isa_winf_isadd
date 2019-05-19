@@ -27,6 +27,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="ClientApp\src\assets\Images" />
       <Folder Include="documentation\Content\BPMN" />
       <Folder Include="documentation\Content\Templates" />
       <Folder Include="Models\Interfaces" />
