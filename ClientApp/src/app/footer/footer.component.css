@@ -1,9 +1,9 @@
 #footer{
   list-style: none;
-  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
+  margin-bottom: 0;
 }
 
 #footer li{
@@ -19,4 +19,5 @@
 #footer-container{
   background-color: gray;
   max-height: 4%;
+  margin-top: 40px;
 }

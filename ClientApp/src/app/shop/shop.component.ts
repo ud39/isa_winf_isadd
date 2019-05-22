@@ -45,7 +45,6 @@ export class ShopComponent implements OnInit {
     for(i=0; i< tabs.length;i++){
       tabs[i].classList.remove("tab-active");
     }
-    (<HTMLElement> event.target).classList.add("tab-active");
     switch((<HTMLElement> event.target).innerText.trim())
     {
       case "Beschreibung":

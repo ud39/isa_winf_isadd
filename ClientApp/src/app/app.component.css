@@ -9,8 +9,11 @@ div.container{
   background-color: dimgray;
 }
 
+
+/* Scrollable content */
 @media (min-width: 1200px) {
   .container {
+    flex: 1;
     max-height:600px;
     max-width: 75%;
     overflow-y: auto;
@@ -20,8 +23,11 @@ div.container{
 }
 
 body {
-  padding: 40px;
+  padding: 40px 40px 0 40px;
   background-color: ghostwhite;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 

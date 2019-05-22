@@ -1,0 +1,71 @@
+.grid{
+  display: grid;
+  grid-template-columns: repeat(5, 2fr);
+  grid-template-rows: auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 10px;
+  padding: 10px;
+}
+
+.delete{
+  grid-area: 1 / 1 / 1 / 1;
+}
+
+.delete-account{
+  grid-area: 1/ 2 / 1 / span 3;
+
+}
+
+.change{
+  grid-column: 1 / 2;
+  grid-row: 2;
+}
+
+.change-email{
+  grid-area: 2/ 2 / 2 / span 3;
+}
+
+.btn{
+  border:none;
+  background-color: white;
+  outline: none!important;
+  list-style-position:inside;
+
+}
+
+.btn:hover{
+  background:black;
+  color:white;
+  outline: none;
+}
+
+.btn:focus{
+  width:auto;
+  bottom:0px;
+  padding:0px;
+  margin:2px;
+  background-color:#000000;
+  color:white;
+  border-width: 0px;
+  outline:0; /* I have also tried outline:none */
+  -webkit-appearance:none;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+.form-control,
+.form-control:focus{
+  background: transparent;
+  border: none;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  padding: 0;
+  border-bottom: lightskyblue 1px solid;
+  width: 70%;
+
+}
+
+
+

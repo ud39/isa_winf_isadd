@@ -1,7 +1,7 @@
 <header>
+  <a class="navbar-brand" [routerLink]='["/"]'><img src="https://dummyimage.com/100x50/fff/000"> </a>
   <nav class='navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3'>
     <div class="container">
-<!--      <a class="navbar-brand" [routerLink]='["/"]'></a>-->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-label="Toggle navigation"
               [attr.aria-expanded]="isExpanded" (click)="toggle()">
         <span class="navbar-toggler-icon"></span>
@@ -15,7 +15,7 @@
             <a class="nav-link" [routerLink]='["/registration"]'>Kaffee</a>
           </li>
           <li class="nav-item" [routerLinkActive]='["link-active"]'>
-            <a class="nav-link" [routerLink]='["/fetch-data"]'>Equipment</a>
+            <a class="nav-link" [routerLink]='["/article"]'>Equipment</a>
           </li>
           <li class="nav-item" [routerLinkActive]='["link-active"]'>
             <a class="nav-link" [routerLink]='["/events"]'>Events</a>
@@ -25,6 +25,7 @@
           </li>
         </ul>
       </div>
+      <div *ngIf="currentWindowWidth >= 768">
       <div id="login-dropdown">
       <span (click)="dropdown()"> Login </span>
       <div id="login-dropdown-content">
@@ -37,13 +38,14 @@
             <input type="text" class="form-control" id="passwort" required>
             <label for="passwort">Passwort</label>
           </div>
-          <button id="btn-login-logout" class="nav-btn-login">
+          <button id="btn-login-logout" [routerLink]='["/user"]' class="nav-btn-login">
             Login
           </button>
           <button id="btn-register" class="nav-btn-login" [routerLink]='["/registration"]'>Registierung</button>
         </form>
       </div>
       </div>
+    </div>
     </div>
   </nav>
 </header>

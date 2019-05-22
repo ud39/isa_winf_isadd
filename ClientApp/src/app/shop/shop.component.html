@@ -1,9 +1,7 @@
-<div class="container">
-<div class="main-bar">
   <h1 id="shop_name">SHOP
   <hr id="shop_name_underline">
   </h1>
-
+  <div class="grid-container">
   <div class="grid">
     <div id="opening_times">
       <h6>Öffnungszeiten:</h6>
@@ -57,11 +55,10 @@
   <div class="shop_description">
       7
   </div>
-  </div>
   <div class="slideshow-container">
     <div class="mySlides first">
       <div class="numbertext">1 / 3</div>
-      <img src="https://dummyimage.com/600x400/fff/000" style="width:100%">
+      <img src="https://dummyimage.com/600x700/fff/000" style="width:100%">
       <div class="text">Caption Text</div>
     </div>
 
@@ -76,15 +73,13 @@
       <img src="https://dummyimage.com/600x400/fff/000" style="width:100%">
       <div class="text">Caption Three</div>
     </div>
-
+    <div class="dots">
+      <span class="dot" (click)="currentSlide(1)"></span>
+      <span class="dot" (click)="currentSlide(2)"></span>
+      <span class="dot" (click)="currentSlide(3)"></span>
+    </div>
+    <br>
     <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
     <a class="next" (click)="plusSlides(1)">&#10095;</a>
-
-  </div>
-  <br>
-  <div style="text-align:center">
-    <span class="dot" (click)="currentSlide(1)"></span>
-    <span class="dot" (click)="currentSlide(2)"></span>
-    <span class="dot" (click)="currentSlide(3)"></span>
   </div>
   </div>

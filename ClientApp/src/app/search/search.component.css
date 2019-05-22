@@ -1,0 +1,49 @@
+div.container{
+  display: grid;
+  alignment: center;
+  max-width: 75%;
+  margin-top: 10px;
+}
+
+div.grid{
+  background-color: gray;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.btn.search,
+.btn.quick-search,
+.btn.clear{
+  grid-column: 1;
+  background-color: white;
+  outline: none;
+  list-style-position:inside;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+
+}
+
+.btn.search:hover,
+.btn.quick-search:hover,
+.btn.clear:hover{
+  background:black;
+  color:white;
+  outline: none;
+}
+
+.btn.search:focus,
+.btn.quick-search:focus,
+.btn.clear:focus{
+  background-color:#000000;
+  color:white;
+  border-width: 0px;
+  outline:0; /* I have also tried outline:none */
+  -webkit-appearance:none;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+

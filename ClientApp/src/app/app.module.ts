@@ -17,6 +17,7 @@ import { ArticleComponent } from './article/article.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AdminProfileComponent } from './admin-profile/admin-profile.component';
     ArticleComponent,
     AboutUsComponent,
     UserProfileComponent,
-    AdminProfileComponent
+    AdminProfileComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
@@ -43,7 +45,9 @@ import { AdminProfileComponent } from './admin-profile/admin-profile.component';
       {path: 'counter', component: CounterComponent},
       {path: 'fetch-data', component: FetchDataComponent},
       {path: 'registration', component: RegistrationComponent},
-      {path: 'shop', component: ShopComponent}
+      {path: 'shop', component: ShopComponent},
+      {path: 'user', component: UserProfileComponent},
+      {path: 'article', component: ArticleComponent}
     ]),
     ReactiveFormsModule
   ],

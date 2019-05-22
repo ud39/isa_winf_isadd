@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, HostListener} from '@angular/core';
 
 @Component({
   selector: 'app-nav-menu',
@@ -7,6 +7,12 @@ import { Component } from '@angular/core';
 })
 export class NavMenuComponent {
   isExpanded = false;
+  public currentWindowWidth: number = window.innerWidth;
+
+  @HostListener('window:resize')
+  onResize() {
+    this.currentWindowWidth = window.innerWidth
+  }
 
   collapse() {
     this.isExpanded = false;
