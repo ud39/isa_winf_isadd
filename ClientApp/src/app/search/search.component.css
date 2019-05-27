@@ -22,28 +22,7 @@ div.grid{
   border: 0;
   box-shadow: none;
   border-radius: 0;
-
 }
 
-.btn.search:hover,
-.btn.quick-search:hover,
-.btn.clear:hover{
-  background:black;
-  color:white;
-  outline: none;
-}
-
-.btn.search:focus,
-.btn.quick-search:focus,
-.btn.clear:focus{
-  background-color:#000000;
-  color:white;
-  border-width: 0px;
-  outline:0; /* I have also tried outline:none */
-  -webkit-appearance:none;
-  box-shadow: none;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-}
 
 

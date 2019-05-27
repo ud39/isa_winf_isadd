@@ -1,4 +1,5 @@
-  <h1 id="shop_name">SHOP
+<div class="container">
+<h1 id="shop_name">SHOP
   <hr id="shop_name_underline">
   </h1>
   <div class="grid-container">
@@ -33,28 +34,11 @@
     <div id="symbols">item</div>
     <div id="link_to_shop">item</div>
   </div>
-    <ul id="tab_shop_description">
-      <li class="tab-content tab-active" (click)="showTabContent()">
-        Beschreibung
-      </li>
-      <li class="tab-content" (click)="showTabContent()">
-        Event
-      </li>
-      <li class="tab-content" (click)="showTabContent()">
-        Zubereitung
-      </li>
-    </ul>
-  <div class="shop_description description-active">
-      <form>
-        <input>
-      </form>
-  </div>
-  <div class="shop_description">
-      33
-  </div>
-  <div class="shop_description">
-      7
-  </div>
+    <mat-tab-group>
+      <mat-tab label="First"> Content 1 </mat-tab>
+      <mat-tab label="Second"> Content 2 </mat-tab>
+      <mat-tab label="Third"> Content 3 </mat-tab>
+    </mat-tab-group>
   <div class="slideshow-container">
     <div class="mySlides first">
       <div class="numbertext">1 / 3</div>
@@ -83,3 +67,4 @@
     <a class="next" (click)="plusSlides(1)">&#10095;</a>
   </div>
   </div>
+</div>

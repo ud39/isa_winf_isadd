@@ -1,36 +1,15 @@
-<div>
-  <h1 id="h1register"> Registrierung </h1>
-  <span class="underline"></span>
-</div>
-
+  <h1 id="h1register"> Registrierung
+  <hr id="register-underline">
+  </h1>
 <div class="container">
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <input id="register-email" type="text" maxlength="30" formControlName="Email" class="form-control" [ngClass]="{ 'is-invalid': submitted && formForRegister.Email.errors }" />
-    <div *ngIf="submitted && formForRegister.Email.errors" class="invalid-feedback">
-      <div *ngIf="formForRegister.Email.errors.required">
-        Email
-      </div>
-    </div>
-    <label for="register-email">Email<span class="star">&#x2605;</span></label>
-
-    <input id="register-password" type="text" formControlName="Email" class="form-control" [ngClass]="{ 'is-invalid': submitted && formForRegister.Email.errors }" />
-    <div *ngIf="submitted && formForRegister.Email.errors" class="invalid-feedback">
-      <div *ngIf="formForRegister.Email.errors.required">
-        Email
-      </div>
-    </div>
-    <span class="underline"></span>
-    <label for="register-password">Passwort<span class="star">&#x2605;</span></label>
-
-    <input id="register-password-again" type="text" formControlName="Email" class="form-control" [ngClass]="{ 'is-invalid': submitted && formForRegister.Email.errors }" />
-    <div *ngIf="submitted && formForRegister.Email.errors" class="invalid-feedback">
-      <div *ngIf="formForRegister.Email.errors.required">
-        Email
-      </div>
-    </div>
-    <span class="underline"></span>
-    <label for="register-password-again">Passwort nochmal eingeben<span class="star">&#x2605;</span></label>
-  </div>
-</form>
+  <form class="form-group">
+    <mat-form-field class="full-width">
+      <mat-label>Email</mat-label>
+      <input  matInput  placeholder="Email" name="email">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Password</mat-label>
+      <input  matInput  placeholder="Passwort" name="password">
+    </mat-form-field>
+  </form>
 </div>

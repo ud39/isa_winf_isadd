@@ -17,22 +17,14 @@ li.nav-item{
   border: 1px solid whitesmoke;
 }
 
-li.nav-item a{
-  color:black;
-  text-shadow: gray;
-}
-
-li.nav-item a:hover{
-  background:black;
-  color:white;
-}
-
 li.nav-item.link-active{
   background:black;
 }
-li.nav-item.link-active a{
-  color:white;
+
+li.nav-item.link-active button{
+  color: white;
 }
+
 
 html {
   font-size: 16px;
@@ -132,7 +124,7 @@ app-nav-menu{
   }
 
   #login-dropdown{
-    display: inline-block;
+    display: grid;
     margin-top: 1px;
     margin-right: 2px;
     padding: 0px 50px;
@@ -154,6 +146,7 @@ app-nav-menu{
   #login-dropdown-content {
     position: relative;
     display: inline-block;
+
   }
 
   #login-dropdown-content {
@@ -165,7 +158,7 @@ app-nav-menu{
     padding: 12px 16px;
     z-index: 1;
     right:0%;
-    margin-top: 5px;
+    margin-top: 30px;
   }
 
   #login-dropdown:hover #login-dropdown-content{
@@ -177,13 +170,34 @@ app-nav-menu{
   }
 
 
-  #btn-login-logout:focus,
+  #btn-login-logout,
   #btn-register{
+    grid-column: 1;
+    background-color: white;
     outline: none;
+    list-style-position:inside;
+    border: 0;
+    box-shadow: none;
+    border-radius: 0;
+
   }
 
+  #btn-login-logout:focus,
+  #btn-register:focus{
+    background-color:#000000;
+    color:white;
+    border-width: 0px;
+    outline:0; /* I have also tried outline:none */
+    -webkit-appearance:none;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+  }
 
+}
 
+.login-registration-form{
+  display: inline-grid;
 }
 
 .box-shadow {

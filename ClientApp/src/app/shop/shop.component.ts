@@ -36,15 +36,16 @@ export class ShopComponent implements OnInit {
   }
 
   showTabContent(){
-    var tabs = document.getElementsByClassName("tab-content");
-    let i;
+    let tabs = document.getElementsByClassName("tab-content");
     let content = document.getElementsByClassName("shop_description") as HTMLCollectionOf<HTMLElement>;
+    let i;
     for(i=0; i< content.length;i++){
         content[i].classList.remove("description-active");
     }
     for(i=0; i< tabs.length;i++){
       tabs[i].classList.remove("tab-active");
     }
+    (<HTMLElement> event.target).classList.add("tab-active");
     switch((<HTMLElement> event.target).innerText.trim())
     {
       case "Beschreibung":

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-registration',
@@ -8,25 +8,19 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 
 export class RegistrationComponent implements OnInit {
-  registerForm: FormGroup;
-  loading = false;
-  submitted = false;
+  email = new FormControl('', [Validators.required, Validators.email]);
+
+  getErrorMessage() {
+    return this.email.hasError('required') ? 'You must enter a value' :
+      this.email.hasError('email') ? 'Not a valid email' :
+        '';
+  }
 
   constructor(
     private formBuilder: FormBuilder,
-  )
-  {
+  ) {
 
   }
-
-  ngOnInit() {
-    this.registerForm = this.formBuilder.group({
-      Email: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      passwordTypeAgain: ['', [Validators.required, Validators.minLength(6)]]
-    });
+  ngOnInit(): void {
   }
-
-  get formForRegister() { return this.registerForm.controls; }
-
 }

@@ -9,19 +9,19 @@
       <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]='{"show": isExpanded}'>
         <ul class="navbar-nav flex-grow">
           <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-            <a class="nav-link" [routerLink]='["/shop"]'>Shops</a>
+            <button mat-button class="nav-link" [routerLink]='["/shop"]'>Shops</button>
           </li>
           <li class="nav-item" [routerLinkActive]='["link-active"]'>
-            <a class="nav-link" [routerLink]='["/registration"]'>Kaffee</a>
+            <button mat-button class="nav-link" [routerLink]='["/registration"]'>Kaffee</button>
           </li>
           <li class="nav-item" [routerLinkActive]='["link-active"]'>
-            <a class="nav-link" [routerLink]='["/article"]'>Equipment</a>
+            <button mat-button class="nav-link" [routerLink]='["/article"]'>Equipment</button>
           </li>
           <li class="nav-item" [routerLinkActive]='["link-active"]'>
-            <a class="nav-link" [routerLink]='["/events"]'>Events</a>
+            <button mat-button class="nav-link" [routerLink]='["/admin"]'>Events</button>
           </li>
           <li class="nav-item">
-            <a class="nav-link">Über uns</a>
+            <button mat-button class="nav-link">Über uns</button>
           </li>
         </ul>
       </div>
@@ -29,7 +29,7 @@
       <div id="login-dropdown">
       <span (click)="dropdown()"> Login </span>
       <div id="login-dropdown-content">
-        <form>
+        <form class="login-registration-form">
           <div class="form-group">
             <input type="text" class="form-control" id="email" required>
             <label for="email">Email</label>
@@ -38,10 +38,10 @@
             <input type="text" class="form-control" id="passwort" required>
             <label for="passwort">Passwort</label>
           </div>
-          <button id="btn-login-logout" [routerLink]='["/user"]' class="nav-btn-login">
+          <button mat-button id="btn-login-logout" [routerLink]='["/user"]' class="nav-btn-login">
             Login
           </button>
-          <button id="btn-register" class="nav-btn-login" [routerLink]='["/registration"]'>Registierung</button>
+          <button mat-button id="btn-register" class="nav-btn-login" [routerLink]='["/registration"]'>Registierung</button>
         </form>
       </div>
       </div>

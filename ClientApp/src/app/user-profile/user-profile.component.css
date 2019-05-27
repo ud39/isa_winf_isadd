@@ -33,12 +33,6 @@
 
 }
 
-.btn:hover{
-  background:black;
-  color:white;
-  outline: none;
-}
-
 .btn:focus{
   width:auto;
   bottom:0px;

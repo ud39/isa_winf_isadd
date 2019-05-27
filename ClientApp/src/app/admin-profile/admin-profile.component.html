@@ -1,3 +1,62 @@
-<p>
-  admin-profile works!
-</p>
+<div class="container">
+  <form class="grid-container">
+  <div class="dropdown">
+    <div class="action-dropdown">
+      <a>Editieren</a>
+      <a>Speichern</a>
+      <a>Speichern & Veröffentlichen</a>
+      <a>Löschen</a>
+      <a>Vorschau</a>
+    </div>
+  </div>
+    <mat-tab-group class="input-group">
+      <mat-tab id="shop-tab" label="First">
+          <mat-form-field class="description">
+          <mat-label>Name</mat-label>
+          <textarea matInput
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="2"></textarea>
+        </mat-form-field>
+        <mat-form-field class="description">
+          <mat-label>Beschreibung</mat-label>
+          <textarea matInput
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="2"
+          ></textarea>
+        </mat-form-field>
+      <img src="https://dummyimage.com/100x50/fff/000">
+      </mat-tab>
+      <mat-tab  id="event-tab" label="Second">
+               <mat-form-field class="description">
+          <mat-label>Name</mat-label>
+          <textarea matInput
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="2"></textarea>
+        </mat-form-field>
+        <mat-form-field class="description">
+          <mat-label>Beschreibung</mat-label>
+          <textarea matInput
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="2"
+          ></textarea>
+          <br>
+        </mat-form-field>
+      </mat-tab>
+      <mat-tab  id="article-tab" label="Third">
+               <mat-form-field class="description">
+          <mat-label>Name</mat-label>
+          <textarea matInput
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="2"></textarea>
+        </mat-form-field>
+        <mat-form-field class="description">
+          <mat-label>Beschreibung</mat-label>
+          <textarea matInput
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="2"
+          ></textarea>
+        </mat-form-field>
+      </mat-tab>
+    </mat-tab-group>
+  </form>
+</div>
