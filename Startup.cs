@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +15,7 @@ namespace WinfADD
         {
             Configuration = configuration;
         }
-
+    
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -28,11 +27,13 @@ namespace WinfADD
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
             
             
+            services.AddSingleton<IConfiguration>(Configuration);
             // Add framework services.
+            //services.AddDbContext<WinfAddContext>(options =>
 
-            services.AddDbContext<WinfAddContext>(options =>
-
-                options.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=postgres;Database=postgres;"));
+              //  options.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=postgres;Database=postgres;"));
+ 
+                //options.UseNpgsql("Host=db;Port=5432;Username=postgres;Password=postgres;Database=postgres;"));
 
             
         }

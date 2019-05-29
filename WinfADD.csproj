@@ -13,6 +13,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Dapper" Version="1.60.6" />
         <PackageReference Include="Microsoft.AspNetCore.App" />
         <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
@@ -30,7 +31,7 @@
       <Folder Include="ClientApp\src\assets\Images" />
       <Folder Include="documentation\Content\BPMN" />
       <Folder Include="documentation\Content\Templates" />
-      <Folder Include="Models\Interfaces" />
+      <Folder Include="Repository\Interfaces" />
     </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
