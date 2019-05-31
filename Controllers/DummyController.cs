@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc; 
 using System.Collections.Generic; 
 using System.Linq;
+using System.Threading.Tasks;
 using WinfADD.Models;
 using WinfADD.Persistence;
 
@@ -10,35 +11,35 @@ namespace WinfADD.Controllers
     [ApiController]
     public class DummyController : Controller
     {
-        private readonly WinfAddContext _context;
 
-        public DummyController(WinfAddContext context)
+
+        private readonly IDummyRepository _dummyRepo;
+
+        public DummyController(IDummyRepository dummyRepo)
         {
-            _context = context;
-            if (_context.Dummies.Any())
-            {
-                _context.Dummies.Add(new Dummy {Name = "Item1"});
-                _context.SaveChanges();
-            }
+            _dummyRepo = dummyRepo;
         }
 
 
         [HttpGet]
-        public ActionResult<List<Dummy>> GetAll()
+        [Route("all")]
+        public async Task<ActionResult<List<Dummy>>> GetAll()
         {
-            return _context.Dummies.ToList();
+            return await  _dummyRepo.GetAll();
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<Dummy> GetById(long id)
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<ActionResult<Dummy>> GetByID(long id)
         {
-            var item = _context.Dummies.Find(id);
-            if (item == null)
-            {
-                return NotFound();
-            }
+            return await _dummyRepo.GetByID(id);
+        }
 
-            return item;
+       [HttpGet]
+       [Route("add/{id}")]
+       public async Task<Dummy> AddDummy(long id)
+        {
+            return await _dummyRepo.AddDummy(id);
         }
     }
 }

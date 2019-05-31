@@ -14,9 +14,11 @@
 
     <ItemGroup>
         <PackageReference Include="Dapper" Version="1.60.6" />
+        <PackageReference Include="Dapper.SimpleCRUD" Version="2.1.0" />
         <PackageReference Include="Microsoft.AspNetCore.App" />
         <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
+        <PackageReference Include="Npgsql" Version="4.0.7" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.2.0" />
     </ItemGroup>
 
@@ -31,7 +33,7 @@
       <Folder Include="ClientApp\src\assets\Images" />
       <Folder Include="documentation\Content\BPMN" />
       <Folder Include="documentation\Content\Templates" />
-      <Folder Include="Repository\Interfaces" />
+      <Folder Include="Models\Interfaces" />
     </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
