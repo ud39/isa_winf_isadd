@@ -29,6 +29,14 @@ namespace WinfADD.Controllers
         }
 
  
+        [HttpGet("/{id}")]
+        public IActionResult FindById(int id)
+        {
+            var result =  customerRepository.FindByID(id);
+            //return Content( result.ToList().ToString(), "application/json" );
+            return Content(JsonConvert.SerializeObject(result));
+        }
+        
         // POST: Customer/Create
         [HttpPost]
         public IActionResult Create(Customer cust)

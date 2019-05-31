@@ -12,8 +12,6 @@ RUN apt-get install -y nodejs
 # copy everything else and build app
 COPY . .
 RUN dotnet publish -c Release -o out
-RUN chmod +x ./entrypoint.sh
-CMD /bin/bash ./entrypoint.sh
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS runtime
 WORKDIR /app

@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.Extensions.Configuration;
 using Dapper;
 using System.Data;
+using Newtonsoft.Json;
 using Npgsql;
 using WinfADD.Models;
 
@@ -14,9 +15,9 @@ namespace WinfADD.Repository
 
         public CustomerRepository(IConfiguration configuration)
         {
-            //connectionString = "Host=localhost;Port=5432;Username=postgres;Password=postgres;Database=postgres;";
+            connectionString = "Host=localhost;Port=5432;Username=postgres;Password=postgres;Database=postgres;";
 
-            connectionString = "Host=db;Port=5432;Username=postgres;Password=postgres;Database=postgres;";
+            //connectionString = "Host=db;Port=5432;Username=postgres;Password=postgres;Database=postgres;";
         }
 
         internal IDbConnection Connection
