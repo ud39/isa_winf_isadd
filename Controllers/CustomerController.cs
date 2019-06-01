@@ -20,18 +20,8 @@ namespace WinfADD.Controllers
         {
             customerRepository = new CustomerRepository(configuration);
         }
- 
- 
         
-        [HttpGet("all")]
-        public IActionResult FindAll()
-        {
-            var result =  customerRepository.FindAll();
-            //return Content( result.ToList().ToString(), "application/json" );
-            return Content(JsonConvert.SerializeObject(result));
-        }
-
- 
+        
         [HttpGet("{id}")]
         public IActionResult GetCustomer(int id)
         {

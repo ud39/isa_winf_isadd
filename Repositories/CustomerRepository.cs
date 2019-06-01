@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Dapper;
 using System.Data;
 using System.Data.Common;
+using System.Reflection;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Npgsql;
@@ -60,23 +61,30 @@ namespace WinfADD.Repository
 
         public async Task<IEnumerable<Customer>> GetCustomers(CustomerSearchModel customerSearch)
         {
-            /*
-            using (IDbConnection dbConnection = Connection)
-            {
-                dbConnection.Open();
-                return dbConnection.Query<Customer>("SELECT * FROM customer WHERE Name = @NAME ", new {Name = customerSearch.Name});
-            }
-            */
             
-            //TODO: Handling optional parameters
-            var sql = "SELECT * FROM customer WHERE Name = @NAME AND @EMAIL = Email";
+            PropertyInfo[] possibleProperties = typeof(CustomerSearchModel).GetProperties();
+            var builder = new SqlBuilder();
+            
+            var filterCustomer= builder.AddTemplate("Select * from customer /**where**/ ");
 
-            var paramenter = new DynamicParameters();
-            paramenter.Add("@NAME", customerSearch.Name);
-            paramenter.Add("@EMAIL", customerSearch.Email);
+            foreach (PropertyInfo property in possibleProperties)
+            {
+                var properties = new Dictionary<string, object>();
+                if (property.GetValue(customerSearch) != null)
+                {
+                    properties.Add(property.Name,property.GetValue(customerSearch));
+                    Console.WriteLine("NAME:" + property.Name + " , VALUE:" +property.GetValue(customerSearch));
+                    builder.Where(property.Name + " = " + "@" + property.Name, properties);
+                }
+                
+            }
+        
             using (IDbConnection dbConnection = Connection)
             {
-                return dbConnection.Query<Customer>(sql,paramenter);
+                if (possibleProperties.Length == 0)
+                    return FindAll();
+                
+                return dbConnection.Query<Customer>(filterCustomer.RawSql,filterCustomer.Parameters);
             }
 
         }
