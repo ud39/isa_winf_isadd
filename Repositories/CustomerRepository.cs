@@ -1,8 +1,11 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Extensions.Configuration;
 using Dapper;
 using System.Data;
+using System.Data.Common;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Npgsql;
 using WinfADD.Models;
@@ -45,7 +48,7 @@ namespace WinfADD.Repository
             }
         }
 
-        public Customer FindByID(int id)
+        public Customer GetCustomer(int id)
         {
             using (IDbConnection dbConnection = Connection)
             {
@@ -53,6 +56,29 @@ namespace WinfADD.Repository
                 return dbConnection.Query<Customer>("SELECT * FROM customer WHERE id = @Id", new {Id = id})
                     .FirstOrDefault();
             }
+        }
+
+        public async Task<IEnumerable<Customer>> GetCustomers(CustomerSearchModel customerSearch)
+        {
+            /*
+            using (IDbConnection dbConnection = Connection)
+            {
+                dbConnection.Open();
+                return dbConnection.Query<Customer>("SELECT * FROM customer WHERE Name = @NAME ", new {Name = customerSearch.Name});
+            }
+            */
+            
+            //TODO: Handling optional parameters
+            var sql = "SELECT * FROM customer WHERE Name = @NAME AND @EMAIL = Email";
+
+            var paramenter = new DynamicParameters();
+            paramenter.Add("@NAME", customerSearch.Name);
+            paramenter.Add("@EMAIL", customerSearch.Email);
+            using (IDbConnection dbConnection = Connection)
+            {
+                return dbConnection.Query<Customer>(sql,paramenter);
+            }
+
         }
 
         public void Remove(int id)
