@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc; 
 using System.Collections.Generic; 
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using WinfADD.Models;
 using WinfADD.Persistence;
@@ -19,23 +20,25 @@ namespace WinfADD.Controllers
         {
             customerRepository = new CustomerRepository(configuration);
         }
- 
- 
-        public IActionResult Index()
+        
+        
+        [HttpGet("{id}")]
+        public IActionResult GetCustomer(int id)
         {
-            var result =  customerRepository.FindAll();
+            var result =  customerRepository.GetCustomer(id);
             //return Content( result.ToList().ToString(), "application/json" );
             return Content(JsonConvert.SerializeObject(result));
+        }
+        
+        [HttpGet]
+        public async Task<IEnumerable<Customer>> GetCustomers([FromQuery]CustomerSearchModel customerSeach)
+        {
+            var customers = await customerRepository.GetCustomers(customerSeach);
+
+            return customers;
         }
 
- 
-        [HttpGet("/{id}")]
-        public IActionResult FindById(int id)
-        {
-            var result =  customerRepository.FindByID(id);
-            //return Content( result.ToList().ToString(), "application/json" );
-            return Content(JsonConvert.SerializeObject(result));
-        }
+
         
         // POST: Customer/Create
         [HttpPost]
@@ -44,7 +47,7 @@ namespace WinfADD.Controllers
             if (ModelState.IsValid)
             {
                 customerRepository.Add(cust);
-                return RedirectToAction("Index");
+              //  return RedirectToAction("Index");
             }
        //     return View(cust);
        return null;
@@ -59,7 +62,7 @@ namespace WinfADD.Controllers
             if (ModelState.IsValid)
             {
                 customerRepository.Update(obj);
-                return RedirectToAction("Index");
+           //     return RedirectToAction("Index");
             }
 
             // return View(obj);

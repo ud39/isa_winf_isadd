@@ -1,8 +1,12 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Extensions.Configuration;
 using Dapper;
 using System.Data;
+using System.Data.Common;
+using System.Reflection;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Npgsql;
 using WinfADD.Models;
@@ -45,7 +49,7 @@ namespace WinfADD.Repository
             }
         }
 
-        public Customer FindByID(int id)
+        public Customer GetCustomer(int id)
         {
             using (IDbConnection dbConnection = Connection)
             {
@@ -53,6 +57,36 @@ namespace WinfADD.Repository
                 return dbConnection.Query<Customer>("SELECT * FROM customer WHERE id = @Id", new {Id = id})
                     .FirstOrDefault();
             }
+        }
+
+        public async Task<IEnumerable<Customer>> GetCustomers(CustomerSearchModel customerSearch)
+        {
+            
+            PropertyInfo[] possibleProperties = typeof(CustomerSearchModel).GetProperties();
+            var builder = new SqlBuilder();
+            
+            var filterCustomer= builder.AddTemplate("Select * from customer /**where**/ ");
+
+            foreach (PropertyInfo property in possibleProperties)
+            {
+                var properties = new Dictionary<string, object>();
+                if (property.GetValue(customerSearch) != null)
+                {
+                    properties.Add(property.Name,property.GetValue(customerSearch));
+                    Console.WriteLine("NAME:" + property.Name + " , VALUE:" +property.GetValue(customerSearch));
+                    builder.Where(property.Name + " = " + "@" + property.Name, properties);
+                }
+                
+            }
+        
+            using (IDbConnection dbConnection = Connection)
+            {
+                if (possibleProperties.Length == 0)
+                    return FindAll();
+                
+                return dbConnection.Query<Customer>(filterCustomer.RawSql,filterCustomer.Parameters);
+            }
+
         }
 
         public void Remove(int id)
