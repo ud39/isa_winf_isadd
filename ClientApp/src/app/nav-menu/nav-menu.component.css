@@ -17,11 +17,11 @@ li.nav-item{
   border: 1px solid whitesmoke;
 }
 
-li.nav-item.link-active{
+button.nav-item.link-active{
   background:black;
 }
 
-li.nav-item.link-active button{
+button.nav-item.link-active{
   color: white;
 }
 
@@ -37,10 +37,6 @@ app-nav-menu{
   left: 35%;
   top:0;
   margin: 0 auto;
-  display: inline;
-  table-layout: fixed;
-  position: fixed;
-  padding: 0;
   clear:both;
 }
 

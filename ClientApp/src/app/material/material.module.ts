@@ -1,24 +1,45 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatButtonModule, MatCheckboxModule, MatInputModule} from "@angular/material";
-import { MatTabsModule, MatFormFieldModule } from '@angular/material';
+import {MatSlideToggleModule,MatButtonModule, MatCheckboxModule, MatInputModule, MatTabsModule, MatFormFieldModule, MatMenuModule, MatGridListModule, MatIconModule, MatSidenavModule, MatSliderModule } from "@angular/material";
+import { MatToolbarModule, MatListModule } from '@angular/material';
+import {CheckboxComponent} from "../checkbox/checkbox.component";
+
 
 @NgModule({
-  declarations: [],
+  declarations: [CheckboxComponent],
   imports: [
     CommonModule,
     MatButtonModule,
     MatCheckboxModule,
     MatTabsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatMenuModule,
+    MatGridListModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatInputModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule
   ],
   exports:[
+    CheckboxComponent,
     MatButtonModule,
     MatCheckboxModule,
     MatTabsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatMenuModule,
+    MatGridListModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatInputModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule
   ]
 })
 export class MaterialModule { }
