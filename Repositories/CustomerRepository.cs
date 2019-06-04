@@ -63,9 +63,9 @@ namespace WinfADD.Repository
         {
             
             PropertyInfo[] possibleProperties = typeof(CustomerSearchModel).GetProperties();
-            var builder = new SqlBuilder();
+            //var builder = new SqlBuilder();
             
-            var filterCustomer= builder.AddTemplate("Select * from customer /**where**/ ");
+           // var filterCustomer= builder.AddTemplate("Select * from customer /**where**/ ");
 
             foreach (PropertyInfo property in possibleProperties)
             {
@@ -74,7 +74,7 @@ namespace WinfADD.Repository
                 {
                     properties.Add(property.Name,property.GetValue(customerSearch));
                     Console.WriteLine("NAME:" + property.Name + " , VALUE:" +property.GetValue(customerSearch));
-                    builder.Where(property.Name + " = " + "@" + property.Name, properties);
+                   // builder.Where(property.Name + " = " + "@" + property.Name, properties);
                 }
                 
             }
@@ -84,7 +84,8 @@ namespace WinfADD.Repository
                 if (possibleProperties.Length == 0)
                     return FindAll();
                 
-                return dbConnection.Query<Customer>(filterCustomer.RawSql,filterCustomer.Parameters);
+              //  return dbConnection.Query<Customer>(filterCustomer.RawSql,filterCustomer.Parameters);
+              return null;
             }
 
         }

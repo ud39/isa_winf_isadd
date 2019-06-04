@@ -56,7 +56,7 @@ namespace WinfADD
                 //options.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=postgres;Database=postgres;"));
                 options.UseNpgsql(config["ConnectionStrings:DefaultConnection"]));
             */
-            services.AddTransient<IDummyRepository, DummyRepository>();
+            services.AddTransient<ITestRepository, TestRepository>();
 
         }
 

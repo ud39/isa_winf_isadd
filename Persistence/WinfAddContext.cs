@@ -10,7 +10,7 @@ namespace WinfADD.Persistence
             
         }
         
-        public DbSet<Dummy> Dummies { get; set; }
+        public DbSet<Test> Dummies { get; set; }
 
     }
 }
