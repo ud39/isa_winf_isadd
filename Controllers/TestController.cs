@@ -65,14 +65,7 @@ namespace WinfADD.Controllers
             Test testObj = testJson.ToObject<Test>();
 
             //create a List of all keys in the Json
-            IDictionary<string, string> keys = new Dictionary<string, string>();
-            var keyValuePair = testJson.ToObject<Dictionary<string, string>>();
-            int counter = 0;
-            foreach(KeyValuePair<string, string> entry in keyValuePair)
-            {
-                Console.WriteLine("\n  ::  " + entry.Key + "->:: "+ entry.Value +"\n");
-                keys.Add(entry.Key, entry.Value);
-            }
+            var keys = testJson.ToObject<Dictionary<string, string>>();
 
             return await _testRepo.PartialUpdateTest(testObj, keys);
         }
@@ -81,9 +74,9 @@ namespace WinfADD.Controllers
 
         [Route("add")]
         [HttpPost]
-        public bool Post([FromBody]Test testObj, string KeyString)
+        public async Task<bool> Post([FromBody]Test testObj, string KeyString)
         {
-            return  _testRepo.InsertTest(testObj);
+            return await _testRepo.InsertTest(testObj);
         }
 
 
@@ -97,18 +90,10 @@ namespace WinfADD.Controllers
 
             //create a List of all search properties
             IDictionary<string, string> searchProperties = new Dictionary<string, string>();
-            var keyValuePair = testJson.ToObject<Dictionary<string, string>>();
-            int counter = 0;
-            foreach(KeyValuePair<string, string> entry in keyValuePair)
-            {
-                Console.WriteLine("\n  ::  " + entry.Key + "->:: "+ entry.Value +"\n");
-                searchProperties.Add(entry.Key, entry.Value);
-            }
+            var hashtableJson = testJson.ToObject<Dictionary<string, string>>();
+            var counter = 0;
 
-
-
-            Console.Write("NAME OF THE CUSTOMER SEARCH QUERRY: " + testObj.Name);
-            var tests = await _testRepo.GetTests(testObj, searchProperties);
+            var tests = await _testRepo.GetTests(testObj, hashtableJson);
 
             return tests;
         }

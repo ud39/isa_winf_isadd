@@ -122,29 +122,14 @@ namespace WinfADD.Models
             }
         }
 
-        public bool InsertTest(Test testObj)
+        public async Task<bool> InsertTest(Test testObj)
         {
             using (IDbConnection conn = Connection)
             {
-
-
-                Console.Write("++++++++++++++++++++++++++++++++++++++++++++++++++");
-                Console.Write("KS: " + testObj.KeyString);
-                Console.Write("Id: " + testObj.Id);
-                Console.Write("Name: " + testObj.Name);
-                Console.Write("Random: " + testObj.Random);
-
-
-                int rowsAffected = conn.Execute("INSERT INTO test (keystring,id,name,random) values (@KeyString, @Id, @Name, @Random)",
+                var rowsAffected = await conn.ExecuteAsync("INSERT INTO test (keystring,id,name,random) values (@KeyString, @Id, @Name, @Random)",
                     testObj);
 
-
-
-                Console.Write("\n \n \n -------------------- AffectedROWS: " + rowsAffected);
-                if (rowsAffected > 0) return true;
-                return false;
-
-
+                return rowsAffected > 0;
             }
 
         }
@@ -153,7 +138,6 @@ namespace WinfADD.Models
         public async Task<IEnumerable<Test>> GetTests(Test testObj, IDictionary<string, string> searchProperties)
         {
 
-            Console.WriteLine("ääääääääääääääääääääääääääääääääääääääääääääääääääääää");
             var possibleProperties = typeof(Test).GetProperties();
             var builder = new SqlBuilder();
 
@@ -163,22 +147,19 @@ namespace WinfADD.Models
             {
                 var properties = new Dictionary<string, object>();
                 var propertyName = property.Name.ToLower();
-                if (!searchProperties.ContainsKey(propertyName) || keys.Contains(propertyName)) continue;
-                properties.Add(property.Name,property.GetValue(testObj));
-                builder.Where(property.Name + " = " + "@" + property.Name, properties);
+                if (!searchProperties.ContainsKey(propertyName)) continue;
+                properties.Add(propertyName, property.GetValue(testObj));
+                builder.Where(propertyName + " = " + "@" + propertyName, properties);
             }
-            Console.WriteLine("üüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüüü");
 
             using (IDbConnection dbConnection = Connection)
             {
                 if (possibleProperties.Length == 0)
                 {
-                    Console.WriteLine("GETAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALLLLL");
                        return await GetAll();
                 }
 
-
-                return dbConnection.Query<Test>(filterTest.RawSql,filterTest.Parameters);
+                return await dbConnection.QueryAsync<Test>(filterTest.RawSql,filterTest.Parameters);
             }
 
         }

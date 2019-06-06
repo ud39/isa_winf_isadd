@@ -10,7 +10,7 @@ namespace WinfADD.Models
         Task<Test> GetByID(string KeyString);
         Task<List<Test>> GetAll();
 
-        bool InsertTest(Test testObj);
+        Task<bool> InsertTest(Test testObj);
 
         Task<IEnumerable<Test>> GetTests(Test testObj, IDictionary<string, string> searchProperties);
 
