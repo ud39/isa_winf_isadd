@@ -1,0 +1,66 @@
+<div class="container">
+  <button mat-button [matMenuTriggerFor]="menu" id="selected_menu">Auswählen</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Editieren</button>
+    <button mat-menu-item>Speichern</button>
+    <button mat-menu-item>Löschen</button>
+    <button mat-menu-item>Wiederherstellen</button>
+  </mat-menu>
+  <mat-slide-toggle>
+    Veröffentlicht
+  </mat-slide-toggle>
+    <mat-tab-group class="input-group">
+      <mat-tab id="shop-tab" label="Shop">
+        <app-checkbox></app-checkbox>
+        <mat-form-field class="name-form-field">
+          <input matInput type="text" placeholder="Name" [(ngModel)]="value">
+          <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field class="description">
+          <mat-label>Beschreibung</mat-label>
+          <textarea matInput
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="2"
+          ></textarea>
+        </mat-form-field>
+        <mat-tab-group id="second-mat-tab-group">
+          <mat-tab label="Front"> Content 1 </mat-tab>
+          <mat-tab label="Gallery"> Content 2 </mat-tab>
+          <mat-tab label="Preview"> Content 3 </mat-tab>
+        </mat-tab-group>
+      </mat-tab>
+      <mat-tab  id="event-tab" label="Equipment" class="first-mat-group">
+        <mat-form-field class="name-form-field">
+          <input matInput type="text" placeholder="Name" [(ngModel)]="value">
+          <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field class="description">
+          <mat-label>Beschreibung</mat-label>
+          <textarea matInput
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="2"
+          ></textarea>
+          <br>
+        </mat-form-field>
+      </mat-tab>
+      <mat-tab  id="article-tab" label="Article" class="first-mat-group">
+        <mat-form-field class="name-form-field">
+          <input matInput type="text" placeholder="Name" [(ngModel)]="value">
+          <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field class="description">
+          <mat-label>Beschreibung</mat-label>
+          <textarea matInput
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="2"
+          ></textarea>
+        </mat-form-field>
+      </mat-tab>
+    </mat-tab-group>
+</div>

@@ -1,6 +1,7 @@
-import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
-import {CheckboxComponent} from "../checkbox/checkbox.component";
+import {Component, OnInit, ViewChild} from '@angular/core';
+
 import {MatCheckbox} from "@angular/material";
+import {CheckboxComponent} from "./checkbox/checkbox.component";
 
 @Component({
   selector: 'app-search',
