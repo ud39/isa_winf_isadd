@@ -1,8 +1,12 @@
 using System;
+using System.Collections;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic; 
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
+using Dapper;
+using Newtonsoft.Json.Linq;
 using WinfADD.Models;
 using WinfADD.Persistence;
 
@@ -44,28 +48,69 @@ namespace WinfADD.Controllers
             return await _testRepo.DeleteTest(KeyString);
         }
 
-        [Route("update/{testObj}")]
+        //TODO maybe handle chaning natural key-> new insert+delete
+        [Route("update")]
         [HttpPut]
         public async Task<bool> Update([FromBody] Test testObj)
         {
-            Console.Write("\n KeyString: " +testObj.KeyString);
-            Console.Write("\n Id: " +testObj.Id);
-            Console.Write("\n name: " + testObj.Name);
-            Console.Write("\n random: " + testObj.Random);
-
             return await _testRepo.UpdateTest(testObj);
         }
 
+        //TODO pUpdate //TODO WHERE key? || others?
+        [Route("pupdate")]
+        [HttpPatch]
+        public async Task<bool> PartialUpdate(JToken testJson)
+        {
+            //create testObj like: [FromBody] Test testObj
+            Test testObj = testJson.ToObject<Test>();
 
-        [Route("add/{KeyString}")]
+            //create a List of all keys in the Json
+            IDictionary<string, string> keys = new Dictionary<string, string>();
+            var keyValuePair = testJson.ToObject<Dictionary<string, string>>();
+            int counter = 0;
+            foreach(KeyValuePair<string, string> entry in keyValuePair)
+            {
+                Console.WriteLine("\n  ::  " + entry.Key + "->:: "+ entry.Value +"\n");
+                keys.Add(entry.Key, entry.Value);
+            }
+
+            return await _testRepo.PartialUpdateTest(testObj, keys);
+        }
+
+
+
+        [Route("add")]
         [HttpPost]
         public bool Post([FromBody]Test testObj, string KeyString)
         {
-            if (!KeyString.Equals(testObj.KeyString))
-            {
-                Console.Write("\n KeyString does not match the body");
-            }
             return  _testRepo.InsertTest(testObj);
+        }
+
+
+        [Route("get")]
+        [HttpGet]
+        public async Task<IEnumerable<Test>> GetTests(JToken testJson)
+        {
+
+            //create testObj like: [FromBody] Test testObj
+            var testObj = testJson.ToObject<Test>();
+
+            //create a List of all search properties
+            IDictionary<string, string> searchProperties = new Dictionary<string, string>();
+            var keyValuePair = testJson.ToObject<Dictionary<string, string>>();
+            int counter = 0;
+            foreach(KeyValuePair<string, string> entry in keyValuePair)
+            {
+                Console.WriteLine("\n  ::  " + entry.Key + "->:: "+ entry.Value +"\n");
+                searchProperties.Add(entry.Key, entry.Value);
+            }
+
+
+
+            Console.Write("NAME OF THE CUSTOMER SEARCH QUERRY: " + testObj.Name);
+            var tests = await _testRepo.GetTests(testObj, searchProperties);
+
+            return tests;
         }
     }
 }

@@ -4,10 +4,10 @@ wlan                        Boolean
 name                        VARCHAR
 address                    (Strasse, Plz, Ortsname, Hausnummer)
 opening_time                <weedkday, opentime, closetime> 
-hanycaped_friendly          Boolean
+disabled_friendly           Boolean
 fair_trade                  Boolean
 price_range                 VARCHAR
-eco sustainability(siegel)  Boolean
+eco seal		    Boolean
 website                     VARCHAR
 seats                       VARCHAR
 child_friendly              Boolean
@@ -81,7 +81,7 @@ description
 BEANS -<NAME, MANUFACTURER>
 name                        VARCHAR
 provenance                  VARCHAR
-sorte                       VARCHAR
+sort                        VARCHAR
 fair_trade                  Boolean
 manufactur                  VARCHAR
 description                 Blob

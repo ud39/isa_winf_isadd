@@ -1,4 +1,5 @@
-using Microsoft.AspNetCore.Mvc; 
+using System;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic; 
 using System.Linq;
 using System.Threading.Tasks;
@@ -33,6 +34,8 @@ namespace WinfADD.Controllers
         [HttpGet]
         public async Task<IEnumerable<Customer>> GetCustomers([FromQuery]CustomerSearchModel customerSeach)
         {
+
+            Console.Write("NAME OF THE CUSTOMER SEARCH QUERRY: " + customerSeach.Name);
             var customers = await customerRepository.GetCustomers(customerSeach);
 
             return customers;
