@@ -1,0 +1,277 @@
+{ 
+(EQUIPMENT(Manufacturer,Year_of_origin,Name)(Manufacturer,Year_of_origin,Name)),
+(EVENT(EventID,Time,Name,Access_fee,Description)(EventID)),
+(COFFEE-SHOP(Name,Address,Outdoor,Fair_trade,Disabled_friendly,Description,Wlan,Child_friendly,Website,Fouding_year,Pets_friendly,Latte_art,Seats,Workstation,Food,Price_class,Franchise)(Name,Address)),
+(BUS-STATION(Name,Line)(Name)),
+(COMPANY(Name)(Name)),
+(BEAN(Name,Manufacturer,Provenance,Fair_trade,Type)(Name,Manufacturer)),
+(POI(Name,Address,Description)(Name,Address)),
+(GOOGLE-RATING()()),
+(USER-RATING()()),
+(TRIPADVICER-RATING()()),
+(BLEND(Name,Manufacturer,Provenance,Price_range)(Name,Manufacturer)),
+(LOCATION(Address,Description)(Address)),
+(EQUIPMENT_CATEGORY(Name)(Name)),
+(ACTOR(Email,Actor_Name,Password)(Email)),
+(PREPARATION(Name,Description,Type)(Name)),
+(COFFEE_DRINK(Name,Description)(Name)),
+(Opening-Time(Close,Open,Weekday)(Close,Open,Weekday)),
+(USER(Email)(Email)),
+(RATING(RatingID,RATINGId)(RatingID,RATINGId)),
+(consists_of(Name,Manufacturer,Name)(Name,Manufacturer,Name)),
+(serves(Name,Address,Name,vegan)(Name,Address,Name)),
+(near_by(Name,Address,Name,Address)(Name,Address,Name,Address)),
+(reachable(Name,Name,Address)(Name,Name,Address)),
+(owns(Name,Address,Name)(Name,Address)),
+(supplies(Name,Name,Address)(Name,Name,Address)),
+(provides(Name,Address,Name,Manufacturer)(Name,Address,Name,Manufacturer)),
+(composed(Name,Manufacturer,Name,Manufacturer,Propotion)(Name,Manufacturer,Name,Manufacturer)),
+(offers(Name,Manufacturer,Name,Address)(Name,Manufacturer,Name,Address)),
+(organised_by(Name,Address,EventID)(Name,Address,EventID)),
+(OPERATOR(Email)(Email)),
+(SUB-CATEGORY(Name)(Name)),
+(COFFEE_DRINK_TYP(Name,Typ)(Name)),
+(belongs_to(Manufacturer,Year_of_origin,Name,Name)(Manufacturer,Year_of_origin,Name)),
+(Opens(Name,Address,Close,Open,Weekday)(Name,Address,Close,Open,Weekday)),
+(RATINGGOOGLE-RATING(RatingID,RATINGId)(RatingID,RATINGId)),
+(RATINGUSER-RATING(RatingID,RATINGId)(RatingID,RATINGId)),
+(RATINGTRIPADVICER-RATING(RatingID,RATINGId)(RatingID,RATINGId)),
+(ARTICLEEQUIPMENT(ArticleID,Manufacturer,Year_of_origin,Name,Exposition)(ArticleID)),
+(ARTICLEBLEND(ArticleID,Name,Manufacturer,Exposition)(ArticleID)),
+(ARTICLEBEAN(ArticleID,Name,Manufacturer,Exposition)(ArticleID)),
+(ARTICLECOFFEE_DRINK(ArticleID,Name,Exposition)(ArticleID)),
+(includes(Name,Address,Name,Name)(Name,Address,Name,Name)),
+(rated_by(RatingID,RATINGId,Name,Address)(RatingID,RATINGId)),
+(located(Address,Name,Address,EventID)(Address,Name,Address,EventID)),
+(sells(Manufacturer,Year_of_origin,Name,Name,Name,Address)(Manufacturer,Year_of_origin,Name,Name,Name,Address)),
+(STUDENT(Email)(Email)),
+(TOURIST(Email)(Email)),
+(FANATIC(Email)(Email)),
+(ADMIN(Email)(Email)),
+(CONTENT-MANAGER(Email)(Email)),
+(creates(Email,ArticleID)(Email,ArticleID)),
+(publishes(Email,ArticleID)(Email,ArticleID)),
+(rates(RatingID,RATINGId,Email)(RatingID,RATINGId))
+ } 
+
+EVENT[EventID]⊆organised_by[EventID]
+BUS-STATION[Name]⊆reachable[Name]
+COMPANY[Name]⊆owns[Name]
+POI[Name, Address]⊆near_by[Name, Address]
+LOCATION[Address]⊆located[Address]
+COFFEE_DRINK[Name]⊆consists_of[Name]
+USER[Email]⊆ACTOR[Email]
+consists_of[Name, Manufacturer]⊆BEAN[Name, Manufacturer]
+consists_of[Name]⊆COFFEE_DRINK[Name]
+serves[Name, Address]⊆COFFEE-SHOP[Name, Address]
+serves[Name]⊆COFFEE_DRINK[Name]
+near_by[Name, Address]⊆COFFEE-SHOP[Name, Address]
+near_by[Name, Address]⊆POI[Name, Address]
+reachable[Name]⊆BUS-STATION[Name]
+reachable[Name, Address]⊆COFFEE-SHOP[Name, Address]
+owns[Name, Address]⊆COFFEE-SHOP[Name, Address]
+owns[Name]⊆COMPANY[Name]
+supplies[Name]⊆EQUIPMENT_CATEGORY[Name]
+supplies[Name, Address]⊆COFFEE-SHOP[Name, Address]
+provides[Name, Address]⊆COFFEE-SHOP[Name, Address]
+provides[Name, Manufacturer]⊆BEAN[Name, Manufacturer]
+composed[Name, Manufacturer]⊆BEAN[Name, Manufacturer]
+composed[Name, Manufacturer]⊆BLEND[Name, Manufacturer]
+offers[Name, Manufacturer]⊆BLEND[Name, Manufacturer]
+offers[Name, Address]⊆COFFEE-SHOP[Name, Address]
+organised_by[Name, Address]⊆COFFEE-SHOP[Name, Address]
+organised_by[EventID]⊆EVENT[EventID]
+OPERATOR[Email]⊆ACTOR[Email]
+SUB-CATEGORY[Name]⊆EQUIPMENT_CATEGORY[Name]
+SUB-CATEGORY[Name]⊆EQUIPMENT_CATEGORY[Name]
+SUB-CATEGORY[]⊆EQUIPMENT_CATEGORY[]
+COFFEE_DRINK_TYP[Name]⊆COFFEE_DRINK[Name]
+belongs_to[Name]⊆EQUIPMENT_CATEGORY[Name]
+belongs_to[Manufacturer, Year_of_origin, Name]⊆EQUIPMENT[Manufacturer, Year_of_origin, Name]
+Opens[Name, Address]⊆COFFEE-SHOP[Name, Address]
+Opens[Close, Open, Weekday]⊆Opening-Time[Close, Open, Weekday]
+includes[Name, Address, Name]⊆serves[Name, Address, Name]
+includes[Name]⊆PREPARATION[Name]
+rated_by[Name, Address]⊆COFFEE-SHOP[Name, Address]
+rated_by[RatingID, RATINGId]⊆RATING[RatingID, RATINGId]
+located[Address]⊆LOCATION[Address]
+located[Name, Address, EventID]⊆organised_by[Name, Address, EventID]
+sells[Manufacturer, Year_of_origin, Name]⊆belongs_to[Manufacturer, Year_of_origin, Name]
+sells[Name, Name, Address]⊆supplies[Name, Name, Address]
+STUDENT[Email]⊆USER[Email]
+TOURIST[Email]⊆USER[Email]
+FANATIC[Email]⊆USER[Email]
+ADMIN[Email]⊆OPERATOR[Email]
+CONTENT-MANAGER[Email]⊆OPERATOR[Email]
+creates[Email]⊆OPERATOR[Email]
+creates[ArticleID]⊆ARTICLEEQUIPMENT[ArticleID]
+creates[ArticleID]⊆ARTICLEBLEND[ArticleID]
+creates[ArticleID]⊆ARTICLEBEAN[ArticleID]
+creates[ArticleID]⊆ARTICLECOFFEE_DRINK[ArticleID]
+publishes[Email]⊆OPERATOR[Email]
+publishes[ArticleID]⊆ARTICLEEQUIPMENT[ArticleID]
+publishes[ArticleID]⊆ARTICLEBLEND[ArticleID]
+publishes[ArticleID]⊆ARTICLEBEAN[ArticleID]
+publishes[ArticleID]⊆ARTICLECOFFEE_DRINK[ArticleID]
+rates[RatingID, RATINGId]⊆rated_by[RatingID, RATINGId]
+rates[Email]⊆ACTOR[Email]
+ARTICLEEQUIPMENT[ArticleID]||ARTICLEBLEND[ArticleID]||ARTICLEBEAN[ArticleID]||ARTICLECOFFEE_DRINK[ArticleID]
+
+EQUIPMENT.Manufacturer::VARCHAR(n)
+EQUIPMENT.Year_of_origin::VARCHAR(n)
+EQUIPMENT.Name::VARCHAR(n)
+EVENT.EventID::INTEGER
+EVENT.Time::INTEGER
+EVENT.Name::VARCHAR(n)
+EVENT.Access_fee::INTEGER
+EVENT.Description::VARCHAR(n)
+COFFEE-SHOP.Name::VARCHAR(n)
+COFFEE-SHOP.Address::VARCHAR(n)
+COFFEE-SHOP.Outdoor::BOOLEAN
+COFFEE-SHOP.Fair_trade::BOOLEAN
+COFFEE-SHOP.Disabled_friendly::BOOLEAN
+COFFEE-SHOP.Description::VARCHAR(n)
+COFFEE-SHOP.Wlan::BOOLEAN
+COFFEE-SHOP.Child_friendly::BOOLEAN
+COFFEE-SHOP.Website::VARCHAR(n)
+COFFEE-SHOP.Fouding_year::INTEGER
+COFFEE-SHOP.Pets_friendly::BOOLEAN
+COFFEE-SHOP.Latte_art::VARCHAR(n)
+COFFEE-SHOP.Seats::VARCHAR(n)
+COFFEE-SHOP.Workstation::BOOLEAN
+COFFEE-SHOP.Food::VARCHAR(n)
+COFFEE-SHOP.Price_class::VARCHAR(n)
+COFFEE-SHOP.Franchise::BOOLEAN
+BUS-STATION.Name::VARCHAR(n)
+BUS-STATION.Line::VARCHAR(n)
+COMPANY.Name::VARCHAR(n)
+BEAN.Name::VARCHAR(n)
+BEAN.Manufacturer::VARCHAR(n)
+BEAN.Provenance::VARCHAR(n)
+BEAN.Fair_trade::BOOLEAN
+BEAN.Type::VARCHAR(n)
+POI.Name::VARCHAR(n)
+POI.Address::VARCHAR(n)
+POI.Description::CHARACTER(n)
+BLEND.Name::VARCHAR(n)
+BLEND.Manufacturer::VARCHAR(n)
+BLEND.Provenance::VARCHAR(n)
+BLEND.Price_range::INTEGER
+LOCATION.Address::VARCHAR(n)
+LOCATION.Description::VARCHAR(n)
+EQUIPMENT_CATEGORY.Name::VARCHAR(n)
+ACTOR.Email::VARCHAR(n)
+ACTOR.Actor_Name::VARCHAR(n)
+ACTOR.Password::VARCHAR(n)
+PREPARATION.Description::VARCHAR(n)
+PREPARATION.Type::VARCHAR(n)
+PREPARATION.Name::VARCHAR(n)
+COFFEE_DRINK.Name::VARCHAR(n)
+COFFEE_DRINK.Description::VARCHAR(n)
+Opening-Time.Close::INTEGER
+Opening-Time.Open::INTEGER
+Opening-Time.Weekday::VARCHAR(n)
+USER.Email::VARCHAR(n)
+RATING.RatingID::INTEGER
+RATING.RATINGId::INTEGER
+consists_of.Name::VARCHAR(n)
+consists_of.Manufacturer::VARCHAR(n)
+consists_of.Name::VARCHAR(n)
+serves.vegan::BOOLEAN
+serves.Name::VARCHAR(n)
+serves.Address::VARCHAR(n)
+serves.Name::VARCHAR(n)
+near_by.Name::VARCHAR(n)
+near_by.Address::VARCHAR(n)
+near_by.Name::VARCHAR(n)
+near_by.Address::VARCHAR(n)
+reachable.Name::VARCHAR(n)
+reachable.Name::VARCHAR(n)
+reachable.Address::VARCHAR(n)
+owns.Name::VARCHAR(n)
+owns.Address::VARCHAR(n)
+owns.Name::VARCHAR(n)
+supplies.Name::VARCHAR(n)
+supplies.Name::VARCHAR(n)
+supplies.Address::VARCHAR(n)
+provides.Name::VARCHAR(n)
+provides.Address::VARCHAR(n)
+provides.Name::VARCHAR(n)
+provides.Manufacturer::VARCHAR(n)
+composed.Propotion::VARCHAR(n)
+composed.Name::VARCHAR(n)
+composed.Manufacturer::VARCHAR(n)
+composed.Name::VARCHAR(n)
+composed.Manufacturer::VARCHAR(n)
+offers.Name::VARCHAR(n)
+offers.Manufacturer::VARCHAR(n)
+offers.Name::VARCHAR(n)
+offers.Address::VARCHAR(n)
+organised_by.Name::VARCHAR(n)
+organised_by.Address::VARCHAR(n)
+organised_by.EventID::INTEGER
+OPERATOR.Email::VARCHAR(n)
+SUB-CATEGORY.Name::CHAR
+COFFEE_DRINK_TYP.Typ::VARCHAR(n)
+COFFEE_DRINK_TYP.Name::VARCHAR(n)
+belongs_to.Manufacturer::VARCHAR(n)
+belongs_to.Year_of_origin::VARCHAR(n)
+belongs_to.Name::VARCHAR(n)
+belongs_to.Name::VARCHAR(n)
+Opens.Name::VARCHAR(n)
+Opens.Address::VARCHAR(n)
+Opens.Close::INTEGER
+Opens.Open::INTEGER
+Opens.Weekday::VARCHAR(n)
+RATINGGOOGLE-RATING.RatingID::INTEGER
+RATINGGOOGLE-RATING.RATINGId::INTEGER
+RATINGUSER-RATING.RatingID::INTEGER
+RATINGUSER-RATING.RATINGId::INTEGER
+RATINGTRIPADVICER-RATING.RatingID::INTEGER
+RATINGTRIPADVICER-RATING.RATINGId::INTEGER
+ARTICLEEQUIPMENT.ArticleID::INTEGER
+ARTICLEEQUIPMENT.Manufacturer::VARCHAR(n)
+ARTICLEEQUIPMENT.Year_of_origin::VARCHAR(n)
+ARTICLEEQUIPMENT.Name::VARCHAR(n)
+ARTICLEEQUIPMENT.Exposition::CHARACTER(n)
+ARTICLEBLEND.ArticleID::INTEGER
+ARTICLEBLEND.Name::VARCHAR(n)
+ARTICLEBLEND.Manufacturer::VARCHAR(n)
+ARTICLEBLEND.Exposition::CHARACTER(n)
+ARTICLEBEAN.ArticleID::INTEGER
+ARTICLEBEAN.Name::VARCHAR(n)
+ARTICLEBEAN.Manufacturer::VARCHAR(n)
+ARTICLEBEAN.Exposition::CHARACTER(n)
+ARTICLECOFFEE_DRINK.ArticleID::INTEGER
+ARTICLECOFFEE_DRINK.Name::VARCHAR(n)
+ARTICLECOFFEE_DRINK.Exposition::CHARACTER(n)
+includes.Name::VARCHAR(n)
+includes.Address::VARCHAR(n)
+includes.Name::VARCHAR(n)
+includes.Name::VARCHAR(n)
+rated_by.RatingID::INTEGER
+rated_by.RATINGId::INTEGER
+rated_by.Name::VARCHAR(n)
+rated_by.Address::VARCHAR(n)
+located.Address::VARCHAR(n)
+located.Name::VARCHAR(n)
+located.Address::VARCHAR(n)
+located.EventID::INTEGER
+sells.Manufacturer::VARCHAR(n)
+sells.Year_of_origin::VARCHAR(n)
+sells.Name::VARCHAR(n)
+sells.Name::VARCHAR(n)
+sells.Name::VARCHAR(n)
+sells.Address::VARCHAR(n)
+STUDENT.Email::VARCHAR(n)
+TOURIST.Email::VARCHAR(n)
+FANATIC.Email::VARCHAR(n)
+ADMIN.Email::VARCHAR(n)
+CONTENT-MANAGER.Email::VARCHAR(n)
+creates.Email::VARCHAR(n)
+creates.ArticleID::INTEGER
+publishes.Email::VARCHAR(n)
+publishes.ArticleID::INTEGER
+rates.RatingID::INTEGER
+rates.RATINGId::INTEGER
+rates.Email::VARCHAR(n)

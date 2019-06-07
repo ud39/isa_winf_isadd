@@ -19,12 +19,15 @@ namespace WinfADD
         {
             Configuration = configuration;
         }
-
+            
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+        
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // In production, the Angular files will be served from this directory
@@ -37,15 +40,23 @@ namespace WinfADD
             //set path to the ConfigurationBuilder
             var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
             var config = builder.Build();
-
-
+            
+            
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                    cors =>
+                    {
+                        cors.WithOrigins("http://localhost:5002");
+                    });
+            });
             /*
             services.AddDbContext<WinfAddContext>(options =>
 
                 //options.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=postgres;Database=postgres;"));
                 options.UseNpgsql(config["ConnectionStrings:DefaultConnection"]));
             */
-            services.AddTransient<IDummyRepository, DummyRepository>();
+            services.AddTransient<ITestRepository, TestRepository>();
 
         }
 
@@ -63,6 +74,7 @@ namespace WinfADD
                 app.UseHsts();
             }
 
+            app.UseCors(MyAllowSpecificOrigins);
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();

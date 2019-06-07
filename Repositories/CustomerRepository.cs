@@ -89,7 +89,6 @@ namespace WinfADD.Repository
             {
                 if (possibleProperties.Length == 0)
                     return FindAll();
-                
                 return dbConnection.Query<Customer>(filterCustomer.RawSql,filterCustomer.Parameters);
             }
 

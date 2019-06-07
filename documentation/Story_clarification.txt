@@ -1,0 +1,40 @@
+HERM Story Space+
+
+Overview
+
+Content are the following entities C := {Shop} with their following attributes.
+Article are the following entities A := {Blend, Beans, Coffee_Drink, Equipment}.   %with their following attributes without article_Id.
+User    are the following entity   U := {User and their specialization}.
+
+Function
+id: (C u A) -> id: x ->  give the primary key of x 
+
+filter: (C x filterContent) -> Boolean: x -> if Content satisfied filter flags return true; else false; 
+filter: (A x filterArticle) -> Boolean: x -> if Article satisfied filter flags return true; else false; 
+    filterContent filter flags: {C.Attributes} = {WLAN,...} %TODO
+    filterArticle filter flags: {Category, Name,...} %TODO
+    
+Scene (Content-Management)
+View (in) Input-Form(C U A)
+View (out) Execute corresponding SQL command
+
+Scene (Search-Coffee_Shop)
+View (in) Input-Form(C\{User, Equipment})
+View (out) List of  {id(x)| x \in C\{User, Equipment}, filter(x)=true} 
+
+Scene (Search-Wiki)
+View (in) Input-Form(C\{User, Wiki})
+View (out) List of  {id(x)| x \in C\{User, Equipment}, filter(x)=true} 
+
+Scene (Search-Coffee_Shop)
+View (in) Input-Form(C\{User, Equipment})
+View (out) List of  {id(x)| x \in C\{User, Equipment}, filter(x)=true} 
+
+
+
+
+
+Scene (Content)
+View (in) Content
+View (out) Render(Content)
+
