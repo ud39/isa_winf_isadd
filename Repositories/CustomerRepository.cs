@@ -21,7 +21,7 @@ namespace WinfADD.Repository
         {
             connectionString = "Host=localhost;Port=5432;Username=postgres;Password=postgres;Database=postgres;";
 
-            //connectionString = "Host=db;Port=5432;Username=postgres;Password=postgres;Database=postgres;";
+           // connectionString = "Host=db;Port=5432;Username=postgres;Password=postgres;Database=postgres;";
         }
 
         internal IDbConnection Connection
@@ -51,12 +51,18 @@ namespace WinfADD.Repository
 
         public Customer GetCustomer(int id)
         {
-            using (IDbConnection dbConnection = Connection)
+           using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
                 return dbConnection.Query<Customer>("SELECT * FROM customer WHERE id = @Id", new {Id = id})
                     .FirstOrDefault();
             }
+           
+          // using (IDbConnection dbConnection = Connection)
+          // {
+           //    dbConnection.QueryMultiple()
+           //}
+           
         }
 
         public async Task<IEnumerable<Customer>> GetCustomers(CustomerSearchModel customerSearch)

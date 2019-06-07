@@ -11,6 +11,8 @@ services:
       - "8000:80"
     links:
       - postgres
+    environment:
+      ASPNETCORE_URLS: http://+ #https://+;http://+
 
   postgres:
     container_name: db
