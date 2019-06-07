@@ -25,7 +25,7 @@ namespace WinfADD.Models
     {
         this._config = _config;
 
-        //TODO add all keys here
+        //TODO add all key names here
         keys.Add("KeyString");
 
     }

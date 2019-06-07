@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WinfADD.Models;
 using WinfADD.Persistence;
+using WinfADD.Repositories;
 
 namespace WinfADD
 {
@@ -57,6 +58,7 @@ namespace WinfADD
                 options.UseNpgsql(config["ConnectionStrings:DefaultConnection"]));
             */
             services.AddTransient<ITestRepository, TestRepository>();
+            services.AddTransient<ITableRepository<Blend>, BlendRepository>();
 
         }
 
