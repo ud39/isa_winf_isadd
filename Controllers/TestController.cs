@@ -74,7 +74,7 @@ namespace WinfADD.Controllers
 
         [Route("add")]
         [HttpPost]
-        public async Task<bool> Post([FromBody]Test testObj, string KeyString)
+        public async Task<bool> Post([FromBody]Test testObj)
         {
             return await _testRepo.InsertTest(testObj);
         }
