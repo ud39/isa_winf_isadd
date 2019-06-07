@@ -20,6 +20,6 @@ namespace WinfADD.Models
 
 
         //bytea
-        public string Description { get; set; }
+        //TODO public string Description { get; set; }
     }
 }
