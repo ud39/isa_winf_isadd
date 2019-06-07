@@ -8,7 +8,7 @@ namespace WinfADD.Repositories
     public class BlendRepository : GenericBaseRepository<Blend>
     {
         public BlendRepository(IConfiguration _config) : base(_config)
-        {Console.WriteLine("\n START CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC");
+        {
             this._config = _config;
 
             //TODO add all key names here //TODO in extended class
@@ -20,17 +20,23 @@ namespace WinfADD.Repositories
             tableName = "blend";
 
 
-            //build GetByID sql query
-            keyCompare = "";
+            //helper strings
+            var keyCompare = "";
+
             foreach (var keyString in keys)
             {
-                if(keyCompare.Length >0)
+                //compute keyCompare, CSKeys, AtCSKeys
+                if(keyCompare.Length >0){
                     keyCompare += " AND " + keyString + "=@" + keyString;
+                }
+
                 else
                 {
                     keyCompare += keyString + "=@" + keyString;
                 }
             }
+
+            //build GetByID sql query
             GetByIdString = "SELECT * FROM " + tableName + " WHERE "+ keyCompare;
 
 
@@ -53,17 +59,10 @@ namespace WinfADD.Repositories
             }
             UpdateString += temp + " WHERE " + keyCompare;
 
+            //Delete sql query
+            DeleteString = "DELETE FROM " + tableName + " WHERE " + keyCompare;
 
             Console.WriteLine("\n END CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC");
         }
-
-
-
-
-
-
-
-
-
     }
 }

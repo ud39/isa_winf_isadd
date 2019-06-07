@@ -58,7 +58,7 @@ namespace WinfADD
                 options.UseNpgsql(config["ConnectionStrings:DefaultConnection"]));
             */
             services.AddTransient<ITestRepository, TestRepository>();
-            services.AddTransient<ITableRepository<Blend>, BlendRepository>();
+            services.AddSingleton<ITableRepository<Blend>, BlendRepository>();
 
         }
 
