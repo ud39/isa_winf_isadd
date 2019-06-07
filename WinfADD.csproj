@@ -64,14 +64,14 @@
     <ItemGroup>
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\cluster\article\Article.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\cluster\article\ArticleBlend.ts" />
-      <TypeScriptCompile Include="ClientApp\src\app\interfaces\cluster\article\ArticleCoffeeDrink.ts" />
+      <TypeScriptCompile Include="ClientApp\src\app\interfaces\cluster\article\Articlecoffee_drink.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\cluster\article\ArticleEquipment.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\complex\Address.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\Bean.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\Blend.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\BusStation.ts" />
-      <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\CoffeeDrink.ts" />
-      <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\CoffeeDrinkTyp.ts" />
+      <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\coffee_drink.ts" />
+      <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\coffee_drinkTyp.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\Company.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\ConsistsOf.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\Equipment.ts" />

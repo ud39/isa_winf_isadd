@@ -1,5 +1,5 @@
-import {CoffeeDrink} from "./CoffeeDrink";
+import {coffee_drink} from "./coffee_drink";
 
-export interface CoffeeDrinkTyp extends CoffeeDrink{
+export interface coffee_drinkTyp extends coffee_drink{
   typ: string
 }

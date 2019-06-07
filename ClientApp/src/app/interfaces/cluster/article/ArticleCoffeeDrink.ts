@@ -1,8 +1,8 @@
 import {Article} from "./Article";
-import {CoffeeDrink} from "../../entity/CoffeeDrink";
+import {coffee_drink} from "../../entity/coffee_drink";
 
 
 
-export interface ArticleCoffeeDrink extends Article, CoffeeDrink{
+export interface Articlecoffee_drink extends Article, coffee_drink{
 
 }

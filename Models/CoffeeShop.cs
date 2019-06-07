@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WinfADD.Models
 {
-    public class CoffeeShop
+    public class coffee_shop
     {
         //primary keys
-        [Key] public string CoffeeShopName { get; set; }
+        [Key] public string coffee_shopName { get; set; }
         //address: (street, postcode, placename, number)
         [Key] public string Street { get; set; }
         [Key] public int Postcode { get; set; }

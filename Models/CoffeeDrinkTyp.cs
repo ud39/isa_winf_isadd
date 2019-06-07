@@ -2,10 +2,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WinfADD.Models
 {
-    public class CoffeeDrinkTyp
+    public class coffee_drinkTyp
     {
         //primary keys
-        [Key] public string CoffeeDrinkTypName { get; set; }
+        [Key] public string coffee_drinkTypName { get; set; }
 
     }
 }
