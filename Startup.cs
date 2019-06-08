@@ -39,8 +39,8 @@ namespace WinfADD
 
             //database setup
             //set path to the ConfigurationBuilder
-            var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
-            var config = builder.Build();
+           // var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
+           //var config = builder.Build();
             
             
             services.AddCors(options =>
@@ -53,14 +53,13 @@ namespace WinfADD
                             .AllowAnyMethod();
                     });
             });
-            /*
-            services.AddDbContext<WinfAddContext>(options =>
 
-                //options.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=postgres;Database=postgres;"));
-                options.UseNpgsql(config["ConnectionStrings:DefaultConnection"]));
-            */
+            //TODO add table Repositories here
             services.AddTransient<ITestRepository, TestRepository>();
             services.AddSingleton<ITableRepository<Blend>, BlendRepository>();
+            services.AddSingleton<ITableRepository<Bean>, BeanRepository>();
+            services.AddSingleton<ITableRepository<BusStation>, BusStationRepository>();
+            services.AddSingleton<ITableRepository<CoffeeShop>, CoffeeShopRepository>();
 
         }
 

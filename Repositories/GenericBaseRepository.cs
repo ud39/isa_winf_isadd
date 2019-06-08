@@ -5,14 +5,12 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Dapper;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
-using WinfADD.Models;
 
 namespace WinfADD.Repositories
 {
-    public abstract class GenericBaseRepository<Table> : ITableRepository<Table>
+    public abstract class GenericBaseRepository<Table> : ITableRepository<Table> where Table : class
     {
 
         //key fields
@@ -37,13 +35,15 @@ namespace WinfADD.Repositories
            // keys.Add("key1");
 
            //TODO write tableName
-           tableName = tableName;
+           //tableName = tableName;
 
 
+           /*
           //helper strings
            var keyCompare = "";        //key=@key for all key in keys
            var CSKeys = "";            //key1,key2,key3
            var CSatKeys = "";          //@key1,@key2,@key3
+
 
            //compute keyCompare, CSKeys, AtCSKeys
            foreach (var keyString in keys)
@@ -93,6 +93,9 @@ namespace WinfADD.Repositories
            //Delete sql query
            DeleteString = "DELETE FROM " + tableName + " WHERE " + keyCompare;
 
+           */
+
+
 
         }
 
@@ -100,9 +103,6 @@ namespace WinfADD.Repositories
 
         public async Task<Table> GetByID(Table tableObject)
         {
-
-
-
                 using (IDbConnection conn = Connection)
                 {Console.WriteLine("\n GetByID::" + GetByIdString);
                     var result = await conn.QueryAsync<Table>(GetByIdString, tableObject);
@@ -114,30 +114,29 @@ namespace WinfADD.Repositories
         {
 
             var possibleProperties = typeof(Table).GetProperties();
-            var builder = new SqlBuilder();
 
-            var sql = "SELECT * From " + tableName;
-            var filterTable= builder.AddTemplate(sql);
+            var sqlQuery = "SELECT * From" + " " + tableName +" WHERE ";
+            var whereClause = "";
 
             foreach (var property in possibleProperties)
-            {Console.WriteLine("::::::::::::::::::::::::"+property.Name);
-                var properties = new Dictionary<string, object>();
+            {
                 var propertyName = property.Name.ToLower();
                 if (!searchProperties.ContainsKey(propertyName)) continue;
-                Console.WriteLine("::::::::::::------------------------::::::::::::"+property.Name +":::::::"+property.GetValue(tableObj));
-                properties.Add(propertyName, property.GetValue(tableObj));
-                builder.Where(propertyName + " = " + "@" + propertyName, properties);
+                whereClause += " AND " + propertyName + " = " + "@" + propertyName;
             }
+
+            //remove first AND
+            whereClause = whereClause.Substring(4);
 
             using (IDbConnection dbConnection = Connection)
             {
+                Console.WriteLine("\n GetByParam::" + sqlQuery + whereClause);
                 if (possibleProperties.Length == 0)
                 {
                     return await GetAll(tableObj);
                 }
 
-                Console.WriteLine("\n \n \n GetTables::"+filterTable.RawSql);
-                return await dbConnection.QueryAsync<Table>(filterTable.RawSql,filterTable.Parameters);
+                return await dbConnection.QueryAsync<Table>(sqlQuery+whereClause,tableObj);
             }
         }
 
@@ -153,14 +152,12 @@ namespace WinfADD.Repositories
 
         public async Task<bool> InsertTable(Table tableObj, IDictionary<string, string> insertProperties)
         {
-
-
-
             PropertyInfo[] possibleProperties = typeof(Table).GetProperties();
 
 
             var CSProperties = "";
             var CSatProperties = "";
+
             //compute input insert properties
             foreach (PropertyInfo property in possibleProperties)//all possible fields
             {
@@ -177,12 +174,12 @@ namespace WinfADD.Repositories
                 }
             }
 
-            var insertString = "INSERT INTO " + tableName + " (" + CSProperties + " ) values (" + CSatProperties +")";
+            var insertString = "INSERT INTO"+ " " + tableName + " (" + CSProperties + " ) values (" + CSatProperties +")";
 
 
             using (IDbConnection conn = Connection)
-            {
-                Console.WriteLine("\n Insert::" + insertString);
+            {Console.WriteLine("\n Insert::" + insertString);
+
                 var rowsAffected = await conn.ExecuteAsync(insertString,
                     tableObj);
 
@@ -192,7 +189,7 @@ namespace WinfADD.Repositories
 
 
         public async Task<bool> UpdateTable(Table tableObj)
-        {Console.WriteLine("\n UpdateTest::" + UpdateString);
+        {Console.WriteLine("\n UpdateTable::" + UpdateString);
             using (IDbConnection conn = Connection)
             {
                 var rowsAffected =  await conn.ExecuteAsync(
@@ -205,7 +202,6 @@ namespace WinfADD.Repositories
 
         public async Task<bool> PartialUpdateTable(Table tableObj, IDictionary<string, string> fieldsToChange)
         {
-
                 var fieldCounter = 0;
                 var sqlQuery = "UPDATE " +tableName+" SET ";
 
@@ -240,7 +236,7 @@ namespace WinfADD.Repositories
                 using (IDbConnection conn = Connection)
                 {Console.WriteLine("\n PartialUpdate::" + sqlQuery);
 
-                    var rowsAffected = conn.Execute(sqlQuery, tableObj);
+                    var rowsAffected = await conn.ExecuteAsync(sqlQuery, tableObj);
 
                     return rowsAffected > 0;
                 }

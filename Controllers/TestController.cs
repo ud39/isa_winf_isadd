@@ -91,7 +91,6 @@ namespace WinfADD.Controllers
             //create a List of all search properties
             IDictionary<string, string> searchProperties = new Dictionary<string, string>();
             var hashtableJson = testJson.ToObject<Dictionary<string, string>>();
-            var counter = 0;
 
             var tests = await _testRepo.GetTests(testObj, hashtableJson);
 

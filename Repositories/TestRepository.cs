@@ -106,7 +106,7 @@ namespace WinfADD.Models
                 //remove last ','
                 sqlQuery = sqlQuery.Remove(sqlQuery.Length - 1);
 
-                var rowsAffected = conn.Execute(sqlQuery, testObj);
+                var rowsAffected = await conn.ExecuteAsync(sqlQuery, testObj);
 
                 return rowsAffected > 0;
             }

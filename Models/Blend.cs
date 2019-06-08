@@ -5,7 +5,7 @@ namespace WinfADD.Models
     public class Blend
     {
         //primary keys
-        [Key] public string BlendName { get; set; }
+        [Key] public string Blend_Name { get; set; }
         [Key] public string Manufacturer { get; set; }
 
         //

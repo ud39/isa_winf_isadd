@@ -1,23 +1,27 @@
-using System;
 using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using WinfADD.Models;
 
 namespace WinfADD.Repositories
 {
-    public class BlendRepository : GenericBaseRepository<Blend>
+    public class CoffeeShopRepository : GenericBaseRepository<CoffeeShop>
     {
-        public BlendRepository(IConfiguration _config) : base(_config)
+        public CoffeeShopRepository(IConfiguration _config) : base(_config)
         {
             this._config = _config;
 
             //TODO add all key names here //TODO in extended class
             // keys.Add("KeyString");
-            keys.Add("blendname");
-            keys.Add("manufacturer");
+            keys.Add("name");
+            keys.Add("country");
+            keys.Add("town");
+            keys.Add("postal_code");
+            keys.Add("street_name");
+            keys.Add("street_number");
+            keys.Add("addressee");
 
             //TODO write tableName
-            tableName = "blend";
+            tableName = "coffee_shop";
 
 
             //helper strings
