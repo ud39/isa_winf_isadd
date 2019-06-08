@@ -47,7 +47,7 @@ div.input-content.active-input > label:nth-child(3){
   align-items: center;
 }
 
-.input-group{
+.first-mat-tab-group{
   grid-row: 1 / 1;
   display: grid;
   grid-template-columns: auto;
@@ -81,6 +81,9 @@ img{
 
 }
 
+app-admin-profile app-checkbox div.container{
+  margin-top: 15px;
+}
 mat-checkbox{
   margin-right: 10px;
 }
@@ -96,17 +99,6 @@ mat-checkbox{
 
 .mat-tab-header, .mat-tab-nav-bar{
   border-bottom: 0;
-}
-
-
-app-admin-profile .mat-tab-label-container{
-  display: flex;
-  flex-grow: 1;
-  overflow: hidden;
-  z-index: 1;
-  bottom: 88%;
-  position: fixed;
-  right: 60%;
 }
 
 app-admin-profile mat-tab-group#second-mat-tab-group .mat-tab-label-container{

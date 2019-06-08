@@ -22,6 +22,11 @@ import { SideNavComponent } from './layout/side-nav/side-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ShopListComponent } from './content/shop/shop-list/shop-list.component';
 import { ShopDetailComponent } from './content/shop/shop-detail/shop-detail.component';
+import { CheckboxEquipmentComponent } from './search/checkbox-equipment/checkbox-equipment.component';
+import { EquipmentListComponent } from './content/equipment/equipment-list/equipment-list.component';
+import { EquipmentDetailComponent } from './content/equipment/equipment-detail/equipment-detail.component';
+import { EventListComponent } from './content/event/event-list/event-list.component';
+import { EventDetailedComponent } from './content/event/event-detailed/event-detailed.component';
 ;
 
 
@@ -42,7 +47,12 @@ import { ShopDetailComponent } from './content/shop/shop-detail/shop-detail.comp
     PageNotFoundComponent,
     SideNavComponent,
     ShopListComponent,
-    ShopDetailComponent
+    ShopDetailComponent,
+    CheckboxEquipmentComponent,
+    EquipmentListComponent,
+    EquipmentDetailComponent,
+    EventListComponent,
+    EventDetailedComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
@@ -58,9 +68,11 @@ import { ShopDetailComponent } from './content/shop/shop-detail/shop-detail.comp
       {path: 'shop', component: ShopListComponent},
       {path: 'shop/:id', component: ShopDetailComponent},
       {path: 'user', component: UserProfileComponent},
-      {path: 'article', component: ArticleComponent},
+      {path: 'equipment', component: EquipmentListComponent},
       {path: 'admin', component: AdminProfileComponent},
+      {path: 'about-us', component: AboutUsComponent},
       {path: '**', component: PageNotFoundComponent}
+
     ]),
     ReactiveFormsModule,
     LayoutModule,

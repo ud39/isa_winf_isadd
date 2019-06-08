@@ -5,3 +5,7 @@ app-checkbox .mat-checkbox{
 #clearbutton{
   background-color: white;
 }
+
+app-checkbox .mat-select-panel{
+  width: 100px;
+}

@@ -48,7 +48,9 @@ namespace WinfADD
                 options.AddPolicy(MyAllowSpecificOrigins,
                     cors =>
                     {
-                        cors.WithOrigins("http://localhost:5002");
+                        cors.WithOrigins("http://localhost:5002")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
                     });
             });
             /*

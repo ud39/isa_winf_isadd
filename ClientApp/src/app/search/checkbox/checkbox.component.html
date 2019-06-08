@@ -4,14 +4,16 @@
     <mat-checkbox #cb class="checkbox" [checked]="false">Vegan</mat-checkbox>
     <mat-checkbox #cb class="checkbox" [checked]="false">Kinderfreundlich</mat-checkbox>
     <mat-checkbox #cb class="checkbox" [checked]="false">Workstation</mat-checkbox>
+    <mat-checkbox #cb class="checkbox" [checked]="false">Outdoor</mat-checkbox>
+    <mat-checkbox #cb class="checkbox" [checked]="false">Haustierfreundlich</mat-checkbox>
   </div>
   <div>
     <mat-checkbox #cb class="checkbox" [checked]="false">Behindertengerecht</mat-checkbox>
     <mat-checkbox #cb class="checkbox" [checked]="false">Latte Art</mat-checkbox>
     <mat-checkbox #cb class="checkbox" [checked]="false">im Freien</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" [checked]="false"></mat-checkbox>
+    <mat-checkbox #cb class="checkbox" [checked]="false">Rösterei</mat-checkbox>
   </div>
   <div  *ngIf="router.url == '/admin'">
-  <button mat-button id="clearbutton" (click)="unselectCheckBoxes()">Alles aufheben</button>
+  <button mat-button id="clearbutton" (click)="clear()">Alles aufheben</button>
   </div>
 </div>

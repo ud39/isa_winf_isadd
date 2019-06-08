@@ -1,5 +1,6 @@
 import {Article} from "./Article";
-import {coffee_drink} from "../../entity/coffee_drink";
+import {coffee_drink} from "../../entity/CoffeeDrink";
+
 
 
 

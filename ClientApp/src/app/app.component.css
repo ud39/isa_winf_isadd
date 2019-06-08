@@ -6,7 +6,7 @@
 }
 div.container{
   alignment: center;
-  background-color: dimgray;
+  border: black solid 0.5px;
 }
 
 

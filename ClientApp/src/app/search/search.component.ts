@@ -1,7 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-
-import {MatCheckbox} from "@angular/material";
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {CheckboxComponent} from "./checkbox/checkbox.component";
+import {CheckboxEquipmentComponent} from "./checkbox-equipment/checkbox-equipment.component";
+
+
 
 @Component({
   selector: 'app-search',
@@ -12,20 +13,28 @@ import {CheckboxComponent} from "./checkbox/checkbox.component";
 
 export class SearchComponent implements OnInit {
   @ViewChild("cb") component1: CheckboxComponent;
+  @ViewChild("cbeq") component2: CheckboxEquipmentComponent;
+
+  @Input() urlPath: string;
+
 
   constructor() {
 
   }
 
-  clear() {
-    this.component1.unselectCheckBoxes();
-  }
+  clearCheckBoxes() {
+    switch (this.urlPath) {
+      case '/shop':
+      this.component1.clear();
+      break;
+      case '/equipment':
+      this.component2.clear();
+    }
 
-  getCheckBoxes(){
-    let checkBoxes: MatCheckbox [] = this.component1.selectedCheckBoxes();
+
   }
 
   ngOnInit() {
-  }
 
+  }
 }

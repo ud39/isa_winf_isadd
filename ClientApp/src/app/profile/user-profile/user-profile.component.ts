@@ -7,17 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileComponent implements OnInit {
 
-  getOnInput(){
-    let input;
-    if((<HTMLElement> event.target).classList.contains("delete")){
-      input = <HTMLElement> document.getElementsByClassName("delete-account")[0];
-    }
-    else {
-      input = <HTMLElement> document.getElementsByClassName("change-email")[0];
-    }
-    input.focus();
-  };
-
   constructor() { }
 
   ngOnInit() {

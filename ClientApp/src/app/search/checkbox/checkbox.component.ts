@@ -14,7 +14,7 @@ export class CheckboxComponent implements OnInit {
 
   @ViewChildren('cb') cbs : QueryList<MatCheckbox>;
 
-
+  states: string = '';
   showOrHide: boolean = false;
 
   constructor(private router: Router) {
@@ -25,13 +25,17 @@ export class CheckboxComponent implements OnInit {
     return this.cbs.toArray();
   }
 
-  unselectCheckBoxes(){
-    let array: MatCheckbox [] = this.cbs.toArray();
+  static unselectCheckBoxes(cbs){
+    let array: MatCheckbox [] = cbs.toArray();
     array.forEach(function (value){
       if(value.checked == true){
         value.toggle();
       }
     })
+  }
+
+  clear(){
+    CheckboxComponent.unselectCheckBoxes(this.cbs);
   }
 
   ngOnInit() {

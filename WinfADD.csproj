@@ -56,6 +56,7 @@
       <Folder Include="ClientApp\src\app\interfaces\cluster\rating" />
       <Folder Include="ClientApp\src\app\layout" />
       <Folder Include="ClientApp\src\app\profile" />
+      <Folder Include="ClientApp\src\app\services\interactive-element" />
       <Folder Include="ClientApp\src\assets\Images" />
       <Folder Include="documentation\Content\BPMN" />
       <Folder Include="documentation\Content\Templates" />
@@ -64,14 +65,11 @@
     <ItemGroup>
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\cluster\article\Article.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\cluster\article\ArticleBlend.ts" />
-      <TypeScriptCompile Include="ClientApp\src\app\interfaces\cluster\article\Articlecoffee_drink.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\cluster\article\ArticleEquipment.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\complex\Address.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\Bean.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\Blend.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\BusStation.ts" />
-      <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\coffee_drink.ts" />
-      <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\coffee_drinkTyp.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\Company.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\ConsistsOf.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\Equipment.ts" />

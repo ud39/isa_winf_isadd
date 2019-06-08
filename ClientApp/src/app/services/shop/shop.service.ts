@@ -1,11 +1,18 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 import {Observable} from "rxjs";
-import {Customer} from "../../content/shop/shop-list/shop-list.component";
+import {Test} from "../../content/shop/shop-list/shop-list.component";
 
 
 
+const url="https://localhost:5001/api/test"
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json'
+  })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +24,18 @@ export class ShopService {
   constructor(private http: HttpClient) {
   }
 
-  getPosts(): Observable<Customer[]>{
-    return this.http.get<Customer[]>('https://localhost:5001/api/customer');
+  getPosts(): Observable<Test[]>{
+    return this.http.get<Test[]>(url + '/all');
+  }
+
+  addPosts(): Observable<Test>{
+    return this.http.post<Test>(url + '/add',JSON.stringify(test), httpOptions)
   }
 }
 
+let test: Test = {
+  keystring: "s",
+  id: 2,
+  name: 'Miku',
+  random: 'stuff'
+};

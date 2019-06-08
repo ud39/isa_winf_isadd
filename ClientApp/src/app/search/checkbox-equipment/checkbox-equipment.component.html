@@ -1,0 +1,14 @@
+<div class="container">
+  <div>
+    <mat-checkbox #cb class="checkbox" id="wlan" [checked]="false">Presser</mat-checkbox>
+    <mat-checkbox #cb class="checkbox" [checked]="false">Filter</mat-checkbox>
+    <mat-checkbox #cb class="checkbox" [checked]="false">Röster</mat-checkbox>
+  </div>
+  <div>
+    <mat-checkbox #cb class="checkbox" [checked]="false">Manuell</mat-checkbox>
+    <mat-checkbox #cb class="checkbox" [checked]="false">Automatisch</mat-checkbox>
+  </div>
+  <div  *ngIf="router.url == '/admin'">
+    <button mat-button id="clearbutton" (click)="clear()">Alles aufheben</button>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="container">
+  <ul id="equipment-list">
+    <li *ngFor="let equipment of equipments">
+      <div class="list-content"><img src="https://dummyimage.com/100x100/fff/000" class="preview-img">
+        <div class="preview-content">
+          <h6 class="equipment_name">{{equipment.equipment_name}}
+            <hr class="equipment_name_underline">
+          </h6>
+          <div class="text">
+            {{equipment.description}}
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
