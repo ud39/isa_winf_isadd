@@ -1,9 +1,9 @@
------- CREATE EXTENTIONS ------
+------ EXTENTIONS ------
 
 CREATE EXTENSION IF NOT EXISTS citext WITH SCHEMA public;
 
 
------- CREATE TYPES -------
+------ TYPES -------
   
 CREATE TYPE address AS (
   addressee text,
@@ -14,19 +14,19 @@ CREATE TYPE address AS (
   country text
   );
 
------- CREATE ENTITIES ------
+------ ENTITIES ------
 CREATE TABLE equipment(
   model_name citext,
   manufacturer_name citext,
-  year_of_origin integer,
+  year_of_origin int,
   PRIMARY KEY (model_name, manufacturer_name, year_of_origin)
 );
 
 CREATE TABLE event(
-  event_id int generated always as identity,
+  event_id int generated always as identity primary key,
   time date,
   name text,
-  access_fee integer,
+  access_fee int,
   description text
 );
 
@@ -39,21 +39,21 @@ CREATE TABLE coffee_shop(
   description text,
   wlan boolean,
   child_friendly boolean,
-  website text, -- todo
-  founding_year integer,
+  website text,
+  founding_year int,
   pets_friendly boolean,
-  latte_art boolean, -- todo: enum
-  seats integer,
+  latte_art boolean, -- todo?
+  seats int,
   workstation boolean,
-  food text, -- todo enum array?
-  price_class text, --todo enum
+  food text, -- todo array?
+  price_class text,
   franchise text,
   PRIMARY KEY (name, address)
 );
 
 CREATE TABLE bus_station(
   name citext primary key,
-  line integer
+  line int
 );
 
 CREATE TABLE company(
@@ -65,7 +65,7 @@ CREATE TABLE bean(
   manufacturer_name citext,
   provenance text,
   fair_trade boolean,
-  type text, --todo
+  type text,
   PRIMARY KEY (name, manufacturer_name)
 );
 
@@ -76,21 +76,11 @@ CREATE TABLE poi(
   PRIMARY KEY (name, address)
 );
 
-CREATE TABLE google_rating(
-
-);
-
-CREATE TABLE user_rating(
-);
-
-CREATE TABLE tripadvisor_rating(
-);
-
 CREATE TABLE blend(
   name citext,
   manufacturer_name citext,
   provenance text,
-  price_range integer, --todo
+  price_range text,
   PRIMARY KEY (name, manufacturer_name)
   
 );
@@ -103,16 +93,11 @@ CREATE TABLE location(
 CREATE TABLE equipment_category(
   name citext primary key 
 );
-CREATE TABLE actor(
-  email citext primary key, --todo constraints email?
-  actor_name text
- -- password; not here !!!!!!!!!!              
-);
 
 CREATE TABLE preparation(
   name citext primary key,
   description text, 
-  type text --todo: enum?
+  type text
 );
 
 CREATE TABLE coffee_drink(
@@ -120,122 +105,114 @@ CREATE TABLE coffee_drink(
   description text
 );
 
-CREATE TABLE opening_time( -- ?????
+CREATE TABLE opening_time(
   close time,
   open time,
   weekday text,
   PRIMARY KEY (close, open, weekday)
 );
 
-CREATE TABLE user(
-  email citext primary key 
+CREATE TABLE public.user (
+	email citext primary key
 );
 
-CREATE TABLE student(
-  email citext primary key
-);
-
-CREATE TABLE tourist(
-  email citext primary key
-);
-
-CREATE TABLE fanatic(
-  email citext primary key
-);
-
-CREATE TABLE admin(
-  email citext primary key
-);
-
-CREATE TABLE content_manager(
-  email citext primary key
-);
-
-CREATE TABLE article (
-  articleID int generated always as identity
-);
-
------- CREATE RELATIONSHIPS ------
+------ RELATIONSHIPS ------
 
 CREATE TABLE consists_of(
-  coffee_drink_name citext REFERENCES coffee_drink(name) ,
-  bean_manufacturer_name citext REFERENCES bean(manufacturer_name),
-  bean_name citext REFERENCES bean (name),
-  PRIMARY KEY (coffee_drink_name, bean_manufacturer_name, bean_name)
+  coffee_drink_name citext,
+  bean_manufacturer_name citext,
+  bean_name citext,
+  PRIMARY KEY (coffee_drink_name, bean_manufacturer_name, bean_name),
+  FOREIGN KEY (coffee_drink_name) REFERENCES coffee_drink(name),
+  FOREIGN KEY (bean_manufacturer_name, bean_name) REFERENCES bean (manufacturer_name, name)
 );
 
 CREATE TABLE serves(
-  coffee_drink_name citext REFERENCES coffee_drink(name),
-  coffee_shop_address address REFERENCES coffee_shop(address),
-  coffee_shop_name citext REFERENCES coffee_shop (name),
+  coffee_drink_name citext,
+  coffee_shop_address address,
+  coffee_shop_name citext,
   vegan boolean,
-  PRIMARY KEY (coffee_drink_name, coffee_shop_address, coffee_shop_name)
+  PRIMARY KEY (coffee_drink_name, coffee_shop_address, coffee_shop_name),
+  FOREIGN KEY (coffee_drink_name) REFERENCES coffee_drink(name),
+  FOREIGN KEY (coffee_shop_address, coffee_shop_name) REFERENCES coffee_shop(address, name)
 );
 
 CREATE TABLE near_by(
-  coffee_shop_name  citext REFERENCES coffee_shop (name),
-  coffee_shop_address address REFERENCES coffee_shop (address),
-  poi_name citext REFERENCES poi (name),
-  poi_address text REFERENCES poi (address) ,
-  PRIMARY KEY (coffee_shop_address, coffee_shop_name, poi_name, poi_address)
+  coffee_shop_name  citext,
+  coffee_shop_address address,
+  poi_name citext,
+  poi_address address ,
+  PRIMARY KEY (coffee_shop_address, coffee_shop_name, poi_name, poi_address),
+  FOREIGN KEY (poi_address, poi_name) REFERENCES poi (address,name),
+  FOREIGN KEY (coffee_shop_name, coffee_shop_address) REFERENCES  coffee_shop (name, address)
 );
 
 CREATE TABLE reachable(
-  coffee_shop_name citext REFERENCES coffee_shop(name),
-  coffee_shop_address address REFERENCES coffee_shop (address),
-  bus_station_name citext REFERENCES bus_station(name),
-  PRIMARY KEY ( coffee_shop_name, coffee_shop_address, bus_station_name)
-  
+  coffee_shop_name citext,
+  coffee_shop_address address,
+  bus_station_name citext,
+  PRIMARY KEY (coffee_shop_name, coffee_shop_address, bus_station_name),
+  FOREIGN KEY (coffee_shop_address, coffee_shop_name) REFERENCES coffee_shop (address, name),
+  FOREIGN KEY (bus_station_name) REFERENCES bus_station (name)
+
 );
 
 CREATE TABLE owns (
-  company_name citext REFERENCES company(name) ,
-  coffee_shop_address address REFERENCES coffee_shop(address),
-  coffee_shop_name citext REFERENCES coffee_shop (name),
-  PRIMARY KEY(company_name, coffee_shop_address, coffee_shop_name)
+  company_name citext ,
+  coffee_shop_address address ,
+  coffee_shop_name citext ,
+  PRIMARY KEY(company_name, coffee_shop_address, coffee_shop_name),
+  FOREIGN KEY(company_name) REFERENCES company (name),
+  FOREIGN KEY(coffee_shop_name, coffee_shop_address) REFERENCES coffee_shop(name, address)
 );
 
 CREATE TABLE supplies (
-  equipment_category_name citext REFERENCES equipment_category(name),
-  coffee_shop_name citext REFERENCES coffee_shop (name) ,
-  coffee_shop_address address REFERENCES coffee_shop (address),
-  PRIMARY KEY (equipment_category_name, coffee_shop_name, coffee_shop_address)
+  equipment_category_name citext ,
+  coffee_shop_name citext ,
+  coffee_shop_address address ,
+  PRIMARY KEY (equipment_category_name, coffee_shop_name, coffee_shop_address),
+  FOREIGN KEY (equipment_category_name) REFERENCES equipment_category(name),
+  FOREIGN KEY (coffee_shop_name, coffee_shop_address) REFERENCES coffee_shop (name, address)
 );
 
 CREATE TABLE provides (
-  bean_name citext REFERENCES bean (name),
-  coffee_shop_name citext REFERENCES coffee_shop (name),
-  coffee_shop_address address REFERENCES coffee_shop (address),
-  bean_manufacturer_name citext REFERENCES bean (manufacturer_name) 
-  
+  bean_name citext ,
+  coffee_shop_name citext ,
+  coffee_shop_address address ,
+  bean_manufacturer_name citext ,
+  PRIMARY KEY (bean_name, coffee_shop_name, coffee_shop_address, bean_manufacturer_name),
+  FOREIGN KEY (bean_name, bean_manufacturer_name) REFERENCES bean (name, manufacturer_name),
+  FOREIGN KEY (coffee_shop_name, coffee_shop_address) REFERENCES coffee_shop (name, address)
 );
 
 CREATE TABLE composed (
-  blend_name citext REFERENCES blend (name) ,
-  blend_manufacturer_name citext REFERENCES blend (manufacturer_name) ,
-  bean_name citext REFERENCES bean (name),
-  bean_manufacturer_name citext REFERENCES bean (manufacturer_name),
-  proportion text , --todo
-  PRIMARY KEY (blend_manufacturer_name, blend_name, bean_name, bean_manufacturer_name)
+  blend_name citext ,
+  blend_manufacturer_name citext  ,
+  bean_name citext,
+  bean_manufacturer_name citext ,
+  proportion text ,
+  PRIMARY KEY (blend_manufacturer_name, blend_name, bean_name, bean_manufacturer_name),
+  FOREIGN KEY (blend_name, blend_manufacturer_name) REFERENCES blend (name, manufacturer_name),
+  FOREIGN KEY (bean_manufacturer_name, bean_name) REFERENCES bean (manufacturer_name, name)
 );
 
 CREATE TABLE offers (
-  blend_name citext REFERENCES blend(name) ,
-  blend_manufacturer_name citext REFERENCES blend(manufacturer_name) ,
-  coffee_shop_name citext REFERENCES coffee_shop(name) ,
-  coffee_shop_address address REFERENCES coffee_shop (address) ,
-  PRIMARY KEY (blend_name, blend_manufacturer_name, coffee_shop_address, coffee_shop_name)
+  blend_name citext ,
+  blend_manufacturer_name citext ,
+  coffee_shop_name citext ,
+  coffee_shop_address address ,
+  PRIMARY KEY (blend_name, blend_manufacturer_name, coffee_shop_address, coffee_shop_name),
+  FOREIGN KEY (blend_manufacturer_name, blend_name) REFERENCES blend(manufacturer_name, name),
+  FOREIGN KEY (coffee_shop_name, coffee_shop_address) references coffee_shop (name, address)
 );
 
 CREATE TABLE organised_by(
-  coffee_shop_name citext REFERENCES coffee_shop(name) ,
-  coffee_shop_address address REFERENCES coffee_shop (address) ,
-  eventID int REFERENCES event(event_id),
-  PRIMARY KEY (coffee_shop_name, coffee_shop_address, eventID)
-);
-
-CREATE TABLE operator (
-  email citext primary key  ---- REFERENCES????
+  coffee_shop_name citext  ,
+  coffee_shop_address address  ,
+  event_id int ,
+  PRIMARY KEY (coffee_shop_name, coffee_shop_address, event_id),
+  FOREIGN KEY (coffee_shop_address, coffee_shop_name) REFERENCES coffee_shop (address, name),
+  FOREIGN KEY (event_id) REFERENCES event(event_id)
 );
 
 CREATE TABLE subcategory (
@@ -244,82 +221,171 @@ CREATE TABLE subcategory (
 
 CREATE TABLE coffee_drink_typ (
   coffee_drink_name citext primary key REFERENCES coffee_drink(name) ,
-  type text -- todo: enum?
+  type text
 );
 
 CREATE TABLE belongs_to (
-  equipment_manufacturer_name citext REFERENCES equipment (manufacturer_name) ,
-  equipment_year_of_origin text REFERENCES equipment (year_of_origin),
-  equipment_name citext REFERENCES equipment(model_name),
-  equipment_category_name citext REFERENCES equipment_category (name) ,
-  PRIMARY KEY (equipment_category_name, equipment_manufacturer_name, equipment_name, equipment_year_of_origin)
+  equipment_manufacturer_name citext  ,
+  equipment_year_of_origin int,
+  equipment_name citext ,
+  equipment_category_name citext ,
+  PRIMARY KEY (equipment_category_name, equipment_manufacturer_name, equipment_name, equipment_year_of_origin),
+  FOREIGN KEY (equipment_category_name) REFERENCES equipment_category (name),
+  FOREIGN KEY (equipment_manufacturer_name, equipment_name, equipment_year_of_origin) REFERENCES equipment (manufacturer_name, model_name, year_of_origin)
 );
 
 CREATE TABLE opens (
-  coffee_shop_name citext REFERENCES coffee_shop (name) ,
-  coffee_shop_address text REFERENCES coffee_shop (address) ,
-  close integer REFERENCES opening_time (close) ,
-  open integer REFERENCES opening_time (open) ,
-  weekday integer REFERENCES opening_time (weekday),
-  PRIMARY KEY (coffee_shop_address, coffee_shop_name, close, open, weekday)   
+  coffee_shop_name citext ,
+  coffee_shop_address address ,
+  close time  ,
+  open time ,
+  weekday text ,
+  PRIMARY KEY (coffee_shop_address, coffee_shop_name, close, open, weekday),
+  FOREIGN KEY (coffee_shop_name, coffee_shop_address) REFERENCES coffee_shop (name, address),
+  FOREIGN KEY (close, open, weekday) REFERENCES opening_time (close, open, weekday)
 );
 
 CREATE TABLE includes (
-  coffee_shop_name citext REFERENCES coffee_shop (name) ,
-  coffee_shop_address text REFERENCES coffee_shop (address) ,
-  preparation_name citext REFERENCES preparation (name) ,
-  coffee_drink_name citext REFERENCES coffee_drink (name) ,
-  PRIMARY KEY (coffee_shop_name, coffee_shop_address, preparation_name, coffee_drink_name)
-);
-
-CREATE TABLE rated_by (
-  rating_id int REFERENCES rates (ratingID),
-  coffee_shop_name citext REFERENCES coffee_shop (name),
-  coffee_shop_address REFERENCES coffee_shop (address),
-  PRIMARY KEY (rating_id, coffee_shop_name, coffee_shop_address)
+  coffee_shop_name citext  ,
+  coffee_shop_address address  ,
+  preparation_name citext  ,
+  coffee_drink_name citext  ,
+  PRIMARY KEY (coffee_shop_name, coffee_shop_address, preparation_name, coffee_drink_name),
+  FOREIGN KEY (coffee_drink_name) REFERENCES  coffee_drink (name),
+  FOREIGN KEY (coffee_shop_address, coffee_shop_name) REFERENCES coffee_shop (address, name)
 );
 
 CREATE TABLE located (
-  location_address address REFERENCES location (address),
-  coffee_shop_name citext REFERENCES coffee_shop (name) ,
-  coffee_shop_address address REFERENCES coffee_shop (address) ,
-  event_id int REFERENCES event (event_id),
-  PRIMARY KEY ( location_address, coffee_shop_name, coffee_shop_address, event_id)
+  location_address address ,
+  coffee_shop_name citext  ,
+  coffee_shop_address address  ,
+  event_id int,
+  PRIMARY KEY ( location_address, coffee_shop_name, coffee_shop_address, event_id),
+  FOREIGN KEY (location_address) references location (address),
+  FOREIGN KEY (coffee_shop_name, coffee_shop_address) REFERENCES coffee_shop (name, address),
+  FOREIGN KEY (event_id) REFERENCES event (event_id)
 );
 
 CREATE TABLE sells (
-  equipment_manufacturer citext REFERENCES equipment (manufacturer_name) ,
-  equipment_year_of_origin text REFERENCES equipment (year_of_origin),
-  equipment_name citext REFERENCES equipment (model_name),
-  equipment_category_name citext REFERENCES equipment_category (name) ,
-  coffee_shop_name citext REFERENCES coffee_shop (name) ,
-  coffee_shop_address address  REFERENCES coffee_shop (address) ,
-  PRIMARY KEY ( equipment_year_of_origin, equipment_manufacturer, equipment_name, equipment_category_name, coffee_shop_name, coffee_shop_address)
+  equipment_manufacturer citext  ,
+  equipment_year_of_origin int ,
+  equipment_name citext ,
+  equipment_category_name citext  ,
+  coffee_shop_name citext ,
+  coffee_shop_address address  ,
+  PRIMARY KEY (equipment_year_of_origin, equipment_manufacturer, equipment_name, equipment_category_name, coffee_shop_name, coffee_shop_address),
+  FOREIGN KEY(equipment_manufacturer, equipment_name, equipment_year_of_origin) REFERENCES equipment (manufacturer_name, model_name, year_of_origin),
+  FOREIGN KEY (coffee_shop_name, coffee_shop_address ) REFERENCES  coffee_shop (name, address)
 );
 
-CREATE TABLE creates (
-  email citext primary key ,
-  articleID int primary key ,
-  PRIMARY KEY (email, articleID)
+------  CLUSTER  -------
+
+CREATE TABLE google_rating(
+   rating_id int primary key,
+   overall_rating int,
+   count_of_ratings int
 );
 
-CREATE TABLE publishes (
-  email citext primary key ,
-  articleID int primary key ,
-  PRIMARY KEY (email, articleID)
+CREATE TABLE user_rating(
+   rating_id int primary key,
+   rating int
 );
+
+CREATE TABLE tripadvisor_rating(
+   rating_id int primary key,
+   overall_rating int,
+   count_of_ratings int
+);
+
+CREATE TABLE rated_by_google (
+  google_rating_id int ,
+  coffee_shop_name citext ,
+  coffee_shop_address address ,
+  PRIMARY KEY (google_rating_id, coffee_shop_name, coffee_shop_address),
+  FOREIGN KEY (coffee_shop_name, coffee_shop_address) REFERENCES coffee_shop (name, address),
+  FOREIGN KEY (google_rating_id) REFERENCES google_rating(rating_id)
+);
+
+CREATE TABLE rated_by_tripadvisor (
+  tripadvisor_rating_id int ,
+  coffee_shop_name citext ,
+  coffee_shop_address address ,
+  PRIMARY KEY (tripadvisor_rating_id, coffee_shop_name, coffee_shop_address),
+  FOREIGN KEY (coffee_shop_name, coffee_shop_address) REFERENCES coffee_shop (name, address),
+  FOREIGN KEY (tripadvisor_rating_id) REFERENCES tripadvisor_rating(rating_id)
+);
+
+CREATE TABLE rated_by_user (
+  user_rating_id int ,
+  coffee_shop_name citext ,
+  coffee_shop_address address ,
+  PRIMARY KEY (user_rating_id, coffee_shop_name, coffee_shop_address),
+  FOREIGN KEY (coffee_shop_name, coffee_shop_address) REFERENCES coffee_shop (name, address),
+  FOREIGN KEY (user_rating_id) REFERENCES user_rating(rating_id)
+);
+
 
 CREATE TABLE rates (
-  ratingID int primary key,
-  email citext primary key,
-  coffee_shop_name citext primary key,
-  coffee_shop_address address primary key,
-  PRIMARY KEY (ratingID, email, coffee_shop_name, coffee_shop_address)
+  user_rating_id int ,
+  email citext,
+  coffee_shop_name citext ,
+  coffee_shop_address address ,
+  PRIMARY KEY (user_rating_id, email, coffee_shop_name, coffee_shop_address),
+  FOREIGN KEY (user_rating_id, coffee_shop_name, coffee_shop_address) REFERENCES rated_by_user (user_rating_id, coffee_shop_name, coffee_shop_address),
+  FOREIGN KEY (email) REFERENCES public.user (email)
 );
 
+create table article (
+	article_id int generated always as identity primary key,
+	name text not null,
+	article_type text not null,
+		check(article_type in ('bean', 'coffee_drink', 'equipment', 'blend')),
+	unique (article_id, article_type) -- necessary?
+);
+	
+create table article_bean (
+	article_id int primary key references article (article_id),
+	article_type text default 'bean',
+		check (article_type = 'bean'),
+	foreign key (article_id, article_type) references article (article_id, article_type),
+	exposition text
+);
 
+create table article_coffee_drink (
+	article_id int primary key references article (article_id),
+	article_type text default 'coffee_drink',
+		check (article_type = 'coffee_drink'),
+	foreign key (article_id, article_type) references article (article_id, article_type),
+	exposition text
+);
 
+create table article_equipment (
+	article_id int primary key references article (article_id),
+	article_type text default 'equipment',
+		check (article_type = 'equipment'),
+	foreign key (article_id, article_type) references article (article_id, article_type),
+	exposition text
+);
 
+create table article_blend (
+	article_id int primary key references article (article_id),
+	article_type text default 'blend',
+		check (article_type = 'blend'),
+	foreign key (article_id, article_type) references article (article_id, article_type),
+	exposition text
+);
+
+create table operates (
+	article_id int REFERENCES article (article_id),
+	email citext REFERENCES public.user (email),
+	time timestamp DEFAULT Now(),
+	operation_type text not null default 'create',
+		check (operation_type in ('create', 'edit', 'publish', 'inactive')),
+		
+	PRIMARY KEY (article_id, email, time)
+);
+	
+	
 
 -- Dummy-data
 CREATE TABLE customer
