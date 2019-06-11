@@ -19,17 +19,17 @@ const httpOptions = {
 })
 export class ShopService {
 
-
-
+  shops : Observable<Test[]>;
+  shop  : Observable<Test>;
   constructor(private http: HttpClient) {
   }
 
   getPosts(): Observable<Test[]>{
-    return this.http.get<Test[]>(url + '/all');
+    return this.shops = this.http.get<Test[]>(url + '/all');
   }
 
   addPosts(): Observable<Test>{
-    return this.http.post<Test>(url + '/add',JSON.stringify(test), httpOptions)
+    return this.shop = this.http.post<Test>(url + '/add',JSON.stringify(test), httpOptions)
   }
 }
 

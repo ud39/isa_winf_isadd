@@ -20,10 +20,8 @@ export class ShopListComponent implements OnInit {
 
 
   ngOnInit() {
-   this.service.getPosts().subscribe(params =>
-     this.customers = params);
-   this.service.addPosts().subscribe(result => {
-     console.log(result);
+   this.service.getPosts().subscribe(result => {
+     this.customers = result;
    }, error => console.error(error));
   }
 

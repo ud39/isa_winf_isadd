@@ -25,6 +25,7 @@ export class SearchComponent implements OnInit {
   clearCheckBoxes() {
     switch (this.urlPath) {
       case '/shop':
+      console.log(this.component1.getCheckBoxesValues());
       this.component1.clear();
       break;
       case '/equipment':
@@ -35,6 +36,5 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
-
   }
 }

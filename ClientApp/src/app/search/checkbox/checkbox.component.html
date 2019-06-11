@@ -1,17 +1,24 @@
 <div class="container">
   <div>
+    <mat-form-field class="direct-shop" *ngIf="router.url != '/admin'" >
+      <input #inputShop type="text" placeholder="Shop" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
     <mat-checkbox #cb class="checkbox" id="wlan" [checked]="false">Wlan</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" [checked]="false">Vegan</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" [checked]="false">Kinderfreundlich</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" [checked]="false">Workstation</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" [checked]="false">Outdoor</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" [checked]="false">Haustierfreundlich</mat-checkbox>
+    <mat-checkbox #cb class="checkbox" id="vegan" [checked]="false">Vegan</mat-checkbox>
+    <mat-checkbox #cb class="checkbox" id="child-friendly"[checked]="false">Kinderfreundlich</mat-checkbox>
+    <mat-checkbox #cb class="checkbox" id="workstation"[checked]="false">Workstation</mat-checkbox>
+    <mat-checkbox #cb class="checkbox" id="outdoor" [checked]="false">Outdoor</mat-checkbox>
+    <mat-checkbox #cb class="checkbox" id="pet-friendly "[checked]="false">Haustierfreundlich</mat-checkbox>
+    <mat-checkbox #cb class="checkbox" id="disable-friendly" [checked]="false">Behindertengerecht</mat-checkbox>
+    <mat-checkbox #cb class="checkbox" id="latte-art" [checked]="false">Latte Art</mat-checkbox>
+    <mat-checkbox #cb class="checkbox" id="shop" [checked]="false">Rösterei</mat-checkbox>
   </div>
   <div>
-    <mat-checkbox #cb class="checkbox" [checked]="false">Behindertengerecht</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" [checked]="false">Latte Art</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" [checked]="false">im Freien</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" [checked]="false">Rösterei</mat-checkbox>
   </div>
   <div  *ngIf="router.url == '/admin'">
   <button mat-button id="clearbutton" (click)="clear()">Alles aufheben</button>

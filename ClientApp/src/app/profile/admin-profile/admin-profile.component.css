@@ -1,17 +1,11 @@
 .grid-container{
-  display: grid;
-  grid-template-columns: 60% 40%;
-  grid-template-rows: auto;
+  display: flex;
 }
 
 .dropdown{
-  grid-column: 2 / 2;
-  margin-top: 5%;
-  margin-left: 30%;
+
 }
 .action-dropdown{
-  display: inline-grid;
-  text-align: center;
 }
 
 .action-dropdown a{
@@ -65,11 +59,11 @@ div.input-content.active-input > label:nth-child(3){
 
 
 mat-form-field.name-form-field{
-  width:30%;
+
 }
 
 mat-form-field.description{
-  width:60%;
+
 }
 
 mat-form-field.name-form-field{
@@ -159,4 +153,7 @@ app-admin-profile mat-slide-toggle{
   right: 20px;
 }
 
+app-admin-profile .address{
+  display: inline-block;
+}
 

@@ -9,9 +9,26 @@
   <mat-slide-toggle>
     Veröffentlicht
   </mat-slide-toggle>
-    <mat-tab-group class="first-mat-tab-group">
-      <mat-tab id="shop-tab" label="Shop">
+    <mat-tab-group #matTabShop class="first-mat-tab-group">
+      <mat-tab  id="shop-tab" label="Shop">
         <app-checkbox class="checkbox"></app-checkbox>
+        <mat-form-field class="name-form-field address">
+          <input matInput type="text" placeholder="Straße" [(ngModel)]="street">
+          <button mat-button *ngIf="street" matSuffix mat-icon-button aria-label="Clear" (click)="street=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>        <mat-form-field class="name-form-field address">
+        <input matInput type="text" placeholder="StraßeNr" [(ngModel)]="streetNr">
+        <button mat-button *ngIf="streetNr" matSuffix mat-icon-button aria-label="Clear" (click)="streetNr=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+        <mat-form-field class="name-form-field address">
+          <input matInput type="text" placeholder="Land" [(ngModel)]="country">
+          <button mat-button *ngIf="country" matSuffix mat-icon-button aria-label="Clear" (click)="country=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
         <mat-form-field class="name-form-field">
           <input matInput type="text" placeholder="Name" [(ngModel)]="value">
           <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
@@ -40,6 +57,7 @@
         </mat-tab-group>
       </mat-tab>
       <mat-tab  id="event-tab" label="Equipment" class="first-mat-group">
+        <app-checkbox-equipment #cbEq></app-checkbox-equipment>
         <mat-form-field class="name-form-field">
           <input matInput type="text" placeholder="Name" [(ngModel)]="value">
           <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">

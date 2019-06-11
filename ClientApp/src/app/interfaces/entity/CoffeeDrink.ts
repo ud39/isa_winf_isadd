@@ -1,4 +1,4 @@
-export interface coffee_drink {
+export interface CoffeeDrink {
   name: string;
   description: string;
 }
