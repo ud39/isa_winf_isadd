@@ -30,7 +30,7 @@ namespace WinfADD.Controllers
 
         [HttpGet]
         [Route("GetById")]
-        protected async Task<ActionResult<Table>> GetByID([FromBody] Table tableObj)
+        public async Task<ActionResult<Table>> GetByID([FromBody] Table tableObj)
         {
             return await _tableRepo.GetByID(tableObj);
         }

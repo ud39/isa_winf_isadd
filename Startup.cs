@@ -29,7 +29,7 @@ namespace WinfADD
         public void ConfigureServices(IServiceCollection services)
         {
             
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
@@ -41,9 +41,9 @@ namespace WinfADD
             //set path to the ConfigurationBuilder
            // var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
            //var config = builder.Build();
-            
-            
-            services.AddCors(options =>
+
+
+           services.AddCors(options =>
             {
                 options.AddPolicy(MyAllowSpecificOrigins,
                     cors =>
@@ -61,6 +61,9 @@ namespace WinfADD
             services.AddSingleton<ITableRepository<BusStation>, BusStationRepository>();
             services.AddSingleton<ITableRepository<CoffeeShop>, CoffeeShopRepository>();
 
+
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

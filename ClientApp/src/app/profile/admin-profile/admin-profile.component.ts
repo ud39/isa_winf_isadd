@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild, ViewChildren, ViewEncapsulation} from '@an
 import {MatTabGroup} from "@angular/material";
 import {FormControl} from "@angular/forms";
 import {Observable} from "rxjs";
+import {AdminService} from "../../services/admin/admin.service";
 
 export interface Content{
   value: string;
@@ -31,13 +32,21 @@ export class AdminProfileComponent implements OnInit {
   ];
 
 
-  constructor() {
-
-  }
-
   ngOnInit() {
     this.matTabGroup.selectedIndexChange.subscribe(event => {
       this.matTabActive = event;
     });
   }
+
+  constructor(private admin_service: AdminService) { }
+
+  upload(files){
+    this.admin_service.upload(files);
+  }
+
+  show(){
+    this.admin_service.show();
+  }
+
+
 }
