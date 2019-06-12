@@ -6,7 +6,6 @@ CREATE EXTENSION IF NOT EXISTS citext WITH SCHEMA public;
 ------ TYPES -------
   
 CREATE TYPE address AS (
-  addressee text,
   street_name text,
   street_number int,
   postal_code int,
@@ -123,8 +122,8 @@ CREATE TABLE consists_of(
   bean_manufacturer_name citext,
   bean_name citext,
   PRIMARY KEY (coffee_drink_name, bean_manufacturer_name, bean_name),
-  FOREIGN KEY (coffee_drink_name) REFERENCES coffee_drink(name),
-  FOREIGN KEY (bean_manufacturer_name, bean_name) REFERENCES bean (manufacturer_name, name)
+  FOREIGN KEY (coffee_drink_name) REFERENCES coffee_drink(name) ON DELETE CASCADE,
+  FOREIGN KEY (bean_manufacturer_name, bean_name) REFERENCES bean (manufacturer_name, name) ON DELETE CASCADE
 );
 
 CREATE TABLE serves(
@@ -133,8 +132,8 @@ CREATE TABLE serves(
   coffee_shop_name citext,
   vegan boolean,
   PRIMARY KEY (coffee_drink_name, coffee_shop_address, coffee_shop_name),
-  FOREIGN KEY (coffee_drink_name) REFERENCES coffee_drink(name),
-  FOREIGN KEY (coffee_shop_address, coffee_shop_name) REFERENCES coffee_shop(address, name)
+  FOREIGN KEY (coffee_drink_name) REFERENCES coffee_drink(name) ON DELETE CASCADE,
+  FOREIGN KEY (coffee_shop_address, coffee_shop_name) REFERENCES coffee_shop(address, name) ON DELETE CASCADE
 );
 
 CREATE TABLE near_by(
@@ -143,8 +142,8 @@ CREATE TABLE near_by(
   poi_name citext,
   poi_address address ,
   PRIMARY KEY (coffee_shop_address, coffee_shop_name, poi_name, poi_address),
-  FOREIGN KEY (poi_address, poi_name) REFERENCES poi (address,name),
-  FOREIGN KEY (coffee_shop_name, coffee_shop_address) REFERENCES  coffee_shop (name, address)
+  FOREIGN KEY (poi_address, poi_name) REFERENCES poi (address,name) ON DELETE CASCADE,
+  FOREIGN KEY (coffee_shop_name, coffee_shop_address) REFERENCES  coffee_shop (name, address) ON DELETE CASCADE
 );
 
 CREATE TABLE reachable(
@@ -152,8 +151,8 @@ CREATE TABLE reachable(
   coffee_shop_address address,
   bus_station_name citext,
   PRIMARY KEY (coffee_shop_name, coffee_shop_address, bus_station_name),
-  FOREIGN KEY (coffee_shop_address, coffee_shop_name) REFERENCES coffee_shop (address, name),
-  FOREIGN KEY (bus_station_name) REFERENCES bus_station (name)
+  FOREIGN KEY (coffee_shop_address, coffee_shop_name) REFERENCES coffee_shop (address, name) ON DELETE CASCADE,
+  FOREIGN KEY (bus_station_name) REFERENCES bus_station (name) ON DELETE CASCADE
 
 );
 
@@ -162,8 +161,8 @@ CREATE TABLE owns (
   coffee_shop_address address ,
   coffee_shop_name citext ,
   PRIMARY KEY(company_name, coffee_shop_address, coffee_shop_name),
-  FOREIGN KEY(company_name) REFERENCES company (name),
-  FOREIGN KEY(coffee_shop_name, coffee_shop_address) REFERENCES coffee_shop(name, address)
+  FOREIGN KEY(company_name) REFERENCES company (name) ON DELETE CASCADE,
+  FOREIGN KEY(coffee_shop_name, coffee_shop_address) REFERENCES coffee_shop(name, address) ON DELETE CASCADE
 );
 
 CREATE TABLE supplies (
@@ -171,8 +170,8 @@ CREATE TABLE supplies (
   coffee_shop_name citext ,
   coffee_shop_address address ,
   PRIMARY KEY (equipment_category_name, coffee_shop_name, coffee_shop_address),
-  FOREIGN KEY (equipment_category_name) REFERENCES equipment_category(name),
-  FOREIGN KEY (coffee_shop_name, coffee_shop_address) REFERENCES coffee_shop (name, address)
+  FOREIGN KEY (equipment_category_name) REFERENCES equipment_category(name) ON DELETE CASCADE ,
+  FOREIGN KEY (coffee_shop_name, coffee_shop_address) REFERENCES coffee_shop (name, address) ON DELETE CASCADE
 );
 
 CREATE TABLE provides (
@@ -181,8 +180,8 @@ CREATE TABLE provides (
   coffee_shop_address address ,
   bean_manufacturer_name citext ,
   PRIMARY KEY (bean_name, coffee_shop_name, coffee_shop_address, bean_manufacturer_name),
-  FOREIGN KEY (bean_name, bean_manufacturer_name) REFERENCES bean (name, manufacturer_name),
-  FOREIGN KEY (coffee_shop_name, coffee_shop_address) REFERENCES coffee_shop (name, address)
+  FOREIGN KEY (bean_name, bean_manufacturer_name) REFERENCES bean (name, manufacturer_name) ON DELETE CASCADE,
+  FOREIGN KEY (coffee_shop_name, coffee_shop_address) REFERENCES coffee_shop (name, address) ON DELETE CASCADE
 );
 
 CREATE TABLE composed (
@@ -192,8 +191,8 @@ CREATE TABLE composed (
   bean_manufacturer_name citext ,
   proportion text ,
   PRIMARY KEY (blend_manufacturer_name, blend_name, bean_name, bean_manufacturer_name),
-  FOREIGN KEY (blend_name, blend_manufacturer_name) REFERENCES blend (name, manufacturer_name),
-  FOREIGN KEY (bean_manufacturer_name, bean_name) REFERENCES bean (manufacturer_name, name)
+  FOREIGN KEY (blend_name, blend_manufacturer_name) REFERENCES blend (name, manufacturer_name) ON DELETE CASCADE,
+  FOREIGN KEY (bean_manufacturer_name, bean_name) REFERENCES bean (manufacturer_name, name) ON DELETE CASCADE
 );
 
 CREATE TABLE offers (
@@ -202,8 +201,8 @@ CREATE TABLE offers (
   coffee_shop_name citext ,
   coffee_shop_address address ,
   PRIMARY KEY (blend_name, blend_manufacturer_name, coffee_shop_address, coffee_shop_name),
-  FOREIGN KEY (blend_manufacturer_name, blend_name) REFERENCES blend(manufacturer_name, name),
-  FOREIGN KEY (coffee_shop_name, coffee_shop_address) references coffee_shop (name, address)
+  FOREIGN KEY (blend_manufacturer_name, blend_name) REFERENCES blend(manufacturer_name, name) ON DELETE CASCADE,
+  FOREIGN KEY (coffee_shop_name, coffee_shop_address) references coffee_shop (name, address) ON DELETE CASCADE
 );
 
 CREATE TABLE organised_by(
@@ -211,16 +210,16 @@ CREATE TABLE organised_by(
   coffee_shop_address address  ,
   event_id int ,
   PRIMARY KEY (coffee_shop_name, coffee_shop_address, event_id),
-  FOREIGN KEY (coffee_shop_address, coffee_shop_name) REFERENCES coffee_shop (address, name),
-  FOREIGN KEY (event_id) REFERENCES event(event_id)
+  FOREIGN KEY (coffee_shop_address, coffee_shop_name) REFERENCES coffee_shop (address, name) ON DELETE CASCADE,
+  FOREIGN KEY (event_id) REFERENCES event(event_id) ON DELETE CASCADE
 );
 
 CREATE TABLE subcategory (
-  equipment_category_name citext primary key REFERENCES equipment_category(name)
+  equipment_category_name citext primary key REFERENCES equipment_category(name) ON DELETE CASCADE
 );
 
 CREATE TABLE coffee_drink_typ (
-  coffee_drink_name citext primary key REFERENCES coffee_drink(name) ,
+  coffee_drink_name citext primary key REFERENCES coffee_drink(name) ON DELETE CASCADE,
   type text
 );
 
@@ -230,8 +229,8 @@ CREATE TABLE belongs_to (
   equipment_name citext ,
   equipment_category_name citext ,
   PRIMARY KEY (equipment_category_name, equipment_manufacturer_name, equipment_name, equipment_year_of_origin),
-  FOREIGN KEY (equipment_category_name) REFERENCES equipment_category (name),
-  FOREIGN KEY (equipment_manufacturer_name, equipment_name, equipment_year_of_origin) REFERENCES equipment (manufacturer_name, model_name, year_of_origin)
+  FOREIGN KEY (equipment_category_name) REFERENCES equipment_category (name) ON DELETE CASCADE,
+  FOREIGN KEY (equipment_manufacturer_name, equipment_name, equipment_year_of_origin) REFERENCES equipment (manufacturer_name, model_name, year_of_origin) ON DELETE CASCADE
 );
 
 CREATE TABLE opens (
@@ -241,8 +240,8 @@ CREATE TABLE opens (
   open time ,
   weekday text ,
   PRIMARY KEY (coffee_shop_address, coffee_shop_name, close, open, weekday),
-  FOREIGN KEY (coffee_shop_name, coffee_shop_address) REFERENCES coffee_shop (name, address),
-  FOREIGN KEY (close, open, weekday) REFERENCES opening_time (close, open, weekday)
+  FOREIGN KEY (coffee_shop_name, coffee_shop_address) REFERENCES coffee_shop (name, address) ON DELETE CASCADE,
+  FOREIGN KEY (close, open, weekday) REFERENCES opening_time (close, open, weekday) ON DELETE CASCADE
 );
 
 CREATE TABLE includes (
@@ -251,8 +250,8 @@ CREATE TABLE includes (
   preparation_name citext  ,
   coffee_drink_name citext  ,
   PRIMARY KEY (coffee_shop_name, coffee_shop_address, preparation_name, coffee_drink_name),
-  FOREIGN KEY (coffee_drink_name) REFERENCES  coffee_drink (name),
-  FOREIGN KEY (coffee_shop_address, coffee_shop_name) REFERENCES coffee_shop (address, name)
+  FOREIGN KEY (coffee_drink_name) REFERENCES  coffee_drink (name) ON DELETE CASCADE,
+  FOREIGN KEY (coffee_shop_address, coffee_shop_name) REFERENCES coffee_shop (address, name) ON DELETE CASCADE
 );
 
 CREATE TABLE located (
@@ -262,8 +261,8 @@ CREATE TABLE located (
   event_id int,
   PRIMARY KEY ( location_address, coffee_shop_name, coffee_shop_address, event_id),
   FOREIGN KEY (location_address) references location (address),
-  FOREIGN KEY (coffee_shop_name, coffee_shop_address) REFERENCES coffee_shop (name, address),
-  FOREIGN KEY (event_id) REFERENCES event (event_id)
+  FOREIGN KEY (coffee_shop_name, coffee_shop_address) REFERENCES coffee_shop (name, address) ON DELETE CASCADE,
+  FOREIGN KEY (event_id) REFERENCES event (event_id) ON DELETE CASCADE
 );
 
 CREATE TABLE sells (
@@ -274,8 +273,8 @@ CREATE TABLE sells (
   coffee_shop_name citext ,
   coffee_shop_address address  ,
   PRIMARY KEY (equipment_year_of_origin, equipment_manufacturer, equipment_name, equipment_category_name, coffee_shop_name, coffee_shop_address),
-  FOREIGN KEY(equipment_manufacturer, equipment_name, equipment_year_of_origin) REFERENCES equipment (manufacturer_name, model_name, year_of_origin),
-  FOREIGN KEY (coffee_shop_name, coffee_shop_address ) REFERENCES  coffee_shop (name, address)
+  FOREIGN KEY(equipment_manufacturer, equipment_name, equipment_year_of_origin) REFERENCES equipment (manufacturer_name, model_name, year_of_origin) ON DELETE CASCADE,
+  FOREIGN KEY (coffee_shop_name, coffee_shop_address ) REFERENCES  coffee_shop (name, address) ON DELETE CASCADE
 );
 
 ------  CLUSTER  -------
@@ -302,8 +301,8 @@ CREATE TABLE rated_by_google (
   coffee_shop_name citext ,
   coffee_shop_address address ,
   PRIMARY KEY (google_rating_id, coffee_shop_name, coffee_shop_address),
-  FOREIGN KEY (coffee_shop_name, coffee_shop_address) REFERENCES coffee_shop (name, address),
-  FOREIGN KEY (google_rating_id) REFERENCES google_rating(rating_id)
+  FOREIGN KEY (coffee_shop_name, coffee_shop_address) REFERENCES coffee_shop (name, address) ON DELETE CASCADE,
+  FOREIGN KEY (google_rating_id) REFERENCES google_rating(rating_id) ON DELETE CASCADE
 );
 
 CREATE TABLE rated_by_tripadvisor (
@@ -311,8 +310,8 @@ CREATE TABLE rated_by_tripadvisor (
   coffee_shop_name citext ,
   coffee_shop_address address ,
   PRIMARY KEY (tripadvisor_rating_id, coffee_shop_name, coffee_shop_address),
-  FOREIGN KEY (coffee_shop_name, coffee_shop_address) REFERENCES coffee_shop (name, address),
-  FOREIGN KEY (tripadvisor_rating_id) REFERENCES tripadvisor_rating(rating_id)
+  FOREIGN KEY (coffee_shop_name, coffee_shop_address) REFERENCES coffee_shop (name, address) ON DELETE CASCADE,
+  FOREIGN KEY (tripadvisor_rating_id) REFERENCES tripadvisor_rating(rating_id) ON DELETE CASCADE
 );
 
 CREATE TABLE rated_by_user (
@@ -320,8 +319,8 @@ CREATE TABLE rated_by_user (
   coffee_shop_name citext ,
   coffee_shop_address address ,
   PRIMARY KEY (user_rating_id, coffee_shop_name, coffee_shop_address),
-  FOREIGN KEY (coffee_shop_name, coffee_shop_address) REFERENCES coffee_shop (name, address),
-  FOREIGN KEY (user_rating_id) REFERENCES user_rating(rating_id)
+  FOREIGN KEY (coffee_shop_name, coffee_shop_address) REFERENCES coffee_shop (name, address) ON DELETE CASCADE,
+  FOREIGN KEY (user_rating_id) REFERENCES user_rating(rating_id) ON DELETE CASCADE
 );
 
 
@@ -331,8 +330,8 @@ CREATE TABLE rates (
   coffee_shop_name citext ,
   coffee_shop_address address ,
   PRIMARY KEY (user_rating_id, email, coffee_shop_name, coffee_shop_address),
-  FOREIGN KEY (user_rating_id, coffee_shop_name, coffee_shop_address) REFERENCES rated_by_user (user_rating_id, coffee_shop_name, coffee_shop_address),
-  FOREIGN KEY (email) REFERENCES public.user (email)
+  FOREIGN KEY (user_rating_id, coffee_shop_name, coffee_shop_address) REFERENCES rated_by_user (user_rating_id, coffee_shop_name, coffee_shop_address) ON DELETE CASCADE,
+  FOREIGN KEY (email) REFERENCES public.user (email) ON DELETE CASCADE
 );
 
 create table article (
@@ -340,14 +339,14 @@ create table article (
 	name text not null,
 	article_type text not null,
 		check(article_type in ('bean', 'coffee_drink', 'equipment', 'blend')),
-	unique (article_id, article_type) -- necessary?
+	unique (article_id, article_type)
 );
 	
 create table article_bean (
 	article_id int primary key references article (article_id),
 	article_type text default 'bean',
 		check (article_type = 'bean'),
-	foreign key (article_id, article_type) references article (article_id, article_type),
+	foreign key (article_id, article_type) references article (article_id, article_type) ON DELETE CASCADE,
 	exposition text
 );
 
@@ -355,7 +354,7 @@ create table article_coffee_drink (
 	article_id int primary key references article (article_id),
 	article_type text default 'coffee_drink',
 		check (article_type = 'coffee_drink'),
-	foreign key (article_id, article_type) references article (article_id, article_type),
+	foreign key (article_id, article_type) references article (article_id, article_type) ON DELETE CASCADE,
 	exposition text
 );
 
@@ -363,7 +362,7 @@ create table article_equipment (
 	article_id int primary key references article (article_id),
 	article_type text default 'equipment',
 		check (article_type = 'equipment'),
-	foreign key (article_id, article_type) references article (article_id, article_type),
+	foreign key (article_id, article_type) references article (article_id, article_type) ON DELETE CASCADE,
 	exposition text
 );
 
@@ -371,13 +370,13 @@ create table article_blend (
 	article_id int primary key references article (article_id),
 	article_type text default 'blend',
 		check (article_type = 'blend'),
-	foreign key (article_id, article_type) references article (article_id, article_type),
+	foreign key (article_id, article_type) references article (article_id, article_type) ON DELETE CASCADE,
 	exposition text
 );
 
 create table operates (
-	article_id int REFERENCES article (article_id),
-	email citext REFERENCES public.user (email),
+	article_id int REFERENCES article (article_id) ON DELETE CASCADE,
+	email citext REFERENCES public.user (email) ON DELETE CASCADE,
 	time timestamp DEFAULT Now(),
 	operation_type text not null default 'create',
 		check (operation_type in ('create', 'edit', 'publish', 'inactive')),
@@ -386,17 +385,13 @@ create table operates (
 );
 	
 	
+------------ INSERT DATA ----------
 
--- Dummy-data
-CREATE TABLE customer
-(
-  name text,
-  email citext,
-  phone text,
-  address text,
-  id serial
-);
-INSERT INTO CUSTOMER (name, email, phone) VALUES ('Blabla', 'bla@gmail.com', '4545555');
-INSERT INTO CUSTOMER (name, email, phone) VALUES ('Alice', 'Cooper@gmail.com', '1112');
+insert into coffee_shop values ('Coffee_shop_Name3', ('Kieler Straße', 5, 24232, 'Kiel', 'Deutschland'), false, false, true, 'Textbeschreibung', false, true, 'www.nene.ne', 2019, true, false, 50, false, 'foood', 'niedrig');
+insert into coffee_shop values ('Coffee_shop_Name2', ('Kieler Straße', 5, 24232, 'Kiel', 'Deutschland'), false, false, true, 'Textbeschreibung', false, true, 'www.nene.ne', 2019, true, false, 50, false, 'foood', 'niedrig');
+insert into equipment_category values ('Kaffeemühle');
+insert into supplies values ('Kaffeemühle', 'Coffee_shop_Name3', ('Kieler Straße', 5, 24232, 'Kiel', 'Deutschland'));
 
-
+-- example for delete with defined-type address --
+insert into supplies values ('Kaffeemühle', 'Coffee_shop_Name2', ('Kieler Straße', 5, 24232, 'Kiel', 'Deutschland'));
+delete from supplies where equipment_category_name ='Kaffeemühle' AND coffee_shop_name = 'Coffee_shop_Name2' AND (coffee_shop_address).street_name = 'Kieler Straße' AND (coffee_shop_address).street_number = 5 AND (coffee_shop_address).postal_code = 24232 AND (coffee_shop_address).town = 'Kiel' AND (coffee_shop_address).country = 'Deutschland'
