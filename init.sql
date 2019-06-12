@@ -23,7 +23,8 @@ CREATE TABLE equipment(
 
 CREATE TABLE event(
   event_id int generated always as identity primary key,
-  time date,
+  start_time date,
+  end_time date,
   name text,
   access_fee int,
   description text
@@ -41,18 +42,19 @@ CREATE TABLE coffee_shop(
   website text,
   founding_year int,
   pets_friendly boolean,
-  latte_art boolean, -- todo?
+  latte_art boolean,
   seats int,
   workstation boolean,
-  food text, -- todo array?
-  price_class text,
+  food text,
+  price_class int,
   franchise text,
   PRIMARY KEY (name, address)
 );
 
 CREATE TABLE bus_station(
-  name citext primary key,
-  line int
+  name citext,
+  line int,
+  PRIMARY KEY (name, line)
 );
 
 CREATE TABLE company(
@@ -62,10 +64,10 @@ CREATE TABLE company(
 CREATE TABLE bean(
   name citext,
   manufacturer_name citext,
-  provenance text,
+  provenance citext,
   fair_trade boolean,
-  type text,
-  PRIMARY KEY (name, manufacturer_name)
+  state text,
+  PRIMARY KEY (name, provenance, manufacturer_name)
 );
 
 CREATE TABLE poi(
@@ -79,9 +81,8 @@ CREATE TABLE blend(
   name citext,
   manufacturer_name citext,
   provenance text,
-  price_range text,
+  price_class int,
   PRIMARY KEY (name, manufacturer_name)
-  
 );
 
 CREATE TABLE location(
