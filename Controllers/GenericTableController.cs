@@ -28,16 +28,16 @@ namespace WinfADD.Controllers
             return await  _tableRepo.GetAll();
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("GetById")]
-        public async Task<ActionResult<Table>> GetByID([FromBody] Table tableObj)
+        public async Task<ActionResult<Table>> GetByID([FromHeader] Table tableObj)
         {
             return await _tableRepo.GetByID(tableObj);
         }
 
 
         [Route("getByParam")]
-        [HttpGet]
+        [HttpPost]
         public async Task<IEnumerable<Table>> GetTables(JToken tableJson)
         {
 
