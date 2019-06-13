@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpEventType, HttpRequest} from "@angular/common/http";
+import {HttpClient, HttpEventType, HttpHeaders, HttpRequest} from "@angular/common/http";
+import {Observable, Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,9 @@ export class AdminService {
 
   public progress: number;
   public message: string;
-  public filename: string
+  public filename: string;
+
+
   constructor(private http: HttpClient) { }
 
   upload(files) {
@@ -29,8 +32,12 @@ export class AdminService {
     this.http.request(uploadReq).subscribe(event => {
       if (event.type === HttpEventType.UploadProgress)
         this.progress = Math.round(100 * event.loaded / event.total);
-      else if (event.type === HttpEventType.Response)
+      else if (event.type === HttpEventType.Response) {
         this.message = event.body.toString();
+        if(this.message === "Upload Successful."){
+
+        }
+      }
     });
   }
 
@@ -38,4 +45,19 @@ export class AdminService {
 
     return "./Upload/"+this.filename
   }
+
+
+  takeImage(){
+    this.http.post("https://localhost:5001/Image/SetImageType", JSON.stringify({key: "AAAAAAAAaaaaaaaAAAAAA"}), httpOptions)
+  }
+
+
+
 }
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json'
+  })
+};
+
