@@ -25,7 +25,7 @@ namespace WinfADD.Controllers
         [Route("all")]
         public async Task<ActionResult<List<Blend>>> GetAll(Blend blendObj)
         {
-            return await  _blendRepo.GetAll(new Blend());
+            return await  _blendRepo.GetAll();
         }
 
         [HttpGet]
