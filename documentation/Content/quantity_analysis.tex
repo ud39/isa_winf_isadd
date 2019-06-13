@@ -1,34 +1,57 @@
 \section{Quantity Analysis}
-ENTITY\\\\
-SHOP: 50\\ 
-USER: 300\\
-COMPANY: 30\\
-COFFEE\_DRINK: 100\\
-BLEND: 100\\
-BEANS: 50\\
-EVENT: 300\\
-BUSSTATION:60\\
-POI:15\\\\
-RELATIONSHIP\\\\
-supplies\\
-includes\\
-\\\\
-CLUSTER\\\\
-ARTICLE\\
-ARTICLE\_BEAN\\
-ARTICLE\_DRINK\\
-ARTICLE\_BLEND\\\\
-GOOGLE-RATING\\
-TRIPADVISOR-RATING\\
-USER-RATIN\\
+\paragraph{ENTITY}
+\begin{itemize}
+\item SHOP: 50
+\item USER: 300
+\item COMPANY: 30
+\item COFFEE\_DRINK: 100
+\item SHOP: 50
+\item BLEND: 100
+\item BEANS: 50
+\item EVENT: 300
+\item BUSSTATION:60
+\item POI:15
+
+\end{itemize}
 
 
 
-Frequency of usage of functionality differentiated between content-manager and regular user\\\\
-Content-Manger\\
-Create:	300 per year\\ 
-Update: 1000 per year\\
-Delete: 50 per year \\
-User\\\\
-Search: 400 per day\\
-Filter:	300 per day \\
+\paragraph{RELATIONSHIP}
+A CoffeeShop belongs to excatly \textbf{1} Company. Also it has \textbf{7} OpeningTimes for each day of the week. We assume an average amount of \textbf{3} BusStations and \textbf{2} POIs for each CoffeeShop. It severs about \textbf{30} beverages and offers \textbf{10} Beans, \textbf{20} Blends and \textbf{4} EquipmentCategories. For futur profe we provide a sells Table where Shops can offer specific Equipment models, but we do not consider it yet.\\
+A CoffeeShop can organizes several Events, we calculate with a average about \textbf{5} Events per year. We do not delete expired Events yet, this might be implemented in later work.
+ 
+
+
+\paragraph{CLUSTER}
+\begin{itemize}
+\item ARTICLE: 100
+\item ARTICLE\_BEAN: 100
+\item ARTICLE\_DRINK: 100
+\item ARTICLE\_BLEND: 100
+\end{itemize}
+
+\vspace{8px}
+
+\begin{itemize}
+\item GOOGLE-RATING:50
+\item TRIPADVISOR-RATING:50
+\item USER-RATING:400
+\end{itemize}
+
+
+
+
+\paragraph{Function Calls}
+Frequency of usage of functionality differentiated between content-manager and regular user:
+\subparagraph{Content-Manger}
+\begin{itemize}
+\item Create:	300 per year
+\item Update: 1000 per year
+\item Delete: 50 per year
+\end{itemize}
+
+\subparagraph{User}
+\begin{itemize}
+\item Search: 400 per day
+\item Filter:	300 per day
+\end{itemize}

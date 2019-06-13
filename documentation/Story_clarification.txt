@@ -1,40 +1,115 @@
 HERM Story Space+
 
-Overview
-
 Content are the following entities C := {Shop} with their following attributes.
-Article are the following entities A := {Blend, Beans, Coffee_Drink, Equipment}.   %with their following attributes without article_Id.
+Article are the following entities A := {Blend, Beans, Coffee_Drink, Equipment}.
 User    are the following entity   U := {User and their specialization}.
 
-Function
+
+
+Function:
+
+filter:: (C x filterContent) -> Boolean: x -> if Content satisfied filter flags: return true; else false; 
+filter:: (A x filterArticle) -> Boolean: x -> if Article satisfied filter flags: return true; else false; 
+    filterContent:: C->Value: {C.Attributes} = {WLAN,...} %TODO
+    filterArticle:: A->Value: {A.Attributes} ={Category, Name,...} %TODO
+reduced(filterContent)    : {quickserch(X)| X \in C.Attributes} ={..} %TODO
+
 id: (C u A) -> id: x ->  give the primary key of x 
 
-filter: (C x filterContent) -> Boolean: x -> if Content satisfied filter flags return true; else false; 
-filter: (A x filterArticle) -> Boolean: x -> if Article satisfied filter flags return true; else false; 
-    filterContent filter flags: {C.Attributes} = {WLAN,...} %TODO
-    filterArticle filter flags: {Category, Name,...} %TODO
-    
+Result-List(X): List of members of Set X
+Result(X): specific member of Set X
+
+
+
+Overview
 Scene (Content-Management)
-View (in) Input-Form(C U A)
-View (out) Execute corresponding SQL command
+View (in)   Input-Form(C || A)
+View (out)  Execute corresponding SQL command
 
-Scene (Search-Coffee_Shop)
-View (in) Input-Form(C\{User, Equipment})
-View (out) List of  {id(x)| x \in C\{User, Equipment}, filter(x)=true} 
+Scene (Search)
+View (in)   Input-Form(C)
+View (out)  Result-List(C)
 
-Scene (Search-Wiki)
-View (in) Input-Form(C\{User, Wiki})
-View (out) List of  {id(x)| x \in C\{User, Equipment}, filter(x)=true} 
-
-Scene (Search-Coffee_Shop)
-View (in) Input-Form(C\{User, Equipment})
-View (out) List of  {id(x)| x \in C\{User, Equipment}, filter(x)=true} 
-
-
-
-
+Scene (Content-Management)
+View (in)   Input-Form(C)
+View (out)  INSERT/READ/UPDATE/DELETE(C)
 
 Scene (Content)
-View (in) Content
-View (out) Render(Content)
+View (in)   Content
+
+
+
+
+ContentManagment
+Scene (Create_Content)
+View (in)   Input-Form(C || A)
+View (out)  INSERT(C || A)
+
+Scene (Release_Content)
+View (in)   Input-Form(C || A)
+View (out)  UPDATE(C || A)
+
+Scene (Edit_Content)
+View (in)   Input-Form(C || A)
+View (out)  UPDATE(C || A)
+
+Scene (Delete_Content)
+View (in)   View(C || A)
+View (out)  Delete(C || A)
+
+
+
+
+Content
+Scene (View_Content)
+View (in)   View(C || A)
+
+Scene (Rate_Shop)
+View (in)   Input-Form(C.Rating)
+View (out)  INSERT/UPDATE(C.Rating)
+
+
+
+
+Search
+Page(LandingPage)
+Scene (Quick_Search)
+View (in)   Input-Form(reduced (filterContent))
+View (out)  Result-List({x| x \in C, filter(x)=true)
+
+Page(Wiki, Coffee_Shop)
+Scene (Direct_Search)
+View (in)   Input-Form(C.Name++C.Address || A.Name)
+View (out)  Result(C) || Result(A)
+
+Page(Coffee_Shop,Wiki)
+Scene (Elaborate_Search)
+View (in)   Input-Form(filter)
+View (out)  Result-List({x| x \in C || A, filter(x)=true})
+
+Page(Coffee_Shop,Wiki)
+Scene (Sort_by_Result)
+View (in)   Result-List(C || A)
+View (out)  Result-List(sort_by(C || A))
+
+
+
+Account_Management
+Scene (Login)
+View (in)   Input-Form(U)
+
+Scene (Account)
+View (in)   Input-Form(U)
+View (out)  READ/UPDATE(U)
+
+Scene (Registration)
+View (in)   Input-Form(U)
+View (out)  INSERT(U)
+
+
+
+
+
+
+
 
