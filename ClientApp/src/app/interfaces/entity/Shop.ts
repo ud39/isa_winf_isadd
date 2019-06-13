@@ -6,15 +6,20 @@ export interface Shop extends Address {
   outDoor: boolean;
   fair_trade: string;
   disabledFriendly: boolean;
-  Description: string;
-  Wlan: boolean;
+  description: string;
+  wlan: boolean;
   childFriendly: boolean;
   website:string;
   foundingYear:number;
   petsFriendly:boolean;
   latteArt:boolean;
-  Seats:string;
-  Workstation:boolean
-  Food:string;
-  priceClass: string;
+  seats:string;
+  workstation:boolean
+  food:string;
+  priceClass: number;
+  "country": string;
+  "town": string;
+  "postal_Code": number;
+  "street_Name": string;
+  "street_Number": number;
 }

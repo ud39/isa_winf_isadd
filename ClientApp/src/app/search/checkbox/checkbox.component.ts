@@ -50,7 +50,7 @@ export class CheckboxComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.shopService.getPosts();
+    this.shopService.getShops();
     this.fillOutOptions();
     this.filteredOptions = this.myControl.valueChanges
       .pipe(

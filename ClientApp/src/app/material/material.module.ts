@@ -4,10 +4,11 @@ import {MatAutocompleteModule,MatSlideToggleModule,MatButtonModule, MatCheckboxM
 import { MatToolbarModule, MatListModule } from '@angular/material';
 import {CheckboxComponent} from "../search/checkbox/checkbox.component";
 import {ReactiveFormsModule} from "@angular/forms";
+import {CheckboxEquipmentComponent} from "../search/checkbox-equipment/checkbox-equipment.component";
 
 
 @NgModule({
-  declarations: [CheckboxComponent],
+  declarations: [CheckboxComponent, CheckboxEquipmentComponent],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -30,6 +31,7 @@ import {ReactiveFormsModule} from "@angular/forms";
   ],
   exports:[
     CheckboxComponent,
+    CheckboxEquipmentComponent,
     MatButtonModule,
     MatCheckboxModule,
     MatTabsModule,

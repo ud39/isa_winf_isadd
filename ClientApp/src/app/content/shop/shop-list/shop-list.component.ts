@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ShopService} from "../../../services/shop/shop.service";
+import {Shop} from "../../../interfaces/entity/Shop";
 
 
 @Component({
@@ -11,29 +12,17 @@ import {ShopService} from "../../../services/shop/shop.service";
 })
 export class ShopListComponent implements OnInit {
 
-  public customers : Test[];
+  public shops : Shop[];
 
   constructor(private http :HttpClient, private service: ShopService)
-
   {
   }
 
 
   ngOnInit() {
-   this.service.getPosts().subscribe(result => {
-     this.customers = result;
+   this.service.getShops().subscribe(result => {
+      this.shops = result;
+      console.log(result);
    }, error => console.error(error));
   }
-
-
-
-
 }
-
-export interface Test{
-  keystring: string,
-  id: number,
-  name: string
-  random: string,
-}
-

@@ -33,7 +33,15 @@
   width: 80%;
 }
 
-div.text{
+app-shop-list div.text{
+  color: black;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: relative;
+  width: 100%;
+  text-align: left;
+  bottom: 0;
+
 }
 
 .list-content{

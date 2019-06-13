@@ -13,7 +13,7 @@ namespace WinfADD.Models
         [Key] public int Postal_Code { get; set; }
         [Key] public string Street_Name { get; set; }
         [Key] public int Street_Number { get; set; }
-        [Key] public string Addressee { get; set; }
+       
 
 
 

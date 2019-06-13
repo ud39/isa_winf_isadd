@@ -20,11 +20,14 @@ import { SideNavComponent } from './layout/side-nav/side-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ShopListComponent } from './content/shop/shop-list/shop-list.component';
 import { ShopDetailComponent } from './content/shop/shop-detail/shop-detail.component';
-import { CheckboxEquipmentComponent } from './search/checkbox-equipment/checkbox-equipment.component';
 import { EquipmentListComponent } from './content/equipment/equipment-list/equipment-list.component';
 import { EquipmentDetailComponent } from './content/equipment/equipment-detail/equipment-detail.component';
 import { EventListComponent } from './content/event/event-list/event-list.component';
 import { EventDetailedComponent } from './content/event/event-detailed/event-detailed.component';
+import {ShopTabComponent} from "./profile/admin-profile/tabs/shop-tab/shop-tab.component";
+import { EquipmentTabComponent } from './profile/admin-profile/tabs/equipment-tab/equipment-tab.component';
+import { EventTabComponent } from './profile/admin-profile/tabs/event-tab/event-tab.component';
+import { ContentTabComponent } from './profile/admin-profile/tabs/content-tab/content-tab.component';
 ;
 
 
@@ -44,11 +47,14 @@ import { EventDetailedComponent } from './content/event/event-detailed/event-det
     SideNavComponent,
     ShopListComponent,
     ShopDetailComponent,
-    CheckboxEquipmentComponent,
     EquipmentListComponent,
     EquipmentDetailComponent,
     EventListComponent,
-    EventDetailedComponent
+    EventDetailedComponent,
+    ShopTabComponent,
+    EquipmentTabComponent,
+    EventTabComponent,
+    ContentTabComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),

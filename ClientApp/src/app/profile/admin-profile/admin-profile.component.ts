@@ -1,10 +1,12 @@
 import {Component, OnInit, ViewChild, ViewChildren, ViewEncapsulation} from '@angular/core';
-import {MatTabGroup} from "@angular/material" ;
-import {FormControl} from "@angular/forms";
+import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {Observable} from "rxjs";
 import {AdminService} from "../../services/admin/admin.service";
 import {CheckboxComponent} from "../../search/checkbox/checkbox.component";
-
+import {Blend} from "../../interfaces/entity/Blend";
+import { NgModule } from '@angular/core';
+import {CommonModule} from "@angular/common";
+import {MatTabGroup} from "@angular/material";
 export interface Content{
   value: string;
 }
@@ -14,6 +16,13 @@ export interface Content{
   styleUrls: ['./admin-profile.component.css'],
   encapsulation: ViewEncapsulation.None
 })
+
+@NgModule({
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+  ],
+})
 export class AdminProfileComponent implements OnInit {
   @ViewChild('matTabShop') matTabGroup : MatTabGroup;
   @ViewChild('shopCheckBox') shopCheckBox : CheckboxComponent;
@@ -22,8 +31,9 @@ export class AdminProfileComponent implements OnInit {
   private json: JSON;
   myControl = new FormControl();
   options: string[] = [];
+  selected = "Blend";
   filteredOptions: Observable<string[]>;
-  value = '';
+
   street = '';
   country = '';
   streetNr : number;

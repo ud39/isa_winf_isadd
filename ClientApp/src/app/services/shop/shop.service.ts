@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 import {Observable} from "rxjs";
-import {Test} from "../../content/shop/shop-list/shop-list.component";
 import {Shop} from "../../interfaces/entity/Shop";
+
+
 
 
 
@@ -20,19 +21,21 @@ const httpOptions = {
 })
 export class ShopService {
 
-  private shops : Observable<Test[]>;
-  private shop  : Observable<Test>;
+  private shops : Observable<Shop[]>;
 
   constructor(private http: HttpClient) {
   }
 
-  getPosts(): Observable<Test[]>{
-    return this.shops = this.http.get<Test[]>(url + 'test/all');
+  getShops(): Observable<Shop[]>{
+    return this.shops = this.http.get<Shop[]>('https://localhost:5001/api/coffeeshop/all', httpOptions);
   }
 
-  getShops(){
+  getShop(){
     return this.shops;
   }
+}
+
+export interface Test {
 }
 
 

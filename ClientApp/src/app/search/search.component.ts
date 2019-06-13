@@ -8,7 +8,7 @@ import {CheckboxEquipmentComponent} from "./checkbox-equipment/checkbox-equipmen
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
-  providers:[CheckboxComponent]
+  providers:[CheckboxComponent, CheckboxEquipmentComponent]
 })
 
 export class SearchComponent implements OnInit {
