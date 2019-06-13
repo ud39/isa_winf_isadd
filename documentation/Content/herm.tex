@@ -12,18 +12,20 @@
 \subsection{HERM-Translation}
 \subsubsection{Descripition}
 Higher-Order\\
-The Higher Order located was translate by taken the LOCATION primary key aswell as the primary keys from the relationship of organised\_by.\\\\
+Located was translate by taken the primary key  of LOCATION aswell as the primary keys from the relationship of organised\_by.\\
+Rated\_By was translated by\\
+Includes was translate by taken the primary key of PREPARATION aswell as the primary keys from the relationship of serves.\\
+Sells was translated by taken the primary key of EQUIPMENT aswell as the primary keys from the relationship supplies.\\\\ 
 Cluster\\ 
-The ARTICLE cluster with the connection to the following entites: EQUIPMENT, COFFEE\_DRINK, BEAN and BLEND was transform with the seperation   approach.\\
+The ARTICLE cluster with the connection to the following entites: EQUIPMENT, COFFEE\_DRINK, BEAN and BLEND was transform with full participation key approach.\\
 The RATING cluster with the connection to the following entities: GOOGLE-RATING, USER-RATING, TRIPADVISER-RATING  was transform with the surrogate full participation key approach.\\\\
 Complex data type\\
 Address is a combination of the following attributes: StreetNr, StreetName, PostCode and Place.\\
-Time is a combination of the following attributes:
 \subsubsection{Entity}
 (EQUIPMENT(Manufacturer, Year\_of\_origin, Name)\\(Manufacturer, Year\_of\_origin, Name))\\
 (EVENT(EventID, Time, Name,Access\_fee, Description)(EventID))\\
 (COFFEE-SHOP(Name, Address, Outdoor, Fair\_trade, Disabled\_friendly, Description, Wlan, Child\_friendly, Website, Fouding\_year, Pets\_friendly, Latte\_art, Seats, Workstation, Food, Price\_class, Franchise)(Name, Address))\\
-(BUS-STATION(Name, Line)(Name))\\
+(BUS-STATION(Name, Line)(Name, Line))\\
 (COMPANY(Name)(Name))\\
 (BEAN(Name, Manufacturer, Provenance,Fair\_trade, Type)\\(Name, Manufacturer))\\
 (POI(Name, Address, Description)(Name, Address))\\
@@ -45,9 +47,9 @@ Time is a combination of the following attributes:
 (CONTENT-MANAGER(Email)(Email))\\
 \subsubsection{Cluster}
 (RATING(RatingID,RATINGId)(RatingID, RATINGId))\\
-(RATINGGOOGLE-RATING(RatingID, RATINGId)(RatingID, RATINGId))\\
-(RATINGUSER-RATING(RatingID, RATINGId)(RatingID, RATINGId))\\
-(RATINGTRIPADVICER-RATING(RatingID, RATINGId)(RatingID, RATINGId))\\\\
+(GOOGLE-RATING(RatingID, RATINGId)(RatingID, RATINGId))\\
+(USER-RATING(RatingID, RATINGId)(RatingID, RATINGId))\\
+(TRIPADVICER-RATING(RatingID, RATINGId)(RatingID, RATINGId))\\\\
 (ARTICLE(ArticleID)(ArticleID))
 (ARTICLEEQUIPMENT(ArticleID, Manufacturer, Year\_of\_origin, Name, Exposition)(ArticleID))\\
 (ARTICLEBLEND(ArticleID, Name, Manufacturer, Exposition)(ArticleID))\\
@@ -90,7 +92,7 @@ serves[Name, Address]$\subseteq$COFFEE-SHOP[Name, Address]\\
 serves[Name]$\subseteq$COFFEE\_DRINK[Name]\\
 near\_by[Name, Address]$\subseteq$COFFEE-SHOP[Name, Address]\\
 near\_by[Name, Address]$\subseteq$POI[Name, Address]\\
-reachable[Name]$\subseteq$BUS-STATION[Name]\\
+reachable[Name, Line]$\subseteq$BUS-STATION[Name, Line]\\
 reachable[Name, Address]$\subseteq$COFFEE-SHOP[Name, Address]\\
 owns[Name, Address]$\subseteq$COFFEE-SHOP[Name, Address]\\
 owns[Name]$\subseteq$COMPANY[Name]\\
@@ -299,7 +301,7 @@ rates.RatingID::INTEGER
 rates.RATINGId::INTEGER
 rates.Email::VARCHAR(n)\\
 \subsection{Constraints Handling}
-Referential constraints are enforce through the database management system by adding constraint to the tables which have the corresponding references. The majority of the referential constraints are the foreign keys in the relationships.\\
-Exclude contstraints are enforce  by using triggers to ensure that insert are only possible if there is no overlap when inserting the data.\\
+Referential constraints are enforce through the database management system by adding constraint to the tables which have the corresponding references. The majority of the referential constraints are foreign keys.\\
+Exclude constraints are enforce  by using triggers to ensure that insert are only possible if there is no overlap when inserting the data.\\
 
 \newpage

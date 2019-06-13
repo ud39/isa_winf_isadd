@@ -16,23 +16,33 @@ export class SearchComponent implements OnInit {
   @ViewChild("cbeq") component2: CheckboxEquipmentComponent;
 
   @Input() urlPath: string;
-
+  private jsonOfSearch: JSON;
 
   constructor() {
 
   }
 
+  getJsonOfSearch(): JSON{
+    switch(this.urlPath){
+      case '/shop':
+      this.jsonOfSearch = this.component1.getjsonOfSearchWithSelect();
+      break;
+      case '/equipment':
+      this.jsonOfSearch = this.component2.getJsonOfSearch();
+      break;
+    }
+    console.log(this.jsonOfSearch);
+    return  this.jsonOfSearch
+  }
+
   clearCheckBoxes() {
     switch (this.urlPath) {
       case '/shop':
-      console.log(this.component1.getCheckBoxesValues());
       this.component1.clear();
       break;
       case '/equipment':
       this.component2.clear();
     }
-
-
   }
 
   ngOnInit() {

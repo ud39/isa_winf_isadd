@@ -1,35 +1,37 @@
 <div class="container">
   <button mat-button [matMenuTriggerFor]="menu" id="selected_menu" color="warn">Auswählen</button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>Editieren</button>
-    <button mat-menu-item>Speichern</button>
-    <button mat-menu-item>Löschen</button>
-    <button mat-menu-item>Wiederherstellen</button>
+    <button mat-menu-item (click)="getJSONofShop()">Hinzufügen</button>
+    <button mat-menu-item (click)="editContent()">Editieren</button>
+    <button mat-menu-item (click)="saveContent()">Speichern</button>
+    <button mat-menu-item (click)="deleteContent()">Löschen</button>
+    <button mat-menu-item (click)="restoreContent()">Wiederherstellen</button>
   </mat-menu>
   <mat-slide-toggle>
     Veröffentlicht
   </mat-slide-toggle>
     <mat-tab-group #matTabShop class="first-mat-tab-group">
       <mat-tab  id="shop-tab" label="Shop">
-        <app-checkbox class="checkbox"></app-checkbox>
-        <mat-form-field class="name-form-field address">
+        <app-checkbox #shopCheckBox class="checkbox"></app-checkbox>
+        <mat-form-field class="shop-form-field address">
           <input matInput type="text" placeholder="Straße" [(ngModel)]="street">
           <button mat-button *ngIf="street" matSuffix mat-icon-button aria-label="Clear" (click)="street=''">
             <mat-icon>close</mat-icon>
           </button>
-        </mat-form-field>        <mat-form-field class="name-form-field address">
+        </mat-form-field>
+        <mat-form-field class="shop-form-field address">
         <input matInput type="text" placeholder="StraßeNr" [(ngModel)]="streetNr">
         <button mat-button *ngIf="streetNr" matSuffix mat-icon-button aria-label="Clear" (click)="streetNr=''">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
-        <mat-form-field class="name-form-field address">
+        <mat-form-field class="shop-form-field address">
           <input matInput type="text" placeholder="Land" [(ngModel)]="country">
           <button mat-button *ngIf="country" matSuffix mat-icon-button aria-label="Clear" (click)="country=''">
             <mat-icon>close</mat-icon>
           </button>
         </mat-form-field>
-        <mat-form-field class="name-form-field">
+        <mat-form-field class="description">
           <input matInput type="text" placeholder="Name" [(ngModel)]="value">
           <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
             <mat-icon>close</mat-icon>
@@ -80,11 +82,11 @@
             <a>Shop Bild Laden</a>
             <input #file type="file" multiple (change)="upload(file.files)" />
             <br/>
-            <span style="font-weight:bold;color:green;" *ngIf="progress > 0 && progress < 100">
-               {{progress}}%
+            <span style="font-weight:bold;color:green;" *ngIf="admin_service.progress> 0 && admin_service.progress< 100">
+               {{admin_service.progress}}%
             </span>
-            <span style="font-weight:bold;color:green;" *ngIf="message">
-              {{message}}
+            <span style="font-weight:bold;color:green;" *ngIf="admin_service.message">
+              {{admin_service.message}}
             </span>
             <br/>
             <img src="./Upload/png.png" height="100px" weight="100px"/>
@@ -97,11 +99,11 @@
             <a>Shop Bild Laden</a>
             <input #file type="file" multiple (change)="upload(file.files)" />
             <br/>
-            <span style="font-weight:bold;color:green;" *ngIf="progress > 0 && progress < 100">
-               {{progress}}%
+            <span style="font-weight:bold;color:green;" *ngIf="admin_service.progress> 0 && admin_service.progress < 100">
+               {{admin_service.progress}}%
             </span>
-            <span style="font-weight:bold;color:green;" *ngIf="message">
-              {{message}}
+            <span style="font-weight:bold;color:green;" *ngIf="admin_service.message">
+              {{admin_service.progress}}
             </span>
             <br/>
             <img src="./Upload/png.png" height="100px" weight="100px"/>

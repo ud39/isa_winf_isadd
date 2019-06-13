@@ -3,13 +3,14 @@ div.container{
   alignment: center;
   max-width: 75%;
   margin-top: 10px;
+  padding: 0 0 0 10px;
 }
 
 div.grid{
   background-color: gray;
   display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr;
 }
 
 .btn.search,
@@ -22,12 +23,13 @@ div.grid{
   border: 0;
   box-shadow: none;
   border-radius: 0;
+  width: 100px;
 }
 
 app-checkbox,
 app-checkbox-equipment{
   grid-row: 1 / span 3;
-  grid-column: 2 / 4 span;
+  grid-column: 2 / 5 span;
 }
 
 

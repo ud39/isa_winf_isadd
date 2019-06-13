@@ -7,8 +7,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './layout/nav-menu/nav-menu.component';
 import { HomeComponent } from './common/home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { RegistrationComponent } from './common/registration/registration.component';
 import { ArticleComponent } from './content/article/article.component';
@@ -35,8 +33,6 @@ import { EventDetailedComponent } from './content/event/event-detailed/event-det
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
     FooterComponent,
     RegistrationComponent,
     ArticleComponent,
@@ -62,8 +58,6 @@ import { EventDetailedComponent } from './content/event/event-detailed/event-det
     BrowserAnimationsModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent, pathMatch: 'full'},
-      {path: 'counter', component: CounterComponent},
-      {path: 'fetch-data', component: FetchDataComponent},
       {path: 'registration', component: RegistrationComponent},
       {path: 'shop', component: ShopListComponent},
       {path: 'shop/:id', component: ShopDetailComponent},

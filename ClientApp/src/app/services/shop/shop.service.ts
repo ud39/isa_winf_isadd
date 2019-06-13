@@ -3,10 +3,11 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 import {Observable} from "rxjs";
 import {Test} from "../../content/shop/shop-list/shop-list.component";
+import {Shop} from "../../interfaces/entity/Shop";
 
 
 
-const url="https://localhost:5001/api/test"
+const url="https://localhost:5001/api/";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -19,23 +20,20 @@ const httpOptions = {
 })
 export class ShopService {
 
-  shops : Observable<Test[]>;
-  shop  : Observable<Test>;
+  private shops : Observable<Test[]>;
+  private shop  : Observable<Test>;
+
   constructor(private http: HttpClient) {
   }
 
   getPosts(): Observable<Test[]>{
-    return this.shops = this.http.get<Test[]>(url + '/all');
+    return this.shops = this.http.get<Test[]>(url + 'test/all');
   }
 
-  addPosts(): Observable<Test>{
-    return this.shop = this.http.post<Test>(url + '/add',JSON.stringify(test), httpOptions)
+  getShops(){
+    return this.shops;
   }
 }
 
-let test: Test = {
-  keystring: "s",
-  id: 2,
-  name: 'Miku',
-  random: 'stuff'
-};
+
+

@@ -1,8 +1,9 @@
 import {Component, OnInit, ViewChild, ViewChildren, ViewEncapsulation} from '@angular/core';
-import {MatTabGroup} from "@angular/material";
+import {MatTabGroup} from "@angular/material" ;
 import {FormControl} from "@angular/forms";
 import {Observable} from "rxjs";
 import {AdminService} from "../../services/admin/admin.service";
+import {CheckboxComponent} from "../../search/checkbox/checkbox.component";
 
 export interface Content{
   value: string;
@@ -15,8 +16,10 @@ export interface Content{
 })
 export class AdminProfileComponent implements OnInit {
   @ViewChild('matTabShop') matTabGroup : MatTabGroup;
+  @ViewChild('shopCheckBox') shopCheckBox : CheckboxComponent;
   public matTabActive : number = 0;
 
+  private json: JSON;
   myControl = new FormControl();
   options: string[] = [];
   filteredOptions: Observable<string[]>;
@@ -37,6 +40,32 @@ export class AdminProfileComponent implements OnInit {
       this.matTabActive = event;
     });
   }
+
+  getJSONofShop(){
+    console.log(this.shopCheckBox.getjsonOfSearchWithSelect());
+    console.log(2);
+  }
+
+  editContent(){
+
+  }
+
+  addContent(){
+
+  }
+
+  deleteContent(){
+
+  }
+
+  saveContent(){
+
+  }
+
+  restoreContent(){
+
+  }
+
 
   constructor(private admin_service: AdminService) { }
 

@@ -1,0 +1,11 @@
+div.container{
+  display: flex;
+}
+
+div.presentaion{
+  flex: 1;
+}
+
+div.pics{
+  flex: 1;
+}
