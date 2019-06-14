@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContentTabComponent implements OnInit {
 
+  value="";
   constructor() { }
 
   ngOnInit() {

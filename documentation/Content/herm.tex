@@ -17,8 +17,8 @@ Rated\_By was translated by\\
 Includes was translate by taken the primary key of PREPARATION aswell as the primary keys from the relationship of serves.\\
 Sells was translated by taken the primary key of EQUIPMENT aswell as the primary keys from the relationship supplies.\\\\ 
 Cluster are transform with the full key approach, because the entities have no common keys in their entities. \\ 
-The ARTICLE cluster with the connection to the following entites: EQUIPMENT, COFFEE\_DRINK, BEAN and BLEND was transform with full participation key approach.\\
-The RATING cluster with the connection to the following entities: GOOGLE-RATING, USER-RATING, TRIPADVISER-RATING  was transform with the surrogate full participation key approach.\\\\
+The ARTICLE cluster with the connection to the following entites: EQUIPMENT, COFFEE\_DRINK, BEAN and BLEND.\\
+The RATING cluster with the connection to the following entities: GOOGLE-RATING, USER-RATING, TRIPADVISER-RATING.\\\\
 \subsubsection{Entity}
 (EQUIPMENT(Manufacturer, Year\_of\_origin, Name)\\(Manufacturer, Year\_of\_origin, Name))\\
 (EVENT(EventID, Time, Name,Access\_fee, Description)(EventID))\\
@@ -141,9 +141,9 @@ ARTICLEEQUIPMENT[ArticleID] || ARTICLEBLEND[ArticleID] || ARTICLEBEAN[ArticleID]
 ARTICLECOFFEE\_DRINK[ArticleID]\\
 \subsubsection{Data Types}
 Citext is a data type of postgres that behave like the text data type when it is not used for comparison.\\
-If a attribute is used for comparison it will lower case all chars in the data.\\
+If a attribute is used for comparison it will lower case all chars in the data.
 We use it for faster and easer comparison.\\
-Address is a combination of the following attributes: StreetNr, StreetName, Postal Code and Place.\\\\
+We have one complex data type is address which is a combination of the following attributes: StreetNr, StreetName, Postal Code and Place.\\\\
 
 EQUIPMENT.Manufacturer::citext\\
 EQUIPMENT.Year\_of\_origin::VARCHAR(n)\\
