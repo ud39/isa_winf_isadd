@@ -1,11 +1,22 @@
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using System.Reflection;
+using System.Reflection.Metadata.Ecma335;
+using System.Threading.Tasks;
+using Dapper;
 using Microsoft.Extensions.Configuration;
+using Npgsql;
 using WinfADD.Models;
 
 namespace WinfADD.Repositories
 {
     public class CoffeeShopRepository : GenericBaseRepository<CoffeeShop>
     {
+        private IDbConnection Connection => new NpgsqlConnection(_config["ConnectionStrings:DefaultConnection"]);
+
+        
         public CoffeeShopRepository(IConfiguration _config) : base(_config)
         {
             this._config = _config;
@@ -18,7 +29,6 @@ namespace WinfADD.Repositories
             keys.Add("postal_code");
             keys.Add("street_name");
             keys.Add("street_number");
-            keys.Add("addressee");
 
             //TODO write tableName
             tableName = "coffee_shop";
@@ -31,7 +41,7 @@ namespace WinfADD.Repositories
             {
                 //compute keyCompare, CSKeys, AtCSKeys
                 if(keyCompare.Length >0){
-                    keyCompare += " AND " + keyString + "=@" + keyString;
+                    keyCompare += " AND " + "(coffee_shop_address)." + keyString + "=@" + keyString;
                 }
 
                 else
@@ -45,13 +55,29 @@ namespace WinfADD.Repositories
 
 
             //GetAll sql query
-            GetAllString = "SELECT * FROM"+ " " + tableName;
+             PropertyInfo[] possibleProperties = typeof(CoffeeShop).GetProperties();
+             var temp = "";
 
+                    foreach (var addressProperty in  typeof(Address).GetProperties())
+                    {
+                        temp += ", " + "(address)." + addressProperty.Name.ToLower();
+                    }    
+                
+
+            
+
+            
+            
+            GetAllString = "select name " + temp + " from " + tableName;
+           // GetAllString =
+           //     "SELECT name, (address).street_name, (address).street_number, (address).postal_code, (address).town, (address).country";
+            
+                
 
             //Update sql query: UpdateString = "UPDATE table SET property1=@property1, property2=@property2... WHERE key1=@key1, key2=@key2...";
             UpdateString = "UPDATE " + tableName + " SET ";
-            PropertyInfo[] possibleProperties = typeof(Blend).GetProperties();
-            var temp = "";
+            //PropertyInfo[] possibleProperties = typeof(Blend).GetProperties();
+             temp = "";
             foreach (PropertyInfo property in possibleProperties)
             {
                 var propertyName = property.Name.ToLower();
@@ -66,5 +92,39 @@ namespace WinfADD.Repositories
             //Delete sql query
             DeleteString = "DELETE FROM" +" " + tableName + " WHERE " + keyCompare;
         }
+        
+            public async Task<CoffeeShop> GetById(string keyString)
+                {
+        
+                    Console.WriteLine("------------------");
+                    Console.WriteLine(keyString);
+                    
+                    using (IDbConnection conn = Connection)
+                    {
+                       // string sQuery = "SELECT ID, Name, Random FROM Dummies public.Dummies WHERE ID = @ID";
+                       var result = await conn.QueryAsync<CoffeeShop>("SELECT * FROM test WHERE keyString = @KeyString", new { KeyString = keyString });
+                        return result.FirstOrDefault();
+                    }
+                }
+
+            
+            public override async Task<List<CoffeeShop>> GetAll(CoffeeShop obj)
+            {
+                using (IDbConnection conn = Connection)
+                {
+                    var result = await conn.QueryAsync<CoffeeShop,Address,CoffeeShop>(GetAllString,
+                        map: (c, a) =>
+                        {
+                            c.Address = a;
+                            return c;
+                        },
+                        splitOn: "country");
+                    
+            // var result = await conn.QueryAsync<CoffeeShop>(GetAllString);
+                    return result.ToList();
+                }
+            }
+        
+        
     }
 }
