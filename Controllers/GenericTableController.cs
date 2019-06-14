@@ -23,9 +23,9 @@ namespace WinfADD.Controllers
 
         [HttpGet]
         [Route("all")]
-        public async Task<ActionResult<List<Table>>> GetAll(Table tableObj)
+        public async Task<ActionResult<List<Table>>> GetAll()
         {
-            return await  _tableRepo.GetAll(tableObj);
+            return await  _tableRepo.GetAll();
         }
 
         [HttpGet]

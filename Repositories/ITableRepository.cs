@@ -6,7 +6,7 @@ namespace WinfADD.Repositories
 {
     public interface ITableRepository<Table>
     {
-        Task<List<Table>> GetAll(Table tableObj);
+        Task<List<Table>> GetAll();
 
         Task<Table> GetByID(Table tableObj);
 
