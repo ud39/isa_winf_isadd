@@ -108,7 +108,7 @@ namespace WinfADD.Repositories
                 }
 
             
-            public override async Task<List<CoffeeShop>> GetAll(CoffeeShop obj)
+            public override async Task<List<CoffeeShop>> GetAll()
             {
                 using (IDbConnection conn = Connection)
                 {
