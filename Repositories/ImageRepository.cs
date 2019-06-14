@@ -12,10 +12,10 @@ namespace WinfADD.Repositories
 
             //TODO add all key names here //TODO in extended class
             // keys.Add("KeyString");
-            keys.Add("Bus_Station_Name");
+            keys.Add("file_name");
 
             //TODO write tableName
-            tableName = "bus_station";
+            tableName = "file_name";
 
 
             //helper strings

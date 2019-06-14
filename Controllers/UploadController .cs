@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Npgsql;
 using WinfADD.Models;
 using System.Web;
+using Microsoft.Net.Http.Headers;
 
 namespace WinfADD.Controllers
 {
@@ -50,14 +51,29 @@ namespace WinfADD.Controllers
                 Console.WriteLine(webRootPath);
                 string newPath = Path.Combine(webRootPath, folderName);
                 var fileName = "";
+                var imageType = "";
                 if (!Directory.Exists(newPath))
                 {
                     Directory.CreateDirectory(newPath);
                 }
                 if (file.Length > 0)
                 {
-                    fileName = Path.GetRandomFileName() + ".png";
-                    //ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.ToString().Trim('"');
+
+
+                    //check for valid image typ
+                    imageType = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.ToString()
+                        .Trim('"');
+                    imageType = imageType.Substring(imageType.Length - 3);
+
+                    if (!(imageType.ToLower().Equals("png"))
+                        && !(imageType.ToLower().Equals("jpg"))
+                        && !(imageType.ToLower().Equals("jpeg"))
+                        && !(imageType.ToLower().Equals("gif"))) return null;
+
+                    fileName = Path.GetRandomFileName() + "." +imageType;
+
+
+
                     string fullPath = Path.Combine(newPath, fileName);
                     using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
@@ -91,7 +107,7 @@ namespace WinfADD.Controllers
 
             var path = Path.Combine("/Upload/", file_name);
 
-            return base.File(path, "image/png");
+            return base.File(path, "image/" + file_name.Substring(file_name.Length-3));
         }
 
 
