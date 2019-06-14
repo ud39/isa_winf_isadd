@@ -66,13 +66,15 @@
       <input
         style="display: none"
         type="file" (change)="onFileChanged($event)"
-        #fileInput>
-      <button (click)="fileInput.click()">Select File</button>
+        accept="image/gif, image/jpeg, image/png"
+         #fileInput>
+      <button (click)="fileInput.click()">Gallery Bild</button>
       <button (click)="onUpload('gallerie')">Upload!</button>
 
 
 
-         </mat-tab>
+    </mat-tab>
+
          <mat-tab label="Preview">
            <input
              style="display: none"

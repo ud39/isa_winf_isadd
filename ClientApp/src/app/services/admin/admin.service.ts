@@ -29,7 +29,7 @@ export class AdminService {
 
     console.log("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj"+this.filename);
 
-    const uploadReq = new HttpRequest('POST', `api/upload`, formData, {
+    const uploadReq = new HttpRequest('POST', `https://localhost:5001/api/upload`, formData, {
       reportProgress: true,
     });
 
@@ -65,7 +65,7 @@ export class AdminService {
     uploadData.append('fromWhere', fromWhere);
     uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
 
-    this.http.post('api/upload', uploadData, {
+    this.http.post('https://localhost:5001/api/upload', uploadData, {
       reportProgress: true,
       observe: 'events'
     })
