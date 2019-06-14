@@ -13,12 +13,15 @@ namespace WinfADD.Repositories
             //TODO add all key names here //TODO in extended class
             // keys.Add("KeyString");
             keys.Add("name");
+
+            /*
             keys.Add("country");
             keys.Add("town");
             keys.Add("postal_code");
             keys.Add("street_name");
             keys.Add("street_number");
             keys.Add("addressee");
+            */
 
             //TODO write tableName
             tableName = "coffee_shop";

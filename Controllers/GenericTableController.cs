@@ -28,27 +28,23 @@ namespace WinfADD.Controllers
             return await  _tableRepo.GetAll();
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("GetById")]
-        public async Task<ActionResult<Table>> GetByID([FromHeader] Table tableObj)
-        {
-            return await _tableRepo.GetByID(tableObj);
+       public async Task<ActionResult<Table>> GetByID([FromQuery] Table tableObj)
+       {
+
+
+           return await _tableRepo.GetByID(tableObj);
+
         }
 
 
         [Route("getByParam")]
-        [HttpPost]
-        public async Task<IEnumerable<Table>> GetTables(JToken tableJson)
+        [HttpGet]
+        public async Task<IEnumerable<Table>> GetTables([FromQuery] IDictionary<string,string> tableDictionary, [FromQuery] Table tableObj)
         {
 
-            //create tableObj like: [FromBody] Table tableObj
-            var tableObj = tableJson.ToObject<Table>();
-
-            //create a List of all search properties
-            var hashtableJson = tableJson.ToObject<Dictionary<string, string>>();
-
-            var tables = await _tableRepo.GetTables(tableObj, hashtableJson);
-
+            var tables = await _tableRepo.GetTables(tableObj, tableDictionary);
             return tables;
         }
 

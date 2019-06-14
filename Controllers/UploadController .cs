@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json.Linq;
 using WinfADD.Models;
@@ -22,10 +23,12 @@ namespace WinfADD.Controllers
 
 
         private IHostingEnvironment _hostingEnvironment;
+        protected  IConfiguration _config;
 
-        public UploadController(IHostingEnvironment hostingEnvironment)
+        public UploadController(IHostingEnvironment hostingEnvironment, IConfiguration config)
         {
             _hostingEnvironment = hostingEnvironment;
+            _config = config;
         }
 
 
@@ -36,8 +39,12 @@ namespace WinfADD.Controllers
 
             try
             {
+
+                var fromWhere = Request.Form["fromWhere"];
+
+
                 var file = Request.Form.Files[0];
-                string folderName = "Upload";
+                string folderName = "Upload/"+fromWhere;
                 string webRootPath = _hostingEnvironment.WebRootPath;
                 Console.WriteLine(webRootPath);
                 string newPath = Path.Combine(webRootPath, folderName);
@@ -57,30 +64,16 @@ namespace WinfADD.Controllers
                 }
 
                 //TODO add to Image Table
+
+
+
                 return Json("Upload Successful: fileName");
             }
             catch (System.Exception ex)
             {
+                Console.WriteLine("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
                 return Json("Upload Failed: " + ex.Message);
             }
-        }
-
-
-        [HttpPost ("SetImageType")]
-        public bool AddImage(JToken JsonObj)
-        {
-
-            Console.WriteLine("---------------------------------------- \n " + JsonObj.First);
-            //create a List of all search properties
-            var hashtableJson = JsonObj.ToObject<Dictionary<string, string>>();
-
-            // _imageRepository.InsertTable()
-            //var tables = await _tableRepo.GetTables(tableObj, hashtableJson);
-
-
-
-
-            return false;
         }
     }
 }

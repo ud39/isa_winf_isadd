@@ -43,8 +43,8 @@ export class ShopTabComponent implements OnInit {
     this.admin_service.onFileChanged(event)
   }
 
-  onUpload(stringName) {
-    this.admin_service.onUpload(stringName);
+  onUpload(fromWhere) {
+    this.admin_service.onUpload(fromWhere);
   }
 
 

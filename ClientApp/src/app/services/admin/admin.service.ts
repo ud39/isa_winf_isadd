@@ -58,11 +58,13 @@ export class AdminService {
   }
 
 
-  onUpload(stringName) {
-    console.log(":::::::::::::::"+stringName);
+  onUpload(fromWhere) {
+    console.log(":::::::::::::::"+fromWhere);
     // this.http is the injected HttpClient
     const uploadData = new FormData();
+    uploadData.append('fromWhere', fromWhere);
     uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
+
     this.http.post('api/upload', uploadData, {
       reportProgress: true,
       observe: 'events'

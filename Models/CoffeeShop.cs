@@ -8,11 +8,11 @@ namespace WinfADD.Models
         //primary keys
         [Key] public string Name { get; set; }
         //address: (country, town, postal_code, street_number, street_name, addressee)
-        [Key] public string Country { get; set; }
-        [Key] public string Town { get; set; }
-        [Key] public int Postal_Code { get; set; }
-        [Key] public string Street_Name { get; set; }
-        [Key] public int Street_Number { get; set; }
+        //[Key] public string Country { get; set; }
+        //[Key] public string Town { get; set; }
+       // [Key] public int Postal_Code { get; set; }
+       // [Key] public string Street_Name { get; set; }
+       // [Key] public int Street_Number { get; set; }
        
 
 
