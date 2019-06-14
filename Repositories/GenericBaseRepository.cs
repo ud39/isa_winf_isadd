@@ -128,7 +128,7 @@ namespace WinfADD.Repositories
             //remove first AND
             whereClause = whereClause.Substring(4);
 
-            using (IDbConnection dbConnection = Connection)
+            using (IDbConnection conn = Connection)
             {
                 Console.WriteLine("\n GetByParam::" + sqlQuery + whereClause);
                 if (possibleProperties.Length == 0)
@@ -136,7 +136,7 @@ namespace WinfADD.Repositories
                     return await GetAll();
                 }
 
-                return await dbConnection.QueryAsync<Table>(sqlQuery+whereClause,tableObj);
+                return await conn.QueryAsync<Table>(sqlQuery+whereClause,tableObj);
             }
         }
 
