@@ -22,19 +22,17 @@ namespace WinfADD.Controllers
 
 
         private IHostingEnvironment _hostingEnvironment;
-        private ImageRepository _imageRepository;
 
-        public UploadController(IHostingEnvironment hostingEnvironment, ImageRepository imageRepo)
+        public UploadController(IHostingEnvironment hostingEnvironment)
         {
             _hostingEnvironment = hostingEnvironment;
-            _imageRepository = imageRepo;
         }
 
 
 
         [HttpPost, DisableRequestSizeLimit]
         public ActionResult UploadFile()
-        {
+        { Console.WriteLine("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC");
 
             try
             {
@@ -49,14 +47,17 @@ namespace WinfADD.Controllers
                 }
                 if (file.Length > 0)
                 {
-                    string fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.ToString().Trim('"');
+                    string fileName = Path.GetRandomFileName() + ".png";
+                    //ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.ToString().Trim('"');
                     string fullPath = Path.Combine(newPath, fileName);
                     using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
                         file.CopyTo(stream);
                     }
                 }
-                return Json("Upload Successful.");
+
+                //TODO add to Image Table
+                return Json("Upload Successful: fileName");
             }
             catch (System.Exception ex)
             {
