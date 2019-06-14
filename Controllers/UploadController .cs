@@ -65,10 +65,11 @@ namespace WinfADD.Controllers
         }
 
 
-        [HttpPost ("type")]
+        [HttpPost ("SetImageType")]
         public bool AddImage(JToken JsonObj)
         {
 
+            Console.WriteLine("---------------------------------------- \n " + JsonObj.First);
             //create a List of all search properties
             var hashtableJson = JsonObj.ToObject<Dictionary<string, string>>();
 
