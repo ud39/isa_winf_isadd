@@ -14,6 +14,12 @@ app-checkbox .mat-select-panel{
   padding: 0;
 }
 
-app-checkbox .direct-shop{
+app-checkbox .direct-shop:nth-child(1){
   width: fit-content;
+  margin-right: 10px;
+}
+
+app-checkbox .direct-shop:nth-child(2){
+  width: fit-content;
+  margin-right: 10px;
 }

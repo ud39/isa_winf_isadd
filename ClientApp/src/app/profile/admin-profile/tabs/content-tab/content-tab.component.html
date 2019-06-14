@@ -1,0 +1,13 @@
+<mat-form-field class="name-form-field">
+  <input matInput type="text" placeholder="Name" [(ngModel)]="value">
+  <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+<mat-form-field class="description">
+  <mat-label>Beschreibung</mat-label>
+  <textarea matInput
+            cdkTextareaAutosize
+            cdkAutosizeMinRows="2"
+  ></textarea>
+</mat-form-field>

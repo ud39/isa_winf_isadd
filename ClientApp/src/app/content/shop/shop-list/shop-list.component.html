@@ -1,14 +1,17 @@
 <div class="container">
   <ul id="shop-list">
-  <li *ngFor="let customer of customers">
-    <div class="list-content"><img src="https://dummyimage.com/100x100/fff/000" class="preview-img">
+  <li *ngFor="let shop of shops">
+    <div class="list-content">
+    <a [routerLink]="['/shop', shop.name + shop.description]" [routerLinkActive]='["link-active"]'>
+      <img src="https://dummyimage.com/100x100/fff/000" class="preview-img">
+    </a>
       <div class="preview-content">
-      <h6 class="shop_name">{{customer.id}}
+      <h6 class="shop_name" [routerLink]="['/shop', shop.name + shop.description]">{{shop.name}}
         <hr class="shop_name_underline">
       </h6>
-        <div class="text">
-          {{customer.name}}
-        </div>
+      <div class="text">
+          {{shop.description}}
+      </div>
       </div>
     </div>
   </li>

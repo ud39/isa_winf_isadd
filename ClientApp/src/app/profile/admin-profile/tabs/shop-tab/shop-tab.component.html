@@ -1,0 +1,88 @@
+ <app-checkbox #shopCheckBox class="checkbox"></app-checkbox>
+  <mat-form-field class="shop-form-field address">
+    <input matInput type="text" placeholder="Straße" [(ngModel)]="street">
+    <button mat-button *ngIf="street" matSuffix mat-icon-button aria-label="Clear" (click)="street=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-form-field class="shop-form-field address">
+    <input matInput type="text" placeholder="StraßeNr" [(ngModel)]="streetNr">
+    <button mat-button *ngIf="streetNr" matSuffix mat-icon-button aria-label="Clear" (click)="streetNr=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-form-field class="shop-form-field address">
+    <input matInput type="text" placeholder="Land" [(ngModel)]="country">
+    <button mat-button *ngIf="country" matSuffix mat-icon-button aria-label="Clear" (click)="country=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-form-field class="description">
+    <input matInput type="text" placeholder="Name" [(ngModel)]="value">
+    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-form-field class="description">
+    <mat-label>Beschreibung</mat-label>
+    <textarea matInput
+              cdkTextareaAutosize
+              cdkAutosizeMinRows="2"
+    ></textarea>
+  </mat-form-field>
+  <mat-form-field class="description">
+    <mat-label>Kurz Beschreibung</mat-label>
+    <textarea matInput
+              cdkTextareaAutosize
+              cdkAutosizeMinRows="2"
+              cdkAutosizeMaxRows="4"
+    ></textarea>
+  </mat-form-field>
+  <mat-tab-group id="second-mat-tab-group">
+    <mat-tab label="Front-Bild">
+
+
+
+
+           <a>Shop Bild Laden</a>
+      <input
+        style="display: none"
+        type="file" (change)="onFileChanged($event)"
+        #fileInput>
+      <button (click)="fileInput.click()">Select File</button>
+      <button (click)="onUpload('shop')">Upload!</button>
+
+
+      <img src="./Upload/png.png" height="100px" weight="100px"/>
+
+
+
+    </mat-tab>
+    <mat-tab label="Gallerie">
+
+
+
+      <a>Gallerie Laden</a>
+      <input
+        style="display: none"
+        type="file" (change)="onFileChanged($event)"
+        #fileInput>
+      <button (click)="fileInput.click()">Select File</button>
+      <button (click)="onUpload('gallerie')">Upload!</button>
+
+
+
+         </mat-tab>
+         <mat-tab label="Preview">
+           <input
+             style="display: none"
+             type="file" (change)="onFileChanged($event)"
+             #fileInput>
+           <button (click)="fileInput.click()">Select File</button>
+           <button (click)="onUpload('preview')">Upload!</button>
+
+
+
+
+         </mat-tab>
+       </mat-tab-group>

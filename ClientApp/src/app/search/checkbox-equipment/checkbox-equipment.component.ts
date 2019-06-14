@@ -17,12 +17,13 @@ export class CheckboxEquipmentComponent implements OnInit {
 
   constructor(private router:Router, private checkBoxService: CheckBoxesService) { }
   myControl = new FormControl();
-  getCheckBoxes() : JSON{
-    return this.checkBoxService.getCheckBoxesValues(this.cbs.toArray());
+
+  getJsonOfSearch(): JSON{
+    return this.checkBoxService.getjsonOfSearch(this.myControl,this.cbs.toArray());
   }
 
   clear() {
-    this.checkBoxService.unselectCheckBoxes(this.cbs,this.myControl);
+    this.checkBoxService.unselectCheckBoxes(this.cbs);
   }
 
   ngOnInit() {

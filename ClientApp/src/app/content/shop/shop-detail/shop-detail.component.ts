@@ -2,6 +2,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ShopService} from "../../../services/shop/shop.service";
 import {Location} from '@angular/common';
+import {Shop} from "../../../interfaces/entity/Shop";
 
 
 
@@ -14,7 +15,7 @@ import {Location} from '@angular/common';
 })
 export class ShopDetailComponent implements OnInit {
 
-  public post$: Post;
+  public shop$: Shop;
   selectedId: string;
   public slideIndex = 1;
   plusSlides(n) {
@@ -53,16 +54,9 @@ export class ShopDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.selectedId = params.get('id');
+      this.selectedId = params.get('name');
     });
 
   }
 }
 
-export interface Post {
-  id: number;
-  userId: number;
-  title: string;
-  body: string;
-
-}

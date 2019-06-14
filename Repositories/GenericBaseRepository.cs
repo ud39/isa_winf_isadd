@@ -133,7 +133,7 @@ namespace WinfADD.Repositories
                 Console.WriteLine("\n GetByParam::" + sqlQuery + whereClause);
                 if (possibleProperties.Length == 0)
                 {
-                    return await GetAll(tableObj);
+                    return await GetAll();
                 }
 
                 return await dbConnection.QueryAsync<Table>(sqlQuery+whereClause,tableObj);
@@ -141,11 +141,11 @@ namespace WinfADD.Repositories
         }
 
 
-        public  async Task<List<Table>> GetAll(Table tableObject)
+        public  async Task<List<Table>> GetAll()
         {Console.WriteLine("\n GetAll::" + GetAllString);
             using (IDbConnection conn = Connection)
             {
-                var result = await conn.QueryAsync<Table>(GetAllString, tableObject);
+                var result = await conn.QueryAsync<Table>(GetAllString);
                 return result.ToList();
             }
         }

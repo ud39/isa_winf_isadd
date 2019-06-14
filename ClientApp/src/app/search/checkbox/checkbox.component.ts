@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {ViewEncapsulation} from "@angular/core";
 import {Router} from '@angular/router';
-import {MatCheckbox, MatInput} from "@angular/material";
+import {MatCheckbox, MatInput, MatSelect} from "@angular/material";
 import {CheckBoxesService} from "../../services/checkboxes.service";
 import {FormControl} from "@angular/forms";
 import {Observable} from "rxjs";
@@ -20,6 +20,7 @@ export class CheckboxComponent implements OnInit {
 
   @ViewChildren('cb') cbs : QueryList<MatCheckbox>;
   @ViewChild('inputShop') inputShop: MatInput;
+  @ViewChildren('select') select : QueryList<MatSelect>;
 
   states: string = '';
   showOrHide: boolean = false;
@@ -33,31 +34,23 @@ export class CheckboxComponent implements OnInit {
   filteredOptions: Observable<string[]>;
 
   fillOutOptions(){
-    this.shopService.shops.subscribe(shop =>{
+    this.shopService.getShops().subscribe(shop =>{
       shop.forEach( value => {
         this.options.push(value.name)
       })
     })
   }
 
-  getCheckBoxes(){
-    return this.cbs.toArray();
-  }
-
-  getCheckBoxesValues(){
-    return this.checkBoxService.getCheckBoxesValues(this.cbs.toArray());
-  }
-
-  getInputValues(){
-    return this.checkBoxService.getInputValue(this.myControl);
+  getjsonOfSearchWithSelect(): JSON{
+    return this.checkBoxService.getjsonOfSearchWithSelect(this.myControl,this.cbs.toArray(), this.select.toArray());
   }
 
   clear(){
-    this.checkBoxService.unselectCheckBoxes(this.cbs, this.myControl);
+    this.checkBoxService.clear(this.cbs,this.myControl, this.select.toArray());
   }
 
   ngOnInit() {
-    this.shopService.getPosts();
+    this.shopService.getShops();
     this.fillOutOptions();
     this.filteredOptions = this.myControl.valueChanges
       .pipe(

@@ -21,6 +21,7 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
         <PackageReference Include="Npgsql" Version="4.0.7" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.2.0" />
+        <PackageReference Include="System.Linq" Version="4.3.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -56,6 +57,8 @@
       <Folder Include="ClientApp\src\app\interfaces\cluster\rating" />
       <Folder Include="ClientApp\src\app\layout" />
       <Folder Include="ClientApp\src\app\profile" />
+      <Folder Include="ClientApp\src\app\profile\admin-profile\tabs" />
+      <Folder Include="ClientApp\src\app\services\admin" />
       <Folder Include="ClientApp\src\app\services\interactive-element" />
       <Folder Include="ClientApp\src\assets\Images" />
       <Folder Include="documentation\Content\BPMN" />

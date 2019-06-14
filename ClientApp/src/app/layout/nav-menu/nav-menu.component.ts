@@ -8,7 +8,7 @@ import {Component, HostListener} from '@angular/core';
 })
 export class NavMenuComponent {
 
-
+  brand = "./Upload/kaffeesatt.png";
   isExpanded = false;
   public currentWindowWidth: number = window.innerWidth;
 
@@ -19,6 +19,7 @@ export class NavMenuComponent {
 
   collapse() {
     this.isExpanded = false;
+
   }
 
   toggle() {

@@ -3,7 +3,16 @@ a.navbar-brand {
   left:0;
   top: 0;
   position: absolute;
+  outline: none;
 }
+
+img#brand{
+  width: 100px;
+  height: 100px;
+  top: 0;
+  left: 10px;
+}
+
 
 html {
   font-size: 14px;
@@ -18,11 +27,8 @@ li.nav-item{
 }
 
 button.nav-item.link-active{
-  background:black;
-}
-
-button.nav-item.link-active{
   color: white;
+  background:black;
 }
 
 

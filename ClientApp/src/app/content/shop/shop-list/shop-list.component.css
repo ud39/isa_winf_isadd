@@ -1,3 +1,7 @@
+app-shop-list button.nav-item.link-active{
+  color: white;
+  background:black;
+}
 #shop-list{
   list-style: none;
 }
@@ -17,6 +21,7 @@
   display: inline-block;
   clear: both;
   height: fit-content;
+  cursor: pointer;
 }
 
 .shop_name_underline{
@@ -33,7 +38,15 @@
   width: 80%;
 }
 
-div.text{
+app-shop-list div.text{
+  color: black;
+  font-size: 15px;
+  padding: 5px 0 0 5px;
+  position: relative;
+  width: 100%;
+  text-align: left;
+  bottom: 0;
+
 }
 
 .list-content{

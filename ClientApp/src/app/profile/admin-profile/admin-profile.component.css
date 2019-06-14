@@ -112,7 +112,10 @@ app-admin-profile mat-tab-group#second-mat-tab-group .mat-tab-header{
 }
 
 app-admin-profile .mat-tab-body-content {
-  overflow: visible;
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
 }
 
 /* Styles for tab labels */
@@ -155,5 +158,11 @@ app-admin-profile mat-slide-toggle{
 
 app-admin-profile .address{
   display: inline-block;
+  width: 20%;
+  margin-right: 20px;
+}
+
+app-admin-profile .description{
+  display: block;
 }
 
