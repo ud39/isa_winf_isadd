@@ -1,6 +1,5 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Mvc;
 
 namespace WinfADD.Models
 {
@@ -9,24 +8,25 @@ namespace WinfADD.Models
 
         public CoffeeShop()
         {
-            Address = new Address();
+            Events = new Event[] {};
         }
-
-
+        
         //primary keys
         [Key] public string Name { get; set; }
         //address: (country, town, postal_code, street_number, street_name, addressee)
-        
+  
+
 
         //ints
         public int Founding_Year { get; set; }
-
+        public int Seats { get; set; }
+        
         //strings
         public string Website { get; set; }
-        public int Seats { get; set; }
         public string Food { get; set; }  //warm,cold
-        public string Price_Class { get; set; } //could be a int
-
+        public string Price_Class { get; set; }
+        public string image_file_name { get; set; }
+        public string Franchise { get; set; }
 
         //boolean flags
         public bool Wlan { get; set; }
@@ -38,8 +38,7 @@ namespace WinfADD.Models
         public bool Pets_Friendly { get; set; }
         public bool Outdoor { get; set; }
 
-        public string Franchise { get; set; }
-
+        
         //TODO EcoSeal + Image/Thumbnail
         //public bool EcoSeal { get; set; }
 
@@ -51,8 +50,6 @@ namespace WinfADD.Models
         //public string Thumbnail { get; set; }
         //public string[] Images { get; set; }
 
-        public Address Address { get; set; }
-
 
         //complex
         //TODO
@@ -60,7 +57,9 @@ namespace WinfADD.Models
         //<weedkday, opentime, closetime>
         //holidays?
 
-
+        public Address Address { get; set; }
+        
+        public Event[] Events { get; set; }
 
     }
 }

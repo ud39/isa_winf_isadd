@@ -44,19 +44,16 @@
 
 
 
-      <a>Shop Bild Laden</a>
-      <input #file type="file" multiple (change)="upload(file.files)" />
-      <br/>
-      <!-- <span style="font-weight:bold;color:green;" *ngIf="progress > 0 && progress < 100">
-          {{progress}}%
-       </span>
-       <span style="font-weight:bold;color:green;" *ngIf="message">
-         {{message}}
-       </span> -->
-      <br/>
-      <img src="./Upload/" height="100px" weight="100px"/>
-      <img [src]="show()" height="100px" weight="100px"/>
+           <a>Shop Bild Laden</a>
+      <input
+        style="display: none"
+        type="file" (change)="onFileChanged($event)"
+        #fileInput>
+      <button (click)="fileInput.click()">Select File</button>
+      <button (click)="onUpload('shop')">Upload!</button>
 
+
+      <img src="./Upload/png.png" height="100px" weight="100px"/>
 
 
 
@@ -65,36 +62,29 @@
 
 
 
-      <a>Shop Bild Laden</a>
-      <input #file type="file" multiple (change)="upload(file.files)" />
-      <br/>
-      <span style="font-weight:bold;color:green;" *ngIf="admin_service.progress> 0 && admin_service.progress< 100">
-               {{admin_service.progress}}%
-            </span>
-      <span style="font-weight:bold;color:green;" *ngIf="admin_service.message">
-              {{admin_service.message}}
-            </span>
-      <br/>
-      <img src="./Upload/png.png" height="100px" weight="100px"/>
+      <a>Gallerie Laden</a>
+      <input
+        style="display: none"
+        type="file" (change)="onFileChanged($event)"
+        accept="image/png, image/jpeg"
+         #fileInput>
+      <button (click)="fileInput.click()">Gallery Bild</button>
+      <button (click)="onUpload('gallerie')">Upload!</button>
 
 
 
     </mat-tab>
-    <mat-tab label="Preview">
 
-      <a>Shop Bild Laden</a>
-      <input #file type="file" multiple (change)="upload(file.files)" />
-      <br/>
-      <span style="font-weight:bold;color:green;" *ngIf="admin_service.progress> 0 && admin_service.progress < 100">
-               {{admin_service.progress}}%
-            </span>
-      <span style="font-weight:bold;color:green;" *ngIf="admin_service.message">
-              {{admin_service.progress}}
-            </span>
-      <br/>
-      <img src="./Upload/png.png" height="100px" weight="100px"/>
+         <mat-tab label="Preview">
+           <input
+             style="display: none"
+             type="file" (change)="onFileChanged($event)"
+             #fileInput>
+           <button (click)="fileInput.click()">Select File</button>
+           <button (click)="onUpload('preview')">Upload!</button>
 
 
 
-    </mat-tab>
-  </mat-tab-group>
+
+         </mat-tab>
+       </mat-tab-group>

@@ -5,9 +5,7 @@ namespace WinfADD.Models
     public class Image
     {
         //primary keys
-        [Key] public int ImageID { get; set; }
+        [Key] public string File_Name { get; set; }
 
-        public string Name { get; set; }
-        public int FilePath { get; set; }
     }
 }

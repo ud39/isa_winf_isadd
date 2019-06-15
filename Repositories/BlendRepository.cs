@@ -13,8 +13,8 @@ namespace WinfADD.Repositories
 
             //TODO add all key names here //TODO in extended class
             // keys.Add("KeyString");
-            keys.Add("blendname");
-            keys.Add("manufacturer");
+            keys.Add("name");
+            keys.Add("manufacturer_name");
 
             //TODO write tableName
             tableName = "blend";

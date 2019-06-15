@@ -31,7 +31,7 @@ export class ShopService {
   }
 
   getShop(){
-    return this.shops;
+    return this.http.get<Shop>("https://localhost:5001/api/coffeeshop/getByID")
   }
 }
 

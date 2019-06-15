@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {Content} from "../../admin-profile.component";
 import {AdminService} from "../../../../services/admin/admin.service";
 
+
 @Component({
   selector: 'app-shop-tab',
   templateUrl: './shop-tab.component.html',
@@ -33,11 +34,25 @@ export class ShopTabComponent implements OnInit {
   ngOnInit() {
   }
 
+
   upload(files){
     this.admin_service.upload(files);
   }
 
-  show(){
-    this.admin_service.show();
+  onFileChanged(event) {
+    this.admin_service.onFileChanged(event)
   }
+
+  onUpload(fromWhere) {
+    this.admin_service.onUpload(fromWhere);
+  }
+
+
+
+
+
+
+
+
+
 }

@@ -83,9 +83,8 @@ export class AdminProfileComponent implements OnInit {
     this.admin_service.upload(files);
   }
 
-  show(){
-    this.admin_service.show();
-  }
+
+
 
 
 }

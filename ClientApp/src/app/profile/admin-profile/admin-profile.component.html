@@ -15,21 +15,13 @@
       <app-shop-tab></app-shop-tab>
       </mat-tab>
       <mat-tab  id="event-tab" label="Equipment" class="first-mat-group">
+      <app-equipment-tab></app-equipment-tab>
       </mat-tab>
-      <mat-tab  id="article-tab" label="Article" class="first-mat-group">
-        <mat-form-field class="name-form-field">
-          <input matInput type="text" placeholder="Name" [(ngModel)]="value">
-          <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-            <mat-icon>close</mat-icon>
-          </button>
-        </mat-form-field>
-        <mat-form-field class="description">
-          <mat-label>Beschreibung</mat-label>
-          <textarea matInput
-                    cdkTextareaAutosize
-                    cdkAutosizeMinRows="2"
-          ></textarea>
-        </mat-form-field>
+      <mat-tab  id="article-tab" label="Event" class="first-mat-group">
+      <app-event-tab></app-event-tab>
+      </mat-tab>
+      <mat-tab id="content-tab" label="Content" class="first-mat-group">
+      <app-content-tab></app-content-tab>
       </mat-tab>
     </mat-tab-group>
 </div>
