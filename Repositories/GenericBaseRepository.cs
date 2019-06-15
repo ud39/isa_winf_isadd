@@ -141,7 +141,7 @@ namespace WinfADD.Repositories
         }
 
 
-        public  async Task<List<Table>> GetAll()
+        public virtual async Task<List<Table>> GetAll()
         {Console.WriteLine("\n GetAll::" + GetAllString);
             using (IDbConnection conn = Connection)
             {
@@ -240,9 +240,7 @@ namespace WinfADD.Repositories
 
                     return rowsAffected > 0;
                 }
-
         }
-
 
         /*
          * DELETE
@@ -255,12 +253,6 @@ namespace WinfADD.Repositories
                 return (rowsAffected > 0);
             }
         }
-
-
-
-
-
-
 
     }
 }
