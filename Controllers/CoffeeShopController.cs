@@ -23,5 +23,12 @@ namespace WinfADD.Controllers
         {
             return await  _coffeeShopRepo.GetAll();
         }
+
+        [HttpGet]
+        [Route("GetById")]
+        public override async Task<ActionResult<CoffeeShop>> GetById([FromQuery] CoffeeShop tableObj)
+        {
+            return await _coffeeShopRepo.GetByID(tableObj);
+        }
     }
 }

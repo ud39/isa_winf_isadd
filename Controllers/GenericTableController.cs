@@ -22,8 +22,11 @@ namespace WinfADD.Controllers
 
         [HttpGet]
         [Route("GetById")]
-        public async Task<ActionResult<Table>> GetById([FromQuery] Table tableObj)
+        public virtual async Task<ActionResult<Table>> GetById([FromQuery] Table tableObj)
         {
+            
+            Console.WriteLine("-----");
+            Console.WriteLine("tableObjName: " + tableObj);
             return await _tableRepo.GetByID(tableObj);
         }
 

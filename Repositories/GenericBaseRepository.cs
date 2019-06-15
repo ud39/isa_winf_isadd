@@ -37,7 +37,6 @@ namespace WinfADD.Repositories
            //TODO write tableName
            //tableName = tableName;
 
-
            /*
           //helper strings
            var keyCompare = "";        //key=@key for all key in keys
@@ -101,7 +100,7 @@ namespace WinfADD.Repositories
 
         private IDbConnection Connection => new NpgsqlConnection(_config["ConnectionStrings:DefaultConnection"]);
 
-        public async Task<Table> GetByID(Table tableObject)
+        public virtual async Task<Table> GetByID(Table tableObject)
         {
                 using (IDbConnection conn = Connection)
                 {Console.WriteLine("\n GetByID::" + GetByIdString);

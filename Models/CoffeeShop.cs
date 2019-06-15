@@ -8,7 +8,7 @@ namespace WinfADD.Models
 
         public CoffeeShop()
         {
-            Events = new Event[] {};
+        //    Events = new Event[] {};
         }
         
         //primary keys
@@ -25,7 +25,7 @@ namespace WinfADD.Models
         public string Website { get; set; }
         public string Food { get; set; }  //warm,cold
         public string Price_Class { get; set; }
-        public string image_file_name { get; set; }
+       // public string image_file_name { get; set; }
         public string Franchise { get; set; }
 
         //boolean flags
@@ -59,7 +59,7 @@ namespace WinfADD.Models
 
         public Address Address { get; set; }
         
-        public Event[] Events { get; set; }
+       // public Event[] Events { get; set; }
 
     }
 }

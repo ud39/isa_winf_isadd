@@ -32,6 +32,9 @@ namespace WinfADD.Repositories
         {
             this._config = _config;
 
+            NpgsqlConnection.GlobalTypeMapper.MapComposite<Address>("address");
+
+
             //TODO add all key names here //TODO in extended class
             // keys.Add("KeyString");
             keys.Add("name");
@@ -63,8 +66,8 @@ namespace WinfADD.Repositories
             }
 
             //build GetByID sql query
-            GetByIdString = "SELECT * FROM" +" " + tableName + " WHERE "+ keyCompare;
-
+           // GetByIdString = "SELECT name FROM " + tableName + " WHERE "+ keyCompare;
+           
 
             //GetAll sql query
          //   GetAllString = "SELECT * FROM"+ " " + tableName;
@@ -100,7 +103,7 @@ namespace WinfADD.Repositories
                 }
             }
 
-            GetAllString = "SELECT " + temp + " FROM " + tableName;
+            GetAllString = "SELECT *" + " FROM " + tableName;
             
             Console.WriteLine("----------");
             Console.WriteLine(GetAllString);
@@ -129,6 +132,29 @@ namespace WinfADD.Repositories
                 */    
             var result = await conn.QueryAsync<CoffeeShop>(GetAllString);
                 return result.ToList();
+            }
+        }
+
+        public override async Task<CoffeeShop> GetByID(CoffeeShop coffeeShop)
+
+        {
+
+            var a = coffeeShop.Address;
+         /*   GetByIdString = @"select * from coffee_shop c where equal(c.name, c.address, " + coffeeShop.Name + ", (" +
+                            a.street_name + ", " +
+                            a.street_number + ", " + a.postal_code + ", " + a.town + ", " + a.country + "))";
+           */                
+            GetByIdString = @"select * from coffee_shop c where equal(c.name, c.address, " + coffeeShop.Name+ ", " + "(" + coffeeShop.Address.ToString() + "))";
+
+           // GetByIdString = @"SELECT * FROM coffee_shop c WHERE equal(c.name, c.address, :c2name ::citext, :c2address)"; //, new {@c2 = coffeeShop};
+         //  GetByIdString = @"SELECT * FROM coffee_shop c WHERE equal(c.name, c.address, @c2name::citext, @c2address)";
+           Console.WriteLine("IDSTRING: " + GetByIdString);
+
+
+            using (var conn = Connection)
+            {
+                var result = await conn.QueryAsync<CoffeeShop>(GetByIdString);
+                return result.FirstOrDefault();
             }
         }
         
