@@ -61,15 +61,19 @@ namespace WinfADD.Repositories
                     foreach (var addressProperty in  typeof(Address).GetProperties())
                     {
                         temp += ", " + "(address)." + addressProperty.Name.ToLower();
-                    }    
-                
+                    }
 
-            
 
-            
-            
-            GetAllString = "select name " + temp + " from " + tableName;
-           // GetAllString =
+
+
+
+
+                    GetAllString = "select name, (address).country, (address).town, (address).street_number, (address).street_name, i.image_file_name " +
+                    "from coffee_shop a, coffee_shop_image i " +
+                    "where equal(a.name, a.address, i.coffee_shop_name, i.coffee_shop_address)";
+           
+                    
+                    // GetAllString =
            //     "SELECT name, (address).street_name, (address).street_number, (address).postal_code, (address).town, (address).country";
             
                 
@@ -112,15 +116,15 @@ namespace WinfADD.Repositories
             {
                 using (IDbConnection conn = Connection)
                 {
-                    var result = await conn.QueryAsync<CoffeeShop,Address,CoffeeShop>(GetAllString,
+              /*      var result = await conn.QueryAsync<CoffeeShop,Address,CoffeeShop>(GetAllString,
                         map: (c, a) =>
                         {
                             c.Address = a;
                             return c;
                         },
                         splitOn: "country");
-                    
-            // var result = await conn.QueryAsync<CoffeeShop>(GetAllString);
+                    */
+             var result = await conn.QueryAsync<CoffeeShop>(GetAllString);
                     return result.ToList();
                 }
             }

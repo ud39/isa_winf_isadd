@@ -13,6 +13,17 @@ CREATE TYPE address AS (
   country text
   );
 
+
+------- FUNCTIONS ---------
+
+CREATE or REPLACE FUNCTION equal(a1 citext, a address, b1 citext, b address) RETURNS boolean AS $$
+BEGIN
+  RETURN a.country = b. country and a.town = b.town and  a.postal_code = b.postal_code
+    and a.street_name = b.street_name and a.street_number = b.street_number
+    and a1 = b1;
+END; $$
+  LANGUAGE PLPGSQL;
+
 ------ ENTITIES ------
 CREATE TABLE equipment(
                         model_name citext,
@@ -114,6 +125,11 @@ CREATE TABLE opening_time(
 CREATE TABLE public.user (
   email citext primary key
 );
+
+create table image (
+  file_name text primary key
+);
+
 
 
 ------ RELATIONSHIPS ------
@@ -277,6 +293,15 @@ CREATE TABLE sells (
                      FOREIGN KEY(equipment_manufacturer, equipment_name, equipment_year_of_origin) REFERENCES equipment (manufacturer_name, model_name, year_of_origin) ON DELETE CASCADE,
                      FOREIGN KEY (coffee_shop_name, coffee_shop_address ) REFERENCES  coffee_shop (name, address) ON DELETE CASCADE
 );
+
+create table coffee_shop_image (
+                                 image_file_name text,
+                                 coffee_shop_name citext,
+                                 coffee_shop_address address,
+                                 Primary Key(image_file_name, coffee_shop_name, coffee_shop_address),
+                                 Foreign Key(image_file_name) references image (file_name),
+                                 Foreign Key(coffee_shop_name, coffee_shop_address) references coffee_shop(name, address));
+
 
 ------  CLUSTER  -------
 

@@ -24,7 +24,8 @@ namespace WinfADD.Models
         public string Website { get; set; }
         public string Food { get; set; }  //warm,cold
         public string Price_Class { get; set; }
-
+        public string image_file_name { get; set; }
+        public string Franchise { get; set; }
 
         //boolean flags
         public bool Wlan { get; set; }
@@ -36,8 +37,7 @@ namespace WinfADD.Models
         public bool Pets_Friendly { get; set; }
         public bool Outdoor { get; set; }
 
-        public string Franchise { get; set; }
-
+        
         //TODO EcoSeal + Image/Thumbnail
         //public bool EcoSeal { get; set; }
 
