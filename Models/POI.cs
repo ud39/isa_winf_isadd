@@ -13,7 +13,7 @@ namespace WinfADD.Models
         [Key] public int Number { get; set; }
 
         //
-        public string Discription { get; set; }
+        public string Description { get; set; }
         public string Thumbnail { get; set; }
     }
 }

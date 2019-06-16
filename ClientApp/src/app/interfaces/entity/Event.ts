@@ -1,6 +1,6 @@
 export interface Event {
-  eventID: number;
-  name; string;
+  event_Id: number;
+  timw; string;
   access_fee: number;
   description: string;
 }

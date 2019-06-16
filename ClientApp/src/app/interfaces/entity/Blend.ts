@@ -1,7 +1,8 @@
 export interface Blend {
   name: string;
-  provider: string;
+  manufacturer: string;
   description: string;
   provenance: string;
-  price_range: any;
+  priceRangeLower: number;
+  priceRangeUpper: number;
 }
