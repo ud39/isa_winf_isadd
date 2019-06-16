@@ -37,7 +37,6 @@ namespace WinfADD.Repositories
            //TODO write tableName
            //tableName = tableName;
 
-
            /*
           //helper strings
            var keyCompare = "";        //key=@key for all key in keys
@@ -101,7 +100,7 @@ namespace WinfADD.Repositories
 
         private IDbConnection Connection => new NpgsqlConnection(_config["ConnectionStrings:DefaultConnection"]);
 
-        public async Task<Table> GetByID(Table tableObject)
+        public virtual async Task<Table> GetByID(Table tableObject)
         {
                 using (IDbConnection conn = Connection)
                 {Console.WriteLine("\n GetByID::" + GetByIdString);
@@ -128,7 +127,7 @@ namespace WinfADD.Repositories
             //remove first AND
             whereClause = whereClause.Substring(4);
 
-            using (IDbConnection conn = Connection)
+            using (IDbConnection dbConnection = Connection)
             {
                 Console.WriteLine("\n GetByParam::" + sqlQuery + whereClause);
                 if (possibleProperties.Length == 0)
@@ -136,12 +135,12 @@ namespace WinfADD.Repositories
                     return await GetAll();
                 }
 
-                return await conn.QueryAsync<Table>(sqlQuery+whereClause,tableObj);
+                return await dbConnection.QueryAsync<Table>(sqlQuery+whereClause,tableObj);
             }
         }
 
 
-        public  virtual async Task<List<Table>> GetAll()
+        public virtual async Task<List<Table>> GetAll()
         {Console.WriteLine("\n GetAll::" + GetAllString);
             using (IDbConnection conn = Connection)
             {
@@ -240,9 +239,7 @@ namespace WinfADD.Repositories
 
                     return rowsAffected > 0;
                 }
-
         }
-
 
         /*
          * DELETE
@@ -255,12 +252,6 @@ namespace WinfADD.Repositories
                 return (rowsAffected > 0);
             }
         }
-
-
-
-
-
-
 
     }
 }

@@ -79,7 +79,7 @@ namespace WinfADD.Repository
                 if (property.GetValue(customerSearch) != null)
                 {
                     properties.Add(property.Name,property.GetValue(customerSearch));
-                    Console.WriteLine("NAME:" + property.Name + " , VALUE:" +property.GetValue(customerSearch));
+                    Console.WriteLine("NAME:" + property.Name + " , VALUE:" + property.GetValue(customerSearch));
                     builder.Where(property.Name + " = " + "@" + property.Name, properties);
                 }
                 
