@@ -1,5 +1,5 @@
 <div *ngIf="shop$">
-<h1 id="shop_name">{{shop$.name}}
+<h1 id="shop_name">{{shop$.wlan}}
   <hr id="shop_name_underline">
 </h1>
 <div class="grid-container">
@@ -14,9 +14,7 @@
     <mat-grid-tile id="location">
       <h6>Adresse:</h6>
       <ul>
-        <li>Stuff</li>
-        <li>Stuff</li>
-        <li>Stuff</li>
+
       </ul>
     </mat-grid-tile>
     <mat-grid-tile id="price">
@@ -32,7 +30,12 @@
       </ul>
     </mat-grid-tile>
     <mat-grid-tile>
-      <div id="symbols">item</div>
+      <div id="symbols">
+      <div *ngIf="getBoolean(shop$.latteArt) == true">A</div>
+      <div *ngIf="getBoolean(shop$.fair_trade)">B</div>
+      <div *ngIf="getBoolean(shop$.childFriendly) == true">C</div>
+      <div *ngIf="getBoolean(shop$.disabledFriendly)">D</div>
+      </div>
     </mat-grid-tile>
     <mat-grid-tile>
       <div id="link_to_shop">item</div>

@@ -1,4 +1,5 @@
 import {Component, HostListener} from '@angular/core';
+import {ImageService} from "../../services/image/image.service";
 
 
 @Component({
@@ -6,12 +7,15 @@ import {Component, HostListener} from '@angular/core';
   templateUrl: './nav-menu.component.html',
   styleUrls: ['./nav-menu.component.css']
 })
+
+
+
 export class NavMenuComponent {
 
-  brand = "./Upload/kaffeesatt.png";
+  private brand: any;
   isExpanded = false;
   public currentWindowWidth: number = window.innerWidth;
-
+  constructor(private imageService: ImageService){}
   @HostListener('window:resize')
   onResize() {
     this.currentWindowWidth = window.innerWidth
@@ -37,6 +41,13 @@ export class NavMenuComponent {
     this.displayDropDown = !this.displayDropDown;
     }
   }
+
+  ngOnInit(){
+    this.imageService.getBrandImage().subscribe(value => {
+      this.imageService.setBrandImage(value).then(data => this.brand = data );
+    })
+  }
+
 }
 
 

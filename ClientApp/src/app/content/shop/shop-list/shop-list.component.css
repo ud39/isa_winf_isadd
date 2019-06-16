@@ -2,8 +2,14 @@ app-shop-list button.nav-item.link-active{
   color: white;
   background:black;
 }
+
+app-shop-list .address{
+  display: inline-block;
+  margin-left: 30px;
+}
 #shop-list{
   list-style: none;
+  padding: 0;
 }
 
 #shop-list li{

@@ -1,6 +1,6 @@
 <header>
   <app-side-nav *ngIf="currentWindowWidth < 500"></app-side-nav>
-  <a class="navbar-brand" [routerLink]="['/']"><img [src]="brand" id="brand"></a>
+  <div *ngIf="brand"><a class="navbar-brand" [routerLink]="['/']"><img [src]=brand id="brand"></a></div>
   <nav class='navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3' *ngIf="currentWindowWidth > 500">
     <div class="container">
       <button mat-button [matMenuTriggerFor]="belowMenu" class="nav-item" [routerLinkActive]='["link-active"]' [routerLink]="['/shop']">

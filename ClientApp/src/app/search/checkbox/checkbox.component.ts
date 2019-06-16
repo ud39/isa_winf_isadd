@@ -22,16 +22,16 @@ export class CheckboxComponent implements OnInit {
   @ViewChild('inputShop') inputShop: MatInput;
   @ViewChildren('select') select : QueryList<MatSelect>;
 
-  states: string = '';
-  showOrHide: boolean = false;
+  private states: string = '';
+  private showOrHide: boolean = false;
 
   constructor(private router: Router, private checkBoxService: CheckBoxesService, private shopService: ShopService) {
 
   }
 
-  myControl = new FormControl();
-  options: string[] = [];
-  filteredOptions: Observable<string[]>;
+  private myControl = new FormControl();
+  private options: string[] = [];
+  private filteredOptions: Observable<string[]>;
 
   fillOutOptions(){
     this.shopService.getShops().subscribe(shop =>{

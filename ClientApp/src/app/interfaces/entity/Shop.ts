@@ -6,7 +6,7 @@ export interface Shop extends Address {
   outDoor: boolean;
   fair_trade: string;
   disabledFriendly: boolean;
-  description: string;
+  Description: string;
   wlan: boolean;
   childFriendly: boolean;
   website:string;
@@ -17,9 +17,9 @@ export interface Shop extends Address {
   workstation:boolean
   food:string;
   priceClass: number;
-  "country": string;
-  "town": string;
-  "postal_Code": number;
-  "street_Name": string;
-  "street_Number": number;
+  country: string;
+  town: string;
+  postal_Code: number;
+  street_Name: string;
+  street_Number: number;
 }

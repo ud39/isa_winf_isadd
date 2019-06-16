@@ -45,6 +45,9 @@ export class ShopDetailComponent implements OnInit {
     dots[this.slideIndex-1].className += " active";
   }
 
+  getBoolean(bool){
+    return Boolean(bool);
+  }
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -55,6 +58,10 @@ export class ShopDetailComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.selectedId = params.get('name');
+      this.service.getShop().subscribe(value => {
+      this.shop$ = value;
+      console.log(this.shop$.childFriendly.valueOf());
+      })
     });
 
   }

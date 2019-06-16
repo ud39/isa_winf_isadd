@@ -16,7 +16,7 @@ export class CheckboxEquipmentComponent implements OnInit {
   @ViewChildren('cb') cbs : QueryList<MatCheckbox>;
 
   constructor(private router:Router, private checkBoxService: CheckBoxesService) { }
-  myControl = new FormControl();
+  private myControl = new FormControl();
 
   getJsonOfSearch(): JSON{
     return this.checkBoxService.getjsonOfSearch(this.myControl,this.cbs.toArray());
