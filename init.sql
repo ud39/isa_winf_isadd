@@ -175,7 +175,7 @@ CREATE TABLE owns (
                     company_name citext ,
                     coffee_shop_id int,
                     PRIMARY KEY(company_name, coffee_shop_id),
-                    FOREIGN KEY(company_name) REFERENCES company (name) ON DELETE CASCADE,   
+                    FOREIGN KEY(company_name) REFERENCES company (name) ON DELETE CASCADE,
                     FOREIGN KEY (coffee_shop_id) REFERENCES  coffee_shop (id) ON DELETE CASCADE
 );
 
@@ -398,9 +398,9 @@ create table operates (
 ------------ INSERT DATA ----------
 
 insert into coffee_shop (name, address, outdoor, fair_trade, disabled_friendly, description, wlan, child_friendly, website, founding_year, pets_friendly, latte_art, seats, workstation, food, price_class) values
- ('Coffee_shop_Name3', ('Kieler Straße', 5, 24232, 'Kiel', 'Deutschland'), false, false, true, 'Textbeschreibung', false, true, 'www.nene.ne', 2019, true, false, 50, false, 'foood', 'niedrig');
+('Coffee_shop_Name3', ('Kieler Straße', 5, 24232, 'Kiel', 'Deutschland'), false, false, true, 'Textbeschreibung', false, true, 'www.nene.ne', 2019, true, false, 50, false, 'foood', 'niedrig');
 insert into coffee_shop (name, address, outdoor, fair_trade, disabled_friendly, description, wlan, child_friendly, website, founding_year, pets_friendly, latte_art, seats, workstation, food, price_class) values
- ('Coffee_shop_Name2', ('Kieler Straße', 5, 24232, 'Kiel', 'Deutschland'), false, false, true, 'Textbeschreibung', false, true, 'www.nene.ne', 2019, true, false, 50, false, 'foood', 'niedrig');
+('Coffee_shop_Name2', ('Kieler Straße', 5, 24232, 'Kiel', 'Deutschland'), false, false, true, 'Textbeschreibung', false, true, 'www.nene.ne', 2019, true, false, 50, false, 'foood', 'niedrig');
 
 insert into equipment_category values ('Kaffeemühle');
 insert into supplies values ('Kaffeemühle', 1);
@@ -459,5 +459,14 @@ insert into organised_by values (2, 2);
 
 insert into opening_time values ('05:00:00', '17:00:00', 'Friday');
 insert into opening_time values ('05:00:00', '17:00:00', 'Monday');
+
+insert into image values ('1.png');
+insert into image values ('2.png');
+
+insert into coffee_shop_image values ('1.png',1);
+insert into coffee_shop_image values ('2.png',2);
+insert into coffee_shop_image values ('1.png',2);
+
+
 
 --todo: opens etc.
