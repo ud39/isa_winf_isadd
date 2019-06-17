@@ -91,7 +91,7 @@ namespace WinfADD.Controllers
 
 
 
-                return Json("Upload Successful: fileName");
+                return Json( fileName.ToString());
             }
             catch (System.Exception ex)
             {
@@ -106,10 +106,29 @@ namespace WinfADD.Controllers
             if (file_name.Contains("..")) return null;
 
             var path = Path.Combine("/Upload/", file_name);
-
             return base.File(path, "image/" + file_name.Substring(file_name.Length-3));
         }
 
+
+        [HttpDelete]
+        [Route("delete")]
+        public async Task<bool> DeleteImage()
+        {
+
+            Console.WriteLine("<---------------------------------------------------------->");
+            Console.WriteLine("DEEEEEEEEEEEEEEEEEEEEEEEELETE::"+"imageObj.File_Name");
+            //delete from table
+            using (IDbConnection conn = Connection)
+            {
+                Console.WriteLine("\n DeleteImage::");
+                var sql = "DELETE  FROM image WHERE file_name = @file_name";
+                var affectedRows =  conn.ExecuteAsync(sql,new{file_name = "imageObj.File_Name"});
+            }
+
+            //TODO delete actual file
+
+            return false;
+        }
 
     }
 }

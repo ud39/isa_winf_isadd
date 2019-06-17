@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, NgModule, OnInit} from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {Observable} from "rxjs";
 import {Content} from "../../admin-profile.component";
 import {AdminService} from "../../../../services/admin/admin.service";
-
 
 @Component({
   selector: 'app-shop-tab',
   templateUrl: './shop-tab.component.html',
   styleUrls: ['./shop-tab.component.css']
 })
+
+
+
 export class ShopTabComponent implements OnInit {
 
 
@@ -29,15 +31,16 @@ export class ShopTabComponent implements OnInit {
     {value: 'Coffee_Drink'},
   ];
 
+
   constructor(private admin_service: AdminService) { }
+
+
 
   ngOnInit() {
   }
 
 
-  upload(files){
-    this.admin_service.upload(files);
-  }
+
 
   onFileChanged(event) {
     this.admin_service.onFileChanged(event)
@@ -51,8 +54,10 @@ export class ShopTabComponent implements OnInit {
 
 
 
-
-
+  //TODO delete: onClick
+  deleteImage() {
+    this.admin_service.deleteImage();
+  }
 
 
 }

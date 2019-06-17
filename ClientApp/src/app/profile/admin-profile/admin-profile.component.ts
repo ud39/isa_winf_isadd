@@ -79,12 +79,5 @@ export class AdminProfileComponent implements OnInit {
 
   constructor(private admin_service: AdminService) { }
 
-  upload(files){
-    this.admin_service.upload(files);
-  }
-
-
-
-
 
 }
