@@ -56,12 +56,11 @@ export class ShopDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      this.selectedId = params.get('name');
-      this.service.getShop().subscribe(value => {
+    this.route.queryParams.subscribe(params => {
+      this.service.getShop(params).subscribe(value => {
       this.shop$ = value;
       console.log(this.shop$.child_friendly.valueOf());
-      })
+      }, error1 => console.log(error1));
     });
 
   }

@@ -2,7 +2,9 @@
   <ul id="shop-list">
   <li *ngFor="let shop of shops">
     <div class="list-content">
-    <a [routerLink]="['/shop',shop.name]" [routerLinkActive]='["link-active"]'>
+    <a [routerLink]="['/shop']" [routerLinkActive]='["link-active"]' (click)=
+      "navigateToShopDetail(shop.name, shop.address.country, shop.address.town, shop.address.postal_code,
+      shop.address.street_name, shop.address.street_number)">
       <img src="https://dummyimage.com/100x100/fff/000" class="preview-img">
     </a>
       <div class="preview-content">

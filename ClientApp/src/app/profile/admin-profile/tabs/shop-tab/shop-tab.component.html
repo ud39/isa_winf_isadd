@@ -73,6 +73,64 @@
 
 
 
+
+
+      <button  (click)="deleteImage()" class="button">Löschen</button>
+
+<br>
+
+
+      <mat-radio-group [(ngModel)]="admin_service.galleryNumber">
+        <div>Radio Button: {{admin_service.galleryNumber}}</div>
+        <br>
+      <mat-radio-button value="1">Gallery 1</mat-radio-button>
+      <mat-radio-button value="2">Gallery 2</mat-radio-button>
+      <mat-radio-button value="3">Gallery 3</mat-radio-button>
+      <mat-radio-button value="4">Gallery 4</mat-radio-button>
+
+
+        <!-- TODO some where else-->
+        <style> mat-grid-tile { background: lightblue; }  </style>
+
+      <mat-grid-list cols="2" rowHeight="2:1">
+
+        <mat-grid-tile>
+          1
+          <br>
+          <img  [src]="admin_service.gallery_1" height="100px">
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          2
+          <br>
+          <img  [src]="admin_service.gallery_2" height="100px">
+
+        </mat-grid-tile>
+
+
+
+        <mat-grid-tile>
+          3
+          <br>
+          <img  [src]="admin_service.gallery_3" height="100px">
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          4
+          <br>
+          <img  [src]="admin_service.gallery_4" height="100px">
+        </mat-grid-tile>
+
+      </mat-grid-list>
+
+      </mat-radio-group>
+
+
+
+
+
+
+
     </mat-tab>
 
          <mat-tab label="Preview">
@@ -88,3 +146,4 @@
 
          </mat-tab>
        </mat-tab-group>
+

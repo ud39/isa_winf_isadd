@@ -2,7 +2,7 @@ import {Component, Input, OnInit, QueryList, ViewChild, ViewChildren} from '@ang
 import {ViewEncapsulation} from "@angular/core";
 import {Router} from '@angular/router';
 import {MatCheckbox, MatInput, MatSelect} from "@angular/material";
-import {CheckBoxesService} from "../../services/checkboxes.service";
+import {CheckBoxesService} from "../../services/interactive-element/checkboxes.service";
 import {FormControl} from "@angular/forms";
 import {Observable} from "rxjs";
 import {map, startWith} from "rxjs/operators";

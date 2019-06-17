@@ -28,6 +28,7 @@ import {ShopTabComponent} from "./profile/admin-profile/tabs/shop-tab/shop-tab.c
 import { EquipmentTabComponent } from './profile/admin-profile/tabs/equipment-tab/equipment-tab.component';
 import { EventTabComponent } from './profile/admin-profile/tabs/event-tab/event-tab.component';
 import { ContentTabComponent } from './profile/admin-profile/tabs/content-tab/content-tab.component';
+import {MatRadioModule} from "@angular/material";
 ;
 
 
@@ -76,6 +77,7 @@ import { ContentTabComponent } from './profile/admin-profile/tabs/content-tab/co
     ]),
     ReactiveFormsModule,
     LayoutModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
