@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Dynamic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ using WinfADD.Models;
 
 namespace WinfADD.Repositories
 {
-    public class CoffeeShopRepository: GenericBaseRepository<CoffeeShop>
+    public class CoffeeShopRepository: ICoffeeShopRepository
     {
         //key fields
         protected List<string> keys = new List<string>();
@@ -22,19 +23,40 @@ namespace WinfADD.Repositories
         protected string DeleteString;
 
 
-
         protected  IConfiguration _config;
 
 
         private IDbConnection Connection => new NpgsqlConnection(_config["ConnectionStrings:DefaultConnection"]);
 
-        public CoffeeShopRepository(IConfiguration _config) : base(_config)
+        public CoffeeShopRepository(IConfiguration _config)
         {
             this._config = _config;
 
             NpgsqlConnection.GlobalTypeMapper.MapComposite<Address>("address");
+            DefaultTypeMap.MatchNamesWithUnderscores = true;
+            
 
+            
+            //TEST
+            
+            Dictionary<string, string> columnMaps = new Dictionary<string, string>
+            {
+                { "image_file_name", "File_Name"}
+            };
 
+            var mapper = new Func<Type, string, PropertyInfo>((type, columnName) =>
+            {
+                return type.GetProperty(columnMaps.ContainsKey(columnName) ? columnMaps[columnName] : columnName);
+            });
+            
+            var imageMap = new CustomPropertyTypeMap(
+                typeof(Image),
+                (type, columnName) => mapper(type, columnName));
+
+            SqlMapper.SetTypeMap(typeof(Image), imageMap);
+            //TESTEND
+            
+            
             //TODO add all key names here //TODO in extended class
             // keys.Add("KeyString");
             keys.Add("name");
@@ -114,7 +136,7 @@ namespace WinfADD.Repositories
             DeleteString = "DELETE FROM" +" " + tableName + " WHERE " + keyCompare;
         }
 
-        public override async Task<List<CoffeeShop>> GetAll()
+        public async Task<List<CoffeeShop>> GetAll()
         {
             Console.WriteLine("\n GetAll::" + GetAllString);
             
@@ -135,26 +157,63 @@ namespace WinfADD.Repositories
             }
         }
 
-        public override async Task<CoffeeShop> GetByID(CoffeeShop coffeeShop)
+        public Task<CoffeeShop> GetByID(CoffeeShop tableObj)
+        {
+            throw new NotImplementedException();
+        }
 
+        public Task<IEnumerable<CoffeeShop>> GetTables(CoffeeShop tableObj, IDictionary<string, string> searchProperties)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> InsertTable(CoffeeShop tableObj, IDictionary<string, string> insertProperties)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> DeleteTable(CoffeeShop tableObj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> UpdateTable(CoffeeShop testObj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> PartialUpdateTable(CoffeeShop tableObj, IDictionary<string, string> fieldsToChange)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<CoffeeShop> GetById(int id)
         {
 
-            var a = coffeeShop.Address;
-         /*   GetByIdString = @"select * from coffee_shop c where equal(c.name, c.address, " + coffeeShop.Name + ", (" +
-                            a.street_name + ", " +
-                            a.street_number + ", " + a.postal_code + ", " + a.town + ", " + a.country + "))";
-           */                
-            GetByIdString = @"select * from coffee_shop c where equal(c.name, c.address, " + coffeeShop.Name+ ", " + "(" + coffeeShop.Address.ToString() + "))";
-
-           // GetByIdString = @"SELECT * FROM coffee_shop c WHERE equal(c.name, c.address, :c2name ::citext, :c2address)"; //, new {@c2 = coffeeShop};
-         //  GetByIdString = @"SELECT * FROM coffee_shop c WHERE equal(c.name, c.address, @c2name::citext, @c2address)";
-           Console.WriteLine("IDSTRING: " + GetByIdString);
-
-
+          
+           GetByIdString = "select c.*, i.image_file_name from coffee_shop c inner join coffee_shop_image i on c.id = i.coffee_shop_id where c.id = @id";
+        
+        
+           // Console.Write("---------------------------------------------------------: " + coffeeShop.Name);
             using (var conn = Connection)
             {
-                var result = await conn.QueryAsync<CoffeeShop>(GetByIdString);
-                return result.FirstOrDefault();
+                
+                var images = await conn.QueryAsync<Image>(GetByIdString, new {id = id});
+                var cs = await conn.QueryAsync<CoffeeShop>(GetByIdString, new {id = id});
+                var cs1 = cs.FirstOrDefault();
+                //var cs = result.Read<CoffeeShop>().FirstOrDefault();
+               // var images = result.Read<Image>();
+                if(cs1 != null)
+                    cs1.Images = images;
+                
+                
+                foreach (var i in images)
+                {
+                    Console.WriteLine("-------:    " + i.File_Name);
+
+                }
+              
+                return cs1;
             }
         }
         

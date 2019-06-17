@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace WinfADD.Models
@@ -9,10 +10,14 @@ namespace WinfADD.Models
         public CoffeeShop()
         {
         //    Events = new Event[] {};
+         Images = new Image[] { };
         }
         
-        //primary keys
-        [Key] public string Name { get; set; }
+        //primary key
+        
+        [Key] public int id { get; set; }
+        
+        public string Name { get; set; }
         //address: (country, town, postal_code, street_number, street_name, addressee)
   
 
@@ -30,9 +35,9 @@ namespace WinfADD.Models
 
         //boolean flags
         public bool Wlan { get; set; }
-        public bool Disabled_Friendly { get; set; }
-        public bool Fair_Trade { get; set; }
-        public bool Child_Friendly { get; set; }
+        public bool DisabledFriendly { get; set; }
+        public bool FairTrade { get; set; }
+        public bool ChildFriendly { get; set; }
         public bool Workstation { get; set; }
         public bool Latte_Art { get; set; }
         public bool Pets_Friendly { get; set; }
@@ -60,6 +65,6 @@ namespace WinfADD.Models
         public Address Address { get; set; }
         
        // public Event[] Events { get; set; }
-
+        public IEnumerable<Image> Images;
     }
 }

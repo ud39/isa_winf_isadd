@@ -9,9 +9,9 @@ namespace WinfADD.Controllers
 {
     public class CoffeeShopController : GenericTableController<CoffeeShop>
     {
-        private ITableRepository<CoffeeShop> _coffeeShopRepo;
+        private ICoffeeShopRepository _coffeeShopRepo;
 
-        public CoffeeShopController(ITableRepository<CoffeeShop> coffeeShopRepo): base(coffeeShopRepo)
+        public CoffeeShopController(ICoffeeShopRepository coffeeShopRepo): base(coffeeShopRepo)
         {
             _coffeeShopRepo = coffeeShopRepo;
         }
@@ -24,11 +24,10 @@ namespace WinfADD.Controllers
             return await  _coffeeShopRepo.GetAll();
         }
 
-        [HttpGet]
-        [Route("GetById")]
-        public override async Task<ActionResult<CoffeeShop>> GetById([FromQuery] CoffeeShop tableObj)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<CoffeeShop>> GetById(int id)
         {
-            return await _coffeeShopRepo.GetByID(tableObj);
+            return await _coffeeShopRepo.GetById(id);
         }
     }
 }

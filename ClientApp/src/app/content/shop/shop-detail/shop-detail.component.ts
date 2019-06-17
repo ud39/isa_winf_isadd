@@ -60,7 +60,7 @@ export class ShopDetailComponent implements OnInit {
       this.selectedId = params.get('name');
       this.service.getShop().subscribe(value => {
       this.shop$ = value;
-      console.log(this.shop$.childFriendly.valueOf());
+      console.log(this.shop$.child_friendly.valueOf());
       })
     });
 

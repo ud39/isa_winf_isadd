@@ -59,7 +59,7 @@ namespace WinfADD
             services.AddSingleton<ITableRepository<Blend>, BlendRepository>();
             services.AddSingleton<ITableRepository<Bean>, BeanRepository>();
             services.AddSingleton<ITableRepository<BusStation>, BusStationRepository>();
-            services.AddSingleton<ITableRepository<CoffeeShop>, CoffeeShopRepository>();
+            services.AddSingleton<ICoffeeShopRepository, CoffeeShopRepository>();
 
 
 

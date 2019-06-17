@@ -9,6 +9,8 @@ namespace WinfADD.Repositories
         Task<List<Table>> GetAll();
 
         Task<Table> GetByID(Table tableObj);
+        
+        
 
         Task<IEnumerable<Table>> GetTables(Table tableObj, IDictionary<string, string> searchProperties);
 
