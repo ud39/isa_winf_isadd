@@ -2,7 +2,7 @@ import {Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/co
 import {CheckboxComponent} from "../checkbox/checkbox.component";
 import {Router} from "@angular/router";
 import {MatCheckbox} from "@angular/material";
-import {CheckBoxesService} from "../../services/checkboxes.service";
+import {CheckBoxesService} from "../../services/interactive-element/checkboxes.service";
 import {FormControl} from "@angular/forms";
 
 @Component({
