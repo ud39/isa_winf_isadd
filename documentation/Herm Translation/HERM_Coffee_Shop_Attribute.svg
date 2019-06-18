@@ -629,14 +629,14 @@
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
    total, overlapping
 </text>
-<polyline points=" 2619.0,336.0 2600.0,336.0 2600.0,360.0 2619.0,360.0 " style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<polyline points=" 2619.0,336.0 2600.0,336.0 2600.0,360.0 2619.0,360.0 " style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
 <path d="M 2608.0 331.0 L 2608.0 215.0" style="fill:none; stroke:rgb(0,0,0); stroke-dasharray:2 3; stroke-width:1.0px;"/>
 <path d="M 2608.0 366.0 L 2608.0 522.0" style="fill:none; stroke:rgb(0,0,0); stroke-dasharray:2 3; stroke-width:1.0px;"/>
 <text transform="translate(2778.0,624.0), rotate(-0.0)" x="0px" y="0px" textLength="97.0px"
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
    total, overlapping
 </text>
-<polyline points=" 2789.0,620.0 2770.0,620.0 2770.0,644.0 2789.0,644.0 " style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<polyline points=" 2789.0,620.0 2770.0,620.0 2770.0,644.0 2789.0,644.0 " style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
 <path d="M 2778.0 649.0 L 2778.0 711.0" style="fill:none; stroke:rgb(0,0,0); stroke-dasharray:2 3; stroke-width:1.0px;"/>
 <path d="M 2778.0 614.0 L 2778.0 518.0" style="fill:none; stroke:rgb(0,0,0); stroke-dasharray:2 3; stroke-width:1.0px;"/>
 <polygon points=" 1612.0,1287.0 1665.0,1327.0 1718.0,1287.0 1665.0,1247.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
@@ -971,9 +971,9 @@
    Latte_art
 </text>
 <rect x="1937.5px" y="287.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(1935.0,296.0), rotate(-0.0)" x="0px" y="0px" textLength="61.0px"
+<text transform="translate(1937.0,296.0), rotate(-0.0)" x="0px" y="0px" textLength="57.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
-   Pets_friendly
+   Pet_friendly
 </text>
 <rect x="1918.5px" y="401.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
 <text transform="translate(1914.0,409.0), rotate(-0.0)" x="0px" y="0px" textLength="65.0px"
@@ -1080,10 +1080,10 @@
 <path d="M 1481.0 502.0 L 1876.0 458.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
 <path d="M 1481.0 501.0 L 1876.0 457.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
 <path d="M 1480.0 501.0 L 1875.0 457.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<rect x="954.5px" y="117.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(970.0,126.0), rotate(-0.0)" x="0px" y="0px" textLength="25.0px"
+<rect x="917.5px" y="60.5px" width="56.0px" height="31.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
+<text transform="translate(922.0,69.0), rotate(-0.0)" x="0px" y="0px" textLength="46.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
-   Time
+   start_time
 </text>
 <rect x="1011.5px" y="117.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
 <text transform="translate(1025.0,126.0), rotate(-0.0)" x="0px" y="0px" textLength="28.0px"
@@ -1100,11 +1100,11 @@
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
    Access_fee
 </text>
-<path d="M 1031.0 204.0 L 999.0 155.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1031.0 203.0 L 999.0 154.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1030.0 203.0 L 998.0 154.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1030.0 202.0 L 998.0 153.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1029.0 202.0 L 997.0 153.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 1031.0 204.0 L 961.0 98.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
+<path d="M 1031.0 203.0 L 961.0 97.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
+<path d="M 1030.0 203.0 L 960.0 97.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
+<path d="M 1030.0 202.0 L 960.0 96.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
+<path d="M 1029.0 202.0 L 959.0 96.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
 <path d="M 1053.0 204.0 L 1045.0 155.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
 <path d="M 1053.0 203.0 L 1045.0 154.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
 <path d="M 1052.0 203.0 L 1044.0 154.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
@@ -1131,8 +1131,8 @@
 <path d="M 1556.0 91.0 L 1573.0 99.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
 <path d="M 1555.0 91.0 L 1572.0 99.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
 <rect x="1975.5px" y="609.5px" width="56.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(1993.0,617.0), rotate(-0.0)" x="0px" y="0px" textLength="21.0px"
- style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
+<text transform="translate(1993.0,627.0), rotate(-0.0)" x="0px" y="0px" textLength="21.0px"
+ style="font-family:Arial; font-size:10.0px; text-decoration:underline; fill:rgb(0,0,0); stroke:none; ">
    Line
 </text>
 <path d="M 1954.0 611.0 L 1971.0 616.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
@@ -1371,5 +1371,25 @@
 <path d="M 396.0 1347.0 L 356.0 1324.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
 <path d="M 396.0 1346.0 L 356.0 1323.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
 <path d="M 395.0 1346.0 L 355.0 1323.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<rect x="973.5px" y="79.5px" width="57.0px" height="31.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
+<text transform="translate(979.0,88.0), rotate(-0.0)" x="0px" y="0px" textLength="45.0px"
+ style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
+   end_time
+</text>
+<path d="M 1044.0 204.0 L 1012.0 117.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
+<path d="M 1044.0 203.0 L 1012.0 116.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
+<path d="M 1043.0 203.0 L 1011.0 116.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
+<path d="M 1043.0 202.0 L 1011.0 115.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
+<path d="M 1042.0 202.0 L 1010.0 115.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<rect x="293.5px" y="1402.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
+<text transform="translate(310.0,1411.0), rotate(-0.0)" x="0px" y="0px" textLength="22.0px"
+ style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
+   Title
+</text>
+<path d="M 397.0 1398.0 L 357.0 1409.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
+<path d="M 397.0 1397.0 L 357.0 1408.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
+<path d="M 396.0 1397.0 L 356.0 1408.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
+<path d="M 396.0 1396.0 L 356.0 1407.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
+<path d="M 395.0 1396.0 L 355.0 1407.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
 </g>
 </svg>

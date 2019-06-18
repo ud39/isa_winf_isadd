@@ -122,7 +122,6 @@ export class AdminService {
   bypass(url: string): SafeUrl {
     if(!url) return null;
     return this.domSanitizer.bypassSecurityTrustUrl(url);
-
   }
 
   sanitize(url: string): SafeUrl {
