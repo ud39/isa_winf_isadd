@@ -86,7 +86,14 @@ export class AdminService {
       case "1":
         console.log("this.gallery_1::"+this.gallery_1);
         //this.http.delete("https://localhost:5001/api/upload?file_name=" +this.gallery_1);
-        this.http.delete('https://localhost:5001/api/upload/delete', httpOptions);
+        this.http.delete('https://localhost:5001/api/upload/delete?file_name=kt55gpqx.f4s.jpg',   {
+        reportProgress: false,}).subscribe(value =>{
+
+            console.log(value);
+        },error1 => console.log(error1)
+
+
+        );
         console.log("this.gallery_1::"+this.gallery_1);
 
         this.gallery_1 = '';
@@ -103,6 +110,7 @@ export class AdminService {
         this.http.delete("https://localhost:5001/api/upload?file_name=" +this.gallery_4);
         this.gallery_4 = '';
         break;
+
     }
 
   }

@@ -128,7 +128,8 @@ CREATE TABLE public.user (
 );
 
 create table image (
-  file_name text primary key
+  file_name citext primary key,
+  content_type citext
 );
 
 

@@ -112,22 +112,22 @@ namespace WinfADD.Controllers
 
         [HttpDelete]
         [Route("delete")]
-        public async Task<bool> DeleteImage()
+        public async Task<ActionResult> DeleteImage([FromQuery] Image imageObj)
         {
 
             Console.WriteLine("<---------------------------------------------------------->");
-            Console.WriteLine("DEEEEEEEEEEEEEEEEEEEEEEEELETE::"+"imageObj.File_Name");
+            Console.WriteLine("DEEEEEEEEEEEEEEEEEEEEEEEELETE::"+imageObj.File_Name);
             //delete from table
             using (IDbConnection conn = Connection)
             {
                 Console.WriteLine("\n DeleteImage::");
                 var sql = "DELETE  FROM image WHERE file_name = @file_name";
-                var affectedRows =  conn.ExecuteAsync(sql,new{file_name = "imageObj.File_Name"});
+                var affectedRows =  conn.ExecuteAsync(sql,new{file_name = imageObj.File_Name});
             }
 
             //TODO delete actual file
 
-            return false;
+            return Json( "Delete::"+imageObj.File_Name);
         }
 
     }

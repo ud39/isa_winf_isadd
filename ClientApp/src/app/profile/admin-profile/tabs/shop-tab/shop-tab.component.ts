@@ -40,8 +40,6 @@ export class ShopTabComponent implements OnInit {
   }
 
 
-
-
   onFileChanged(event) {
     this.admin_service.onFileChanged(event)
   }
