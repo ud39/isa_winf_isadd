@@ -51,13 +51,7 @@ namespace WinfADD.Models
         public bool Outdoor { get; set; }
 
         //byte
-        private string Description { get; set; }
-
-        //complex
-        //TODO
-        //public  opening_time { get; set; }
-        //<weedkday, opentime, closetime>
-        //holidays?
+        public string Description { get; set; }
 
         public Address Address { get; set; }
         

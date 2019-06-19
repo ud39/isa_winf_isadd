@@ -1,7 +1,16 @@
 import {Address} from "../complex/Address";
+import {Bean} from "./Bean";
+import {Image} from "./Image";
+import {CoffeeDrink} from "./CoffeeDrink";
+import {BusStation} from "./BusStation";
+import {EquipmentCategory} from "./EquipmentCategory";
+import {Blend} from "./Blend";
+import {Poi} from "./Poi";
+import {OpeningTime} from "./OpeningTime";
 
 
 export interface Shop {
+  id:number;
   name: string;
   foundingYear: number;
   seats: number;
@@ -19,4 +28,13 @@ export interface Shop {
   outdoor:boolean;
   description: string;
   address:Address;
+  beans: Bean[];
+  blends: Blend[];
+  events: Event[];
+  images: Image[];
+  coffeeDrinks: CoffeeDrink[];
+  listOfPoi: Poi[];
+  reachableByBus: BusStation[];
+  equipmentCategories: EquipmentCategory[];
+  OpeningTimes: OpeningTime[];
 }

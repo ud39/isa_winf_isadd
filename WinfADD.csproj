@@ -83,7 +83,8 @@
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\Event.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\Image.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\Location.ts" />
-      <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\POI.ts" />
+      <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\OpeningTime.ts" />
+      <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\Poi.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\Reachable.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\Shop.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\User.ts" />
