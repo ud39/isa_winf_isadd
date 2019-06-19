@@ -18,12 +18,11 @@ namespace WinfADD.Repositories
     public class CoffeeShopRepository : GenericBaseRepository<CoffeeShop>
     {
         //key fields
-        protected List<string> keys = new List<string>();
-        protected string tableName;
-        protected string GetByIdString;
-        protected string GetAllString;
-        protected string UpdateString;
-        protected string DeleteString;
+    //    protected string tableName;
+  //      protected string GetByIdString;
+   //     protected string GetAllString;
+   //     protected string UpdateString;
+   //     protected string DeleteString;
 
 
         protected IConfiguration _config;
@@ -77,19 +76,8 @@ namespace WinfADD.Repositories
            SqlMapper.SetTypeMap(typeof(CoffeeShop), CreateDefaultMap(typeof(CoffeeShop)));
            SqlMapper.SetTypeMap(typeof(Image), CreateDefaultMap(typeof(Image)));
            SqlMapper.SetTypeMap(typeof(Event), CreateDefaultMap(typeof(Event)));
-  
-            
-            //TODO add all key names here //TODO in extended class
-            // keys.Add("KeyString");
-            keys.Add("name");
-            keys.Add("country");
-            keys.Add("town");
-            keys.Add("postal_code");
-            keys.Add("street_name");
-            keys.Add("street_number");
 
             
-            //TODO write tableName
             tableName = "coffee_shop";
 
 
@@ -158,7 +146,7 @@ namespace WinfADD.Repositories
             DeleteString = "DELETE FROM" +" " + tableName + " WHERE " + keyCompare;
         }
 
-        public async Task<List<CoffeeShop>> GetAll()
+        public override async Task<List<CoffeeShop>> GetAll()
         {
             Console.WriteLine("\n GetAll::" + GetAllString);
             

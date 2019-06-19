@@ -16,11 +16,10 @@ CREATE TYPE address AS (
 
 ------- FUNCTIONS ---------
 
-CREATE or REPLACE FUNCTION equal(a1 citext, a address, b1 citext, b address) RETURNS boolean AS $$
+CREATE or REPLACE FUNCTION equal(a address, b address) RETURNS boolean AS $$
 BEGIN
   RETURN a.country = b. country and a.town = b.town and  a.postal_code = b.postal_code
-    and a.street_name = b.street_name and a.street_number = b.street_number
-    and a1 = b1;
+    and a.street_name = b.street_name and a.street_number = b.street_number;
 END; $$
   LANGUAGE PLPGSQL;
 

@@ -1,7 +1,7 @@
 export interface Equipment {
-  equipment_name: string;
-  manufactorer: string;
-  YearOfOrigin: number;
+  equipmentName: string;
+  manufacturer: string;
+  yearOfOrigin: number;
   category: string;
   priceClass: string;
   description: string;

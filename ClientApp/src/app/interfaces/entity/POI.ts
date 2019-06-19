@@ -1,6 +1,6 @@
 export interface POI {
-  poiName:string;
+  name:string;
   street:string;
   description:string;
-  thumbNail:string;
+  thumbnail:string;
 }

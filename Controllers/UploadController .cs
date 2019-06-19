@@ -122,7 +122,7 @@ namespace WinfADD.Controllers
             {
                 Console.WriteLine("\n DeleteImage::");
                 var sql = "DELETE  FROM image WHERE file_name = @file_name";
-                var affectedRows =  conn.ExecuteAsync(sql,new{file_name = imageObj.FileName});
+                var affectedRows =  await conn.ExecuteAsync(sql,new{file_name = imageObj.FileName});
             }
 
             //TODO delete actual file

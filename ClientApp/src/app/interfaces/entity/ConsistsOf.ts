@@ -1,5 +1,5 @@
 export interface ConsistsOf {
-  bean_name: string;
+  beanName: string;
   manufacturer: string;
-  coffee_drink_name: string;
+  coffeeDrinkName: string;
 }

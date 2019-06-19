@@ -1,3 +1,3 @@
 export interface Image {
-  file_Name:string;
+  fileName:string;
 }
