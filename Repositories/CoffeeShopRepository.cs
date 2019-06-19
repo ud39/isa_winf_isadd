@@ -17,9 +17,7 @@ namespace WinfADD.Repositories
 {
     public class CoffeeShopRepository : GenericBaseRepository<CoffeeShop>
     {
-        protected IConfiguration _config;
-
-
+        
         private IDbConnection Connection => new NpgsqlConnection(_config["ConnectionStrings:DefaultConnection"]);
 
         public CoffeeShopRepository(IConfiguration _config) : base(_config)
@@ -72,9 +70,9 @@ namespace WinfADD.Repositories
            SqlMapper.SetTypeMap(typeof(Blend), CreateDefaultMap(typeof(Blend)));
            SqlMapper.SetTypeMap(typeof(BusStation), CreateDefaultMap(typeof(BusStation)));
            SqlMapper.SetTypeMap(typeof(CoffeeDrink), CreateDefaultMap(typeof(CoffeeDrink)));
-           SqlMapper.SetTypeMap(typeof(Equipment), CreateDefaultMap(typeof(Equipment)));
+           SqlMapper.SetTypeMap(typeof(Equipment), CreateDefaultMap(typeof(Equipment))); //TODO
            SqlMapper.SetTypeMap(typeof(EquipmentCategory), CreateDefaultMap(typeof(EquipmentCategory)));
-           SqlMapper.SetTypeMap(typeof(Location), CreateDefaultMap(typeof(Location)));
+           SqlMapper.SetTypeMap(typeof(Location), CreateDefaultMap(typeof(Location))); //TODO
            SqlMapper.SetTypeMap(typeof(OpeningTime), CreateDefaultMap(typeof(OpeningTime)));
            SqlMapper.SetTypeMap(typeof(Poi), CreateDefaultMap(typeof(Poi)));
            SqlMapper.SetTypeMap(typeof(Preparation), CreateDefaultMap(typeof(Preparation)));
@@ -173,8 +171,10 @@ namespace WinfADD.Repositories
                            "select b.* from offers o, blend b where o.coffee_shop_id = @id and o.blend_name = b.name and o.blend_manufacturer_name = b.manufacturer_name;" +
                            "select b.* from bus_station b, reachable r where r.coffee_shop_id = @id and r.bus_station_name = b.name;" +
                            "select c.* from coffee_drink c, serves s where s.coffee_shop_id = @id and s.coffee_drink_name = c.name;" +
-                           "select e.*, ec.* from equipment e, equipment_category ec, sells s where s.coffee_shop_id = 2 and s.equipment_manufacturer_name = e.manufacturer_name and " +
-                                "s.equipment_model_name = e.model_name and s.equipment_year_of_origin = e.year_of_origin and s. equipment_category_name = ec.name;";
+                           // Equipment  "select e.* from equipment e, sells s where s.coffee_shop_id = 2 and s.equipment_manufacturer_name = e.manufacturer_name and s.equipment_model_name = e.model_name and s.equipment_year_of_origin = e.year_of_origin;";
+                           "select distinct e.* from equipment_category e, sells s where s.coffee_shop_id = @id and s.equipment_category_name = e.name;" +
+                           //"select o.* from opens o where o.coffee_shop_id = @id;";
+                           "select p.* from poi p, near_by n where n.coffee_shop_id = @id and n.poi_name = p.name and n.poi_address = p.address";
            
             using (var conn = Connection)
             {
@@ -192,6 +192,9 @@ namespace WinfADD.Repositories
                   coffeeShop.Blends = result.Read<Blend>().ToList();
                   coffeeShop.ReachableByBus = result.Read<BusStation>().ToList();
                   coffeeShop.CoffeeDrinks = result.Read<CoffeeDrink>().ToList();
+                  coffeeShop.EquipmentCategories = result.Read<EquipmentCategory>().ToList();
+               //   coffeeShop.OpeningTimes = result.Read<OpeningTime>().ToList();
+                  coffeeShop.ListOfPoi = result.Read<Poi>().ToList();
 
               }
 
