@@ -33,7 +33,7 @@ CREATE TABLE equipment(
 );
 
 CREATE TABLE event(
-                    event_id int generated always as identity primary key,
+                    id int generated always as identity primary key,
                     time date,
                     name text,
                     access_fee int,
@@ -92,6 +92,7 @@ CREATE TABLE blend(
                     manufacturer_name citext,
                     provenance text,
                     price_range text,
+                    description text,
                     PRIMARY KEY (name, manufacturer_name)
 
 );
@@ -128,8 +129,8 @@ CREATE TABLE public.user (
 );
 
 create table image (
-  file_name citext primary key,
-  content_type citext
+  file_name text primary key,
+  content_type text
 );
 
 
@@ -222,7 +223,7 @@ CREATE TABLE organised_by(
                            event_id int ,
                            PRIMARY KEY (coffee_shop_id, event_id),
                            FOREIGN KEY (coffee_shop_id) REFERENCES  coffee_shop (id) ON DELETE CASCADE,
-                           FOREIGN KEY (event_id) REFERENCES event(event_id) ON DELETE CASCADE
+                           FOREIGN KEY (event_id) REFERENCES event(id) ON DELETE CASCADE
 );
 
 CREATE TABLE subcategory (
@@ -270,7 +271,7 @@ CREATE TABLE located (
                        PRIMARY KEY ( location_address, coffee_shop_id, event_id),
                        FOREIGN KEY (location_address) references location (address),
                        FOREIGN KEY (coffee_shop_id) REFERENCES  coffee_shop (id) ON DELETE CASCADE,
-                       FOREIGN KEY (event_id) REFERENCES event (event_id) ON DELETE CASCADE
+                       FOREIGN KEY (event_id) REFERENCES event (id) ON DELETE CASCADE
 );
 
 CREATE TABLE sells (
@@ -347,7 +348,7 @@ CREATE TABLE rates (
 
 create table article (
                        article_id int generated always as identity primary key,
-                       name text not null,
+                       title text not null,
                        article_type text not null,
                        check(article_type in ('bean', 'coffee_drink', 'equipment', 'blend')),
                        unique (article_id, article_type)

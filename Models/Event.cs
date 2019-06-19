@@ -5,12 +5,12 @@ namespace WinfADD.Models
     public class Event
     {   
         [Key] 
-        public int event_id { get; set; }
+        public int Id { get; set; }
         
-        public string time { get; set; }
+        public string Time { get; set; }
         
-        public int access_fee { get; set; }
+        public int AccessFee { get; set; }
         
-        public string description { get; set; }
+        public string Description { get; set; }
     }
 }

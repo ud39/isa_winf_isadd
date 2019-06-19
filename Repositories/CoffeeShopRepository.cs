@@ -2,17 +2,20 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Dynamic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Dapper;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 using WinfADD.Models;
 
 namespace WinfADD.Repositories
 {
-    public class CoffeeShopRepository: ICoffeeShopRepository
+    public class CoffeeShopRepository : GenericBaseRepository<CoffeeShop>
     {
         //key fields
         protected List<string> keys = new List<string>();
@@ -23,39 +26,58 @@ namespace WinfADD.Repositories
         protected string DeleteString;
 
 
-        protected  IConfiguration _config;
+        protected IConfiguration _config;
 
 
         private IDbConnection Connection => new NpgsqlConnection(_config["ConnectionStrings:DefaultConnection"]);
 
-        public CoffeeShopRepository(IConfiguration _config)
+        public CoffeeShopRepository(IConfiguration _config) : base(_config)
         {
             this._config = _config;
 
             NpgsqlConnection.GlobalTypeMapper.MapComposite<Address>("address");
             DefaultTypeMap.MatchNamesWithUnderscores = true;
-            
 
-            
+
+
             //TEST
-            
-            Dictionary<string, string> columnMaps = new Dictionary<string, string>
+
+            Dictionary<string, string> imageMaps = new Dictionary<string, string>
             {
-                { "image_file_name", "File_Name"}
+                {"file_name", "FileName"},
+                {"content_type", "ContentType"}
+
             };
 
-            var mapper = new Func<Type, string, PropertyInfo>((type, columnName) =>
+            Dictionary<string, string> eventMaps = new Dictionary<string, string>
             {
-                return type.GetProperty(columnMaps.ContainsKey(columnName) ? columnMaps[columnName] : columnName);
-            });
-            
-            var imageMap = new CustomPropertyTypeMap(
-                typeof(Image),
-                (type, columnName) => mapper(type, columnName));
+                {"event_id", "Id"},
+                {"time", "Time"},
+                {"access_fee", "AccessFee"},
+                {"description", "Description"}
 
-            SqlMapper.SetTypeMap(typeof(Image), imageMap);
-            //TESTEND
-            
+            };
+
+
+            var defaultMapper = new Func<Type, string, PropertyInfo>((type, columnName) =>
+            {
+
+                var result = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(columnName.ToLower());
+                return type.GetProperty(result = result.Replace("_", ""));
+            });
+
+        CustomPropertyTypeMap CreateDefaultMap (Type t)
+        {
+            return new CustomPropertyTypeMap(
+                 t,
+                (type, columnName) => defaultMapper(type, columnName));
+        }
+
+
+           SqlMapper.SetTypeMap(typeof(CoffeeShop), CreateDefaultMap(typeof(CoffeeShop)));
+           SqlMapper.SetTypeMap(typeof(Image), CreateDefaultMap(typeof(Image)));
+           SqlMapper.SetTypeMap(typeof(Event), CreateDefaultMap(typeof(Event)));
+  
             
             //TODO add all key names here //TODO in extended class
             // keys.Add("KeyString");
@@ -142,78 +164,46 @@ namespace WinfADD.Repositories
             
             using (IDbConnection conn = Connection)
             {
-         /*       var result = await conn.QueryAsync<CoffeeShop, Address, CoffeeShop>(GetAllString,
-                    map: (c, a) =>
-                    {
-                        c.Address = a;
-                        
-                        return c;
-                    }, splitOn: "country"
-                    
-                    );
-                */    
             var result = await conn.QueryAsync<CoffeeShop>(GetAllString);
                 return result.ToList();
             }
-        }
-
-        public Task<CoffeeShop> GetByID(CoffeeShop tableObj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<CoffeeShop>> GetTables(CoffeeShop tableObj, IDictionary<string, string> searchProperties)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> InsertTable(CoffeeShop tableObj, IDictionary<string, string> insertProperties)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> DeleteTable(CoffeeShop tableObj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> UpdateTable(CoffeeShop testObj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> PartialUpdateTable(CoffeeShop tableObj, IDictionary<string, string> fieldsToChange)
-        {
-            throw new NotImplementedException();
         }
 
         public async Task<CoffeeShop> GetById(int id)
         {
 
           
-           GetByIdString = "select c.*, i.image_file_name from coffee_shop c inner join coffee_shop_image i on c.id = i.coffee_shop_id where c.id = @id";
-        
-        
-           // Console.Write("---------------------------------------------------------: " + coffeeShop.Name);
+           //GetByIdString = "select c.*, i.image_file_name from coffee_shop c inner join coffee_shop_image i on c.id = i.coffee_shop_id where c.id = @id";
+
+
+
+           GetByIdString = "select * from coffee_shop where id = @id;" +
+                          "select i.* from image i, coffee_shop_image ci where ci.coffee_shop_id = @id and ci.image_file_name = i.file_name;" +
+                          "select  e.* from event e, organised_by o where o.coffee_shop_id = @id and  e.id = o.event_id";
+           
             using (var conn = Connection)
             {
-                
-                var images = await conn.QueryAsync<Image>(GetByIdString, new {id = id});
-                var cs = await conn.QueryAsync<CoffeeShop>(GetByIdString, new {id = id});
-                var cs1 = cs.FirstOrDefault();
-                //var cs = result.Read<CoffeeShop>().FirstOrDefault();
-               // var images = result.Read<Image>();
-                if(cs1 != null)
-                    cs1.Images = images;
-                
-                
-                foreach (var i in images)
-                {
-                    Console.WriteLine("-------:    " + i.File_Name);
 
-                }
-              
-                return cs1;
+
+          var result = await conn.QueryMultipleAsync(GetByIdString, new {id = id});
+
+          var coffeeShop = result.Read<CoffeeShop>().FirstOrDefault();
+
+          Console.WriteLine("-------------------__:" + coffeeShop.Id);
+          Console.WriteLine("-------------------__:" + coffeeShop.Name);
+          
+          Console.WriteLine("-------------------__:" + coffeeShop.FairTrade);
+              if (coffeeShop != null)
+              {
+                  var images = result.Read<Image>().ToList();
+                  coffeeShop.Images = images;
+                  
+                  var events = result.Read<Event>().ToList();
+                  coffeeShop.Events = events;
+    
+              }
+
+                return coffeeShop;
             }
         }
         
