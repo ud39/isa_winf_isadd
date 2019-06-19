@@ -5,8 +5,8 @@ namespace WinfADD.Models
     public class Equipment
     {
         //primary keys
-        [Key] public string EquipmentName { get; set; }
-        [Key] public string Manufacturer { get; set; }
+        [Key] public string ModelName { get; set; }
+        [Key] public string ManufacturerName { get; set; }
         [Key] public int YearOfOrigin { get; set; } //TODO check name
 
         //

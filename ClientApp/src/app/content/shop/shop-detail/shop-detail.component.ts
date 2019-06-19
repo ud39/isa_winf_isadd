@@ -59,7 +59,7 @@ export class ShopDetailComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.service.getShop(params).subscribe(value => {
       this.shop$ = value;
-      console.log(this.shop$.child_friendly.valueOf());
+      console.log(this.shop$.childFriendly.valueOf());
       }, error1 => console.log(error1));
     });
 

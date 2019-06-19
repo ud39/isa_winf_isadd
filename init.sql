@@ -237,11 +237,11 @@ CREATE TABLE coffee_drink_typ (
 CREATE TABLE belongs_to (
                           equipment_manufacturer_name citext  ,
                           equipment_year_of_origin int,
-                          equipment_name citext ,
+                          equipment_model_name citext ,
                           equipment_category_name citext ,
-                          PRIMARY KEY (equipment_category_name, equipment_manufacturer_name, equipment_name, equipment_year_of_origin),
+                          PRIMARY KEY (equipment_category_name, equipment_manufacturer_name, equipment_model_name, equipment_year_of_origin),
                           FOREIGN KEY (equipment_category_name) REFERENCES equipment_category (name) ON DELETE CASCADE,
-                          FOREIGN KEY (equipment_manufacturer_name, equipment_name, equipment_year_of_origin) REFERENCES equipment (manufacturer_name, model_name, year_of_origin) ON DELETE CASCADE
+                          FOREIGN KEY (equipment_manufacturer_name, equipment_model_name, equipment_year_of_origin) REFERENCES equipment (manufacturer_name, model_name, year_of_origin) ON DELETE CASCADE
 );
 
 CREATE TABLE opens (
@@ -274,13 +274,13 @@ CREATE TABLE located (
 );
 
 CREATE TABLE sells (
-                     equipment_manufacturer citext  ,
+                     equipment_manufacturer_name citext  ,
                      equipment_year_of_origin int ,
-                     equipment_name citext ,
+                     equipment_model_name citext ,
                      equipment_category_name citext  ,
                      coffee_shop_id int,
-                     PRIMARY KEY (equipment_year_of_origin, equipment_manufacturer, equipment_name, equipment_category_name, coffee_shop_id),
-                     FOREIGN KEY(equipment_manufacturer, equipment_name, equipment_year_of_origin) REFERENCES equipment (manufacturer_name, model_name, year_of_origin) ON DELETE CASCADE,
+                     PRIMARY KEY (equipment_year_of_origin, equipment_manufacturer_name, equipment_model_name, equipment_category_name, coffee_shop_id),
+                     FOREIGN KEY(equipment_manufacturer_name, equipment_model_name, equipment_year_of_origin) REFERENCES equipment (manufacturer_name, model_name, year_of_origin) ON DELETE CASCADE,
                      FOREIGN KEY (coffee_shop_id) REFERENCES  coffee_shop (id) ON DELETE CASCADE
 );
 
@@ -468,6 +468,32 @@ insert into coffee_shop_image values ('1.png',1);
 insert into coffee_shop_image values ('2.png',2);
 insert into coffee_shop_image values ('1.png',2);
 
+insert into opening_time values ('18:00:00', '10:00:00', 'friday');
+insert into opening_time values ('18:00:00', '10:00:00', 'monday');
+insert into opening_time values ('18:00:00', '10:00:00', 'tuesday');
+insert into opening_time values ('18:00:00', '10:00:00', 'saturday');
+insert into opening_time values ('18:00:00', '10:00:00', 'sunday');
+
+insert into opens values (2, '18:00:00', '10:00:00', 'friday');
+insert into opens values (2, '18:00:00', '10:00:00', 'monday');
+insert into opens values (2, '18:00:00', '10:00:00', 'tuesday');
+insert into opens values (2, '18:00:00', '10:00:00', 'saturday');
+insert into opens values (2, '18:00:00', '10:00:00', 'sunday');
 
 
---todo: opens etc.
+insert into preparation values ('PreparationDummy', 'PreparationDescription', 'Preparationtype');
+insert into preparation values ('PreparationDummy1', 'PreparationDescription1', 'Preparationtype1');
+
+insert into includes values (2, 'PreparationDummy', 'coffeedrinkdummyname');
+insert into includes values (2, 'PreparationDummy1', 'coffeedrinkdummyname1');
+
+insert into location values (('Kieler Straße', 5, 24232, 'Kiel', 'Deutschland'), 'EventDescriptionDummy');
+insert into located values (('Kieler Straße', 5, 24232, 'Kiel', 'Deutschland'), 2, 1);
+insert into located values (('Kieler Straße', 5, 24232, 'Kiel', 'Deutschland'), 2, 2);
+
+insert into equipment values ('modeldummy', 'manufacturerDummy', 1987);
+insert into equipment values ('modeldummy1', 'manufacturerDummy2', 2007);
+insert into equipment values ('modeldummy2', 'manufacturerDummy2', 2007);
+
+insert into sells values ('manufacturerDummy', 1987, 'modeldummy', 'categorydummy', 2);
+insert into sells values ('manufacturerDummy2', 2007, 'modeldummy2', 'categorydummy', 2);
