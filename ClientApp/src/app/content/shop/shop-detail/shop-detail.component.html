@@ -1,77 +1,94 @@
 <div *ngIf="shop$">
-<h1 id="shop_name">{{shop$.wlan}}
-  <hr id="shop_name_underline">
-</h1>
-<div class="grid-container">
-  <mat-grid-list cols="3" rowHeight="100px">
-    <mat-grid-tile id="opening_times">
-      <h6>Öffnungszeiten:</h6>
-      <ul>
-        <li>Stuff</li>
-        <li>Stuff</li>
-      </ul>
-    </mat-grid-tile>
-    <mat-grid-tile id="location">
-      <h6>Adresse:</h6>
-      <ul>
-
-      </ul>
-    </mat-grid-tile>
-    <mat-grid-tile id="price">
-      <h6>Preis</h6>
-      <p></p>
-    </mat-grid-tile>
-    <mat-grid-tile id="events">
-      <h6>Events:</h6>
-      <ul>
-        <li>Stuff</li>
-        <li>Stuff</li>
-        <li>Stuff</li>
-      </ul>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <div id="symbols">
-      <div *ngIf="getBoolean(shop$.latteArt) == true">A</div>
-      <div *ngIf="getBoolean(shop$.fair_trade)">B</div>
-      <div *ngIf="getBoolean(shop$.childFriendly) == true">C</div>
-      <div *ngIf="getBoolean(shop$.disabledFriendly)">D</div>
+  <h1 id="shop_name">{{shop$.name}}
+    <hr id="shop_name_underline">
+  </h1>
+  <div class="grid-container">
+    <mat-grid-list cols="3" rowHeight="100px">
+      <mat-grid-tile id="opening_times">
+        <h6>Öffnungszeiten:</h6>
+        <ul>
+          <li>Stuff</li>
+          <li>Stuff</li>
+        </ul>
+      </mat-grid-tile>
+      <mat-grid-tile id="location">
+        <h6>Adresse:</h6>
+        <ul>
+          <li>{{shop$.address.street_name + ' ' + shop$.address.street_number}}</li>
+          <li>{{shop$.address.postal_code + ' ' + shop$.address.town}}</li>
+          <li>{{shop$.address.country}}</li>
+        </ul>
+      </mat-grid-tile>
+      <mat-grid-tile id="price">
+        <h6>Preis:</h6>
+        <p>{{priceClass}}</p>
+      </mat-grid-tile>
+      <mat-grid-tile id="events">
+        <h6>Rating:</h6>
+        <ul>
+          <li>Stuff</li>
+          <li>Stuff</li>
+          <li>Stuff</li>
+        </ul>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div id="symbols">
+          <h6>Feature:</h6>
+          <div class="symbol" *ngIf="shop$.wlan || true" [matTooltipPosition]="position" [matTooltip]="symbolWlan"><i class="fas fa-wifi fa-1x"></i></div>
+          <div class="symbol" *ngIf="shop$.childFriendly || true" [matTooltipPosition]="position" [matTooltip]="symbolChildFriendly"><i class="fas fa-baby fa-1x"></i></div>
+          <div class="symbol" *ngIf="shop$.disabledFriendly || true" [matTooltipPosition]="position" [matTooltip]="symbolDisabledFriendly"><i class="fas fa-wheelchair fa-1x"></i></div>
+          <div class="symbol" *ngIf="shop$.outdoor || true" [matTooltipPosition]="position" [matTooltip]="symbolOutdoor"><i class="fas fa-sun fa-1x"></i></div>
+          <div class="symbol" *ngIf="shop$.latteArt || true" [matTooltipPosition]="position" [matTooltip]="symbolLatteArt"><i class="fas fa-paint-brush"></i></div>
+          <div class="symbol" *ngIf="shop$.petsFriendly || true" [matTooltipPosition]="position" [matTooltip]="symbolPetsFriendly"><i class="fas fa-paw fa-1x"></i></div>
+          <div class="symbol" *ngIf="shop$.workstation || true" [matTooltipPosition]="position" [matTooltip]="symbolWorkStation"><i class="fas fa-desktop fa-1x"></i></div>
+          <div class="symbol" *ngIf="shop$.fairTrade || true" [matTooltipPosition]="position" [matTooltip]="symbolFairTrade"><i class="fas fa-seedling fa-1fx"></i></div>
+          <div class="symbol" *ngIf="shop$.franchise || true" [matTooltipPosition]="position" [matTooltip]="symbolFranchise"><i class="fas fa-store-alt"></i></div>
+          <div class="symbol" *ngIf="shop$.foundingYear || true" [matTooltipPosition]="position" [matTooltip]="symbolVegan"><i class="fas fa-leaf"></i></div>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div id="link_to_shop">Website:</div>
+        <a href="http://wikipedia.de">{{shop$.website}}</a>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-tab-group>
+      <mat-tab label="Beschreibung">
+        <h6>{{shop$.name + ' Gründung: ' + shop$.foundingYear}}</h6>
+        <div>
+          {{shop$.description}}
+        </div>
+      </mat-tab>
+      <mat-tab label="Menü"> Content 2 </mat-tab>
+      <mat-tab label="Events"> Content 3 </mat-tab>
+      <mat-tab label="Landmarken"> Content 4 </mat-tab>
+      <mat-tab label="Equipment">Content 5 </mat-tab>
+    </mat-tab-group>
+    <div class="slideshow-container">
+      <div class="mySlides first">
+        <div class="numbertext">1 / 3</div>
+        <img src="https://dummyimage.com/600x700/fff/000" style="width:100%">
+        <div class="text">Caption Text</div>
       </div>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <div id="link_to_shop">item</div>
-    </mat-grid-tile>
-  </mat-grid-list>
-  <mat-tab-group>
-    <mat-tab label="First"></mat-tab>
-    <mat-tab label="Second"> Content 2 </mat-tab>
-    <mat-tab label="Third"> Content 3 </mat-tab>
-  </mat-tab-group>
-  <div class="slideshow-container">
-    <div class="mySlides first">
-      <div class="numbertext">1 / 3</div>
-      <img src="https://dummyimage.com/600x700/fff/000" style="width:100%">
-      <div class="text">Caption Text</div>
-    </div>
 
-    <div class="mySlides">
-      <div class="numbertext">2 / 3</div>
-      <img src="https://dummyimage.com/600x400/fff/000" style="width:100%">
-      <div class="text">Caption Two</div>
-    </div>
+      <div class="mySlides">
+        <div class="numbertext">2 / 3</div>
+        <img src="https://dummyimage.com/600x700/fff/000" style="width:100%">
+        <div class="text">Caption Two</div>
+      </div>
 
-    <div class="mySlides">
-      <div class="numbertext">3 / 3</div>
-      <img src="https://dummyimage.com/600x400/fff/000" style="width:100%">
-      <div class="text">Caption Three</div>
+      <div class="mySlides">
+        <div class="numbertext">3 / 3</div>
+        <img src="https://dummyimage.com/600x700/fff/000" style="width:100%">
+        <div class="text">Caption Three</div>
+      </div>
+      <div class="dots">
+        <span class="dot" (click)="currentSlide(1)"></span>
+        <span class="dot" (click)="currentSlide(2)"></span>
+        <span class="dot" (click)="currentSlide(3)"></span>
+      </div>
+      <br>
+      <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+      <a class="next" (click)="plusSlides(1)">&#10095;</a>
     </div>
-    <div class="dots">
-      <span class="dot" (click)="currentSlide(1)"></span>
-      <span class="dot" (click)="currentSlide(2)"></span>
-      <span class="dot" (click)="currentSlide(3)"></span>
-    </div>
-    <br>
-    <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
-    <a class="next" (click)="plusSlides(1)">&#10095;</a>
   </div>
-</div>
 </div>

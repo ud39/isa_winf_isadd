@@ -31,12 +31,12 @@ export class ShopService {
   }
 
 
-  getShop(queryParams: Params): Observable<Shop>{
-    const httpParams: HttpParamsOptions = { fromObject: queryParams } as HttpParamsOptions;
-    const options = { params: new HttpParams(httpParams), headers: headers };
-    console.log(new HttpParams(httpParams));
-    console.log(options);
-    return this.http.get<Shop>('https://localhost:5001/api/coffeeshop/getById', {params:queryParams, headers: headers});
+  getShop(id): Observable<Shop>{
+    //const httpParams: HttpParamsOptions = { fromObject: queryParams } as HttpParamsOptions;
+    //const options = { params: new HttpParams(httpParams), headers: headers };
+    //console.log(new HttpParams(httpParams));
+    //console.log(options);
+    return this.http.get<Shop>('https://localhost:5001/api/coffeeshop/'+ id, {headers:headers});
   }
 }
 

@@ -12,13 +12,12 @@
 \subsection{HERM-Translation}
 \subsubsection{Descripition}
 Higher-Order\\
-Located was translate by taken the primary key  of LOCATION aswell as the primary keys from the relationship of organised\_by.\\
+Located was translate by taken the primary key  of LOCATION as well as the primary keys from the relationship of organised\_by.\\
 Rated\_By was translated by\\
-Includes was translate by taken the primary key of PREPARATION aswell as the primary keys from the relationship of serves.\\
-Sells was translated by taken the primary key of EQUIPMENT aswell as the primary keys from the relationship supplies.\\\\ 
-Cluster are transform with the full key approach, because the entities have no common keys in their entities. \\ 
-The ARTICLE cluster with the connection to the following entites: EQUIPMENT, COFFEE\_DRINK, BEAN and BLEND.\\
-The RATING cluster with the connection to the following entities: GOOGLE-RATING, USER-RATING, TRIPADVISER-RATING.\\\\
+Includes was translate by taken the primary key of PREPARATION as well as the primary keys from the relationship of serves.\\
+Sells was translated by taken the primary key of EQUIPMENT as well as the primary keys from the relationship supplies.\\\\ 
+The ARTICLE cluster with the connection to the following entites: EQUIPMENT, COFFEE\_DRINK, BEAN and BLEND was transformed by using the separation approach where the middle table are collapsed. Seperation was used to keep so that the keys of the connected entites are the natural one. \\
+The RATING cluster with the connection to the following entities: GOOGLE-RATING, USER-RATING, TRIPADVISER-RATING was transformed by using the full participation approach because there is no common key in the entites.\\\\
 \subsubsection{Entity}
 (EQUIPMENT(Manufacturer, Year\_of\_origin, Name)\\(Manufacturer, Year\_of\_origin, Name))\\
 (EVENT(EventID, Time, Name,Access\_fee, Description)(EventID))\\
@@ -304,6 +303,6 @@ rates.RatingID::INTEGER
 rates.RATINGId::INTEGER
 rates.Email::text\\
 \subsection{Constraints Handling}
-Referential constraints are enforce through the database management system by adding constraint to the tables which have the corresponding references. The majority of the referential constraints are foreign keys.\\
+Referential constraints are enforced through the database management system by adding constraint to the tables which have the corresponding references. The majority of the referential constraints are foreign keys.\\
 Integrity of concrete input of some tables are enforces through checks.\\
 \newpage

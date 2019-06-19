@@ -1,11 +1,11 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {ShopService} from "../../../services/shop/shop.service";
-import {Location} from '@angular/common';
+
 import {Shop} from "../../../interfaces/entity/Shop";
-
-
-
+import {switchMap} from "rxjs/operators";
+import {TooltipPosition} from "@angular/material";
+import {ParamsInheritanceStrategy} from "@angular/router/src/router_state";
 
 @Component({
   selector: 'app-shop-detail',
@@ -15,8 +15,36 @@ import {Shop} from "../../../interfaces/entity/Shop";
 })
 export class ShopDetailComponent implements OnInit {
 
-  public shop$: Shop;
+  private symbolWlan = 'stuff';
+  private symbolChildFriendly = 'stuff';
+  private symbolDisabledFriendly = 'stuff';
+  private symbolOutdoor = 'stuff';
+  private symbolLatteArt = 'stuff';
+  private symbolPetsFriendly = 'stuff';
+  private symbolWorkStation = 'stuff';
+  private symbolFairTrade = 'stuff';
+  private symbolFranchise = 'stuff';
+  private symbolVegan = 'stuff';
+  private position : TooltipPosition = 'above';
+  private shop$: Shop;
+  private priceClass: string;
   selectedId: string;
+
+  setPriceClass(range:string):void{
+    switch (range) {
+      case 'niedrig':
+        this.priceClass = "€";
+        break;
+      case 'mittel':
+        this.priceClass = "€€";
+        break;
+      case 'hoch':
+        this.priceClass = "€€€";
+        break;
+    }
+  }
+
+
   public slideIndex = 1;
   plusSlides(n) {
     this.showSlides(this.slideIndex += n);
@@ -45,24 +73,19 @@ export class ShopDetailComponent implements OnInit {
     dots[this.slideIndex-1].className += " active";
   }
 
-  getBoolean(bool){
-    return Boolean(bool);
-  }
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private service: ShopService,
-    private location: Location
   ) { }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.service.getShop(params).subscribe(value => {
-      this.shop$ = value;
-      console.log(this.shop$.childFriendly.valueOf());
-      }, error1 => console.log(error1));
+    this.route.paramMap.pipe(
+      switchMap((params: ParamMap) =>
+        this.service.getShop(params.get('id')))
+    ).subscribe(params => {
+      this.shop$ = params;
     });
-
   }
 }
 
