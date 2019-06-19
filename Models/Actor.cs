@@ -5,11 +5,10 @@ namespace WinfADD.Models
     public class Actor
     {
         //primary keys
-        [Key] public string email { get; set; }
+        [Key] public string Email { get; set; }
 
-        //
-        [Required] public string password { get; set; }
-        [Required] public string name { get; set; }
+        [Required] public string Password { get; set; }
+        [Required] public string Name { get; set; }
 
     }
 }

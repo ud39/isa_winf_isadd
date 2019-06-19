@@ -116,18 +116,18 @@ namespace WinfADD.Controllers
         {
 
             Console.WriteLine("<---------------------------------------------------------->");
-            Console.WriteLine("DEEEEEEEEEEEEEEEEEEEEEEEELETE::"+imageObj.File_Name);
+            Console.WriteLine("DEEEEEEEEEEEEEEEEEEEEEEEELETE::"+imageObj.FileName);
             //delete from table
             using (IDbConnection conn = Connection)
             {
                 Console.WriteLine("\n DeleteImage::");
                 var sql = "DELETE  FROM image WHERE file_name = @file_name";
-                var affectedRows =  conn.ExecuteAsync(sql,new{file_name = imageObj.File_Name});
+                var affectedRows =  conn.ExecuteAsync(sql,new{file_name = imageObj.FileName});
             }
 
             //TODO delete actual file
 
-            return Json( "Delete::"+imageObj.File_Name);
+            return Json( "Delete::"+imageObj.FileName);
         }
 
     }

@@ -16,7 +16,6 @@ namespace WinfADD.Models
         [Required]
         public string Phone { get; set; }
  
- 
-        public string Address { get; set; }
+        public Address Address { get; set; }
     }
 }

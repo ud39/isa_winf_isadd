@@ -6,7 +6,7 @@ namespace WinfADD.Models
     {
         //primary keys
         [Key] public string Name { get; set; }
-        [Key] public string Manufacturer_Name { get; set; }
+        [Key] public string ManufacturerName { get; set; }
 
         //
         public string Provenance { get; set; }

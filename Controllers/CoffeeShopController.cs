@@ -9,12 +9,13 @@ namespace WinfADD.Controllers
 {
     public class CoffeeShopController : GenericTableController<CoffeeShop>
     {
-        private ICoffeeShopRepository _coffeeShopRepo;
+        private CoffeeShopRepository _coffeeShopRepo;
 
-        public CoffeeShopController(ICoffeeShopRepository coffeeShopRepo): base(coffeeShopRepo)
+        public CoffeeShopController(ITableRepository<CoffeeShop> coffeeShopRepo) : base(coffeeShopRepo)
         {
-            _coffeeShopRepo = coffeeShopRepo;
+            _coffeeShopRepo = (CoffeeShopRepository)coffeeShopRepo;
         }
+
         
         
         [HttpGet]

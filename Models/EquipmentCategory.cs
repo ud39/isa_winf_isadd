@@ -2,9 +2,9 @@ namespace WinfADD.Models
 {
     public class EquipmentCategory
     {
-        private string EquipmentCategoryName { get; set; }
+        public string EquipmentCategoryName { get; set; }
 
-        private string CoffeeShopName { get; set; }
+        public string CoffeeShopName { get; set; }
 
     }
 }

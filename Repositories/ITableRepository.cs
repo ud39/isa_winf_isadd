@@ -10,8 +10,6 @@ namespace WinfADD.Repositories
 
         Task<Table> GetByID(Table tableObj);
         
-        
-
         Task<IEnumerable<Table>> GetTables(Table tableObj, IDictionary<string, string> searchProperties);
 
         Task<bool> InsertTable(Table tableObj, IDictionary<string, string> insertProperties);
