@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="2996.0px" height="1448.0px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="2996.0px" height="1497.0px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g>
-<rect x="0.0px" y="0.0px" width="2996.0px" height="1448.0px" rx="0.0px" ry="0.0px" style="fill:rgb(255,255,255);"/>
+<rect x="0.0px" y="0.0px" width="2996.0px" height="1497.0px" rx="0.0px" ry="0.0px" style="fill:rgb(255,255,255);"/>
 <rect x="1665.5px" y="1022.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
 <rect x="1665.5px" y="1021.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
 <rect x="1664.5px" y="1021.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
@@ -56,12 +56,12 @@
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
    COMPANY
 </text>
-<rect x="739.5px" y="966.5px" width="151.0px" height="75.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<rect x="739.5px" y="965.5px" width="151.0px" height="75.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<rect x="738.5px" y="965.5px" width="151.0px" height="75.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<rect x="738.5px" y="964.5px" width="151.0px" height="75.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<rect x="737.5px" y="964.5px" width="151.0px" height="75.0px" rx="0.0px" ry="0.0px" style="fill:rgb(255,255,255); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<text transform="translate(795.0,994.0), rotate(-0.0)" x="0px" y="0px" textLength="36.0px"
+<rect x="758.5px" y="852.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
+<rect x="758.5px" y="851.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
+<rect x="757.5px" y="851.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
+<rect x="757.5px" y="850.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
+<rect x="756.5px" y="850.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:rgb(255,255,255); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<text transform="translate(814.0,880.0), rotate(-0.0)" x="0px" y="0px" textLength="36.0px"
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
    BEAN
 </text>
@@ -114,21 +114,21 @@
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
    RATING
 </text>
-<polygon points=" 554.0,1004.0 607.0,1043.0 660.0,1004.0 607.0,964.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<polygon points=" 554.0,1003.0 607.0,1042.0 660.0,1003.0 607.0,963.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<polygon points=" 553.0,1003.0 606.0,1042.0 659.0,1003.0 606.0,963.0 " style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<polygon points=" 553.0,1002.0 606.0,1041.0 659.0,1002.0 606.0,962.0 " style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<polygon points=" 552.0,1002.0 605.0,1041.0 658.0,1002.0 605.0,962.0 " style="fill:rgb(255,255,255); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<text transform="translate(572.0,994.0), rotate(-0.0)" x="0px" y="0px" textLength="66.0px"
+<polygon points=" 554.0,890.0 607.0,930.0 660.0,890.0 607.0,851.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
+<polygon points=" 554.0,889.0 607.0,929.0 660.0,889.0 607.0,850.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
+<polygon points=" 553.0,889.0 606.0,929.0 659.0,889.0 606.0,850.0 " style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
+<polygon points=" 553.0,888.0 606.0,928.0 659.0,888.0 606.0,849.0 " style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
+<polygon points=" 552.0,888.0 605.0,928.0 658.0,888.0 605.0,849.0 " style="fill:rgb(255,255,255); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<text transform="translate(572.0,880.0), rotate(-0.0)" x="0px" y="0px" textLength="66.0px"
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
    consists_of
 </text>
-<path d="M 663.0 1002.0 L 731.0 1002.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<text transform="translate(658.0,1009.0), rotate(-0.0)" x="0px" y="0px" textLength="26.0px"
+<path d="M 663.0 888.0 L 750.0 888.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<text transform="translate(658.0,895.0), rotate(-0.0)" x="0px" y="0px" textLength="26.0px"
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
    (0,n)
 </text>
-<polygon points=" 731.0,1002.0 724.0,998.0 728.0,1002.0 724.0,1005.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<polygon points=" 750.0,888.0 743.0,884.0 746.0,888.0 743.0,892.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
 <polygon points=" 1045.0,758.0 1098.0,798.0 1151.0,758.0 1098.0,718.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
 <polygon points=" 1045.0,757.0 1098.0,797.0 1151.0,757.0 1098.0,717.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
 <polygon points=" 1044.0,757.0 1097.0,797.0 1150.0,757.0 1097.0,717.0 " style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
@@ -237,57 +237,51 @@
    (0,n)
 </text>
 <polygon points=" 1096.0,711.0 1100.0,703.0 1096.0,707.0 1092.0,703.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<polygon points=" 1272.0,1004.0 1325.0,1043.0 1378.0,1004.0 1325.0,964.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<polygon points=" 1272.0,1003.0 1325.0,1042.0 1378.0,1003.0 1325.0,963.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<polygon points=" 1271.0,1003.0 1324.0,1042.0 1377.0,1003.0 1324.0,963.0 " style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<polygon points=" 1271.0,1002.0 1324.0,1041.0 1377.0,1002.0 1324.0,962.0 " style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<polygon points=" 1270.0,1002.0 1323.0,1041.0 1376.0,1002.0 1323.0,962.0 " style="fill:rgb(255,255,255); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<text transform="translate(1299.0,994.0), rotate(-0.0)" x="0px" y="0px" textLength="47.0px"
+<polygon points=" 1253.0,890.0 1306.0,930.0 1359.0,890.0 1306.0,851.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
+<polygon points=" 1253.0,889.0 1306.0,929.0 1359.0,889.0 1306.0,850.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
+<polygon points=" 1252.0,889.0 1305.0,929.0 1358.0,889.0 1305.0,850.0 " style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
+<polygon points=" 1252.0,888.0 1305.0,928.0 1358.0,888.0 1305.0,849.0 " style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
+<polygon points=" 1251.0,888.0 1304.0,928.0 1357.0,888.0 1304.0,849.0 " style="fill:rgb(255,255,255); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<text transform="translate(1281.0,880.0), rotate(-0.0)" x="0px" y="0px" textLength="47.0px"
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
    provides
 </text>
-<path d="M 1330.0 956.0 L 1392.0 554.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<text transform="translate(1333.0,943.0), rotate(-0.0)" x="0px" y="0px" textLength="26.0px"
+<path d="M 1315.0 843.0 L 1387.0 554.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<text transform="translate(1319.0,831.0), rotate(-0.0)" x="0px" y="0px" textLength="26.0px"
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
    (0,n)
 </text>
-<polygon points=" 1392.0,554.0 1387.0,561.0 1391.0,557.0 1394.0,562.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 1264.0 1002.0 L 894.0 1002.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<text transform="translate(1244.0,979.0), rotate(-0.0)" x="0px" y="0px" textLength="26.0px"
+<polygon points=" 1387.0,554.0 1382.0,560.0 1387.0,557.0 1389.0,562.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 1245.0 888.0 L 913.0 888.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<text transform="translate(1225.0,865.0), rotate(-0.0)" x="0px" y="0px" textLength="26.0px"
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
    (0,n)
 </text>
-<polygon points=" 894.0,1002.0 901.0,1005.0 898.0,1002.0 901.0,998.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<rect x="985.5px" y="1098.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<rect x="985.5px" y="1097.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<rect x="984.5px" y="1097.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<rect x="984.5px" y="1096.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<rect x="983.5px" y="1096.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:rgb(255,255,255); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<text transform="translate(1037.0,1126.0), rotate(-0.0)" x="0px" y="0px" textLength="43.0px"
+<polygon points=" 913.0,888.0 920.0,892.0 917.0,888.0 920.0,884.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<rect x="1079.5px" y="1155.5px" width="151.0px" height="75.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
+<rect x="1079.5px" y="1154.5px" width="151.0px" height="75.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
+<rect x="1078.5px" y="1154.5px" width="151.0px" height="75.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
+<rect x="1078.5px" y="1153.5px" width="151.0px" height="75.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
+<rect x="1077.5px" y="1153.5px" width="151.0px" height="75.0px" rx="0.0px" ry="0.0px" style="fill:rgb(255,255,255); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<text transform="translate(1132.0,1183.0), rotate(-0.0)" x="0px" y="0px" textLength="43.0px"
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
    BLEND
 </text>
-<polygon points=" 762.0,1136.0 815.0,1176.0 868.0,1136.0 815.0,1096.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<polygon points=" 762.0,1135.0 815.0,1175.0 868.0,1135.0 815.0,1095.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<polygon points=" 761.0,1135.0 814.0,1175.0 867.0,1135.0 814.0,1095.0 " style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<polygon points=" 761.0,1134.0 814.0,1174.0 867.0,1134.0 814.0,1094.0 " style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<polygon points=" 760.0,1134.0 813.0,1174.0 866.0,1134.0 813.0,1094.0 " style="fill:rgb(255,255,255); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<text transform="translate(783.0,1126.0), rotate(-0.0)" x="0px" y="0px" textLength="60.0px"
+<polygon points=" 913.0,1041.0 966.0,1081.0 1019.0,1041.0 966.0,1002.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
+<polygon points=" 913.0,1040.0 966.0,1080.0 1019.0,1040.0 966.0,1001.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
+<polygon points=" 912.0,1040.0 965.0,1080.0 1018.0,1040.0 965.0,1001.0 " style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
+<polygon points=" 912.0,1039.0 965.0,1079.0 1018.0,1039.0 965.0,1000.0 " style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
+<polygon points=" 911.0,1039.0 964.0,1079.0 1017.0,1039.0 964.0,1000.0 " style="fill:rgb(255,255,255); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<text transform="translate(934.0,1031.0), rotate(-0.0)" x="0px" y="0px" textLength="60.0px"
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
    composed
 </text>
-<path d="M 813.0 1089.0 L 813.0 1045.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<text transform="translate(815.0,1073.0), rotate(-0.0)" x="0px" y="0px" textLength="26.0px"
- style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
-   (0,n)
-</text>
-<polygon points=" 813.0,1045.0 809.0,1053.0 813.0,1049.0 816.0,1053.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 871.0 1134.0 L 977.0 1134.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<text transform="translate(866.0,1111.0), rotate(-0.0)" x="0px" y="0px" textLength="26.0px"
+<path d="M 1020.0 1085.0 L 1098.0 1147.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<text transform="translate(1023.0,1070.0), rotate(-0.0)" x="0px" y="0px" textLength="26.0px"
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
    (2,n)
 </text>
-<polygon points=" 977.0,1134.0 969.0,1130.0 973.0,1134.0 969.0,1138.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<polygon points=" 1098.0,1147.0 1095.0,1140.0 1095.0,1145.0 1090.0,1145.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
 <polygon points=" 1423.0,1004.0 1476.0,1043.0 1529.0,1004.0 1476.0,964.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
 <polygon points=" 1423.0,1003.0 1476.0,1042.0 1529.0,1003.0 1476.0,963.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
 <polygon points=" 1422.0,1003.0 1475.0,1042.0 1528.0,1003.0 1475.0,963.0 " style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
@@ -297,12 +291,12 @@
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
    offers
 </text>
-<path d="M 1474.0 1047.0 L 1474.0 1134.0 L 1140.0 1134.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 1474.0 1047.0 L 1474.0 1191.0 L 1234.0 1191.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
 <text transform="translate(1446.0,1047.0), rotate(-0.0)" x="0px" y="0px" textLength="26.0px"
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
    (0,n)
 </text>
-<polygon points=" 1140.0,1134.0 1147.0,1138.0 1143.0,1134.0 1147.0,1130.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<polygon points=" 1234.0,1191.0 1242.0,1194.0 1238.0,1191.0 1242.0,1187.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
 <polygon points=" 1007.0,380.0 1060.0,420.0 1113.0,380.0 1060.0,340.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
 <polygon points=" 1007.0,379.0 1060.0,419.0 1113.0,379.0 1060.0,339.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
 <polygon points=" 1006.0,379.0 1059.0,419.0 1112.0,379.0 1059.0,339.0 " style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
@@ -436,34 +430,34 @@
    (0,n)
 </text>
 <polygon points=" 1405.0,554.0 1403.0,562.0 1406.0,557.0 1410.0,561.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<polygon points=" 403.0,1382.0 456.0,1421.0 508.0,1382.0 456.0,1342.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<polygon points=" 403.0,1381.0 456.0,1420.0 508.0,1381.0 456.0,1341.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<polygon points=" 402.0,1381.0 455.0,1420.0 507.0,1381.0 455.0,1341.0 " style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<polygon points=" 402.0,1380.0 455.0,1419.0 507.0,1380.0 455.0,1340.0 " style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<polygon points=" 401.0,1380.0 454.0,1419.0 506.0,1380.0 454.0,1340.0 " style="fill:rgb(255,255,255); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<text transform="translate(427.0,1372.0), rotate(-0.0)" x="0px" y="0px" textLength="53.0px"
+<polygon points=" 384.0,1457.0 437.0,1497.0 490.0,1457.0 437.0,1417.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
+<polygon points=" 384.0,1456.0 437.0,1496.0 490.0,1456.0 437.0,1416.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
+<polygon points=" 383.0,1456.0 436.0,1496.0 489.0,1456.0 436.0,1416.0 " style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
+<polygon points=" 383.0,1455.0 436.0,1495.0 489.0,1455.0 436.0,1415.0 " style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
+<polygon points=" 382.0,1455.0 435.0,1495.0 488.0,1455.0 435.0,1415.0 " style="fill:rgb(255,255,255); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<text transform="translate(408.0,1447.0), rotate(-0.0)" x="0px" y="0px" textLength="53.0px"
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
    ARTICLE
 </text>
-<line x1="442.0px" y1="1287.0px" x2="469.0px" y2="1287.0px" style="stroke:rgb(219,219,219); stroke-width:3.0px;"/>
-<line x1="456.0px" y1="1274.0px" x2="456.0px" y2="1300.0px" style="stroke:rgb(219,219,219); stroke-width:3.0px;"/>
-<ellipse cx="456.5px" cy="1287.5px" rx="22.5px" ry="22.5px" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<line x1="442.0px" y1="1286.0px" x2="469.0px" y2="1286.0px" style="stroke:rgb(219,219,219); stroke-width:3.0px;"/>
-<line x1="456.0px" y1="1273.0px" x2="456.0px" y2="1299.0px" style="stroke:rgb(219,219,219); stroke-width:3.0px;"/>
-<ellipse cx="456.5px" cy="1286.5px" rx="22.5px" ry="22.5px" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<line x1="441.0px" y1="1286.0px" x2="468.0px" y2="1286.0px" style="stroke:rgb(169,169,169); stroke-width:3.0px;"/>
-<line x1="455.0px" y1="1273.0px" x2="455.0px" y2="1299.0px" style="stroke:rgb(169,169,169); stroke-width:3.0px;"/>
-<ellipse cx="455.5px" cy="1286.5px" rx="22.5px" ry="22.5px" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<line x1="441.0px" y1="1285.0px" x2="468.0px" y2="1285.0px" style="stroke:rgb(169,169,169); stroke-width:3.0px;"/>
-<line x1="455.0px" y1="1272.0px" x2="455.0px" y2="1298.0px" style="stroke:rgb(169,169,169); stroke-width:3.0px;"/>
-<ellipse cx="455.5px" cy="1285.5px" rx="22.5px" ry="22.5px" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<text transform="translate(413.0,1239.0), rotate(-0.0)" x="0px" y="0px" textLength="81.0px"
+<line x1="253.0px" y1="1344.0px" x2="280.0px" y2="1344.0px" style="stroke:rgb(219,219,219); stroke-width:3.0px;"/>
+<line x1="267.0px" y1="1331.0px" x2="267.0px" y2="1357.0px" style="stroke:rgb(219,219,219); stroke-width:3.0px;"/>
+<ellipse cx="267.5px" cy="1344.5px" rx="22.5px" ry="22.5px" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
+<line x1="253.0px" y1="1343.0px" x2="280.0px" y2="1343.0px" style="stroke:rgb(219,219,219); stroke-width:3.0px;"/>
+<line x1="267.0px" y1="1330.0px" x2="267.0px" y2="1356.0px" style="stroke:rgb(219,219,219); stroke-width:3.0px;"/>
+<ellipse cx="267.5px" cy="1343.5px" rx="22.5px" ry="22.5px" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
+<line x1="252.0px" y1="1343.0px" x2="279.0px" y2="1343.0px" style="stroke:rgb(169,169,169); stroke-width:3.0px;"/>
+<line x1="266.0px" y1="1330.0px" x2="266.0px" y2="1356.0px" style="stroke:rgb(169,169,169); stroke-width:3.0px;"/>
+<ellipse cx="266.5px" cy="1343.5px" rx="22.5px" ry="22.5px" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
+<line x1="252.0px" y1="1342.0px" x2="279.0px" y2="1342.0px" style="stroke:rgb(169,169,169); stroke-width:3.0px;"/>
+<line x1="266.0px" y1="1329.0px" x2="266.0px" y2="1355.0px" style="stroke:rgb(169,169,169); stroke-width:3.0px;"/>
+<ellipse cx="266.5px" cy="1342.5px" rx="22.5px" ry="22.5px" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
+<text transform="translate(224.0,1296.0), rotate(-0.0)" x="0px" y="0px" textLength="81.0px"
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
    article_cluster
 </text>
-<line x1="440.0px" y1="1285.0px" x2="467.0px" y2="1285.0px" style="stroke:rgb(0,0,0); stroke-width:3.0px;"/>
-<line x1="454.0px" y1="1272.0px" x2="454.0px" y2="1298.0px" style="stroke:rgb(0,0,0); stroke-width:3.0px;"/>
-<ellipse cx="454.5px" cy="1285.5px" rx="22.5px" ry="22.5px" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<line x1="251.0px" y1="1342.0px" x2="278.0px" y2="1342.0px" style="stroke:rgb(0,0,0); stroke-width:3.0px;"/>
+<line x1="265.0px" y1="1329.0px" x2="265.0px" y2="1355.0px" style="stroke:rgb(0,0,0); stroke-width:3.0px;"/>
+<ellipse cx="265.5px" cy="1342.5px" rx="22.5px" ry="22.5px" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
 <rect x="1665.5px" y="739.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
 <rect x="1665.5px" y="738.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
 <rect x="1664.5px" y="738.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
@@ -498,20 +492,20 @@
    (0,n)
 </text>
 <polygon points=" 535.0,756.0 542.0,760.0 539.0,756.0 542.0,752.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 605.0 956.0 L 605.0 775.0 L 535.0 775.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<text transform="translate(607.0,941.0), rotate(-0.0)" x="0px" y="0px" textLength="26.0px"
+<path d="M 605.0 843.0 L 605.0 775.0 L 535.0 775.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<text transform="translate(607.0,827.0), rotate(-0.0)" x="0px" y="0px" textLength="26.0px"
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
    (1,n)
 </text>
 <polygon points=" 535.0,775.0 542.0,779.0 539.0,775.0 542.0,771.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 482.0 1284.0 L 1739.0 1209.0 L 1739.0 1102.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 293.0 1339.0 L 1739.0 1209.0 L 1739.0 1102.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
 <polygon points=" 1739.0,1102.0 1735.0,1109.0 1739.0,1106.0 1742.0,1109.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 482.0 1278.0 L 977.0 1154.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<polygon points=" 977.0,1154.0 969.0,1152.0 973.0,1155.0 971.0,1160.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 499.0 1249.0 L 757.0 1045.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<polygon points=" 757.0,1045.0 749.0,1047.0 754.0,1047.0 754.0,1053.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 454.0 1234.0 L 454.0 799.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<polygon points=" 454.0,799.0 450.0,807.0 454.0,803.0 457.0,807.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 293.0 1337.0 L 1071.0 1205.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<polygon points=" 1071.0,1205.0 1064.0,1202.0 1068.0,1205.0 1065.0,1209.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 294.0 1290.0 L 435.0 1039.0 L 750.0 919.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<polygon points=" 750.0,919.0 742.0,918.0 747.0,921.0 745.0,925.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 255.0 1290.0 L 189.0 926.0 L 386.0 799.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<polygon points=" 386.0,799.0 378.0,800.0 383.0,801.0 382.0,807.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
 <rect x="2251.5px" y="134.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
 <rect x="2251.5px" y="133.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
 <rect x="2250.5px" y="133.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
@@ -621,22 +615,22 @@
    (0,n)
 </text>
 <polygon points=" 1531.0,782.0 1527.0,790.0 1531.0,786.0 1534.0,790.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 454.0 1334.0 L 454.0 1313.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<polygon points=" 454.0,1313.0 450.0,1321.0 454.0,1317.0 457.0,1321.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 376.0 1416.0 L 293.0 1361.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<polygon points=" 293.0,1361.0 297.0,1368.0 296.0,1363.0 301.0,1362.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
 <path d="M 2230.0 556.0 L 2230.0 667.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
 <polygon points=" 2230.0,667.0 2234.0,659.0 2230.0,663.0 2226.0,659.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
 <text transform="translate(2608.0,340.0), rotate(-0.0)" x="0px" y="0px" textLength="97.0px"
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
    total, overlapping
 </text>
-<polyline points=" 2619.0,336.0 2600.0,336.0 2600.0,360.0 2619.0,360.0 " style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<polyline points=" 2619.0,336.0 2600.0,336.0 2600.0,360.0 2619.0,360.0 " style="fill:none; stroke:rgb(0,0,0); stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <path d="M 2608.0 331.0 L 2608.0 215.0" style="fill:none; stroke:rgb(0,0,0); stroke-dasharray:2 3; stroke-width:1.0px;"/>
 <path d="M 2608.0 366.0 L 2608.0 522.0" style="fill:none; stroke:rgb(0,0,0); stroke-dasharray:2 3; stroke-width:1.0px;"/>
 <text transform="translate(2778.0,624.0), rotate(-0.0)" x="0px" y="0px" textLength="97.0px"
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
    total, overlapping
 </text>
-<polyline points=" 2789.0,620.0 2770.0,620.0 2770.0,644.0 2789.0,644.0 " style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<polyline points=" 2789.0,620.0 2770.0,620.0 2770.0,644.0 2789.0,644.0 " style="fill:none; stroke:rgb(0,0,0); stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <path d="M 2778.0 649.0 L 2778.0 711.0" style="fill:none; stroke:rgb(0,0,0); stroke-dasharray:2 3; stroke-width:1.0px;"/>
 <path d="M 2778.0 614.0 L 2778.0 518.0" style="fill:none; stroke:rgb(0,0,0); stroke-dasharray:2 3; stroke-width:1.0px;"/>
 <polygon points=" 1612.0,1287.0 1665.0,1327.0 1718.0,1287.0 1665.0,1247.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
@@ -648,12 +642,12 @@
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
    creates
 </text>
-<path d="M 1604.0 1290.0 L 512.0 1375.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<text transform="translate(1583.0,1267.0), rotate(-0.0)" x="0px" y="0px" textLength="26.0px"
+<path d="M 1604.0 1293.0 L 493.0 1447.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<text transform="translate(1582.0,1271.0), rotate(-0.0)" x="0px" y="0px" textLength="26.0px"
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
    (0,n)
 </text>
-<polygon points=" 512.0,1375.0 520.0,1378.0 516.0,1375.0 519.0,1370.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<polygon points=" 493.0,1447.0 501.0,1450.0 497.0,1447.0 500.0,1442.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
 <path d="M 1722.0 1304.0 L 2551.0 1304.0 L 2604.0 612.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
 <text transform="translate(1716.0,1311.0), rotate(-0.0)" x="0px" y="0px" textLength="26.0px"
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
@@ -669,78 +663,78 @@
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
    publishes
 </text>
-<path d="M 1604.0 1380.0 L 512.0 1380.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<text transform="translate(1584.0,1356.0), rotate(-0.0)" x="0px" y="0px" textLength="26.0px"
+<path d="M 1604.0 1383.0 L 493.0 1451.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<text transform="translate(1583.0,1361.0), rotate(-0.0)" x="0px" y="0px" textLength="26.0px"
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
    (0,n)
 </text>
-<polygon points=" 512.0,1380.0 520.0,1383.0 516.0,1380.0 520.0,1376.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<polygon points=" 493.0,1451.0 501.0,1455.0 497.0,1451.0 500.0,1447.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
 <path d="M 1722.0 1380.0 L 2608.0 1380.0 L 2608.0 612.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
 <text transform="translate(1716.0,1387.0), rotate(-0.0)" x="0px" y="0px" textLength="26.0px"
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
    (0,n)
 </text>
 <polygon points=" 2608.0,612.0 2604.0,620.0 2608.0,616.0 2612.0,620.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<rect x="671.5px" y="1138.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(677.0,1146.0), rotate(-0.0)" x="0px" y="0px" textLength="46.0px"
+<rect x="1049.5px" y="986.5px" width="57.0px" height="31.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
+<text transform="translate(1054.0,995.0), rotate(-0.0)" x="0px" y="0px" textLength="46.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
    Propotion
 </text>
-<path d="M 756.0 1146.0 L 735.0 1149.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 756.0 1145.0 L 735.0 1148.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 755.0 1145.0 L 734.0 1148.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 755.0 1144.0 L 734.0 1147.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 754.0 1144.0 L 733.0 1147.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 1024.0 1022.0 L 1045.0 1015.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1024.0 1021.0 L 1045.0 1014.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1023.0 1021.0 L 1044.0 1014.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1023.0 1020.0 L 1044.0 1013.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1022.0 1020.0 L 1043.0 1013.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <rect x="1030.5px" y="835.5px" width="57.0px" height="31.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
 <text transform="translate(1044.0,844.0), rotate(-0.0)" x="0px" y="0px" textLength="29.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
    vegan
 </text>
-<path d="M 1080.0 803.0 L 1069.0 832.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1080.0 802.0 L 1069.0 831.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1079.0 802.0 L 1068.0 831.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1079.0 801.0 L 1068.0 830.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1078.0 801.0 L 1067.0 830.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 1080.0 803.0 L 1069.0 832.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1080.0 802.0 L 1069.0 831.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1079.0 802.0 L 1068.0 831.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1079.0 801.0 L 1068.0 830.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1078.0 801.0 L 1067.0 830.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <rect x="1200.5px" y="457.5px" width="57.0px" height="31.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
 <text transform="translate(1214.0,476.0), rotate(-0.0)" x="0px" y="0px" textLength="28.0px"
  style="font-family:Arial; font-size:10.0px; text-decoration:underline; fill:rgb(0,0,0); stroke:none; ">
    Name
 </text>
-<path d="M 1319.0 494.0 L 1264.0 482.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1319.0 493.0 L 1264.0 481.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1318.0 493.0 L 1263.0 481.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1318.0 492.0 L 1263.0 480.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1317.0 492.0 L 1262.0 480.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 1319.0 494.0 L 1264.0 482.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1319.0 493.0 L 1264.0 481.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1318.0 493.0 L 1263.0 481.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1318.0 492.0 L 1263.0 480.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1317.0 492.0 L 1262.0 480.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <rect x="1200.5px" y="495.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
 <text transform="translate(1211.0,514.0), rotate(-0.0)" x="0px" y="0px" textLength="36.0px"
  style="font-family:Arial; font-size:10.0px; text-decoration:underline; fill:rgb(0,0,0); stroke:none; ">
    Address
 </text>
-<path d="M 1319.0 512.0 L 1264.0 512.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1319.0 511.0 L 1264.0 511.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1318.0 511.0 L 1263.0 511.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1318.0 510.0 L 1263.0 510.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1317.0 510.0 L 1262.0 510.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 1319.0 512.0 L 1264.0 512.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1319.0 511.0 L 1264.0 511.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1318.0 511.0 L 1263.0 511.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1318.0 510.0 L 1263.0 510.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1317.0 510.0 L 1262.0 510.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <rect x="898.5px" y="117.5px" width="56.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
 <text transform="translate(908.0,136.0), rotate(-0.0)" x="0px" y="0px" textLength="37.0px"
  style="font-family:Arial; font-size:10.0px; text-decoration:underline; fill:rgb(0,0,0); stroke:none; ">
    EventID
 </text>
-<path d="M 1010.0 204.0 L 952.0 155.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1010.0 203.0 L 952.0 154.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1009.0 203.0 L 951.0 154.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1009.0 202.0 L 951.0 153.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1008.0 202.0 L 950.0 153.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 1010.0 204.0 L 952.0 155.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1010.0 203.0 L 952.0 154.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1009.0 203.0 L 951.0 154.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1009.0 202.0 L 951.0 153.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1008.0 202.0 L 950.0 153.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <rect x="1106.5px" y="42.5px" width="56.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
 <text transform="translate(1120.0,60.0), rotate(-0.0)" x="0px" y="0px" textLength="28.0px"
  style="font-family:Arial; font-size:10.0px; text-decoration:underline; fill:rgb(0,0,0); stroke:none; ">
    Name
 </text>
-<path d="M 1187.0 59.0 L 1170.0 59.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1187.0 58.0 L 1170.0 58.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1186.0 58.0 L 1169.0 58.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1186.0 57.0 L 1169.0 57.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1185.0 57.0 L 1168.0 57.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 1187.0 59.0 L 1170.0 59.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1187.0 58.0 L 1170.0 58.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1186.0 58.0 L 1169.0 58.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1186.0 57.0 L 1169.0 57.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1185.0 57.0 L 1168.0 57.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <rect x="1578.5px" y="4.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
 <text transform="translate(1592.0,22.0), rotate(-0.0)" x="0px" y="0px" textLength="28.0px"
  style="font-family:Arial; font-size:10.0px; text-decoration:underline; fill:rgb(0,0,0); stroke:none; ">
@@ -751,26 +745,26 @@
  style="font-family:Arial; font-size:10.0px; text-decoration:underline; fill:rgb(0,0,0); stroke:none; ">
    Address
 </text>
-<path d="M 1557.0 36.0 L 1574.0 31.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1557.0 35.0 L 1574.0 30.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1556.0 35.0 L 1573.0 30.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1556.0 34.0 L 1573.0 29.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1555.0 34.0 L 1572.0 29.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 1557.0 70.0 L 1574.0 73.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1557.0 69.0 L 1574.0 72.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1556.0 69.0 L 1573.0 72.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1556.0 68.0 L 1573.0 71.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1555.0 68.0 L 1572.0 71.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 1557.0 36.0 L 1574.0 31.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1557.0 35.0 L 1574.0 30.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1556.0 35.0 L 1573.0 30.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1556.0 34.0 L 1573.0 29.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1555.0 34.0 L 1572.0 29.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1557.0 70.0 L 1574.0 73.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1557.0 69.0 L 1574.0 72.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1556.0 69.0 L 1573.0 72.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1556.0 68.0 L 1573.0 71.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1555.0 68.0 L 1572.0 71.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <rect x="1975.5px" y="571.5px" width="56.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
 <text transform="translate(1989.0,589.0), rotate(-0.0)" x="0px" y="0px" textLength="28.0px"
  style="font-family:Arial; font-size:10.0px; text-decoration:underline; fill:rgb(0,0,0); stroke:none; ">
    Name
 </text>
-<path d="M 1954.0 588.0 L 1971.0 588.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1954.0 587.0 L 1971.0 587.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1953.0 587.0 L 1970.0 587.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1953.0 586.0 L 1970.0 586.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1952.0 586.0 L 1969.0 586.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 1954.0 588.0 L 1971.0 588.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1954.0 587.0 L 1971.0 587.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1953.0 587.0 L 1970.0 587.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1953.0 586.0 L 1970.0 586.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1952.0 586.0 L 1969.0 586.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <rect x="1861.5px" y="986.5px" width="57.0px" height="31.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
 <text transform="translate(1859.0,1005.0), rotate(-0.0)" x="0px" y="0px" textLength="62.0px"
  style="font-family:Arial; font-size:10.0px; text-decoration:underline; fill:rgb(0,0,0); stroke:none; ">
@@ -786,31 +780,31 @@
  style="font-family:Arial; font-size:10.0px; text-decoration:underline; fill:rgb(0,0,0); stroke:none; ">
    Name
 </text>
-<path d="M 1822.0 1030.0 L 1858.0 1016.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1822.0 1029.0 L 1858.0 1015.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1821.0 1029.0 L 1857.0 1015.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1821.0 1028.0 L 1857.0 1014.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1820.0 1028.0 L 1856.0 1014.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 1822.0 1050.0 L 1851.0 1046.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1822.0 1049.0 L 1851.0 1045.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1821.0 1049.0 L 1850.0 1045.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1821.0 1048.0 L 1850.0 1044.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1820.0 1048.0 L 1849.0 1044.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 1822.0 1070.0 L 1858.0 1075.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1822.0 1069.0 L 1858.0 1074.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1821.0 1069.0 L 1857.0 1074.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1821.0 1068.0 L 1857.0 1073.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1820.0 1068.0 L 1856.0 1073.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 1822.0 1030.0 L 1858.0 1016.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1822.0 1029.0 L 1858.0 1015.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1821.0 1029.0 L 1857.0 1015.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1821.0 1028.0 L 1857.0 1014.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1820.0 1028.0 L 1856.0 1014.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1822.0 1050.0 L 1851.0 1046.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1822.0 1049.0 L 1851.0 1045.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1821.0 1049.0 L 1850.0 1045.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1821.0 1048.0 L 1850.0 1044.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1820.0 1048.0 L 1849.0 1044.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1822.0 1070.0 L 1858.0 1075.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1822.0 1069.0 L 1858.0 1074.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1821.0 1069.0 L 1857.0 1074.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1821.0 1068.0 L 1857.0 1073.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1820.0 1068.0 L 1856.0 1073.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <rect x="709.5px" y="136.5px" width="56.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
 <text transform="translate(719.0,155.0), rotate(-0.0)" x="0px" y="0px" textLength="36.0px"
  style="font-family:Arial; font-size:10.0px; text-decoration:underline; fill:rgb(0,0,0); stroke:none; ">
    Address
 </text>
-<path d="M 787.0 185.0 L 770.0 174.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 787.0 184.0 L 770.0 173.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 786.0 184.0 L 769.0 173.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 786.0 183.0 L 769.0 172.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 785.0 183.0 L 768.0 172.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 787.0 185.0 L 770.0 174.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 787.0 184.0 L 770.0 173.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 786.0 184.0 L 769.0 173.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 786.0 183.0 L 769.0 172.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 785.0 183.0 L 768.0 172.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <rect x="796.5px" y="493.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
 <rect x="796.5px" y="492.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
 <rect x="795.5px" y="492.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
@@ -826,15 +820,6 @@
    (0,n)
 </text>
 <polygon points=" 951.0,529.0 958.0,533.0 954.0,529.0 958.0,525.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<polygon points=" 195.0,758.0 248.0,798.0 301.0,758.0 248.0,718.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<polygon points=" 195.0,757.0 248.0,797.0 301.0,757.0 248.0,717.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<polygon points=" 194.0,757.0 247.0,797.0 300.0,757.0 247.0,717.0 " style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<polygon points=" 194.0,756.0 247.0,796.0 300.0,756.0 247.0,716.0 " style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<polygon points=" 193.0,756.0 246.0,796.0 299.0,756.0 246.0,716.0 " style="fill:rgb(255,255,255); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<text transform="translate(180.0,748.0), rotate(-0.0)" x="0px" y="0px" textLength="131.0px"
- style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
-   COFFEE_DRINK_TYP
-</text>
 <rect x="380.5px" y="720.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
 <rect x="380.5px" y="719.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
 <rect x="379.5px" y="719.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
@@ -844,106 +829,84 @@
  style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
    COFFEE_DRINK
 </text>
-<path d="M 316.0 756.0 L 372.0 756.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<polygon points=" 372.0,756.0 365.0,752.0 369.0,756.0 365.0,760.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<rect x="217.5px" y="665.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(237.0,674.0), rotate(-0.0)" x="0px" y="0px" textLength="18.0px"
+<rect x="255.5px" y="703.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
+<text transform="translate(275.0,712.0), rotate(-0.0)" x="0px" y="0px" textLength="18.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
    Typ
 </text>
-<path d="M 248.0 713.0 L 248.0 703.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 248.0 712.0 L 248.0 702.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 247.0 712.0 L 247.0 702.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 247.0 711.0 L 247.0 701.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 246.0 711.0 L 246.0 701.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<rect x="784.5px" y="892.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(799.0,911.0), rotate(-0.0)" x="0px" y="0px" textLength="28.0px"
+<path d="M 374.0 740.0 L 319.0 728.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 374.0 739.0 L 319.0 727.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 373.0 739.0 L 318.0 727.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 373.0 738.0 L 318.0 726.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 372.0 738.0 L 317.0 726.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<rect x="784.5px" y="779.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
+<text transform="translate(799.0,797.0), rotate(-0.0)" x="0px" y="0px" textLength="28.0px"
  style="font-family:Arial; font-size:10.0px; text-decoration:underline; fill:rgb(0,0,0); stroke:none; ">
    Name
 </text>
-<rect x="860.5px" y="892.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(857.0,911.0), rotate(-0.0)" x="0px" y="0px" textLength="62.0px"
- style="font-family:Arial; font-size:10.0px; text-decoration:underline; fill:rgb(0,0,0); stroke:none; ">
-   Manufacturer
-</text>
-<path d="M 815.0 960.0 L 815.0 930.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 815.0 959.0 L 815.0 929.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 814.0 959.0 L 814.0 929.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 814.0 958.0 L 814.0 928.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 813.0 958.0 L 813.0 928.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 849.0 960.0 L 874.0 930.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 849.0 959.0 L 874.0 929.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 848.0 959.0 L 873.0 929.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 848.0 958.0 L 873.0 928.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 847.0 958.0 L 872.0 928.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<rect x="917.5px" y="1043.5px" width="56.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(931.0,1062.0), rotate(-0.0)" x="0px" y="0px" textLength="28.0px"
+<path d="M 825.0 847.0 L 819.0 816.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 825.0 846.0 L 819.0 815.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 824.0 846.0 L 818.0 815.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 824.0 845.0 L 818.0 814.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 823.0 845.0 L 817.0 814.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<rect x="1087.5px" y="1062.5px" width="56.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
+<text transform="translate(1101.0,1081.0), rotate(-0.0)" x="0px" y="0px" textLength="28.0px"
  style="font-family:Arial; font-size:10.0px; text-decoration:underline; fill:rgb(0,0,0); stroke:none; ">
    Name
 </text>
-<rect x="992.5px" y="1043.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(989.0,1062.0), rotate(-0.0)" x="0px" y="0px" textLength="62.0px"
- style="font-family:Arial; font-size:10.0px; text-decoration:underline; fill:rgb(0,0,0); stroke:none; ">
-   Manufacturer
-</text>
-<path d="M 995.0 1092.0 L 978.0 1081.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 995.0 1091.0 L 978.0 1080.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 994.0 1091.0 L 977.0 1080.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 994.0 1090.0 L 977.0 1079.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 993.0 1090.0 L 976.0 1079.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 1039.0 1092.0 L 1033.0 1081.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1039.0 1091.0 L 1033.0 1080.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1038.0 1091.0 L 1032.0 1080.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1038.0 1090.0 L 1032.0 1079.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1037.0 1090.0 L 1031.0 1079.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 1140.0 1149.0 L 1124.0 1100.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1140.0 1148.0 L 1124.0 1099.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1139.0 1148.0 L 1123.0 1099.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1139.0 1147.0 L 1123.0 1098.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1138.0 1147.0 L 1122.0 1098.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <rect x="2296.5px" y="79.5px" width="57.0px" height="31.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
 <text transform="translate(2310.0,98.0), rotate(-0.0)" x="0px" y="0px" textLength="28.0px"
  style="font-family:Arial; font-size:10.0px; text-decoration:underline; fill:rgb(0,0,0); stroke:none; ">
    Email
 </text>
-<path d="M 2326.0 129.0 L 2326.0 117.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 2326.0 128.0 L 2326.0 116.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 2325.0 128.0 L 2325.0 116.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 2325.0 127.0 L 2325.0 115.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 2324.0 127.0 L 2324.0 115.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 2326.0 129.0 L 2326.0 117.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 2326.0 128.0 L 2326.0 116.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 2325.0 128.0 L 2325.0 116.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 2325.0 127.0 L 2325.0 115.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 2324.0 127.0 L 2324.0 115.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <rect x="1748.5px" y="684.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
 <text transform="translate(1762.0,703.0), rotate(-0.0)" x="0px" y="0px" textLength="28.0px"
  style="font-family:Arial; font-size:10.0px; text-decoration:underline; fill:rgb(0,0,0); stroke:none; ">
    Name
 </text>
-<path d="M 1763.0 733.0 L 1768.0 722.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1763.0 732.0 L 1768.0 721.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1762.0 732.0 L 1767.0 721.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1762.0 731.0 L 1767.0 720.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1761.0 731.0 L 1766.0 720.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<rect x="274.5px" y="1364.5px" width="57.0px" height="31.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(269.0,1362.0), rotate(-0.0)" x="0px" y="0px" textLength="66.0px"
+<path d="M 1763.0 733.0 L 1768.0 722.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1763.0 732.0 L 1768.0 721.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1762.0 732.0 L 1767.0 721.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1762.0 731.0 L 1767.0 720.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1761.0 731.0 L 1766.0 720.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<rect x="198.5px" y="1440.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
+<text transform="translate(194.0,1437.0), rotate(-0.0)" x="0px" y="0px" textLength="66.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
    ___________
 </text>
-<text transform="translate(283.0,1373.0), rotate(-0.0)" x="0px" y="0px" textLength="40.0px"
+<text transform="translate(207.0,1449.0), rotate(-0.0)" x="0px" y="0px" textLength="40.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
    ArticleID
 </text>
-<path d="M 397.0 1382.0 L 343.0 1382.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 397.0 1381.0 L 343.0 1381.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 396.0 1381.0 L 342.0 1381.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 396.0 1380.0 L 342.0 1380.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 395.0 1380.0 L 341.0 1380.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 378.0 1457.0 L 267.0 1457.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 378.0 1456.0 L 267.0 1456.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 377.0 1456.0 L 266.0 1456.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 377.0 1455.0 L 266.0 1455.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 376.0 1455.0 L 265.0 1455.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <rect x="1786.5px" y="249.5px" width="57.0px" height="31.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
 <text transform="translate(1802.0,258.0), rotate(-0.0)" x="0px" y="0px" textLength="24.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
    Wlan
 </text>
 <rect x="1370.5px" y="249.5px" width="57.0px" height="31.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(1375.0,258.0), rotate(-0.0)" x="0px" y="0px" textLength="48.0px"
+<text transform="translate(1373.0,258.0), rotate(-0.0)" x="0px" y="0px" textLength="52.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
-   Fair_trade
+   Fair_Trade
 </text>
 <rect x="1578.5px" y="249.5px" width="57.0px" height="31.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(1565.0,258.0), rotate(-0.0)" x="0px" y="0px" textLength="82.0px"
+<text transform="translate(1564.0,258.0), rotate(-0.0)" x="0px" y="0px" textLength="85.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
-   Disabled_friendly
+   Disabled_Friendly
 </text>
 <rect x="1937.5px" y="249.5px" width="57.0px" height="31.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
 <text transform="translate(1947.0,258.0), rotate(-0.0)" x="0px" y="0px" textLength="37.0px"
@@ -961,24 +924,24 @@
    Workstation
 </text>
 <rect x="1502.5px" y="231.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(1498.0,239.0), rotate(-0.0)" x="0px" y="0px" textLength="66.0px"
+<text transform="translate(1496.0,239.0), rotate(-0.0)" x="0px" y="0px" textLength="69.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
-   Child_friendly
+   Child_Friendly
 </text>
 <rect x="1861.5px" y="249.5px" width="57.0px" height="31.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(1869.0,258.0), rotate(-0.0)" x="0px" y="0px" textLength="42.0px"
+<text transform="translate(1869.0,258.0), rotate(-0.0)" x="0px" y="0px" textLength="43.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
-   Latte_art
+   Latte_Art
 </text>
 <rect x="1937.5px" y="287.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(1937.0,296.0), rotate(-0.0)" x="0px" y="0px" textLength="57.0px"
+<text transform="translate(1935.0,296.0), rotate(-0.0)" x="0px" y="0px" textLength="60.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
-   Pet_friendly
+   Pet_Friendly
 </text>
 <rect x="1918.5px" y="401.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(1914.0,409.0), rotate(-0.0)" x="0px" y="0px" textLength="65.0px"
+<text transform="translate(1913.0,409.0), rotate(-0.0)" x="0px" y="0px" textLength="67.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
-   Fouding_year
+   Fouding_Year
 </text>
 <rect x="1975.5px" y="325.5px" width="56.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
 <text transform="translate(1991.0,334.0), rotate(-0.0)" x="0px" y="0px" textLength="24.0px"
@@ -995,95 +958,95 @@
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
    Outdoor
 </text>
-<path d="M 1392.0 469.0 L 1366.0 325.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1392.0 468.0 L 1366.0 324.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1391.0 468.0 L 1365.0 324.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1391.0 467.0 L 1365.0 323.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1390.0 467.0 L 1364.0 323.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 1400.0 469.0 L 1400.0 287.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1400.0 468.0 L 1400.0 286.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1399.0 468.0 L 1399.0 286.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1399.0 467.0 L 1399.0 285.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1398.0 467.0 L 1398.0 285.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 1437.0 469.0 L 1591.0 287.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1437.0 468.0 L 1591.0 286.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1436.0 468.0 L 1590.0 286.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1436.0 467.0 L 1590.0 285.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1435.0 467.0 L 1589.0 285.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 1482.0 494.0 L 1952.0 388.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1482.0 493.0 L 1952.0 387.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1481.0 493.0 L 1951.0 387.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1481.0 492.0 L 1951.0 386.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1480.0 492.0 L 1950.0 386.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 1474.0 469.0 L 1782.0 287.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1474.0 468.0 L 1782.0 286.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1473.0 468.0 L 1781.0 286.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1473.0 467.0 L 1781.0 285.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1472.0 467.0 L 1780.0 285.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 1422.0 469.0 L 1523.0 268.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1422.0 468.0 L 1523.0 267.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1421.0 468.0 L 1522.0 267.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1421.0 467.0 L 1522.0 266.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1420.0 467.0 L 1521.0 266.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 1482.0 477.0 L 1933.0 281.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1482.0 476.0 L 1933.0 280.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1481.0 476.0 L 1932.0 280.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1481.0 475.0 L 1932.0 279.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1480.0 475.0 L 1931.0 279.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 1482.0 498.0 L 1911.0 424.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1482.0 497.0 L 1911.0 423.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1481.0 497.0 L 1910.0 423.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1481.0 496.0 L 1910.0 422.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1480.0 496.0 L 1909.0 422.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 1482.0 482.0 L 1933.0 317.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1482.0 481.0 L 1933.0 316.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1481.0 481.0 L 1932.0 316.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1481.0 480.0 L 1932.0 315.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1480.0 480.0 L 1931.0 315.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 1482.0 472.0 L 1858.0 284.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1482.0 471.0 L 1858.0 283.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1481.0 471.0 L 1857.0 283.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1481.0 470.0 L 1857.0 282.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1480.0 470.0 L 1856.0 282.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 1447.0 469.0 L 1680.0 250.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1447.0 468.0 L 1680.0 249.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1446.0 468.0 L 1679.0 249.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1446.0 467.0 L 1679.0 248.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1445.0 467.0 L 1678.0 248.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 1411.0 469.0 L 1452.0 287.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1411.0 468.0 L 1452.0 286.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1410.0 468.0 L 1451.0 286.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1410.0 467.0 L 1451.0 285.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1409.0 467.0 L 1450.0 285.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 1482.0 490.0 L 1971.0 352.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1482.0 489.0 L 1971.0 351.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1481.0 489.0 L 1970.0 351.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1481.0 488.0 L 1970.0 350.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1480.0 488.0 L 1969.0 350.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 1392.0 469.0 L 1366.0 325.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1392.0 468.0 L 1366.0 324.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1391.0 468.0 L 1365.0 324.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1391.0 467.0 L 1365.0 323.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1390.0 467.0 L 1364.0 323.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1400.0 469.0 L 1400.0 287.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1400.0 468.0 L 1400.0 286.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1399.0 468.0 L 1399.0 286.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1399.0 467.0 L 1399.0 285.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1398.0 467.0 L 1398.0 285.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1437.0 469.0 L 1591.0 287.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1437.0 468.0 L 1591.0 286.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1436.0 468.0 L 1590.0 286.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1436.0 467.0 L 1590.0 285.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1435.0 467.0 L 1589.0 285.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1482.0 494.0 L 1952.0 388.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1482.0 493.0 L 1952.0 387.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1481.0 493.0 L 1951.0 387.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1481.0 492.0 L 1951.0 386.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1480.0 492.0 L 1950.0 386.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1474.0 469.0 L 1782.0 287.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1474.0 468.0 L 1782.0 286.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1473.0 468.0 L 1781.0 286.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1473.0 467.0 L 1781.0 285.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1472.0 467.0 L 1780.0 285.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1422.0 469.0 L 1523.0 268.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1422.0 468.0 L 1523.0 267.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1421.0 468.0 L 1522.0 267.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1421.0 467.0 L 1522.0 266.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1420.0 467.0 L 1521.0 266.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1482.0 477.0 L 1933.0 281.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1482.0 476.0 L 1933.0 280.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1481.0 476.0 L 1932.0 280.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1481.0 475.0 L 1932.0 279.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1480.0 475.0 L 1931.0 279.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1482.0 498.0 L 1910.0 425.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1482.0 497.0 L 1910.0 424.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1481.0 497.0 L 1909.0 424.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1481.0 496.0 L 1909.0 423.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1480.0 496.0 L 1908.0 423.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1482.0 482.0 L 1933.0 317.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1482.0 481.0 L 1933.0 316.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1481.0 481.0 L 1932.0 316.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1481.0 480.0 L 1932.0 315.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1480.0 480.0 L 1931.0 315.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1482.0 472.0 L 1858.0 284.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1482.0 471.0 L 1858.0 283.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1481.0 471.0 L 1857.0 283.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1481.0 470.0 L 1857.0 282.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1480.0 470.0 L 1856.0 282.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1447.0 469.0 L 1680.0 250.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1447.0 468.0 L 1680.0 249.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1446.0 468.0 L 1679.0 249.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1446.0 467.0 L 1679.0 248.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1445.0 467.0 L 1678.0 248.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1411.0 469.0 L 1452.0 287.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1411.0 468.0 L 1452.0 286.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1410.0 468.0 L 1451.0 286.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1410.0 467.0 L 1451.0 285.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1409.0 467.0 L 1450.0 285.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1482.0 490.0 L 1971.0 352.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1482.0 489.0 L 1971.0 351.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1481.0 489.0 L 1970.0 351.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1481.0 488.0 L 1970.0 350.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1480.0 488.0 L 1969.0 350.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <rect x="1880.5px" y="438.5px" width="57.0px" height="31.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
 <text transform="translate(1886.0,447.0), rotate(-0.0)" x="0px" y="0px" textLength="45.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
    Franchise
 </text>
 <rect x="1861.5px" y="476.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(1864.0,485.0), rotate(-0.0)" x="0px" y="0px" textLength="52.0px"
+<text transform="translate(1863.0,485.0), rotate(-0.0)" x="0px" y="0px" textLength="54.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
-   Price_class
+   Price_Class
 </text>
-<path d="M 1482.0 509.0 L 1858.0 494.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1482.0 508.0 L 1858.0 493.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1481.0 508.0 L 1857.0 493.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1481.0 507.0 L 1857.0 492.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1480.0 507.0 L 1856.0 492.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 1482.0 503.0 L 1877.0 459.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1482.0 502.0 L 1877.0 458.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1481.0 502.0 L 1876.0 458.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1481.0 501.0 L 1876.0 457.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1480.0 501.0 L 1875.0 457.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 1482.0 509.0 L 1858.0 494.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1482.0 508.0 L 1858.0 493.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1481.0 508.0 L 1857.0 493.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1481.0 507.0 L 1857.0 492.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1480.0 507.0 L 1856.0 492.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1482.0 503.0 L 1877.0 459.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1482.0 502.0 L 1877.0 458.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1481.0 502.0 L 1876.0 458.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1481.0 501.0 L 1876.0 457.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1480.0 501.0 L 1875.0 457.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <rect x="917.5px" y="60.5px" width="56.0px" height="31.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(922.0,69.0), rotate(-0.0)" x="0px" y="0px" textLength="46.0px"
+<text transform="translate(918.0,69.0), rotate(-0.0)" x="0px" y="0px" textLength="53.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
-   start_time
+   Start_Time
 </text>
 <rect x="1011.5px" y="117.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
 <text transform="translate(1025.0,126.0), rotate(-0.0)" x="0px" y="0px" textLength="28.0px"
@@ -1096,60 +1059,60 @@
    Description
 </text>
 <rect x="1068.5px" y="117.5px" width="56.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(1070.0,126.0), rotate(-0.0)" x="0px" y="0px" textLength="52.0px"
+<text transform="translate(1069.0,126.0), rotate(-0.0)" x="0px" y="0px" textLength="55.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
-   Access_fee
+   Access_Fee
 </text>
-<path d="M 1031.0 204.0 L 961.0 98.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1031.0 203.0 L 961.0 97.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1030.0 203.0 L 960.0 97.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1030.0 202.0 L 960.0 96.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1029.0 202.0 L 959.0 96.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 1053.0 204.0 L 1045.0 155.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1053.0 203.0 L 1045.0 154.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1052.0 203.0 L 1044.0 154.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1052.0 202.0 L 1044.0 153.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1051.0 202.0 L 1043.0 153.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 1075.0 204.0 L 1091.0 155.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1075.0 203.0 L 1091.0 154.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1074.0 203.0 L 1090.0 154.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1074.0 202.0 L 1090.0 153.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1073.0 202.0 L 1089.0 153.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 1104.0 204.0 L 1153.0 155.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1104.0 203.0 L 1153.0 154.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1103.0 203.0 L 1152.0 154.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1103.0 202.0 L 1152.0 153.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1102.0 202.0 L 1151.0 153.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 1031.0 204.0 L 961.0 98.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1031.0 203.0 L 961.0 97.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1030.0 203.0 L 960.0 97.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1030.0 202.0 L 960.0 96.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1029.0 202.0 L 959.0 96.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1053.0 204.0 L 1045.0 155.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1053.0 203.0 L 1045.0 154.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1052.0 203.0 L 1044.0 154.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1052.0 202.0 L 1044.0 153.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1051.0 202.0 L 1043.0 153.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1075.0 204.0 L 1091.0 155.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1075.0 203.0 L 1091.0 154.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1074.0 203.0 L 1090.0 154.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1074.0 202.0 L 1090.0 153.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1073.0 202.0 L 1089.0 153.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1104.0 204.0 L 1153.0 155.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1104.0 203.0 L 1153.0 154.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1103.0 203.0 L 1152.0 154.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1103.0 202.0 L 1152.0 153.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1102.0 202.0 L 1151.0 153.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <rect x="1578.5px" y="98.5px" width="57.0px" height="31.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
 <text transform="translate(1581.0,107.0), rotate(-0.0)" x="0px" y="0px" textLength="52.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
    Description
 </text>
-<path d="M 1557.0 93.0 L 1574.0 101.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1557.0 92.0 L 1574.0 100.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1556.0 92.0 L 1573.0 100.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1556.0 91.0 L 1573.0 99.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1555.0 91.0 L 1572.0 99.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 1557.0 93.0 L 1574.0 101.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1557.0 92.0 L 1574.0 100.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1556.0 92.0 L 1573.0 100.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1556.0 91.0 L 1573.0 99.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1555.0 91.0 L 1572.0 99.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <rect x="1975.5px" y="609.5px" width="56.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
 <text transform="translate(1993.0,627.0), rotate(-0.0)" x="0px" y="0px" textLength="21.0px"
  style="font-family:Arial; font-size:10.0px; text-decoration:underline; fill:rgb(0,0,0); stroke:none; ">
    Line
 </text>
-<path d="M 1954.0 611.0 L 1971.0 616.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1954.0 610.0 L 1971.0 615.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1953.0 610.0 L 1970.0 615.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1953.0 609.0 L 1970.0 614.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1952.0 609.0 L 1969.0 614.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 1954.0 611.0 L 1971.0 616.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1954.0 610.0 L 1971.0 615.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1953.0 610.0 L 1970.0 615.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1953.0 609.0 L 1970.0 614.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1952.0 609.0 L 1969.0 614.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <rect x="784.5px" y="136.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
 <text transform="translate(787.0,145.0), rotate(-0.0)" x="0px" y="0px" textLength="52.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
    Description
 </text>
-<path d="M 831.0 185.0 L 825.0 174.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 831.0 184.0 L 825.0 173.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 830.0 184.0 L 824.0 173.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 830.0 183.0 L 824.0 172.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 829.0 183.0 L 823.0 172.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 831.0 185.0 L 825.0 174.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 831.0 184.0 L 825.0 173.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 830.0 184.0 L 824.0 173.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 830.0 183.0 L 824.0 172.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 829.0 183.0 L 823.0 172.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <rect x="331.5px" y="665.5px" width="56.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
 <text transform="translate(345.0,684.0), rotate(-0.0)" x="0px" y="0px" textLength="28.0px"
  style="font-family:Arial; font-size:10.0px; text-decoration:underline; fill:rgb(0,0,0); stroke:none; ">
@@ -1160,16 +1123,16 @@
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
    Description
 </text>
-<path d="M 401.0 714.0 L 387.0 703.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 401.0 713.0 L 387.0 702.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 400.0 713.0 L 386.0 702.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 400.0 712.0 L 386.0 701.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 399.0 712.0 L 385.0 701.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 456.0 714.0 L 456.0 703.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 456.0 713.0 L 456.0 702.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 455.0 713.0 L 455.0 702.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 455.0 712.0 L 455.0 701.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 454.0 712.0 L 454.0 701.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 401.0 714.0 L 387.0 703.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 401.0 713.0 L 387.0 702.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 400.0 713.0 L 386.0 702.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 400.0 712.0 L 386.0 701.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 399.0 712.0 L 385.0 701.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 456.0 714.0 L 456.0 703.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 456.0 713.0 L 456.0 702.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 455.0 713.0 L 455.0 702.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 455.0 712.0 L 455.0 701.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 454.0 712.0 L 454.0 701.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <rect x="709.5px" y="495.5px" width="56.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
 <text transform="translate(711.0,504.0), rotate(-0.0)" x="0px" y="0px" textLength="52.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
@@ -1180,56 +1143,46 @@
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
    Type
 </text>
-<rect x="709.5px" y="873.5px" width="56.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(713.0,882.0), rotate(-0.0)" x="0px" y="0px" textLength="48.0px"
- style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
-   Fair_trade
-</text>
-<rect x="652.5px" y="892.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(652.0,901.0), rotate(-0.0)" x="0px" y="0px" textLength="56.0px"
- style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
+<rect x="690.5px" y="779.5px" width="56.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
+<text transform="translate(690.0,797.0), rotate(-0.0)" x="0px" y="0px" textLength="56.0px"
+ style="font-family:Arial; font-size:10.0px; text-decoration:underline; fill:rgb(0,0,0); stroke:none; ">
    Provenance
 </text>
-<rect x="935.5px" y="892.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(952.0,901.0), rotate(-0.0)" x="0px" y="0px" textLength="24.0px"
+<rect x="935.5px" y="779.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
+<text transform="translate(952.0,787.0), rotate(-0.0)" x="0px" y="0px" textLength="24.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
    Type
 </text>
-<path d="M 754.0 960.0 L 711.0 930.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 754.0 959.0 L 711.0 929.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 753.0 959.0 L 710.0 929.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 753.0 958.0 L 710.0 928.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 752.0 958.0 L 709.0 928.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 785.0 960.0 L 753.0 911.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 785.0 959.0 L 753.0 910.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 784.0 959.0 L 752.0 910.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 784.0 958.0 L 752.0 909.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 783.0 958.0 L 751.0 909.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 884.0 960.0 L 933.0 930.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 884.0 959.0 L 933.0 929.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 883.0 959.0 L 932.0 929.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 883.0 958.0 L 932.0 928.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 882.0 958.0 L 931.0 928.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<rect x="1124.5px" y="1043.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(1125.0,1052.0), rotate(-0.0)" x="0px" y="0px" textLength="56.0px"
+<path d="M 781.0 847.0 L 745.0 816.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 781.0 846.0 L 745.0 815.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 780.0 846.0 L 744.0 815.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 780.0 845.0 L 744.0 814.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 779.0 845.0 L 743.0 814.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 894.0 847.0 L 937.0 816.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 894.0 846.0 L 937.0 815.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 893.0 846.0 L 936.0 815.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 893.0 845.0 L 936.0 814.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 892.0 845.0 L 935.0 814.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<rect x="1181.5px" y="1062.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
+<text transform="translate(1181.0,1071.0), rotate(-0.0)" x="0px" y="0px" textLength="56.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
    Provenance
 </text>
-<path d="M 1115.0 1092.0 L 1129.0 1081.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1115.0 1091.0 L 1129.0 1080.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1114.0 1091.0 L 1128.0 1080.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1114.0 1090.0 L 1128.0 1079.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1113.0 1090.0 L 1127.0 1079.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<rect x="1200.5px" y="1043.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(1200.0,1052.0), rotate(-0.0)" x="0px" y="0px" textLength="57.0px"
+<path d="M 1177.0 1149.0 L 1201.0 1100.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1177.0 1148.0 L 1201.0 1099.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1176.0 1148.0 L 1200.0 1099.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1176.0 1147.0 L 1200.0 1098.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1175.0 1147.0 L 1199.0 1098.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<rect x="1294.5px" y="1081.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
+<text transform="translate(1293.0,1090.0), rotate(-0.0)" x="0px" y="0px" textLength="61.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
-   Price_range
+   Price_Range
 </text>
-<path d="M 1142.0 1100.0 L 1196.0 1075.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1142.0 1099.0 L 1196.0 1074.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1141.0 1099.0 L 1195.0 1074.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1141.0 1098.0 L 1195.0 1073.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1140.0 1098.0 L 1194.0 1073.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 1233.0 1149.0 L 1291.0 1117.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1233.0 1148.0 L 1291.0 1116.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1232.0 1148.0 L 1290.0 1116.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1232.0 1147.0 L 1290.0 1115.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1231.0 1147.0 L 1289.0 1115.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <rect x="2183.5px" y="79.5px" width="56.0px" height="31.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
 <text transform="translate(2190.0,88.0), rotate(-0.0)" x="0px" y="0px" textLength="43.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
@@ -1240,26 +1193,26 @@
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
    Actor_Name
 </text>
-<path d="M 2294.0 129.0 L 2285.0 117.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 2294.0 128.0 L 2285.0 116.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 2293.0 128.0 L 2284.0 116.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 2293.0 127.0 L 2284.0 115.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 2292.0 127.0 L 2283.0 115.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 2261.0 129.0 L 2244.0 117.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 2261.0 128.0 L 2244.0 116.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 2260.0 128.0 L 2243.0 116.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 2260.0 127.0 L 2243.0 115.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 2259.0 127.0 L 2242.0 115.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 790.0 519.0 L 773.0 517.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 790.0 518.0 L 773.0 516.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 789.0 518.0 L 772.0 516.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 789.0 517.0 L 772.0 515.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 788.0 517.0 L 771.0 515.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 795.0 488.0 L 773.0 475.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 795.0 487.0 L 773.0 474.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 794.0 487.0 L 772.0 474.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 794.0 486.0 L 772.0 473.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 793.0 486.0 L 771.0 473.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 2294.0 129.0 L 2285.0 117.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 2294.0 128.0 L 2285.0 116.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 2293.0 128.0 L 2284.0 116.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 2293.0 127.0 L 2284.0 115.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 2292.0 127.0 L 2283.0 115.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 2261.0 129.0 L 2244.0 117.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 2261.0 128.0 L 2244.0 116.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 2260.0 128.0 L 2243.0 116.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 2260.0 127.0 L 2243.0 115.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 2259.0 127.0 L 2242.0 115.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 790.0 519.0 L 773.0 517.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 790.0 518.0 L 773.0 516.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 789.0 518.0 L 772.0 516.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 789.0 517.0 L 772.0 515.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 788.0 517.0 L 771.0 515.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 795.0 488.0 L 773.0 475.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 795.0 487.0 L 773.0 474.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 794.0 487.0 L 772.0 474.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 794.0 486.0 L 772.0 473.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 793.0 486.0 L 771.0 473.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <polygon points=" 1688.0,909.0 1741.0,949.0 1793.0,909.0 1741.0,869.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
 <polygon points=" 1688.0,908.0 1741.0,948.0 1793.0,908.0 1741.0,868.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
 <polygon points=" 1687.0,908.0 1740.0,948.0 1792.0,908.0 1740.0,868.0 " style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
@@ -1286,21 +1239,21 @@
  style="font-family:Arial; font-size:10.0px; text-decoration:underline; fill:rgb(0,0,0); stroke:none; ">
    Name
 </text>
-<path d="M 790.0 566.0 L 773.0 573.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 790.0 565.0 L 773.0 572.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 789.0 565.0 L 772.0 572.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 789.0 564.0 L 772.0 571.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 788.0 564.0 L 771.0 571.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 790.0 566.0 L 773.0 573.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 790.0 565.0 L 773.0 572.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 789.0 565.0 L 772.0 572.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 789.0 564.0 L 772.0 571.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 788.0 564.0 L 771.0 571.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <rect x="2202.5px" y="420.5px" width="56.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
 <text transform="translate(2210.0,438.0), rotate(-0.0)" x="0px" y="0px" textLength="41.0px"
  style="font-family:Arial; font-size:10.0px; text-decoration:underline; fill:rgb(0,0,0); stroke:none; ">
    RatingID
 </text>
-<path d="M 2232.0 467.0 L 2232.0 457.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 2232.0 466.0 L 2232.0 456.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 2231.0 466.0 L 2231.0 456.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 2231.0 465.0 L 2231.0 455.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 2230.0 465.0 L 2230.0 455.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 2232.0 467.0 L 2232.0 457.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 2232.0 466.0 L 2232.0 456.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 2231.0 466.0 L 2231.0 456.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 2231.0 465.0 L 2231.0 455.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 2230.0 465.0 L 2230.0 455.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <rect x="1703.5px" y="21.5px" width="151.0px" height="75.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
 <rect x="1703.5px" y="20.5px" width="151.0px" height="75.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
 <rect x="1702.5px" y="20.5px" width="151.0px" height="75.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
@@ -1325,21 +1278,21 @@
  style="font-family:Arial; font-size:10.0px; text-decoration:underline; fill:rgb(0,0,0); stroke:none; ">
    Close
 </text>
-<path d="M 1860.0 93.0 L 1877.0 101.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1860.0 92.0 L 1877.0 100.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1859.0 92.0 L 1876.0 100.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1859.0 91.0 L 1876.0 99.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1858.0 91.0 L 1875.0 99.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 1860.0 70.0 L 1877.0 73.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1860.0 69.0 L 1877.0 72.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1859.0 69.0 L 1876.0 72.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1859.0 68.0 L 1876.0 71.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1858.0 68.0 L 1875.0 71.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<path d="M 1860.0 47.0 L 1877.0 45.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1860.0 46.0 L 1877.0 44.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1859.0 46.0 L 1876.0 44.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1859.0 45.0 L 1876.0 43.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1858.0 45.0 L 1875.0 43.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 1860.0 93.0 L 1877.0 101.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1860.0 92.0 L 1877.0 100.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1859.0 92.0 L 1876.0 100.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1859.0 91.0 L 1876.0 99.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1858.0 91.0 L 1875.0 99.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1860.0 70.0 L 1877.0 73.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1860.0 69.0 L 1877.0 72.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1859.0 69.0 L 1876.0 72.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1859.0 68.0 L 1876.0 71.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1858.0 68.0 L 1875.0 71.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1860.0 47.0 L 1877.0 45.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1860.0 46.0 L 1877.0 44.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1859.0 46.0 L 1876.0 44.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1859.0 45.0 L 1876.0 43.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1858.0 45.0 L 1875.0 43.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <polygon points=" 1744.0,191.0 1797.0,231.0 1850.0,191.0 1797.0,151.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
 <polygon points=" 1744.0,190.0 1797.0,230.0 1850.0,190.0 1797.0,150.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
 <polygon points=" 1743.0,190.0 1796.0,230.0 1849.0,190.0 1796.0,150.0 " style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
@@ -1361,35 +1314,101 @@
    (0,n)
 </text>
 <polygon points=" 1782.0,100.0 1780.0,108.0 1783.0,104.0 1787.0,107.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<rect x="293.5px" y="1289.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(297.0,1298.0), rotate(-0.0)" x="0px" y="0px" textLength="49.0px"
+<rect x="444.5px" y="1364.5px" width="57.0px" height="31.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
+<text transform="translate(448.0,1373.0), rotate(-0.0)" x="0px" y="0px" textLength="49.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
    Exposition
 </text>
-<path d="M 397.0 1348.0 L 357.0 1325.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 397.0 1347.0 L 357.0 1324.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 396.0 1347.0 L 356.0 1324.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 396.0 1346.0 L 356.0 1323.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 395.0 1346.0 L 355.0 1323.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 459.0 1412.0 L 464.0 1402.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 459.0 1411.0 L 464.0 1401.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 458.0 1411.0 L 463.0 1401.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 458.0 1410.0 L 463.0 1400.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 457.0 1410.0 L 462.0 1400.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 <rect x="973.5px" y="79.5px" width="57.0px" height="31.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(979.0,88.0), rotate(-0.0)" x="0px" y="0px" textLength="45.0px"
+<text transform="translate(977.0,88.0), rotate(-0.0)" x="0px" y="0px" textLength="50.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
-   end_time
+   End_Time
 </text>
-<path d="M 1044.0 204.0 L 1012.0 117.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1044.0 203.0 L 1012.0 116.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 1043.0 203.0 L 1011.0 116.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1043.0 202.0 L 1011.0 115.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 1042.0 202.0 L 1010.0 115.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
-<rect x="293.5px" y="1402.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
-<text transform="translate(310.0,1411.0), rotate(-0.0)" x="0px" y="0px" textLength="22.0px"
+<path d="M 1044.0 204.0 L 1012.0 117.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1044.0 203.0 L 1012.0 116.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1043.0 203.0 L 1011.0 116.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1043.0 202.0 L 1011.0 115.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 1042.0 202.0 L 1010.0 115.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<rect x="255.5px" y="1402.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
+<text transform="translate(273.0,1411.0), rotate(-0.0)" x="0px" y="0px" textLength="22.0px"
  style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
    Title
 </text>
-<path d="M 397.0 1398.0 L 357.0 1409.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 397.0 1397.0 L 357.0 1408.0" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
-<path d="M 396.0 1397.0 L 356.0 1408.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 396.0 1396.0 L 356.0 1407.0" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
-<path d="M 395.0 1396.0 L 355.0 1407.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 378.0 1442.0 L 319.0 1428.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 378.0 1441.0 L 319.0 1427.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 377.0 1441.0 L 318.0 1427.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 377.0 1440.0 L 318.0 1426.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 376.0 1440.0 L 317.0 1426.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<rect x="701.5px" y="1117.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
+<rect x="701.5px" y="1116.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
+<rect x="700.5px" y="1116.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
+<rect x="700.5px" y="1115.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
+<rect x="699.5px" y="1115.5px" width="151.0px" height="76.0px" rx="0.0px" ry="0.0px" style="fill:rgb(255,255,255); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<text transform="translate(737.0,1145.0), rotate(-0.0)" x="0px" y="0px" textLength="75.0px"
+ style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
+   Manufacutrer
+</text>
+<rect x="595.5px" y="1138.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
+<text transform="translate(610.0,1156.0), rotate(-0.0)" x="0px" y="0px" textLength="28.0px"
+ style="font-family:Arial; font-size:10.0px; text-decoration:underline; fill:rgb(0,0,0); stroke:none; ">
+   Name
+</text>
+<path d="M 696.0 1155.0 L 660.0 1155.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 696.0 1154.0 L 660.0 1154.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 695.0 1154.0 L 659.0 1154.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 695.0 1153.0 L 659.0 1153.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 694.0 1153.0 L 658.0 1153.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<polygon points=" 743.0,1022.0 796.0,1062.0 849.0,1022.0 796.0,983.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
+<polygon points=" 743.0,1021.0 796.0,1061.0 849.0,1021.0 796.0,982.0 " style="fill:none; stroke:rgb(219,219,219); stroke-width:1.0px;"/>
+<polygon points=" 742.0,1021.0 795.0,1061.0 848.0,1021.0 795.0,982.0 " style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
+<polygon points=" 742.0,1020.0 795.0,1060.0 848.0,1020.0 795.0,981.0 " style="fill:none; stroke:rgb(169,169,169); stroke-width:1.0px;"/>
+<polygon points=" 741.0,1020.0 794.0,1060.0 847.0,1020.0 794.0,981.0 " style="fill:rgb(255,255,255); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<text transform="translate(771.0,1013.0), rotate(-0.0)" x="0px" y="0px" textLength="46.0px"
+ style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
+   produce
+</text>
+<path d="M 807.0 975.0 L 819.0 932.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<text transform="translate(810.0,964.0), rotate(-0.0)" x="0px" y="0px" textLength="26.0px"
+ style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
+   (1,n)
+</text>
+<polygon points=" 819.0,932.0 813.0,938.0 818.0,935.0 821.0,940.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 787.0 1066.0 L 781.0 1109.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<text transform="translate(759.0,1063.0), rotate(-0.0)" x="0px" y="0px" textLength="26.0px"
+ style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
+   (1,n)
+</text>
+<polygon points=" 781.0,1109.0 786.0,1102.0 781.0,1106.0 778.0,1101.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<path d="M 905.0 1033.0 L 852.0 1027.0" style="fill:none; stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<text transform="translate(887.0,1009.0), rotate(-0.0)" x="0px" y="0px" textLength="26.0px"
+ style="font-family:Arial; font-size:13.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-13.0px; ">
+   (0,n)
+</text>
+<polygon points=" 852.0,1027.0 859.0,1031.0 856.0,1027.0 860.0,1024.0 " style="fill:rgb(0,0,0); stroke:rgb(0,0,0); stroke-width:1.0px;"/>
+<rect x="633.5px" y="1024.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
+<text transform="translate(636.0,1033.0), rotate(-0.0)" x="0px" y="0px" textLength="52.0px"
+ style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
+   Fair_Trade
+</text>
+<rect x="652.5px" y="968.5px" width="57.0px" height="30.0px" rx="11.0px" ry="11.0px" style="fill:rgb(255,255,255); stroke:rgb(255,255,255); stroke-width:1.0px;"/>
+<text transform="translate(646.0,976.0), rotate(-0.0)" x="0px" y="0px" textLength="70.0px"
+ style="font-family:Arial; font-size:10.0px; fill:rgb(0,0,0); stroke:none; baseline-shift:-10.0px; ">
+   Product_Name
+</text>
+<path d="M 737.0 1003.0 L 719.0 997.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 737.0 1002.0 L 719.0 996.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 736.0 1002.0 L 718.0 996.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 736.0 1001.0 L 718.0 995.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 735.0 1001.0 L 717.0 995.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 737.0 1031.0 L 697.0 1036.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 737.0 1030.0 L 697.0 1035.0" style="fill:none; stroke:rgb(219,219,219); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 736.0 1030.0 L 696.0 1035.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 736.0 1029.0 L 696.0 1034.0" style="fill:none; stroke:rgb(169,169,169); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
+<path d="M 735.0 1029.0 L 695.0 1034.0" style="fill:none; stroke:rgb(0,0,0); stroke-linecap:round; stroke-linejoin:bevel; stroke-width:1.0px;"/>
 </g>
 </svg>
