@@ -1,8 +1,10 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewEncapsulation} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ShopService} from "../../../services/shop/shop.service";
 import {Shop} from "../../../interfaces/entity/Shop";
 import {Router} from "@angular/router";
+
+
 
 
 @Component({
@@ -19,17 +21,13 @@ export class ShopListComponent implements OnInit {
   {
   }
 
-  navigateToShopDetail(shopName, country, town, postal_code, street, street_number){
-    this.router.navigate(['/shop', 'single'],
-      {queryParams: {name: "'" + shopName.toString() + "'", 'address.country': "'" + country.toString() + "'", 'address.town': "'" + town.toString() + "'", 'address.postal_code': postal_code,
-      'address.street_name': "'" + street.toString() + "'", 'address.street_number': street_number}}
-      )
-  }
-
   ngOnInit() {
    this.service.getShops().subscribe(result => {
       this.shops = result;
       console.log(result);
    }, error => console.error(error));
+  }
+
+  ngAfterViewInit(){
   }
 }

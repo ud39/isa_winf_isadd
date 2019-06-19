@@ -14,7 +14,6 @@ app-shop-list .address{
 
 #shop-list li{
   margin-top: 10px;
-  margin-bottom: 70px;
 }
 
 .preview-img{
@@ -57,4 +56,9 @@ app-shop-list div.text{
 
 .list-content{
   clear: both;
+}
+
+app-shop-list .read_more{
+  cursor: pointer;
+  display: inline-block;
 }

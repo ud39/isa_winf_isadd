@@ -1,16 +1,16 @@
 using System;
 using System.Data;
+using System.Globalization;
 using System.IO;
-using System.Linq;
+using System.Net.Http;
+using System.Reflection;
 using System.Threading.Tasks;
 using Dapper;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Hosting.Internal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 using WinfADD.Models;
-using System.Web;
 using Microsoft.Net.Http.Headers;
 
 namespace WinfADD.Controllers
@@ -18,7 +18,7 @@ namespace WinfADD.Controllers
 
     [Produces("application/json")]
     [Route("api/[controller]")]
-    public class UploadController  : Controller
+    public class ImageController  : Controller
     {
 
 
@@ -27,22 +27,42 @@ namespace WinfADD.Controllers
         private IDbConnection Connection => new NpgsqlConnection(_config["ConnectionStrings:DefaultConnection"]);
 
 
-        public UploadController(IHostingEnvironment hostingEnvironment, IConfiguration config)
+        public ImageController(IHostingEnvironment hostingEnvironment, IConfiguration config)
         {
             _hostingEnvironment = hostingEnvironment;
             _config = config;
+
+
+            var defaultMapper = new Func<Type, string, PropertyInfo>((type, columnName) =>
+            {
+
+                var result = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(columnName.ToLower());
+                return type.GetProperty(result = result.Replace("_", ""));
+            });
+
+            CustomPropertyTypeMap CreateDefaultMap (Type t)
+            {
+                return new CustomPropertyTypeMap(
+                    t,
+                    (type, columnName) => defaultMapper(type, columnName));
+            }
+
+
+
+            SqlMapper.SetTypeMap(typeof(Image), CreateDefaultMap(typeof(Image)));
+
         }
 
 
 
         [HttpPost, DisableRequestSizeLimit]
         public ActionResult UploadFile()
-        { Console.WriteLine("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC");
+        {
 
             try
             {
 
-                var fromWhere = Request.Form["fromWhere"];
+                string fromWhere = Request.Form["fromWhere"];
 
 
                 var file = Request.Form.Files[0];
@@ -85,8 +105,8 @@ namespace WinfADD.Controllers
                 using (IDbConnection conn = Connection)
                 {
                     Console.WriteLine("\n CreateImage::");
-                    var sql = "INSERT INTO image (file_name) VALUES (@file_name)";
-                    var affectedRows =  conn.Query<Image>(sql,new{file_name = fileName});
+                    var sql = "INSERT INTO image (file_name, content_type) VALUES (@file_name, @content_type)";
+                    var affectedRows =  conn.Query<Image>(sql,new{file_name = fileName, content_type = fromWhere });
                 }
 
 
@@ -100,34 +120,52 @@ namespace WinfADD.Controllers
         }
 
         [HttpGet("GetById")]
-        public ActionResult GetImage([FromQuery] string file_name)
+        public ActionResult GetImage([FromQuery] Image imageObj)
         {
 
-            if (file_name.Contains("..")) return null;
+            if (imageObj.FileName.Contains("..")) return null;
+            //TODO Contentype catch
 
-            var path = Path.Combine("/Upload/", file_name);
-            return base.File(path, "image/" + file_name.Substring(file_name.Length-3));
+            var path = Path.Combine("/Upload/"+imageObj.ContentType, imageObj.FileName);
+            return base.File(path, "image/" + imageObj.FileName.Substring(imageObj.FileName.Length-3));
         }
 
 
         [HttpDelete]
         [Route("delete")]
-        public async Task<ActionResult> DeleteImage([FromQuery] Image imageObj)
-        {
+       public async Task<ActionResult> DeleteImage([FromQuery] Image imageObj)
+       {
 
-            Console.WriteLine("<---------------------------------------------------------->");
-            Console.WriteLine("DEEEEEEEEEEEEEEEEEEEEEEEELETE::"+imageObj.FileName);
             //delete from table
             using (IDbConnection conn = Connection)
             {
-                Console.WriteLine("\n DeleteImage::");
+                Console.WriteLine("\n DeleteImage::"+imageObj.FileName +", from:"+imageObj.ContentType);
                 var sql = "DELETE  FROM image WHERE file_name = @file_name";
-                var affectedRows =  await conn.ExecuteAsync(sql,new{file_name = imageObj.FileName});
+                var affectedRows =  conn.Execute(sql,new{file_name = imageObj.FileName});
             }
 
-            //TODO delete actual file
 
-            return Json( "Delete::"+imageObj.FileName);
+            //TODO change path
+            var path = "C:/Users/Jan/RiderProjects/isa_winf_isadd/wwwroot/Upload/";
+            switch (imageObj.ContentType)
+            {
+                case "gallery":
+                    System.IO.File.Delete(path + "gallery/"+imageObj.FileName);
+                    break;
+                case "front":
+                    System.IO.File.Delete(path +"front/"+imageObj.FileName);
+                    break;
+                case "preview":
+                    System.IO.File.Delete(path +"preview/"+imageObj.FileName);
+                    break;
+                default:
+                    Console.WriteLine("Error: Couldn't find Image! at::"+path + "/../" + imageObj.FileName );
+                    break;
+            }
+
+
+
+            return Json( "Deleted::"+imageObj.FileName);
         }
 
     }

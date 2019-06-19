@@ -1,5 +1,6 @@
-import {Component, HostListener} from '@angular/core';
+import {Component, HostListener, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {ImageService} from "../../services/image/image.service";
+import {MatMenuTrigger} from "@angular/material";
 
 
 @Component({
@@ -11,7 +12,11 @@ import {ImageService} from "../../services/image/image.service";
 
 
 export class NavMenuComponent {
+  @ViewChild('menuWikiTrigger') menuWikiTrigger : MatMenuTrigger;
 
+  closeMenuAndRemoveFocus(){
+    this.menuWikiTrigger.closeMenu();
+  }
   private brand: any;
   isExpanded = false;
   public currentWindowWidth: number = window.innerWidth;

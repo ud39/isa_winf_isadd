@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {CheckboxComponent} from "./checkbox/checkbox.component";
 import {CheckboxEquipmentComponent} from "./checkbox-equipment/checkbox-equipment.component";
+import {CheckboxCoffeeComponent} from "./checkbox-coffee/checkbox-coffee.component";
 
 
 
@@ -12,9 +13,9 @@ import {CheckboxEquipmentComponent} from "./checkbox-equipment/checkbox-equipmen
 })
 
 export class SearchComponent implements OnInit {
-  @ViewChild("cb") component1: CheckboxComponent;
-  @ViewChild("cbeq") component2: CheckboxEquipmentComponent;
-
+  @ViewChild("cb") checkBoxComponent: CheckboxComponent;
+  @ViewChild("cbeq") checkBoxEquipment: CheckboxEquipmentComponent;
+  @ViewChild("cbcof") chechBoxComponentCoffee: CheckboxCoffeeComponent
   @Input() urlPath: string;
   private jsonOfSearch: JSON;
 
@@ -25,11 +26,13 @@ export class SearchComponent implements OnInit {
   getJsonOfSearch(): JSON{
     switch(this.urlPath){
       case '/shop':
-      this.jsonOfSearch = this.component1.getjsonOfSearchWithSelect();
+      this.jsonOfSearch = this.checkBoxComponent.getjsonOfSearchWithSelect();
       break;
-      case '/equipment':
-      this.jsonOfSearch = this.component2.getJsonOfSearch();
+      case '/wiki/equipment':
+      this.jsonOfSearch = this.checkBoxEquipment.getJsonOfSearch();
       break;
+      case '/wiki/coffee':
+      this.jsonOfSearch = this.chechBoxComponentCoffee.getJsonOfSearch();
     }
     console.log(this.jsonOfSearch);
     return  this.jsonOfSearch
@@ -38,10 +41,13 @@ export class SearchComponent implements OnInit {
   clearCheckBoxes() {
     switch (this.urlPath) {
       case '/shop':
-      this.component1.clear();
+      this.checkBoxComponent.clear();
       break;
-      case '/equipment':
-      this.component2.clear();
+      case '/wiki/equipment':
+      this.checkBoxEquipment.clear();
+      break;
+      case '/wiki/coffee':
+      this.chechBoxComponentCoffee.clear();
     }
   }
 

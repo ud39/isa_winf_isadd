@@ -1,33 +1,24 @@
 <header>
-  <app-side-nav *ngIf="currentWindowWidth < 500"></app-side-nav>
-  <div *ngIf="brand"><a class="navbar-brand" [routerLink]="['/']"><img [src]=brand id="brand"></a></div>
+  <app-side-nav *ngIf="currentWindowWidth < 600"></app-side-nav>
+  <div *ngIf="brand && currentWindowWidth > 600"><a class="navbar-brand" [routerLink]="['/']"><img [src]=brand id="brand"></a></div>
   <nav class='navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3' *ngIf="currentWindowWidth > 500">
     <div class="container">
-      <button mat-button [matMenuTriggerFor]="belowMenu" class="nav-item" [routerLinkActive]='["link-active"]' [routerLink]="['/shop']">
-        Shops</button>
-      <mat-menu #belowMenu="matMenu" yPosition="below">
-        <button mat-menu-item>Item 1</button>
-        <button mat-menu-item>Item 2</button>
-      </mat-menu>     <button mat-button [matMenuTriggerFor]="belowMenu" class="nav-item" [routerLinkActive]='["link-active"]' [routerLink]='["/registration"]'>Kaffee</button>
-      <mat-menu #belowMenu="matMenu" yPosition="below">
-        <button mat-menu-item>Item 1</button>
-        <button mat-menu-item>Item 2</button>
+      <button mat-button [matMenuTriggerFor]="menuShop" class="nav-item" [routerLinkActive]='["link-active"]' [routerLink]="['/shop']">Shops</button>
+      <mat-menu #menuShop="matMenu">
+        <button mat-menu-item>Café</button>
+        <button mat-menu-item>Rösterei</button>
       </mat-menu>
-      <button mat-button [matMenuTriggerFor]="belowMenu" class="nav-item" [routerLinkActive]='["link-active"]' [routerLink]='["/equipment"]'>Equipment</button>
-      <mat-menu #belowMenu="matMenu" yPosition="below">
-        <button mat-menu-item>Item 1</button>
-        <button mat-menu-item>Item 2</button>
+      <button mat-button [matMenuTriggerFor]="menuWiki"
+              class="nav-item"
+              [routerLinkActive]='["link-active"]' [routerLink]="['/wiki']"
+      >Wiki
+      </button>
+      <mat-menu #menuWiki>
+        <button mat-menu-item [routerLink]='["/wiki/equipment"]' [routerLinkActive]='["link-active"]' mouse>Equipment</button>
+        <button mat-menu-item [routerLink]='["/wiki/coffee"]' [routerLinkActive]='["link-active"]'>Kaffee</button>
       </mat-menu>
-      <button mat-button [matMenuTriggerFor]="belowMenu" class="nav-item" [routerLinkActive]='["link-active"]' [routerLink]='["/admin"]'>Events</button>
-      <mat-menu #belowMenu="matMenu" yPosition="below">
-        <button mat-menu-item>Item 1</button>
-        <button mat-menu-item>Item 2</button>
-      </mat-menu>
-      <button mat-button [matMenuTriggerFor]="belowMenu" class="nav-item" [routerLinkActive]='["link-active"]' [routerLink]='["/about-us"]'>Über uns</button>
-      <mat-menu #belowMenu="matMenu" yPosition="below">
-        <button mat-menu-item>Item 1</button>
-        <button mat-menu-item>Item 2</button>
-      </mat-menu>
+      <button mat-button class="nav-item" [routerLinkActive]='["link-active"]' [routerLink]='["/admin"]'>Events</button>
+      <button mat-button class="nav-item" [routerLinkActive]='["link-active"]' [routerLink]='["/about-us"]'>Über uns</button>
       <div *ngIf="currentWindowWidth >= 768">
       <div id="login-dropdown">
       <span (click)="dropdown()"> Login </span>

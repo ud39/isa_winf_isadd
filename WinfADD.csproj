@@ -27,6 +27,8 @@
     <ItemGroup>
         <!-- Don't publish the SPA source files, but do show them in the project files list -->
         <Content Remove="$(SpaRoot)**" />
+        <Content Include="ClientApp\src\app\search\checkbox-coffee\checkbox-coffee.component.css" />
+        <Content Include="ClientApp\src\app\search\checkbox-coffee\checkbox-coffee.component.html" />
         <None Remove="$(SpaRoot)**" />
         <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
         <None Include="ClientApp\src\app\common\home\home.component.html" />
@@ -35,8 +37,6 @@
         <None Include="ClientApp\src\app\common\page-not-found\page-not-found.component.html" />
         <None Include="ClientApp\src\app\common\registration\registration.component.css" />
         <None Include="ClientApp\src\app\common\registration\registration.component.html" />
-        <None Include="ClientApp\src\app\content\article\article.component.css" />
-        <None Include="ClientApp\src\app\content\article\article.component.html" />
         <None Include="ClientApp\src\app\content\shop\shop-list\shop-list.component.css" />
         <None Include="ClientApp\src\app\content\shop\shop-list\shop-list.component.html" />
         <None Include="ClientApp\src\app\layout\nav-menu\nav-menu.component.css" />
@@ -56,6 +56,7 @@
     <ItemGroup>
       <Folder Include="ClientApp\src\app\common" />
       <Folder Include="ClientApp\src\app\content\shop" />
+      <Folder Include="ClientApp\src\app\content\wiki" />
       <Folder Include="ClientApp\src\app\interfaces\cluster\rating" />
       <Folder Include="ClientApp\src\app\layout" />
       <Folder Include="ClientApp\src\app\profile" />
@@ -88,6 +89,8 @@
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\Reachable.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\Shop.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\User.ts" />
+      <TypeScriptCompile Include="ClientApp\src\app\search\checkbox-coffee\checkbox-coffee.component.spec.ts" />
+      <TypeScriptCompile Include="ClientApp\src\app\search\checkbox-coffee\checkbox-coffee.component.ts" />
     </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
