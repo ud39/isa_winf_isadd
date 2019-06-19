@@ -1,46 +1,47 @@
 { 
 (EQUIPMENT(Manufacturer,Year_of_origin,Name)(Manufacturer,Year_of_origin,Name)),
-(EVENT(EventID,Time,Name,Access_fee,Description)(EventID)),
-(COFFEE-SHOP(Name,Address,Outdoor,Fair_trade,Disabled_friendly,Description,Wlan,Child_friendly,Website,Fouding_year,Pets_friendly,Latte_art,Seats,Workstation,Food,Price_class,Franchise)(Name,Address)),
-(BUS-STATION(Name,Line)(Name)),
+(EVENT(EventID,Start_Time,Name,Access_Fee,Description,End_Time)(EventID)),
+(COFFEE-SHOP(Name,Address,Outdoor,Fair_Trade,Disabled_Friendly,Description,Wlan,Child_Friendly,Website,Fouding_Year,Pet_Friendly,Latte_Art,Seats,Workstation,Food,Price_Class,Franchise)(Name,Address)),
+(BUS-STATION(Name,Line)(Name,Line)),
 (COMPANY(Name)(Name)),
-(BEAN(Name,Manufacturer,Provenance,Fair_trade,Type)(Name,Manufacturer)),
+(BEAN(Name,Provenance,Type)(Name,Provenance)),
 (POI(Name,Address,Description)(Name,Address)),
 (GOOGLE-RATING()()),
 (USER-RATING()()),
 (TRIPADVICER-RATING()()),
-(BLEND(Name,Manufacturer,Provenance,Price_range)(Name,Manufacturer)),
+(BLEND(Name,Provenance,Price_Range)(Name)),
 (LOCATION(Address,Description)(Address)),
 (EQUIPMENT_CATEGORY(Name)(Name)),
 (ACTOR(Email,Actor_Name,Password)(Email)),
 (PREPARATION(Name,Description,Type)(Name)),
-(COFFEE_DRINK(Name,Description)(Name)),
+(COFFEE_DRINK(Name,Typ,Description)(Name)),
 (Opening-Time(Close,Open,Weekday)(Close,Open,Weekday)),
+(Manufacutrer(Name)(Name)),
 (USER(Email)(Email)),
 (RATING(RatingID,RATINGId)(RatingID,RATINGId)),
-(consists_of(Name,Manufacturer,Name)(Name,Manufacturer,Name)),
+(consists_of(Name,Provenance,Name)(Name,Provenance,Name)),
 (serves(Name,Address,Name,vegan)(Name,Address,Name)),
 (near_by(Name,Address,Name,Address)(Name,Address,Name,Address)),
-(reachable(Name,Name,Address)(Name,Name,Address)),
+(reachable(Name,Line,Name,Address)(Name,Line,Name,Address)),
 (owns(Name,Address,Name)(Name,Address)),
 (supplies(Name,Name,Address)(Name,Name,Address)),
-(provides(Name,Address,Name,Manufacturer)(Name,Address,Name,Manufacturer)),
-(composed(Name,Manufacturer,Name,Manufacturer,Propotion)(Name,Manufacturer,Name,Manufacturer)),
-(offers(Name,Manufacturer,Name,Address)(Name,Manufacturer,Name,Address)),
+(provides(Name,Address,Name,Provenance)(Name,Address,Name,Provenance)),
+(offers(Name,Name,Address)(Name,Name,Address)),
 (organised_by(Name,Address,EventID)(Name,Address,EventID)),
 (OPERATOR(Email)(Email)),
 (SUB-CATEGORY(Name)(Name)),
-(COFFEE_DRINK_TYP(Name,Typ)(Name)),
 (belongs_to(Manufacturer,Year_of_origin,Name,Name)(Manufacturer,Year_of_origin,Name)),
 (Opens(Name,Address,Close,Open,Weekday)(Name,Address,Close,Open,Weekday)),
+(produce(Name,Provenance,Name,Product_Name,Fair_Trade,Price_Class)(Name,Provenance,Name)),
 (RATINGGOOGLE-RATING(RatingID,RATINGId)(RatingID,RATINGId)),
 (RATINGUSER-RATING(RatingID,RATINGId)(RatingID,RATINGId)),
 (RATINGTRIPADVICER-RATING(RatingID,RATINGId)(RatingID,RATINGId)),
-(ARTICLEEQUIPMENT(ArticleID,Manufacturer,Year_of_origin,Name,Exposition)(ArticleID)),
-(ARTICLEBLEND(ArticleID,Name,Manufacturer,Exposition)(ArticleID)),
-(ARTICLEBEAN(ArticleID,Name,Manufacturer,Exposition)(ArticleID)),
-(ARTICLECOFFEE_DRINK(ArticleID,Name,Exposition)(ArticleID)),
+(ARTICLEEQUIPMENT(ArticleID,Manufacturer,Year_of_origin,Name,Exposition,Title)(ArticleID)),
+(ARTICLEBLEND(ArticleID,Name,Exposition,Title)(ArticleID)),
+(ARTICLEBEAN(ArticleID,Name,Provenance,Exposition,Title)(ArticleID)),
+(ARTICLECOFFEE_DRINK(ArticleID,Name,Exposition,Title)(ArticleID)),
 (includes(Name,Address,Name,Name)(Name,Address,Name,Name)),
+(composed(Name,Name,Provenance,Name)(Name,Name,Provenance,Name)),
 (rated_by(RatingID,RATINGId,Name,Address)(RatingID,RATINGId)),
 (located(Address,Name,Address,EventID)(Address,Name,Address,EventID)),
 (sells(Manufacturer,Year_of_origin,Name,Name,Name,Address)(Manufacturer,Year_of_origin,Name,Name,Name,Address)),
@@ -55,29 +56,29 @@
  } 
 
 EVENT[EventID]⊆organised_by[EventID]
-BUS-STATION[Name]⊆reachable[Name]
+BUS-STATION[Name, Line]⊆reachable[Name, Line]
 COMPANY[Name]⊆owns[Name]
+BEAN[Name, Provenance]⊆produce[Name, Provenance]
 POI[Name, Address]⊆near_by[Name, Address]
 LOCATION[Address]⊆located[Address]
 COFFEE_DRINK[Name]⊆consists_of[Name]
+Manufacutrer[Name]⊆produce[Name]
 USER[Email]⊆ACTOR[Email]
-consists_of[Name, Manufacturer]⊆BEAN[Name, Manufacturer]
+consists_of[Name, Provenance]⊆BEAN[Name, Provenance]
 consists_of[Name]⊆COFFEE_DRINK[Name]
 serves[Name, Address]⊆COFFEE-SHOP[Name, Address]
 serves[Name]⊆COFFEE_DRINK[Name]
 near_by[Name, Address]⊆COFFEE-SHOP[Name, Address]
 near_by[Name, Address]⊆POI[Name, Address]
-reachable[Name]⊆BUS-STATION[Name]
+reachable[Name, Line]⊆BUS-STATION[Name, Line]
 reachable[Name, Address]⊆COFFEE-SHOP[Name, Address]
 owns[Name, Address]⊆COFFEE-SHOP[Name, Address]
 owns[Name]⊆COMPANY[Name]
 supplies[Name]⊆EQUIPMENT_CATEGORY[Name]
 supplies[Name, Address]⊆COFFEE-SHOP[Name, Address]
 provides[Name, Address]⊆COFFEE-SHOP[Name, Address]
-provides[Name, Manufacturer]⊆BEAN[Name, Manufacturer]
-composed[Name, Manufacturer]⊆BEAN[Name, Manufacturer]
-composed[Name, Manufacturer]⊆BLEND[Name, Manufacturer]
-offers[Name, Manufacturer]⊆BLEND[Name, Manufacturer]
+provides[Name, Provenance]⊆BEAN[Name, Provenance]
+offers[Name]⊆BLEND[Name]
 offers[Name, Address]⊆COFFEE-SHOP[Name, Address]
 organised_by[Name, Address]⊆COFFEE-SHOP[Name, Address]
 organised_by[EventID]⊆EVENT[EventID]
@@ -85,18 +86,21 @@ OPERATOR[Email]⊆ACTOR[Email]
 SUB-CATEGORY[Name]⊆EQUIPMENT_CATEGORY[Name]
 SUB-CATEGORY[Name]⊆EQUIPMENT_CATEGORY[Name]
 SUB-CATEGORY[]⊆EQUIPMENT_CATEGORY[]
-COFFEE_DRINK_TYP[Name]⊆COFFEE_DRINK[Name]
 belongs_to[Name]⊆EQUIPMENT_CATEGORY[Name]
 belongs_to[Manufacturer, Year_of_origin, Name]⊆EQUIPMENT[Manufacturer, Year_of_origin, Name]
 Opens[Name, Address]⊆COFFEE-SHOP[Name, Address]
 Opens[Close, Open, Weekday]⊆Opening-Time[Close, Open, Weekday]
+produce[Name, Provenance]⊆BEAN[Name, Provenance]
+produce[Name]⊆Manufacutrer[Name]
 includes[Name, Address, Name]⊆serves[Name, Address, Name]
 includes[Name]⊆PREPARATION[Name]
+composed[Name]⊆BLEND[Name]
+composed[Name, Provenance, Name]⊆produce[Name, Provenance, Name]
 rated_by[Name, Address]⊆COFFEE-SHOP[Name, Address]
 rated_by[RatingID, RATINGId]⊆RATING[RatingID, RATINGId]
 located[Address]⊆LOCATION[Address]
 located[Name, Address, EventID]⊆organised_by[Name, Address, EventID]
-sells[Manufacturer, Year_of_origin, Name]⊆belongs_to[Manufacturer, Year_of_origin, Name]
+sells[Manufacturer, Year_of_origin, Name]⊆EQUIPMENT[Manufacturer, Year_of_origin, Name]
 sells[Name, Name, Address]⊆supplies[Name, Name, Address]
 STUDENT[Email]⊆USER[Email]
 TOURIST[Email]⊆USER[Email]
@@ -121,42 +125,40 @@ EQUIPMENT.Manufacturer::VARCHAR(n)
 EQUIPMENT.Year_of_origin::VARCHAR(n)
 EQUIPMENT.Name::VARCHAR(n)
 EVENT.EventID::INTEGER
-EVENT.Time::INTEGER
+EVENT.Start_Time::INTEGER
 EVENT.Name::VARCHAR(n)
-EVENT.Access_fee::INTEGER
+EVENT.Access_Fee::INTEGER
 EVENT.Description::VARCHAR(n)
+EVENT.End_Time::TIME
 COFFEE-SHOP.Name::VARCHAR(n)
 COFFEE-SHOP.Address::VARCHAR(n)
 COFFEE-SHOP.Outdoor::BOOLEAN
-COFFEE-SHOP.Fair_trade::BOOLEAN
-COFFEE-SHOP.Disabled_friendly::BOOLEAN
+COFFEE-SHOP.Fair_Trade::BOOLEAN
+COFFEE-SHOP.Disabled_Friendly::BOOLEAN
 COFFEE-SHOP.Description::VARCHAR(n)
 COFFEE-SHOP.Wlan::BOOLEAN
-COFFEE-SHOP.Child_friendly::BOOLEAN
+COFFEE-SHOP.Child_Friendly::BOOLEAN
 COFFEE-SHOP.Website::VARCHAR(n)
-COFFEE-SHOP.Fouding_year::INTEGER
-COFFEE-SHOP.Pets_friendly::BOOLEAN
-COFFEE-SHOP.Latte_art::VARCHAR(n)
+COFFEE-SHOP.Fouding_Year::INTEGER
+COFFEE-SHOP.Pet_Friendly::BOOLEAN
+COFFEE-SHOP.Latte_Art::VARCHAR(n)
 COFFEE-SHOP.Seats::VARCHAR(n)
 COFFEE-SHOP.Workstation::BOOLEAN
 COFFEE-SHOP.Food::VARCHAR(n)
-COFFEE-SHOP.Price_class::VARCHAR(n)
+COFFEE-SHOP.Price_Class::VARCHAR(n)
 COFFEE-SHOP.Franchise::BOOLEAN
 BUS-STATION.Name::VARCHAR(n)
 BUS-STATION.Line::VARCHAR(n)
 COMPANY.Name::VARCHAR(n)
 BEAN.Name::VARCHAR(n)
-BEAN.Manufacturer::VARCHAR(n)
 BEAN.Provenance::VARCHAR(n)
-BEAN.Fair_trade::BOOLEAN
 BEAN.Type::VARCHAR(n)
 POI.Name::VARCHAR(n)
 POI.Address::VARCHAR(n)
 POI.Description::CHARACTER(n)
 BLEND.Name::VARCHAR(n)
-BLEND.Manufacturer::VARCHAR(n)
 BLEND.Provenance::VARCHAR(n)
-BLEND.Price_range::INTEGER
+BLEND.Price_Range::INTEGER
 LOCATION.Address::VARCHAR(n)
 LOCATION.Description::VARCHAR(n)
 EQUIPMENT_CATEGORY.Name::VARCHAR(n)
@@ -166,16 +168,18 @@ ACTOR.Password::VARCHAR(n)
 PREPARATION.Description::VARCHAR(n)
 PREPARATION.Type::VARCHAR(n)
 PREPARATION.Name::VARCHAR(n)
+COFFEE_DRINK.Typ::VARCHAR(n)
 COFFEE_DRINK.Name::VARCHAR(n)
 COFFEE_DRINK.Description::VARCHAR(n)
 Opening-Time.Close::INTEGER
 Opening-Time.Open::INTEGER
 Opening-Time.Weekday::VARCHAR(n)
+Manufacutrer.Name::VARCHAR(n)
 USER.Email::VARCHAR(n)
 RATING.RatingID::INTEGER
 RATING.RATINGId::INTEGER
 consists_of.Name::VARCHAR(n)
-consists_of.Manufacturer::VARCHAR(n)
+consists_of.Provenance::VARCHAR(n)
 consists_of.Name::VARCHAR(n)
 serves.vegan::BOOLEAN
 serves.Name::VARCHAR(n)
@@ -186,6 +190,7 @@ near_by.Address::VARCHAR(n)
 near_by.Name::VARCHAR(n)
 near_by.Address::VARCHAR(n)
 reachable.Name::VARCHAR(n)
+reachable.Line::VARCHAR(n)
 reachable.Name::VARCHAR(n)
 reachable.Address::VARCHAR(n)
 owns.Name::VARCHAR(n)
@@ -197,14 +202,8 @@ supplies.Address::VARCHAR(n)
 provides.Name::VARCHAR(n)
 provides.Address::VARCHAR(n)
 provides.Name::VARCHAR(n)
-provides.Manufacturer::VARCHAR(n)
-composed.Propotion::VARCHAR(n)
-composed.Name::VARCHAR(n)
-composed.Manufacturer::VARCHAR(n)
-composed.Name::VARCHAR(n)
-composed.Manufacturer::VARCHAR(n)
+provides.Provenance::VARCHAR(n)
 offers.Name::VARCHAR(n)
-offers.Manufacturer::VARCHAR(n)
 offers.Name::VARCHAR(n)
 offers.Address::VARCHAR(n)
 organised_by.Name::VARCHAR(n)
@@ -212,8 +211,6 @@ organised_by.Address::VARCHAR(n)
 organised_by.EventID::INTEGER
 OPERATOR.Email::VARCHAR(n)
 SUB-CATEGORY.Name::CHAR
-COFFEE_DRINK_TYP.Typ::VARCHAR(n)
-COFFEE_DRINK_TYP.Name::VARCHAR(n)
 belongs_to.Manufacturer::VARCHAR(n)
 belongs_to.Year_of_origin::VARCHAR(n)
 belongs_to.Name::VARCHAR(n)
@@ -223,6 +220,12 @@ Opens.Address::VARCHAR(n)
 Opens.Close::INTEGER
 Opens.Open::INTEGER
 Opens.Weekday::VARCHAR(n)
+produce.Product_Name::VARCHAR(n)
+produce.Fair_Trade::BOOLEAN
+produce.Price_Class::CHARACTER(n)
+produce.Name::VARCHAR(n)
+produce.Provenance::VARCHAR(n)
+produce.Name::VARCHAR(n)
 RATINGGOOGLE-RATING.RatingID::INTEGER
 RATINGGOOGLE-RATING.RATINGId::INTEGER
 RATINGUSER-RATING.RatingID::INTEGER
@@ -234,21 +237,28 @@ ARTICLEEQUIPMENT.Manufacturer::VARCHAR(n)
 ARTICLEEQUIPMENT.Year_of_origin::VARCHAR(n)
 ARTICLEEQUIPMENT.Name::VARCHAR(n)
 ARTICLEEQUIPMENT.Exposition::CHARACTER(n)
+ARTICLEEQUIPMENT.Title::VARCHAR(n)
 ARTICLEBLEND.ArticleID::INTEGER
 ARTICLEBLEND.Name::VARCHAR(n)
-ARTICLEBLEND.Manufacturer::VARCHAR(n)
 ARTICLEBLEND.Exposition::CHARACTER(n)
+ARTICLEBLEND.Title::VARCHAR(n)
 ARTICLEBEAN.ArticleID::INTEGER
 ARTICLEBEAN.Name::VARCHAR(n)
-ARTICLEBEAN.Manufacturer::VARCHAR(n)
+ARTICLEBEAN.Provenance::VARCHAR(n)
 ARTICLEBEAN.Exposition::CHARACTER(n)
+ARTICLEBEAN.Title::VARCHAR(n)
 ARTICLECOFFEE_DRINK.ArticleID::INTEGER
 ARTICLECOFFEE_DRINK.Name::VARCHAR(n)
 ARTICLECOFFEE_DRINK.Exposition::CHARACTER(n)
+ARTICLECOFFEE_DRINK.Title::VARCHAR(n)
 includes.Name::VARCHAR(n)
 includes.Address::VARCHAR(n)
 includes.Name::VARCHAR(n)
 includes.Name::VARCHAR(n)
+composed.Name::VARCHAR(n)
+composed.Name::VARCHAR(n)
+composed.Provenance::VARCHAR(n)
+composed.Name::VARCHAR(n)
 rated_by.RatingID::INTEGER
 rated_by.RATINGId::INTEGER
 rated_by.Name::VARCHAR(n)
