@@ -7,10 +7,11 @@ a.navbar-brand {
 }
 
 img#brand{
-  width: 100px;
-  height: 100px;
+  width: 75px;
+  height: 75px;
   top: 0;
   left: 10px;
+  position: relative;
 }
 
 
@@ -35,16 +36,7 @@ button.nav-item.link-active{
 html {
   font-size: 16px;
 }
-app-nav-menu{
-  clear: both;
-}
-.navbar{
-  float:none;
-  left: 35%;
-  top:0;
-  margin: 0 auto;
-  clear:both;
-}
+
 
 .navbar-collapse{
   justify-content: center;
@@ -111,7 +103,7 @@ app-nav-menu{
   }
   .navbar{
     float:none;
-    left: 35%;
+    left: 40%;
     top:0;
     margin: 0 auto;
     display: inline;

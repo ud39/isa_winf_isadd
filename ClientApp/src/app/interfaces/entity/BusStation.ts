@@ -1,4 +1,4 @@
 export interface BusStation {
-  bus_station_name: string;
+  busStationName: string;
   line: number;
 }

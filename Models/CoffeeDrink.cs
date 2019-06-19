@@ -5,7 +5,7 @@ namespace WinfADD.Models
     public class CoffeeDrink
     {
         //primary keys
-        [Key] public string CoffeeDrinkName { get; set; }
+        [Key] public string Name { get; set; }
 
         public string WarmCold { get; set; } //TODO name
 

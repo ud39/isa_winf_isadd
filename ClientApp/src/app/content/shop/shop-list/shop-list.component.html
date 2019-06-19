@@ -2,18 +2,16 @@
   <ul id="shop-list">
   <li *ngFor="let shop of shops">
     <div class="list-content">
-    <a [routerLink]="['/shop']" [routerLinkActive]='["link-active"]' (click)=
-      "navigateToShopDetail(shop.name, shop.address.country, shop.address.town, shop.address.postal_code,
-      shop.address.street_name, shop.address.street_number)">
+    <a [routerLink]="['/shop', shop.id]" [routerLinkActive]='["link-active"]'>
       <img src="https://dummyimage.com/100x100/fff/000" class="preview-img">
     </a>
       <div class="preview-content">
-      <h6 class="shop_name" [routerLink]="['/shop', shop.name + shop.description]">{{shop.name}}
+      <h6 class="shop_name"  [routerLink]="['/shop', shop.id]">{{shop.name}}
         <hr class="shop_name_underline">
       </h6>
       <div class="text">
-          {{shop.description}}
-      </div>
+          {{shop.description | words : 20}}
+      </div><div class='read_more'> Read more </div>
       </div>
     </div>
   </li>

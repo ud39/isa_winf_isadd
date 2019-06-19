@@ -5,8 +5,9 @@ import {MatCheckbox, MatInput, MatSelect} from "@angular/material";
 import {CheckBoxesService} from "../../services/interactive-element/checkboxes.service";
 import {FormControl} from "@angular/forms";
 import {Observable} from "rxjs";
-import {map, startWith} from "rxjs/operators";
+import {map, startWith, tap} from "rxjs/operators";
 import {ShopService} from "../../services/shop/shop.service";
+import {VALID} from "@angular/forms/src/model";
 
 
 @Component({
@@ -20,10 +21,13 @@ export class CheckboxComponent implements OnInit {
 
   @ViewChildren('cb') cbs : QueryList<MatCheckbox>;
   @ViewChild('inputShop') inputShop: MatInput;
-  @ViewChildren('select') select : QueryList<MatSelect>;
+  @ViewChildren(MatSelect) select : QueryList<MatSelect>;
+  @ViewChild('selectPOI') selectPoi : MatSelect;
+  @ViewChild('selectPrice') selectPrice : MatSelect;
 
   private states: string = '';
   private showOrHide: boolean = false;
+
 
   constructor(private router: Router, private checkBoxService: CheckBoxesService, private shopService: ShopService) {
 
@@ -32,6 +36,7 @@ export class CheckboxComponent implements OnInit {
   private myControl = new FormControl();
   private options: string[] = [];
   private filteredOptions: Observable<string[]>;
+  private filteredPoi: Observable<string[]>;
 
   fillOutOptions(){
     this.shopService.getShops().subscribe(shop =>{
@@ -46,7 +51,7 @@ export class CheckboxComponent implements OnInit {
   }
 
   clear(){
-    this.checkBoxService.clear(this.cbs,this.myControl, this.select.toArray());
+    this.checkBoxService.clear(this.cbs,this.myControl,  this.select.toArray());
   }
 
   ngOnInit() {
@@ -55,12 +60,15 @@ export class CheckboxComponent implements OnInit {
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
         startWith(''),
-        map(val => val.length >= 1 ? this.checkBoxService._filter(val,this.options): [])
-      )
+        map(val => val.length >= 1 ? this.checkBoxService._filter(val,this.options): []),
+      );
 
   }
 
   ngAfterViewInit(){
+    console.log(this.selectPrice.selectionChange.subscribe(value => {
+      console.log(value);
+    }));
   }
 
 }

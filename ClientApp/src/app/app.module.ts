@@ -9,7 +9,6 @@ import { NavMenuComponent } from './layout/nav-menu/nav-menu.component';
 import { HomeComponent } from './common/home/home.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { RegistrationComponent } from './common/registration/registration.component';
-import { ArticleComponent } from './content/article/article.component';
 import { AboutUsComponent } from './common/about-us/about-us.component';
 import { UserProfileComponent } from './profile/user-profile/user-profile.component';
 import { AdminProfileComponent } from './profile/admin-profile/admin-profile.component';
@@ -28,8 +27,11 @@ import {ShopTabComponent} from "./profile/admin-profile/tabs/shop-tab/shop-tab.c
 import { EquipmentTabComponent } from './profile/admin-profile/tabs/equipment-tab/equipment-tab.component';
 import { EventTabComponent } from './profile/admin-profile/tabs/event-tab/event-tab.component';
 import { ContentTabComponent } from './profile/admin-profile/tabs/content-tab/content-tab.component';
-import {MatRadioModule} from "@angular/material";
-;
+import {MAT_DATE_LOCALE, MatRadioModule} from "@angular/material";
+import {TruncateModule} from "@yellowspot/ng-truncate";
+import { ArticleListComponent } from './content/wiki/article-list/article-list.component';
+import { ArticleDetailComponent } from './content/wiki/article-detail/article-detail.component';
+import {CheckboxCoffeeComponent} from "./search/checkbox-coffee/checkbox-coffee.component";
 
 
 @NgModule({
@@ -39,7 +41,6 @@ import {MatRadioModule} from "@angular/material";
     HomeComponent,
     FooterComponent,
     RegistrationComponent,
-    ArticleComponent,
     AboutUsComponent,
     UserProfileComponent,
     AdminProfileComponent,
@@ -55,7 +56,10 @@ import {MatRadioModule} from "@angular/material";
     ShopTabComponent,
     EquipmentTabComponent,
     EventTabComponent,
-    ContentTabComponent
+    ContentTabComponent,
+    ArticleListComponent,
+    ArticleDetailComponent,
+    CheckboxCoffeeComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
@@ -69,7 +73,9 @@ import {MatRadioModule} from "@angular/material";
       {path: 'shop', component: ShopListComponent},
       {path: 'shop/:id', component: ShopDetailComponent},
       {path: 'user', component: UserProfileComponent},
-      {path: 'equipment', component: EquipmentListComponent},
+      {path: 'wiki', component: ArticleListComponent},
+      {path: 'wiki/equipment', component: EquipmentListComponent},
+      {path: 'wiki/coffee', component: EquipmentListComponent},
       {path: 'admin', component: AdminProfileComponent},
       {path: 'about-us', component: AboutUsComponent},
       {path: '**', component: PageNotFoundComponent}
@@ -78,8 +84,10 @@ import {MatRadioModule} from "@angular/material";
     ReactiveFormsModule,
     LayoutModule,
     MatRadioModule,
+    TruncateModule,
   ],
-  providers: [],
+  providers: [ { provide: MAT_DATE_LOCALE, useValue: 'de-DE' },],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

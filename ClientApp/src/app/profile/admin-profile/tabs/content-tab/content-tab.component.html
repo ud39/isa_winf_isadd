@@ -1,13 +1,85 @@
+<mat-form-field>
+  <mat-label>Wähle einen Content</mat-label>
+  <mat-select [(value)]="selected">
+    <mat-option *ngFor="let con of content" [value]="con">
+      {{con}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<div class="content blend" *ngIf="selected == 'Blend'">
 <mat-form-field class="name-form-field">
-  <input matInput type="text" placeholder="Name" [(ngModel)]="value">
-  <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+  <input matInput type="text" placeholder="Name" [(ngModel)]="valueNameBlend">
+  <button mat-button *ngIf="valueNameBlend" matSuffix mat-icon-button aria-label="Clear" (click)="valueNameBlend=''">
     <mat-icon>close</mat-icon>
   </button>
 </mat-form-field>
 <mat-form-field class="description">
   <mat-label>Beschreibung</mat-label>
-  <textarea matInput
+  <textarea [(ngModel)]="descriptionBlend"
+            matInput
             cdkTextareaAutosize
             cdkAutosizeMinRows="2"
+            [value]="descriptionBlend"
   ></textarea>
 </mat-form-field>
+  <mat-form-field>
+    <mat-label>Wähle die Mischung</mat-label>
+    <mat-select multiple #multipleSelectBlend>
+      <mat-option *ngFor="let food of foods" [value]="food.value">
+        {{ food.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div class="content bean" *ngIf="selected == 'Bohnen'">
+  <mat-form-field class="name-form-field">
+    <input matInput type="text" placeholder="Name" [(ngModel)]="valueNameBean">
+    <button mat-button *ngIf="valueNameBean" matSuffix mat-icon-button aria-label="Clear" (click)="valueNameBean=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-form-field class="description">
+    <mat-label>Beschreibung</mat-label>
+    <textarea [(ngModel)]="descriptionBean"
+              matInput
+              cdkTextareaAutosize
+              cdkAutosizeMinRows="2"
+              [value]="descriptionBean"
+    ></textarea>
+  </mat-form-field>
+</div>
+<div class="content equipment" *ngIf="selected == 'Equipment'">
+  <mat-form-field class="name-form-field">
+    <input matInput type="text" placeholder="Name" [(ngModel)]="valueNameEquipment">
+    <button mat-button *ngIf="valueNameEquipment" matSuffix mat-icon-button aria-label="Clear" (click)="valueNameEquipment=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-form-field class="description">
+    <mat-label>Beschreibung</mat-label>
+    <textarea [(ngModel)]="descriptionEquipment"
+              matInput
+              cdkTextareaAutosize
+              cdkAutosizeMinRows="2"
+              [value]="descriptionEquipment"
+    ></textarea>
+  </mat-form-field>
+</div>
+<div class="content coffee_drink" *ngIf="selected == 'Kaffee Drink'">
+  <mat-form-field class="name-form-field">
+    <input matInput type="text" placeholder="Name" [(ngModel)]="valueNameCoffeeDrink">
+    <button mat-button *ngIf="valueNameCoffeeDrink" matSuffix mat-icon-button aria-label="Clear" (click)="valueNameCoffeeDrink=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-form-field class="description">
+    <mat-label>Beschreibung</mat-label>
+    <textarea [(ngModel)]="descriptionCoffeeDrink"
+              matInput
+              cdkTextareaAutosize
+              cdkAutosizeMinRows="2"
+              [value]="descriptionCoffeeDrink"
+    ></textarea>
+  </mat-form-field>
+</div>
+<button mat-button (click)="text()">Test</button>

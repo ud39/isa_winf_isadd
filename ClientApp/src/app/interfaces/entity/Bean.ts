@@ -5,6 +5,6 @@ export interface Bean {
   sort: string;
   priceRangeLower: number;
   priceRangeUpper: number;
-  fair_trade: boolean;
+  fairTrade: boolean;
   description: string;
 }

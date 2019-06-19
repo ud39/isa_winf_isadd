@@ -17,15 +17,6 @@ namespace WinfADD.Repositories
 {
     public class CoffeeShopRepository : GenericBaseRepository<CoffeeShop>
     {
-        //key fields
-        protected List<string> keys = new List<string>();
-        protected string tableName;
-        protected string GetByIdString;
-        protected string GetAllString;
-        protected string UpdateString;
-        protected string DeleteString;
-
-
         protected IConfiguration _config;
 
 
@@ -77,19 +68,17 @@ namespace WinfADD.Repositories
            SqlMapper.SetTypeMap(typeof(CoffeeShop), CreateDefaultMap(typeof(CoffeeShop)));
            SqlMapper.SetTypeMap(typeof(Image), CreateDefaultMap(typeof(Image)));
            SqlMapper.SetTypeMap(typeof(Event), CreateDefaultMap(typeof(Event)));
-  
-            
-            //TODO add all key names here //TODO in extended class
-            // keys.Add("KeyString");
-            keys.Add("name");
-            keys.Add("country");
-            keys.Add("town");
-            keys.Add("postal_code");
-            keys.Add("street_name");
-            keys.Add("street_number");
-
-            
-            //TODO write tableName
+           SqlMapper.SetTypeMap(typeof(Bean), CreateDefaultMap(typeof(Bean)));
+           SqlMapper.SetTypeMap(typeof(Blend), CreateDefaultMap(typeof(Blend)));
+           SqlMapper.SetTypeMap(typeof(BusStation), CreateDefaultMap(typeof(BusStation)));
+           SqlMapper.SetTypeMap(typeof(CoffeeDrink), CreateDefaultMap(typeof(CoffeeDrink)));
+           SqlMapper.SetTypeMap(typeof(Equipment), CreateDefaultMap(typeof(Equipment)));
+           SqlMapper.SetTypeMap(typeof(EquipmentCategory), CreateDefaultMap(typeof(EquipmentCategory)));
+           SqlMapper.SetTypeMap(typeof(Location), CreateDefaultMap(typeof(Location)));
+           SqlMapper.SetTypeMap(typeof(OpeningTime), CreateDefaultMap(typeof(OpeningTime)));
+           SqlMapper.SetTypeMap(typeof(Poi), CreateDefaultMap(typeof(Poi)));
+           SqlMapper.SetTypeMap(typeof(Preparation), CreateDefaultMap(typeof(Preparation)));
+           
             tableName = "coffee_shop";
 
 
@@ -158,7 +147,7 @@ namespace WinfADD.Repositories
             DeleteString = "DELETE FROM" +" " + tableName + " WHERE " + keyCompare;
         }
 
-        public async Task<List<CoffeeShop>> GetAll()
+        public override async Task<List<CoffeeShop>> GetAll()
         {
             Console.WriteLine("\n GetAll::" + GetAllString);
             
@@ -178,8 +167,14 @@ namespace WinfADD.Repositories
 
 
            GetByIdString = "select * from coffee_shop where id = @id;" +
-                          "select i.* from image i, coffee_shop_image ci where ci.coffee_shop_id = @id and ci.image_file_name = i.file_name;" +
-                          "select  e.* from event e, organised_by o where o.coffee_shop_id = @id and  e.id = o.event_id";
+                           "select i.* from image i, coffee_shop_image ci where ci.coffee_shop_id = @id and ci.image_file_name = i.file_name;" +
+                           "select e.* from event e, organised_by o where o.coffee_shop_id = @id and  e.id = o.event_id;" +
+                           "select b.* from provides p, bean b where p.coffee_shop_id = @id and p.bean_name = b.name and p.bean_manufacturer_name = b.manufacturer_name;" +
+                           "select b.* from offers o, blend b where o.coffee_shop_id = @id and o.blend_name = b.name and o.blend_manufacturer_name = b.manufacturer_name;" +
+                           "select b.* from bus_station b, reachable r where r.coffee_shop_id = @id and r.bus_station_name = b.name;" +
+                           "select c.* from coffee_drink c, serves s where s.coffee_shop_id = @id and s.coffee_drink_name = c.name;" +
+                           "select e.*, ec.* from equipment e, equipment_category ec, sells s where s.coffee_shop_id = 2 and s.equipment_manufacturer_name = e.manufacturer_name and " +
+                                "s.equipment_model_name = e.model_name and s.equipment_year_of_origin = e.year_of_origin and s. equipment_category_name = ec.name;";
            
             using (var conn = Connection)
             {
@@ -189,18 +184,15 @@ namespace WinfADD.Repositories
 
           var coffeeShop = result.Read<CoffeeShop>().FirstOrDefault();
 
-          Console.WriteLine("-------------------__:" + coffeeShop.Id);
-          Console.WriteLine("-------------------__:" + coffeeShop.Name);
-          
-          Console.WriteLine("-------------------__:" + coffeeShop.FairTrade);
               if (coffeeShop != null)
               {
-                  var images = result.Read<Image>().ToList();
-                  coffeeShop.Images = images;
-                  
-                  var events = result.Read<Event>().ToList();
-                  coffeeShop.Events = events;
-    
+                  coffeeShop.Images  = result.Read<Image>().ToList();
+                  coffeeShop.Events = result.Read<Event>().ToList();
+                  coffeeShop.Beans = result.Read<Bean>().ToList();
+                  coffeeShop.Blends = result.Read<Blend>().ToList();
+                  coffeeShop.ReachableByBus = result.Read<BusStation>().ToList();
+                  coffeeShop.CoffeeDrinks = result.Read<CoffeeDrink>().ToList();
+
               }
 
                 return coffeeShop;

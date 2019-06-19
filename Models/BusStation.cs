@@ -5,9 +5,8 @@ namespace WinfADD.Models
     public class BusStation
     {
         //primary keys
-        [Key] public string BusStationName { get; set; }
+        [Key] public string Name { get; set; }
 
-        //
         public int Line { get; set; }
     }
 }

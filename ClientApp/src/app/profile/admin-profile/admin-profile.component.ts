@@ -48,6 +48,7 @@ export class AdminProfileComponent implements OnInit {
   ngOnInit() {
     this.matTabGroup.selectedIndexChange.subscribe(event => {
       this.matTabActive = event;
+      console.log(this.matTabActive);
     });
   }
 

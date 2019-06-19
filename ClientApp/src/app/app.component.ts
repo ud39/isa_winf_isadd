@@ -26,7 +26,12 @@ export class AppComponent {
     // on route change to '/login', set the variable showNavigation to false
     this.router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
-        if(event['url'] == '/shop' || event['url'] == '/equipment' || event['url'] == '/') {
+        if(event['url'] == '/shop'
+          || event['url'] == '/wiki/equipment'
+          || event['url'] == '/wiki/coffee'
+          || event['url'] == '/')
+
+        {
           this.showNavigation = true;
           this.urlSearchPath = event['url'];
         }else{

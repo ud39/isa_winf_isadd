@@ -10,15 +10,15 @@
     </mat-form-field>
     <mat-form-field class="direct-shop">
       <mat-label>Landmarken</mat-label>
-      <mat-select #select>
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-          {{option}}
+      <mat-select #selectPOI>
+        <mat-option *ngFor="let poi of filteredPoi | async" [value]="poi">
+          {{poi}}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field class="price-range">
       <mat-label>Preis Klasse</mat-label>
-      <mat-select #select>
+      <mat-select #selectPrice >
         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
           {{option}}
         </mat-option>

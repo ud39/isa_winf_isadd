@@ -1,11 +1,10 @@
 .grid-container{
   display: grid;
   grid-template-columns: 60% 30%;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   align-content: center;
   align-items: start;
-  grid-column-gap: 10px;
-
+  grid-column-gap: 3%;
 }
 
 #opening_times {
@@ -153,10 +152,6 @@ img {vertical-align: middle; object-fit: cover}
   margin-top: 10%;
 }
 
-.description-active{
-  display: block;
-}
-
 #description{
   display: block;
 }
@@ -171,8 +166,29 @@ img {vertical-align: middle; object-fit: cover}
 
 app-shop-detail .mat-grid-tile .mat-figure{
   display: inherit;
+  margin-bottom: 5px;
 }
 
 app-shop-detail .mat-tab-body-content {
   overflow: visible !important;
 }
+
+app-shop-detail .symbol{
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+  margin-right: 10px;
+}
+
+app-shop-detail #link_to_shop{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+app-shop-detail .mat-tab-group{
+  background-color: red;
+  grid-row: 3;
+  grid-column: 1 / span 4;
+}
+

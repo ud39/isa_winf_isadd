@@ -1,22 +1,40 @@
 import {Address} from "../complex/Address";
+import {Bean} from "./Bean";
+import {Image} from "./Image";
+import {CoffeeDrink} from "./CoffeeDrink";
+import {BusStation} from "./BusStation";
+import {EquipmentCategory} from "./EquipmentCategory";
+import {Blend} from "./Blend";
+import {Poi} from "./Poi";
+import {OpeningTime} from "./OpeningTime";
 
 
 export interface Shop {
+  id:number;
   name: string;
-  founding_year: number;
+  foundingYear: number;
   seats: number;
   website: string;
   food: string;
-  price_class: string;
+  priceClass: string;
   franchise: string;
   wlan:boolean;
-  disabled_friendly:boolean;
-  fair_trade:boolean;
-  child_friendly:boolean;
+  disabledFriendly:boolean;
+  fairTrade:boolean;
+  childFriendly:boolean;
   workstation:boolean;
-  latte_art:boolean;
-  pets_friendly:boolean;
+  latteArt:boolean;
+  petsFriendly:boolean;
   outdoor:boolean;
   description: string;
   address:Address;
+  beans: Bean[];
+  blends: Blend[];
+  events: Event[];
+  images: Image[];
+  coffeeDrinks: CoffeeDrink[];
+  listOfPoi: Poi[];
+  reachableByBus: BusStation[];
+  equipmentCategories: EquipmentCategory[];
+  OpeningTimes: OpeningTime[];
 }

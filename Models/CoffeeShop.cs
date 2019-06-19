@@ -11,6 +11,15 @@ namespace WinfADD.Models
         {
             Events = new Event[] {};
             Images = new Image[] {};
+            CoffeeDrinks = new CoffeeDrink[] {};
+            ListOfPoi = new Poi[] {};
+            ReachableByBus = new BusStation[] {};
+            EquipmentCategories = new EquipmentCategory[] {};
+            Beans = new Bean[] {};
+            Blends = new Blend[] {};
+            OpeningTimes = new OpeningTime[] {};
+            Preparations = new Preparation[] { };
+
         }
         
         //primary key
@@ -42,17 +51,21 @@ namespace WinfADD.Models
         public bool Outdoor { get; set; }
 
         //byte
-        private string Description { get; set; }
-
-        //complex
-        //TODO
-        //public  opening_time { get; set; }
-        //<weedkday, opentime, closetime>
-        //holidays?
+        public string Description { get; set; }
 
         public Address Address { get; set; }
         
         public IEnumerable<Event> Events { get; set; }
         public IEnumerable<Image> Images { get; set; }
+        public IEnumerable<CoffeeDrink> CoffeeDrinks{ get; set; }
+        public IEnumerable<Poi> ListOfPoi { get; set; }
+        public IEnumerable<BusStation> ReachableByBus { get; set; }
+        public IEnumerable<EquipmentCategory> EquipmentCategories { get; set; }
+        public IEnumerable<Bean> Beans{ get; set; }
+        public IEnumerable<Blend> Blends{ get; set; }
+        public IEnumerable<OpeningTime> OpeningTimes{ get; set; }
+        public IEnumerable<Preparation> Preparations{ get; set; }
+        
+        
     }
 }
