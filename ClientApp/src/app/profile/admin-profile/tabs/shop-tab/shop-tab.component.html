@@ -50,10 +50,11 @@
         type="file" (change)="onFileChanged($event)"
         #fileInput>
       <button (click)="fileInput.click()">Select File</button>
-      <button (click)="onUpload('shop')">Upload!</button>
+      <button (click)="onUpload('front')">Upload!</button>
+      <button  (click)="deleteImage('front')" class="button">Löschen</button>
 
-
-      <img src="./Upload/png.png" height="100px" weight="100px"/>
+      <br>
+      <img  [src]="admin_service.frontImage" height="100px">
 
 
 
@@ -69,13 +70,8 @@
         accept="image/png, image/jpeg"
          #fileInput>
       <button (click)="fileInput.click()">Gallery Bild</button>
-      <button (click)="onUpload('gallerie')">Upload!</button>
-
-
-
-
-
-      <button  (click)="deleteImage()" class="button">Löschen</button>
+      <button (click)="onUpload('gallery')">Upload!</button>
+      <button  (click)="deleteImage('gallery')" class="button">Löschen</button>
 
 <br>
 
@@ -140,7 +136,9 @@
              #fileInput>
            <button (click)="fileInput.click()">Select File</button>
            <button (click)="onUpload('preview')">Upload!</button>
-
+           <button  (click)="deleteImage('preview')" class="button">Löschen</button>
+           <br>
+           <img  [src]="admin_service.previewImage" height="100px">
 
 
 

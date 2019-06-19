@@ -35,7 +35,6 @@ export class ShopTabComponent implements OnInit {
   constructor(private admin_service: AdminService) { }
 
 
-
   ngOnInit() {
   }
 
@@ -48,13 +47,8 @@ export class ShopTabComponent implements OnInit {
     this.admin_service.onUpload(fromWhere);
   }
 
-
-
-
-
-  //TODO delete: onClick
-  deleteImage() {
-    this.admin_service.deleteImage();
+  deleteImage(fromWhere) {
+    this.admin_service.deleteImage(fromWhere);
   }
 
 

@@ -13,30 +13,37 @@ export class AdminService {
   public progress: number;
   public message: string;
 
+  //radiobutton
+  public galleryNumber = "1";
+
 
   //paths
-  public shop_image_path = 'https://localhost:5001/api/upload/GetById?file_name=shop/';
-  public shop_gallery_path = 'https://localhost:5001/api/upload/GetById?file_name=gallerie/';
-  public shop_preview_path = 'https://localhost:5001/api/upload/GetById?file_name=preview/';
+  public shop_front_path = 'https://localhost:5001/api/image/GetById?fileName=front/';
+  public shop_gallery_path = 'https://localhost:5001/api/image/GetById?fileName=gallery/';
+  public shop_preview_path = 'https://localhost:5001/api/image/GetById?fileName=preview/';
 
 
 
   //image path variables
-  public shopImae: SafeUrl;
+  public gallery_1_Filename: string;
+  public gallery_2_Filename: string;
+  public gallery_3_Filename: string;
+  public gallery_4_Filename: string;
+  public front_Filename: string;
+  public preview_Filename: string;
+
   public gallery_1: SafeUrl;
   public gallery_2: SafeUrl;
   public gallery_3: SafeUrl;
   public gallery_4: SafeUrl;
-  public preview: SafeUrl;
-  public galleryNumber = "1";
-
-
+  public previewImage: SafeUrl;
+  public frontImage: SafeUrl;
 
 
   private selectedFile: File;
 
   onFileChanged(event) {
-    this.selectedFile = event.target.files[0]
+    this.selectedFile = event.target.files[0];
     console.log("FILE NAME::"+this.selectedFile.name)
   }
 
@@ -46,72 +53,103 @@ export class AdminService {
 
     //set meta data
     const uploadData = new FormData();
-    uploadData.append('galleryNumber', this.galleryNumber.toString())
     uploadData.append('fromWhere', fromWhere);
     uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
 
-    this.http.post('https://localhost:5001/api/upload', uploadData, {
+    this.http.post('https://localhost:5001/api/image', uploadData, {
       reportProgress: true,
       observe: 'events'
     })
       .subscribe(event => {
         if(event.type === HttpEventType.Response) {
-          console.log("IMAGE::" +event.body.toString());
+          console.log("IMAGE::" + event.body.toString());
 
-          switch(this.galleryNumber) {
-            case "1":
-              this.gallery_1 = this.sanitize(this.shop_gallery_path +event.body.toString());
-              break;
-            case "2":
-              this.gallery_2 = this.sanitize(this.shop_gallery_path +event.body.toString());
-              break;
-            case "3":
-              this.gallery_3 = this.sanitize(this.shop_gallery_path +event.body.toString());
-              break;
-            default:
-              this.gallery_4 = this.sanitize(this.shop_gallery_path +event.body.toString());
-              break;
+          if (fromWhere == "gallery") {
+            switch (this.galleryNumber) {
+              case "1":
+                this.gallery_1_Filename = event.body.toString();
+                this.gallery_1 = this.sanitize(this.shop_gallery_path + this.gallery_1_Filename);
+                break;
+              case "2":
+                this.gallery_2_Filename = event.body.toString();
+                this.gallery_2 = this.sanitize(this.shop_gallery_path + this.gallery_2_Filename);
+                break;
+              case "3":
+                this.gallery_3_Filename = event.body.toString();
+                this.gallery_3 = this.sanitize(this.shop_gallery_path + this.gallery_3_Filename);
+                break;
+              default:
+                this.gallery_4_Filename = event.body.toString();
+                this.gallery_4 = this.sanitize(this.shop_gallery_path + this.gallery_4_Filename);
+                break;
+            }
+          }
+          else if (fromWhere == "preview") {
+            this.preview_Filename = event.body.toString();
+            this.previewImage = this.sanitize(this.shop_preview_path  + this.preview_Filename);
+          }
+          else if(fromWhere == "front"){
+            this.front_Filename = event.body.toString();
+            this.frontImage = this.sanitize(this.shop_front_path  + this.front_Filename);
           }
         }
+
         else {console.log(event)}
       });
   }
 
 
-  deleteImage() {
+  deleteImage(fromWhere) {
+    var name: string;
 
-
-    console.log("NUMBER:::::::->"+this.galleryNumber);
-    switch(this.galleryNumber) {
-      case "1":
-        console.log("this.gallery_1::"+this.gallery_1);
-        //this.http.delete("https://localhost:5001/api/upload?file_name=" +this.gallery_1);
-        this.http.delete('https://localhost:5001/api/upload/delete?file_name=kt55gpqx.f4s.jpg',   {
-        reportProgress: false,}).subscribe(value =>{
-
-            console.log(value);
-        },error1 => console.log(error1)
-
-
-        );
-        console.log("this.gallery_1::"+this.gallery_1);
-
-        this.gallery_1 = '';
-        break;
-      case "2":
-        this.http.delete("https://localhost:5001/api/upload?file_name=" +this.gallery_2);
-        this.gallery_2 = '';
-        break;
-      case "3":
-        this.http.delete("https://localhost:5001/api/upload?file_name=" +this.gallery_3);
-        this.gallery_3 = '';
-        break;
-      case "4":
-        this.http.delete("https://localhost:5001/api/upload?file_name=" +this.gallery_4);
-        this.gallery_4 = '';
-        break;
-
+    if(fromWhere.match("gallery")) {
+      switch (this.galleryNumber) {
+        case "1":
+          console.log("In::" + 1);
+          name = this.gallery_1_Filename;
+          this.gallery_1 = '';
+          this.gallery_1_Filename ='';
+          break;
+        case "2":
+          console.log("In::" + 2);
+          name = this.gallery_2_Filename;
+          this.gallery_2 = '';
+          this.gallery_3_Filename ='';
+          break;
+        case "3":
+          name = this.gallery_3_Filename;
+          this.gallery_3 = '';
+          this.gallery_3_Filename ='';
+          break;
+        case "4":
+          name = this.gallery_4_Filename;
+          this.gallery_4 = '';
+          this.gallery_4_Filename ='';
+          break;
+      }
     }
+    else if(fromWhere.match("preview")){
+      name = this.preview_Filename;
+      this.previewImage ='';
+      this.preview_Filename ='';
+    }
+    else if(fromWhere.match("front")){
+      name = this.front_Filename;
+      this.frontImage ='';
+      this.front_Filename =''
+    }
+
+    console.log("Lösche::"+name +", from: " +fromWhere);
+    console.log(":::::->"+'https://localhost:5001/api/image/delete?fileName='+name+'&contentType='+ fromWhere);
+    this.http.delete('https://localhost:5001/api/image/delete?fileName='+name+'&contentType='+ fromWhere,   {
+      reportProgress: false,}).subscribe(value =>{
+
+        console.log("value::" +value);
+      },error1 => console.log("ERROR:"+error1)
+
+    );
+
+
 
   }
 
