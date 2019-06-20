@@ -85,6 +85,7 @@ export class ShopDetailComponent implements OnInit {
         this.service.getShop(params.get('id')))
     ).subscribe(params => {
       this.shop$ = params;
+      this.setPriceClass(this.shop$.priceClass);
     });
   }
 }

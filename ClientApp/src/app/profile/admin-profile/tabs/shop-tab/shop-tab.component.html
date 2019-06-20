@@ -17,6 +17,12 @@
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
+ <mat-form-field class="shop-form-field town">
+   <input matInput type="text" placeholder="Stadt" [(ngModel)]="town">
+   <button mat-button *ngIf="town" matSuffix mat-icon-button aria-label="Clear" (click)="town=''">
+     <mat-icon>close</mat-icon>
+   </button>
+ </mat-form-field>
   <mat-form-field class="description">
     <input matInput type="text" placeholder="Name" [(ngModel)]="value">
     <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
@@ -30,28 +36,20 @@
               cdkAutosizeMinRows="2"
     ></textarea>
   </mat-form-field>
-  <mat-form-field class="description">
-    <mat-label>Kurz Beschreibung</mat-label>
-    <textarea matInput
-              cdkTextareaAutosize
-              cdkAutosizeMinRows="2"
-              cdkAutosizeMaxRows="4"
-    ></textarea>
-  </mat-form-field>
   <mat-tab-group id="second-mat-tab-group">
     <mat-tab label="Front-Bild">
 
 
 
 
-           <a>Shop Bild Laden</a>
+           <div>Shop Bild Laden</div>
       <input
         style="display: none"
         type="file" (change)="onFileChanged($event)"
         #fileInput>
-      <button (click)="fileInput.click()">Select File</button>
-      <button (click)="onUpload('front')">Upload!</button>
-      <button  (click)="deleteImage('front')" class="button">Löschen</button>
+      <button mat-button (click)="fileInput.click()">Select File</button>
+      <button mat-button (click)="onUpload('front')">Upload!</button>
+      <button mat-button (click)="deleteImage('front')" class="button">Löschen</button>
 
       <br>
       <img  [src]="admin_service.frontImage" height="100px">
@@ -63,30 +61,30 @@
 
 
 
-      <a>Gallerie Laden</a>
+      <div>Gallerie Laden</div>
       <input
         style="display: none"
         type="file" (change)="onFileChanged($event)"
         accept="image/png, image/jpeg"
          #fileInput>
-      <button (click)="fileInput.click()">Gallery Bild</button>
-      <button (click)="onUpload('gallery')">Upload!</button>
-      <button  (click)="deleteImage('gallery')" class="button">Löschen</button>
+      <button mat-button (click)="fileInput.click()">Gallery Bild</button>
+      <button mat-button (click)="onUpload('gallery')">Upload!</button>
+      <button mat-button (click)="deleteImage('gallery')" class="button">Löschen</button>
 
 <br>
 
 
       <mat-radio-group [(ngModel)]="admin_service.galleryNumber">
-        <div>Radio Button: {{admin_service.galleryNumber}}</div>
+        <div>Gewählte Bild: {{admin_service.galleryNumber}}</div>
         <br>
-      <mat-radio-button value="1">Gallery 1</mat-radio-button>
-      <mat-radio-button value="2">Gallery 2</mat-radio-button>
-      <mat-radio-button value="3">Gallery 3</mat-radio-button>
-      <mat-radio-button value="4">Gallery 4</mat-radio-button>
+      <mat-radio-button value="1">Bild 1</mat-radio-button>
+      <mat-radio-button value="2">Bild 2</mat-radio-button>
+      <mat-radio-button value="3">Bild 3</mat-radio-button>
+      <mat-radio-button value="4">Bild 4</mat-radio-button>
 
 
-        <!-- TODO some where else-->
-        <style> mat-grid-tile { background: lightblue; }  </style>
+
+
 
       <mat-grid-list cols="2" rowHeight="2:1">
 
@@ -134,9 +132,9 @@
              style="display: none"
              type="file" (change)="onFileChanged($event)"
              #fileInput>
-           <button (click)="fileInput.click()">Select File</button>
-           <button (click)="onUpload('preview')">Upload!</button>
-           <button  (click)="deleteImage('preview')" class="button">Löschen</button>
+           <button mat-button (click)="fileInput.click()">Select File</button>
+           <button mat-button (click)="onUpload('preview')">Upload!</button>
+           <button mat-button (click)="deleteImage('preview')" class="button">Löschen</button>
            <br>
            <img  [src]="admin_service.previewImage" height="100px">
 

@@ -1,4 +1,8 @@
 <div class="container">
+  <div class="action">
+  <mat-slide-toggle>
+    Veröffentlicht
+  </mat-slide-toggle>
   <button mat-button [matMenuTriggerFor]="menu" id="selected_menu" color="warn">Auswählen</button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="getJSONofShop()">Hinzufügen</button>
@@ -7,9 +11,8 @@
     <button mat-menu-item (click)="deleteContent()">Löschen</button>
     <button mat-menu-item (click)="restoreContent()">Wiederherstellen</button>
   </mat-menu>
-  <mat-slide-toggle>
-    Veröffentlicht
-  </mat-slide-toggle>
+  </div>
+  <div class="tab-content">
     <mat-tab-group #matTabShop class="first-mat-tab-group">
       <mat-tab  id="shop-tab" label="Shop">
       <app-shop-tab></app-shop-tab>
@@ -24,4 +27,5 @@
       <app-content-tab></app-content-tab>
       </mat-tab>
     </mat-tab-group>
+  </div>
 </div>

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {Observable} from "rxjs";
 import {Content} from "../../admin-profile.component";
@@ -7,7 +7,8 @@ import {AdminService} from "../../../../services/admin/admin.service";
 @Component({
   selector: 'app-shop-tab',
   templateUrl: './shop-tab.component.html',
-  styleUrls: ['./shop-tab.component.css']
+  styleUrls: ['./shop-tab.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 
 
@@ -23,6 +24,7 @@ export class ShopTabComponent implements OnInit {
   value = '';
   street = '';
   country = '';
+  town = '';
   streetNr : number;
 
   contents: Content[] = [

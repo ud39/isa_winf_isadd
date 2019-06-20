@@ -2,10 +2,21 @@
   display: flex;
 }
 
-.dropdown{
-
+.container{
+  display: flex;
 }
-.action-dropdown{
+
+.action{
+  display: flex;
+  margin-top: 20px;
+  flex:1;
+  order:2;
+  flex-direction: column;
+}
+
+.tab-content{
+  flex:5;
+  order:1;
 }
 
 .action-dropdown a{
@@ -132,28 +143,6 @@ app-admin-profile .mat-tab-label.mat-tab-label-active {
   background-color: transparent;
   color: red;
   font-weight: 700;
-}
-
-
-app-admin-profile button#selected_menu{
-  float: right;
-  z-index: 2;
-  top: 20px;
-  right: 10px;
-  background-color: white;
-  outline: none;
-  list-style-position:inside;
-  border: 0;
-  box-shadow: none;
-  border-radius: 0;
-}
-
-app-admin-profile mat-slide-toggle{
-  float: right;
-  z-index: 2;
-  position: relative;
-  top: 25px;
-  right: 20px;
 }
 
 app-admin-profile .address{
