@@ -28,6 +28,7 @@ namespace WinfADD.Repositories
 
 
         protected  IConfiguration _config;
+        protected IDictionary<string, string> _MappingM2DB;
 
 
         public GenericBaseRepository(IConfiguration _config)
@@ -57,6 +58,9 @@ namespace WinfADD.Repositories
 
             //TODO write tableName
             //tableName = tableName;
+
+            //TODO Mapping
+            //_MappingM2DB = Models.Mapping.MappingM2DB.TableMap;
 
             /*
            //helper strings
@@ -221,7 +225,6 @@ namespace WinfADD.Repositories
                 var rowsAffected =  await conn.ExecuteAsync(
                     UpdateString,
                     tableObj);
-
                 return rowsAffected > 0;
             }
         }
@@ -231,17 +234,19 @@ namespace WinfADD.Repositories
                 var fieldCounter = 0;
                 var sqlQuery = "UPDATE " + TableName+" SET ";
 
+
                 PropertyInfo[] possibleProperties = typeof(Table).GetProperties();
                 foreach (PropertyInfo property in possibleProperties)
                 {
 
                     var propertyName = property.Name.ToLower();
 
-                    if (!fieldsToChange.ContainsKey(propertyName) || Keys.Contains(propertyName)) continue;
-                    sqlQuery += propertyName + " = @" + propertyName + ",";
+                    if ((!fieldsToChange.ContainsKey(propertyName)) || Keys.Contains(_MappingM2DB[propertyName])) continue;
+                    sqlQuery += _MappingM2DB[propertyName] + " = @" + propertyName + ",";
                     fieldCounter++;
                 }
 
+                Console.WriteLine("llllllllllllllllllllllllllllllllllllllllllll::"+fieldCounter);
                 if (fieldCounter < 1) return false;
 
                 //remove last 'AND'
@@ -253,7 +258,7 @@ namespace WinfADD.Repositories
                 sqlQuery += " WHERE";
                 foreach (var key in Keys)
                 {
-                    sqlQuery += "  " + key + " = @" + key + " AND";
+                    sqlQuery += "  " + key + " = @" + key.Replace("_","") + " AND";
                 }
 
                 //remove last 'AND'

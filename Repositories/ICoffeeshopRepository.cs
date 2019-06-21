@@ -8,5 +8,7 @@ namespace WinfADD.Repositories
     {
         
         Task<CoffeeShop> GetById(int id);
+
+        bool InsertCoffeShop(CoffeeShop coffeeShopObj, IDictionary<string, dynamic> propertyValues);
     }
 }

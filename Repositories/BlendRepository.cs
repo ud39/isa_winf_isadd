@@ -2,6 +2,7 @@ using System;
 using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using WinfADD.Models;
+using WinfADD.Models.Mapping;
 
 namespace WinfADD.Repositories
 {
@@ -19,6 +20,9 @@ namespace WinfADD.Repositories
             //TODO write tableName
             TableName = "blend";
 
+            //TODO Mapping
+            _MappingM2DB = Models.Mapping.MappingM2DB.BlendMap;
+
 
             //helper strings
             var keyCompare = "";
@@ -27,12 +31,12 @@ namespace WinfADD.Repositories
             {
                 //compute keyCompare, CSKeys, AtCSKeys
                 if(keyCompare.Length >0){
-                    keyCompare += " AND " + keyString + "=@" + keyString;
+                    keyCompare += " AND " + keyString + " = @" + keyString.Replace("_", "");
                 }
 
                 else
                 {
-                    keyCompare += keyString + "=@" + keyString;
+                    keyCompare += keyString + " = @" + keyString.Replace("_","");
                 }
             }
 
@@ -51,10 +55,10 @@ namespace WinfADD.Repositories
             foreach (PropertyInfo property in possibleProperties)
             {
                 var propertyName = property.Name.ToLower();
-                if(temp.Length > 0) temp += ", " + propertyName + "= @" + propertyName;
+                if(temp.Length > 0) temp += ", " + _MappingM2DB[propertyName] + "= @" + propertyName;
                 else
                 {
-                    temp += propertyName + "= @" + propertyName;
+                    temp += _MappingM2DB[propertyName] + "= @" + propertyName;
                 }
             }
             UpdateString += temp + " WHERE " + keyCompare;

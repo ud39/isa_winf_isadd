@@ -26,6 +26,8 @@ namespace WinfADD.Models.Mapping
     
                 };
 
+
+
             public static Func<Type, string, PropertyInfo> PreviewMapper =
               new Func<Type, string, PropertyInfo>((type, columnName)
                   => type.GetProperty(PreviewMap.ContainsKey(columnName) ? PreviewMap[columnName] : columnName));

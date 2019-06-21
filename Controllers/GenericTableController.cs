@@ -27,6 +27,9 @@ namespace WinfADD.Controllers
             
             Console.WriteLine("-----");
             Console.WriteLine("tableObjName: " + tableObj);
+            Console.WriteLine(""+(tableObj as Blend).Name);
+            Console.WriteLine(""+(tableObj as Blend).ManufacturerName);
+            Console.WriteLine("");
             return await _tableRepo.GetById(tableObj);
         }
 
@@ -93,10 +96,10 @@ namespace WinfADD.Controllers
             //create tableObj like: [FromBody] Table tableObj
             Table tableObj = tableJson.ToObject<Table>();
 
-            //create a List of all keys in the Json
-            var keys = tableJson.ToObject<Dictionary<string, string>>();
+            //create a List of all fieldsToChange in the Json
+            var fieldsToChange = tableJson.ToObject<Dictionary<string, string>>();
 
-            return await _tableRepo.PartialUpdateTable(tableObj, keys);
+            return await _tableRepo.PartialUpdateTable(tableObj, fieldsToChange);
         }
     }
 }

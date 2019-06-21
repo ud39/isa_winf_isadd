@@ -39,6 +39,7 @@ namespace WinfADD.Controllers
         public async Task<bool> insertCoffeeShop(JToken jToken)
         {
 
+            var coffeeShopObj = jToken.ToObject<CoffeeShop>();
             var jObj = jToken.ToObject<JObject>();
             IDictionary<string, dynamic> propertyValues = new Dictionary<string, dynamic>();
             foreach (var pair in jObj) {propertyValues.Add(pair.Key, pair.Value);}
@@ -51,7 +52,8 @@ namespace WinfADD.Controllers
 
 
 
-            return _coffeeShopRepo.InsertCoffeeShop(propertyValues);
+
+            return _coffeeShopRepo.InsertCoffeeShop(coffeeShopObj, propertyValues);
         }
 
 

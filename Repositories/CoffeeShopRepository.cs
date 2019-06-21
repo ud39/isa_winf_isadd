@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -25,6 +26,9 @@ namespace WinfADD.Repositories
             DefaultTypeMap.MatchNamesWithUnderscores = true;
 
             TableName = "coffee_shop";
+
+            //mapping M2DB
+            _MappingM2DB = MappingM2DB.CoffeShopMap;
 
 
             //helper strings
@@ -143,43 +147,64 @@ namespace WinfADD.Repositories
             }
         }
 
-        public bool InsertCoffeeShop(IDictionary<string,dynamic> propertyValues)
+        public bool InsertCoffeeShop(CoffeeShop coffeeShopObj, IDictionary<string,dynamic> propertyValues)
         {
 
 
             //get all CoffeeShop properties
-            PropertyInfo[] possibleProperties = typeof(CoffeeShop).GetProperties();
-            var sqlCoffeeShop = "";
+            PropertyInfo[] possibleProperties = typeof(CoffeeShopInsertModel).GetProperties();
+            var sqlCoffeeShop = "INSERT INTO coffee_shop ";
+            var dbFiledNames = "";
+            var modelFieldNames = "";
             foreach (PropertyInfo property in possibleProperties)
             {
-                var propertyName = property.Name.ToLower();
-                Console.WriteLine(propertyName +"::" +propertyValues.ContainsKey(propertyName) + "<->"+property.Name+"::"+propertyValues.ContainsKey(property.Name));
-                if(! (propertyValues.ContainsKey(propertyName))) continue;
-                if(sqlCoffeeShop.Length > 0) sqlCoffeeShop += ", " + propertyName + "= @" + propertyName;
+                var propertyName = char.ToLower(property.Name[0]).ToString() + property.Name.Substring(1);
+                if(! (propertyValues.ContainsKey(propertyName)) || propertyName.Equals("id")) continue;
+                if (dbFiledNames.Length > 0)
+                {
+                    dbFiledNames += ", " + _MappingM2DB[propertyName.ToLower()] ;
+                    modelFieldNames += ",@" + propertyName;
+                }
                 else
                 {
-                    sqlCoffeeShop += propertyName + "= @" + propertyName;
+                    dbFiledNames += _MappingM2DB[propertyName.ToLower()];
+                    modelFieldNames += "@" + propertyName;
                 }
             }
+
+            sqlCoffeeShop += "(" + dbFiledNames + ")" + " VALUES " + "(" + modelFieldNames + ")";
+
             Console.WriteLine("<------------------------------------------------------------>");
             Console.WriteLine("::"+sqlCoffeeShop);
 
 
+            Console.WriteLine("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>");
+
+
+            Console.WriteLine("name::"+coffeeShopObj.Name);
+            Console.WriteLine("address:"+coffeeShopObj.Address);
+            Console.WriteLine("time:"+coffeeShopObj.OpeningTimes);
+
+            Console.WriteLine("<//////////////////////////////////////////////////////////>");
 
 
 
             using (var conn = Connection)
             {
-                using (var transaction = conn.BeginTransaction())
-                {
+
+               // using (var transaction = conn.BeginTransaction())
+                {}
                    // conn.Execute("sql", new { }, transaction: transaction);
+                   var rowsAffected = conn.Execute(sqlCoffeeShop, coffeeShopObj);
+
+                   Console.WriteLine("-_-_-_-_"+rowsAffected);
+                   return rowsAffected > 0;
+                   //transaction.Commit();
 
 
-                    //transaction.Commit();
-                }
             }
 
-            return false;
+
         }
         
     }
