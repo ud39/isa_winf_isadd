@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatAutocompleteModule,MatSlideToggleModule,MatButtonModule, MatCheckboxModule,
         MatInputModule, MatTabsModule, MatFormFieldModule, MatMenuTrigger,
-        MatMenuModule, MatGridListModule, MatIconModule,
+        MatMenuModule, MatGridListModule, MatIconModule, MatDividerModule,
         MatSidenavModule, MatSliderModule,MatSelectModule, MatTooltipModule, MatDatepickerModule, MatNativeDateModule } from "@angular/material";
 import { MatToolbarModule, MatListModule } from '@angular/material';
 import {CheckboxComponent} from "../search/checkbox/checkbox.component";
@@ -33,7 +33,8 @@ import {CheckboxEquipmentComponent} from "../search/checkbox-equipment/checkbox-
     ReactiveFormsModule,
     MatDatepickerModule,
     MatTooltipModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatDividerModule
   ],
   exports:[
     CheckboxComponent,
@@ -57,7 +58,8 @@ import {CheckboxEquipmentComponent} from "../search/checkbox-equipment/checkbox-
     MatDatepickerModule,
     MatMenuTrigger,
     MatNativeDateModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDividerModule
   ]
 })
 export class MaterialModule { }

@@ -48,7 +48,8 @@ namespace WinfADD.Repositories
             SqlMapper.SetTypeMap(typeof(OpeningTime), MappingConfigurator.CreateMap(typeof(OpeningTime)));
             SqlMapper.SetTypeMap(typeof(Poi), MappingConfigurator.CreateMap(typeof(Poi)));
             SqlMapper.SetTypeMap(typeof(Preparation), MappingConfigurator.CreateMap(typeof(Preparation)));
-            SqlMapper.SetTypeMap(typeof(CoffeeShopPreview), MappingConfigurator.CreateMap(typeof(CoffeeShopPreview), MappingConfigurator.PreviewMapper));
+            SqlMapper.SetTypeMap(typeof(CoffeeShopPreview), MappingConfigurator.CreateMap(typeof(CoffeeShopPreview), MappingConfigurator.CoffeeShopPreviewMapper));
+            SqlMapper.SetTypeMap(typeof(Event), MappingConfigurator.CreateMap(typeof(Event), MappingConfigurator.EventMapper));
 
             
             

@@ -25,10 +25,6 @@ export class CheckboxComponent implements OnInit {
   @ViewChild('selectPOI') selectPoi : MatSelect;
   @ViewChild('selectPrice') selectPrice : MatSelect;
 
-  private states: string = '';
-  private showOrHide: boolean = false;
-
-
   constructor(private router: Router, private checkBoxService: CheckBoxesService, private shopService: ShopService) {
 
   }
@@ -60,7 +56,7 @@ export class CheckboxComponent implements OnInit {
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
         startWith(''),
-        map(val => val.length >= 1 ? this.checkBoxService._filter(val,this.options): []),
+        map(val => val.length >= 2 ? this.checkBoxService._filter(val,this.options): []),
       );
 
   }

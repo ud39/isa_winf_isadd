@@ -130,7 +130,8 @@ CREATE TABLE public.user (
 
 create table image (
   file_name text primary key,
-  content_type text
+  content_type text,
+  unique (file_name, content_type)
 );
 
 
@@ -269,7 +270,7 @@ CREATE TABLE located (
                        coffee_shop_id int,
                        event_id int,
                        PRIMARY KEY ( location_address, coffee_shop_id, event_id),
-                       FOREIGN KEY (location_address) references location (address),
+                       FOREIGN KEY (location_address) references location (address) ON DELETE CASCADE,
                        FOREIGN KEY (coffee_shop_id) REFERENCES  coffee_shop (id) ON DELETE CASCADE,
                        FOREIGN KEY (event_id) REFERENCES event (id) ON DELETE CASCADE
 );
@@ -289,8 +290,15 @@ create table coffee_shop_image (
                                  image_file_name text,
                                  coffee_shop_id int,
                                  Primary Key(image_file_name, coffee_shop_id),
-                                 Foreign Key(image_file_name) references image (file_name),
+                                 Foreign Key(image_file_name) references image (file_name) ON DELETE CASCADE,
                                  FOREIGN KEY (coffee_shop_id) REFERENCES  coffee_shop (id) ON DELETE CASCADE);
+
+create table event_image (
+                                 image_file_name text,
+                                 event_id int,
+                                 Primary Key(image_file_name, event_id),
+                                 Foreign Key(image_file_name) references image (file_name) ON DELETE CASCADE,
+                                 FOREIGN KEY (event_id) REFERENCES event (id) ON DELETE CASCADE);
 
 
 ------  CLUSTER  -------
@@ -464,10 +472,17 @@ insert into opening_time values ('05:00:00', '17:00:00', 'Monday');
 
 insert into image values ('1.png', 'preview');
 insert into image values ('2.png', 'preview');
+insert into image values ('event1.png', 'preview');
+insert into image values ('event2.png', 'gallery');
+insert into image values ('event3.png', 'gallery');
 
 insert into coffee_shop_image values ('1.png',1);
 insert into coffee_shop_image values ('2.png',2);
 insert into coffee_shop_image values ('1.png',2);
+
+insert into event_image values ('event1.png',1);
+insert into event_image values ('event2.png',1);
+insert into event_image values ('event3.png',1);
 
 insert into opening_time values ('18:00:00', '10:00:00', 'friday');
 insert into opening_time values ('18:00:00', '10:00:00', 'monday');

@@ -14,12 +14,17 @@ app-checkbox .mat-select-panel{
   padding: 0;
 }
 
-app-checkbox .direct-shop:nth-child(1){
-  width: fit-content;
-  margin-right: 10px;
+app-checkbox .container{
+  clear: both;
 }
 
-app-checkbox .direct-shop:nth-child(2){
-  width: fit-content;
-  margin-right: 10px;
+app-checkbox .price-range{
+  clear: right;
+}
+
+app-checkbox .mat-form-field{
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  margin-right: 20px;
 }

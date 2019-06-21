@@ -9,7 +9,7 @@ namespace WinfADD.Models.Mapping
     public static class MappingConfigurator
     {
         
-            public static Dictionary<string, string> PreviewMap = new Dictionary<string, string>
+            public static Dictionary<string, string> CoffeeShopPreviewMap = new Dictionary<string, string>
                 {
                     {"file_name", "ImageFileName"},
                     {"id", "Id"},
@@ -17,25 +17,37 @@ namespace WinfADD.Models.Mapping
                     {"description", "Description"}
                 };
 
-            public static   Dictionary<string, string> EventMap = new Dictionary<string, string>
-                {
+            public static Dictionary<string, string> EventMap = new Dictionary<string, string>
+            {
+                {"file_name", "PreviewImageFileName"},
+                {"id", "Id"},
+                {"name", "Name"},
+                {"description", "Description"},
+                {"time", "Time"},
+                {"access_fee", "AccessFee"}
+            };
+            
+        //    public static   Dictionary<string, string> EventMap = new Dictionary<string, string>
+            /**    {
                     {"event_id", "Id"},
                     {"time", "Time"},
                     {"access_fee", "AccessFee"},
                     {"description", "Description"}
-    
-                };
+    */
+          //      };
 
-
-
-            public static Func<Type, string, PropertyInfo> PreviewMapper =
+            //TODO
+            
+            public static Func<Type, string, PropertyInfo> CoffeeShopPreviewMapper =
               new Func<Type, string, PropertyInfo>((type, columnName)
-                  => type.GetProperty(PreviewMap.ContainsKey(columnName) ? PreviewMap[columnName] : columnName));
+                  => type.GetProperty(CoffeeShopPreviewMap.ContainsKey(columnName) ? CoffeeShopPreviewMap[columnName] : columnName));
+
+            public static Func<Type, string, PropertyInfo>  EventMapper =
+                new Func<Type, string, PropertyInfo>((type, columnName)
+                    => type.GetProperty(EventMap.ContainsKey(columnName) ? EventMap[columnName] : columnName));
 
             
-            public static Func<Type, string, PropertyInfo> DefaultMapper = new Func<Type, string, PropertyInfo>((type, columnName) =>
-            {
-
+            public static Func<Type, string, PropertyInfo> DefaultMapper = new Func<Type, string, PropertyInfo>((type, columnName) => {
                 var result = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(columnName.ToLower());
                 return type.GetProperty(result = result.Replace("_", ""));
             });

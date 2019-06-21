@@ -5,7 +5,7 @@ import {ShopService} from "../../../services/shop/shop.service";
 import {Shop} from "../../../interfaces/entity/Shop";
 import {switchMap} from "rxjs/operators";
 import {TooltipPosition} from "@angular/material";
-import {ParamsInheritanceStrategy} from "@angular/router/src/router_state";
+
 
 @Component({
   selector: 'app-shop-detail',
@@ -15,6 +15,7 @@ import {ParamsInheritanceStrategy} from "@angular/router/src/router_state";
 })
 export class ShopDetailComponent implements OnInit {
 
+  private priceDescription = "";
   private symbolWlan = 'stuff';
   private symbolChildFriendly = 'stuff';
   private symbolDisabledFriendly = 'stuff';
@@ -28,18 +29,20 @@ export class ShopDetailComponent implements OnInit {
   private position : TooltipPosition = 'above';
   private shop$: Shop;
   private priceClass: string;
-  selectedId: string;
 
   setPriceClass(range:string):void{
     switch (range) {
       case 'niedrig':
         this.priceClass = "€";
+        this.priceDescription = "niedrig";
         break;
       case 'mittel':
         this.priceClass = "€€";
+        this.priceDescription = "mittel";
         break;
       case 'hoch':
         this.priceClass = "€€€";
+        this.priceDescription = "hoch";
         break;
     }
   }
@@ -83,9 +86,10 @@ export class ShopDetailComponent implements OnInit {
     this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
         this.service.getShop(params.get('id')))
-    ).subscribe(params => {
+    ).subscribe((params:Shop)=> {
       this.shop$ = params;
       this.setPriceClass(this.shop$.priceClass);
+      console.log()
     });
   }
 }
