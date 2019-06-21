@@ -32,6 +32,7 @@ import {TruncateModule} from "@yellowspot/ng-truncate";
 import { ArticleListComponent } from './content/wiki/article-list/article-list.component';
 import { ArticleDetailComponent } from './content/wiki/article-detail/article-detail.component';
 import {CheckboxCoffeeComponent} from "./search/checkbox-coffee/checkbox-coffee.component";
+import {RouteService} from "./services/routing/route.service";
 
 
 @NgModule({
@@ -70,8 +71,10 @@ import {CheckboxCoffeeComponent} from "./search/checkbox-coffee/checkbox-coffee.
     RouterModule.forRoot([
       {path: '', component: HomeComponent, pathMatch: 'full'},
       {path: 'registration', component: RegistrationComponent},
-      {path: 'shop', component: ShopListComponent},
-      {path: 'shop/:id', component: ShopDetailComponent},
+      {path: 'events', component: EventListComponent },
+      {path: 'events/:id', component: EventDetailedComponent},
+      {path: 'shops', component: ShopListComponent},
+      {path: 'shops/:id', component: ShopDetailComponent},
       {path: 'user', component: UserProfileComponent},
       {path: 'wiki', component: ArticleListComponent},
       {path: 'wiki/equipment', component: EquipmentListComponent},

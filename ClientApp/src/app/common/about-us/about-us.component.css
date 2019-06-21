@@ -1,11 +1,11 @@
-div.container{
+app-about-us div.container{
   display: flex;
 }
 
-div.presentaion{
+app-about-us div.presentaion{
   flex: 1;
 }
 
-div.pics{
+app-about-us div.pics{
   flex: 1;
 }

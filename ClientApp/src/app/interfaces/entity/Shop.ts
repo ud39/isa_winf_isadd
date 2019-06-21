@@ -7,7 +7,7 @@ import {EquipmentCategory} from "./EquipmentCategory";
 import {Blend} from "./Blend";
 import {Poi} from "./Poi";
 import {OpeningTime} from "./OpeningTime";
-
+import {Event} from "./Event";
 
 export interface Shop {
   id:number;
