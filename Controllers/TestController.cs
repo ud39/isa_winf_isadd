@@ -1,14 +1,9 @@
 using System;
-using System.Collections;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic; 
-using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
-using Dapper;
 using Newtonsoft.Json.Linq;
 using WinfADD.Models;
-using WinfADD.Persistence;
 
 namespace WinfADD.Controllers
 {

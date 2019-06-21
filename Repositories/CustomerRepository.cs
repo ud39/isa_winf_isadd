@@ -15,6 +15,7 @@ namespace WinfADD.Repository
 {
     public class CustomerRepository
     {
+        /*
         private string connectionString;
 
         public CustomerRepository(IConfiguration configuration)
@@ -71,7 +72,7 @@ namespace WinfADD.Repository
             PropertyInfo[] possibleProperties = typeof(CustomerSearchModel).GetProperties();
             var builder = new SqlBuilder();
             
-            var filterCustomer= builder.AddTemplate("Select * from customer /**where**/ ");
+            var filterCustomer= builder.AddTemplate("Select * from customer /**wher ");
 
             foreach (PropertyInfo property in possibleProperties)
             {
@@ -113,5 +114,6 @@ namespace WinfADD.Repository
                     item);
             }
         }
+        */
     }
 }

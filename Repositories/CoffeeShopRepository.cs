@@ -1,18 +1,14 @@
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Dynamic;
-using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Dapper;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
 using Npgsql;
 using WinfADD.Models;
+using WinfADD.Models.Mapping;
 
 namespace WinfADD.Repositories
 {
@@ -28,63 +24,13 @@ namespace WinfADD.Repositories
             NpgsqlConnection.GlobalTypeMapper.MapComposite<Address>("address");
             DefaultTypeMap.MatchNamesWithUnderscores = true;
 
-
-
-            //TEST
-
-            Dictionary<string, string> imageMaps = new Dictionary<string, string>
-            {
-                {"file_name", "FileName"},
-                {"content_type", "ContentType"}
-
-            };
-
-            Dictionary<string, string> eventMaps = new Dictionary<string, string>
-            {
-                {"event_id", "Id"},
-                {"time", "Time"},
-                {"access_fee", "AccessFee"},
-                {"description", "Description"}
-
-            };
-
-
-            var defaultMapper = new Func<Type, string, PropertyInfo>((type, columnName) =>
-            {
-
-                var result = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(columnName.ToLower());
-                return type.GetProperty(result = result.Replace("_", ""));
-            });
-
-        CustomPropertyTypeMap CreateDefaultMap (Type t)
-        {
-            return new CustomPropertyTypeMap(
-                 t,
-                (type, columnName) => defaultMapper(type, columnName));
-        }
-
-
-           SqlMapper.SetTypeMap(typeof(CoffeeShop), CreateDefaultMap(typeof(CoffeeShop)));
-           SqlMapper.SetTypeMap(typeof(Image), CreateDefaultMap(typeof(Image)));
-           SqlMapper.SetTypeMap(typeof(Event), CreateDefaultMap(typeof(Event)));
-           SqlMapper.SetTypeMap(typeof(Bean), CreateDefaultMap(typeof(Bean)));
-           SqlMapper.SetTypeMap(typeof(Blend), CreateDefaultMap(typeof(Blend)));
-           SqlMapper.SetTypeMap(typeof(BusStation), CreateDefaultMap(typeof(BusStation)));
-           SqlMapper.SetTypeMap(typeof(CoffeeDrink), CreateDefaultMap(typeof(CoffeeDrink)));
-           SqlMapper.SetTypeMap(typeof(Equipment), CreateDefaultMap(typeof(Equipment))); //TODO
-           SqlMapper.SetTypeMap(typeof(EquipmentCategory), CreateDefaultMap(typeof(EquipmentCategory)));
-           SqlMapper.SetTypeMap(typeof(Location), CreateDefaultMap(typeof(Location))); //TODO
-           SqlMapper.SetTypeMap(typeof(OpeningTime), CreateDefaultMap(typeof(OpeningTime)));
-           SqlMapper.SetTypeMap(typeof(Poi), CreateDefaultMap(typeof(Poi)));
-           SqlMapper.SetTypeMap(typeof(Preparation), CreateDefaultMap(typeof(Preparation)));
-           
-            tableName = "coffee_shop";
+            TableName = "coffee_shop";
 
 
             //helper strings
             var keyCompare = "";
 
-            foreach (var keyString in keys)
+            foreach (var keyString in Keys)
             {
                 //compute keyCompare, CSKeys, AtCSKeys
                 if(keyCompare.Length >0){
@@ -100,13 +46,8 @@ namespace WinfADD.Repositories
             //build GetByID sql query
            // GetByIdString = "SELECT name FROM " + tableName + " WHERE "+ keyCompare;
            
-
-            //GetAll sql query
-         //   GetAllString = "SELECT * FROM"+ " " + tableName;
-
-
             //Update sql query: UpdateString = "UPDATE table SET property1=@property1, property2=@property2... WHERE key1=@key1, key2=@key2...";
-            UpdateString = "UPDATE " + tableName + " SET ";
+            UpdateString = "UPDATE " + TableName + " SET ";
             PropertyInfo[] possibleProperties = typeof(CoffeeShop).GetProperties();
             var temp = "";
             foreach (PropertyInfo property in possibleProperties)
@@ -135,24 +76,23 @@ namespace WinfADD.Repositories
                 }
             }
 
-            GetAllString = "SELECT *" + " FROM " + tableName;
-            
-            Console.WriteLine("----------");
-            Console.WriteLine(GetAllString);
+            GetAllString =
+                "select c.*, i.file_name from coffee_shop c, coffee_shop_image ci, image i " +
+                "where c.id = ci.coffee_shop_id and i.file_name = ci.image_file_name and i.content_type = 'preview'";
 
+            
             UpdateString += temp + " WHERE " + keyCompare;
 
             //Delete sql query
-            DeleteString = "DELETE FROM" +" " + tableName + " WHERE " + keyCompare;
+            DeleteString = "DELETE FROM" +" " + TableName + " WHERE " + keyCompare;
         }
 
-        public override async Task<List<CoffeeShop>> GetAll()
+        public async Task<List<CoffeeShopPreview>> GetAll()
         {
-            Console.WriteLine("\n GetAll::" + GetAllString);
             
             using (IDbConnection conn = Connection)
             {
-            var result = await conn.QueryAsync<CoffeeShop>(GetAllString);
+            var result = await conn.QueryAsync<CoffeeShopPreview>(GetAllString);
                 return result.ToList();
             }
         }

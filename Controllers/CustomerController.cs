@@ -1,20 +1,11 @@
-using System;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic; 
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
-using WinfADD.Models;
-using WinfADD.Persistence;
-using WinfADD.Repository;
-using Newtonsoft.Json;
 
 namespace WinfADD.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class CustomerController : Controller
-    {
+    {/*
         private readonly CustomerRepository customerRepository;
  
         public CustomerController(IConfiguration configuration)
@@ -71,6 +62,6 @@ namespace WinfADD.Controllers
             // return View(obj);
             return null;
         }
-
+*/
     }
 }
