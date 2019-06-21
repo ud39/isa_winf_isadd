@@ -28,14 +28,12 @@ namespace WinfADD.Repositories
             DefaultTypeMap.MatchNamesWithUnderscores = true;
 
 
-
-            //TEST
-
-            Dictionary<string, string> imageMaps = new Dictionary<string, string>
+            Dictionary<string, string> previewMap = new Dictionary<string, string>
             {
-                {"file_name", "FileName"},
-                {"content_type", "ContentType"}
-
+                {"file_name", "ImageFileName"},
+                {"id", "Id"},
+                {"name", "Name"},
+                {"description", "Description"}
             };
 
             Dictionary<string, string> eventMaps = new Dictionary<string, string>
@@ -46,44 +44,49 @@ namespace WinfADD.Repositories
                 {"description", "Description"}
 
             };
+            
+            var previewMapper = new Func<Type, string, PropertyInfo>((type, columnName) 
+                => type.GetProperty(previewMap.ContainsKey(columnName)? previewMap[columnName] : columnName));
 
-
+            
             var defaultMapper = new Func<Type, string, PropertyInfo>((type, columnName) =>
             {
 
                 var result = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(columnName.ToLower());
                 return type.GetProperty(result = result.Replace("_", ""));
             });
+    
+            CustomPropertyTypeMap CreateMap (Type t, Func<Type, string, PropertyInfo> mapper = null)
+            {
+                
+                return mapper==null? new CustomPropertyTypeMap(t, defaultMapper): 
+                    new CustomPropertyTypeMap(t, mapper);
+            }
 
-        CustomPropertyTypeMap CreateDefaultMap (Type t)
-        {
-            return new CustomPropertyTypeMap(
-                 t,
-                (type, columnName) => defaultMapper(type, columnName));
-        }
 
-
-           SqlMapper.SetTypeMap(typeof(CoffeeShop), CreateDefaultMap(typeof(CoffeeShop)));
-           SqlMapper.SetTypeMap(typeof(Image), CreateDefaultMap(typeof(Image)));
-           SqlMapper.SetTypeMap(typeof(Event), CreateDefaultMap(typeof(Event)));
-           SqlMapper.SetTypeMap(typeof(Bean), CreateDefaultMap(typeof(Bean)));
-           SqlMapper.SetTypeMap(typeof(Blend), CreateDefaultMap(typeof(Blend)));
-           SqlMapper.SetTypeMap(typeof(BusStation), CreateDefaultMap(typeof(BusStation)));
-           SqlMapper.SetTypeMap(typeof(CoffeeDrink), CreateDefaultMap(typeof(CoffeeDrink)));
-           SqlMapper.SetTypeMap(typeof(Equipment), CreateDefaultMap(typeof(Equipment))); //TODO
-           SqlMapper.SetTypeMap(typeof(EquipmentCategory), CreateDefaultMap(typeof(EquipmentCategory)));
-           SqlMapper.SetTypeMap(typeof(Location), CreateDefaultMap(typeof(Location))); //TODO
-           SqlMapper.SetTypeMap(typeof(OpeningTime), CreateDefaultMap(typeof(OpeningTime)));
-           SqlMapper.SetTypeMap(typeof(Poi), CreateDefaultMap(typeof(Poi)));
-           SqlMapper.SetTypeMap(typeof(Preparation), CreateDefaultMap(typeof(Preparation)));
+           SqlMapper.SetTypeMap(typeof(CoffeeShop), CreateMap(typeof(CoffeeShop)));
+           SqlMapper.SetTypeMap(typeof(Image), CreateMap(typeof(Image)));
+           SqlMapper.SetTypeMap(typeof(Event), CreateMap(typeof(Event)));
+           SqlMapper.SetTypeMap(typeof(Bean), CreateMap(typeof(Bean)));
+           SqlMapper.SetTypeMap(typeof(Blend), CreateMap(typeof(Blend)));
+           SqlMapper.SetTypeMap(typeof(BusStation), CreateMap(typeof(BusStation)));
+           SqlMapper.SetTypeMap(typeof(CoffeeDrink), CreateMap(typeof(CoffeeDrink)));
+           SqlMapper.SetTypeMap(typeof(Equipment), CreateMap(typeof(Equipment))); //TODO
+           SqlMapper.SetTypeMap(typeof(EquipmentCategory), CreateMap(typeof(EquipmentCategory)));
+           SqlMapper.SetTypeMap(typeof(Location), CreateMap(typeof(Location))); //TODO
+           SqlMapper.SetTypeMap(typeof(OpeningTime), CreateMap(typeof(OpeningTime)));
+           SqlMapper.SetTypeMap(typeof(Poi), CreateMap(typeof(Poi)));
+           SqlMapper.SetTypeMap(typeof(Preparation), CreateMap(typeof(Preparation)));
+           SqlMapper.SetTypeMap(typeof(CoffeeShopPreview), CreateMap(typeof(CoffeeShopPreview),previewMapper));
            
-            tableName = "coffee_shop";
+
+            TableName = "coffee_shop";
 
 
             //helper strings
             var keyCompare = "";
 
-            foreach (var keyString in keys)
+            foreach (var keyString in Keys)
             {
                 //compute keyCompare, CSKeys, AtCSKeys
                 if(keyCompare.Length >0){
@@ -99,13 +102,8 @@ namespace WinfADD.Repositories
             //build GetByID sql query
            // GetByIdString = "SELECT name FROM " + tableName + " WHERE "+ keyCompare;
            
-
-            //GetAll sql query
-         //   GetAllString = "SELECT * FROM"+ " " + tableName;
-
-
             //Update sql query: UpdateString = "UPDATE table SET property1=@property1, property2=@property2... WHERE key1=@key1, key2=@key2...";
-            UpdateString = "UPDATE " + tableName + " SET ";
+            UpdateString = "UPDATE " + TableName + " SET ";
             PropertyInfo[] possibleProperties = typeof(CoffeeShop).GetProperties();
             var temp = "";
             foreach (PropertyInfo property in possibleProperties)
@@ -134,24 +132,23 @@ namespace WinfADD.Repositories
                 }
             }
 
-            GetAllString = "SELECT *" + " FROM " + tableName;
-            
-            Console.WriteLine("----------");
-            Console.WriteLine(GetAllString);
+            GetAllString =
+                "select c.*, i.file_name from coffee_shop c, coffee_shop_image ci, image i " +
+                "where c.id = ci.coffee_shop_id and i.file_name = ci.image_file_name and i.content_type = 'preview'";
 
+            
             UpdateString += temp + " WHERE " + keyCompare;
 
             //Delete sql query
-            DeleteString = "DELETE FROM" +" " + tableName + " WHERE " + keyCompare;
+            DeleteString = "DELETE FROM" +" " + TableName + " WHERE " + keyCompare;
         }
 
-        public override async Task<List<CoffeeShop>> GetAll()
+        public async Task<List<CoffeeShopPreview>> GetAll()
         {
-            Console.WriteLine("\n GetAll::" + GetAllString);
             
             using (IDbConnection conn = Connection)
             {
-            var result = await conn.QueryAsync<CoffeeShop>(GetAllString);
+            var result = await conn.QueryAsync<CoffeeShopPreview>(GetAllString);
                 return result.ToList();
             }
         }

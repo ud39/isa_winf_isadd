@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Dapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 
@@ -14,8 +15,8 @@ namespace WinfADD.Repositories
     {
 
         //key fields
-        protected List<string> keys = new List<string>();
-        protected string tableName;
+        protected List<string> Keys = new List<string>();
+        protected string TableName;
         protected string GetByIdString;
         protected string GetAllString;
         protected string UpdateString;
@@ -100,7 +101,7 @@ namespace WinfADD.Repositories
 
         private IDbConnection Connection => new NpgsqlConnection(_config["ConnectionStrings:DefaultConnection"]);
 
-        public virtual async Task<Table> GetByID(Table tableObject)
+        public virtual async Task<Table> GetById(Table tableObject)
         {
                 using (IDbConnection conn = Connection)
                 {Console.WriteLine("\n GetByID::" + GetByIdString);
@@ -108,13 +109,23 @@ namespace WinfADD.Repositories
                     return result.FirstOrDefault();
                 }
         }
-
+        
+        [HttpGet("{id}")]
+        public virtual async Task<Table> GetById(Table tableObject, int i)
+        {
+            using (IDbConnection conn = Connection)
+            {Console.WriteLine("\n GetByID::" + GetByIdString);
+                var result = await conn.QueryAsync<Table>(GetByIdString, tableObject);
+                return result.FirstOrDefault();
+            }
+        }
+        
         public async Task<IEnumerable<Table>> GetTables(Table tableObj, IDictionary<string, string> searchProperties)
         {
 
             var possibleProperties = typeof(Table).GetProperties();
 
-            var sqlQuery = "SELECT * From" + " " + tableName +" WHERE ";
+            var sqlQuery = "SELECT * From" + " " + TableName +" WHERE ";
             var whereClause = "";
 
             foreach (var property in possibleProperties)
@@ -173,7 +184,7 @@ namespace WinfADD.Repositories
                 }
             }
 
-            var insertString = "INSERT INTO"+ " " + tableName + " (" + CSProperties + " ) values (" + CSatProperties +")";
+            var insertString = "INSERT INTO"+ " " + TableName + " (" + CSProperties + " ) values (" + CSatProperties +")";
 
 
             using (IDbConnection conn = Connection)
@@ -202,7 +213,7 @@ namespace WinfADD.Repositories
         public async Task<bool> PartialUpdateTable(Table tableObj, IDictionary<string, string> fieldsToChange)
         {
                 var fieldCounter = 0;
-                var sqlQuery = "UPDATE " +tableName+" SET ";
+                var sqlQuery = "UPDATE " + TableName+" SET ";
 
                 PropertyInfo[] possibleProperties = typeof(Table).GetProperties();
                 foreach (PropertyInfo property in possibleProperties)
@@ -210,7 +221,7 @@ namespace WinfADD.Repositories
 
                     var propertyName = property.Name.ToLower();
 
-                    if (!fieldsToChange.ContainsKey(propertyName) || keys.Contains(propertyName)) continue;
+                    if (!fieldsToChange.ContainsKey(propertyName) || Keys.Contains(propertyName)) continue;
                     sqlQuery += propertyName + " = @" + propertyName + ",";
                     fieldCounter++;
                 }
@@ -224,7 +235,7 @@ namespace WinfADD.Repositories
 
                 //WHERE (matching keys)
                 sqlQuery += " WHERE";
-                foreach (var key in keys)
+                foreach (var key in Keys)
                 {
                     sqlQuery += "  " + key + " = @" + key + " AND";
                 }

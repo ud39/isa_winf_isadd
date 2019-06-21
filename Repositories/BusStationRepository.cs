@@ -12,16 +12,16 @@ namespace WinfADD.Repositories
 
             //TODO add all key names here //TODO in extended class
             // keys.Add("KeyString");
-            keys.Add("Bus_Station_Name");
+            Keys.Add("Bus_Station_Name");
 
             //TODO write tableName
-            tableName = "bus_station";
+            TableName = "bus_station";
 
 
             //helper strings
             var keyCompare = "";
 
-            foreach (var keyString in keys)
+            foreach (var keyString in Keys)
             {
                 //compute keyCompare, CSKeys, AtCSKeys
                 if(keyCompare.Length >0){
@@ -35,15 +35,15 @@ namespace WinfADD.Repositories
             }
 
             //build GetByID sql query
-            GetByIdString = "SELECT * FROM" +" " + tableName + " WHERE "+ keyCompare;
+            GetByIdString = "SELECT * FROM" +" " + TableName + " WHERE "+ keyCompare;
 
 
             //GetAll sql query
-            GetAllString = "SELECT * FROM"+ " " + tableName;
+            GetAllString = "SELECT * FROM"+ " " + TableName;
 
 
             //Update sql query: UpdateString = "UPDATE table SET property1=@property1, property2=@property2... WHERE key1=@key1, key2=@key2...";
-            UpdateString = "UPDATE " + tableName + " SET ";
+            UpdateString = "UPDATE " + TableName + " SET ";
             PropertyInfo[] possibleProperties = typeof(Blend).GetProperties();
             var temp = "";
             foreach (PropertyInfo property in possibleProperties)
@@ -58,7 +58,7 @@ namespace WinfADD.Repositories
             UpdateString += temp + " WHERE " + keyCompare;
 
             //Delete sql query
-            DeleteString = "DELETE FROM" +" " + tableName + " WHERE " + keyCompare;
+            DeleteString = "DELETE FROM" +" " + TableName + " WHERE " + keyCompare;
         }
     }
 }

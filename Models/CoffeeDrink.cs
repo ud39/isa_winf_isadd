@@ -7,9 +7,6 @@ namespace WinfADD.Models
         //primary keys
         [Key] public string Name { get; set; }
 
-        public string WarmCold { get; set; } //TODO name
-
-        //bytea
         public string Description { get; set; }
         
         public string Type{ get; set; }

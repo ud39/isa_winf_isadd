@@ -20,7 +20,7 @@ namespace WinfADD.Controllers
         
         [HttpGet]
         [Route("all")]
-        public async Task<ActionResult<List<CoffeeShop>>> GetAll()
+        public async Task<ActionResult<List<CoffeeShopPreview>>> GetAll()
         {
             return await  _coffeeShopRepo.GetAll();
         }

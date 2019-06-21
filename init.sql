@@ -76,6 +76,7 @@ CREATE TABLE bean(
                    provenance text,
                    fair_trade boolean,
                    type text,
+                   price_class text,
                    PRIMARY KEY (name, manufacturer_name)
 );
 
@@ -90,7 +91,7 @@ CREATE TABLE blend(
                     name citext,
                     manufacturer_name citext,
                     provenance text,
-                    price_range text,
+                    price_class text,
                     description text,
                     PRIMARY KEY (name, manufacturer_name)
 
@@ -461,8 +462,8 @@ insert into organised_by values (2, 2);
 insert into opening_time values ('05:00:00', '17:00:00', 'Friday');
 insert into opening_time values ('05:00:00', '17:00:00', 'Monday');
 
-insert into image values ('1.png');
-insert into image values ('2.png');
+insert into image values ('1.png', 'preview');
+insert into image values ('2.png', 'preview');
 
 insert into coffee_shop_image values ('1.png',1);
 insert into coffee_shop_image values ('2.png',2);

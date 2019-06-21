@@ -11,7 +11,7 @@ namespace WinfADD.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
-    public abstract class GenericTableController<Table> : Controller where Table : class
+    public abstract class GenericTableController<Table> : Controller
     {
         private readonly ITableRepository<Table> _tableRepo;
 
