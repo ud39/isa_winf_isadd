@@ -9,6 +9,5 @@ namespace WinfADD.Models
 
         public string ContentType { get; set; }
 
-
     }
 }
