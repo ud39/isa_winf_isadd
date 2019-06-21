@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using WinfADD.Models;
 using WinfADD.Repositories;
 
@@ -30,5 +33,28 @@ namespace WinfADD.Controllers
         {
             return await _coffeeShopRepo.GetById(id);
         }
+
+
+        [HttpPost("insert")]
+        public async Task<bool> insertCoffeeShop(JToken jToken)
+        {
+
+            var jObj = jToken.ToObject<JObject>();
+            IDictionary<string, dynamic> propertyValues = new Dictionary<string, dynamic>();
+            foreach (var pair in jObj) {propertyValues.Add(pair.Key, pair.Value);}
+
+            Console.WriteLine("<||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||>");
+            foreach (var p in propertyValues)
+            {
+                Console.WriteLine(p.Key+"-->"+p.Value);
+            }
+
+
+
+            return _coffeeShopRepo.InsertCoffeeShop(propertyValues);
+        }
+
+
+
     }
 }

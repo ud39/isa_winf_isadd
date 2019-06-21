@@ -160,7 +160,12 @@ namespace WinfADD.Repositories
             //compute input insert properties
             foreach (PropertyInfo property in possibleProperties)//all possible fields
             {
+
+
                 var propertyName = property.Name.ToLower();
+                //TODO
+                //if(insertProperties)
+
                 if (CSProperties.Length > 0)
                 {
                     CSProperties   += ","  + propertyName;
@@ -174,6 +179,7 @@ namespace WinfADD.Repositories
             }
 
             var insertString = "INSERT INTO"+ " " + tableName + " (" + CSProperties + " ) values (" + CSatProperties +")";
+
 
 
             using (IDbConnection conn = Connection)

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Dapper;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json.Linq;
 using Npgsql;
 using WinfADD.Models;
 
@@ -198,8 +199,47 @@ namespace WinfADD.Repositories
 
               }
 
-                return coffeeShop;
+              return coffeeShop;
             }
+        }
+
+        public bool InsertCoffeeShop(IDictionary<string,dynamic> propertyValues)
+        {
+
+
+            //get all CoffeeShop properties
+            PropertyInfo[] possibleProperties = typeof(CoffeeShop).GetProperties();
+            var sqlCoffeeShop = "";
+            foreach (PropertyInfo property in possibleProperties)
+            {
+                var propertyName = property.Name.ToLower();
+                Console.WriteLine(propertyName +"::" +propertyValues.ContainsKey(propertyName) + "<->"+property.Name+"::"+propertyValues.ContainsKey(property.Name));
+                if(! (propertyValues.ContainsKey(propertyName))) continue;
+                if(sqlCoffeeShop.Length > 0) sqlCoffeeShop += ", " + propertyName + "= @" + propertyName;
+                else
+                {
+                    sqlCoffeeShop += propertyName + "= @" + propertyName;
+                }
+            }
+            Console.WriteLine("<------------------------------------------------------------>");
+            Console.WriteLine("::"+sqlCoffeeShop);
+
+
+
+
+
+            using (var conn = Connection)
+            {
+                using (var transaction = conn.BeginTransaction())
+                {
+                   // conn.Execute("sql", new { }, transaction: transaction);
+
+
+                    //transaction.Commit();
+                }
+            }
+
+            return false;
         }
         
     }
