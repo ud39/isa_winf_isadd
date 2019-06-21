@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WinfADD.Models;
@@ -7,18 +8,26 @@ namespace WinfADD.Controllers
 {
     public class EventController : GenericTableController<Event>
     {
-        private GenericBaseRepository<Event>_eventRepository;
+        private EventRepository _eventRepository;
         
         
-        public EventController(GenericBaseRepository<Event> eventRepository) : base(eventRepository)
+        public EventController(ITableRepository<Event> eventRepository) : base(eventRepository)
         {
-            _eventRepository = eventRepository;
+            _eventRepository = (EventRepository)eventRepository;
+
         }
         
         [HttpGet("{id}")]
-        public async Task<ActionResult<CoffeeShop>> GetById(int id)
+        public async Task<ActionResult<Event>> GetById(int id)
         {
             return await _eventRepository.GetById(id);
+        }
+        
+        [HttpGet]
+        [Route("all")]
+        public async Task<ActionResult<List<Event>>> GetAll()
+        {
+            return await  _eventRepository.GetAll();
         }
         
     }

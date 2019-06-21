@@ -27,7 +27,7 @@ namespace WinfADD.Controllers
             
             Console.WriteLine("-----");
             Console.WriteLine("tableObjName: " + tableObj);
-            return await _tableRepo.GetByID(tableObj);
+            return await _tableRepo.GetById(tableObj);
         }
 
 

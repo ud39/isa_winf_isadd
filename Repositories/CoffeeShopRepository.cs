@@ -1,17 +1,13 @@
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Dynamic;
-using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Dapper;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 using WinfADD.Models;
+using WinfADD.Models.Mapping;
 
 namespace WinfADD.Repositories
 {
@@ -26,59 +22,6 @@ namespace WinfADD.Repositories
 
             NpgsqlConnection.GlobalTypeMapper.MapComposite<Address>("address");
             DefaultTypeMap.MatchNamesWithUnderscores = true;
-
-
-            Dictionary<string, string> previewMap = new Dictionary<string, string>
-            {
-                {"file_name", "ImageFileName"},
-                {"id", "Id"},
-                {"name", "Name"},
-                {"description", "Description"}
-            };
-
-            Dictionary<string, string> eventMaps = new Dictionary<string, string>
-            {
-                {"event_id", "Id"},
-                {"time", "Time"},
-                {"access_fee", "AccessFee"},
-                {"description", "Description"}
-
-            };
-            
-            var previewMapper = new Func<Type, string, PropertyInfo>((type, columnName) 
-                => type.GetProperty(previewMap.ContainsKey(columnName)? previewMap[columnName] : columnName));
-
-            
-            var defaultMapper = new Func<Type, string, PropertyInfo>((type, columnName) =>
-            {
-
-                var result = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(columnName.ToLower());
-                return type.GetProperty(result = result.Replace("_", ""));
-            });
-    
-            CustomPropertyTypeMap CreateMap (Type t, Func<Type, string, PropertyInfo> mapper = null)
-            {
-                
-                return mapper==null? new CustomPropertyTypeMap(t, defaultMapper): 
-                    new CustomPropertyTypeMap(t, mapper);
-            }
-
-
-           SqlMapper.SetTypeMap(typeof(CoffeeShop), CreateMap(typeof(CoffeeShop)));
-           SqlMapper.SetTypeMap(typeof(Image), CreateMap(typeof(Image)));
-           SqlMapper.SetTypeMap(typeof(Event), CreateMap(typeof(Event)));
-           SqlMapper.SetTypeMap(typeof(Bean), CreateMap(typeof(Bean)));
-           SqlMapper.SetTypeMap(typeof(Blend), CreateMap(typeof(Blend)));
-           SqlMapper.SetTypeMap(typeof(BusStation), CreateMap(typeof(BusStation)));
-           SqlMapper.SetTypeMap(typeof(CoffeeDrink), CreateMap(typeof(CoffeeDrink)));
-           SqlMapper.SetTypeMap(typeof(Equipment), CreateMap(typeof(Equipment))); //TODO
-           SqlMapper.SetTypeMap(typeof(EquipmentCategory), CreateMap(typeof(EquipmentCategory)));
-           SqlMapper.SetTypeMap(typeof(Location), CreateMap(typeof(Location))); //TODO
-           SqlMapper.SetTypeMap(typeof(OpeningTime), CreateMap(typeof(OpeningTime)));
-           SqlMapper.SetTypeMap(typeof(Poi), CreateMap(typeof(Poi)));
-           SqlMapper.SetTypeMap(typeof(Preparation), CreateMap(typeof(Preparation)));
-           SqlMapper.SetTypeMap(typeof(CoffeeShopPreview), CreateMap(typeof(CoffeeShopPreview),previewMapper));
-           
 
             TableName = "coffee_shop";
 

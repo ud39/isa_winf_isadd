@@ -9,7 +9,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WinfADD.Models;
-using WinfADD.Persistence;
 using WinfADD.Repositories;
 
 namespace WinfADD
@@ -60,9 +59,9 @@ namespace WinfADD
             services.AddSingleton<ITableRepository<Bean>, BeanRepository>();
             services.AddSingleton<ITableRepository<BusStation>, BusStationRepository>();
             services.AddSingleton<ITableRepository<CoffeeShop>, CoffeeShopRepository>();
-
-            // services.AddSingleton<ICoffeeShopRepository, CoffeeShopRepository>();
-
+            services.AddSingleton<ITableRepository<Event>, EventRepository>();
+          
+            
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

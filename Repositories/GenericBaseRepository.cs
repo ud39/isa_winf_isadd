@@ -8,6 +8,8 @@ using Dapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
+using WinfADD.Models;
+using WinfADD.Models.Mapping;
 
 namespace WinfADD.Repositories
 {
@@ -22,6 +24,7 @@ namespace WinfADD.Repositories
         protected string UpdateString;
         protected string DeleteString;
 
+        public IDbConnection Connection => new NpgsqlConnection(_config["ConnectionStrings:DefaultConnection"]);
 
 
         protected  IConfiguration _config;
@@ -31,75 +34,91 @@ namespace WinfADD.Repositories
         {
             this._config = _config;
 
+            SqlMapper.SetTypeMap(typeof(CoffeeShop), MappingConfigurator.CreateMap(typeof(CoffeeShop)));
+            SqlMapper.SetTypeMap(typeof(Image), MappingConfigurator.CreateMap(typeof(Image)));
+            SqlMapper.SetTypeMap(typeof(Event), MappingConfigurator.CreateMap(typeof(Event)));
+            SqlMapper.SetTypeMap(typeof(Bean), MappingConfigurator.CreateMap(typeof(Bean)));
+            SqlMapper.SetTypeMap(typeof(Blend), MappingConfigurator.CreateMap(typeof(Blend)));
+            SqlMapper.SetTypeMap(typeof(BusStation), MappingConfigurator.CreateMap(typeof(BusStation)));
+            SqlMapper.SetTypeMap(typeof(CoffeeDrink), MappingConfigurator.CreateMap(typeof(CoffeeDrink)));
+            SqlMapper.SetTypeMap(typeof(Equipment), MappingConfigurator.CreateMap(typeof(Equipment))); //TODO
+            SqlMapper.SetTypeMap(typeof(EquipmentCategory), MappingConfigurator.CreateMap(typeof(EquipmentCategory)));
+            SqlMapper.SetTypeMap(typeof(Location), MappingConfigurator.CreateMap(typeof(Location))); //TODO
+            SqlMapper.SetTypeMap(typeof(OpeningTime), MappingConfigurator.CreateMap(typeof(OpeningTime)));
+            SqlMapper.SetTypeMap(typeof(Poi), MappingConfigurator.CreateMap(typeof(Poi)));
+            SqlMapper.SetTypeMap(typeof(Preparation), MappingConfigurator.CreateMap(typeof(Preparation)));
+            SqlMapper.SetTypeMap(typeof(CoffeeShopPreview), MappingConfigurator.CreateMap(typeof(CoffeeShopPreview), MappingConfigurator.PreviewMapper));
+
+            
+            
             //TODO in extended class
             //TODO add all key names here (maybe lowerCase)
-           // keys.Add("key1");
+            // keys.Add("key1");
 
-           //TODO write tableName
-           //tableName = tableName;
+            //TODO write tableName
+            //tableName = tableName;
 
-           /*
-          //helper strings
-           var keyCompare = "";        //key=@key for all key in keys
-           var CSKeys = "";            //key1,key2,key3
-           var CSatKeys = "";          //@key1,@key2,@key3
-
-
-           //compute keyCompare, CSKeys, AtCSKeys
-           foreach (var keyString in keys)
-           {
-               //compute keyCompare, CSKeys, AtCSKeys
-               if(keyCompare.Length >0){
-                   keyCompare += " AND " + keyString + "=@" + keyString;
-                   CSKeys += ", " + keyString;
-                   CSatKeys += ",@" + keyString;
-               }
-
-               else
-               {
-                keyCompare += keyString + "=@" + keyString;
-                CSKeys += keyString;
-                CSatKeys += "@" + keyString;
-               }
-           }
-
-           //build GetByID sql query
-           GetByIdString = "SELECT * FROM " + tableName + " WHERE "+ keyCompare;
-
-
-           //GetAll sql query
-           GetAllString = "SELECT * FROM " + tableName;
-
-
-           //Update sql query: UpdateString = "UPDATE table SET property1=@property1, property2=@property2... WHERE key1=@key1, key2=@key2...";
-           UpdateString = "UPDATE " + tableName + " SET ";
-           PropertyInfo[] possibleProperties = typeof(Table).GetProperties();
-
-           //all possible fields
-           var temp = "";
-           foreach (PropertyInfo property in possibleProperties)
-           {
-               var propertyName = property.Name.ToLower();
-               if(temp.Length > 0) temp += ", " + propertyName + "= @" + propertyName;
-               else
-               {
-                   temp += propertyName + "= @" + propertyName;
-               }
-           }
-
-           UpdateString += temp + " WHERE " + keyCompare;
-
-
-           //Delete sql query
-           DeleteString = "DELETE FROM " + tableName + " WHERE " + keyCompare;
-
-           */
+            /*
+           //helper strings
+            var keyCompare = "";        //key=@key for all key in keys
+            var CSKeys = "";            //key1,key2,key3
+            var CSatKeys = "";          //@key1,@key2,@key3
+ 
+ 
+            //compute keyCompare, CSKeys, AtCSKeys
+            foreach (var keyString in keys)
+            {
+                //compute keyCompare, CSKeys, AtCSKeys
+                if(keyCompare.Length >0){
+                    keyCompare += " AND " + keyString + "=@" + keyString;
+                    CSKeys += ", " + keyString;
+                    CSatKeys += ",@" + keyString;
+                }
+ 
+                else
+                {
+                 keyCompare += keyString + "=@" + keyString;
+                 CSKeys += keyString;
+                 CSatKeys += "@" + keyString;
+                }
+            }
+ 
+            //build GetByID sql query
+            GetByIdString = "SELECT * FROM " + tableName + " WHERE "+ keyCompare;
+ 
+ 
+            //GetAll sql query
+            GetAllString = "SELECT * FROM " + tableName;
+ 
+ 
+            //Update sql query: UpdateString = "UPDATE table SET property1=@property1, property2=@property2... WHERE key1=@key1, key2=@key2...";
+            UpdateString = "UPDATE " + tableName + " SET ";
+            PropertyInfo[] possibleProperties = typeof(Table).GetProperties();
+ 
+            //all possible fields
+            var temp = "";
+            foreach (PropertyInfo property in possibleProperties)
+            {
+                var propertyName = property.Name.ToLower();
+                if(temp.Length > 0) temp += ", " + propertyName + "= @" + propertyName;
+                else
+                {
+                    temp += propertyName + "= @" + propertyName;
+                }
+            }
+ 
+            UpdateString += temp + " WHERE " + keyCompare;
+ 
+ 
+            //Delete sql query
+            DeleteString = "DELETE FROM " + tableName + " WHERE " + keyCompare;
+ 
+            */
 
 
 
         }
-
-        private IDbConnection Connection => new NpgsqlConnection(_config["ConnectionStrings:DefaultConnection"]);
+        
 
         public virtual async Task<Table> GetById(Table tableObject)
         {
@@ -108,16 +127,6 @@ namespace WinfADD.Repositories
                     var result = await conn.QueryAsync<Table>(GetByIdString, tableObject);
                     return result.FirstOrDefault();
                 }
-        }
-        
-        [HttpGet("{id}")]
-        public virtual async Task<Table> GetById(Table tableObject, int i)
-        {
-            using (IDbConnection conn = Connection)
-            {Console.WriteLine("\n GetByID::" + GetByIdString);
-                var result = await conn.QueryAsync<Table>(GetByIdString, tableObject);
-                return result.FirstOrDefault();
-            }
         }
         
         public async Task<IEnumerable<Table>> GetTables(Table tableObj, IDictionary<string, string> searchProperties)
@@ -151,6 +160,7 @@ namespace WinfADD.Repositories
         }
 
 
+        [HttpGet("all")]
         public virtual async Task<List<Table>> GetAll()
         {Console.WriteLine("\n GetAll::" + GetAllString);
             using (IDbConnection conn = Connection)
