@@ -1,19 +1,18 @@
 <div class="container">
-  <ul id="shop-list">
-  <li *ngFor="let shop of shops">
-    <div class="list-content">
-    <a [routerLink]="['/shop', shop.id]" [routerLinkActive]='["link-active"]'>
+  <mat-list id="shop-list">
+  <mat-list-item *ngFor="let shop of shops; last as last">
+    <a [routerLink]="['/shops', shop.id]" [routerLinkActive]='["link-active"]'>
       <img src="https://dummyimage.com/100x100/fff/000" class="preview-img">
     </a>
       <div class="preview-content">
-      <h6 class="shop_name"  [routerLink]="['/shop', shop.id]">{{shop.name}}
+      <h6 class="shop_name"  [routerLink]="['/shops', shop.id]">{{shop.name}}
         <hr class="shop_name_underline">
       </h6>
       <div class="text">
-          {{shop.description | words : 20}}
+          {{shop.description | words : 50}}
       </div><div class='read_more'> Read more </div>
       </div>
-    </div>
-  </li>
-  </ul>
+  <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+  </mat-list-item>
+  </mat-list>
 </div>

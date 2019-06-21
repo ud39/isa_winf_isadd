@@ -7,22 +7,16 @@ app-shop-list .address{
   display: inline-block;
   margin-left: 30px;
 }
-#shop-list{
-  list-style: none;
-  padding: 0;
-}
-
-#shop-list li{
-  margin-top: 10px;
-}
 
 .preview-img{
   float: left;
   position: relative;
   width: fit-content;
+  margin-bottom: 5px;
 }
 
 .shop_name{
+  padding: 0;
   display: inline-block;
   clear: both;
   height: fit-content;
@@ -43,17 +37,6 @@ app-shop-list .address{
   width: 80%;
 }
 
-app-shop-list div.text{
-  color: black;
-  font-size: 15px;
-  padding: 5px 0 0 5px;
-  position: relative;
-  width: 100%;
-  text-align: left;
-  bottom: 0;
-
-}
-
 .list-content{
   clear: both;
 }
@@ -61,4 +44,8 @@ app-shop-list div.text{
 app-shop-list .read_more{
   cursor: pointer;
   display: inline-block;
+}
+
+app-shop-list .mat-list-base .mat-list-item{
+  height: fit-content;
 }

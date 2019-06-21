@@ -21,7 +21,7 @@
       </mat-grid-tile>
       <mat-grid-tile id="price">
         <h6>Preis:</h6>
-        <p>{{priceClass}}</p>
+        <p [matTooltip]="priceDescription">{{priceClass}}</p>
       </mat-grid-tile>
       <mat-grid-tile id="events">
         <h6>Rating:</h6>
@@ -58,28 +58,62 @@
           {{shop$.description}}
         </div>
       </mat-tab>
-      <mat-tab label="Menü"> Content 2 </mat-tab>
-      <mat-tab label="Events"> Content 3 </mat-tab>
-      <mat-tab label="Landmarken"> Content 4 </mat-tab>
-      <mat-tab label="Equipment">Content 5 </mat-tab>
+      <mat-tab label="Menü">
+      <mat-list>
+        <mat-list-item *ngFor="let coffee of shop$.coffeeDrinks; last as last ">
+          {{coffee.name}}
+          {{coffee.description}}
+        <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+        </mat-list-item>
+      </mat-list>
+      </mat-tab>
+      <mat-tab label="Events">
+      <mat-list>
+        <mat-list-item *ngFor="let event of shop$.events; last as last">
+          <div>
+            <a [routerLink]="['/events', event.id]" [routerLinkActive]='["link-active"]'>{{event.description}}</a><br>
+          Kosten: {{event.accessFee}}<br>
+          Zeitpunkt {{event.time}}
+          </div>
+        <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+        </mat-list-item>
+      </mat-list>
+      </mat-tab>
+      <mat-tab label="Landmarken">
+      <mat-list>
+        <mat-list-item *ngFor="let poi of shop$.listOfPoi; last as last">
+          <div class="container-poi">
+          <div class="poi-description">
+          {{poi.name + " " + poi.address.streetName + " " + poi.address.streetNumber}}
+          <br>
+          {{poi.address.postalCode + " " + poi.address.town}}
+          {{poi.description}}
+          </div>
+          <div class="poi-thumbnail">
+            <img src="https://dummyimage.com/100x100/fff/000" class="poi-image">
+          </div>
+          </div>
+        <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+        </mat-list-item>
+      </mat-list>
+      </mat-tab>
+      <mat-tab label="Equipment">
+      <mat-list>
+        <mat-list-item *ngFor="let equipment of shop$.equipmentCategories">
+          {{equipment.equipmentCategoryName}}
+        </mat-list-item>
+      </mat-list>
+      </mat-tab>
     </mat-tab-group>
     <div class="slideshow-container">
       <div class="mySlides first">
-        <div class="numbertext">1 / 3</div>
         <img src="https://dummyimage.com/600x700/fff/000" style="width:100%">
-        <div class="text">Caption Text</div>
       </div>
-
       <div class="mySlides">
-        <div class="numbertext">2 / 3</div>
         <img src="https://dummyimage.com/600x700/fff/000" style="width:100%">
-        <div class="text">Caption Two</div>
       </div>
-
       <div class="mySlides">
-        <div class="numbertext">3 / 3</div>
-        <img src="https://dummyimage.com/600x700/fff/000" style="width:100%">
-        <div class="text">Caption Three</div>
+        <img src="https://dummyimage.com/600x700/fff/fff" style="width:100%">
       </div>
       <div class="dots">
         <span class="dot" (click)="currentSlide(1)"></span>
