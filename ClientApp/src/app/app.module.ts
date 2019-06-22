@@ -32,7 +32,8 @@ import {TruncateModule} from "@yellowspot/ng-truncate";
 import { ArticleListComponent } from './content/wiki/article-list/article-list.component';
 import { ArticleDetailComponent } from './content/wiki/article-detail/article-detail.component';
 import {CheckboxCoffeeComponent} from "./search/checkbox-coffee/checkbox-coffee.component";
-import {RouteService} from "./services/routing/route.service";
+import {SlideshowModule} from "ng-simple-slideshow";
+import { UserTabComponent } from './profile/admin-profile/tabs/user-tab/user-tab/user-tab.component';
 
 
 @NgModule({
@@ -60,10 +61,13 @@ import {RouteService} from "./services/routing/route.service";
     ContentTabComponent,
     ArticleListComponent,
     ArticleDetailComponent,
-    CheckboxCoffeeComponent
+    CheckboxCoffeeComponent,
+    UserTabComponent,
+
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
+    SlideshowModule,
     HttpClientModule,
     FormsModule,
     MaterialModule,

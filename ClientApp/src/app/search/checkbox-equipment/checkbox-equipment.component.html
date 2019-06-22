@@ -3,12 +3,11 @@
     <mat-checkbox #cb class="checkbox" id="presser" [checked]="false">Presser</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id="filter"[checked]="false">Filter</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id="roast"[checked]="false">Röster</mat-checkbox>
-  </div>
-  <div>
     <mat-checkbox #cb class="checkbox" id='manual' [checked]="false">Manuell</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id='automatic' [checked]="false">Automatisch</mat-checkbox>
+    <mat-checkbox #cb class="checkbox" id="Behälter" [checked]="false">Behälter</mat-checkbox>
   </div>
   <div  *ngIf="router.url == '/admin'">
-    <button mat-button id="clearbutton" (click)="clear()">Alles aufheben</button>
+    <button mat-button id="clearbutton" (click)="clear()">Checks aufheben</button>
   </div>
 </div>

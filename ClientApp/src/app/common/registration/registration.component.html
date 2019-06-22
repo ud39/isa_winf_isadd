@@ -2,15 +2,29 @@
   <hr id="register-underline">
   </h1>
 <div class="container">
-  <form class="form-group">
-    <mat-form-field class="full-width">
-      <mat-label>Email</mat-label>
-      <input  matInput  placeholder="Email" name="email">
+  <form class="example-form">
+    <mat-form-field class="registerForm">
+      <input #email matInput type="email" maxlength="256" placeholder="Email" [formControl]="emailFormControl" required>
+      <mat-hint align="start"><strong>Bitte eine Email eingeben</strong> </mat-hint>
+      <mat-hint align="end">{{email.value.length}} / 256</mat-hint>
+      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        Bitte eine valide Email angeben
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email wird <strong>benötigt</strong>
+      </mat-error>
     </mat-form-field>
-    <mat-form-field class="full-width">
-      <mat-label>Passwort</mat-label>
-      <input  matInput  placeholder="Passwort" name="passwort">
+    <mat-form-field class="registerForm">
+      <input #password matInput placeholder="Passwort" type="password" [formControl]="passwordFromControl" required>
+      <mat-hint align="start"><strong>Das Passwort musst mindesten 4 Zeichen lang sein</strong> </mat-hint>
+      <mat-hint align="end">{{password.value.length}} / 256</mat-hint>
+      <mat-error *ngIf="passwordFromControl.hasError('minlength')">
+        Mindesten 4 Zeichen
+      </mat-error>
+      <mat-error *ngIf="passwordFromControl.hasError('required')">
+        Passwort wird <strong>benötigt</strong>
+      </mat-error>
     </mat-form-field>
-    <button mat-button class="btn">Registieren</button>
+    <button mat-button type='button' (click)="submitRegistration()" [disabled]="!registrationForm.valid" class="btn">Registieren</button>
   </form>
 </div>

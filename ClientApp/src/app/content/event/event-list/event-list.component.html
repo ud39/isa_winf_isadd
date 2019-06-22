@@ -1,3 +1,18 @@
-<p>
-  event-list works!
-</p>
+<div class="container">
+  <mat-list id="shop-list">
+    <mat-list-item *ngFor="let event of events; last as last">
+      <a [routerLink]="['/events', event.id]" [routerLinkActive]='["link-active"]'>
+        <img src="https://dummyimage.com/100x100/fff/000" class="preview-img">
+      </a>
+      <div class="preview-content">
+        <h6 class="shop_name"  [routerLink]="['/shops', event.id]">{{event.name}}
+          <hr class="shop_name_underline">
+        </h6>
+        <div class="text">
+          {{event.description | words : 50}}
+        </div><div class='read_more'> Read more </div>
+      </div>
+      <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</div>

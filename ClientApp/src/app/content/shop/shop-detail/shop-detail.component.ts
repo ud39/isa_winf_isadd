@@ -89,7 +89,7 @@ export class ShopDetailComponent implements OnInit {
     ).subscribe((params:Shop)=> {
       this.shop$ = params;
       this.setPriceClass(this.shop$.priceClass);
-      console.log()
+      console.log(this.shop$);
     });
   }
 }

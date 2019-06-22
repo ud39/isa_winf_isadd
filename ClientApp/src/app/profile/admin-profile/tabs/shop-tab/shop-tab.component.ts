@@ -1,7 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {FormControl} from "@angular/forms";
-import {Observable} from "rxjs";
-import {Content} from "../../admin-profile.component";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Observable} from "rxjs";;
 import {AdminService} from "../../../../services/admin/admin.service";
 
 @Component({
@@ -17,23 +16,45 @@ export class ShopTabComponent implements OnInit {
 
 
   private json: JSON;
-  myControl = new FormControl();
+
   options: string[] = [];
   selected = "Blend";
   filteredOptions: Observable<string[]>;
-  value = '';
-  street = '';
-  country = '';
-  town = '';
+  value;
+  street;
+  country;
+  town;
   streetNr : number;
 
-  contents: Content[] = [
-    {value: 'Blend'},
-    {value: 'Bean'},
-    {value: 'Coffee_Drink'},
-  ];
+  streetFormControl = new FormControl('',[
+
+    ]);
+  streetNrFormControl = new FormControl('',[
+
+    ]);
+  countryFromControl = new FormControl('',[
+
+    ]);
+  townFromControl = new FormControl('',[
+
+    ]);
+  shopNameFormControl = new FormControl('',[
+    Validators.required
+    ]);
 
 
+  inputShop = new FormGroup({
+      street: this.streetFormControl,
+      streetNr: this.streetNrFormControl,
+      country: this.countryFromControl,
+      city: this.townFromControl,
+      shopName: this.shopNameFormControl
+    }
+  );
+
+  getInputShop(): FormGroup{
+    return this.inputShop;
+  }
   constructor(private admin_service: AdminService) { }
 
 

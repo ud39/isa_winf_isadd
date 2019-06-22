@@ -1,33 +1,47 @@
 <div class="content">
+  <form>
   <mat-form-field class="name-form-field">
-    <input matInput type="text" placeholder="Name" [(ngModel)]="eventName">
-    <button mat-button *ngIf="eventName" matSuffix mat-icon-button aria-label="Clear" (click)="eventName=''">
+    <input matInput type="text" placeholder="Name" required [formControl]="eventNameFormControl">
+    <mat-error *ngIf="eventNameFormControl.hasError('required')">Es müsst einen Namen für den Event angegeben werden.</mat-error>
+    <button mat-button *ngIf="eventNameFormControl.hasError('required')" matSuffix mat-icon-button aria-label="Clear" (click)="eventNameFormControl.reset('')">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
   <mat-form-field class="description">
     <mat-label>Beschreibung</mat-label>
-    <textarea [(ngModel)]="eventDescription"
+    <textarea [formControl]="eventDescriptionFormControl"
               matInput
               cdkTextareaAutosize
               cdkAutosizeMinRows="2"
-              [value]="eventDescription"
+              [value]="eventDescriptionFormControl.value"
     ></textarea>
   </mat-form-field>
   <mat-form-field class="date-picker">
-    <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Wähle eine Tag aus">
+    <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Wähle eine Tag aus" required [formControl]="datePickerFormControl">
+    <mat-error *ngIf="datePickerFormControl.hasError('required')">Es müsst ein Datum ausgewählt werden.</mat-error>
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
   <mat-form-field>
-    <input matInput type="number" placeholder="Eintrittskosten:" [(ngModel)]="accessFee">
+    <input matInput type="number" placeholder="Eintrittskosten:" [formControl]="accessFeeFormControl">
   </mat-form-field>
   <mat-form-field class="multipleSelect">
     <mat-label>Wähle die beteiligten Läden</mat-label>
-    <mat-select multiple #multipleSelectShop>
-      <mat-option *ngFor="let shop of shops" [value]="shop.name + ';' + shop.address">
+     <mat-select multiple [formControl]="selectLocationControl" required>
+       <mat-option *ngFor="let shop of shops" [value]="shop.name">
+       {{shop.name}}
+       </mat-option>
+     </mat-select>
+    <mat-error *ngIf="selectShopFormControl.hasError('required')">Mindesten ein Shop muss an einem Event beteiligt sein</mat-error>
+  </mat-form-field>
+  <mat-form-field class="multipleSelect">
+    <mat-label>Wähle die beteiligten Läden</mat-label>
+    <mat-select multiple #multipleSelectShop [formControl]="selectShopFormControl" required>
+      <mat-option *ngFor="let shop of shops" [value]="shop.name">
         {{shop.name}}
       </mat-option>
     </mat-select>
+    <mat-error *ngIf="selectShopFormControl.hasError('required')">Mindesten ein Shop muss an einem Event beteiligt sein</mat-error>
   </mat-form-field>
+  </form>
 </div>

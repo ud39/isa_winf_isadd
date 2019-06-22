@@ -1,12 +1,13 @@
-import {Component, OnInit, ViewChild, ViewChildren, ViewEncapsulation} from '@angular/core';
-import {FormControl, ReactiveFormsModule} from "@angular/forms";
-import {Observable} from "rxjs";
-import {AdminService} from "../../services/admin/admin.service";
-import {CheckboxComponent} from "../../search/checkbox/checkbox.component";
-import {Blend} from "../../interfaces/entity/Blend";
-import { NgModule } from '@angular/core';
+import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {NgModule } from '@angular/core';
 import {CommonModule} from "@angular/common";
 import {MatTabGroup} from "@angular/material";
+import {ShopTabComponent} from "./tabs/shop-tab/shop-tab.component";
+import {EventTabComponent} from "./tabs/event-tab/event-tab.component";
+import {ContentTabComponent} from "./tabs/content-tab/content-tab.component";
+import {EquipmentTabComponent} from "./tabs/equipment-tab/equipment-tab.component";
+import {InputFormService} from "../../services/admin/input-form.service";
 export interface Content{
   value: string;
 }
@@ -25,40 +26,37 @@ export interface Content{
 })
 export class AdminProfileComponent implements OnInit {
   @ViewChild('matTabShop') matTabGroup : MatTabGroup;
-  @ViewChild('shopCheckBox') shopCheckBox : CheckboxComponent;
-  public matTabActive : number = 0;
+  @ViewChild(ShopTabComponent) shopTab: ShopTabComponent;
+  @ViewChild(EventTabComponent) eventTab: EventTabComponent;
+  @ViewChild(ContentTabComponent) contentTab: ContentTabComponent;
+  @ViewChild(EquipmentTabComponent) equipmentTab: EquipmentTabComponent;
 
-  private json: JSON;
-  myControl = new FormControl();
-  options: string[] = [];
-  selected = "Blend";
-  filteredOptions: Observable<string[]>;
-
-  street = '';
-  country = '';
-  streetNr : number;
-
-  contents: Content[] = [
-    {value: 'Blend'},
-    {value: 'Bean'},
-    {value: 'Coffee_Drink'},
-  ];
-
+  public matTabActive : string = 'Shop';
 
   ngOnInit() {
-    this.matTabGroup.selectedIndexChange.subscribe(event => {
-      this.matTabActive = event;
-      console.log(this.matTabActive);
+    this.matTabGroup.selectedIndex = 0;
+    this.matTabGroup.selectedTabChange.subscribe(event =>{
+      this.matTabActive = event.tab.textLabel;
     });
+
   }
 
-  getJSONofShop(){
-    console.log(this.shopCheckBox.getjsonOfSearchWithSelect());
-    console.log(2);
+  private whichTabIsActive() : FormGroup{
+    switch (this.matTabActive) {
+      case 'Shop':
+        return this.shopTab.getInputShop();
+      case 'Equipment':
+        return this.equipmentTab.getEquipmentInput();
+      case 'Event':
+        return this.eventTab.getEventInput();
+      case 'Content':
+        return this.contentTab.getSelectedFormGroup();
+    }
   }
 
   editContent(){
-
+    let formGroup = this.whichTabIsActive();
+    console.log(formGroup);
   }
 
   addContent(){
@@ -77,8 +75,7 @@ export class AdminProfileComponent implements OnInit {
 
   }
 
-
-  constructor(private admin_service: AdminService) { }
+  constructor(private inputFormService: InputFormService) { }
 
 
 }

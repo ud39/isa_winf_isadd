@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ShopService} from "../../../services/shop/shop.service";
 import {Shop} from "../../../interfaces/entity/Shop";
@@ -17,7 +17,7 @@ export class ShopListComponent implements OnInit {
 
   public shops : Shop[];
 
-  constructor(private http :HttpClient, private service: ShopService, private router: Router)
+  constructor(private service: ShopService)
   {
   }
 

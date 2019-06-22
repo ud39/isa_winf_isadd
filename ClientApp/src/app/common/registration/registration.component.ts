@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {MatButton} from "@angular/material";
+import {Router} from "@angular/router";
+
 
 @Component({
   selector: 'app-registration',
@@ -8,21 +11,36 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 })
 
 export class RegistrationComponent implements OnInit {
-  email = new FormControl('', [Validators.required, Validators.email]);
 
-  getErrorMessage() {
-    return this.email.hasError('required') ? 'You must enter a value' :
-      this.email.hasError('email') ? 'Not a valid email' :
-        '';
+  private emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+    Validators.maxLength(256)
+  ]);
+
+  private passwordFromControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(4),
+  ]);
+
+  private registrationForm = new FormGroup({
+    email: this.emailFormControl,
+    password: this.passwordFromControl
+  });
+
+  private submitRegistration(){
+    let email = this.registrationForm.value.email;
+    let password = this.registrationForm.value.password;
+    this.navigateToProfil();
   }
 
-  constructor(
-    private formBuilder: FormBuilder,
-  ) {
+  private navigateToProfil(){
+    this.router.navigate(['user'])
+  }
+  constructor(private router : Router) {
 
   }
-  ngOnInit(): void {
+  ngOnInit() {
   }
-  onSubmit(){};
 
 }

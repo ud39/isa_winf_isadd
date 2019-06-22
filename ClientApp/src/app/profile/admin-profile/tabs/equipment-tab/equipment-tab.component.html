@@ -1,13 +1,15 @@
 <app-checkbox-equipment #cbEq></app-checkbox-equipment>
 <mat-form-field class="name-form-field">
-  <input matInput type="text" placeholder="Name" [(ngModel)]="value">
-  <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+  <input matInput type="text" placeholder="Name" required [formControl]="equipmentNameFormControl">
+  <mat-error *ngIf="equipmentNameFormControl.hasError('required')">Es müss einen Namen angegeben werden.</mat-error>
+  <button mat-button *ngIf="!equipmentNameFormControl.hasError('required')" matSuffix mat-icon-button aria-label="Clear" (click)="equipmentNameFormControl.reset('')">
     <mat-icon>close</mat-icon>
   </button>
 </mat-form-field>
 <mat-form-field class="description">
   <mat-label>Beschreibung</mat-label>
   <textarea matInput
+            [formControl]="equipmentDescriptionFormControl"
             cdkTextareaAutosize
             cdkAutosizeMinRows="2"
   ></textarea>

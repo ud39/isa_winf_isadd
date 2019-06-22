@@ -1,31 +1,31 @@
  <app-checkbox #shopCheckBox class="checkbox"></app-checkbox>
   <mat-form-field class="shop-form-field address">
-    <input matInput type="text" placeholder="Straße" [(ngModel)]="street">
-    <button mat-button *ngIf="street" matSuffix mat-icon-button aria-label="Clear" (click)="street=''">
+    <input matInput type="text" placeholder="Straße" [formControl]="streetFormControl">
+    <button mat-button *ngIf="!streetFormControl.hasError('required')" matSuffix mat-icon-button aria-label="Clear" (click)="streetFormControl.reset('')">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
   <mat-form-field class="shop-form-field address">
-    <input matInput type="text" placeholder="StraßeNr" [(ngModel)]="streetNr">
-    <button mat-button *ngIf="streetNr" matSuffix mat-icon-button aria-label="Clear" (click)="streetNr=''">
+    <input matInput type="number" placeholder="StraßeNr" min="0" oninput="validity.valid||(value='')" [formControl]="streetNrFormControl">
+    <button mat-button *ngIf="streetNrFormControl.hasError('required')" matSuffix mat-icon-button aria-label="Clear" (click)="streetNrFormControl.reset('')">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
   <mat-form-field class="shop-form-field address">
-    <input matInput type="text" placeholder="Land" [(ngModel)]="country">
-    <button mat-button *ngIf="country" matSuffix mat-icon-button aria-label="Clear" (click)="country=''">
+    <input matInput type="text" placeholder="Land" [formControl]="countryFromControl">
+    <button mat-button *ngIf="!countryFromControl.hasError('required')" matSuffix mat-icon-button aria-label="Clear" (click)="countryFromControl.reset('')">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
  <mat-form-field class="shop-form-field town">
-   <input matInput type="text" placeholder="Stadt" [(ngModel)]="town">
-   <button mat-button *ngIf="town" matSuffix mat-icon-button aria-label="Clear" (click)="town=''">
+   <input matInput type="text" placeholder="Stadt" [formControl]="townFromControl">
+   <button mat-button *ngIf="townFromControl.hasError('required')" matSuffix mat-icon-button aria-label="Clear" (click)="townFromControl.reset('')">
      <mat-icon>close</mat-icon>
    </button>
  </mat-form-field>
   <mat-form-field class="description">
-    <input matInput type="text" placeholder="Name" [(ngModel)]="value">
-    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+    <input matInput type="text" placeholder="Name" [formControl]="shopNameFormControl">
+    <button mat-button *ngIf="shopNameFormControl.hasError('required')" matSuffix mat-icon-button aria-label="Clear" (click)="shopNameFormControl.reset('')">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>

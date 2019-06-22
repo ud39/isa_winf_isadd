@@ -1,4 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {ImageService} from "../../services/image/image.service";
 
 @Component({
   selector: 'app-about-us',
@@ -8,9 +9,13 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 })
 export class AboutUsComponent implements OnInit {
 
-  constructor() { }
+  private brand;
+  constructor(private imageBrandService: ImageService) { }
 
   ngOnInit() {
+    this.imageBrandService.getBrandImage().subscribe(value => {
+      this.imageBrandService.setBrandImage(value).then(data => this.brand = data );
+    })
   }
 
 }

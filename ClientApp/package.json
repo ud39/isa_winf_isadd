@@ -31,8 +31,10 @@
     "core-js": "^3.0.1",
     "hammerjs": "^2.0.8",
     "jquery": "^3.4.1",
+    "ng-simple-slideshow": "^1.2.9",
     "popper.js": "^1.15.0",
     "rxjs": "6.5.1",
+    "swipejs": "^2.2.14",
     "zone.js": "^0.8.29"
   },
   "devDependencies": {

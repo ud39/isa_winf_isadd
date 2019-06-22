@@ -1,12 +1,15 @@
-.grid-container{
+app-admin-profile{
+  width: 100%;
+}
+app-admin-profile .grid-container{
   display: flex;
 }
 
-.container{
+app-admin-profile .container{
   display: flex;
 }
 
-.action{
+app-admin-profile .action{
   display: flex;
   margin-top: 20px;
   flex:1;
@@ -14,52 +17,52 @@
   flex-direction: column;
 }
 
-.tab-content{
+app-admin-profile .tab-content{
   flex:5;
   order:1;
 }
 
-.action-dropdown a{
+app-admin-profile .action-dropdown a{
   alignment: center;
   cursor: pointer;
   background: white;
   color:black;
 }
 
-.action-dropdown a:hover{
+app-admin-profile .action-dropdown a:hover{
   alignment: center;
   cursor: pointer;
   background: black;
   color:white;
 }
 
-.input-content{
+app-admin-profile .input-content{
   display: none;
 }
 
-div.input-content.active-input > label:nth-child(3){
+app-admin-profile div.input-content.active-input > label:nth-child(3){
   margin-top: 10px;
 }
 
-.active-input{
+app-admin-profile .active-input{
   display: block;
 }
 
-.input-content{
+app-admin-profile .input-content{
   display: grid;
   grid-row: auto;
   grid-column: auto;
   align-items: center;
 }
 
-.first-mat-tab-group{
+app-admin-profile .first-mat-tab-group{
   grid-row: 1 / 1;
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto;
 }
 
-.input-gallery{
+app-admin-profile .input-gallery{
   grid-column: 3 / 3;
   grid-row: 2 / span 4;
   z-index: 1;
@@ -68,20 +71,11 @@ div.input-content.active-input > label:nth-child(3){
   position: absolute;
 }
 
-
-mat-form-field.name-form-field{
-
-}
-
-mat-form-field.description{
-
-}
-
-mat-form-field.name-form-field{
+app-admin-profile mat-form-field.name-form-field{
   display: block;
   clear: both;
 }
-img{
+app-admin-profile img{
   display: block;
 
 }
@@ -89,20 +83,20 @@ img{
 app-admin-profile app-checkbox div.container{
   margin-top: 15px;
 }
-mat-checkbox{
+app-admin-profile mat-checkbox{
   margin-right: 10px;
 }
 
-.active{
+app-admin-profile .active{
   color: white;
 }
 
 /* Styles for the ink bar */
-.mat-ink-bar {
+app-admin-profile .mat-ink-bar {
   background-color: green;
 }
 
-.mat-tab-header, .mat-tab-nav-bar{
+app-admin-profile .mat-tab-header, .mat-tab-nav-bar{
   border-bottom: 0;
 }
 

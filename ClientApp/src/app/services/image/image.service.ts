@@ -17,9 +17,7 @@ export class ImageService {
       reader.addEventListener("load", () =>{
         resolve(reader.result)
       }, false);
-
       reader.onerror = reject;
-
       if(image){
         reader.readAsDataURL(image);
       }

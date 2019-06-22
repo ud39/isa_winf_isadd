@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MatSelect} from "@angular/material";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-content-tab',
@@ -10,6 +11,17 @@ import {MatSelect} from "@angular/material";
 export class ContentTabComponent implements OnInit {
   @ViewChild('multipleSelectBlend') multipleSelectBlend : MatSelect;
 
+  private selectContentFormControl = new FormControl('',[
+    Validators.required,
+  ]);
+
+  private inputContent = new FormGroup({
+    selectContent: this.selectContentFormControl,
+  });
+
+
+  private selected;
+
   foods = [
     {value: 'steak-0', viewValue: 'Steak'},
     {value: 'pizza-1', viewValue: 'Pizza'},
@@ -17,20 +29,49 @@ export class ContentTabComponent implements OnInit {
     {value: 'hotdog-3', viewValue: 'Hotdog'}
   ];
 
-  private selected;
-  private content: string[] = ["Blend", "Bohnen", "Equipment", "Kaffee Drink"];
+  private   content = [
+    {value: 'Blend', viewValue: 'Blend'},
+    {value: 'Bean', viewValue: 'Bohnen'},
+    {value: 'Equipment', viewValue: 'Equipment'},
+    {value: 'CoffeeDrink', viewValue: 'KaffeeDrink'},
+    {value: 'Manufacturer', viewValue: 'Hersteller'}
+  ];
 
-  private valueNameBlend='';
-  private valueNameBean='';
-  private valueNameEquipment='';
-  private valueNameCoffeeDrink='';
+  private nameBlendFormControl = new FormControl('',[
 
-  private descriptionBlend = '';
-  private descriptionBean = '';
-  private descriptionEquipment = '';
-  private descriptionCoffeeDrink = '';
+    ]);
+  private nameBeanFormControl = new FormControl('',[
 
-  pushMultipleSelectedValue(select :MatSelect){
+    ]);
+  private nameEquipmentFormControl = new FormControl('',[
+
+    ]);
+  private nameCoffeeDrinkFormControl = new FormControl('',[
+
+    ]);
+  private nameManufacturerFormControl = new FormControl('',[
+
+    ]);
+
+  private descriptionBlendFormControl = new FormControl('',[
+
+  ]);
+  private descriptionBeanFormControl = new FormControl('',[
+
+  ]);
+  private descriptionEquipmentFormControl = new FormControl('',[
+
+  ]);
+  private descriptionCoffeeDrinkFormControl = new FormControl('',[
+
+  ]);
+  private blendFormGroup = new FormGroup({name: this.nameBlendFormControl, description: this.descriptionBlendFormControl});
+  private beanFormGroup = new FormGroup({name: this.nameBeanFormControl, description: this.descriptionBeanFormControl});
+  private equipmentFormGroup = new FormGroup({name: this.nameEquipmentFormControl, description: this.descriptionEquipmentFormControl});
+  private coffeeDrinkFormGroup = new FormGroup({name: this.nameCoffeeDrinkFormControl, description: this.descriptionCoffeeDrinkFormControl});
+  private manufacturerFormGroup = new FormGroup({name: this.nameManufacturerFormControl});
+
+  private pushMultipleSelectedValue(select :MatSelect){
     let selectedValue: Array<string> = [];
     for(let sel of select.value){
       selectedValue.push(sel);
@@ -39,11 +80,26 @@ export class ContentTabComponent implements OnInit {
   }
   constructor() { }
 
+  private clear(){
+  }
   ngOnInit() {
   }
 
-  text(){
-    console.log('Values' + '\n' + this.valueNameBean + '\n' + this.valueNameBlend + '\n' + this.valueNameEquipment + '\n' + this.valueNameCoffeeDrink + '\n');
-    console.log('Description' + '\n' + this.descriptionBean + '\n' + this.descriptionBlend + '\n' + this.descriptionEquipment + '\n' + this.descriptionCoffeeDrink + '\n' + this.pushMultipleSelectedValue(this.multipleSelectBlend).length);
+  getSelectedFormGroup(): FormGroup{
+    switch (this.selected) {
+      case 'Blend':
+        return this.blendFormGroup;
+      case 'Bean':
+        return this.beanFormGroup;
+      case 'Equipment':
+        return this.equipmentFormGroup;
+      case 'CoffeeDrink':
+        return this.coffeeDrinkFormGroup;
+      case 'Manfacturer':
+        return this.manufacturerFormGroup;
+    }
+  }
+  private text() {
+    console.log(this.blendFormGroup)
   }
 }
