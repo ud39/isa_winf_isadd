@@ -16,7 +16,7 @@ services:
 
   postgres:
     container_name: db
-    image: postgres:9.4
+    image: postgres:latest
     volumes:
        - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:

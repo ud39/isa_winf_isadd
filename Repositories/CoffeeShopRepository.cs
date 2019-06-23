@@ -101,6 +101,34 @@ namespace WinfADD.Repositories
             }
         }
 
+        public async Task<List<CoffeeShopPreview>> GetCoffeeShops(CoffeeShopSearchModel query)
+        {
+            PropertyInfo[] possibleProperties = typeof(CoffeeShopSearchModel).GetProperties();
+            var builder = new SqlBuilder();
+            
+            var filterCoffeeShops = builder.AddTemplate("Select * from coffee_shop /**where**/  ");
+
+            foreach (PropertyInfo property in possibleProperties)
+            {
+                var properties = new Dictionary<string, object>();
+                if (property.GetValue(query) != null)
+                {
+                    properties.Add(property.Name,property.GetValue(query));
+                    Console.WriteLine("NAME:" + property.Name + " , VALUE:" + property.GetValue(query));
+                    builder.Where(property.Name + " = " + "@" + property.Name, properties);
+                }
+                
+            }
+        
+            using (IDbConnection dbConnection = Connection)
+            {
+                if (possibleProperties.Length == 0)
+                    return await GetAll();
+                var result = await dbConnection.QueryAsync<CoffeeShopPreview>(filterCoffeeShops.RawSql,filterCoffeeShops.Parameters);
+                return result.ToList();
+            }
+        }
+
         public async Task<CoffeeShop> GetById(int id)
         {
 
