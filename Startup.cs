@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using Dapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -9,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WinfADD.Models;
+using WinfADD.Models.Mapping;
 using WinfADD.Repositories;
 
 namespace WinfADD
@@ -60,6 +62,12 @@ namespace WinfADD
             services.AddSingleton<ITableRepository<BusStation>, BusStationRepository>();
             services.AddSingleton<ITableRepository<CoffeeShop>, CoffeeShopRepository>();
             services.AddSingleton<ITableRepository<Event>, EventRepository>();
+
+
+
+            //TypeHandler for complex data types in Model
+            SqlMapper.AddTypeHandler(new AddressTypeHandler());
+
           
             
 

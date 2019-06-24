@@ -210,7 +210,7 @@ namespace WinfADD.Repositories
 
 
             Console.WriteLine("name::"+coffeeShopObj.Name);
-            Console.WriteLine("address:"+coffeeShopObj.Address);
+            Console.WriteLine("address:"+coffeeShopObj.Address.Town);
             Console.WriteLine("time:"+coffeeShopObj.OpeningTimes);
 
             Console.WriteLine("<//////////////////////////////////////////////////////////>");
