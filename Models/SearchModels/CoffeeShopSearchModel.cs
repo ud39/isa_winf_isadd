@@ -8,13 +8,10 @@ namespace WinfADD.Models
     {
 
 
-        public string Name { get; set; }
+        public  string Name { get; set; }
 
-/*
-
-        //ints
-        public int FoundingYear { get; set; }
-        public int Seats { get; set; }
+        public string FoundingYear { get; set; }
+        public string Seats { get; set; }
         
         //strings
         public string Website { get; set; }
@@ -23,19 +20,18 @@ namespace WinfADD.Models
         public string Franchise { get; set; }
 
         //boolean flags
-        public bool Wlan { get; set; }
-        public bool DisabledFriendly { get; set; }
-        public bool FairTrade { get; set; }
-        public bool ChildFriendly { get; set; }
-        public bool Workstation { get; set; }
-        public bool LatteArt { get; set; }
-        public bool PetsFriendly { get; set; }
-        public bool Outdoor { get; set; }
+        public string Wlan { get; set; }
+        public string DisabledFriendly { get; set; }
+        public string FairTrade { get; set; }
+        public string ChildFriendly { get; set; }
+        public string Workstation { get; set; }
+        public string LatteArt { get; set; }
+        public string PetsFriendly { get; set; }
+        public string Outdoor { get; set; }
 
         //byte
         public string Description { get; set; }
 
-*/
-        
+
     }
 }
