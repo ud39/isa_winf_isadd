@@ -6,6 +6,9 @@ COPY *.sln .
 COPY *.csproj .
 RUN dotnet restore
 
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
+
+RUN apt-get update
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get install -y nodejs
 
