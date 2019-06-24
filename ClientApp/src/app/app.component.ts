@@ -13,8 +13,8 @@ export class AppComponent {
 
 
 
-  private showNavigation: boolean = false;
-  private urlSearchPath: string = "/shop";
+  public showNavigation: boolean = false;
+  public urlSearchPath: string = "/shop";
   constructor(private router: Router, private globals: Global) {
   }
 
@@ -23,14 +23,15 @@ export class AppComponent {
     { document.activeElement.blur();}
   }
 
-  private checkUrlCheckBox(urlPath:NavigationStart){
+  public checkUrlCheckBox(urlPath:NavigationStart){
     let currentUrl = urlPath['url'];
     let urlMap = this.globals.urlName;
     console.log(urlMap);
     return urlMap.get('home') == currentUrl
            || urlMap.get('shop') ==  currentUrl
            || urlMap.get('wikiEquipment') == currentUrl
-           || urlMap.get('coffee') == currentUrl
+           || urlMap.get('wiki') == currentUrl
+           || urlMap.get('wikiCoffee') == currentUrl
 
   }
 

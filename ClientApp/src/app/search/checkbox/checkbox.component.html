@@ -1,7 +1,7 @@
 <div class="container">
   <div>
-    <mat-form-field class="direct-shop">
-      <input #inputShop type="text" placeholder="Shop" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+    <mat-form-field class="direct-shop" *ngIf="router.url != this.global.urlName.get('admin')">
+      <input #inputShop type="text" placeholder="Shop" aria-label="Number" matInput [formControl]="shopNameFormControl" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
           {{option}}
@@ -33,7 +33,7 @@
     <mat-checkbox #cb class="checkbox" id="shop" [checked]="false">Rösterei</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id="disable-friendly" [checked]="false">Behindertengerecht</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id="pet-friendly "[checked]="false">Haustierfreundlich</mat-checkbox>
-    <div  *ngIf="router.url == '/admin'">
+    <div  *ngIf="router.url == this.global.urlName.get('admin')">
       <button mat-button id="clearbutton" (click)="clear()">Checks aufheben</button>
     </div>
   </div>

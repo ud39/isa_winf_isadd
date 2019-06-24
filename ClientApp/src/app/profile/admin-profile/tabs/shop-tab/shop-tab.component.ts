@@ -2,6 +2,8 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Observable} from "rxjs";;
 import {AdminService} from "../../../../services/admin/admin.service";
+import {ShopService} from "../../../../services/shop/shop.service";
+import {Shop} from "../../../../interfaces/entity/Shop";
 
 @Component({
   selector: 'app-shop-tab',
@@ -15,39 +17,35 @@ import {AdminService} from "../../../../services/admin/admin.service";
 export class ShopTabComponent implements OnInit {
 
 
-  private json: JSON;
+  public json: JSON;
+  public shop: Shop;
+  public options: string[] = [];
+  public selected = "Blend";
+  public filteredOptions: Observable<string[]>;
 
-  options: string[] = [];
-  selected = "Blend";
-  filteredOptions: Observable<string[]>;
-  value;
-  street;
-  country;
-  town;
-  streetNr : number;
-
-  streetFormControl = new FormControl('',[
+  public streetFormControl = new FormControl('',[
 
     ]);
-  streetNrFormControl = new FormControl('',[
+  public streetNrFormControl = new FormControl('',[
 
     ]);
-  countryFromControl = new FormControl('',[
+  public countryFormControl = new FormControl('',[
 
     ]);
-  townFromControl = new FormControl('',[
+  public townFormControl = new FormControl('',[
 
     ]);
-  shopNameFormControl = new FormControl('',[
+  public shopNameFormControl = new FormControl('',[
     Validators.required
     ]);
 
+  public postalCodeFormControl = new FormControl('',[]);
 
   inputShop = new FormGroup({
       street: this.streetFormControl,
       streetNr: this.streetNrFormControl,
-      country: this.countryFromControl,
-      city: this.townFromControl,
+      country: this.countryFormControl,
+      city: this.townFormControl,
       shopName: this.shopNameFormControl
     }
   );
@@ -55,8 +53,7 @@ export class ShopTabComponent implements OnInit {
   getInputShop(): FormGroup{
     return this.inputShop;
   }
-  constructor(private admin_service: AdminService) { }
-
+  constructor(public admin_service: AdminService, public shopService: ShopService) { }
 
   ngOnInit() {
   }

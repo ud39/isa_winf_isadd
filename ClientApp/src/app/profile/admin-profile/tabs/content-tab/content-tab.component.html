@@ -1,7 +1,6 @@
 <mat-form-field>
   <mat-label>Wähle einen Content</mat-label>
   <mat-select [(value)]="selected" required [formControl]="selectContentFormControl">
-    <mat-option>--</mat-option>
     <mat-option *ngFor="let con of content" [value]="con.value">
       {{con.viewValue}}
     </mat-option>
@@ -9,7 +8,8 @@
 </mat-form-field>
 <div class="content blend" *ngIf="selected == 'Blend'">
 <mat-form-field class="name-form-field">
-  <input matInput type="text" placeholder="Name" required [formControl]="nameBlendFormControl">
+  <input matInput type="text" placeholder="Name" required [formControl]='nameBlendFormControl'>
+  <mat-error *ngIf="nameBlendFormControl.hasError('required')">Es müss einen Namen angegeben werden</mat-error>
   <button mat-button *ngIf="!nameBlendFormControl.hasError('required')" matSuffix mat-icon-button aria-label="Clear" (click)="nameBlendFormControl.reset('')">
     <mat-icon>close</mat-icon>
   </button>
@@ -28,16 +28,17 @@
 </mat-form-field>
   <mat-form-field>
     <mat-label>Wähle die Mischung</mat-label>
-    <mat-select multiple #multipleSelectBlend>
+    <mat-select multiple #multipleSelectBlend [formControl]="selectBlendFormControl">
       <mat-option *ngFor="let food of foods" [value]="food.value">
         {{ food.viewValue }}
       </mat-option>
     </mat-select>
   </mat-form-field>
 </div>
-<div class="content bean" *ngIf="selected == 'Bohnen'">
+<div class="content bean" *ngIf="selected == 'Bean'">
   <mat-form-field class="name-form-field">
     <input matInput type="text" placeholder="Name"  required [formControl]="nameBeanFormControl">
+    <mat-error *ngIf="nameBeanFormControl.hasError('required')">Es müss einen Namen angegeben werden</mat-error>
     <button mat-button *ngIf="!nameBeanFormControl.hasError('required')" matSuffix mat-icon-button aria-label="Clear" (click)="nameBeanFormControl.reset('')">
       <mat-icon>close</mat-icon>
     </button>
@@ -58,6 +59,7 @@
 <div class="content equipment" *ngIf="selected == 'Equipment'">
   <mat-form-field class="name-form-field">
     <input matInput type="text" placeholder="Name"  required [formControl]="nameEquipmentFormControl">
+    <mat-error *ngIf="nameEquipmentFormControl.hasError('required')">Es müss einen Namen angegeben werden</mat-error>
     <button mat-button *ngIf="!nameEquipmentFormControl.hasError('required')" matSuffix mat-icon-button aria-label="Clear" (click)="nameEquipmentFormControl.reset('')">
       <mat-icon>close</mat-icon>
     </button>
@@ -73,9 +75,10 @@
     ></textarea>
   </mat-form-field>
 </div>
-<div class="content coffee_drink" *ngIf="selected == 'Kaffee Drink'">
+<div class="content coffee_drink" *ngIf="selected == 'CoffeeDrink'">
   <mat-form-field class="name-form-field">
     <input matInput type="text" placeholder="Name"  required [formControl]="nameCoffeeDrinkFormControl">
+    <mat-error *ngIf="nameCoffeeDrinkFormControl.hasError('required')">Es müss einen Namen angegeben werden</mat-error>
     <button mat-button *ngIf="!nameCoffeeDrinkFormControl.hasError('required')" matSuffix mat-icon-button aria-label="Clear" (click)="nameCoffeeDrinkFormControl.reset('')">
       <mat-icon>close</mat-icon>
     </button>
@@ -91,9 +94,19 @@
     ></textarea>
   </mat-form-field>
 </div>
-<div class="content coffee_drink" *ngIf="selected == 'Hersteller'">
+<div class="content manufacturer" *ngIf="selected == 'Manufacturer'">
   <mat-form-field class="name-form-field">
     <input matInput type="text" placeholder="Name"  required [formControl]="nameManufacturerFormControl">
+    <mat-error *ngIf="nameManufacturerFormControl.hasError('required')">Es müss einen Namen angegeben werden</mat-error>
+    <button mat-button *ngIf="!nameManufacturerFormControl.hasError('required')" matSuffix mat-icon-button aria-label="Clear" (click)="nameManufacturerFormControl.reset('')">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+<div class="content equipment-category" *ngIf="selected == 'Equipment-category'">
+  <mat-form-field class="name-form-field">
+    <input matInput type="text" placeholder="Name"  required [formControl]="nameManufacturerFormControl">
+    <mat-error *ngIf="nameManufacturerFormControl.hasError('required')">Es müss einen Namen angegeben werden</mat-error>
     <button mat-button *ngIf="!nameManufacturerFormControl.hasError('required')" matSuffix mat-icon-button aria-label="Clear" (click)="nameManufacturerFormControl.reset('')">
       <mat-icon>close</mat-icon>
     </button>

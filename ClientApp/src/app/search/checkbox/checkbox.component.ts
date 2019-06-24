@@ -1,13 +1,13 @@
-import {Component, Input, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
+import {Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {ViewEncapsulation} from "@angular/core";
 import {Router} from '@angular/router';
 import {MatCheckbox, MatInput, MatSelect} from "@angular/material";
 import {CheckBoxesService} from "../../services/interactive-element/checkboxes.service";
 import {FormControl} from "@angular/forms";
 import {Observable} from "rxjs";
-import {map, startWith, tap} from "rxjs/operators";
+import {map, startWith} from "rxjs/operators";
 import {ShopService} from "../../services/shop/shop.service";
-import {VALID} from "@angular/forms/src/model";
+import {Global} from "../../global";
 
 
 @Component({
@@ -25,15 +25,16 @@ export class CheckboxComponent implements OnInit {
   @ViewChild('selectPOI') selectPoi : MatSelect;
   @ViewChild('selectPrice') selectPrice : MatSelect;
 
-  constructor(private router: Router, private checkBoxService: CheckBoxesService, private shopService: ShopService) {
+  constructor(private router: Router, private checkBoxService: CheckBoxesService,
+              private shopService: ShopService, private global: Global) {
 
   }
 
-  private myControl = new FormControl();
-  private options: string[] = [];
-  private filteredOptions: Observable<string[]>;
-  private filteredPoi: Observable<string[]>;
-
+  public shopNameFormControl = new FormControl();
+  public options: string[] = [];
+  public filteredOptions: Observable<string[]>;
+  public filteredPoi: Observable<string[]>;
+  public shopFormControls = new Array<FormControl>(this.shopNameFormControl);
   fillOutOptions(){
     this.shopService.getShops().subscribe(shop =>{
       shop.forEach( value => {
@@ -43,22 +44,22 @@ export class CheckboxComponent implements OnInit {
   }
 
   getjsonOfSearchWithSelect(): JSON{
-    return this.checkBoxService.getjsonOfSearchWithSelect(this.myControl,this.cbs.toArray(), this.select.toArray());
+    return this.checkBoxService.getjsonOfSearchWithSelect(this.shopFormControls,this.cbs.toArray(), this.select.toArray());
   }
 
   clear(){
-    this.checkBoxService.clear(this.cbs,this.myControl,  this.select.toArray());
+    this.checkBoxService.clear(this.cbs,this.shopFormControls,  this.select.toArray());
   }
 
   ngOnInit() {
     this.shopService.getShops();
     this.fillOutOptions();
-    this.filteredOptions = this.myControl.valueChanges
+    this.filteredOptions = this.shopNameFormControl.valueChanges
       .pipe(
         startWith(''),
         map(val => val.length >= 2 ? this.checkBoxService._filter(val,this.options): []),
       );
-
+    console.log(this.shopNameFormControl);
   }
 
   ngAfterViewInit(){

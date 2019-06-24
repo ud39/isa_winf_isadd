@@ -2,7 +2,9 @@ import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MatSelect} from "@angular/material";
 import {ShopService} from "../../../../services/shop/shop.service";
 import {Shop} from "../../../../interfaces/entity/Shop";
+import {Event} from "../../../../interfaces/entity/Event";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {EventService} from "../../../../services/event/event.service";
 
 @Component({
   selector: 'app-event-tab',
@@ -13,35 +15,44 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 export class EventTabComponent implements OnInit {
   @ViewChild('multipleSelectShop') multipleSelectShop : MatSelect;
 
-  private shops : Shop[];
-
-  private eventNameFormControl = new FormControl('',[
+  public shops : Shop[];
+  public events: Event[];
+  public eventNameFormControl = new FormControl('',[
     Validators.required
   ]);
-  private eventDescriptionFormControl = new FormControl('',[
+  public eventDescriptionFormControl = new FormControl('',[
     Validators.maxLength(500),
   ]);
 
-  private datePickerFormControl = new FormControl('',[
+  public datePickerFormControl = new FormControl('',[
   ]);
 
-  private selectShopFormControl = new FormControl('', [
+  public selectShopFormControl = new FormControl('', [
     Validators.required,
   ]);
 
-  private accessFeeFormControl = new FormControl('',[
+  public accessFeeFormControl = new FormControl('',[
     Validators.min(-1)
   ]);
 
-  private selectLocationControl = new FormControl('',[
-  ]);
+  public locationStreetFormControl = new FormControl('',[]);
+  public locationStreetNrFormControl = new FormControl('',[]);
+  public locationTownFormControl = new FormControl('',[]);
+  public locationPostalCodeFormControl = new FormControl('',[]);
 
-  private eventInput = new FormGroup({
+  public locationFormGroup = new FormGroup({
+    street:this.locationStreetFormControl,
+    streetNr:this.locationStreetNrFormControl,
+    town:this.locationTownFormControl,
+    postalCode:this.locationPostalCodeFormControl
+  });
+
+  public eventInput = new FormGroup({
     eventName: this.eventNameFormControl,
     eventDescription: this.eventDescriptionFormControl,
     eventAccessFee: this.accessFeeFormControl,
     eventDate: this.datePickerFormControl,
-    location: this.selectLocationControl,
+    location: this.locationFormGroup,
     selectShop: this.selectShopFormControl
   });
 
@@ -49,24 +60,27 @@ export class EventTabComponent implements OnInit {
     return this.eventInput;
   }
 
-  constructor(private shopSerivce: ShopService) { }
+  constructor(public shopSerivce: ShopService, public eventService: EventService) { }
 
   ngOnInit() {
     this.shopSerivce.getShops().subscribe(value => {
       this.shops = value;
       console.log(this.shops);
     })
+    this.eventService.getEvents().subscribe(value => {
+      this.events = value;
+    })
   }
 
-  private myDate = new Date();
+  public myDate = new Date();
 
-  private minDate = new Date(
+  public minDate = new Date(
     this.myDate.getFullYear(),
     this.myDate.getMonth(),
     this.myDate.getDate()
   );
 
-  private maxDate = new Date(
+  public maxDate = new Date(
     this.myDate.getFullYear(),
     this.myDate.getMonth() + 24,
     this.myDate.getDate()

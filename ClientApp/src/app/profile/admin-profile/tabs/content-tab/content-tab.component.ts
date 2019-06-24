@@ -11,17 +11,14 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 export class ContentTabComponent implements OnInit {
   @ViewChild('multipleSelectBlend') multipleSelectBlend : MatSelect;
 
-  private selectContentFormControl = new FormControl('',[
+  public selectContentFormControl = new FormControl('',[
     Validators.required,
   ]);
 
-  private inputContent = new FormGroup({
-    selectContent: this.selectContentFormControl,
-  });
-
-
-  private selected;
-
+  private setStartValue(){
+    this.selectContentFormControl.setValue('Blend')
+  }
+  public selected = "Blend";
   foods = [
     {value: 'steak-0', viewValue: 'Steak'},
     {value: 'pizza-1', viewValue: 'Pizza'},
@@ -29,63 +26,43 @@ export class ContentTabComponent implements OnInit {
     {value: 'hotdog-3', viewValue: 'Hotdog'}
   ];
 
-  private   content = [
+  public   content = [
     {value: 'Blend', viewValue: 'Blend'},
     {value: 'Bean', viewValue: 'Bohnen'},
     {value: 'Equipment', viewValue: 'Equipment'},
     {value: 'CoffeeDrink', viewValue: 'KaffeeDrink'},
-    {value: 'Manufacturer', viewValue: 'Hersteller'}
+    {value: 'Manufacturer', viewValue: 'Hersteller'},
+    {value: 'Equipment-category', viewValue: 'Equipment Kategorie'}
   ];
 
-  private nameBlendFormControl = new FormControl('',[
+  public nameBlendFormControl = new FormControl('',[]);
+  public nameBeanFormControl = new FormControl('',[]);
+  public nameEquipmentFormControl = new FormControl('',[]);
+  public nameCoffeeDrinkFormControl = new FormControl('',[]);
+  public nameManufacturerFormControl = new FormControl('',[]);
 
-    ]);
-  private nameBeanFormControl = new FormControl('',[
+  public descriptionBlendFormControl = new FormControl('',[]);
+  public descriptionBeanFormControl = new FormControl('',[]);
+  public descriptionEquipmentFormControl = new FormControl('',[]);
+  public descriptionCoffeeDrinkFormControl = new FormControl('',[]);
 
-    ]);
-  private nameEquipmentFormControl = new FormControl('',[
+  public selectBlendFormControl = new FormControl('',[]);
 
-    ]);
-  private nameCoffeeDrinkFormControl = new FormControl('',[
+  public blendFormGroup = new FormGroup({name: this.nameBlendFormControl, description: this.descriptionBlendFormControl, blends: this.selectBlendFormControl, select: this.selectContentFormControl});
+  public beanFormGroup = new FormGroup({name: this.nameBeanFormControl, description: this.descriptionBeanFormControl, select: this.selectContentFormControl});
+  public equipmentFormGroup = new FormGroup({name: this.nameEquipmentFormControl, description: this.descriptionEquipmentFormControl, select: this.selectContentFormControl});
+  public coffeeDrinkFormGroup = new FormGroup({name: this.nameCoffeeDrinkFormControl, description: this.descriptionCoffeeDrinkFormControl, select: this.selectContentFormControl});
+  public manufacturerFormGroup = new FormGroup({name: this.nameManufacturerFormControl, select: this.selectContentFormControl});
 
-    ]);
-  private nameManufacturerFormControl = new FormControl('',[
-
-    ]);
-
-  private descriptionBlendFormControl = new FormControl('',[
-
-  ]);
-  private descriptionBeanFormControl = new FormControl('',[
-
-  ]);
-  private descriptionEquipmentFormControl = new FormControl('',[
-
-  ]);
-  private descriptionCoffeeDrinkFormControl = new FormControl('',[
-
-  ]);
-  private blendFormGroup = new FormGroup({name: this.nameBlendFormControl, description: this.descriptionBlendFormControl});
-  private beanFormGroup = new FormGroup({name: this.nameBeanFormControl, description: this.descriptionBeanFormControl});
-  private equipmentFormGroup = new FormGroup({name: this.nameEquipmentFormControl, description: this.descriptionEquipmentFormControl});
-  private coffeeDrinkFormGroup = new FormGroup({name: this.nameCoffeeDrinkFormControl, description: this.descriptionCoffeeDrinkFormControl});
-  private manufacturerFormGroup = new FormGroup({name: this.nameManufacturerFormControl});
-
-  private pushMultipleSelectedValue(select :MatSelect){
-    let selectedValue: Array<string> = [];
-    for(let sel of select.value){
-      selectedValue.push(sel);
-    }
-    return selectedValue;
-  }
   constructor() { }
 
-  private clear(){
+  public clear(){
   }
   ngOnInit() {
+    this.setStartValue();
   }
 
-  getSelectedFormGroup(): FormGroup{
+  public getContentInput(): FormGroup{
     switch (this.selected) {
       case 'Blend':
         return this.blendFormGroup;
@@ -99,7 +76,7 @@ export class ContentTabComponent implements OnInit {
         return this.manufacturerFormGroup;
     }
   }
-  private text() {
+  public text() {
     console.log(this.blendFormGroup)
   }
 }

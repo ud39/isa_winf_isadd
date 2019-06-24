@@ -32,31 +32,34 @@ export class AdminProfileComponent implements OnInit {
   @ViewChild(EquipmentTabComponent) equipmentTab: EquipmentTabComponent;
 
   public matTabActive : string = 'Shop';
-
+  public activeFormGroup : FormGroup;
   ngOnInit() {
+    this.whichTabIsActive();
     this.matTabGroup.selectedIndex = 0;
     this.matTabGroup.selectedTabChange.subscribe(event =>{
       this.matTabActive = event.tab.textLabel;
+      this.whichTabIsActive();
     });
 
   }
 
-  private whichTabIsActive() : FormGroup{
+  public whichTabIsActive() : void{
     switch (this.matTabActive) {
       case 'Shop':
-        return this.shopTab.getInputShop();
+        this.activeFormGroup = this.shopTab.getInputShop();
+        break;
       case 'Equipment':
-        return this.equipmentTab.getEquipmentInput();
+        this.activeFormGroup = this.equipmentTab.getEquipmentInput();
+        break;
       case 'Event':
-        return this.eventTab.getEventInput();
+        this.activeFormGroup = this.eventTab.getEventInput();
+        break;
       case 'Content':
-        return this.contentTab.getSelectedFormGroup();
+        this.activeFormGroup = this.contentTab.getContentInput();
     }
   }
 
   editContent(){
-    let formGroup = this.whichTabIsActive();
-    console.log(formGroup);
   }
 
   addContent(){
@@ -75,7 +78,7 @@ export class AdminProfileComponent implements OnInit {
 
   }
 
-  constructor(private inputFormService: InputFormService) { }
+  constructor(public inputFormService: InputFormService) { }
 
 
 }

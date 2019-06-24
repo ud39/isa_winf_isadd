@@ -1,12 +1,37 @@
 <div class="container">
   <div>
-    <mat-checkbox #cb class="checkbox" id="presser" [checked]="false">Bohnen</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" [checked]="false">Filter</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" [checked]="false">Röster</mat-checkbox>
-  </div>
-  <div>
-    <mat-checkbox #cb class="checkbox" [checked]="false">Manuell</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" [checked]="false">Automatisch</mat-checkbox>
+    <mat-form-field class="selectedContentCoffee">
+      <mat-label>Sorten</mat-label>
+      <mat-select [(ngModel)]="selectedBean">
+        <mat-option *ngFor="let bean of beans" [value]="bean.value">
+          {{bean.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="selectedContentCoffee">
+      <mat-label>Herkunftsland</mat-label>
+      <mat-select [(ngModel)]="selectedOrigin">
+        <mat-option *ngFor="let origin of origins" [value]="origin.value">
+          {{origin.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="selectedContentCoffee">
+      <mat-label>Röstung</mat-label>
+      <mat-select [(ngModel)]="selectedRoast">
+        <mat-option *ngFor="let roast of roasts" [value]="roast.value">
+          {{roast.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="selectedContentCoffee">
+      <mat-label>Mahlgrad</mat-label>
+      <mat-select [(ngModel)]="selectedGrind">
+        <mat-option *ngFor="let grind of grinds" [value]="grind.value">
+          {{grind.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
   <div  *ngIf="router.url == '/admin'">
     <button mat-button id="clearbutton" (click)="clear()">Alles aufheben</button>

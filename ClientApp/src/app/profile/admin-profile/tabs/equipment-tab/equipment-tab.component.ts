@@ -8,16 +8,16 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class EquipmentTabComponent implements OnInit {
 
-  private equipmentNameFormControl = new FormControl('',[
+  public equipmentNameFormControl = new FormControl('',[
     Validators.required
     ]
   );
 
-  private equipmentDescriptionFormControl = new FormControl('',[
+  public equipmentDescriptionFormControl = new FormControl('',[
     ]
   );
 
-  private equipmentInput = new FormGroup({
+  public equipmentInput = new FormGroup({
     equipmentName: this.equipmentNameFormControl,
     equipmentDescrition: this.equipmentDescriptionFormControl
   });

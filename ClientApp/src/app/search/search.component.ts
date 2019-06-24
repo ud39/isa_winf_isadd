@@ -2,7 +2,6 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {CheckboxComponent} from "./checkbox/checkbox.component";
 import {CheckboxEquipmentComponent} from "./checkbox-equipment/checkbox-equipment.component";
 import {CheckboxCoffeeComponent} from "./checkbox-coffee/checkbox-coffee.component";
-import {RouteService} from "../services/routing/route.service";
 import {Global} from "../global";
 
 
@@ -19,9 +18,9 @@ export class SearchComponent implements OnInit {
   @ViewChild("cbeq") checkBoxEquipment: CheckboxEquipmentComponent;
   @ViewChild("cbcof") chechBoxComponentCoffee: CheckboxCoffeeComponent
   @Input() urlPath: string;
-  private jsonOfSearch: JSON;
+  public jsonOfSearch: JSON;
 
-  constructor(private globalVariables: Global) {
+  constructor(public globalVariables: Global) {
 
   }
 
@@ -53,9 +52,15 @@ export class SearchComponent implements OnInit {
       break;
       case urlPath.get('wikiCoffee'):
       this.chechBoxComponentCoffee.clear();
+      break;
+      case urlPath.get('wiki'):
+      this.checkBoxEquipment.clear();
+      this.chechBoxComponentCoffee.clear();
+      break;
     }
   }
 
   ngOnInit() {
+    console.log(this.urlPath);
   }
 }

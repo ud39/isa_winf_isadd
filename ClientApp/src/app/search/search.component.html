@@ -7,7 +7,7 @@
       Leeren
     </button>
     <app-checkbox #cb *ngIf="urlPath == globalVariables.urlName.get('shop')"></app-checkbox>
-    <app-checkbox-equipment #cbeq *ngIf="urlPath == globalVariables.urlName.get('wikiEquipment')"></app-checkbox-equipment>
-    <app-checkbox-coffee #cbcof *ngIf="urlPath == globalVariables.urlName.get('wikiCoffee')"></app-checkbox-coffee>
+    <app-checkbox-equipment #cbeq *ngIf="urlPath == globalVariables.urlName.get('wikiEquipment') || urlPath == globalVariables.urlName.get('wiki')"></app-checkbox-equipment>
+    <app-checkbox-coffee #cbcof *ngIf="urlPath == globalVariables.urlName.get('wikiCoffee') || urlPath == globalVariables.urlName.get('wiki')"></app-checkbox-coffee>
   </div>
 </div>

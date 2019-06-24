@@ -1,7 +1,12 @@
 app-event-tab .multipleSelect{
   width: 100%;
+  margin-top: 20px;
 }
 
 app-event-tab .date-picker{
   margin-right: 20px;
+}
+
+app-event-tab .address{
+  margin-right: 10px;
 }

@@ -6,3 +6,7 @@ app-shop-tab button .mat-button{
   background-color: white;
   margin-right:10px;
 }
+
+app-shop-tab .address{
+  width: 15%;
+}
