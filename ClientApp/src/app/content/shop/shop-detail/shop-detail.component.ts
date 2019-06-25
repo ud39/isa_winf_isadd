@@ -15,20 +15,20 @@ import {TooltipPosition} from "@angular/material";
 })
 export class ShopDetailComponent implements OnInit {
 
-  private priceDescription = "";
-  private symbolWlan = 'stuff';
-  private symbolChildFriendly = 'stuff';
-  private symbolDisabledFriendly = 'stuff';
-  private symbolOutdoor = 'stuff';
-  private symbolLatteArt = 'stuff';
-  private symbolPetsFriendly = 'stuff';
-  private symbolWorkStation = 'stuff';
-  private symbolFairTrade = 'stuff';
-  private symbolFranchise = 'stuff';
-  private symbolVegan = 'stuff';
-  private position : TooltipPosition = 'above';
-  private shop$: Shop;
-  private priceClass: string;
+  public priceDescription = "";
+  public symbolWlan = 'stuff';
+  public symbolChildFriendly = 'stuff';
+  public symbolDisabledFriendly = 'stuff';
+  public symbolOutdoor = 'stuff';
+  public symbolLatteArt = 'stuff';
+  public symbolPetsFriendly = 'stuff';
+  public symbolWorkStation = 'stuff';
+  public symbolFairTrade = 'stuff';
+  public symbolFranchise = 'stuff';
+  public symbolVegan = 'stuff';
+  public position : TooltipPosition = 'above';
+  public shop$: Shop;
+  public priceClass: string;
 
   setPriceClass(range:string):void{
     switch (range) {
@@ -77,9 +77,9 @@ export class ShopDetailComponent implements OnInit {
   }
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private service: ShopService,
+    public route: ActivatedRoute,
+    public router: Router,
+    public service: ShopService,
   ) { }
 
   ngOnInit() {

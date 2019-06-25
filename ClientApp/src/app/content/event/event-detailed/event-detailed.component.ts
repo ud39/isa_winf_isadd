@@ -11,7 +11,7 @@ import {EventService} from "../../../services/event/event.service";
 })
 export class EventDetailedComponent implements OnInit {
 
-  private event$: Event;
+  public event$: Event;
   constructor(private route: ActivatedRoute,
               private router: Router,
               private service: EventService,) { }

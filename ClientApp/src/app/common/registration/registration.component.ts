@@ -12,32 +12,32 @@ import {Router} from "@angular/router";
 
 export class RegistrationComponent implements OnInit {
 
-  private emailFormControl = new FormControl('', [
+  public emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
     Validators.maxLength(256)
   ]);
 
-  private passwordFromControl = new FormControl('', [
+  public passwordFromControl = new FormControl('', [
     Validators.required,
     Validators.minLength(4),
   ]);
 
-  private registrationForm = new FormGroup({
+  public registrationForm = new FormGroup({
     email: this.emailFormControl,
     password: this.passwordFromControl
   });
 
-  private submitRegistration(){
+  public submitRegistration(){
     let email = this.registrationForm.value.email;
     let password = this.registrationForm.value.password;
     this.navigateToProfil();
   }
 
-  private navigateToProfil(){
+  public navigateToProfil(){
     this.router.navigate(['user'])
   }
-  constructor(private router : Router) {
+  constructor(public router : Router) {
 
   }
   ngOnInit() {

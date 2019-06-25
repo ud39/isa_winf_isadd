@@ -26,5 +26,6 @@ app-checkbox .mat-form-field{
   display: inline-block;
   position: relative;
   text-align: left;
+  width: 150px;
   margin-right: 20px;
 }

@@ -3,6 +3,9 @@ import {CheckboxComponent} from "./checkbox/checkbox.component";
 import {CheckboxEquipmentComponent} from "./checkbox-equipment/checkbox-equipment.component";
 import {CheckboxCoffeeComponent} from "./checkbox-coffee/checkbox-coffee.component";
 import {Global} from "../global";
+import {NavigationExtras, Router} from "@angular/router";
+import {HttpParams} from "@angular/common/http";
+import {HttpParamsOptions} from "@angular/common/http/src/params";
 
 
 
@@ -16,11 +19,11 @@ import {Global} from "../global";
 export class SearchComponent implements OnInit {
   @ViewChild("cb") checkBoxComponent: CheckboxComponent;
   @ViewChild("cbeq") checkBoxEquipment: CheckboxEquipmentComponent;
-  @ViewChild("cbcof") chechBoxComponentCoffee: CheckboxCoffeeComponent
+  @ViewChild("cbcof") chechBoxComponentCoffee: CheckboxCoffeeComponent;
   @Input() urlPath: string;
   public jsonOfSearch: JSON;
 
-  constructor(public globalVariables: Global) {
+  constructor(public globalVariables: Global, public router: Router) {
 
   }
 
@@ -29,7 +32,7 @@ export class SearchComponent implements OnInit {
     console.log(urlPath);
     switch(this.urlPath){
       case urlPath.get('shop'):
-      this.jsonOfSearch = this.checkBoxComponent.getjsonOfSearchWithSelect();
+      this.jsonOfSearch = this.checkBoxComponent.getJsonOfSearchWithSelect();
       break;
       case urlPath.get('wikiEquipment'):
       this.jsonOfSearch = this.checkBoxEquipment.getJsonOfSearch();
@@ -58,6 +61,12 @@ export class SearchComponent implements OnInit {
       this.chechBoxComponentCoffee.clear();
       break;
     }
+  }
+  navigateTo(){
+    this.getJsonOfSearch();
+    const httpParams: HttpParamsOptions = { param: this.jsonOfSearch } as HttpParamsOptions;
+    let queryParams = new HttpParams(httpParams);
+    console.log(queryParams);
   }
 
   ngOnInit() {

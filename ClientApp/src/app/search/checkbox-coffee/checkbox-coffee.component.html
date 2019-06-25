@@ -1,23 +1,13 @@
 <div class="container">
   <div>
     <mat-form-field class="selectedContentCoffee">
-      <mat-label>Sorten</mat-label>
-      <mat-select [(ngModel)]="selectedBean">
-        <mat-option *ngFor="let bean of beans" [value]="bean.value">
-          {{bean.viewValue}}
-        </mat-option>
-      </mat-select>
+      <input matInput type="text" [formControl]="beanNameFormControl" placeholder="Kaffee Bohnen">
     </mat-form-field>
     <mat-form-field class="selectedContentCoffee">
-      <mat-label>Herkunftsland</mat-label>
-      <mat-select [(ngModel)]="selectedOrigin">
-        <mat-option *ngFor="let origin of origins" [value]="origin.value">
-          {{origin.viewValue}}
-        </mat-option>
-      </mat-select>
+      <input matInput type="text" [formControl]="blendNameFormControl" placeholder="Kaffee Bohnen">
     </mat-form-field>
-    <mat-form-field class="selectedContentCoffee">
-      <mat-label>Röstung</mat-label>
+    <mat-form-field>
+      <mat-label>Röstung Bohnenl</mat-label>
       <mat-select [(ngModel)]="selectedRoast">
         <mat-option *ngFor="let roast of roasts" [value]="roast.value">
           {{roast.viewValue}}
@@ -25,8 +15,10 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field class="selectedContentCoffee">
-      <mat-label>Mahlgrad</mat-label>
+      <mat-label>Mahlgrad Bohnen</mat-label>
       <mat-select [(ngModel)]="selectedGrind">
+        <mat-option>---</mat-option>
+        <mat-option>Keine</mat-option>
         <mat-option *ngFor="let grind of grinds" [value]="grind.value">
           {{grind.viewValue}}
         </mat-option>

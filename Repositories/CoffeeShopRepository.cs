@@ -6,7 +6,6 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Dapper;
 using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json.Linq;
 using Npgsql;
 using WinfADD.Models;
 using WinfADD.Models.Mapping;
