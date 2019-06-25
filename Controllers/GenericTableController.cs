@@ -71,7 +71,7 @@ namespace WinfADD.Controllers
 
         [Route("insert")]
         [HttpPost]
-        public async Task<bool> Post(JToken tableJson)
+        public virtual async Task<bool> insert(JToken tableJson)
         {
             //create tableObj like: [FromBody] Table tableObj
             var tableObj = tableJson.ToObject<Table>();

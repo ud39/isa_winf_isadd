@@ -45,7 +45,7 @@ namespace WinfADD.Controllers
 
 
         [HttpPost("insert")]
-        public async Task<bool> insertCoffeeShop(JToken jToken)
+        public override async Task<bool> insert(JToken jToken)
         {
 
             var coffeeShopObj = jToken.ToObject<CoffeeShop>();
