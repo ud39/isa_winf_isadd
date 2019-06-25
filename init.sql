@@ -55,7 +55,8 @@ CREATE TABLE coffee_shop(
                           latte_art boolean,
                           seats int,
                           workstation boolean,
-                          food text,
+                          warm_food boolean,
+                          cold_food boolean,
                           price_class text,
                           franchise text,
                           unique(name, address)
@@ -292,6 +293,16 @@ create table event_image (
                                  FOREIGN KEY (event_id) REFERENCES event (id) ON DELETE CASCADE);
 
 
+create table poi_image (
+                                   image_file_name text,
+                                   poi_name citext,
+                                   poi_address address,
+                                   Primary Key(image_file_name, poi_name, poi_address),
+                                   Foreign Key(image_file_name) references image (file_name) ON DELETE CASCADE,
+                                   FOREIGN KEY (poi_name, poi_address) REFERENCES  poi (name, address) ON DELETE CASCADE);
+
+
+
 ------  CLUSTER  -------
 
 CREATE TABLE google_rating(
@@ -398,10 +409,10 @@ create table operates (
 
 ------------ INSERT DATA ----------
 
-insert into coffee_shop (name, address, outdoor, fair_trade, disabled_friendly, description, wlan, child_friendly, website, founding_year, pets_friendly, latte_art, seats, workstation, food, price_class) values
-('Coffee_shop_Name3', ('Kieler Straße', 5, 24232, 'Kiel', 'Deutschland'), false, false, true, 'Textbeschreibung', false, true, 'www.nene.ne', 2019, true, false, 50, false, 'foood', 'niedrig');
-insert into coffee_shop (name, address, outdoor, fair_trade, disabled_friendly, description, wlan, child_friendly, website, founding_year, pets_friendly, latte_art, seats, workstation, food, price_class) values
-('Coffee_shop_Name2', ('Kieler Straße', 5, 24232, 'Kiel', 'Deutschland'), false, false, true, 'Textbeschreibung', false, true, 'www.nene.ne', 2019, true, false, 50, false, 'foood', 'niedrig');
+insert into coffee_shop (name, address, outdoor, fair_trade, disabled_friendly, description, wlan, child_friendly, website, founding_year, pets_friendly, latte_art, seats, workstation, warm_food, cold_food, price_class) values
+('Coffee_shop_Name3', ('Kieler Straße', 5, 24232, 'Kiel', 'Deutschland'), false, false, true, 'Textbeschreibung', false, true, 'www.nene.ne', 2019, true, false, 50, false, false, true, 'niedrig');
+insert into coffee_shop (name, address, outdoor, fair_trade, disabled_friendly, description, wlan, child_friendly, website, founding_year, pets_friendly, latte_art, seats, workstation, warm_food, cold_food, price_class) values
+('Coffee_shop_Name2', ('Kieler Straße', 5, 24232, 'Kiel', 'Deutschland'), false, false, true, 'Textbeschreibung', false, true, 'www.nene.ne', 2019, true, false, 50, false, true, true, 'niedrig');
 
 insert into equipment_category values ('Kaffeemühle');
 insert into supplies values ('Kaffeemühle', 1);
