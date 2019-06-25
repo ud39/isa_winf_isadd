@@ -191,9 +191,16 @@ namespace WinfADD.Repositories
         {
 
 
+            var sqlCoffeeShop = "INSERT INTO coffee_shop ";
+            var sqlOpeningTimeRelation = "INSERT INTO opens (coffee_shop_id, close, open, weekday) VALUES (@id, @close, @open,@weekday)";
+            var sqlImage = "INSERT INTO image (file_name, content_type) VALUES (@file_name, @content_type)";
+            var sqlCoffeeShopImage = "INSERT INTO coffee_shop_image (image_file_name, coffee_shop_id) VALUES (@image_file_name, @coffee_shop_id)";
+
+            var sqlBusStation = "INSERT INTO bus_station (name, line) VALUES (@name, @line)";
+
+
             //get all CoffeeShop properties
             PropertyInfo[] possibleProperties = typeof(CoffeeShopInsertModel).GetProperties();
-            var sqlCoffeeShop = "INSERT INTO coffee_shop ";
             var dbFiledNames = "";
             var modelFieldNames = "";
             foreach (PropertyInfo property in possibleProperties)
@@ -212,7 +219,13 @@ namespace WinfADD.Repositories
                 }
             }
 
-            sqlCoffeeShop += "(" + dbFiledNames + ")" + " VALUES " + "(" + modelFieldNames + ")";
+            sqlCoffeeShop += "(" + dbFiledNames + ")" + " VALUES " + "(" + modelFieldNames + ") RETURNING id";
+
+
+
+
+
+
 
             Console.WriteLine("<------------------------------------------------------------>");
             Console.WriteLine("::"+sqlCoffeeShop);
@@ -222,8 +235,8 @@ namespace WinfADD.Repositories
 
 
             Console.WriteLine("name::"+coffeeShopObj.Name);
-            Console.WriteLine("address:"+coffeeShopObj.Address.Town);
-            Console.WriteLine("time:"+coffeeShopObj.OpeningTimes);
+           // Console.WriteLine("address:"+coffeeShopObj.Address.Town);
+            Console.WriteLine("time:"+coffeeShopObj.OpeningTimes.GetType());
 
             Console.WriteLine("<//////////////////////////////////////////////////////////>");
 
@@ -232,14 +245,68 @@ namespace WinfADD.Repositories
             using (var conn = Connection)
             {
 
-               // using (var transaction = conn.BeginTransaction())
-                {}
-                   // conn.Execute("sql", new { }, transaction: transaction);
-                   var rowsAffected = conn.Execute(sqlCoffeeShop, coffeeShopObj);
+                try
+                {
 
-                   Console.WriteLine("-_-_-_-_"+rowsAffected);
-                   return rowsAffected > 0;
-                   //transaction.Commit();
+
+                var coffeShopID = conn.ExecuteScalar<int>(sqlCoffeeShop, coffeeShopObj);
+
+               // using (var transaction = conn.BeginTransaction())
+
+               /*
+               {
+
+                   //CoffeeShop
+                   // rowsAffected += conn.Execute(sqlCoffeeShop, coffeeShopObj);
+
+
+                   //OpeningTimes
+                   foreach (var openingTime in coffeeShopObj.OpeningTimes)
+                   {
+                       rowsAffected += conn.Execute(sqlOpeningTimeRelation,
+                           new{id = coffeShopID,
+                               close = openingTime.Close,
+                               open = openingTime.Open,
+                               weekday = openingTime.Weekday
+                           });
+                   }
+
+
+               foreach (var image in coffeeShopObj.Images)
+               {
+                   Console.WriteLine(image.FileName+"<->"+image.ContentType);
+                   conn.Execute(sqlImage,
+                       new {file_name = image.FileName, content_type = image.ContentType});
+
+                   conn.Execute(sqlCoffeeShopImage, new {image_file_name = image.FileName, coffee_shop_id = coffeShopID});
+               }
+
+               }
+               */
+
+
+
+
+
+
+
+
+
+
+            //transaction.Commit();
+
+
+                   Console.WriteLine("-_-_-_-_"+coffeShopID);
+                   return true; //rowsAffected > 0;
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    return false;
+                }
+
+
 
 
             }

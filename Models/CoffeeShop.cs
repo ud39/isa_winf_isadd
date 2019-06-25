@@ -36,7 +36,6 @@ namespace WinfADD.Models
         
         //strings
         public string Website { get; set; }
-        public string Food { get; set; }  //warm,cold
         public string PriceClass { get; set; }
         public string Franchise { get; set; }
 
@@ -49,6 +48,9 @@ namespace WinfADD.Models
         public bool LatteArt { get; set; }
         public bool PetsFriendly { get; set; }
         public bool Outdoor { get; set; }
+        public bool warm_food { get; set; }
+        public bool cold_food { get; set; }
+
 
         //byte
         public string Description { get; set; }

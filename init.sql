@@ -55,16 +55,14 @@ CREATE TABLE coffee_shop(
                           latte_art boolean,
                           seats int,
                           workstation boolean,
-                          food text,
+                          warm_food boolean,
+                          cold_food boolean,
                           price_class text,
                           franchise text,
                           unique(name, address)
 );
 
-CREATE TABLE bus_station(
-                          name citext primary key,
-                          line int
-);
+
 
 CREATE TABLE company(
   name citext primary key
@@ -117,12 +115,7 @@ CREATE TABLE coffee_drink(
                            description text
 );
 
-CREATE TABLE opening_time(
-                           close time,
-                           open time,
-                           weekday text,
-                           PRIMARY KEY (close, open, weekday)
-);
+
 
 CREATE TABLE public.user (
   email citext primary key
@@ -165,12 +158,12 @@ CREATE TABLE near_by(
                       FOREIGN KEY (coffee_shop_id) REFERENCES  coffee_shop (id) ON DELETE CASCADE
 );
 
-CREATE TABLE reachable(
+CREATE TABLE reachable_by_bus(
                         coffee_shop_id int,
                         bus_station_name citext,
-                        PRIMARY KEY (coffee_shop_id, bus_station_name),
-                        FOREIGN KEY (coffee_shop_id) REFERENCES  coffee_shop (id) ON DELETE CASCADE,
-                        FOREIGN KEY (bus_station_name) REFERENCES bus_station (name) ON DELETE CASCADE
+                        bus_station_line citext,
+                        PRIMARY KEY (coffee_shop_id, bus_station_name, bus_station_line),
+                        FOREIGN KEY (coffee_shop_id) REFERENCES  coffee_shop (id) ON DELETE CASCADE
 
 );
 
@@ -252,8 +245,7 @@ CREATE TABLE opens (
                      open time ,
                      weekday text ,
                      PRIMARY KEY (coffee_shop_id, close, open, weekday),
-                     FOREIGN KEY (coffee_shop_id) REFERENCES  coffee_shop (id) ON DELETE CASCADE,
-                     FOREIGN KEY (close, open, weekday) REFERENCES opening_time (close, open, weekday) ON DELETE CASCADE
+                     FOREIGN KEY (coffee_shop_id) REFERENCES  coffee_shop (id) ON DELETE CASCADE
 );
 
 CREATE TABLE includes (
@@ -299,6 +291,16 @@ create table event_image (
                                  Primary Key(image_file_name, event_id),
                                  Foreign Key(image_file_name) references image (file_name) ON DELETE CASCADE,
                                  FOREIGN KEY (event_id) REFERENCES event (id) ON DELETE CASCADE);
+
+
+create table poi_image (
+                                   image_file_name text,
+                                   poi_name citext,
+                                   poi_address address,
+                                   Primary Key(image_file_name, poi_name, poi_address),
+                                   Foreign Key(image_file_name) references image (file_name) ON DELETE CASCADE,
+                                   FOREIGN KEY (poi_name, poi_address) REFERENCES  poi (name, address) ON DELETE CASCADE);
+
 
 
 ------  CLUSTER  -------
@@ -407,10 +409,10 @@ create table operates (
 
 ------------ INSERT DATA ----------
 
-insert into coffee_shop (name, address, outdoor, fair_trade, disabled_friendly, description, wlan, child_friendly, website, founding_year, pets_friendly, latte_art, seats, workstation, food, price_class) values
-('Coffee_shop_Name3', ('Kieler Straße', 5, 24232, 'Kiel', 'Deutschland'), false, false, true, 'Textbeschreibung', false, true, 'www.nene.ne', 2019, true, false, 50, false, 'foood', 'niedrig');
-insert into coffee_shop (name, address, outdoor, fair_trade, disabled_friendly, description, wlan, child_friendly, website, founding_year, pets_friendly, latte_art, seats, workstation, food, price_class) values
-('Coffee_shop_Name2', ('Kieler Straße', 5, 24232, 'Kiel', 'Deutschland'), false, false, true, 'Textbeschreibung', false, true, 'www.nene.ne', 2019, true, false, 50, false, 'foood', 'niedrig');
+insert into coffee_shop (name, address, outdoor, fair_trade, disabled_friendly, description, wlan, child_friendly, website, founding_year, pets_friendly, latte_art, seats, workstation, warm_food, cold_food, price_class) values
+('Coffee_shop_Name3', ('Kieler Straße', 5, 24232, 'Kiel', 'Deutschland'), false, false, true, 'Textbeschreibung', false, true, 'www.nene.ne', 2019, true, false, 50, false, false, true, 'niedrig');
+insert into coffee_shop (name, address, outdoor, fair_trade, disabled_friendly, description, wlan, child_friendly, website, founding_year, pets_friendly, latte_art, seats, workstation, warm_food, cold_food, price_class) values
+('Coffee_shop_Name2', ('Kieler Straße', 5, 24232, 'Kiel', 'Deutschland'), false, false, true, 'Textbeschreibung', false, true, 'www.nene.ne', 2019, true, false, 50, false, true, true, 'niedrig');
 
 insert into equipment_category values ('Kaffeemühle');
 insert into supplies values ('Kaffeemühle', 1);
@@ -430,11 +432,9 @@ insert into poi values ('dummyname1' ,('dummystraß1e', 5, 23222, 'Dummystadt', 
 insert into near_by values (2, 'dummyname' ,('dummystraße', 5, 23222, 'Dummystadt', 'Dummyland'));
 insert into near_by values (2, 'dummyname1' ,('dummystraß1e', 5, 23222, 'Dummystadt', 'Dummyland'));
 
-insert into bus_station values ('stationdummy', 51);
-insert into bus_station values ('stationdummy1', 52);
 
-insert into reachable values (2, 'stationdummy');
-insert into reachable values (2, 'stationdummy1');
+insert into reachable_by_bus values (2, 'stationdummy', '81');
+insert into reachable_by_bus values (2, 'stationdummy1', '90');
 
 insert into company values ('dummycompany');
 insert into company values ('dummycompany1');
@@ -467,8 +467,6 @@ insert into event (time, name, access_fee, description) values ('2019-12-25', 'd
 insert into organised_by values (2, 1);
 insert into organised_by values (2, 2);
 
-insert into opening_time values ('05:00:00', '17:00:00', 'Friday');
-insert into opening_time values ('05:00:00', '17:00:00', 'Monday');
 
 insert into image values ('1.png', 'preview');
 insert into image values ('2.png', 'preview');
@@ -484,11 +482,6 @@ insert into event_image values ('event1.png',1);
 insert into event_image values ('event2.png',1);
 insert into event_image values ('event3.png',1);
 
-insert into opening_time values ('18:00:00', '10:00:00', 'friday');
-insert into opening_time values ('18:00:00', '10:00:00', 'monday');
-insert into opening_time values ('18:00:00', '10:00:00', 'tuesday');
-insert into opening_time values ('18:00:00', '10:00:00', 'saturday');
-insert into opening_time values ('18:00:00', '10:00:00', 'sunday');
 
 insert into opens values (2, '18:00:00', '10:00:00', 'friday');
 insert into opens values (2, '18:00:00', '10:00:00', 'monday');
