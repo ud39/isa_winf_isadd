@@ -7,6 +7,6 @@ namespace WinfADD.Models
         //primary keys
         [Key] public string Name { get; set; }
 
-        public int Line { get; set; }
+        [Key] public string Line { get; set; }
     }
 }

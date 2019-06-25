@@ -39,7 +39,6 @@ namespace WinfADD.Models
 
         public Address Address { get; set; }
 
-        public IEnumerable<OpeningTime> OpeningTimes{ get; set; }
-        public IEnumerable<Preparation> Preparations{ get; set; }
+
     }
 }

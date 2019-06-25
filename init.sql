@@ -61,10 +61,7 @@ CREATE TABLE coffee_shop(
                           unique(name, address)
 );
 
-CREATE TABLE bus_station(
-                          name citext primary key,
-                          line int
-);
+
 
 CREATE TABLE company(
   name citext primary key
@@ -117,12 +114,7 @@ CREATE TABLE coffee_drink(
                            description text
 );
 
-CREATE TABLE opening_time(
-                           close time,
-                           open time,
-                           weekday text,
-                           PRIMARY KEY (close, open, weekday)
-);
+
 
 CREATE TABLE public.user (
   email citext primary key
@@ -165,12 +157,12 @@ CREATE TABLE near_by(
                       FOREIGN KEY (coffee_shop_id) REFERENCES  coffee_shop (id) ON DELETE CASCADE
 );
 
-CREATE TABLE reachable(
+CREATE TABLE reachable_by_bus(
                         coffee_shop_id int,
                         bus_station_name citext,
-                        PRIMARY KEY (coffee_shop_id, bus_station_name),
-                        FOREIGN KEY (coffee_shop_id) REFERENCES  coffee_shop (id) ON DELETE CASCADE,
-                        FOREIGN KEY (bus_station_name) REFERENCES bus_station (name) ON DELETE CASCADE
+                        bus_station_line citext,
+                        PRIMARY KEY (coffee_shop_id, bus_station_name, bus_station_line),
+                        FOREIGN KEY (coffee_shop_id) REFERENCES  coffee_shop (id) ON DELETE CASCADE
 
 );
 
@@ -252,8 +244,7 @@ CREATE TABLE opens (
                      open time ,
                      weekday text ,
                      PRIMARY KEY (coffee_shop_id, close, open, weekday),
-                     FOREIGN KEY (coffee_shop_id) REFERENCES  coffee_shop (id) ON DELETE CASCADE,
-                     FOREIGN KEY (close, open, weekday) REFERENCES opening_time (close, open, weekday) ON DELETE CASCADE
+                     FOREIGN KEY (coffee_shop_id) REFERENCES  coffee_shop (id) ON DELETE CASCADE
 );
 
 CREATE TABLE includes (
@@ -430,11 +421,9 @@ insert into poi values ('dummyname1' ,('dummystraß1e', 5, 23222, 'Dummystadt', 
 insert into near_by values (2, 'dummyname' ,('dummystraße', 5, 23222, 'Dummystadt', 'Dummyland'));
 insert into near_by values (2, 'dummyname1' ,('dummystraß1e', 5, 23222, 'Dummystadt', 'Dummyland'));
 
-insert into bus_station values ('stationdummy', 51);
-insert into bus_station values ('stationdummy1', 52);
 
-insert into reachable values (2, 'stationdummy');
-insert into reachable values (2, 'stationdummy1');
+insert into reachable_by_bus values (2, 'stationdummy', '81');
+insert into reachable_by_bus values (2, 'stationdummy1', '90');
 
 insert into company values ('dummycompany');
 insert into company values ('dummycompany1');
@@ -467,8 +456,6 @@ insert into event (time, name, access_fee, description) values ('2019-12-25', 'd
 insert into organised_by values (2, 1);
 insert into organised_by values (2, 2);
 
-insert into opening_time values ('05:00:00', '17:00:00', 'Friday');
-insert into opening_time values ('05:00:00', '17:00:00', 'Monday');
 
 insert into image values ('1.png', 'preview');
 insert into image values ('2.png', 'preview');
@@ -484,11 +471,6 @@ insert into event_image values ('event1.png',1);
 insert into event_image values ('event2.png',1);
 insert into event_image values ('event3.png',1);
 
-insert into opening_time values ('18:00:00', '10:00:00', 'friday');
-insert into opening_time values ('18:00:00', '10:00:00', 'monday');
-insert into opening_time values ('18:00:00', '10:00:00', 'tuesday');
-insert into opening_time values ('18:00:00', '10:00:00', 'saturday');
-insert into opening_time values ('18:00:00', '10:00:00', 'sunday');
 
 insert into opens values (2, '18:00:00', '10:00:00', 'friday');
 insert into opens values (2, '18:00:00', '10:00:00', 'monday');
