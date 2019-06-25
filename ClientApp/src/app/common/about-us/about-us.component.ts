@@ -9,8 +9,8 @@ import {ImageService} from "../../services/image/image.service";
 })
 export class AboutUsComponent implements OnInit {
 
-  private brand;
-  constructor(private imageBrandService: ImageService) { }
+  public brand;
+  constructor(public imageBrandService: ImageService) { }
 
   ngOnInit() {
     this.imageBrandService.getBrandImage().subscribe(value => {

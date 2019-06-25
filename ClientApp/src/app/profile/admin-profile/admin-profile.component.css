@@ -148,3 +148,11 @@ app-admin-profile .description{
   display: block;
 }
 
+app-admin-profile button:focus{
+  outline:none;
+}
+
+button:focus{
+  outline:none;
+}
+

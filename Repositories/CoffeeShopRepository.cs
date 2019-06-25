@@ -6,7 +6,6 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Dapper;
 using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json.Linq;
 using Npgsql;
 using WinfADD.Models;
 using WinfADD.Models.Mapping;
@@ -105,9 +104,9 @@ namespace WinfADD.Repositories
         {
             PropertyInfo[] possibleProperties = typeof(CoffeeShopSearchModel).GetProperties();
             var builder = new SqlBuilder();
-            
-            var filterCoffeeShops = builder.AddTemplate("Select * from coffee_shop /**where**/  ");
 
+            var sql = "Select * from coffee_shop /**where**/  ";
+         
             var mapping = MappingM2DB.CoffeShopMap;
 
             foreach (PropertyInfo property in possibleProperties)
@@ -117,7 +116,13 @@ namespace WinfADD.Repositories
        
                 mapping.TryGetValue(property.Name.ToLower(), out string propertyName);
 
-                if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName))
+                if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && propertyName == "name")
+                {
+                    properties.Add(propertyName, "%" + property.GetValue(query)+ "%");
+                    builder.Where(propertyName + " LIKE " + "@" + propertyName, properties);
+                 }
+                
+                else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName))
                 {
                     properties.Add(propertyName, "%" + property.GetValue(query)+ "%");
                     builder.Where(propertyName + "::text" + " LIKE " + "@" + propertyName, properties);
@@ -127,6 +132,8 @@ namespace WinfADD.Repositories
         
             using (IDbConnection dbConnection = Connection)
             {
+                var filterCoffeeShops = builder.AddTemplate(sql);
+
                 if (possibleProperties.Length == 0)
                     return await GetAll();
                 var result = await dbConnection.QueryAsync<CoffeeShopPreview>(filterCoffeeShops.RawSql,filterCoffeeShops.Parameters);

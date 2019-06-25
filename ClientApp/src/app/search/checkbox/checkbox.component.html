@@ -2,7 +2,6 @@
   <div>
     <mat-form-field class="direct-shop" *ngIf="router.url != this.global.urlName.get('admin')">
       <input id="name" type="text" placeholder="Shop" aria-label="Number" matInput [formControl]="shopNameFormControl" [matAutocomplete]="auto">
-      <mat-hint>mind. 2 Buchstaben für Autovervollständigung</mat-hint>
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
           {{option}}
@@ -11,7 +10,7 @@
     </mat-form-field>
     <mat-form-field class="direct-shop">
       <mat-label>Landmarken</mat-label>
-      <mat-select id="poi">
+      <mat-select id="poi" multiple>
         <mat-option *ngFor="let poi of filteredPoi | async" [value]="poi">
           {{poi}}
         </mat-option>
@@ -25,6 +24,12 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
+    <mat-form-field>
+      <mat-label>Bus Station</mat-label>
+      <mat-select>
+        <mat-option></mat-option>
+      </mat-select>
+    </mat-form-field>
     <mat-checkbox #cb class="checkbox" id="wlan" [checked]="false">Wlan</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id="vegan" [checked]="false">Vegan</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id="latteArt" [checked]="false">Latte Art</mat-checkbox>
@@ -34,6 +39,9 @@
     <mat-checkbox #cb class="checkbox" id="shop" [checked]="false">Rösterei</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id="disableFriendly" [checked]="false">Behindertengerecht</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id="petFriendly "[checked]="false">Haustierfreundlich</mat-checkbox>
+    <mat-checkbox #cb class="checkbox" id="warmFood" [checked]="false">Warm</mat-checkbox>
+    <mat-checkbox #cb class="checkbox" id="coldFood" [checked]="false">Kalt</mat-checkbox>
+    <mat-checkbox #cb class="checkbox" id="franchise" [checked]="false">Kette</mat-checkbox>
     <div  *ngIf="router.url == this.global.urlName.get('admin')">
       <button mat-button id="clearbutton" (click)="clear()">Checks aufheben</button>
     </div>

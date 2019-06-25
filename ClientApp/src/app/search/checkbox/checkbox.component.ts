@@ -3,7 +3,7 @@ import {ViewEncapsulation} from "@angular/core";
 import {Router} from '@angular/router';
 import {MatCheckbox, MatInput, MatSelect} from "@angular/material";
 import {CheckBoxesService} from "../../services/interactive-element/checkboxes.service";
-import {FormControl} from "@angular/forms";
+import {FormControl, FormGroup} from "@angular/forms";
 import {Observable} from "rxjs";
 import {map, startWith} from "rxjs/operators";
 import {ShopService} from "../../services/shop/shop.service";
@@ -23,8 +23,8 @@ export class CheckboxComponent implements OnInit {
   @ViewChildren(MatSelect) selects : QueryList<MatSelect>;
   @ViewChildren(MatInput) inputSearch : QueryList<MatInput>;
 
-  constructor(private router: Router, private checkBoxService: CheckBoxesService,
-              private shopService: ShopService, private global: Global) {
+  constructor(public router: Router, public checkBoxService: CheckBoxesService,
+              public shopService: ShopService, public global: Global) {
 
   }
 
@@ -32,7 +32,7 @@ export class CheckboxComponent implements OnInit {
   public options: string[] = [];
   public filteredOptions: Observable<string[]>;
   public filteredPoi: Observable<string[]>;
-  public shopFormControls = new Array<FormControl>(this.shopNameFormControl);
+  public shopFormControls = new FormGroup({shopName:this.shopNameFormControl});
   fillOutOptions(){
     this.shopService.getShops().subscribe(shop =>{
       shop.forEach( value => {
@@ -41,8 +41,8 @@ export class CheckboxComponent implements OnInit {
     })
   }
 
-  getjsonOfSearchWithSelect(): JSON{
-    return this.checkBoxService.getjsonOfSearchWithSelect(this.inputSearch.toArray(),this.cbs.toArray(), this.selects.toArray());
+  getJsonOfSearchWithSelect(): JSON{
+    return this.checkBoxService.getJsonOfSearchWithSelect(this.inputSearch.toArray(),this.cbs.toArray(), this.selects.toArray());
   }
 
   clear(){

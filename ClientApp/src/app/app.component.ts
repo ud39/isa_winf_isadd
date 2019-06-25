@@ -18,11 +18,6 @@ export class AppComponent {
   constructor(private router: Router, private globals: Global) {
   }
 
-  static onElementFocusRemove(e){
-    if (document.activeElement instanceof HTMLElement && document.activeElement.tagName.toLowerCase() == 'button')
-    { document.activeElement.blur();}
-  }
-
   public checkUrlCheckBox(urlPath:NavigationStart){
     let currentUrl = urlPath['url'];
     let urlMap = this.globals.urlName;
@@ -36,8 +31,6 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    if (document.addEventListener)
-      document.addEventListener("focus", AppComponent.onElementFocusRemove, true);
     // on route change to '/login', set the variable showNavigation to false
     this.router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
