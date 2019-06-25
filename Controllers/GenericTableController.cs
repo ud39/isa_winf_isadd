@@ -69,7 +69,7 @@ namespace WinfADD.Controllers
         }
 
 
-        [Route("add")]
+        [Route("insert")]
         [HttpPost]
         public async Task<bool> Post(JToken tableJson)
         {
