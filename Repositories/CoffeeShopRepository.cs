@@ -105,9 +105,9 @@ namespace WinfADD.Repositories
         {
             PropertyInfo[] possibleProperties = typeof(CoffeeShopSearchModel).GetProperties();
             var builder = new SqlBuilder();
-            
-            var filterCoffeeShops = builder.AddTemplate("Select * from coffee_shop /**where**/  ");
 
+            var sql = "Select * from coffee_shop /**where**/  ";
+         
             var mapping = MappingM2DB.CoffeShopMap;
 
             foreach (PropertyInfo property in possibleProperties)
@@ -133,6 +133,8 @@ namespace WinfADD.Repositories
         
             using (IDbConnection dbConnection = Connection)
             {
+                var filterCoffeeShops = builder.AddTemplate(sql);
+
                 if (possibleProperties.Length == 0)
                     return await GetAll();
                 var result = await dbConnection.QueryAsync<CoffeeShopPreview>(filterCoffeeShops.RawSql,filterCoffeeShops.Parameters);
