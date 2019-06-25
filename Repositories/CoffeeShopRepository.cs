@@ -155,7 +155,7 @@ namespace WinfADD.Repositories
                            "select e.* from event e, organised_by o where o.coffee_shop_id = @id and  e.id = o.event_id;" +
                            "select b.* from provides p, bean b where p.coffee_shop_id = @id and p.bean_name = b.name and p.bean_manufacturer_name = b.manufacturer_name;" +
                            "select b.* from offers o, blend b where o.coffee_shop_id = @id and o.blend_name = b.name and o.blend_manufacturer_name = b.manufacturer_name;" +
-                           "select b.* from bus_station b, reachable r where r.coffee_shop_id = @id and r.bus_station_name = b.name;" +
+                           "select b.* from reachable_by_bus b where b.coffee_shop_id = @id and b.bus_station_name = b.bus_station_name;" +
                            "select c.* from coffee_drink c, serves s where s.coffee_shop_id = @id and s.coffee_drink_name = c.name;" +
                            // Equipment  "select e.* from equipment e, sells s where s.coffee_shop_id = 2 and s.equipment_manufacturer_name = e.manufacturer_name and s.equipment_model_name = e.model_name and s.equipment_year_of_origin = e.year_of_origin;";
                            "select distinct e.* from equipment_category e, sells s where s.coffee_shop_id = @id and s.equipment_category_name = e.name;" +
@@ -410,14 +410,6 @@ namespace WinfADD.Repositories
                return true;
 
             }
-
-
-
-
-
         }
-
-
-        }
-        
     }
+}

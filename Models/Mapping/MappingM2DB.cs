@@ -45,5 +45,26 @@ namespace WinfADD.Models.Mapping
             {"priceclass", "price_class"},
             {"description", "description"},
         };
+
+
+        public static Dictionary<string, string> BeanMap = new Dictionary<string, string>
+        {
+            {"name", "name"},
+            {"manufacturername", "manufacturer_name"},
+            {"provenance", "provenance"},
+            {"priceclass", "priceclass"},
+            {"fairtrade", "fairtrade"},
+            {"description", "description"}
+
+        };
+
+        public static Dictionary<string, string> BusStationMap = new Dictionary<string, string>
+        {
+            {"name", "bus_station_name"},
+            {"line", "bus_station_line"}
+
+        };
+
+
     }
 }

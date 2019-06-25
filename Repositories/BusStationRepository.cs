@@ -12,10 +12,14 @@ namespace WinfADD.Repositories
 
             //TODO add all key names here //TODO in extended class
             // keys.Add("KeyString");
-            Keys.Add("Bus_Station_Name");
+            Keys.Add("name");
+            Keys.Add("line");
 
             //TODO write tableName
-            TableName = "bus_station";
+            TableName = "reachable_by_bus";
+
+            //TODO Mapping
+            _MappingM2DB = Models.Mapping.MappingM2DB.BusStationMap;
 
 
             //helper strings
@@ -25,12 +29,12 @@ namespace WinfADD.Repositories
             {
                 //compute keyCompare, CSKeys, AtCSKeys
                 if(keyCompare.Length >0){
-                    keyCompare += " AND " + keyString + "=@" + keyString;
+                    keyCompare += " AND " + keyString + " = @" + keyString.Replace("_", "");
                 }
 
                 else
                 {
-                    keyCompare += keyString + "=@" + keyString;
+                    keyCompare += keyString + " = @" + keyString.Replace("_","");
                 }
             }
 
@@ -44,15 +48,15 @@ namespace WinfADD.Repositories
 
             //Update sql query: UpdateString = "UPDATE table SET property1=@property1, property2=@property2... WHERE key1=@key1, key2=@key2...";
             UpdateString = "UPDATE " + TableName + " SET ";
-            PropertyInfo[] possibleProperties = typeof(Blend).GetProperties();
+            PropertyInfo[] possibleProperties = typeof(BusStation).GetProperties();
             var temp = "";
             foreach (PropertyInfo property in possibleProperties)
             {
                 var propertyName = property.Name.ToLower();
-                if(temp.Length > 0) temp += ", " + propertyName + "= @" + propertyName;
+                if(temp.Length > 0) temp += ", " + _MappingM2DB[propertyName] + "= @" + propertyName;
                 else
                 {
-                    temp += propertyName + "= @" + propertyName;
+                    temp += _MappingM2DB[propertyName] + "= @" + propertyName;
                 }
             }
             UpdateString += temp + " WHERE " + keyCompare;

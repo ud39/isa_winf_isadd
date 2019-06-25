@@ -10,5 +10,7 @@ namespace WinfADD.Models
         
         //
         public string Description { get; set; }
+
+        public string thumbnail { get; set; }
     }
 }
