@@ -10,4 +10,5 @@ export class Global{
     ["wikiEquipment", '/wiki/equipment'],
     ['wikiCoffee', '/wiki/coffee'],
   ]);
+  url="https://localhost:5001/api/";
 }

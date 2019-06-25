@@ -1,0 +1,10 @@
+<mat-list id="shop-list">
+  <mat-list-item *ngFor="let shop of data; last as last">
+      <img src="https://dummyimage.com/100x100/fff/000" class="preview-img">
+    <div class="preview-content">
+      <h6 class="shop_name">{{shop.name}}
+      </h6>
+    </div>
+    <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+  </mat-list-item>
+</mat-list>

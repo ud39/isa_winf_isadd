@@ -1,5 +1,5 @@
 <app-checkbox-equipment #cbEq></app-checkbox-equipment>
-<mat-select placeholder="Equipment Kategorie">
+<mat-select placeholder="Equipment Kategorie" required [formControl]="selectEquipmentCategoryFormControl">
   <mat-option></mat-option>
 </mat-select>
 <mat-form-field class="name-form-field">

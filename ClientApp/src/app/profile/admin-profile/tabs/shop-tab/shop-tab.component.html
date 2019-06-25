@@ -1,38 +1,50 @@
- <app-checkbox #shopCheckBox class="checkbox"></app-checkbox>
+ <app-checkbox #checkbox class="checkbox"></app-checkbox>
   <mat-form-field class="shop-form-field address">
-    <input matInput type="text" placeholder="Straße" [formControl]="streetFormControl">
+    <input id="streetName" matInput #address="matInput" type="text" placeholder="Straße" [formControl]="streetFormControl">
   </mat-form-field>
   <mat-form-field class="shop-form-field address">
-    <input matInput type="number" placeholder="StraßeNr" min="0" oninput="validity.valid||(value='')" [formControl]="streetNrFormControl">
+    <input id="streetNr" matInput #address="matInput" type="number" placeholder="StraßeNr" min="0" oninput="this.value = Math.abs(this.value)" [formControl]="streetNrFormControl">
   </mat-form-field>
-  <mat-form-field class="shop-form-field address">
-    <input matInput type="text" placeholder="Land" [formControl]="countryFormControl">
+  <mat-form-field  class="shop-form-field address">
+    <input id="country" matInput #address="matInput" type="text" placeholder="Land" [formControl]="countryFormControl">
   </mat-form-field>
- <mat-form-field class="shop-form-field address">
-   <input matInput type="number" min=" " oninput="validity.valid ||(value='')" placeholder="Postleitzahl" [formControl]="postalCodeFormControl">
+ <mat-form-field  class="shop-form-field address">
+   <input id="postalCode" matInput #address="matInput" type="number"min="0" oninput="this.value = Math.abs(this.value)" placeholder="Postleitzahl" [formControl]="postalCodeFormControl">
  </mat-form-field>
- <mat-form-field class="shop-form-field address">
-   <input matInput type="text" placeholder="Stadt" [formControl]="townFormControl">
+ <mat-form-field  class="shop-form-field address">
+   <input id="town" matInput #address="matInput" type="text" placeholder="Stadt" [formControl]="townFormControl">
  </mat-form-field>
-  <mat-form-field class="description">
-    <input matInput type="text" required placeholder="Name" [formControl]="shopNameFormControl">
+  <mat-form-field  class="description">
+    <input id="name" matInput #inputs="matInput" type="text" required placeholder="Name" [formControl]="shopNameFormControl">
     <mat-error *ngIf="shopNameFormControl.hasError('required')">Es muss einen Namen angebgeben werden</mat-error>
   </mat-form-field>
   <mat-form-field class="description">
     <mat-label>Beschreibung</mat-label>
-    <textarea matInput
+    <textarea
+              matInput
+              id="description"
+              #inputs="matInput"
+              [formControl]="shopDescriptionFormControl"
               maxlength="1000"
               cdkTextareaAutosize
               cdkAutosizeMinRows="2"
     ></textarea>
   </mat-form-field>
+ <mat-form-field  class="description">
+   <input id="website" matInput #inputs="matInput" type="url" placeholder="Website" [formControl]="shopWebsiteFormControl">
+ </mat-form-field>
+
+ <mat-form-field  class="description">
+   <input id="foundingYear" matInput #inputs="matInput" type="number" placeholder="Gründungs Jahr" min="1700" oninput="this.value = Math.abs(this.value)" [formControl]="shopFoundingYearFormControl">
+   <mat-hint>Gründung mindesten ab 1700er</mat-hint>
+ </mat-form-field>
   <mat-tab-group id="second-mat-tab-group">
     <mat-tab label="Front-Bild">
 
 
 
 
-           <div>Shop Bild Laden</div>
+  <div>Shop Bild Laden</div>
       <input
         style="display: none"
         type="file" (change)="onFileChanged($event)"

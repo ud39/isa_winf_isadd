@@ -1,4 +1,4 @@
-import {Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
+import {Component, OnInit, QueryList, ViewChildren} from '@angular/core';
 import {ViewEncapsulation} from "@angular/core";
 import {Router} from '@angular/router';
 import {MatCheckbox, MatInput, MatSelect} from "@angular/material";
@@ -14,16 +14,14 @@ import {Global} from "../../global";
   selector: 'app-checkbox',
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.css'],
-  providers: [CheckBoxesService],
+  providers: [CheckBoxesService, Global],
   encapsulation: ViewEncapsulation.None
 })
 export class CheckboxComponent implements OnInit {
 
   @ViewChildren('cb') cbs : QueryList<MatCheckbox>;
-  @ViewChild('inputShop') inputShop: MatInput;
-  @ViewChildren(MatSelect) select : QueryList<MatSelect>;
-  @ViewChild('selectPOI') selectPoi : MatSelect;
-  @ViewChild('selectPrice') selectPrice : MatSelect;
+  @ViewChildren(MatSelect) selects : QueryList<MatSelect>;
+  @ViewChildren(MatInput) inputSearch : QueryList<MatInput>;
 
   constructor(private router: Router, private checkBoxService: CheckBoxesService,
               private shopService: ShopService, private global: Global) {
@@ -44,11 +42,11 @@ export class CheckboxComponent implements OnInit {
   }
 
   getjsonOfSearchWithSelect(): JSON{
-    return this.checkBoxService.getjsonOfSearchWithSelect(this.shopFormControls,this.cbs.toArray(), this.select.toArray());
+    return this.checkBoxService.getjsonOfSearchWithSelect(this.inputSearch.toArray(),this.cbs.toArray(), this.selects.toArray());
   }
 
   clear(){
-    this.checkBoxService.clear(this.cbs,this.shopFormControls,  this.select.toArray());
+    this.checkBoxService.clear(this.cbs,this.shopFormControls,  this.selects.toArray());
   }
 
   ngOnInit() {
@@ -63,9 +61,6 @@ export class CheckboxComponent implements OnInit {
   }
 
   ngAfterViewInit(){
-    console.log(this.selectPrice.selectionChange.subscribe(value => {
-      console.log(value);
-    }));
   }
 
 }

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {CheckboxEquipmentComponent} from "../../../../search/checkbox-equipment/checkbox-equipment.component";
 
 @Component({
   selector: 'app-equipment-tab',
@@ -7,6 +8,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./equipment-tab.component.css']
 })
 export class EquipmentTabComponent implements OnInit {
+  @ViewChild('cbEq') checkBoxes : CheckboxEquipmentComponent;
 
   public equipmentNameFormControl = new FormControl('',[
     Validators.required
@@ -17,9 +19,12 @@ export class EquipmentTabComponent implements OnInit {
     ]
   );
 
+  public selectEquipmentCategoryFormControl = new FormControl('',[]);
+
   public equipmentInput = new FormGroup({
     equipmentName: this.equipmentNameFormControl,
-    equipmentDescrition: this.equipmentDescriptionFormControl
+    equipmentDescrition: this.equipmentDescriptionFormControl,
+    equipmentCategory: this.selectEquipmentCategoryFormControl
   });
 
   public getEquipmentInput(){

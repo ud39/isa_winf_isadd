@@ -27,13 +27,15 @@ import {ShopTabComponent} from "./profile/admin-profile/tabs/shop-tab/shop-tab.c
 import { EquipmentTabComponent } from './profile/admin-profile/tabs/equipment-tab/equipment-tab.component';
 import { EventTabComponent } from './profile/admin-profile/tabs/event-tab/event-tab.component';
 import { ContentTabComponent } from './profile/admin-profile/tabs/content-tab/content-tab.component';
-import {MAT_DATE_LOCALE, MatRadioModule} from "@angular/material";
+import {MAT_DATE_LOCALE, MAT_DIALOG_DEFAULT_OPTIONS, MatRadioModule} from "@angular/material";
 import {TruncateModule} from "@yellowspot/ng-truncate";
 import { ArticleListComponent } from './content/wiki/article-list/article-list.component';
 import { ArticleDetailComponent } from './content/wiki/article-detail/article-detail.component';
 import {CheckboxCoffeeComponent} from "./search/checkbox-coffee/checkbox-coffee.component";
 import {SlideshowModule} from "ng-simple-slideshow";
 import { UserTabComponent } from './profile/admin-profile/tabs/user-tab/user-tab/user-tab.component';
+import {EditListComponent} from "./profile/admin-profile/dialog/edit-list/edit-list.component";
+import {Global} from "./global";
 
 
 @NgModule({
@@ -63,6 +65,7 @@ import { UserTabComponent } from './profile/admin-profile/tabs/user-tab/user-tab
     ArticleDetailComponent,
     CheckboxCoffeeComponent,
     UserTabComponent,
+    EditListComponent,
 
   ],
   imports: [
@@ -93,8 +96,10 @@ import { UserTabComponent } from './profile/admin-profile/tabs/user-tab/user-tab
     MatRadioModule,
     TruncateModule,
   ],
-  providers: [ { provide: MAT_DATE_LOCALE, useValue: 'de-DE' },],
-
+  providers: [ { provide: MAT_DATE_LOCALE, useValue: 'de-DE' },
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
+    {provide: Global}],
+  entryComponents: [EditListComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

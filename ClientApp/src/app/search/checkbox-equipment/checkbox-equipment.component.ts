@@ -1,7 +1,7 @@
 import {Component, OnInit, QueryList, ViewChildren, ViewEncapsulation} from '@angular/core';
 import {CheckboxComponent} from "../checkbox/checkbox.component";
 import {Router} from "@angular/router";
-import {MatCheckbox} from "@angular/material";
+import {MatCheckbox, MatInput, MatSelect} from "@angular/material";
 import {CheckBoxesService} from "../../services/interactive-element/checkboxes.service";
 import {FormControl} from "@angular/forms";
 
@@ -15,12 +15,13 @@ import {FormControl} from "@angular/forms";
 })
 export class CheckboxEquipmentComponent implements OnInit {
   @ViewChildren('cb') cbs : QueryList<MatCheckbox>;
-
+  @ViewChildren(MatSelect) selects : QueryList<MatSelect>;
+  @ViewChildren(MatInput) inputs : QueryList<MatInput>;
   constructor(public router:Router, public checkBoxService: CheckBoxesService) { }
   public myControl = new FormControl();
   public equipmentFormControls = new Array<FormControl>(this.myControl);
   getJsonOfSearch(): JSON{
-    return this.checkBoxService.getjsonOfSearch(this.equipmentFormControls,this.cbs.toArray());
+    return this.checkBoxService.getjsonOfSearchWithSelect(this.inputs.toArray(),this.cbs.toArray(),this.selects.toArray());
   }
 
   clear() {

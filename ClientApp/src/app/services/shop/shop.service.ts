@@ -12,7 +12,7 @@ import {Params} from "@angular/router";
 
 
 
-const url="https://localhost:5001/api/";
+
 
 const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
