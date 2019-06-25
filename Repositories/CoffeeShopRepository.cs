@@ -233,7 +233,7 @@ namespace WinfADD.Repositories
                 "VALUES (@coffee_shop_id, @preparation_name, @coffee_drink_name)";
             //
 
-            Console.WriteLine("*********************************************************");
+
 
             //get all CoffeeShop properties
             PropertyInfo[] possibleProperties = typeof(CoffeeShopInsertModel).GetProperties();
@@ -255,7 +255,9 @@ namespace WinfADD.Repositories
                 }
             }
 
+
             sqlCoffeeShop += "(" + dbFiledNames + ")" + " VALUES " + "(" + modelFieldNames + ") RETURNING id";
+            Console.WriteLine("INSERT SHOP:: " + sqlCoffeeShop);
 
 
 
@@ -263,26 +265,10 @@ namespace WinfADD.Repositories
 
 
 
-            Console.WriteLine("<------------------------------------------------------------>");
-            Console.WriteLine("::"+sqlCoffeeShop);
 
-
-            Console.WriteLine("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>");
-
-
-            Console.WriteLine("name::"+coffeeShopObj.Name);
-           // Console.WriteLine("address:"+coffeeShopObj.Address.Town);
-            Console.WriteLine("time:"+coffeeShopObj.OpeningTimes.GetType());
-
-            Console.WriteLine("<//////////////////////////////////////////////////////////>");
-
-
-
+            //QUERY
             using (var conn = Connection)
             {
-
-
-
 
                     conn.Open();
                using (var transaction = conn.BeginTransaction())

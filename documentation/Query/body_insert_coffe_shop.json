@@ -1,0 +1,146 @@
+{
+   
+    "name": "CafeA",
+    "foundingYear": 2019,
+    "seats": 50000,
+    "website": "www.nene.ne",
+    "warm_food": true,
+    "cold_food": false,
+    "priceClass": "niedrig",
+    "franchise": null,
+    "wlan": false,
+    "disabledFriendly": true,
+    "fairTrade": false,
+    "childFriendly": true,
+    "workstation": false,
+    "latteArt": false,
+    "petsFriendly": true,
+    "outdoor": false,
+    "description": "Textbeschreibung",
+        "address": {
+        "country": "Deutschland",
+        "town": "Kiel",
+        "postalCode": 21323,
+        "streetName": "Kieler Straße",
+        "streetNumber": 5
+    },
+    "companyName": "dummycompany1",
+    "events": [
+        {
+            "id": 1,
+            "time": "26.12.2019 00:00:00",
+            "name": "dummyevent1",
+            "accessFee": 5,
+            "description": "eventdescriptiondummy",
+            "previewImageFileName": null,
+            "images": []
+        },
+        {
+            "id": 2,
+            "time": "25.12.2019 00:00:00",
+            "name": "dummyevent",
+            "accessFee": 100,
+            "description": "eventdescriptiondummy",
+            "previewImageFileName": null,
+            "images": []
+        }
+    ],
+    "images": [
+        {
+            "fileName": "1.png",
+            "contentType": "preview"
+        },
+        {
+            "fileName": "2.png",
+            "contentType": "preview"
+        }
+    ],
+    "coffeeDrinks": [
+        {
+            "name": "coffeedrinkdummyname",
+            "description": "descriptiondummy",
+            "type": null,
+            "vegan": true,
+            "preparations": [{"name": "Fein Gemahlen"}, {"name": "FrenchPress"} ]
+        },
+        {
+            "name": "coffeedrinkdummyname1",
+            "description": "descriptiondummy1",
+            "type": null
+        }
+    ],
+    "listOfPoi": [
+        {
+            "name": "dummyname",
+            "address": {
+                "country": "Dummyland",
+                "town": "Dummystadt",
+                "postalCode": 23222,
+                "streetName": "dummystraße",
+                "streetNumber": 5
+            },
+            "description": null,
+            "thumbnail": null
+        },
+        {
+            "name": "dummyname1",
+            "address": {
+                "country": "Dummyland",
+                "town": "Dummystadt",
+                "postalCode": 23222,
+                "streetName": "dummystraß1e",
+                "streetNumber": 5
+            },
+            "description": null,
+            "thumbnail": null
+        }
+    ],
+    "reachableByBus": [
+        {
+            "name": "stationdummy",
+            "line": 51
+        },
+        {
+            "name": "stationdummy1",
+            "line": 52
+        }
+    ],
+    "equipmentCategories": [
+        {
+            "name": "categorydummy"
+        }
+    ],
+    "beans": [
+        {
+            "name": "dummybean",
+            "manufacturerName": "dummymanufacturer",
+            "provenance": "dummyprovenance",
+            "fairTrade": true,
+            "priceClass": null,
+            "description": null
+        },
+        {
+            "name": "dummybean1",
+            "manufacturerName": "dummymanufacturer",
+            "provenance": "dummyprovenance",
+            "fairTrade": true,
+            "priceClass": null,
+            "description": null
+        }
+    ],
+    "blends": [
+        {
+            "name": "blenddummy",
+            "manufacturerName": "manufacturerdummy",
+            "provenance": "dummyprovenance",
+            "priceClass": "low"
+        },
+        {
+            "name": "blenddummy1",
+            "manufacturerName": "manufacturerdummy",
+            "provenance": "dummyprovenance",
+            "priceClass": "high"
+        }
+    ],
+    "openingTimes": [{"open": "07:00:00", "close": "17:00:00", "weekday": "Monday"},{"open": "10:00:00", "close": "17:00:00", "weekday": "Today"}]
+}
