@@ -17,7 +17,7 @@ export interface Shop {
   website: string;
   food: string;
   priceClass: string;
-  franchise: string;
+  franchise: boolean;
   wlan:boolean;
   disabledFriendly:boolean;
   fairTrade:boolean;
@@ -26,6 +26,8 @@ export interface Shop {
   latteArt:boolean;
   petsFriendly:boolean;
   outdoor:boolean;
+  warmFood:boolean;
+  coldFood:boolean;
   description: string;
   address:Address;
   beans: Bean[];

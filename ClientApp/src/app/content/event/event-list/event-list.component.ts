@@ -9,7 +9,7 @@ import {Event } from "../../../interfaces/entity/Event";
 })
 export class EventListComponent implements OnInit {
 
-  private events : Event[];
+  public events : Event[];
   constructor(private eventService: EventService) { }
 
   ngOnInit() {

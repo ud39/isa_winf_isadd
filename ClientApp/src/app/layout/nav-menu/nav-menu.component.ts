@@ -17,10 +17,10 @@ export class NavMenuComponent {
   closeMenuAndRemoveFocus(){
     this.menuWikiTrigger.closeMenu();
   }
-  private brand: any;
+  public brand: any;
   isExpanded = false;
   public currentWindowWidth: number = window.innerWidth;
-  constructor(private imageService: ImageService){}
+  constructor(public imageService: ImageService){}
   @HostListener('window:resize')
   onResize() {
     this.currentWindowWidth = window.innerWidth

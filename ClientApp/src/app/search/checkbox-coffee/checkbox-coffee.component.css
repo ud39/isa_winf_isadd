@@ -5,3 +5,7 @@ app-checkbox-coffee{
 app-checkbox-coffee .selectedContentCoffee{
   margin-right: 10px;
 }
+
+app-checkbox-coffee .coffeeName{
+  margin-right: 10px;
+}

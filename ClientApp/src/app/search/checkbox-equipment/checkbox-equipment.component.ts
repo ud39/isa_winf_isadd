@@ -18,10 +18,10 @@ export class CheckboxEquipmentComponent implements OnInit {
   @ViewChildren(MatSelect) selects : QueryList<MatSelect>;
   @ViewChildren(MatInput) inputs : QueryList<MatInput>;
   constructor(public router:Router, public checkBoxService: CheckBoxesService) { }
-  public myControl = new FormControl();
-  public equipmentFormControls = new Array<FormControl>(this.myControl);
+
   getJsonOfSearch(): JSON{
-    return this.checkBoxService.getjsonOfSearchWithSelect(this.inputs.toArray(),this.cbs.toArray(),this.selects.toArray());
+    console.log(this.inputs.toArray(),this.cbs.toArray(),this.selects.toArray());
+    return this.checkBoxService.getJsonOfSearchWithSelect(this.inputs.toArray(),this.cbs.toArray(),this.selects.toArray());
   }
 
   clear() {

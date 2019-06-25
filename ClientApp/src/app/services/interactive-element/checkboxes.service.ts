@@ -1,6 +1,6 @@
 import {Injectable, QueryList} from '@angular/core';
 import {MatCheckbox, MatInput, MatSelect} from "@angular/material";
-import {FormControl} from "@angular/forms";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Injectable({
   providedIn: 'root'
@@ -27,43 +27,43 @@ export class CheckBoxesService {
     }
   }
 
-  public getSelectValue(selects : Array<MatSelect>):void {
+  public getSelectsValue(selects : Array<MatSelect>):void {
     for (let select of selects) {
       this.jsonOfSearchParameters[select.id] = select.value
     }
   }
 
-  public getInputValue(inputs : Array<MatInput>):void{
+  public getInputsValue(inputs : Array<MatInput>):void{
     for(let input of inputs){
       this.jsonOfSearchParameters[input.id] = input.value
     }
   }
 
-  public getAddressInputValues(inputs : Array<MatInput>): void {
+  public getAddressInputsValues(inputs : Array<MatInput>): void {
     this.jsonOfSearchParameters['address'] = {};
     for(let input of inputs) {
       this.jsonOfSearchParameters['address'][input.id] = input.value;
     }
   }
 
-  public getjsonOfSearch(formControls : Array<FormControl>, cbs: Array<MatCheckbox>) : JSON{
-    this.getFormControlValue(formControls);
+  public getJsonOfSearch(inputs : Array<MatInput>, cbs: Array<MatCheckbox>) : JSON{
+    this.getInputsValue(inputs);
     this.getCheckBoxesValues(cbs);
     return <JSON> this.jsonOfSearchParameters;
   }
 
-  public getjsonOfSearchWithSelect(inputs : Array<MatInput>, cbs: Array<MatCheckbox>, selects: Array<MatSelect>) : JSON{
-    this.getInputValue(inputs);
+  public getJsonOfSearchWithSelect(inputs : Array<MatInput>, cbs: Array<MatCheckbox>, selects: Array<MatSelect>) : JSON{
+    this.getInputsValue(inputs);
     this.getCheckBoxesValues(cbs);
-    this.getSelectValue(selects);
+    this.getSelectsValue(selects);
     return <JSON> this.jsonOfSearchParameters;
   }
 
   public getJsonOfShopInput(addressInputs: Array<MatInput>, inputs: Array<MatInput>, cbs: Array<MatCheckbox>, selects: Array<MatSelect>) : JSON {
-    this.getAddressInputValues(addressInputs);
+    this.getAddressInputsValues(addressInputs);
     this.getCheckBoxesValues(cbs);
-    this.getSelectValue(selects);
-    this.getInputValue(inputs);
+    this.getSelectsValue(selects);
+    this.getInputsValue(inputs);
     return <JSON> this.jsonOfSearchParameters;
   }
 
@@ -76,10 +76,10 @@ export class CheckBoxesService {
     }, error => console.log(error));
   }
 
-  public resetInputs(formControls: Array<FormControl>){
-    for(let formoContorl of formControls){
-      formoContorl.reset();
-    }
+  public resetInputs(formGroup: FormGroup){
+    Object.keys(formGroup.controls).forEach(key => {
+      formGroup.get(key).reset('')
+    })
   }
 
   public resetSelect(selects : Array<MatSelect>){
@@ -88,9 +88,9 @@ export class CheckBoxesService {
     }
   }
 
-  public clear(cbs : QueryList<MatCheckbox>, formControls: Array<FormControl>, select : Array<MatSelect>){
+  public clear(cbs : QueryList<MatCheckbox>, formGroup: FormGroup, select : Array<MatSelect>){
     this.unselectCheckBoxes(cbs);
-    this.resetInputs(formControls);
+    this.resetInputs(formGroup);
     this.resetSelect(select);
   }
 
