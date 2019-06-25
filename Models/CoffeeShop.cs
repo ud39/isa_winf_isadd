@@ -18,7 +18,6 @@ namespace WinfADD.Models
             Beans = new Bean[] {};
             Blends = new Blend[] {};
             OpeningTimes = new OpeningTime[] {};
-            Preparations = new Preparation[] { };
 
         }
         
@@ -35,6 +34,7 @@ namespace WinfADD.Models
         public int Seats { get; set; }
         
         //strings
+        public string CompanyName { get; set; }
         public string Website { get; set; }
         public string PriceClass { get; set; }
         public string Franchise { get; set; }
@@ -66,7 +66,7 @@ namespace WinfADD.Models
         public IEnumerable<Bean> Beans{ get; set; }
         public IEnumerable<Blend> Blends{ get; set; }
         public IEnumerable<OpeningTime> OpeningTimes{ get; set; }
-        public IEnumerable<Preparation> Preparations{ get; set; }
+
         
         
     }

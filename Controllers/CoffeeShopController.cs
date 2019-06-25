@@ -53,11 +53,13 @@ namespace WinfADD.Controllers
             IDictionary<string, dynamic> propertyValues = new Dictionary<string, dynamic>();
             foreach (var pair in jObj) {propertyValues.Add(pair.Key, pair.Value);}
 
+            /*
             Console.WriteLine("<||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||>");
             foreach (var p in propertyValues)
             {
                 Console.WriteLine(p.Key+"-->"+p.Value);
             }
+            */
 
 
 

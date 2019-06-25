@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace WinfADD.Models
@@ -10,6 +11,10 @@ namespace WinfADD.Models
         public string Description { get; set; }
         
         public string Type{ get; set; }
+
+        public bool vegan { get; set; }
+
+        public IEnumerable<Preparation> Preparations{ get; set; }
 
     }
 }
