@@ -117,7 +117,13 @@ namespace WinfADD.Repositories
        
                 mapping.TryGetValue(property.Name.ToLower(), out string propertyName);
 
-                if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName))
+                if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && propertyName == "name")
+                {
+                    properties.Add(propertyName, "%" + property.GetValue(query)+ "%");
+                    builder.Where(propertyName + " LIKE " + "@" + propertyName, properties);
+                 }
+                
+                else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName))
                 {
                     properties.Add(propertyName, "%" + property.GetValue(query)+ "%");
                     builder.Where(propertyName + "::text" + " LIKE " + "@" + propertyName, properties);
