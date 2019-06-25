@@ -108,14 +108,19 @@ namespace WinfADD.Repositories
             
             var filterCoffeeShops = builder.AddTemplate("Select * from coffee_shop /**where**/  ");
 
+            var mapping = MappingM2DB.CoffeShopMap;
+
             foreach (PropertyInfo property in possibleProperties)
             {
                 var properties = new Dictionary<string, object>();
-                if (property.GetValue(query) != null)
+
+       
+                mapping.TryGetValue(property.Name.ToLower(), out string propertyName);
+
+                if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName))
                 {
-                    properties.Add(property.Name,property.GetValue(query));
-                    Console.WriteLine("NAME:" + property.Name + " , VALUE:" + property.GetValue(query));
-                    builder.Where(property.Name + " = " + "@" + property.Name, properties);
+                    properties.Add(propertyName, "%" + property.GetValue(query)+ "%");
+                    builder.Where(propertyName + "::text" + " LIKE " + "@" + propertyName, properties);
                 }
                 
             }
@@ -125,7 +130,8 @@ namespace WinfADD.Repositories
                 if (possibleProperties.Length == 0)
                     return await GetAll();
                 var result = await dbConnection.QueryAsync<CoffeeShopPreview>(filterCoffeeShops.RawSql,filterCoffeeShops.Parameters);
-                return result.ToList();
+
+              return result.ToList();
             }
         }
 

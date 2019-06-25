@@ -9,7 +9,7 @@ namespace WinfADD.Models.Mapping
     public static class MappingConfigurator
     {
         
-            public static Dictionary<string, string> CoffeeShopPreviewMap = new Dictionary<string, string>
+            public static readonly Dictionary<string, string> CoffeeShopPreviewMap = new Dictionary<string, string>
                 {
                     {"file_name", "ImageFileName"},
                     {"id", "Id"},
@@ -17,7 +17,7 @@ namespace WinfADD.Models.Mapping
                     {"description", "Description"}
                 };
 
-            public static Dictionary<string, string> EventMap = new Dictionary<string, string>
+            public static readonly Dictionary<string, string> EventMap = new Dictionary<string, string>
             {
                 {"file_name", "PreviewImageFileName"},
                 {"id", "Id"},
@@ -38,16 +38,16 @@ namespace WinfADD.Models.Mapping
 
             //TODO
             
-            public static Func<Type, string, PropertyInfo> CoffeeShopPreviewMapper =
+            public static readonly Func<Type, string, PropertyInfo> CoffeeShopPreviewMapper =
               new Func<Type, string, PropertyInfo>((type, columnName)
                   => type.GetProperty(CoffeeShopPreviewMap.ContainsKey(columnName) ? CoffeeShopPreviewMap[columnName] : columnName));
 
-            public static Func<Type, string, PropertyInfo>  EventMapper =
+            public static readonly Func<Type, string, PropertyInfo>  EventMapper =
                 new Func<Type, string, PropertyInfo>((type, columnName)
                     => type.GetProperty(EventMap.ContainsKey(columnName) ? EventMap[columnName] : columnName));
 
             
-            public static Func<Type, string, PropertyInfo> DefaultMapper = new Func<Type, string, PropertyInfo>((type, columnName) => {
+            public readonly static Func<Type, string, PropertyInfo> DefaultMapper = new Func<Type, string, PropertyInfo>((type, columnName) => {
                 var result = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(columnName.ToLower());
                 return type.GetProperty(result = result.Replace("_", ""));
             });

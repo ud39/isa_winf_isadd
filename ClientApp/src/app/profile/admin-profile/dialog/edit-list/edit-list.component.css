@@ -1,0 +1,14 @@
+app-edit-list .mat-list-item{
+  width: 100%;
+  height: 100%;
+  clear: both;
+}
+
+app-edit-list .mat-list-base .mat-list-item{
+  display: block;
+  height: fit-content;
+  -webkit-tap-highlight-color: transparent;
+  width: 100%;
+  padding: 0;
+}
+

@@ -38,13 +38,13 @@
       <input matInput type="text" placeholder="Straße" [formControl]="locationStreetFormControl">
     </mat-form-field>
     <mat-form-field class="address">
-      <input matInput type="number" placeholder="StraßeNr" min="0" oninput="validity.valid||(value='')" [formControl]="locationStreetNrFormControl">
+      <input matInput type="number" placeholder="StraßeNr" min="0" oninput="this.value = Math.abs(this.value)" [formControl]="locationStreetNrFormControl">
     </mat-form-field>
     <mat-form-field class="address">
       <input matInput type="text" placeholder="Stadt" [formControl]="locationTownFormControl">
     </mat-form-field>
     <mat-form-field class="address">
-      <input matInput type="text" placeholder="Postleitzahl" min="0" oninput="validity.valid||(value='')" [formControl]="locationPostalCodeFormControl">
+      <input matInput type="number" placeholder="Postleitzahl" min="0" oninput="this.value = Math.abs(this.value)" [formControl]="locationPostalCodeFormControl">
     </mat-form-field>
   </form>
 </div>

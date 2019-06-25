@@ -6,10 +6,11 @@
   <button mat-button [matMenuTriggerFor]="menu" id="selected_menu" >Auswählen</button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item [disabled]="!activeFormGroup.valid" (click)="addContent()">Hinzufügen</button>
-    <button mat-menu-item (click)="editContent()">Editieren</button>
+    <button mat-menu-item (click)="openDialog()">Editieren</button>
     <button mat-menu-item [disabled]="!activeFormGroup.valid" (click)="saveContent()">Speichern</button>
     <button mat-menu-item [disabled]="!activeFormGroup.valid" (click)="deleteContent()">Löschen</button>
     <button mat-menu-item [disabled]="!activeFormGroup.valid" (click)="restoreContent()">Wiederherstellen</button>
+    <button mat-menu-item [disabled]="!activeFormGroup.valid" (click)="emptyInput()">Leeren</button>
   </mat-menu>
   </div>
   <div class="tab-content">
