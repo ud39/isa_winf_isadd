@@ -48,8 +48,8 @@ namespace WinfADD.Models
         public bool LatteArt { get; set; }
         public bool PetsFriendly { get; set; }
         public bool Outdoor { get; set; }
-        public bool warm_food { get; set; }
-        public bool cold_food { get; set; }
+        public bool WarmFood { get; set; }
+        public bool ColdFood { get; set; }
 
 
         //byte

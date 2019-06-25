@@ -28,6 +28,8 @@ namespace WinfADD.Models
         public string LatteArt { get; set; }
         public string PetsFriendly { get; set; }
         public string Outdoor { get; set; }
+        public string WarmFood { get; set; }
+        public string ColdFood { get; set; }
 
         //byte
         public string Description { get; set; }

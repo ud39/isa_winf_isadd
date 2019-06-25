@@ -26,6 +26,8 @@ namespace WinfADD.Models.Mapping
             {"description", "description"},
             {"address", "address"},
             {"openingtimes", "openingtimes"},
+            {"warmfood", "warm_food"},
+            {"coldfood", "cold_food"},
             {"preparations", "preparations"}
         };
 
