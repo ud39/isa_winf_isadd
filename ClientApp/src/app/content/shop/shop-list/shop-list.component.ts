@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
 import {ShopService} from "../../../services/shop/shop.service";
 import {Shop} from "../../../interfaces/entity/Shop";
-import {Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
+
 
 
 
@@ -17,7 +17,7 @@ export class ShopListComponent implements OnInit {
 
   public shops : Shop[];
 
-  constructor(private service: ShopService)
+  constructor(private service: ShopService, private route: ActivatedRoute)
   {
   }
 
@@ -26,6 +26,9 @@ export class ShopListComponent implements OnInit {
       this.shops = result;
       console.log(result);
    }, error => console.error(error));
+   this.route.queryParams.subscribe(params => {
+     console.log(params);
+   })
   }
 
   ngAfterViewInit(){

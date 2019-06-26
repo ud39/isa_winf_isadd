@@ -22,9 +22,9 @@ export class CheckboxComponent implements OnInit {
   @ViewChildren('cb') cbs : QueryList<MatCheckbox>;
   @ViewChildren(MatSelect) selects : QueryList<MatSelect>;
   @ViewChildren(MatInput) inputSearch : QueryList<MatInput>;
-
+  public urlGlobalPath = Global.urlName;
   constructor(public router: Router, public checkBoxService: CheckBoxesService,
-              public shopService: ShopService, public global: Global) {
+              public shopService: ShopService) {
 
   }
 

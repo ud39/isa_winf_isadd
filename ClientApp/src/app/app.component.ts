@@ -15,12 +15,12 @@ export class AppComponent {
 
   public showNavigation: boolean = false;
   public urlSearchPath: string = "/shop";
-  constructor(private router: Router, private globals: Global) {
+  constructor(private router: Router) {
   }
 
   public checkUrlCheckBox(urlPath:NavigationStart){
     let currentUrl = urlPath['url'];
-    let urlMap = this.globals.urlName;
+    let urlMap = Global.urlName;
     console.log(urlMap);
     return urlMap.get('home') == currentUrl
            || urlMap.get('shop') ==  currentUrl
