@@ -105,8 +105,8 @@ namespace WinfADD.Repositories
             PropertyInfo[] possibleProperties = typeof(CoffeeShopSearchModel).GetProperties();
             var builder = new SqlBuilder();
 
-            var sql = "Select * from coffee_shop /**where**/  ";
-         
+            var additionalStatements = "";
+          
             var mapping = MappingM2DB.CoffeShopMap;
 
             foreach (PropertyInfo property in possibleProperties)
@@ -116,11 +116,25 @@ namespace WinfADD.Repositories
        
                 mapping.TryGetValue(property.Name.ToLower(), out string propertyName);
 
-                if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && propertyName == "name")
+                if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && propertyName == "bus_station_name")
+                {
+                   additionalStatements += " inner join reachable_by_bus r on r.coffee_shop_id = id ";
+                   properties.Add(propertyName, property.GetValue(query));
+                   builder.Where( "r." + propertyName + " = " + "@" + propertyName, properties);
+                }
+                else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && propertyName == "poi_name")
+                {
+                    additionalStatements += " inner join near_by n on n.coffee_shop_id = id ";
+                   
+                    properties.Add("poi", query.Poi);
+                    builder.Where( "n.poi_name"  + " = ANY" + "(@poi)", properties);
+                }
+                
+                else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && propertyName == "name")
                 {
                     properties.Add(propertyName, "%" + property.GetValue(query)+ "%");
                     builder.Where(propertyName + " LIKE " + "@" + propertyName, properties);
-                 }
+                }
                 
                 else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName))
                 {
@@ -129,9 +143,15 @@ namespace WinfADD.Repositories
                 }
                 
             }
-        
+
+            additionalStatements += " inner join coffee_shop_image ci on ci.coffee_shop_id = id ";
+            additionalStatements += " inner join image i on ci.image_file_name = i.file_name ";
+            builder.Where("i.content_type = 'preview'");
+
             using (IDbConnection dbConnection = Connection)
             {
+                var sql = "Select * from coffee_shop" + additionalStatements +  " /**where**/  ";
+
                 var filterCoffeeShops = builder.AddTemplate(sql);
 
                 if (possibleProperties.Length == 0)

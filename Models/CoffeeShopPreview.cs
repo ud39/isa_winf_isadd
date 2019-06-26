@@ -14,7 +14,6 @@ namespace WinfADD.Models
         public string Description { get; set; }
 
         public string ImageFileName { get; set; }
-        
 
         
     }
