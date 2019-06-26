@@ -70,6 +70,7 @@
       <Folder Include="ClientApp\src\app\services\user" />
       <Folder Include="ClientApp\src\assets\Images" />
       <Folder Include="documentation\Content\Templates" />
+      <Folder Include="wwwroot\Image\gallery" />
     </ItemGroup>
 
     <ItemGroup>

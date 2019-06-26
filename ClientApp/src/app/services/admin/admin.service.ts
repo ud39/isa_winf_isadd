@@ -19,9 +19,11 @@ export class AdminService {
 
 
   //paths
-  public shop_front_path = Global.url + '/image/GetById?fileName=front/';
-  public shop_gallery_path = Global.url + '/image/GetById?fileName=gallery/';
-  public shop_preview_path = Global.url + '/image/GetById?fileName=preview/';
+  public shop_front_path = Global.url + 'image/GetById?ContentType=front&fileName=';
+  public shop_gallery_path = Global.url + 'image/GetById?ContentType=gallery&fileName=';
+  public shop_preview_path = Global.url + 'image/GetById?ContentType=preview&fileName=';
+
+
 
 
 
@@ -57,7 +59,7 @@ export class AdminService {
     uploadData.append('fromWhere', fromWhere);
     uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
 
-    this.http.post(Global.url + '/image', uploadData, {
+    this.http.post(Global.url + 'Image', uploadData, {
       reportProgress: true,
       observe: 'events'
     })

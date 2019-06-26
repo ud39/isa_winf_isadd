@@ -62,6 +62,7 @@ namespace WinfADD
             services.AddSingleton<ITableRepository<BusStation>, BusStationRepository>();
             services.AddSingleton<ITableRepository<CoffeeShop>, CoffeeShopRepository>();
             services.AddSingleton<ITableRepository<Event>, EventRepository>();
+            services.AddSingleton<ITableRepository<CoffeeDrink>, CoffeeDrinkRepository>();
 
 
 
