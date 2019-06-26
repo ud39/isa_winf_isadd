@@ -66,7 +66,7 @@ namespace WinfADD.Controllers
 
 
                 var file = Request.Form.Files[0];
-                string folderName = "Upload/"+fromWhere;
+                string folderName = "Image/"+fromWhere;
                 string webRootPath = _hostingEnvironment.WebRootPath;
                 Console.WriteLine(webRootPath);
                 string newPath = Path.Combine(webRootPath, folderName);
@@ -124,9 +124,9 @@ namespace WinfADD.Controllers
         {
 
             if (imageObj.FileName.Contains("..")) return null;
-            //TODO Contentype catch
 
-            var path = Path.Combine("/Upload/"+imageObj.ContentType, imageObj.FileName);
+
+            var path = Path.Combine("/Image/"+imageObj.ContentType, imageObj.FileName);
             return base.File(path, "image/" + imageObj.FileName.Substring(imageObj.FileName.Length-3));
         }
 

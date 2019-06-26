@@ -112,7 +112,8 @@ CREATE TABLE preparation(
 
 CREATE TABLE coffee_drink(
                            name citext primary key,
-                           description text
+                           description text,
+                           type citext
 );
 
 
