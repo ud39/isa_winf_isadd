@@ -70,12 +70,14 @@ CREATE TABLE company(
 
 CREATE TABLE bean(
                    name citext,
-                   manufacturer_name citext,
-                   provenance text,
-                   fair_trade boolean,
+                   provenance citext,
                    type text,
-                   price_class text,
-                   PRIMARY KEY (name, manufacturer_name)
+                   PRIMARY KEY (name, provenance)
+);
+
+CREATE TABLE manufacturer(
+                      name citext,
+                      PRIMARY KEY (name)
 );
 
 CREATE TABLE poi(
@@ -87,12 +89,9 @@ CREATE TABLE poi(
 
 CREATE TABLE blend(
                     name citext,
-                    manufacturer_name citext,
                     provenance text,
                     price_class text,
-                    description text,
-                    PRIMARY KEY (name, manufacturer_name)
-
+                    PRIMARY KEY (name)
 );
 
 CREATE TABLE location(
@@ -134,11 +133,11 @@ create table image (
 
 CREATE TABLE consists_of(
                           coffee_drink_name citext,
-                          bean_manufacturer_name citext,
                           bean_name citext,
-                          PRIMARY KEY (coffee_drink_name, bean_manufacturer_name, bean_name),
+                          bean_provenance citext,
+                          PRIMARY KEY (coffee_drink_name, bean_name),
                           FOREIGN KEY (coffee_drink_name) REFERENCES coffee_drink(name) ON DELETE CASCADE,
-                          FOREIGN KEY (bean_manufacturer_name, bean_name) REFERENCES bean (manufacturer_name, name) ON DELETE CASCADE
+                          FOREIGN KEY (bean_name, bean_provenance) REFERENCES bean (name, provenance) ON DELETE CASCADE
 );
 
 CREATE TABLE serves(
@@ -186,30 +185,44 @@ CREATE TABLE supplies (
 
 CREATE TABLE provides (
                         bean_name citext ,
-                        bean_manufacturer_name citext,
+                        bean_provenance citext,
                         coffee_shop_id int,
-                        PRIMARY KEY (bean_name, coffee_shop_id, bean_manufacturer_name),
-                        FOREIGN KEY (bean_name, bean_manufacturer_name) REFERENCES bean (name, manufacturer_name) ON DELETE CASCADE,
+                        PRIMARY KEY (bean_name, coffee_shop_id),
+                        FOREIGN KEY (bean_name, bean_provenance) REFERENCES bean (name, provenance) ON DELETE CASCADE,
                         FOREIGN KEY (coffee_shop_id) REFERENCES  coffee_shop (id) ON DELETE CASCADE
 );
 
+CREATE TABLE produce (
+                        bean_name citext,
+                        bean_provenance citext,
+                        manufacturer_name citext,
+                        roasting text,
+                        product_name text,
+                        fair_trade boolean,
+                        price_class text,
+                        PRIMARY KEY (bean_name, bean_provenance, manufacturer_name),
+                        FOREIGN KEY (bean_name, bean_provenance) REFERENCES bean (name, provenance) ON DELETE CASCADE,
+                        FOREIGN KEY (manufacturer_name) REFERENCES manufacturer (name) ON DELETE CASCADE
+);
+
+
+
 CREATE TABLE composed (
                         blend_name citext ,
-                        blend_manufacturer_name citext  ,
-                        bean_name citext,
-                        bean_manufacturer_name citext ,
-                        proportion text ,
-                        PRIMARY KEY (blend_manufacturer_name, blend_name, bean_name, bean_manufacturer_name),
-                        FOREIGN KEY (blend_name, blend_manufacturer_name) REFERENCES blend (name, manufacturer_name) ON DELETE CASCADE,
-                        FOREIGN KEY (bean_manufacturer_name, bean_name) REFERENCES bean (manufacturer_name, name) ON DELETE CASCADE
+                        bean_name citext  ,
+                        bean_provenance citext,
+                        manufacturer_name citext,
+                        PRIMARY KEY (blend_name,bean_name, bean_provenance, manufacturer_name),
+                        FOREIGN KEY (blend_name) REFERENCES blend (name) ON DELETE CASCADE,
+                        FOREIGN KEY (bean_name, bean_provenance) REFERENCES bean (name, provenance) ON DELETE CASCADE,
+                        FOREIGN KEY (manufacturer_name) REFERENCES manufacturer (name) ON DELETE CASCADE
 );
 
 CREATE TABLE offers (
                       blend_name citext ,
-                      blend_manufacturer_name citext ,
                       coffee_shop_id int,
-                      PRIMARY KEY (blend_name, blend_manufacturer_name, coffee_shop_id),
-                      FOREIGN KEY (blend_manufacturer_name, blend_name) REFERENCES blend(manufacturer_name, name) ON DELETE CASCADE,
+                      PRIMARY KEY (blend_name, coffee_shop_id),
+                      FOREIGN KEY (blend_name) REFERENCES blend(name) ON DELETE CASCADE,
                       FOREIGN KEY (coffee_shop_id) REFERENCES  coffee_shop (id) ON DELETE CASCADE
 );
 
@@ -225,10 +238,7 @@ CREATE TABLE subcategory (
   equipment_category_name citext primary key REFERENCES equipment_category(name) ON DELETE CASCADE
 );
 
-CREATE TABLE coffee_drink_typ (
-                                coffee_drink_name citext primary key REFERENCES coffee_drink(name) ON DELETE CASCADE,
-                                type text
-);
+
 
 CREATE TABLE belongs_to (
                           equipment_manufacturer_name citext  ,
@@ -307,18 +317,23 @@ create table poi_image (
 ------  CLUSTER  -------
 
 CREATE TABLE google_rating(
-                            rating_id int primary key,
+                            rating_id int generated always as identity primary key,
                             overall_rating int,
                             count_of_ratings int
 );
 
 CREATE TABLE user_rating(
-                          rating_id int primary key,
-                          rating int
+                          rating_id int generated always as identity primary key,
+                          total int,
+                          coffee_selection int,
+                          feelgood_factor int,
+                          service int,
+                          facilities int
+
 );
 
 CREATE TABLE tripadvisor_rating(
-                                 rating_id int primary key,
+                                 rating_id int generated always as identity primary key,
                                  overall_rating int,
                                  count_of_ratings int
 );
@@ -408,6 +423,8 @@ create table operates (
 );
 
 
+
+
 ------------ INSERT DATA ----------
 
 insert into coffee_shop (name, address, outdoor, fair_trade, disabled_friendly, description, wlan, child_friendly, website, founding_year, pets_friendly, latte_art, seats, workstation, warm_food, cold_food, price_class) values
@@ -423,6 +440,7 @@ insert into supplies values ('Kaffeemühle', 2);
 
 insert into coffee_drink values ('coffeedrinkdummyname', 'descriptiondummy');
 insert into coffee_drink values ('coffeedrinkdummyname1', 'descriptiondummy1');
+
 
 insert into serves values ('coffeedrinkdummyname' , 2);
 insert into serves values ('coffeedrinkdummyname1' , 2);
@@ -449,17 +467,34 @@ insert into equipment_category values ('categorydummy1');
 insert into supplies values ('categorydummy', 2);
 insert into supplies values ('categorydummy1', 2);
 
-insert into bean values ('dummybean', 'dummymanufacturer', 'dummyprovenance', true, 'dummytype');
-insert into bean values ('dummybean1', 'dummymanufacturer', 'dummyprovenance', true, 'dummytype');
 
-insert into provides values ('dummybean' ,'dummymanufacturer', 2);
-insert into provides values ('dummybean1' ,'dummymanufacturer', 2);
 
-insert into blend values ('blenddummy', 'manufacturerdummy', 'dummyprovenance', 'low');
-insert into blend values ('blenddummy1', 'manufacturerdummy', 'dummyprovenance', 'high');
+insert into bean values ('dummybean', 'beanprovenance', 'dummytype');
+insert into bean values ('dummybean1', 'beanprovenance1',  'dummytype');
 
-insert into offers values ('blenddummy', 'manufacturerdummy', 2);
-insert into offers values ('blenddummy1', 'manufacturerdummy', 2);
+insert into provides values ('dummybean', 'beanprovenance', 2);
+insert into provides values ('dummybean1', 'beanprovenance1', 2);
+
+
+insert into blend values ('blenddummy', 'Deutschland', 'low');
+insert into blend values ('blenddummy1', 'UK', 'high');
+
+insert into offers values ('blenddummy', 2);
+insert into offers values ('blenddummy1', 2);
+
+insert into manufacturer values ('dummymanufacturer');
+
+insert into consists_of values ('coffeedrinkdummyname','dummybean', 'beanprovenance');
+insert into consists_of values ('coffeedrinkdummyname1','dummybean', 'beanprovenance');
+insert into consists_of values ('coffeedrinkdummyname1','dummybean1', 'beanprovenance1');
+
+
+insert into produce values ('dummybean', 'beanprovenance', 'dummymanufacturer', 'roasting1', 'productname', true, 'high');
+insert into produce values ('dummybean1','beanprovenance1', 'dummymanufacturer', 'roasting1', 'productname1', false, 'low');
+
+
+insert into composed values ('blenddummy', 'dummybean','beanprovenance', 'dummymanufacturer');
+insert into composed values ('blenddummy', 'dummybean1','beanprovenance1', 'dummymanufacturer');
 
 
 insert into event (time, name, access_fee, description) values ('2019-12-26', 'dummyevent1', 5, 'eventdescriptiondummy');
@@ -507,3 +542,16 @@ insert into equipment values ('modeldummy2', 'manufacturerDummy2', 2007);
 
 insert into sells values ('manufacturerDummy', 1987, 'modeldummy', 'categorydummy', 2);
 insert into sells values ('manufacturerDummy2', 2007, 'modeldummy2', 'categorydummy', 2);
+
+
+
+
+insert into public.user values ('user@mail.uni-kiel.de');
+
+insert into user_rating (rating_id, total, coffee_selection, feelgood_factor, service, facilities) values (DEFAULT, 3, 4, 1, 1, 3);
+insert into user_rating (rating_id, total, coffee_selection, feelgood_factor, service, facilities) values (DEFAULT, 5, 4, 3, 2, 0);
+
+
+insert into rated_by_user values  (1, 2);
+
+insert into rates values (1, 'user@mail.uni-kiel.de', 2);
