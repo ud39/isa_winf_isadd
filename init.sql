@@ -469,7 +469,7 @@ insert into organised_by values (2, 2);
 
 
 insert into image values ('1.png', 'preview');
-insert into image values ('2.png', 'preview');
+insert into image values ('2.png', 'gallery');
 insert into image values ('event1.png', 'preview');
 insert into image values ('event2.png', 'gallery');
 insert into image values ('event3.png', 'gallery');
