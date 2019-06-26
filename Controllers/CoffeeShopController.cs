@@ -29,7 +29,7 @@ namespace WinfADD.Controllers
         }
 
         [HttpGet("params")]
-        public async Task<IEnumerable<CoffeeShopPreview>> GetCustomers([FromQuery]CoffeeShopSearchModel customerSeach)
+        public async Task<IEnumerable<CoffeeShopPreview>> GetCoffeeShops([FromQuery]CoffeeShopSearchModel customerSeach)
         {
             var coffeeShops = await _coffeeShopRepo.GetCoffeeShops(customerSeach);
 

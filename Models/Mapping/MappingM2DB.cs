@@ -31,8 +31,8 @@ namespace WinfADD.Models.Mapping
             {"preparations", "preparations"},
             {"busstation", "bus_station_name"},
             {"warmFood", "warm_food"},
-            {"coldFood", "cold_food"}
-
+            {"coldFood", "cold_food"},
+            {"poi", "poi_name"}
         };
 
 
