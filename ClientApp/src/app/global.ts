@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class Global{
-  urlName : Map<string, string> = new Map<string, string>([
+  static urlName : Map<string, string> = new Map<string, string>([
     ['home', '/'],
     ['shop', '/shops'],
     ['admin', '/admin'],
@@ -10,5 +10,5 @@ export class Global{
     ["wikiEquipment", '/wiki/equipment'],
     ['wikiCoffee', '/wiki/coffee'],
   ]);
-  url="https://localhost:5001/api/";
+ static url="https://localhost:5001/api/";
 }
