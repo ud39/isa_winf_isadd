@@ -165,7 +165,7 @@ namespace WinfADD.Repositories
         }
 
 
-        [HttpGet("all")]
+
         public virtual async Task<List<Table>> GetAll()
         {Console.WriteLine("\n GetAll::" + GetAllString);
             using (IDbConnection conn = Connection)
