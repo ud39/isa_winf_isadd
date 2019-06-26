@@ -14,6 +14,10 @@ namespace WinfADD.Models
         public string Description { get; set; }
 
         public string ImageFileName { get; set; }
+        
+        public string AverageTotalRating { get; set; }
+        
+        public Address Address { get; set; }
 
         
     }

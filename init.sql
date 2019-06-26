@@ -547,11 +547,14 @@ insert into sells values ('manufacturerDummy2', 2007, 'modeldummy2', 'categorydu
 
 
 insert into public.user values ('user@mail.uni-kiel.de');
-
 insert into user_rating (rating_id, total, coffee_selection, feelgood_factor, service, facilities) values (DEFAULT, 3, 4, 1, 1, 3);
 insert into user_rating (rating_id, total, coffee_selection, feelgood_factor, service, facilities) values (DEFAULT, 5, 4, 3, 2, 0);
-
-
 insert into rated_by_user values  (1, 2);
-
 insert into rates values (1, 'user@mail.uni-kiel.de', 2);
+insert into public.user values ('user1@mail.uni-kiel.de');
+insert into user_rating (rating_id, total, coffee_selection, feelgood_factor, service, facilities) values (DEFAULT, 2, 5, 5, 5, 5);
+insert into user_rating (rating_id, total, coffee_selection, feelgood_factor, service, facilities) values (DEFAULT, 1, 1, 2, 3, 4);
+insert into rated_by_user values  (2, 2);
+insert into rated_by_user values  (2, 1);
+insert into rates values (2, 'user1@mail.uni-kiel.de', 1);
+insert into rates values (2, 'user1@mail.uni-kiel.de', 2);
