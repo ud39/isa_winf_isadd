@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container" *ngIf="this.service.shops.length != 0; else noShops">
   <mat-list id="shop-list">
-  <mat-list-item *ngFor="let shop of shops; last as last">
+  <mat-list-item *ngFor="let shop of this.service.shops; last as last">
     <a [routerLink]="['/shops', shop.id]" [routerLinkActive]='["link-active"]'>
       <img src="https://dummyimage.com/100x100/fff/000" class="preview-img">
     </a>
@@ -16,3 +16,6 @@
   </mat-list-item>
   </mat-list>
 </div>
+<ng-template #noShops>
+  Es gibt kein Laden, welches diesen Kriterien erfüllen. )
+</ng-template>

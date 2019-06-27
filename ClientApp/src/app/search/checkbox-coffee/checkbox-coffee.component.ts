@@ -1,4 +1,4 @@
-import {Component, OnInit, QueryList, ViewChildren, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, QueryList, ViewChildren, ViewEncapsulation} from '@angular/core';
 import {Router} from "@angular/router";
 import {CheckBoxesService} from "../../services/interactive-element/checkboxes.service";
 import {FormControl, FormGroup} from "@angular/forms";
@@ -65,4 +65,9 @@ export class CheckboxCoffeeComponent implements OnInit {
   ngOnInit() {
   }
 
+  @Output() callNavigateToCoffee = new EventEmitter<void>();
+  triggerSearchCoffee():void{
+    console.log("Call form Coffee");
+    this.callNavigateToCoffee.emit();
+  }
 }
