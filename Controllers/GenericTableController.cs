@@ -34,12 +34,6 @@ namespace WinfADD.Controllers
         [Route("GetById")]
         public virtual async Task<ActionResult<Table>> GetById([FromQuery] Table tableObj)
         {
-            
-            Console.WriteLine("-----");
-            Console.WriteLine("tableObjName: " + tableObj);
-            Console.WriteLine(""+(tableObj as Blend).Name);
-            Console.WriteLine(""+(tableObj as Blend).ManufacturerName);
-            Console.WriteLine("");
             return await _tableRepo.GetById(tableObj);
         }
 
@@ -75,7 +69,7 @@ namespace WinfADD.Controllers
         [HttpDelete]
         public async Task<bool> Delete([FromQuery] Table tableObj)
         {
-            Console.WriteLine("NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN::" + (tableObj as CoffeeShop).Id);
+            
             return await _tableRepo.DeleteTable(tableObj);
         }
 
