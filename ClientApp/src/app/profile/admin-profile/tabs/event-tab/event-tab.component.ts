@@ -5,6 +5,7 @@ import {Shop} from "../../../../interfaces/entity/Shop";
 import {Event} from "../../../../interfaces/entity/Event";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {EventService} from "../../../../services/event/event.service";
+import {AdminService} from "../../../../services/admin/admin.service";
 
 @Component({
   selector: 'app-event-tab',
@@ -60,7 +61,7 @@ export class EventTabComponent implements OnInit {
     return this.eventInput;
   }
 
-  constructor(public shopSerivce: ShopService, public eventService: EventService) { }
+  constructor(public shopSerivce: ShopService, public eventService: EventService, public adminService: AdminService) { }
 
   ngOnInit() {
     this.shopSerivce.getShops().subscribe(value => {
@@ -85,5 +86,21 @@ export class EventTabComponent implements OnInit {
     this.myDate.getMonth() + 24,
     this.myDate.getDate()
   );
+
+
+
+  //jan
+  onFileChanged(event) {
+    this.adminService.onFileChanged(event)
+  }
+
+  onUpload(fromWhere) {
+    this.adminService.onUpload(fromWhere);
+  }
+
+  deleteImage(fromWhere) {
+    this.adminService.deleteImage(fromWhere);
+  }
+
 }
 

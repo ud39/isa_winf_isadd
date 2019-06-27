@@ -18,3 +18,20 @@
   ></textarea>
   <br>
 </mat-form-field>
+
+
+<br>
+
+
+<input
+  style="display: none"
+  type="file" (change)="onFileChanged($event)"
+  #fileInput>
+<button mat-button (click)="fileInput.click()">Select File</button>
+<button mat-button (click)="onUpload('equipment')">Upload!</button>
+<button mat-button (click)="deleteImage('equipment')" class="button">Löschen</button>
+<br>
+
+
+<img  [src]="adminService.equipmentImage" height="200px">
+

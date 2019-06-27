@@ -46,5 +46,27 @@
     <mat-form-field class="address">
       <input matInput type="number" placeholder="Postleitzahl" min="0" oninput="this.value = Math.abs(this.value)" [formControl]="locationPostalCodeFormControl">
     </mat-form-field>
+
+    <br>
+
+
+      <input
+        style="display: none"
+        type="file" (change)="onFileChanged($event)"
+        #fileInput>
+      <button mat-button (click)="fileInput.click()">Select File</button>
+      <button mat-button (click)="onUpload('event')">Upload!</button>
+      <button mat-button (click)="deleteImage('event')" class="button">Löschen</button>
+      <br>
+
+
+      <img  [src]="adminService.eventImage" height="200px">
+
+
+
+
+
   </form>
+
+
 </div>

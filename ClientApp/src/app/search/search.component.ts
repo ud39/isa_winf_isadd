@@ -3,10 +3,12 @@ import {CheckboxComponent} from "./checkbox/checkbox.component";
 import {CheckboxEquipmentComponent} from "./checkbox-equipment/checkbox-equipment.component";
 import {CheckboxCoffeeComponent} from "./checkbox-coffee/checkbox-coffee.component";
 import {Global} from "../global";
-import {NavigationExtras, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {ShopService} from "../services/shop/shop.service";
-import {Shop} from "../interfaces/entity/Shop";
-import {HttpParams} from "@angular/common/http";
+import {EventService} from "../services/event/event.service";
+import {EquipmentService} from "../services/equipment/equipment.service";
+import {CoffeeService} from "../services/coffee/coffee.service";
+;
 
 
 
@@ -24,7 +26,9 @@ export class SearchComponent implements OnInit {
   @Input() urlPath: string;
   public jsonOfSearch: JSON;
   public urlGlobalPath = Global.urlName;
-  constructor(public router: Router, public shopService: ShopService) {
+
+  constructor(public router: Router, public shopService: ShopService, public eventService:EventService,
+              public equipmentService: EquipmentService, public coffeeService:CoffeeService) {
 
   }
 
@@ -40,6 +44,10 @@ export class SearchComponent implements OnInit {
       break;
       case this.urlGlobalPath.get('wikiCoffee'):
       this.jsonOfSearch = this.chechBoxComponentCoffee.getJsonOfSearch();
+      case this.urlGlobalPath.get('wiki'):
+      this.jsonOfSearch = this.checkBoxEquipment.getJsonOfSearch();
+      this.jsonOfSearch = this.chechBoxComponentCoffee.getJsonOfSearch();
+      break;
     }
     console.log(this.jsonOfSearch);
     return  this.jsonOfSearch
@@ -62,27 +70,41 @@ export class SearchComponent implements OnInit {
       break;
     }
   }
-  navigateTo(){
-    this.getJsonOfSearch();
-    let params = new HttpParams();
-    Object.keys(this.jsonOfSearch).forEach(key =>
-    {
-      console.log((this.jsonOfSearch[key] != "" && this.jsonOfSearch[key] != null)
-        || this.jsonOfSearch[key]);
 
-      if((this.jsonOfSearch[key] != "" && this.jsonOfSearch[key] != null) || this.jsonOfSearch[key])
-      {
-        params = params.append(key,this.jsonOfSearch[key])
-      }
-    });
-    let navigationExtras : NavigationExtras ={
-      queryParams: {params}
-    };
-    console.log(navigationExtras.queryParams);
-    this.router.navigate(['/shops'], navigationExtras);
-    console.log(this.shopService.getShopWithParams(params).subscribe(value => {
-    console.log(value);
-    }));
+  navigateToShop(){
+    this.getJsonOfSearch();
+    this.shopService.navigateTo(this.jsonOfSearch)
+  }
+
+  navigateToEquipmentCoffee(){
+    this.getJsonOfSearch();
+    switch(this.urlPath){
+      case this.urlGlobalPath.get('wiki'):
+        this.navigateToEquipmentCategory();
+        this.navigateToCoffee();
+        break;
+      case this.urlGlobalPath.get('wikiEquipment'):
+        this.navigateToEquipmentCategory();
+        break;
+      case this.urlGlobalPath.get('wikiCoffee'):
+        this.navigateToEquipmentCategory();
+        break;
+      case this.urlGlobalPath.get('events'):
+        this.navigateToEvent();
+        break;
+    }
+  }
+
+  navigateToEvent(){
+    this.eventService.navigateTo(this.jsonOfSearch);
+  }
+
+  navigateToEquipmentCategory(){
+    this.equipmentService.navigateTo(this.jsonOfSearch);
+  }
+
+  navigateToCoffee(){
+    this.coffeeService.navigateTo(this.jsonOfSearch);
   }
 
   ngOnInit() {

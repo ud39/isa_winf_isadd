@@ -1,6 +1,7 @@
 import {Component, HostListener, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {ImageService} from "../../services/image/image.service";
 import {MatMenuTrigger} from "@angular/material";
+import {Global} from "../../global";
 
 
 @Component({
@@ -17,7 +18,7 @@ export class NavMenuComponent {
   closeMenuAndRemoveFocus(){
     this.menuWikiTrigger.closeMenu();
   }
-  public brand: any;
+  public brand = Global.url + 'image/GetById?ContentType=brand&fileName=kaffeesatt.png';
   isExpanded = false;
   public currentWindowWidth: number = window.innerWidth;
   constructor(public imageService: ImageService){}
@@ -26,14 +27,6 @@ export class NavMenuComponent {
     this.currentWindowWidth = window.innerWidth
   }
 
-  collapse() {
-    this.isExpanded = false;
-
-  }
-
-  toggle() {
-    this.isExpanded = !this.isExpanded;
-  }
   displayDropDown:boolean = true;
 
   dropdown() {
@@ -47,11 +40,6 @@ export class NavMenuComponent {
     }
   }
 
-  ngOnInit(){
-    this.imageService.getBrandImage().subscribe(value => {
-      this.imageService.setBrandImage(value).then(data => this.brand = data );
-    })
-  }
 
 }
 

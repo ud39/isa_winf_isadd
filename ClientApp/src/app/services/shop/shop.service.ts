@@ -3,8 +3,9 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 import {Observable} from "rxjs";
 import {Shop} from "../../interfaces/entity/Shop";
-import {Params} from "@angular/router";
+import {NavigationExtras, Params, Route, Router} from "@angular/router";
 import {Global} from "../../global";
+import {RouteService} from "../routing/route.service";
 
 
 
@@ -24,9 +25,9 @@ const headers = new HttpHeaders().set('Content-Type', 'application/json');
 })
 export class ShopService {
 
+  shops : Shop[];
 
-
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private routeService: RouteService, private router:Router) {
   }
 
 
@@ -39,10 +40,17 @@ export class ShopService {
     return this.http.get<Shop>(Global.url + 'coffeeshop/' + id, {headers:headers});
   }
 
-  getShopWithParams(queryParams: Params): Observable<Shop>{
+  getShopWithParams(queryParams: Params): Observable<Shop[]>{
     console.log(queryParams);
     console.log('https://localhost:5001/api/coffeeshop/params?' + queryParams.toString());
-    return this.http.get<Shop>(Global.url + 'coffeeshop/params?' , {params: queryParams,headers: headers});
+    return this.http.get<Shop[]>(Global.url + 'coffeeshop/params?' , {params: queryParams,headers: headers});
+  }
+
+  navigateTo(jsonOfSearch){
+    let params = this.routeService.buildHttpParams(jsonOfSearch);
+    console.log(this.getShopWithParams(params).subscribe(next => {
+      this.shops = next;
+    }));
   }
 }
 

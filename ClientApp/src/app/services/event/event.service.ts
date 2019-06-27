@@ -3,6 +3,9 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Event} from "../../interfaces/entity/Event";
 import {Global} from "../../global";
+import {NavigationExtras, Params, Router} from "@angular/router";
+import {RouteService} from "../routing/route.service";
+
 
 const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
@@ -12,7 +15,8 @@ const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
 export class EventService {
 
-  constructor(private http: HttpClient) {
+  public events : Event[];
+  constructor(private http: HttpClient, private routeService:RouteService, private router: Router) {
   }
 
   getEvents(): Observable<Event[]>{
@@ -22,6 +26,17 @@ export class EventService {
 
   getEvent(id): Observable<Event>{
     return this.http.get<Event>(Global.url + 'event/' + id, {headers:headers});
+  }
+
+  getEventWithParams(queryParams : Params):Observable<Event[]>{
+    return this.http.get<Event[]>(Global.url + 'event/params?' , {params: queryParams,headers: headers});
+  }
+  navigateTo(jsonOfSearch : JSON):void{
+    console.log('Event' + jsonOfSearch.stringify(jsonOfSearch));
+    let params = this.routeService.buildHttpParams(jsonOfSearch);
+    console.log(this.getEventWithParams(params).subscribe(next => {
+      this.events = next;
+    }));
   }
 
 }

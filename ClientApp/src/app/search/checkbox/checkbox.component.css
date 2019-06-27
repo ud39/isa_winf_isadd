@@ -29,3 +29,7 @@ app-checkbox .mat-form-field{
   width: 150px;
   margin-right: 20px;
 }
+
+app-checkbox .direct-shop{
+  width: 200px;
+}

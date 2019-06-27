@@ -1,13 +1,13 @@
 <div class="container">
   <div>
     <mat-form-field class="selectedContentCoffee">
-      <input matInput type="text" [formControl]="beanNameFormControl" placeholder="Kaffee Bohnen">
+      <input matInput type="text" [formControl]="beanNameFormControl" id='name' placeholder="Kaffee Bohnen" (keydown.enter)="triggerSearchCoffee()">
     </mat-form-field>
     <mat-form-field class="selectedContentCoffee">
-      <input matInput type="text" [formControl]="blendNameFormControl" placeholder="Kaffee Bohnen">
+      <input matInput type="text" [formControl]="blendNameFormControl" id='name' placeholder="Blends" (keydown.enter)="triggerSearchCoffee()">
     </mat-form-field>
     <mat-form-field>
-      <mat-label>Röstung Bohnenl</mat-label>
+      <mat-label>Röstung Bohnen</mat-label>
       <mat-select [(ngModel)]="selectedRoast">
         <mat-option *ngFor="let roast of roasts" [value]="roast.value">
           {{roast.viewValue}}
@@ -17,8 +17,6 @@
     <mat-form-field class="selectedContentCoffee">
       <mat-label>Mahlgrad Bohnen</mat-label>
       <mat-select [(ngModel)]="selectedGrind">
-        <mat-option>---</mat-option>
-        <mat-option>Keine</mat-option>
         <mat-option *ngFor="let grind of grinds" [value]="grind.value">
           {{grind.viewValue}}
         </mat-option>

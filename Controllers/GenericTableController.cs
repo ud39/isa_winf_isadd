@@ -73,8 +73,9 @@ namespace WinfADD.Controllers
 
         [Route("delete")]
         [HttpDelete]
-        public async Task<bool> Delete([FromBody] Table tableObj)
+        public async Task<bool> Delete([FromQuery] Table tableObj)
         {
+            Console.WriteLine("NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN::" + (tableObj as CoffeeShop).Id);
             return await _tableRepo.DeleteTable(tableObj);
         }
 
