@@ -479,7 +479,6 @@ CREATE TRIGGER delete_obsolete_images AFTER DELETE ON event_image FOR EACH ROW E
 
 
 
-
 ------------ INSERT DATA ----------
 
 insert into coffee_shop (name, address, outdoor, fair_trade, disabled_friendly, description, wlan, child_friendly, website, founding_year, pets_friendly, latte_art, seats, workstation, warm_food, cold_food, price_class) values

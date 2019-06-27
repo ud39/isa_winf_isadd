@@ -146,35 +146,52 @@ namespace WinfADD.Controllers
             }
 
 
-            //TODO change path
-            var path = "C:/Users/Jan/RiderProjects/isa_winf_isadd/wwwroot/Upload/";
-
-            //TODO add to list
-            var _accessibleFolders = new List<string>();
-            _accessibleFolders.Add("gallery");
-            _accessibleFolders.Add("front");
-            _accessibleFolders.Add("preview");
-            _accessibleFolders.Add("event");
-            _accessibleFolders.Add("equipment");
-            _accessibleFolders.Add("busstation");
-            _accessibleFolders.Add("poi");
-            _accessibleFolders.Add("articleBean");
-            _accessibleFolders.Add("articleBlend");
-            _accessibleFolders.Add("articleCoffeeDrink");
-            _accessibleFolders.Add("articleEquipment");
-
-
-            if (_accessibleFolders.Contains(imageObj.ContentType))
+            if (deleteImageInternal(imageObj.FileName, imageObj.FileName))
             {
-                System.IO.File.Delete(path + imageObj.ContentType +"/"+imageObj.FileName);
+                return Json( "Deleted::"+imageObj.FileName);
             }
             else
             {
-                Console.WriteLine("Error: Couldn't find Image! at::"+path + "/../" + imageObj.FileName );
                 return Json("Failed to delete Image");
             }
+       }
 
-            return Json( "Deleted::"+imageObj.FileName);
-        }
+
+       //delete Image method for internal use only
+       public static bool deleteImageInternal(string fileName, string contentType)
+       {
+
+           //TODO change path
+           var path = "C:/Users/Jan/RiderProjects/isa_winf_isadd/wwwroot/Image/";
+
+           //TODO add to list
+           var _accessibleFolders = new List<string>();
+           _accessibleFolders.Add("gallery");
+           _accessibleFolders.Add("front");
+           _accessibleFolders.Add("preview");
+           _accessibleFolders.Add("event");
+           _accessibleFolders.Add("equipment");
+           _accessibleFolders.Add("busstation");
+           _accessibleFolders.Add("poi");
+           _accessibleFolders.Add("articleBean");
+           _accessibleFolders.Add("articleBlend");
+           _accessibleFolders.Add("articleCoffeeDrink");
+           _accessibleFolders.Add("articleEquipment");
+
+
+           if (_accessibleFolders.Contains(contentType))
+           {
+               System.IO.File.Delete(path + contentType +"/"+fileName);
+           }
+           else
+           {
+               Console.WriteLine("Error: Couldn't find Image! at::"+path + "/../" + fileName );
+               return false;
+           }
+
+
+
+           return true;
+       }
     }
 }

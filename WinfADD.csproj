@@ -72,7 +72,6 @@
       <Folder Include="ClientApp\src\app\services\user" />
       <Folder Include="ClientApp\src\assets\Images" />
       <Folder Include="documentation\Content\Templates" />
-      <Folder Include="wwwroot\Image\gallery" />
     </ItemGroup>
 
     <ItemGroup>
@@ -98,6 +97,21 @@
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\User.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\search\checkbox-coffee\checkbox-coffee.component.spec.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\search\checkbox-coffee\checkbox-coffee.component.ts" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\Image\front\zbszxmln.dbr.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\Image\preview\aehud2mn.1g4.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\Image\preview\tzljrsle.uf4.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\Image\event\0uafynsh.acq.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\Image\event\beh0c0wj.ccz.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\Image\event\dxxyyquc.13u.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\Image\event\ela5aude.zzj.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\Image\event\gdcezvxe.r13.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\Image\event\lbczsejy.qvc.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\Image\event\nqj2rqwz.c1p.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\Image\event\p1vx1sks.vz3.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\Image\preview\xxpiufr5.do0.jpg" />
     </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
