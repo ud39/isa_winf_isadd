@@ -134,8 +134,8 @@
              style="display: none"
              type="file" (change)="onFileChanged($event)"
              #fileInput>
-           <button mat-button (click)="fileInput.click()">Select File</button>
-           <button mat-button (click)="onUpload('preview')">Upload!</button>
+           <button mat-button (click)="fileInput.click()">Event Bild</button>
+           <button mat-button (click)="onUpload('preview')">Upload</button>
            <button mat-button (click)="deleteImage('preview')" class="button">Löschen</button>
            <br>
            <img  [src]="admin_service.previewImage" height="20%">

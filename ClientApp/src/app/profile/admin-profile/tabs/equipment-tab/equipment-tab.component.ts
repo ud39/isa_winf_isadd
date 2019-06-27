@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CheckboxEquipmentComponent} from "../../../../search/checkbox-equipment/checkbox-equipment.component";
+import {AdminService} from "../../../../services/admin/admin.service";
 
 @Component({
   selector: 'app-equipment-tab',
@@ -31,9 +32,23 @@ export class EquipmentTabComponent implements OnInit {
     return this.equipmentInput;
   }
 
-  constructor() { }
+  constructor(public adminService: AdminService ) {}
 
   ngOnInit() {
+  }
+
+
+  //jan
+  onFileChanged(event) {
+    this.adminService.onFileChanged(event)
+  }
+
+  onUpload(fromWhere) {
+    this.adminService.onUpload(fromWhere);
+  }
+
+  deleteImage(fromWhere) {
+    this.adminService.deleteImage(fromWhere);
   }
 
 }

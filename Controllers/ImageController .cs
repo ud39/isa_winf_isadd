@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.IO;
@@ -147,26 +148,33 @@ namespace WinfADD.Controllers
 
             //TODO change path
             var path = "C:/Users/Jan/RiderProjects/isa_winf_isadd/wwwroot/Upload/";
-            switch (imageObj.ContentType)
+
+            //TODO add to list
+            var _accessibleFolders = new List<string>();
+            _accessibleFolders.Add("gallery");
+            _accessibleFolders.Add("front");
+            _accessibleFolders.Add("preview");
+            _accessibleFolders.Add("event");
+            _accessibleFolders.Add("equipment");
+            _accessibleFolders.Add("busstation");
+            _accessibleFolders.Add("poi");
+            _accessibleFolders.Add("articleBean");
+            _accessibleFolders.Add("articleBlend");
+            _accessibleFolders.Add("articleCoffeeDrink");
+            _accessibleFolders.Add("articleEquipment");
+
+
+            if (_accessibleFolders.Contains(imageObj.ContentType))
             {
-                case "gallery":
-                    System.IO.File.Delete(path + "gallery/"+imageObj.FileName);
-                    break;
-                case "front":
-                    System.IO.File.Delete(path +"front/"+imageObj.FileName);
-                    break;
-                case "preview":
-                    System.IO.File.Delete(path +"preview/"+imageObj.FileName);
-                    break;
-                default:
-                    Console.WriteLine("Error: Couldn't find Image! at::"+path + "/../" + imageObj.FileName );
-                    break;
+                System.IO.File.Delete(path + imageObj.ContentType +"/"+imageObj.FileName);
             }
-
-
+            else
+            {
+                Console.WriteLine("Error: Couldn't find Image! at::"+path + "/../" + imageObj.FileName );
+                return Json("Failed to delete Image");
+            }
 
             return Json( "Deleted::"+imageObj.FileName);
         }
-
     }
 }
