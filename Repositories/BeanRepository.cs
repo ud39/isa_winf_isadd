@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Dapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using WinfADD.Models;
 
@@ -44,7 +45,11 @@ namespace WinfADD.Repositories
             }
 
             //build GetByID sql query
-            GetByIdString = "SELECT * FROM" +" " + TableName + " WHERE "+ keyCompare;
+            GetByIdString = "select distinct on (name) name, * from (select b1.*, image_file_name from Bean b1" +
+                            " inner join bean_image on b1.name = bean_name and b1.provenance = bean_provenance" +
+                            " inner join image on image_file_name = file_name where content_type = 'preview' union select b2.*, null as file_name from Bean b2) as t "+
+                             "where " + keyCompare +
+                            " order by name, image_file_name";
 
 
             //GetAll sql query
@@ -86,12 +91,11 @@ namespace WinfADD.Repositories
             }
         }
 
-
-        public async Task<BeanPreview> GetById(int id)
+        public async Task<BeanPreview> GetById([FromQuery] Bean bean)
         {            
             using (IDbConnection conn = Connection)
             {
-                var result = await conn.QueryAsync<BeanPreview>(GetByIdString, new {id = id});
+                var result = await conn.QueryAsync<BeanPreview>(GetByIdString, bean);
             
                 return result.FirstOrDefault();
             }

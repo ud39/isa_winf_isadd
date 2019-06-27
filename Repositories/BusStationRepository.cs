@@ -29,12 +29,12 @@ namespace WinfADD.Repositories
             {
                 //compute keyCompare, CSKeys, AtCSKeys
                 if(keyCompare.Length >0){
-                    keyCompare += " AND " + keyString + " = @" + keyString.Replace("_", "");
+                    keyCompare += " AND " + _MappingM2DB[keyString] + " = @" + keyString.Replace("_", "");
                 }
 
                 else
                 {
-                    keyCompare += keyString + " = @" + keyString.Replace("_","");
+                    keyCompare += _MappingM2DB[keyString] + " = @" + keyString.Replace("_","");
                 }
             }
 

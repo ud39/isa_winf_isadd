@@ -27,7 +27,7 @@ namespace WinfADD.Repositories
         public IDbConnection Connection => new NpgsqlConnection(_config["ConnectionStrings:DefaultConnection"]);
 
 
-        protected  IConfiguration _config;
+        protected IConfiguration _config;
         protected IDictionary<string, string> _MappingM2DB;
 
 
@@ -40,7 +40,7 @@ namespace WinfADD.Repositories
             SqlMapper.SetTypeMap(typeof(Event), MappingConfigurator.CreateMap(typeof(Event)));
             SqlMapper.SetTypeMap(typeof(Bean), MappingConfigurator.CreateMap(typeof(Bean)));
             SqlMapper.SetTypeMap(typeof(Blend), MappingConfigurator.CreateMap(typeof(Blend)));
-            SqlMapper.SetTypeMap(typeof(BusStation), MappingConfigurator.CreateMap(typeof(BusStation)));
+            SqlMapper.SetTypeMap(typeof(BusStation), MappingConfigurator.CreateMap(typeof(BusStation), MappingConfigurator.BusStationMapper));
             SqlMapper.SetTypeMap(typeof(CoffeeDrink), MappingConfigurator.CreateMap(typeof(CoffeeDrink)));
             SqlMapper.SetTypeMap(typeof(Equipment), MappingConfigurator.CreateMap(typeof(Equipment))); //TODO
             SqlMapper.SetTypeMap(typeof(EquipmentCategory), MappingConfigurator.CreateMap(typeof(EquipmentCategory)));

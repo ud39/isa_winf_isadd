@@ -23,9 +23,10 @@ namespace WinfADD.Controllers
         }
         
         [HttpGet("{id}")]
-        public async Task<ActionResult<BeanPreview>> GetById(int id)
+        public async Task<ActionResult<BeanPreview>> GetById([FromQuery] Bean bean)
         {
-            return await _beanRepository.GetById(id);
+            return await _beanRepository.GetById(bean);
         }
+        
     }
 }

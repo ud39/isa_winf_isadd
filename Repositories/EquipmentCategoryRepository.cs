@@ -43,18 +43,19 @@ namespace WinfADD.Repositories
                 }
             }
 
-            //build GetByID sql query
-            GetByIdString = "SELECT * FROM" +" " + TableName + " WHERE "+ keyCompare;
+            GetByIdString = "select distinct on (name) name , image_file_name from (select name, image_file_name from Equipment_Category "+
+                                           " inner join Equipment_Category_image on name = Equipment_Category_name "+
+                                           " inner join image on image_file_name = file_name where content_type = 'preview' union select name, null as file_name from equipment_category) as t " +
+                                           " where " + keyCompare +
+                                           " order by name, image_file_name";
 
 
-            //GetAll sql query
-           // GetAllString = "SELECT * FROM" + " " + TableName + "INNER JOIN " + TableName +
-           //                "_image on name = EquipmentCategory_name " +
-            //               "INNER JOIN image_file_name = file_name where content_type = 'preview'";
+            
             GetAllString = "select distinct on (name) name , image_file_name from (select name, image_file_name from Equipment_Category "+
             "inner join Equipment_Category_image on name = Equipment_Category_name "+
             "inner join image on image_file_name = file_name where content_type = 'preview' union select name, null as file_name from equipment_category) as t order by name, image_file_name";
             //Update sql query: UpdateString = "UPDATE table SET property1=@property1, property2=@property2... WHERE key1=@key1, key2=@key2...";
+            
             UpdateString = "UPDATE " + TableName + " SET ";
             PropertyInfo[] possibleProperties = typeof(EquipmentCategory).GetProperties();
             var temp = "";
@@ -67,6 +68,7 @@ namespace WinfADD.Repositories
                     temp += _MappingM2DB[propertyName] + "= @" + propertyName;
                 }
             }
+           
             UpdateString += temp + " WHERE " + keyCompare;
 
             //Delete sql query

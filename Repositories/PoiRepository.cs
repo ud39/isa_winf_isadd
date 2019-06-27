@@ -18,7 +18,7 @@ namespace WinfADD.Repositories
 
             // keys
             Keys.Add("name");
-            Keys.Add("manufacturer");
+            Keys.Add("address");
 
             //TODO write tableName
             TableName = "Poi";
@@ -46,9 +46,12 @@ namespace WinfADD.Repositories
             }
 
             //build GetByID sql query
-            GetByIdString = "SELECT * FROM" +" " + TableName + " WHERE "+ keyCompare;
-
-        
+            GetByIdString = "select distinct on (name) name, address, description, image_file_name from (select p1.*, image_file_name from Poi p1" +
+                " inner join poi_image on name = poi_name and poi_address = address" +
+                " inner join image on image_file_name = file_name where content_type = 'preview' union select p2.*, null as file_name from poi p2) as t " +
+                " where " + keyCompare +
+                " order by name, image_file_name";
+                
            GetAllString = "select distinct on (name) name, * from (select p1.*, image_file_name from Poi p1" +
           " inner join poi_image on name = poi_name and poi_address = address" + 
           " inner join image on image_file_name = file_name where content_type = 'preview' union select p2.*, null as file_name from poi p2) as t order by name, image_file_name";
