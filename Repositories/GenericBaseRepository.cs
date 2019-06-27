@@ -247,7 +247,7 @@ namespace WinfADD.Repositories
                     fieldCounter++;
                 }
 
-                Console.WriteLine("llllllllllllllllllllllllllllllllllllllllllll::"+fieldCounter);
+
                 if (fieldCounter < 1) return false;
 
                 //remove last 'AND'
@@ -277,7 +277,7 @@ namespace WinfADD.Repositories
         /*
          * DELETE
          */
-        public async Task<bool> DeleteTable(Table tableObj)
+        public virtual async Task<bool> DeleteTable(Table tableObj)
         {
             using (IDbConnection conn = Connection)
             {Console.WriteLine("\n Delete::" + DeleteString);

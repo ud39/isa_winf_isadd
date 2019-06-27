@@ -24,7 +24,9 @@ namespace WinfADD.Repositories
             NpgsqlConnection.GlobalTypeMapper.MapComposite<Address>("address");
             DefaultTypeMap.MatchNamesWithUnderscores = true;
 
+
             TableName = "coffee_shop";
+            Keys.Add("id");
 
             //mapping M2DB
             _MappingM2DB = MappingM2DB.CoffeShopMap;
@@ -42,7 +44,7 @@ namespace WinfADD.Repositories
 
                 else
                 {
-                    keyCompare += "(address)." + keyString + "=@" + keyString;
+                    keyCompare += keyString + "=@" + keyString;
                 }
             }
 
@@ -173,8 +175,8 @@ namespace WinfADD.Repositories
            GetByIdString = "select * from coffee_shop where id = @id;" +
                            "select i.* from image i, coffee_shop_image ci where ci.coffee_shop_id = @id and ci.image_file_name = i.file_name;" +
                            "select e.* from event e, organised_by o where o.coffee_shop_id = @id and  e.id = o.event_id;" +
-                           "select b.* from provides p, bean b where p.coffee_shop_id = @id and p.bean_name = b.name and p.bean_manufacturer_name = b.manufacturer_name;" +
-                           "select b.* from offers o, blend b where o.coffee_shop_id = @id and o.blend_name = b.name and o.blend_manufacturer_name = b.manufacturer_name;" +
+                           "select b.* from provides p, bean b where p.coffee_shop_id = @id and p.bean_name = b.name and p.bean_provenance = b.provenance;" +
+                           "select b.* from offers o, blend b where o.coffee_shop_id = @id and o.blend_name = b.name;" +
                            "select b.* from reachable_by_bus b where b.coffee_shop_id = @id and b.bus_station_name = b.bus_station_name;" +
                            "select c.* from coffee_drink c, serves s where s.coffee_shop_id = @id and s.coffee_drink_name = c.name;" +
                            // Equipment  "select e.* from equipment e, sells s where s.coffee_shop_id = 2 and s.equipment_manufacturer_name = e.manufacturer_name and s.equipment_model_name = e.model_name and s.equipment_year_of_origin = e.year_of_origin;";
@@ -229,12 +231,12 @@ namespace WinfADD.Repositories
                 "INSERT INTO owns (company_name, coffee_shop_id) VALUES (@company_name, @coffee_shop_id)";
 
             var sqlBlendRelation =
-                "INSERT INTO offers (blend_name, blend_manufacturer_name, coffee_shop_id)" +
-                "VALUES (@blend_name, @blend_manufacturer_name, @coffee_shop_id)";
+                "INSERT INTO offers (blend_name, coffee_shop_id) " +
+                "VALUES (@blend_name, @coffee_shop_id)";
 
             var sqlBeanRelation =
-                "Insert INTO provides (bean_name, bean_manufacturer_name, coffee_shop_id) " +
-                "VALUES (@bean_name, @bean_manufacturer_name, @coffee_shop_id)";
+                "Insert INTO provides (bean_name, bean_provenance, coffee_shop_id) " +
+                "VALUES (@bean_name, @bean_provenance, @coffee_shop_id)";
 
             var sqlEquipmentCategoriesRelation =
                 "INSERT INTO supplies (equipment_category_name, coffee_shop_id) " +
@@ -357,8 +359,7 @@ namespace WinfADD.Repositories
                            conn.Execute(sqlBlendRelation,
                                new
                                {
-                                   blend_name = blend.Name, blend_manufacturer_name = blend.ManufacturerName,
-                                   coffee_shop_id = coffeShopID
+                                   blend_name = blend.Name, coffee_shop_id = coffeShopID
                                }, transaction: transaction);
                        }
 
@@ -368,7 +369,7 @@ namespace WinfADD.Repositories
                            conn.Execute(sqlBeanRelation,
                                new
                                {
-                                   bean_name = bean.Name, bean_manufacturer_name = bean.ManufacturerName,
+                                   bean_name = bean.Name, bean_provenance = bean.Provenance,
                                    coffee_shop_id = coffeShopID
                                }, transaction: transaction);
                        }
@@ -429,6 +430,23 @@ namespace WinfADD.Repositories
                conn.Close();
                return true;
 
+            }
+        }
+
+
+        public override async Task<bool> DeleteTable(CoffeeShop tableObj)
+        {
+            using (IDbConnection conn = Connection)
+            {Console.WriteLine("\n Delete::" + DeleteString);
+                var sqlEventDelete = "DELETE FROM event e WHERE NOT EXISTS(SELECT )";
+
+                /*
+                DELETE FROM link_group lg WHERE  NOT EXISTS ( SELECT 1FROM   link_reply lr
+                    WHERE  lr.which_group = lg.link_group_id
+                    );";
+                    */
+                var rowsAffected = await conn.ExecuteAsync(DeleteString, tableObj );
+                return (rowsAffected > 0);
             }
         }
     }
