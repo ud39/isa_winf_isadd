@@ -63,7 +63,8 @@ namespace WinfADD
             services.AddSingleton<ITableRepository<CoffeeShop>, CoffeeShopRepository>();
             services.AddSingleton<ITableRepository<Event>, EventRepository>();
             services.AddSingleton<ITableRepository<CoffeeDrink>, CoffeeDrinkRepository>();
-
+            services.AddSingleton<ITableRepository<Poi>, PoiRepository>();
+            services.AddSingleton<ITableRepository<EquipmentCategory>, EquipmentCategoryRepository>();
 
 
             //TypeHandler for complex data types in Model

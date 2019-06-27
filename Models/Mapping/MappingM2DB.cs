@@ -44,6 +44,22 @@ namespace WinfADD.Models.Mapping
             {"provenance", "provenance"},
             {"priceclass", "price_class"},
             {"description", "description"},
+            {"PreviewImage", "image_file_name"}
+        };
+       
+        public static Dictionary<string, string> PoiMap = new Dictionary<string, string>
+        {
+            {"name", "name"},
+            {"address", "address"},
+            {"description", "description"},
+            {"imagefilename", "image_file_name"}
+        };
+
+       
+        public static Dictionary<string, string> EquipmentCategoryMap = new Dictionary<string, string>
+        {
+            {"name", "name"},
+            {"imagefilename", "image_file_name"}
         };
 
 
@@ -54,7 +70,8 @@ namespace WinfADD.Models.Mapping
             {"provenance", "provenance"},
             {"priceclass", "priceclass"},
             {"fairtrade", "fairtrade"},
-            {"description", "description"}
+            {"description", "description"},
+            {"PreviewImage", "image_file_name"}
         };
 
         public static Dictionary<string, string> BusStationMap = new Dictionary<string, string>

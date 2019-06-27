@@ -76,8 +76,8 @@ CREATE TABLE bean(
 );
 
 CREATE TABLE manufacturer(
-                      name citext,
-                      PRIMARY KEY (name)
+                           name citext,
+                           PRIMARY KEY (name)
 );
 
 CREATE TABLE poi(
@@ -122,9 +122,9 @@ CREATE TABLE public.user (
 );
 
 create table image (
-  file_name text primary key,
-  content_type text,
-  unique (file_name, content_type)
+                     file_name text primary key,
+                     content_type text,
+                     unique (file_name, content_type)
 );
 
 
@@ -159,11 +159,11 @@ CREATE TABLE near_by(
 );
 
 CREATE TABLE reachable_by_bus(
-                        coffee_shop_id int,
-                        bus_station_name citext,
-                        bus_station_line citext,
-                        PRIMARY KEY (coffee_shop_id, bus_station_name, bus_station_line),
-                        FOREIGN KEY (coffee_shop_id) REFERENCES  coffee_shop (id) ON DELETE CASCADE
+                               coffee_shop_id int,
+                               bus_station_name citext,
+                               bus_station_line citext,
+                               PRIMARY KEY (coffee_shop_id, bus_station_name, bus_station_line),
+                               FOREIGN KEY (coffee_shop_id) REFERENCES  coffee_shop (id) ON DELETE CASCADE
 
 );
 
@@ -193,16 +193,16 @@ CREATE TABLE provides (
 );
 
 CREATE TABLE produce (
-                        bean_name citext,
-                        bean_provenance citext,
-                        manufacturer_name citext,
-                        roasting text,
-                        product_name text,
-                        fair_trade boolean,
-                        price_class text,
-                        PRIMARY KEY (bean_name, bean_provenance, manufacturer_name),
-                        FOREIGN KEY (bean_name, bean_provenance) REFERENCES bean (name, provenance) ON DELETE CASCADE,
-                        FOREIGN KEY (manufacturer_name) REFERENCES manufacturer (name) ON DELETE CASCADE
+                       bean_name citext,
+                       bean_provenance citext,
+                       manufacturer_name citext,
+                       roasting text,
+                       product_name text,
+                       fair_trade boolean,
+                       price_class text,
+                       PRIMARY KEY (bean_name, bean_provenance, manufacturer_name),
+                       FOREIGN KEY (bean_name, bean_provenance) REFERENCES bean (name, provenance) ON DELETE CASCADE,
+                       FOREIGN KEY (manufacturer_name) REFERENCES manufacturer (name) ON DELETE CASCADE
 );
 
 
@@ -297,20 +297,43 @@ create table coffee_shop_image (
                                  FOREIGN KEY (coffee_shop_id) REFERENCES  coffee_shop (id) ON DELETE CASCADE);
 
 create table event_image (
-                                 image_file_name text,
-                                 event_id int,
-                                 Primary Key(image_file_name, event_id),
-                                 Foreign Key(image_file_name) references image (file_name) ON DELETE CASCADE,
-                                 FOREIGN KEY (event_id) REFERENCES event (id) ON DELETE CASCADE);
+                           image_file_name text,
+                           event_id int,
+                           Primary Key(image_file_name, event_id),
+                           Foreign Key(image_file_name) references image (file_name) ON DELETE CASCADE,
+                           FOREIGN KEY (event_id) REFERENCES event (id) ON DELETE CASCADE);
 
 
 create table poi_image (
-                                   image_file_name text,
-                                   poi_name citext,
-                                   poi_address address,
-                                   Primary Key(image_file_name, poi_name, poi_address),
-                                   Foreign Key(image_file_name) references image (file_name) ON DELETE CASCADE,
-                                   FOREIGN KEY (poi_name, poi_address) REFERENCES  poi (name, address) ON DELETE CASCADE);
+                         image_file_name text,
+                         poi_name citext,
+                         poi_address address,
+                         Primary Key(image_file_name, poi_name, poi_address),
+                         Foreign Key(image_file_name) references image (file_name) ON DELETE CASCADE,
+                         FOREIGN KEY (poi_name, poi_address) REFERENCES  poi (name, address) ON DELETE CASCADE);
+
+create table bean_image (
+                          image_file_name text,
+                          bean_name citext,
+                          bean_provenance citext,
+                          Primary Key(image_file_name, bean_name, bean_provenance),
+                          Foreign Key(image_file_name) references image (file_name) ON DELETE CASCADE,
+                          FOREIGN KEY (bean_name, bean_provenance) REFERENCES  bean (name, provenance) ON DELETE CASCADE);
+
+create table blend_image (
+                           image_file_name text,
+                           blend_name citext,
+                           Primary Key(image_file_name, blend_name),
+                           Foreign Key(image_file_name) references image (file_name) ON DELETE CASCADE,
+                           FOREIGN KEY (blend_name) REFERENCES  blend (name) ON DELETE CASCADE);
+
+create table equipment_category_image (
+                                        image_file_name text,
+                                        equipment_category_name citext,
+                                        Primary Key(image_file_name, equipment_category_name),
+                                        Foreign Key(image_file_name) references image (file_name) ON DELETE CASCADE,
+                                        FOREIGN KEY (equipment_category_name) REFERENCES  equipment_category (name) ON DELETE CASCADE);
+
 
 
 
@@ -445,8 +468,8 @@ insert into coffee_drink values ('coffeedrinkdummyname1', 'descriptiondummy1');
 insert into serves values ('coffeedrinkdummyname' , 2);
 insert into serves values ('coffeedrinkdummyname1' , 2);
 
-insert into poi values ('dummyname' ,('dummystraße', 5, 23222, 'Dummystadt', 'Dummyland'));
-insert into poi values ('dummyname1' ,('dummystraß1e', 5, 23222, 'Dummystadt', 'Dummyland'));
+insert into poi values ('poidummyname' ,('dummystraße', 5, 23222, 'Dummystadt', 'Dummyland'), 'descriptionText1');
+insert into poi values ('poidummyname1' ,('dummystraß1e', 5, 23222, 'Dummystadt', 'Dummyland'), 'descriptionText2');
 
 insert into near_by values (2, 'dummyname' ,('dummystraße', 5, 23222, 'Dummystadt', 'Dummyland'));
 insert into near_by values (2, 'dummyname1' ,('dummystraß1e', 5, 23222, 'Dummystadt', 'Dummyland'));
@@ -503,22 +526,6 @@ insert into event (time, name, access_fee, description) values ('2019-12-25', 'd
 insert into organised_by values (2, 1);
 insert into organised_by values (2, 2);
 
-
-insert into image values ('1.png', 'preview');
-insert into image values ('2.png', 'gallery');
-insert into image values ('event1.png', 'preview');
-insert into image values ('event2.png', 'gallery');
-insert into image values ('event3.png', 'gallery');
-
-insert into coffee_shop_image values ('1.png',1);
-insert into coffee_shop_image values ('2.png',2);
-insert into coffee_shop_image values ('1.png',2);
-
-insert into event_image values ('event1.png',1);
-insert into event_image values ('event2.png',1);
-insert into event_image values ('event3.png',1);
-
-
 insert into opens values (2, '18:00:00', '10:00:00', 'friday');
 insert into opens values (2, '18:00:00', '10:00:00', 'monday');
 insert into opens values (2, '18:00:00', '10:00:00', 'tuesday');
@@ -546,6 +553,8 @@ insert into sells values ('manufacturerDummy2', 2007, 'modeldummy2', 'categorydu
 
 
 
+-- USER AND RATINGS
+
 insert into public.user values ('user@mail.uni-kiel.de');
 insert into user_rating (rating_id, total, coffee_selection, feelgood_factor, service, facilities) values (DEFAULT, 3, 4, 1, 1, 3);
 insert into user_rating (rating_id, total, coffee_selection, feelgood_factor, service, facilities) values (DEFAULT, 5, 4, 3, 2, 1);
@@ -561,3 +570,48 @@ insert into rated_by_user values  (2, 2);
 insert into rated_by_user values  (2, 1);
 insert into rates values (2, 'user1@mail.uni-kiel.de', 1);
 insert into rates values (2, 'user1@mail.uni-kiel.de', 2);
+
+
+-- IMAGES
+
+insert into image values ('1.png', 'preview');
+insert into image values ('2.png', 'gallery');
+insert into image values ('event1.png', 'preview');
+insert into image values ('event2.png', 'gallery');
+insert into image values ('event3.png', 'gallery');
+
+insert into coffee_shop_image values ('1.png',1);
+insert into coffee_shop_image values ('2.png',2);
+insert into coffee_shop_image values ('1.png',2);
+
+insert into event_image values ('event1.png',1);
+insert into event_image values ('event2.png',1);
+insert into event_image values ('event3.png',1);
+
+insert into image values ('bean1.image', 'preview');
+insert into image values ('bean2.image', 'preview');
+insert into image values ('blend1.image', 'preview');
+insert into image values ('blend2.image', 'preview');
+insert into image values ('equipmentcategory1.image', 'preview');
+insert into image values ('bean3.image', 'gallery');
+insert into image values ('blend3.image', 'gallery');
+insert into image values ('equipmentcategory2.image', 'gallery');
+
+insert into bean_image values ('bean1.image', 'dummybean', 'beanprovenance');
+insert into bean_image values ('bean2.image', 'dummybean1', 'beanprovenance1');
+
+insert into blend_image values('blend1.image', 'blenddummy');
+insert into blend_image values('blend2.image', 'blenddummy1');
+insert into equipment_category_image values('equipmentcategory1.image', 'Kaffeemühle');
+insert into bean_image values ('bean3.image', 'dummybean', 'beanprovenance');
+insert into blend_image values('blend3.image', 'blenddummy');
+insert into equipment_category_image values('equipmentcategory2.image', 'Kaffeemühle');
+insert into equipment_category_image values('equipmentcategory2.image', 'categorydummy');
+
+insert into image values ('poi1.png', 'preview');
+insert into image values ('poi2.png', 'preview');
+insert into image values ('poi3.png', 'gallery');
+
+insert into poi_image values ('poi1.png','poidummyname',('dummystraße',5,23222,'Dummystadt','Dummyland'));
+insert into poi_image values ('poi2.png','poidummyname1',('dummystraß1e',5,23222,'Dummystadt','Dummyland'));
+insert into poi_image values ('poi3.png','poidummyname',('dummystraße',5,23222,'Dummystadt','Dummyland'));

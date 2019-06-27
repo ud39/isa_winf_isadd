@@ -1,4 +1,9 @@
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
+using Dapper;
 using Microsoft.Extensions.Configuration;
 using WinfADD.Models;
 
@@ -19,7 +24,7 @@ namespace WinfADD.Repositories
 
 
             _MappingM2DB = Models.Mapping.MappingM2DB.BeanMap;
-
+            DefaultTypeMap.MatchNamesWithUnderscores = true;
 
 
             //helper strings
@@ -43,8 +48,11 @@ namespace WinfADD.Repositories
 
 
             //GetAll sql query
-            GetAllString = "SELECT * FROM"+ " " + TableName;
-
+           // GetAllString = "SELECT * FROM" + " " + TableName + "INNER JOIN " + TableName +
+           //                "_image on name = bean_name " +
+            //               "INNER JOIN image_file_name = file_name where content_type = 'preview'";
+            GetAllString =
+                "select * from bean inner join bean_image on name = bean_name inner join image on image_file_name = file_name where content_type = 'preview'";
 
             //Update sql query: UpdateString = "UPDATE table SET property1=@property1, property2=@property2... WHERE key1=@key1, key2=@key2...";
             UpdateString = "UPDATE " + TableName + " SET ";
@@ -64,5 +72,29 @@ namespace WinfADD.Repositories
             //Delete sql query
             DeleteString = "DELETE FROM" +" " + TableName + " WHERE " + keyCompare;
         }
+
+        public async Task<List<BeanPreview>> GetAll()
+        {
+                        
+            using (IDbConnection conn = Connection)
+            {
+                var result = await conn.QueryAsync<BeanPreview>(GetAllString);
+            
+                return result.ToList();
+            }
+        }
+
+
+        public async Task<BeanPreview> GetById(int id)
+        {            
+            using (IDbConnection conn = Connection)
+            {
+                var result = await conn.QueryAsync<BeanPreview>(GetByIdString, new {id = id});
+            
+                return result.FirstOrDefault();
+            }
+        }
+
+
     }
 }

@@ -29,17 +29,6 @@ namespace WinfADD.Models.Mapping
                 {"access_fee", "AccessFee"}
             };
             
-        //    public static   Dictionary<string, string> EventMap = new Dictionary<string, string>
-            /**    {
-                    {"event_id", "Id"},
-                    {"time", "Time"},
-                    {"access_fee", "AccessFee"},
-                    {"description", "Description"}
-    */
-          //      };
-
-            //TODO
-            
             public static readonly Func<Type, string, PropertyInfo> CoffeeShopPreviewMapper =
               new Func<Type, string, PropertyInfo>((type, columnName)
                   => type.GetProperty(CoffeeShopPreviewMap.ContainsKey(columnName) ? CoffeeShopPreviewMap[columnName] : columnName));
