@@ -1,4 +1,4 @@
-import {Component, OnInit, QueryList, ViewChildren, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, QueryList, ViewChildren, ViewEncapsulation} from '@angular/core';
 import {CheckboxComponent} from "../checkbox/checkbox.component";
 import {Router} from "@angular/router";
 import {MatCheckbox, MatInput, MatSelect} from "@angular/material";
@@ -26,6 +26,13 @@ export class CheckboxEquipmentComponent implements OnInit {
 
   clear() {
     this.checkBoxService.unselectCheckBoxes(this.cbs);
+  }
+
+  @Output() callNavigateToEquipment = new EventEmitter<void>();
+
+  triggerSearchEquipment():void{
+    console.log("Call form Equipment");
+    this.callNavigateToEquipment.emit();
   }
 
   ngOnInit() {

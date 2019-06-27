@@ -35,7 +35,8 @@ export class ImageService {
   }
 
   getBrandImage(): Observable<Blob> {
-    return this.httpClient.get('https://localhost:5001/Upload/' + 'kaffeesatt.png', { responseType: 'blob' });
+    return this.httpClient.get(Global.url + "image/GetById?ContentType=brand&fileName=kaffeesatt.png", { responseType: 'blob' });
+
   }
 }
 

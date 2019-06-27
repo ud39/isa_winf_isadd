@@ -1,13 +1,13 @@
 <div class="container">
   <div class="grid">
-    <button mat-button class="btn search" (click)="navigateTo()">
+    <button mat-button class="btn search" (click)="navigateToShop()">
       Suche
     </button>
     <button mat-button class="btn clear" (click)="clearCheckBoxes()">
       Leeren
     </button>
-    <app-checkbox #cb *ngIf="urlPath == urlGlobalPath.get('shop')"></app-checkbox>
-    <app-checkbox-equipment #cbeq *ngIf="urlPath == urlGlobalPath.get('wikiEquipment') || urlPath == urlGlobalPath.get('wiki')"></app-checkbox-equipment>
-    <app-checkbox-coffee #cbcof *ngIf="urlPath == urlGlobalPath.get('wikiCoffee') || urlPath == urlGlobalPath.get('wiki')"></app-checkbox-coffee>
+    <app-checkbox (callNavigateToShop)="navigateToShop()" #cb *ngIf="urlPath == urlGlobalPath.get('shop')"></app-checkbox>
+    <app-checkbox-equipment #cbeq  (callNavigateToEquipment)="navigateToEquipmentCoffee()" *ngIf="urlPath == urlGlobalPath.get('wikiEquipment') || urlPath == urlGlobalPath.get('wiki')"></app-checkbox-equipment>
+    <app-checkbox-coffee  #cbcof (callNavigateToCoffee)="navigateToEquipmentCoffee()" *ngIf="urlPath == urlGlobalPath.get('wikiCoffee') || urlPath == urlGlobalPath.get('wiki')"></app-checkbox-coffee>
   </div>
 </div>

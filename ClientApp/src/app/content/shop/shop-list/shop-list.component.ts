@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ShopService} from "../../../services/shop/shop.service";
-import {Shop} from "../../../interfaces/entity/Shop";
 import {ActivatedRoute} from "@angular/router";
+
 
 
 
@@ -15,22 +15,15 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ShopListComponent implements OnInit {
 
-  public shops : Shop[];
 
-  constructor(private service: ShopService, private route: ActivatedRoute)
+
+  constructor(private service: ShopService)
   {
   }
 
   ngOnInit() {
    this.service.getShops().subscribe(result => {
-      this.shops = result;
-      console.log(result);
+      this.service.shops = result;
    }, error => console.error(error));
-   this.route.queryParams.subscribe(params => {
-     console.log(params);
-   })
-  }
-
-  ngAfterViewInit(){
   }
 }

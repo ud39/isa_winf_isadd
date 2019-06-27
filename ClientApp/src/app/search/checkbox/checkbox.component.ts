@@ -1,4 +1,4 @@
-import {Component, OnInit, QueryList, ViewChildren} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, QueryList, ViewChildren} from '@angular/core';
 import {ViewEncapsulation} from "@angular/core";
 import {Router} from '@angular/router';
 import {MatCheckbox, MatInput, MatSelect} from "@angular/material";
@@ -10,6 +10,7 @@ import {ShopService} from "../../services/shop/shop.service";
 import {Global} from "../../global";
 
 
+
 @Component({
   selector: 'app-checkbox',
   templateUrl: './checkbox.component.html',
@@ -18,6 +19,7 @@ import {Global} from "../../global";
   encapsulation: ViewEncapsulation.None
 })
 export class CheckboxComponent implements OnInit {
+
 
   @ViewChildren('cb') cbs : QueryList<MatCheckbox>;
   @ViewChildren(MatSelect) selects : QueryList<MatSelect>;
@@ -29,6 +31,7 @@ export class CheckboxComponent implements OnInit {
   }
 
   public shopNameFormControl = new FormControl();
+  public priceClass = ['niedrig', 'mittel', 'hoch'];
   public options: string[] = [];
   public filteredOptions: Observable<string[]>;
   public filteredPoi: Observable<string[]>;
@@ -57,11 +60,13 @@ export class CheckboxComponent implements OnInit {
         startWith(''),
         map(val => val.length >= 2 ? this.checkBoxService._filter(val,this.options): []),
       );
-    console.log(this.shopNameFormControl);
+
   }
 
-  ngAfterViewInit(){
+  @Output() callNavigateToShop = new EventEmitter<void>();
+  navigateTo(){
+   console.log("Call form Shop");
+   this.callNavigateToShop.emit();
   }
-
 }
 

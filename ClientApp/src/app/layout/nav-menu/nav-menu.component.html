@@ -3,11 +3,8 @@
   <div *ngIf="brand && currentWindowWidth > 600"><a class="navbar-brand" [routerLink]="['/']"><img [src]=brand id="brand"></a></div>
   <nav class='navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3' *ngIf="currentWindowWidth > 500">
     <div class="container">
-      <button mat-button [matMenuTriggerFor]="menuShop" class="nav-item" [routerLinkActive]='["link-active"]' [routerLink]="['/shops']">Shops</button>
-      <mat-menu #menuShop="matMenu">
-        <button mat-menu-item>Café</button>
-        <button mat-menu-item>Rösterei</button>
-      </mat-menu>
+      <button mat-button class="nav-item" [routerLinkActive]='["link-active"]' [routerLink]="['/shops']">Café</button>
+      <button mat-button class="nav-item" [routerLinkActive]='["link-active"]' [routerLink]="['/shops']">Bohnen & Zubehör</button>
       <button mat-button [matMenuTriggerFor]="menuWiki"
               class="nav-item"
               [routerLinkActive]='["link-active"]' [routerLink]="['/wiki']"

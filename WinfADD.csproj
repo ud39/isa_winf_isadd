@@ -64,6 +64,8 @@
       <Folder Include="ClientApp\src\app\profile\admin-profile\dialog" />
       <Folder Include="ClientApp\src\app\profile\admin-profile\tabs\user-tab" />
       <Folder Include="ClientApp\src\app\services\admin" />
+      <Folder Include="ClientApp\src\app\services\coffee" />
+      <Folder Include="ClientApp\src\app\services\equipment" />
       <Folder Include="ClientApp\src\app\services\event" />
       <Folder Include="ClientApp\src\app\services\image" />
       <Folder Include="ClientApp\src\app\services\routing" />

@@ -1,6 +1,6 @@
 <div class="container">
   <mat-form-field>
-    <input matInput placeholder="Equipment Name" id="name" type="text">
+    <input matInput placeholder="Equipment Name" id="name" type="text" (keydown.enter)="triggerSearchEquipment()">
   </mat-form-field>
   <div>
     <mat-checkbox #cb class="checkbox" id="presser" [checked]="false">Presser</mat-checkbox>
@@ -9,7 +9,7 @@
     <mat-checkbox #cb class="checkbox" id="grinder" [checked]="false">Mühle</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id='manual' [checked]="false">Manuell</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id='automatic' [checked]="false">Automatisch</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" id="container" [checked]="false">Behälter</mat-checkbox>
+    <mat-checkbox #cb class="checkbox" id="container" [checked]="false">Aufbewahrung</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id="frothing-pincher" [checked]="false">Milch Gießer</mat-checkbox>
   </div>
   <div  *ngIf="router.url == '/admin'">
