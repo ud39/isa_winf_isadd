@@ -19,7 +19,8 @@
     <mat-form-field class="price-range">
       <mat-label>Preis Klasse</mat-label>
       <mat-select id="priceClass">
-        <mat-option *ngFor="let price of priceClass" [value]="option">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let price of priceClass" [value]="price">
           {{price}}
         </mat-option>
       </mat-select>
