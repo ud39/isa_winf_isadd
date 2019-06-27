@@ -23,6 +23,9 @@ export class AdminService {
   public shop_gallery_path = Global.url + 'image/GetById?ContentType=gallery&fileName=';
   public shop_preview_path = Global.url + 'image/GetById?ContentType=preview&fileName=';
 
+  public event_path = Global.url + 'image/GetById?ContentType=event&fileName=';
+  public equipment_path = Global.url + 'image/GetById?ContentType=equipment&fileName=';
+
 
 
 
@@ -34,6 +37,8 @@ export class AdminService {
   public gallery_4_Filename: string;
   public front_Filename: string;
   public preview_Filename: string;
+  public event_Filename: string;
+  public equipment_Filename: string;
 
   public gallery_1: SafeUrl;
   public gallery_2: SafeUrl;
@@ -41,6 +46,8 @@ export class AdminService {
   public gallery_4: SafeUrl;
   public previewImage: SafeUrl;
   public frontImage: SafeUrl;
+  public eventImage: SafeUrl;
+  public equipmentImage: SafeUrl;
 
 
   private selectedFile: File;
@@ -95,6 +102,14 @@ export class AdminService {
             this.front_Filename = event.body.toString();
             this.frontImage = this.sanitize(this.shop_front_path  + this.front_Filename);
           }
+          else if(fromWhere == "event") {
+            this.event_Filename = event.body.toString();
+            this.eventImage = this.sanitize(this.event_path + this.event_Filename);
+          }
+          else if(fromWhere == "equipment") {
+            this.equipment_Filename = event.body.toString();
+            this.equipmentImage = this.sanitize(this.equipment_path + this.equipment_Filename);
+          }
         }
 
         else {console.log(event)}
@@ -141,9 +156,20 @@ export class AdminService {
       this.frontImage ='';
       this.front_Filename =''
     }
+    else if(fromWhere.match("event")){
+      name = this.event_Filename;
+      this.eventImage ='';
+      this.event_Filename =''
+    }
+    else if(fromWhere.match("equipment")){
+      name = this.equipment_Filename;
+      this.equipmentImage ='';
+      this.equipment_Filename =''
+    }
 
     console.log("Lösche::"+name +", from: " +fromWhere);
     console.log(":::::->"+'https://localhost:5001/api/image/delete?fileName='+name+'&contentType='+ fromWhere);
+
     this.http.delete(Global.url + 'image/delete?fileName='+name+'&contentType='+ fromWhere,   {
       reportProgress: false,}).subscribe(value =>{
 
