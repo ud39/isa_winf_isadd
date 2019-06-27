@@ -13,7 +13,7 @@ namespace WinfADD.Controllers
     [ApiController]
     public abstract class GenericTableController<Table> : Controller
     {
-        private readonly ITableRepository<Table> _tableRepo;
+        public readonly ITableRepository<Table> _tableRepo;
 
         public GenericTableController(ITableRepository<Table> tableRepo)
         {

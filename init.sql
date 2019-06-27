@@ -456,9 +456,10 @@ insert into coffee_shop (name, address, outdoor, fair_trade, disabled_friendly, 
 ('Coffee_shop_Name2', ('Kieler Straße', 5, 24232, 'Kiel', 'Deutschland'), false, false, true, 'Textbeschreibung', false, true, 'www.nene.ne', 2019, true, false, 50, false, true, true, 'niedrig');
 
 insert into equipment_category values ('Kaffeemühle');
+insert into equipment_category values ('categorydummy');
+insert into equipment_category values ('categorydummy1');
+
 insert into supplies values ('Kaffeemühle', 1);
-
-
 insert into supplies values ('Kaffeemühle', 2);
 
 insert into coffee_drink values ('coffeedrinkdummyname', 'descriptiondummy');
@@ -469,10 +470,11 @@ insert into serves values ('coffeedrinkdummyname' , 2);
 insert into serves values ('coffeedrinkdummyname1' , 2);
 
 insert into poi values ('poidummyname' ,('dummystraße', 5, 23222, 'Dummystadt', 'Dummyland'), 'descriptionText1');
+insert into poi values ('poidummyname2323' ,('dummystraße', 5, 23222, 'Dummystadt', 'Dummyland'), 'descriptionText1');
 insert into poi values ('poidummyname1' ,('dummystraß1e', 5, 23222, 'Dummystadt', 'Dummyland'), 'descriptionText2');
 
-insert into near_by values (2, 'dummyname' ,('dummystraße', 5, 23222, 'Dummystadt', 'Dummyland'));
-insert into near_by values (2, 'dummyname1' ,('dummystraß1e', 5, 23222, 'Dummystadt', 'Dummyland'));
+insert into near_by values (2, 'poidummyname' ,('dummystraße', 5, 23222, 'Dummystadt', 'Dummyland'));
+insert into near_by values (2, 'poidummyname1' ,('dummystraß1e', 5, 23222, 'Dummystadt', 'Dummyland'));
 
 
 insert into reachable_by_bus values (2, 'stationdummy', '81');
@@ -484,9 +486,6 @@ insert into company values ('dummycompany1');
 insert into owns values ('dummycompany', 2);
 insert into owns values ('dummycompany1', 2);
 
-insert into equipment_category values ('categorydummy');
-insert into equipment_category values ('categorydummy1');
-
 insert into supplies values ('categorydummy', 2);
 insert into supplies values ('categorydummy1', 2);
 
@@ -494,6 +493,7 @@ insert into supplies values ('categorydummy1', 2);
 
 insert into bean values ('dummybean', 'beanprovenance', 'dummytype');
 insert into bean values ('dummybean1', 'beanprovenance1',  'dummytype');
+insert into bean values ('dummybean2', 'beanprovenance1',  'dummytype');
 
 insert into provides values ('dummybean', 'beanprovenance', 2);
 insert into provides values ('dummybean1', 'beanprovenance1', 2);
@@ -501,6 +501,7 @@ insert into provides values ('dummybean1', 'beanprovenance1', 2);
 
 insert into blend values ('blenddummy', 'Deutschland', 'low');
 insert into blend values ('blenddummy1', 'UK', 'high');
+insert into blend values ('blenddummy2', 'UK', 'high');
 
 insert into offers values ('blenddummy', 2);
 insert into offers values ('blenddummy1', 2);

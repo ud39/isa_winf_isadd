@@ -12,6 +12,5 @@ namespace WinfADD.Models
         public string PriceClass { get; set; }
         public bool FairTrade { get; set; }
         public string Description { get; set; }
-        public string Product_Name { get; set; }
     }
 }

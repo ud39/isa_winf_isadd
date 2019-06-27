@@ -51,9 +51,9 @@ namespace WinfADD.Repositories
                 "select * from blend inner join blend_image on name = blend_name inner join image on image_file_name = file_name where content_type = 'preview' AND name = @id";
 
 
-            //GetAll sql query
-            GetAllString =
-                "select * from blend inner join blend_image on name = blend_name inner join image on image_file_name = file_name where content_type = 'preview'";
+            GetAllString = "select distinct on (name) name, * from (select b1.*, image_file_name from Blend b1" +
+                           " inner join blend_image on name = blend_name" +
+                           " inner join image on image_file_name = file_name where content_type = 'preview' union select b2.*, null as file_name from blend b2) as t order by name, image_file_name";    
 
 
 

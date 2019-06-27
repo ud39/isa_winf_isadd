@@ -13,5 +13,11 @@ namespace WinfADD.Controllers
         {
         }
         
+        
+        [HttpGet("allpreview")]
+        public async Task<List<EquipmentCategory>> GetAll()
+        {
+            return await _tableRepo.GetAll();
+        }
     }
 }

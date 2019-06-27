@@ -48,18 +48,10 @@ namespace WinfADD.Repositories
             //build GetByID sql query
             GetByIdString = "SELECT * FROM" +" " + TableName + " WHERE "+ keyCompare;
 
-
-            //GetAll sql query
-           // GetAllString = "SELECT * FROM" + " " + TableName + "INNER JOIN " + TableName +
-           //                "_image on name = Poi_name " +
-            //               "INNER JOIN image_file_name = file_name where content_type = 'preview'";
-          //  GetAllString =
-           //     "select * from Poi inner join Poi_image on name = Poi_name inner join image on image_file_name = file_name where content_type = 'preview'";
-       
-            
-           GetAllString = "select distinct on (name) name, address, description , image_file_name from (select name, image_file_name from Poi "+
-                          "inner join poi_image on name = poi_name "+
-                          "inner join image on image_file_name = file_name where content_type = 'preview' union select name, null as file_name from poi) as t order by name, image_file_name";
+        
+           GetAllString = "select distinct on (name) name, * from (select p1.*, image_file_name from Poi p1" +
+          " inner join poi_image on name = poi_name and poi_address = address" + 
+          " inner join image on image_file_name = file_name where content_type = 'preview' union select p2.*, null as file_name from poi p2) as t order by name, image_file_name";
 
             
             
