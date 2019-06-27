@@ -53,6 +53,25 @@ namespace WinfADD.Repositories
            
             //Update sql query: UpdateString = "UPDATE table SET property1=@property1, property2=@property2... WHERE key1=@key1, key2=@key2...";
             UpdateString = "UPDATE " + TableName + " SET ";
+            PropertyInfo[] possibleProperties = typeof(CoffeeShop).GetProperties();
+
+            //all possible fields
+            var temp = "";
+            foreach (PropertyInfo property in possibleProperties)
+            {
+                var propertyName = property.Name.ToLower();
+                if(temp.Length > 0) temp += ", " + propertyName + "= @" + propertyName;
+                else
+                {
+                    temp += propertyName + "= @" + propertyName;
+                }
+            }
+
+            UpdateString += temp + " WHERE " + keyCompare;
+
+
+            //Delete sql query
+            DeleteString = "DELETE FROM " + TableName + " WHERE " + keyCompare;
 
 
             GetAllString =

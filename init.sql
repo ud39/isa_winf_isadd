@@ -447,6 +447,24 @@ create table operates (
 
 
 
+------------ TRIGGER ----------
+
+CREATE OR REPLACE FUNCTION delete_obsolete_events_trigger_function() RETURNS TRIGGER AS $$
+BEGIN
+    IF EXISTS(SELECT *  FROM organised_by WHERE event_id = OLD.event_id ) THEN
+        RETURN NEW;
+         ELSE
+          DELETE FROM event  WHERE id = OLD.event_id;
+          RETURN NEW;
+    END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+
+DROP TRIGGER IF EXISTS delete_obsolete_events on organised_by;
+CREATE TRIGGER delete_obsolete_events AFTER DELETE ON organised_by FOR EACH ROW EXECUTE PROCEDURE delete_obsolete_events_trigger_function();
+
+
 
 ------------ INSERT DATA ----------
 
@@ -523,9 +541,12 @@ insert into composed values ('blenddummy', 'dummybean1','beanprovenance1', 'dumm
 
 insert into event (time, name, access_fee, description) values ('2019-12-26', 'dummyevent1', 5, 'eventdescriptiondummy');
 insert into event (time, name, access_fee, description) values ('2019-12-25', 'dummyevent', 5, 'eventdescriptiondummy');
+insert into event (time, name, access_fee, description) values ('2019-12-25', 'dummyevent', 5, 'eventdescriptiondummy');
 
 insert into organised_by values (2, 1);
 insert into organised_by values (2, 2);
+insert into organised_by values (1, 2);
+insert into organised_by values (1, 3);
 
 insert into opens values (2, '18:00:00', '10:00:00', 'friday');
 insert into opens values (2, '18:00:00', '10:00:00', 'monday');
