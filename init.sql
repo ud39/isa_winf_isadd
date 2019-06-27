@@ -293,6 +293,7 @@ create table coffee_shop_image (
                                  image_file_name text,
                                  coffee_shop_id int,
                                  Primary Key(image_file_name, coffee_shop_id),
+                                 UNIQUE (image_file_name),
                                  Foreign Key(image_file_name) references image (file_name) ON DELETE CASCADE,
                                  FOREIGN KEY (coffee_shop_id) REFERENCES  coffee_shop (id) ON DELETE CASCADE);
 
@@ -449,6 +450,7 @@ create table operates (
 
 ------------ TRIGGER ----------
 
+
 CREATE OR REPLACE FUNCTION delete_obsolete_events_trigger_function() RETURNS TRIGGER AS $$
 BEGIN
     IF EXISTS(SELECT *  FROM organised_by WHERE event_id = OLD.event_id ) THEN
@@ -461,8 +463,20 @@ END;
 $$ LANGUAGE plpgsql;
 
 
+CREATE OR REPLACE FUNCTION delete_obsolete_image_trigger_function() RETURNS TRIGGER AS $$
+BEGIN
+    DELETE FROM image WHERE file_name = OLD.image_file_name;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+
 DROP TRIGGER IF EXISTS delete_obsolete_events on organised_by;
 CREATE TRIGGER delete_obsolete_events AFTER DELETE ON organised_by FOR EACH ROW EXECUTE PROCEDURE delete_obsolete_events_trigger_function();
+
+DROP TRIGGER IF EXISTS delete_obsolete_images on event_image;
+CREATE TRIGGER delete_obsolete_images AFTER DELETE ON event_image FOR EACH ROW EXECUTE PROCEDURE delete_obsolete_image_trigger_function();
+
 
 
 
@@ -598,13 +612,14 @@ insert into rates values (2, 'user1@mail.uni-kiel.de', 2);
 
 insert into image values ('1.png', 'preview');
 insert into image values ('2.png', 'gallery');
+insert into image values ('3.png', 'gallery');
 insert into image values ('event1.png', 'preview');
 insert into image values ('event2.png', 'gallery');
 insert into image values ('event3.png', 'gallery');
 
 insert into coffee_shop_image values ('1.png',1);
 insert into coffee_shop_image values ('2.png',2);
-insert into coffee_shop_image values ('1.png',2);
+insert into coffee_shop_image values ('3.png',2);
 
 insert into event_image values ('event1.png',1);
 insert into event_image values ('event2.png',1);

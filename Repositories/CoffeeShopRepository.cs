@@ -430,13 +430,8 @@ namespace WinfADD.Repositories
         {
             using (IDbConnection conn = Connection)
             {Console.WriteLine("\n Delete::" + DeleteString);
-                var sqlEventDelete = "DELETE FROM event e WHERE NOT EXISTS(SELECT )";
 
-                /*
-                DELETE FROM link_group lg WHERE  NOT EXISTS ( SELECT 1FROM   link_reply lr
-                    WHERE  lr.which_group = lg.link_group_id
-                    );";
-                    */
+
                 var rowsAffected = await conn.ExecuteAsync(DeleteString, tableObj );
                 return (rowsAffected > 0);
             }
