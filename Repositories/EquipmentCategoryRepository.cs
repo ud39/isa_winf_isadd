@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -11,24 +10,22 @@ using WinfADD.Models.Mapping;
 
 namespace WinfADD.Repositories
 {
-    public class BlendRepository : GenericBaseRepository<Blend>
+    public class EquipmentCategoryRepository : GenericBaseRepository<EquipmentCategory>
     {
-        public BlendRepository(IConfiguration _config) : base(_config)
+        public EquipmentCategoryRepository(IConfiguration _config) : base(_config)
         {
             this._config = _config;
 
-            //TODO add all key names here //TODO in extended class
-            // keys.Add("KeyString");
+            // keys
             Keys.Add("name");
-            Keys.Add("manufacturer_name");
 
             //TODO write tableName
-            TableName = "blend";
+            TableName = "equipment_category";
 
-            //TODO Mapping
-            _MappingM2DB = Models.Mapping.MappingM2DB.BlendMap;
-            DefaultTypeMap.MatchNamesWithUnderscores = true;
 
+             DefaultTypeMap.MatchNamesWithUnderscores = true;
+
+             _MappingM2DB = MappingM2DB.EquipmentCategoryMap;
 
             //helper strings
             var keyCompare = "";
@@ -47,19 +44,19 @@ namespace WinfADD.Repositories
             }
 
             //build GetByID sql query
-            GetByIdString =
-                "select * from blend inner join blend_image on name = blend_name inner join image on image_file_name = file_name where content_type = 'preview' AND name = @id";
+            GetByIdString = "SELECT * FROM" +" " + TableName + " WHERE "+ keyCompare;
 
 
             //GetAll sql query
-            GetAllString =
-                "select * from blend inner join blend_image on name = blend_name inner join image on image_file_name = file_name where content_type = 'preview'";
-
-
-
+           // GetAllString = "SELECT * FROM" + " " + TableName + "INNER JOIN " + TableName +
+           //                "_image on name = EquipmentCategory_name " +
+            //               "INNER JOIN image_file_name = file_name where content_type = 'preview'";
+            GetAllString = "select distinct on (name) name , image_file_name from (select name, image_file_name from Equipment_Category "+
+            "inner join Equipment_Category_image on name = Equipment_Category_name "+
+            "inner join image on image_file_name = file_name where content_type = 'preview' union select name, null as file_name from equipment_category) as t order by name, image_file_name";
             //Update sql query: UpdateString = "UPDATE table SET property1=@property1, property2=@property2... WHERE key1=@key1, key2=@key2...";
             UpdateString = "UPDATE " + TableName + " SET ";
-            PropertyInfo[] possibleProperties = typeof(Blend).GetProperties();
+            PropertyInfo[] possibleProperties = typeof(EquipmentCategory).GetProperties();
             var temp = "";
             foreach (PropertyInfo property in possibleProperties)
             {
@@ -75,28 +72,8 @@ namespace WinfADD.Repositories
             //Delete sql query
             DeleteString = "DELETE FROM" +" " + TableName + " WHERE " + keyCompare;
         }
-        
-        
-        public async Task<List<BlendPreview>> GetAll()
-        {
-                        
-            using (IDbConnection conn = Connection)
-            {
-                var result = await conn.QueryAsync<BlendPreview>(GetAllString);
-            
-                return result.ToList();
-            }
-        }
 
-        public async Task<BlendPreview> GetById(string id)
-        {            
-            using (IDbConnection conn = Connection)
-            {
-                var result = await conn.QueryAsync<BlendPreview>(GetByIdString, new {id = id});
-            
-                return result.FirstOrDefault();
-            }
-        }
+
 
     }
 }

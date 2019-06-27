@@ -2,13 +2,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WinfADD.Models
 {
-    public class Poi
+    public class BlendPreview
     {
-        //primary keys
         [Key] public string Name { get; set; }
-        [Key] public Address Address { get; set; }
-        
-        public string Description { get; set; }
+
+        public string Provenance { get; set; }
         public string ImageFileName { get; set; }
+
     }
 }

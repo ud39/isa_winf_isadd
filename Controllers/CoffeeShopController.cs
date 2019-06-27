@@ -21,8 +21,7 @@ namespace WinfADD.Controllers
 
         
         
-        [HttpGet]
-        [Route("allAsPreview")]
+        [HttpGet("allpreview")]
         public async Task<ActionResult<List<CoffeeShopPreview>>> GetAll()
         {
             return await  _coffeeShopRepo.GetAll();

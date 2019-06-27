@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -6,27 +5,27 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Dapper;
 using Microsoft.Extensions.Configuration;
+using Npgsql;
 using WinfADD.Models;
-using WinfADD.Models.Mapping;
 
 namespace WinfADD.Repositories
 {
-    public class BlendRepository : GenericBaseRepository<Blend>
+    public class PoiRepository : GenericBaseRepository<Poi>
     {
-        public BlendRepository(IConfiguration _config) : base(_config)
+        public PoiRepository(IConfiguration _config) : base(_config)
         {
             this._config = _config;
 
-            //TODO add all key names here //TODO in extended class
-            // keys.Add("KeyString");
+            // keys
             Keys.Add("name");
-            Keys.Add("manufacturer_name");
+            Keys.Add("manufacturer");
 
             //TODO write tableName
-            TableName = "blend";
+            TableName = "Poi";
 
-            //TODO Mapping
-            _MappingM2DB = Models.Mapping.MappingM2DB.BlendMap;
+
+            NpgsqlConnection.GlobalTypeMapper.MapComposite<Address>("address");
+            _MappingM2DB = Models.Mapping.MappingM2DB.PoiMap;
             DefaultTypeMap.MatchNamesWithUnderscores = true;
 
 
@@ -47,19 +46,26 @@ namespace WinfADD.Repositories
             }
 
             //build GetByID sql query
-            GetByIdString =
-                "select * from blend inner join blend_image on name = blend_name inner join image on image_file_name = file_name where content_type = 'preview' AND name = @id";
+            GetByIdString = "SELECT * FROM" +" " + TableName + " WHERE "+ keyCompare;
 
 
             //GetAll sql query
-            GetAllString =
-                "select * from blend inner join blend_image on name = blend_name inner join image on image_file_name = file_name where content_type = 'preview'";
+           // GetAllString = "SELECT * FROM" + " " + TableName + "INNER JOIN " + TableName +
+           //                "_image on name = Poi_name " +
+            //               "INNER JOIN image_file_name = file_name where content_type = 'preview'";
+          //  GetAllString =
+           //     "select * from Poi inner join Poi_image on name = Poi_name inner join image on image_file_name = file_name where content_type = 'preview'";
+       
+            
+           GetAllString = "select distinct on (name) name, address, description , image_file_name from (select name, image_file_name from Poi "+
+                          "inner join poi_image on name = poi_name "+
+                          "inner join image on image_file_name = file_name where content_type = 'preview' union select name, null as file_name from poi) as t order by name, image_file_name";
 
-
-
+            
+            
             //Update sql query: UpdateString = "UPDATE table SET property1=@property1, property2=@property2... WHERE key1=@key1, key2=@key2...";
             UpdateString = "UPDATE " + TableName + " SET ";
-            PropertyInfo[] possibleProperties = typeof(Blend).GetProperties();
+            PropertyInfo[] possibleProperties = typeof(Poi).GetProperties();
             var temp = "";
             foreach (PropertyInfo property in possibleProperties)
             {
@@ -75,28 +81,29 @@ namespace WinfADD.Repositories
             //Delete sql query
             DeleteString = "DELETE FROM" +" " + TableName + " WHERE " + keyCompare;
         }
-        
-        
-        public async Task<List<BlendPreview>> GetAll()
+
+        public async Task<List<Poi>> GetAll()
         {
                         
             using (IDbConnection conn = Connection)
             {
-                var result = await conn.QueryAsync<BlendPreview>(GetAllString);
+                var result = await conn.QueryAsync<Poi>(GetAllString);
             
                 return result.ToList();
             }
         }
 
-        public async Task<BlendPreview> GetById(string id)
+
+        public async Task<Poi> GetById(string id)
         {            
             using (IDbConnection conn = Connection)
             {
-                var result = await conn.QueryAsync<BlendPreview>(GetByIdString, new {id = id});
+                var result = await conn.QueryAsync<Poi>(GetByIdString, new {id = id});
             
                 return result.FirstOrDefault();
             }
         }
+
 
     }
 }

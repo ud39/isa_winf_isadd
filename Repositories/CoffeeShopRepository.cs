@@ -53,43 +53,14 @@ namespace WinfADD.Repositories
            
             //Update sql query: UpdateString = "UPDATE table SET property1=@property1, property2=@property2... WHERE key1=@key1, key2=@key2...";
             UpdateString = "UPDATE " + TableName + " SET ";
-            PropertyInfo[] possibleProperties = typeof(CoffeeShop).GetProperties();
-            var temp = "";
-            foreach (PropertyInfo property in possibleProperties)
-            {
-                var propertyName = property.Name.ToLower();
 
-                if (propertyName == "address")
-                {
-                    PropertyInfo[] possiblePropertiesAddress = typeof(Address).GetProperties();
-                    foreach (PropertyInfo addressProperty in possiblePropertiesAddress)
-                    {
-                        propertyName = addressProperty.Name.ToLower();
-                        
-                            temp += ", "  + "(address)." +  propertyName;
-                        
-                        
-                    }
-
-                }
-             
-                else if(temp.Length > 0) 
-                    temp += ", " + propertyName;
-                else
-                {
-                    temp += propertyName;
-                }
-            }
 
             GetAllString =
-                "select c.*, i.file_name from coffee_shop c, coffee_shop_image ci, image i " +
-                "where c.id = ci.coffee_shop_id and i.file_name = ci.image_file_name and i.content_type = 'preview'";
+                "select distinct c.*, i.file_name, to_char(AVG (ur.total),'9D9') as average_total from coffee_shop c, coffee_shop_image ci, image i, user_rating ur, rated_by_user rbu " +
+                " where c.id = ci.coffee_shop_id and i.file_name = ci.image_file_name and i.content_type = 'preview'" +
+                " and rbu.coffee_shop_id = c.id and rbu.user_rating_id = ur.rating_id " +
+                "group by c.id, i.file_name";
 
-            
-            UpdateString += temp + " WHERE " + keyCompare;
-
-            //Delete sql query
-            DeleteString = "DELETE FROM" +" " + TableName + " WHERE " + keyCompare;
         }
 
         public async Task<List<CoffeeShopPreview>> GetAll()
@@ -97,8 +68,10 @@ namespace WinfADD.Repositories
             
             using (IDbConnection conn = Connection)
             {
-            var result = await conn.QueryAsync<CoffeeShopPreview>(GetAllString);
-                return result.ToList();
+            var result = await conn.QueryMultipleAsync(GetAllString);
+            var coffeeshops = result.Read<CoffeeShopPreview>();
+            
+                return coffeeshops.ToList();
             }
         }
 

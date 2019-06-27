@@ -14,7 +14,9 @@ namespace WinfADD.Models.Mapping
                     {"file_name", "ImageFileName"},
                     {"id", "Id"},
                     {"name", "Name"},
-                    {"description", "Description"}
+                    {"description", "Description"},
+                    {"average_total", "AverageTotalRating"},
+                    {"address", "Address"}
                 };
 
             public static readonly Dictionary<string, string> EventMap = new Dictionary<string, string>
@@ -26,17 +28,6 @@ namespace WinfADD.Models.Mapping
                 {"time", "Time"},
                 {"access_fee", "AccessFee"}
             };
-            
-        //    public static   Dictionary<string, string> EventMap = new Dictionary<string, string>
-            /**    {
-                    {"event_id", "Id"},
-                    {"time", "Time"},
-                    {"access_fee", "AccessFee"},
-                    {"description", "Description"}
-    */
-          //      };
-
-            //TODO
             
             public static readonly Func<Type, string, PropertyInfo> CoffeeShopPreviewMapper =
               new Func<Type, string, PropertyInfo>((type, columnName)
