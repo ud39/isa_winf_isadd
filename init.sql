@@ -293,6 +293,7 @@ create table coffee_shop_image (
                                  image_file_name text,
                                  coffee_shop_id int,
                                  Primary Key(image_file_name, coffee_shop_id),
+                                 UNIQUE (image_file_name),
                                  Foreign Key(image_file_name) references image (file_name) ON DELETE CASCADE,
                                  FOREIGN KEY (coffee_shop_id) REFERENCES  coffee_shop (id) ON DELETE CASCADE);
 
@@ -447,6 +448,37 @@ create table operates (
 
 
 
+------------ TRIGGER ----------
+
+
+CREATE OR REPLACE FUNCTION delete_obsolete_events_trigger_function() RETURNS TRIGGER AS $$
+BEGIN
+    IF EXISTS(SELECT *  FROM organised_by WHERE event_id = OLD.event_id ) THEN
+        RETURN NEW;
+         ELSE
+          DELETE FROM event  WHERE id = OLD.event_id;
+          RETURN NEW;
+    END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION delete_obsolete_image_trigger_function() RETURNS TRIGGER AS $$
+BEGIN
+    DELETE FROM image WHERE file_name = OLD.image_file_name;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+
+DROP TRIGGER IF EXISTS delete_obsolete_events on organised_by;
+CREATE TRIGGER delete_obsolete_events AFTER DELETE ON organised_by FOR EACH ROW EXECUTE PROCEDURE delete_obsolete_events_trigger_function();
+
+DROP TRIGGER IF EXISTS delete_obsolete_images on event_image;
+CREATE TRIGGER delete_obsolete_images AFTER DELETE ON event_image FOR EACH ROW EXECUTE PROCEDURE delete_obsolete_image_trigger_function();
+
+
+
 
 ------------ INSERT DATA ----------
 
@@ -523,9 +555,12 @@ insert into composed values ('blenddummy', 'dummybean1','beanprovenance1', 'dumm
 
 insert into event (time, name, access_fee, description) values ('2019-12-26', 'dummyevent1', 5, 'eventdescriptiondummy');
 insert into event (time, name, access_fee, description) values ('2019-12-25', 'dummyevent', 5, 'eventdescriptiondummy');
+insert into event (time, name, access_fee, description) values ('2019-12-25', 'dummyevent', 5, 'eventdescriptiondummy');
 
 insert into organised_by values (2, 1);
 insert into organised_by values (2, 2);
+insert into organised_by values (1, 2);
+insert into organised_by values (1, 3);
 
 insert into opens values (2, '18:00:00', '10:00:00', 'friday');
 insert into opens values (2, '18:00:00', '10:00:00', 'monday');
@@ -577,13 +612,14 @@ insert into rates values (2, 'user1@mail.uni-kiel.de', 2);
 
 insert into image values ('1.png', 'preview');
 insert into image values ('2.png', 'gallery');
+insert into image values ('3.png', 'gallery');
 insert into image values ('event1.png', 'preview');
 insert into image values ('event2.png', 'gallery');
 insert into image values ('event3.png', 'gallery');
 
 insert into coffee_shop_image values ('1.png',1);
 insert into coffee_shop_image values ('2.png',2);
-insert into coffee_shop_image values ('1.png',2);
+insert into coffee_shop_image values ('3.png',2);
 
 insert into event_image values ('event1.png',1);
 insert into event_image values ('event2.png',1);

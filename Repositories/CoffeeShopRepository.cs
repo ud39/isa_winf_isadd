@@ -53,6 +53,25 @@ namespace WinfADD.Repositories
            
             //Update sql query: UpdateString = "UPDATE table SET property1=@property1, property2=@property2... WHERE key1=@key1, key2=@key2...";
             UpdateString = "UPDATE " + TableName + " SET ";
+            PropertyInfo[] possibleProperties = typeof(CoffeeShop).GetProperties();
+
+            //all possible fields
+            var temp = "";
+            foreach (PropertyInfo property in possibleProperties)
+            {
+                var propertyName = property.Name.ToLower();
+                if(temp.Length > 0) temp += ", " + propertyName + "= @" + propertyName;
+                else
+                {
+                    temp += propertyName + "= @" + propertyName;
+                }
+            }
+
+            UpdateString += temp + " WHERE " + keyCompare;
+
+
+            //Delete sql query
+            DeleteString = "DELETE FROM " + TableName + " WHERE " + keyCompare;
 
 
             GetAllString =
@@ -411,13 +430,8 @@ namespace WinfADD.Repositories
         {
             using (IDbConnection conn = Connection)
             {Console.WriteLine("\n Delete::" + DeleteString);
-                var sqlEventDelete = "DELETE FROM event e WHERE NOT EXISTS(SELECT )";
 
-                /*
-                DELETE FROM link_group lg WHERE  NOT EXISTS ( SELECT 1FROM   link_reply lr
-                    WHERE  lr.which_group = lg.link_group_id
-                    );";
-                    */
+
                 var rowsAffected = await conn.ExecuteAsync(DeleteString, tableObj );
                 return (rowsAffected > 0);
             }
