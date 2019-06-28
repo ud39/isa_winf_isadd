@@ -3,7 +3,7 @@ import {CheckboxComponent} from "../checkbox/checkbox.component";
 import {Router} from "@angular/router";
 import {MatCheckbox, MatInput, MatSelect} from "@angular/material";
 import {CheckBoxesService} from "../../services/interactive-element/checkboxes.service";
-import {FormControl} from "@angular/forms";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-checkbox-equipment',
@@ -17,6 +17,11 @@ export class CheckboxEquipmentComponent implements OnInit {
   @ViewChildren('cb') cbs : QueryList<MatCheckbox>;
   @ViewChildren(MatSelect) selects : QueryList<MatSelect>;
   @ViewChildren(MatInput) inputs : QueryList<MatInput>;
+
+  public equipmentNameFormControl = new FormControl('',[]);
+  public formGroupEquipment = new FormGroup({
+    name: this.equipmentNameFormControl
+  });
   constructor(public router:Router, public checkBoxService: CheckBoxesService) { }
 
   getJsonOfSearch(): JSON{
@@ -25,7 +30,7 @@ export class CheckboxEquipmentComponent implements OnInit {
   }
 
   clear() {
-    this.checkBoxService.unselectCheckBoxes(this.cbs);
+    this.checkBoxService.clear(this.cbs, this.formGroupEquipment, this.selects.toArray())
   }
 
   @Output() callNavigateToEquipment = new EventEmitter<void>();

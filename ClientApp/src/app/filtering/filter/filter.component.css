@@ -1,0 +1,17 @@
+app-filter .sort-options{
+  display: flex;
+  flex-direction: row;
+}
+
+app-filter .sort-properties{
+  order: 1;
+}
+
+app-filter .sort-asc-desc{
+  order: 2;
+}
+
+app-filter .mat-form-field{
+  width: fit-content;
+  margin-right: 10px;
+}

@@ -58,7 +58,7 @@ export class CheckboxCoffeeComponent implements OnInit {
   }
 
   clear() {
-    this.checkBoxService.clear(this.cbs,this.coffeeFormGroup,  this.selects.toArray());
+    this.checkBoxService.clear(this.cbs, this.coffeeFormGroup,  this.selects.toArray());
   }
 
 

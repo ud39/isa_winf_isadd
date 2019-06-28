@@ -30,6 +30,7 @@ export interface Shop {
   coldFood:boolean;
   description: string;
   address:Address;
+  averageTotalRating:number;
   beans: Bean[];
   blends: Blend[];
   events: Event[];

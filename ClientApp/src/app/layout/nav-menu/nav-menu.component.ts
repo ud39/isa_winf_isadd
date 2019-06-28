@@ -13,11 +13,7 @@ import {Global} from "../../global";
 
 
 export class NavMenuComponent {
-  @ViewChild('menuWikiTrigger') menuWikiTrigger : MatMenuTrigger;
 
-  closeMenuAndRemoveFocus(){
-    this.menuWikiTrigger.closeMenu();
-  }
   public brand = Global.url + 'image/GetById?ContentType=brand&fileName=kaffeesatt.png';
   isExpanded = false;
   public currentWindowWidth: number = window.innerWidth;

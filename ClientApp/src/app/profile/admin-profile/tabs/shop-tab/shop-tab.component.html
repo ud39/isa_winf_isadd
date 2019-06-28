@@ -18,6 +18,44 @@
     <input id="name" matInput #inputs="matInput" type="text" required placeholder="Name" [formControl]="shopNameFormControl">
     <mat-error *ngIf="shopNameFormControl.hasError('required')">Es muss einen Namen angebgeben werden</mat-error>
   </mat-form-field>
+ <mat-form-field  class="description">
+   <input id="companyName" matInput #inputs="matInput" type="text" required placeholder="Firmen Name" [formControl]="shopNameFormControl">
+   <mat-error *ngIf="shopNameFormControl.hasError('required')">Es muss einen Namen angebgeben werden</mat-error>
+ </mat-form-field>
+
+ <ng-container *ngIf="isLoaded">
+ <mat-form-field>
+   <mat-select id=busStation placeholder="Bus Stationen" multiple [(ngModel)]="selectedBusStations">
+     <mat-option *ngFor="let busStation of chooseBusStations" [value]="busStation">{{busStation.name + ' ' + busStation.line}}</mat-option>
+   </mat-select>
+ </mat-form-field>
+ <mat-form-field>
+   <mat-select id=poi placeholder="Landmarken" multiple [(ngModel)]="selectedPoi">
+     <mat-option *ngFor="let poi of choosePois" [value]="poi">{{poi.name}}</mat-option>
+   </mat-select>
+ </mat-form-field>
+ <mat-form-field>
+   <mat-select id=blends placeholder="Blend" multiple [(ngModel)]="selectedBlend">
+     <mat-option *ngFor="let blend of chooseBlends" [value]="blend">{{blend.name}}</mat-option>
+   </mat-select>
+ </mat-form-field>
+ <mat-form-field>
+   <mat-select id=equipmentCategories placeholder="Equipment Kategorie" multiple [(ngModel)]="selectedEquipmentCategory">
+     <mat-option *ngFor="let equipmentCategory of chooseEquipmentCategories" [value]="equipmentCategory">{{equipmentCategory.equipmentCategoryName}}</mat-option>
+   </mat-select>
+ </mat-form-field>
+ <mat-form-field>
+   <mat-select id=coffeeDrinks placeholder="Kaffee Getränke" multiple [(ngModel)]="selectedCoffeeDrinks">
+     <mat-option *ngFor="let coffeeDrink of chooseCoffeeDrinks" [value]="coffeeDrink">{{coffeeDrink.name}}</mat-option>
+   </mat-select>
+ </mat-form-field>
+ <mat-form-field>
+   <mat-select id=beans placeholder="Bohnen" multiple [(ngModel)]="selectedCoffeeDrinks">
+     <mat-option *ngFor="let bean of chooseBeans" [value]="bean">{{bean.name + " " + bean.provenance}}</mat-option>
+   </mat-select>
+ </mat-form-field>
+ </ng-container>
+
   <mat-form-field class="description">
     <mat-label>Beschreibung</mat-label>
     <textarea
@@ -144,4 +182,3 @@
 
          </mat-tab>
        </mat-tab-group>
-

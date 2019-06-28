@@ -58,6 +58,7 @@
     <ItemGroup>
       <Folder Include="ClientApp\src\app\common" />
       <Folder Include="ClientApp\src\app\content\shop" />
+      <Folder Include="ClientApp\src\app\filtering" />
       <Folder Include="ClientApp\src\app\interfaces\cluster\rating" />
       <Folder Include="ClientApp\src\app\layout" />
       <Folder Include="ClientApp\src\app\profile" />

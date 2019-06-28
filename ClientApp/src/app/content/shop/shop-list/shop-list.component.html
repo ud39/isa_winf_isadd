@@ -8,6 +8,7 @@
       <h6 class="shop_name"  [routerLink]="['/shops', shop.id]">{{shop.name}}
         <hr class="shop_name_underline">
       </h6>
+      {{shop.averageTotalRating}}
       <div class="text">
           {{shop.description | words : 50}}
       </div><div class='read_more'> Read more </div>

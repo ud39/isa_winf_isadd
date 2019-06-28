@@ -2,6 +2,7 @@
   <app-nav-menu></app-nav-menu>
   <app-search *ngIf="showNavigation" [urlPath]="urlSearchPath"></app-search>
   <div class="container">
+    <app-filter *ngIf="showNavigation"></app-filter>
     <router-outlet id="content"></router-outlet>
     <div class="push"></div>
   </div>

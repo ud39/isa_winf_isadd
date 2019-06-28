@@ -18,6 +18,12 @@ app-checkbox .container{
   clear: both;
 }
 
+app-checkbox .search-field{
+  margin: 0 0 0 10px;
+  width: fit-content;
+}
+
+
 app-checkbox .price-range{
   clear: right;
 }
@@ -32,4 +38,8 @@ app-checkbox .mat-form-field{
 
 app-checkbox .direct-shop{
   width: 200px;
+}
+
+app-checkbox .container{
+  margin: 0;
 }

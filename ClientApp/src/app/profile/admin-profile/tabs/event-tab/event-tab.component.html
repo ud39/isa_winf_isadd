@@ -16,12 +16,21 @@
               [value]="eventDescriptionFormControl.value"
     ></textarea>
   </mat-form-field>
+
   <mat-form-field class="date-picker">
-    <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Wähle eine Tag aus" required [formControl]="datePickerFormControl">
-    <mat-error *ngIf="datePickerFormControl.hasError('required')">Es müsst ein Datum ausgewählt werden.</mat-error>
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
+    <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="beginPicker" required placeholder="Wähle ein Anfangdatum aus" [formControl]="beginDatePickerFormControl">
+    <mat-error *ngIf="beginDatePickerFormControl.hasError('required')">Es müsst ein Anfangdatum ausgewählt werden.</mat-error>
+    <mat-datepicker-toggle matSuffix [for]="beginPicker"></mat-datepicker-toggle>
+    <mat-datepicker #beginPicker></mat-datepicker>
   </mat-form-field>
+
+  <mat-form-field class="date-picker">
+    <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="endPicker" required placeholder="Wähle ein Enddatum aus" [formControl]="endDatePickerFormControl">
+    <mat-error *ngIf="endDatePickerFormControl.hasError('required')">Es müsst ein Enddatum ausgewählt werden.</mat-error>
+    <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+    <mat-datepicker #endPicker></mat-datepicker>
+  </mat-form-field>
+
   <mat-form-field>
     <input matInput type="number" placeholder="Eintrittskosten:" [formControl]="accessFeeFormControl">
   </mat-form-field>
@@ -35,18 +44,20 @@
     <mat-error *ngIf="selectShopFormControl.hasError('required')">Mindesten ein Shop muss an einem Event beteiligt sein</mat-error>
   </mat-form-field>
     <mat-form-field class="address">
-      <input matInput type="text" placeholder="Straße" [formControl]="locationStreetFormControl">
+      <input id="streetName" matInput type="text" #address="matInput" placeholder="Straße" [formControl]="locationStreetFormControl">
     </mat-form-field>
     <mat-form-field class="address">
-      <input matInput type="number" placeholder="StraßeNr" min="0" oninput="this.value = Math.abs(this.value)" [formControl]="locationStreetNrFormControl">
+      <input id="streetNr" matInput type="number" #address="matInput" placeholder="StraßeNr" min="0" oninput="this.value = Math.abs(this.value)" [formControl]="locationStreetNrFormControl">
     </mat-form-field>
     <mat-form-field class="address">
-      <input matInput type="text" placeholder="Stadt" [formControl]="locationTownFormControl">
+      <input id="town" matInput type="text" #address="matInput" placeholder="Stadt" [formControl]="locationTownFormControl">
     </mat-form-field>
     <mat-form-field class="address">
-      <input matInput type="number" placeholder="Postleitzahl" min="0" oninput="this.value = Math.abs(this.value)" [formControl]="locationPostalCodeFormControl">
+      <input id="postalCode" matInput #address="matInput" type="number" placeholder="Postleitzahl" min="0" oninput="this.value = Math.abs(this.value)" [formControl]="locationPostalCodeFormControl">
     </mat-form-field>
-
+    <mat-form-field  class="shop-form-field address">
+      <input id="country" matInput #address="matInput" type="text" placeholder="Land" [formControl]="locationCountryFormControl">
+    </mat-form-field>
     <br>
 
 

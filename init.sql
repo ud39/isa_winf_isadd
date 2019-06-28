@@ -611,7 +611,7 @@ insert into rates values (2, 'user1@mail.uni-kiel.de', 2);
 -- IMAGES
 
 insert into image values ('1.png', 'preview');
-insert into image values ('2.png', 'gallery');
+insert into image values ('2.png', 'preview');
 insert into image values ('3.png', 'gallery');
 insert into image values ('event1.png', 'preview');
 insert into image values ('event2.png', 'gallery');

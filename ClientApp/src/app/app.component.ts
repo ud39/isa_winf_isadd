@@ -14,23 +14,23 @@ export class AppComponent {
 
 
   public showNavigation: boolean = false;
-  public urlSearchPath: string = "/shop";
+  public urlSearchPath: string = "/shops";
   constructor(private router: Router) {
   }
 
   public checkUrlCheckBox(urlPath:NavigationStart){
     let currentUrl = urlPath['url'];
     let urlMap = Global.urlName;
-    console.log(urlMap);
     return urlMap.get('home') == currentUrl
            || urlMap.get('shop') ==  currentUrl
-           || urlMap.get('wikiEquipment') == currentUrl
+           || urlMap.get('suppliesIng') == currentUrl
            || urlMap.get('wiki') == currentUrl
-           || urlMap.get('wikiCoffee') == currentUrl
-
+           || urlMap.get('supplies') == currentUrl
+           || urlMap.get('suppliesEq') == currentUrl
   }
 
   ngOnInit() {
+    console.log("Before" + this.urlSearchPath);
     // on route change to '/login', set the variable showNavigation to false
     this.router.events.forEach((event) => {
       if (event instanceof NavigationStart) {

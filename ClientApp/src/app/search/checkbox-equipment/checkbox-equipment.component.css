@@ -1,3 +1,8 @@
+app-checkbox-equipment .search-field{
+  margin: 0 0 0 10px;
+  width: fit-content;
+}
+
 app-checkbox-equipment .checkbox{
   margin-right: 10px;
 }

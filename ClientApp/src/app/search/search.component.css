@@ -1,4 +1,4 @@
-div.container{
+app-search div.container{
   display: grid;
   alignment: center;
   max-width: 75%;
@@ -6,16 +6,16 @@ div.container{
   padding: 0 0 0 10px;
 }
 
-div.grid{
+app-search div.grid{
   background-color: ghostwhite;
   display: grid;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: 1fr 0.1fr;
   grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr;
 }
 
-.btn.search,
-.btn.quick-search,
-.btn.clear{
+app-search .btn.search,
+app-search .btn.quick-search,
+app-search .btn.clear{
   grid-column: 1;
   background-color: white;
   outline: none;
@@ -26,17 +26,17 @@ div.grid{
   width: 100px;
 }
 
-app-checkbox,
-app-checkbox-equipment{
+app-search app-checkbox
+{
   grid-row: 1 / span 2;
   grid-column: 2 / 5 span;
 }
 
-app-checkbox-coffee{
-  grid-row: 2 / 2;
-  grid-column: 2 / 5 span;
+app-search .router-link-active{
+  background-color: red;
 }
 
-.router-link-active{
-  background-color: red;
+app-search .mat-tab-group{
+  grid-row: 1 / 2;
+  grid-column: 2/ 5 span;
 }

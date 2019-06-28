@@ -6,7 +6,7 @@
   <button mat-button [matMenuTriggerFor]="menu" id="selected_menu" >Auswählen</button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item [disabled]="!activeFormGroup.valid" (click)="addContent()">Hinzufügen</button>
-    <button mat-menu-item (click)="openDialog()">Editieren</button>
+    <button mat-menu-item (click)="openEditListDialog()">Editieren</button>
     <button mat-menu-item [disabled]="!activeFormGroup.valid" (click)="saveContent()">Speichern</button>
     <button mat-menu-item [disabled]="!activeFormGroup.valid" (click)="deleteContent()">Löschen</button>
     <button mat-menu-item [disabled]="!activeFormGroup.valid" (click)="restoreContent()">Wiederherstellen</button>
@@ -18,14 +18,17 @@
       <mat-tab  id="shop-tab" label="Shop">
       <app-shop-tab></app-shop-tab>
       </mat-tab>
-      <mat-tab  id="event-tab" label="Equipment" class="first-mat-group">
+      <mat-tab  id="equipment-tab" label="Equipment" class="first-mat-group">
       <app-equipment-tab></app-equipment-tab>
       </mat-tab>
-      <mat-tab  id="article-tab" label="Event" class="first-mat-group">
+      <mat-tab  id="event-tab" label="Event" class="first-mat-group">
       <app-event-tab></app-event-tab>
       </mat-tab>
       <mat-tab id="content-tab" label="Content" class="first-mat-group">
       <app-content-tab></app-content-tab>
+      </mat-tab>
+      <mat-tab id="article-tab" label="Artikel" class="first-mat--group">
+      <app-article-tab></app-article-tab>
       </mat-tab>
       <mat-tab id="user-tab" label="User" class="first-mat-group">
       <app-user-tab></app-user-tab>

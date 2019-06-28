@@ -1,4 +1,4 @@
 export interface EquipmentCategory {
-  equipmentCategoryName:string;
+  name:string;
   coffeeShopName:string;
 }
