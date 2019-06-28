@@ -63,7 +63,7 @@ namespace WinfADD.Controllers
 
 
 
-            return _coffeeShopRepo.InsertCoffeeShop(coffeeShopObj, propertyValues);
+            return await _coffeeShopRepo.InsertTable(coffeeShopObj, propertyValues);
         }
 
 

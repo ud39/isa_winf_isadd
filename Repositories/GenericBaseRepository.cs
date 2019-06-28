@@ -134,7 +134,7 @@ namespace WinfADD.Repositories
                 }
         }
         
-        public async Task<IEnumerable<Table>> GetTables(Table tableObj, IDictionary<string, string> searchProperties)
+        public async Task<IEnumerable<Table>> GetTables(Table tableObj, IDictionary<string, dynamic> searchProperties)
         {
 
             var possibleProperties = typeof(Table).GetProperties();
@@ -175,7 +175,7 @@ namespace WinfADD.Repositories
             }
         }
 
-        public async Task<bool> InsertTable(Table tableObj, IDictionary<string, string> insertProperties)
+        public virtual async Task<bool> InsertTable(Table tableObj, IDictionary<string, dynamic> insertProperties)
         {
             PropertyInfo[] possibleProperties = typeof(Table).GetProperties();
 
@@ -230,7 +230,7 @@ namespace WinfADD.Repositories
             }
         }
 
-        public async Task<bool> PartialUpdateTable(Table tableObj, IDictionary<string, string> fieldsToChange)
+        public virtual async Task<bool> PartialUpdateTable(Table tableObj, IDictionary<string, dynamic> fieldsToChange)
         {
                 var fieldCounter = 0;
                 var sqlQuery = "UPDATE " + TableName+" SET ";

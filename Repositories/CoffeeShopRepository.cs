@@ -203,7 +203,8 @@ namespace WinfADD.Repositories
             }
         }
 
-        public bool InsertCoffeeShop(CoffeeShop coffeeShopObj, IDictionary<string,dynamic> propertyValues)
+
+        public override async Task<bool> InsertTable(CoffeeShop coffeeShopObj, IDictionary<string, dynamic> propertyValues)
         {
 
 
@@ -425,6 +426,18 @@ namespace WinfADD.Repositories
 
             }
         }
+
+
+
+        public override async Task<bool> PartialUpdateTable(CoffeeShop coffeShopObj, IDictionary<string, dynamic> fieldsToChange)
+        {
+
+
+
+
+            return false;
+        }
+
 
 
         public override async Task<bool> DeleteTable(CoffeeShop coffeeShopObj)
