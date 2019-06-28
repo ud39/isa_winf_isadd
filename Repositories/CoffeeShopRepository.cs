@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Dapper;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
+using WinfADD.Controllers;
 using WinfADD.Models;
 using WinfADD.Models.Mapping;
 
@@ -202,7 +203,8 @@ namespace WinfADD.Repositories
             }
         }
 
-        public bool InsertCoffeeShop(CoffeeShop coffeeShopObj, IDictionary<string,dynamic> propertyValues)
+
+        public override async Task<bool> InsertTable(CoffeeShop coffeeShopObj, IDictionary<string, dynamic> propertyValues)
         {
 
 
@@ -426,15 +428,128 @@ namespace WinfADD.Repositories
         }
 
 
-        public override async Task<bool> DeleteTable(CoffeeShop tableObj)
+
+
+
+        /*
+         * update CoffeeShop and Relationship Tables from CoffeeShop
+         */
+        public override async Task<bool> PartialUpdateTable(CoffeeShop coffeeShopObj, IDictionary<string, dynamic> fieldsToChange)
+        {
+
+            //SQL statements for the transaction
+            var coffeeShopSQL = getUpdateQuery(fieldsToChange);
+            var eventSQL = "INSERT INTO organised_by (coffee_shop_id, event_id) VALUES (@coffee_shop_id, @event_id) ON CONFLICT ON CONSTRAINT ()";
+            var coffeeShopImageSQL = "";
+            var companySQL = "";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            using (var conn = Connection)
+            {
+
+                conn.Open();
+                using (var transaction = conn.BeginTransaction())
+                {
+                    try
+                    {
+
+
+                        conn.Execute(eventSQL, new {event_id = 1, coffee_shop_id = 2}, transaction: transaction);
+
+                        transaction.Commit();
+
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        transaction.Rollback();
+                        conn.Close();
+                        return false;
+                    }
+
+                }
+            }
+
+
+
+            return true;
+        }
+
+
+
+        public override async Task<bool> DeleteTable(CoffeeShop coffeeShopObj)
         {
             using (IDbConnection conn = Connection)
             {Console.WriteLine("\n Delete::" + DeleteString);
 
 
-                var rowsAffected = await conn.ExecuteAsync(DeleteString, tableObj );
+                var imageSQL = "select i.* from image i, coffee_shop_image ci where ci.coffee_shop_id = "
+                               + coffeeShopObj.Id+ " AND ci.image_file_name = i.file_name";
+                Console.WriteLine("---------------");
+                Console.WriteLine(imageSQL);
+                Console.WriteLine("---------------");
+                var imageResult = conn.QueryMultiple(imageSQL);
+
+                var Images  = imageResult.Read<Image>().ToList();
+
+                foreach (var image in Images)
+                {
+                    Console.WriteLine("\n \n \n \n \n \n \n \n \n \n NAME::"+image.FileName);
+                    Console.WriteLine("Content::"+image.ContentType);
+                    ImageController.deleteImageInternal(image.FileName, image.ContentType);
+                }
+
+                var rowsAffected = await conn.ExecuteAsync(DeleteString, coffeeShopObj );
                 return (rowsAffected > 0);
             }
+        }
+
+
+
+        private string getUpdateQuery(IDictionary<string, dynamic> fieldsToChange)
+        {
+            var fieldCounter = 0;
+            var sqlQuery = "UPDATE coffee_shop SET ";
+
+
+            PropertyInfo[] possibleProperties = typeof(CoffeeShopInsertModel).GetProperties();
+            foreach (PropertyInfo property in possibleProperties)
+            {
+
+                var propertyName = property.Name.ToLower();
+
+                if ((!fieldsToChange.ContainsKey(propertyName)) || Keys.Contains(_MappingM2DB[propertyName])) continue;
+                sqlQuery += _MappingM2DB[propertyName] + " = @" + propertyName + ",";
+                fieldCounter++;
+            }
+
+
+            //nothing to change here
+            if (fieldCounter < 1) return "";
+
+            //remove last 'AND'
+            sqlQuery = sqlQuery.Remove(sqlQuery.Length - 1);
+
+
+
+            //WHERE (matching keys)
+            sqlQuery += " WHERE id = @id";
+
+
+            return sqlQuery;
         }
     }
 }

@@ -33,7 +33,8 @@ CREATE TABLE equipment(
 
 CREATE TABLE event(
                     id int generated always as identity primary key,
-                    time date,
+                    start_time date,
+                    end_time date,
                     name text,
                     access_fee int,
                     description text
@@ -448,6 +449,10 @@ create table operates (
 
 
 
+
+
+
+
 ------------ TRIGGER ----------
 
 
@@ -471,12 +476,12 @@ END;
 $$ LANGUAGE plpgsql;
 
 
+
 DROP TRIGGER IF EXISTS delete_obsolete_events on organised_by;
 CREATE TRIGGER delete_obsolete_events AFTER DELETE ON organised_by FOR EACH ROW EXECUTE PROCEDURE delete_obsolete_events_trigger_function();
 
 DROP TRIGGER IF EXISTS delete_obsolete_images on event_image;
 CREATE TRIGGER delete_obsolete_images AFTER DELETE ON event_image FOR EACH ROW EXECUTE PROCEDURE delete_obsolete_image_trigger_function();
-
 
 
 

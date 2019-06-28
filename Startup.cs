@@ -56,7 +56,6 @@ namespace WinfADD
             });
 
             //TODO add table Repositories here
-            services.AddTransient<ITestRepository, TestRepository>();
             services.AddSingleton<ITableRepository<Blend>, BlendRepository>();
             services.AddSingleton<ITableRepository<Bean>, BeanRepository>();
             services.AddSingleton<ITableRepository<BusStation>, BusStationRepository>();

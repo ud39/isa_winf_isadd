@@ -25,6 +25,7 @@ namespace WinfADD.Controllers
         [Route("all")]
         public virtual async Task<ActionResult<List<Table>>> GetAll()
         {
+
             return await  _tableRepo.GetAll();
         }
 
@@ -47,7 +48,7 @@ namespace WinfADD.Controllers
             var tableObj = tableJson.ToObject<Table>();
 
             //create a List of all search properties
-            var hashtableJson = tableJson.ToObject<Dictionary<string, string>>();
+            var hashtableJson = tableJson.ToObject<Dictionary<string, dynamic>>();
 
             var tables = await _tableRepo.GetTables(tableObj, hashtableJson);
 
@@ -82,7 +83,7 @@ namespace WinfADD.Controllers
             var tableObj = tableJson.ToObject<Table>();
 
             //create a List of all search properties
-            var hashtableJson = tableJson.ToObject<Dictionary<string, string>>();
+            var hashtableJson = tableJson.ToObject<Dictionary<string, dynamic>>();
 
 
 
@@ -93,7 +94,6 @@ namespace WinfADD.Controllers
 
 
 
-        //TODO pUpdate //TODO WHERE key? || others?
         [Route("pupdate")]
         [HttpPatch]
         public async Task<bool> PartialUpdate(JToken tableJson)
@@ -102,7 +102,7 @@ namespace WinfADD.Controllers
             Table tableObj = tableJson.ToObject<Table>();
 
             //create a List of all fieldsToChange in the Json
-            var fieldsToChange = tableJson.ToObject<Dictionary<string, string>>();
+            var fieldsToChange = tableJson.ToObject<Dictionary<string, dynamic>>();
 
             return await _tableRepo.PartialUpdateTable(tableObj, fieldsToChange);
         }

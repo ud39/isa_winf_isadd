@@ -107,5 +107,18 @@ export class EventTabComponent implements OnInit {
     this.adminService.deleteImage(fromWhere);
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
