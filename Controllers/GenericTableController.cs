@@ -25,6 +25,7 @@ namespace WinfADD.Controllers
         [Route("all")]
         public virtual async Task<ActionResult<List<Table>>> GetAll()
         {
+
             return await  _tableRepo.GetAll();
         }
 
@@ -93,7 +94,6 @@ namespace WinfADD.Controllers
 
 
 
-        //TODO pUpdate //TODO WHERE key? || others?
         [Route("pupdate")]
         [HttpPatch]
         public async Task<bool> PartialUpdate(JToken tableJson)

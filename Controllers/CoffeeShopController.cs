@@ -19,8 +19,8 @@ namespace WinfADD.Controllers
             _coffeeShopRepo = (CoffeeShopRepository)coffeeShopRepo;
         }
 
-        
-        
+
+
         [HttpGet("allpreview")]
         public async Task<ActionResult<List<CoffeeShopPreview>>> GetAll()
         {
@@ -28,14 +28,14 @@ namespace WinfADD.Controllers
         }
 
         [HttpGet("params")]
-        public async Task<IEnumerable<CoffeeShopPreview>> GetCoffeeShops([FromQuery]CoffeeShopSearchModel customerSeach)
+        public async Task<IEnumerable<CoffeeShopPreview>> GetCoffeeShops([FromQuery]CoffeeShopSearchModel customerSearch)
         {
-            var coffeeShops = await _coffeeShopRepo.GetCoffeeShops(customerSeach);
+            var coffeeShops = await _coffeeShopRepo.GetCoffeeShops(customerSearch);
 
             return coffeeShops;
         }
-        
-        
+
+
         [HttpGet("{id}")]
         public async Task<ActionResult<CoffeeShop>> GetById(int id)
         {
@@ -50,20 +50,26 @@ namespace WinfADD.Controllers
             var coffeeShopObj = jToken.ToObject<CoffeeShop>();
             var jObj = jToken.ToObject<JObject>();
             IDictionary<string, dynamic> propertyValues = new Dictionary<string, dynamic>();
-            foreach (var pair in jObj) {propertyValues.Add(pair.Key, pair.Value);}
-
-            /*
-            Console.WriteLine("<||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||>");
-            foreach (var p in propertyValues)
-            {
-                Console.WriteLine(p.Key+"-->"+p.Value);
-            }
-            */
-
-
+            foreach (var (propertyName, value) in jObj) {propertyValues.Add(propertyName, value);}
+            // foreach (var pair in jObj) {propertyValues.Add(pair.Key, pair.Value);}
 
 
             return await _coffeeShopRepo.InsertTable(coffeeShopObj, propertyValues);
+        }
+
+
+        [HttpGet("update")]
+        public async Task<bool> editCoffeeShop(JToken jToken)
+        {
+
+            var coffeeShopObj = jToken.ToObject<CoffeeShop>();
+            var jObj = jToken.ToObject<JObject>();
+            IDictionary<string, dynamic> fieldsToChange = new Dictionary<string, dynamic>();
+            foreach (var (propertyName, value) in jObj) {fieldsToChange.Add(propertyName, value);}
+            // foreach (var pair in jObj) {propertyValues.Add(pair.Key, pair.Value);}
+
+
+            return await _coffeeShopRepo.PartialUpdateTable(coffeeShopObj ,fieldsToChange);
         }
 
 

@@ -50,17 +50,16 @@
     <br>
 
 
-      <input
+      <input #file
         style="display: none"
-        type="file" (change)="onFileChanged($event)"
-        #fileInput>
-      <button mat-button (click)="fileInput.click()">Select File</button>
+        type="file" accept='image/*' (change)="adminService.showImage(file.files)" />
+      <button mat-button (click)="file.click()">Select File</button>
       <button mat-button (click)="onUpload('event')">Upload!</button>
       <button mat-button (click)="deleteImage('event')" class="button">Löschen</button>
       <br>
+      <img [src]="adminService.eventImage" height="200" *ngIf="adminService.eventImage">
 
 
-      <img  [src]="adminService.eventImage" height="200px">
 
 
 

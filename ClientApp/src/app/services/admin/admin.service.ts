@@ -48,13 +48,15 @@ export class AdminService {
   public frontImage: SafeUrl;
   public eventImage: SafeUrl;
   public equipmentImage: SafeUrl;
+  public eventPreview: any;
 
 
   private selectedFile: File;
 
   onFileChanged(event) {
-    this.selectedFile = event.target.files[0];
+    this.selectedFile = event;
     console.log("FILE NAME::"+this.selectedFile.name)
+    this.showImage(event);
   }
 
 
@@ -198,6 +200,27 @@ export class AdminService {
 
 
 
+  public imagePath;
+  imgURL: any;
+  public error_message_image: string;
+
+  showImage(files) {
+    if (files.length === 0)
+      return;
+
+    var mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.error_message_image = "Only images are supported.";
+      return;
+    }
+
+    var reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]);
+    reader.onload = (_event) => {
+      this.eventImage = reader.result;
+    }
+  }
 
 
 

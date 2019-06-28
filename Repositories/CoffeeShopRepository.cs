@@ -429,13 +429,63 @@ namespace WinfADD.Repositories
 
 
 
-        public override async Task<bool> PartialUpdateTable(CoffeeShop coffeShopObj, IDictionary<string, dynamic> fieldsToChange)
+
+
+        /*
+         * update CoffeeShop and Relationship Tables from CoffeeShop
+         */
+        public override async Task<bool> PartialUpdateTable(CoffeeShop coffeeShopObj, IDictionary<string, dynamic> fieldsToChange)
         {
 
+            //SQL statements for the transaction
+            var coffeeShopSQL = getUpdateQuery(fieldsToChange);
+            var eventSQL = "INSERT INTO organised_by (coffee_shop_id, event_id) VALUES (@coffee_shop_id, @event_id) ON CONFLICT ON CONSTRAINT ()";
+            var coffeeShopImageSQL = "";
+            var companySQL = "";
 
 
 
-            return false;
+
+
+
+
+
+
+
+
+
+
+
+
+            using (var conn = Connection)
+            {
+
+                conn.Open();
+                using (var transaction = conn.BeginTransaction())
+                {
+                    try
+                    {
+
+
+                        conn.Execute(eventSQL, new {event_id = 1, coffee_shop_id = 2}, transaction: transaction);
+
+                        transaction.Commit();
+
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        transaction.Rollback();
+                        conn.Close();
+                        return false;
+                    }
+
+                }
+            }
+
+
+
+            return true;
         }
 
 
@@ -465,6 +515,41 @@ namespace WinfADD.Repositories
                 var rowsAffected = await conn.ExecuteAsync(DeleteString, coffeeShopObj );
                 return (rowsAffected > 0);
             }
+        }
+
+
+
+        private string getUpdateQuery(IDictionary<string, dynamic> fieldsToChange)
+        {
+            var fieldCounter = 0;
+            var sqlQuery = "UPDATE coffee_shop SET ";
+
+
+            PropertyInfo[] possibleProperties = typeof(CoffeeShopInsertModel).GetProperties();
+            foreach (PropertyInfo property in possibleProperties)
+            {
+
+                var propertyName = property.Name.ToLower();
+
+                if ((!fieldsToChange.ContainsKey(propertyName)) || Keys.Contains(_MappingM2DB[propertyName])) continue;
+                sqlQuery += _MappingM2DB[propertyName] + " = @" + propertyName + ",";
+                fieldCounter++;
+            }
+
+
+            //nothing to change here
+            if (fieldCounter < 1) return "";
+
+            //remove last 'AND'
+            sqlQuery = sqlQuery.Remove(sqlQuery.Length - 1);
+
+
+
+            //WHERE (matching keys)
+            sqlQuery += " WHERE id = @id";
+
+
+            return sqlQuery;
         }
     }
 }
