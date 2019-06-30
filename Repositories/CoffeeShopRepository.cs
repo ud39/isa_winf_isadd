@@ -126,10 +126,10 @@ namespace WinfADD.Repositories
                     builder.Where( "n.poi_name"  + " = ANY" + "(@poi)", properties);
                 }
                 
-                else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && propertyName == "name")
+                else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && (propertyName == "name" || propertyName.Contains("address")))
                 {
-                    properties.Add(propertyName, "%" + property.GetValue(query)+ "%");
-                    builder.Where(propertyName + " LIKE " + "@" + propertyName, properties);
+                    properties.Add(property.Name, "%" + property.GetValue(query)+ "%");
+                    builder.Where(propertyName +"::citext"+  " LIKE " + "@" + property.Name, properties);
                 }
                 
                 else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName))
@@ -197,30 +197,31 @@ namespace WinfADD.Repositories
                "where t.name = n.poi_name and t.address = n.poi_address and n.coffee_shop_id = @id order by name, image_file_name;"+
             
                "select o.* from opens o where o.coffee_shop_id = @id;";
-            using (var conn = Connection)
-            {
+            
+           using (var conn = Connection) 
+           {
 
 
-          var result = await conn.QueryMultipleAsync(GetByIdString, new {id = id});
+              var result = await conn.QueryMultipleAsync(GetByIdString, new {id = id});
 
-          var coffeeShop = result.Read<CoffeeShop>().FirstOrDefault();
+              var coffeeShop = result.Read<CoffeeShop>().FirstOrDefault();
 
-              if (coffeeShop != null)
-              {
-                  coffeeShop.Images  = result.Read<Image>().ToList();
-                  coffeeShop.Events = result.Read<Event>().ToList();
-                  coffeeShop.Beans = result.Read<Bean>().ToList();
-                  coffeeShop.Blends = result.Read<Blend>().ToList();
-                  coffeeShop.ReachableByBus = result.Read<BusStation>().ToList();
-                  coffeeShop.CoffeeDrinks = result.Read<CoffeeDrink>().ToList();
-                  coffeeShop.EquipmentCategories = result.Read<EquipmentCategory>().ToList();
-                  coffeeShop.ListOfPoi = result.Read<Poi>().ToList();
-                  coffeeShop.OpeningTimes = result.Read<OpeningTime>().ToList();
+                  if (coffeeShop != null)
+                  {
+                      coffeeShop.Images  = result.Read<Image>().ToList();
+                      coffeeShop.Events = result.Read<Event>().ToList();
+                      coffeeShop.Beans = result.Read<Bean>().ToList();
+                      coffeeShop.Blends = result.Read<Blend>().ToList();
+                      coffeeShop.ReachableByBus = result.Read<BusStation>().ToList();
+                      coffeeShop.CoffeeDrinks = result.Read<CoffeeDrink>().ToList();
+                      coffeeShop.EquipmentCategories = result.Read<EquipmentCategory>().ToList();
+                      coffeeShop.ListOfPoi = result.Read<Poi>().ToList();
+                      coffeeShop.OpeningTimes = result.Read<OpeningTime>().ToList();
 
-              }
+                  }
 
-              return coffeeShop;
-            }
+                  return coffeeShop;
+           }
         }
 
 

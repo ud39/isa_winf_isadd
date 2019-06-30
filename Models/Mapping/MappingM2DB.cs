@@ -32,9 +32,14 @@ namespace WinfADD.Models.Mapping
             {"busstation", "bus_station_name"},
             {"warmFood", "warm_food"},
             {"coldFood", "cold_food"},
-            {"poi", "poi_name"}
-        };
+            {"poi", "poi_name"},
+            {"streetnumber", "(address).street_number"},
+            {"streetname", "(address).street_name"},
+            {"town", "(address).town"},
+            {"country", "(address).country"},
+            {"postalcode", "(address).postal_code"}
 
+        };
 
 
         public static Dictionary<string, string> BlendMap = new Dictionary<string, string>
