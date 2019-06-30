@@ -76,11 +76,11 @@ namespace WinfADD.Repositories
 
 
             GetAllString =
-                "select distinct c.*, i.file_name, to_char(AVG (ur.total),'9D9') as average_total from coffee_shop c, coffee_shop_image ci, image i, user_rating ur, rated_by_user rbu " +
-                " where c.id = ci.coffee_shop_id and i.file_name = ci.image_file_name and i.content_type = 'preview'" +
-                " and rbu.coffee_shop_id = c.id and rbu.user_rating_id = ur.rating_id " +
-                " group by c.id, i.file_name";
-
+                "select distinct on (id) id, * from (select distinct c.*, i.file_name, to_char(AVG (ur.total),'9D9') as average_total from coffee_shop c, coffee_shop_image ci, image i, user_rating ur, rated_by_user rbu"+
+            " where c.id = ci.coffee_shop_id and i.file_name = ci.image_file_name and i.content_type = 'preview'"+
+            " and rbu.coffee_shop_id = c.id and rbu.user_rating_id = ur.rating_id "+
+            " group by c.id, i.file_name"+
+                " union select c1.*, null as file_name, null as average_total from coffee_shop c1) as t order by id, file_name ";
         }
 
         public override async Task<IEnumerable<CoffeeShopPreview>> GetAll()
