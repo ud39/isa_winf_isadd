@@ -1,17 +1,14 @@
-using System;
-using System.IO;
 using Dapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;    
 using WinfADD.Models;
 using WinfADD.Models.Mapping;
-using WinfADD.Repositories;
+using WinfADD.Repositories;     
+
 
 namespace WinfADD
 {
@@ -42,7 +39,32 @@ namespace WinfADD
             //set path to the ConfigurationBuilder
            // var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
            //var config = builder.Build();
+           
+           
 
+        /**     services.AddTransient<IUserStore<User>, UserStore>();
+                         services.AddTransient<IRoleStore<UserRole>, RoleStore>();
+             
+                         services.AddIdentity<User, UserRole>()
+                             .AddDefaultTokenProviders();
+
+           services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+             .AddJwtBearer(options =>
+              {
+                 options.TokenValidationParameters = new TokenValidationParameters
+                 {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+             
+                        ValidIssuer = "http://localhost:5001",
+                        ValidAudience = "http://localhost:5001",
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"))
+                 };
+              });
+                   */
+           //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
            services.AddCors(options =>
             {
@@ -90,7 +112,8 @@ namespace WinfADD
             app.UseCors(MyAllowSpecificOrigins);
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseSpaStaticFiles();
+            app.UseSpaStaticFiles();       
+         //   app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

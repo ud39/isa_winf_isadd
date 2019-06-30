@@ -3,9 +3,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WinfADD.Models;
 using WinfADD.Repositories;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WinfADD.Controllers
 {
+    [AllowAnonymous]
     public class BeanController : GenericTableController<Bean, BeanPreview>
     {
         private BeanRepository _beanRepository;

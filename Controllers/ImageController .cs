@@ -12,11 +12,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 using WinfADD.Models;
-using Microsoft.Net.Http.Headers;
+using Microsoft.Net.Http.Headers;      
+using Microsoft.AspNetCore.Authorization;
 
 namespace WinfADD.Controllers
 {
-
+    [AllowAnonymous]
     [Produces("application/json")]
     [Route("api/[controller]")]
     public class ImageController  : Controller

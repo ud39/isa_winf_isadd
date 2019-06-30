@@ -57,7 +57,12 @@ namespace WinfADD.Models.Mapping
             {"name", "name"},
             {"address", "address"},
             {"description", "description"},
-            {"imagefilename", "image_file_name"}
+            {"imagefilename", "image_file_name"}  ,
+            {"streetnumber", "(address).street_number"},
+            {"streetname", "(address).street_name"},
+            {"town", "(address).town"},
+            {"country", "(address).country"},
+            {"postalcode", "(address).postal_code"}
         };
 
        

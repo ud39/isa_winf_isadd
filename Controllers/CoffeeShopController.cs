@@ -5,10 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using WinfADD.Models;
-using WinfADD.Repositories;
+using WinfADD.Repositories;    
+using Microsoft.AspNetCore.Authorization;
 
 namespace WinfADD.Controllers
 {
+
+    [AllowAnonymous]
     public class CoffeeShopController : GenericTableController<CoffeeShop, CoffeeShopPreview>
     {
         private CoffeeShopRepository _coffeeShopRepo;
@@ -28,7 +31,7 @@ namespace WinfADD.Controllers
         }
 
 
-        [HttpGet("{id:int}")]
+        [HttpGet("{id:int}"), Authorize]
         public async Task<ActionResult<CoffeeShop>> GetById(int id)
         {
             return await _coffeeShopRepo.GetById(id);

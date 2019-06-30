@@ -4,11 +4,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using WinfADD.Models;
-using WinfADD.Repositories;
+using WinfADD.Repositories;     
+using Microsoft.AspNetCore.Authorization;
 
 namespace WinfADD.Controllers
 {
-
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public abstract class GenericTableController<Table> : Controller
