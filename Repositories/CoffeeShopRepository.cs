@@ -101,7 +101,7 @@ namespace WinfADD.Repositories
             var builder = new SqlBuilder();
 
             var additionalStatements = "";
-          
+            var innerjoin = "";
             var mapping = MappingM2DB.CoffeShopMap;
 
             foreach (PropertyInfo property in possibleProperties)
@@ -112,14 +112,15 @@ namespace WinfADD.Repositories
                 mapping.TryGetValue(property.Name.ToLower(), out string propertyName);
 
                 if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && propertyName == "bus_station_name")
-                {
-                   additionalStatements += " inner join reachable_by_bus r on r.coffee_shop_id = id ";
-                   properties.Add(propertyName, property.GetValue(query));
-                   builder.Where( "r." + propertyName + " = " + "@" + propertyName, properties);
+                { 
+                    innerjoin += " inner join reachable_by_bus r on r.coffee_shop_id = id ";
+                    properties.Add(propertyName, property.GetValue(query));
+                    builder.Where( "r." + propertyName + " = " + "@" + propertyName, properties);
+
                 }
                 else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && propertyName == "poi_name")
                 {
-                    additionalStatements += " inner join near_by n on n.coffee_shop_id = id ";
+                    innerjoin += " inner join near_by n on n.coffee_shop_id = id ";
                    
                     properties.Add("poi", query.Poi);
                     builder.Where( "n.poi_name"  + " = ANY" + "(@poi)", properties);
@@ -148,10 +149,10 @@ namespace WinfADD.Repositories
             using (IDbConnection dbConnection = Connection)
             {
                 var sql = "Select distinct on (id) id, * from (Select distinct c.*, i.file_name, to_char(AVG (ur.total),'9D9') as average_total from coffee_shop c " + additionalStatements +  "  group by c.id, i.file_name" +
-                    " union select c1.*, null as file_name, null as average_total from coffee_shop c1) as t /**where**/ order by id, file_name";
+                    " union select c1.*, null as file_name, null as average_total from coffee_shop c1) as t "+ innerjoin + " /**where**/ order by id, file_name";
 
                 var filterCoffeeShops = builder.AddTemplate(sql);
-
+                           Console.WriteLine(sql);
                 if (possibleProperties.Length == 0)
                     return await GetAll();
                 var result = await dbConnection.QueryAsync<CoffeeShopPreview>(filterCoffeeShops.RawSql,filterCoffeeShops.Parameters);
