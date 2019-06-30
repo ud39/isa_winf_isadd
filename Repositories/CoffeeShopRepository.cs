@@ -192,8 +192,10 @@ namespace WinfADD.Repositories
                
                "select distinct on (name) name, * from (select p1.*, image_file_name from Poi p1 " +
                "inner join poi_image on name = poi_name and poi_address = address " + 
-               "inner join image on image_file_name = file_name where content_type = 'preview' union select p2.*, null as file_name from poi p2) as t order by name, image_file_name;"+
-            "select o.* from opens o where o.coffee_shop_id = @id;";
+               "inner join image on image_file_name = file_name where content_type = 'preview' union select p2.*, null as file_name from poi p2) as t, near_by n "+
+               "where t.name = n.poi_name and t.address = n.poi_address and n.coffee_shop_id = @id order by name, image_file_name;"+
+            
+               "select o.* from opens o where o.coffee_shop_id = @id;";
             using (var conn = Connection)
             {
 
