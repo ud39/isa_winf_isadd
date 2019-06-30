@@ -16,7 +16,7 @@ namespace WinfADD.Controllers
         }
         
         
-        [HttpGet("allpreview")]
+        [HttpGet("all")]
         public async Task<List<Poi>> GetAll()
         {
             return await  _PoiRepository.GetAll();

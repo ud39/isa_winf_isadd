@@ -6,23 +6,23 @@ using WinfADD.Repositories;
 
 namespace WinfADD.Controllers
 {
-    public class BlendController : GenericTableController<Blend>
+    public class BlendController : GenericTableController<Blend, BlendPreview>
     {
         
         private BlendRepository _blendRepository;
         
-        public BlendController(ITableRepository<Blend> tableRepo) : base(tableRepo)
+        public BlendController(ITableRepository<Blend, BlendPreview> tableRepo) : base(tableRepo)
         {
             _blendRepository = (BlendRepository)tableRepo;
         }
         
-        [HttpGet("allpreview")]
-        public async Task<List<BlendPreview>> GetAll()
+        [HttpGet("all")]
+        public async Task<IEnumerable<BlendPreview>> GetAll()
         {
             return await  _blendRepository.GetAll();
         }
         
-        [HttpGet("{id}")]
+        [HttpGet("id")]
         public async Task<ActionResult<BlendPreview>> GetById([FromQuery] Blend blend)
         {
             return await _blendRepository.GetById(blend);

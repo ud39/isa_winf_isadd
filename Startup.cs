@@ -56,10 +56,10 @@ namespace WinfADD
             });
 
             //TODO add table Repositories here
-            services.AddSingleton<ITableRepository<Blend>, BlendRepository>();
-            services.AddSingleton<ITableRepository<Bean>, BeanRepository>();
+            services.AddSingleton<ITableRepository<Blend, BlendPreview>, BlendRepository>();
+            services.AddSingleton<ITableRepository<Bean, BeanPreview>, BeanRepository>();
             services.AddSingleton<ITableRepository<BusStation>, BusStationRepository>();
-            services.AddSingleton<ITableRepository<CoffeeShop>, CoffeeShopRepository>();
+            services.AddSingleton<ITableRepository<CoffeeShop, CoffeeShopPreview>, CoffeeShopRepository>();
             services.AddSingleton<ITableRepository<Event>, EventRepository>();
             services.AddSingleton<ITableRepository<CoffeeDrink>, CoffeeDrinkRepository>();
             services.AddSingleton<ITableRepository<Poi>, PoiRepository>();
@@ -68,9 +68,6 @@ namespace WinfADD
 
             //TypeHandler for complex data types in Model
             SqlMapper.AddTypeHandler(new AddressTypeHandler());
-
-          
-            
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

@@ -5,7 +5,6 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Dapper;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 using WinfADD.Models;
@@ -166,7 +165,7 @@ namespace WinfADD.Repositories
 
 
 
-        public virtual async Task<List<Table>> GetAll()
+        public virtual async Task<IEnumerable<Table>> GetAll()
         {Console.WriteLine("\n GetAll::" + GetAllString);
             using (IDbConnection conn = Connection)
             {
@@ -286,5 +285,52 @@ namespace WinfADD.Repositories
             }
         }
 
+    }
+
+    public abstract class GenericBaseRepository<Table, View> : GenericBaseRepository<Table>, ITableRepository<Table,View> where Table : class
+    {
+        protected GenericBaseRepository(IConfiguration _config) : base(_config)
+        {
+        }
+
+
+        public virtual async Task<IEnumerable<View>> GetAll()
+        {Console.WriteLine("\n GetAll::" + GetAllString);
+            using (IDbConnection conn = Connection)
+            {
+                var result = await conn.QueryAsync<View>(GetAllString);
+                return result;
+            }
+        }
+
+        public virtual async Task<IEnumerable<View>> GetTables(Table tableObj, IDictionary<string, dynamic> searchProperties)
+        {
+
+            var possibleProperties = typeof(Table).GetProperties();
+
+            var sqlQuery = "SELECT * From" + " " + TableName +" WHERE ";
+            var whereClause = "";
+
+            foreach (var property in possibleProperties)
+            {
+                var propertyName = property.Name.ToLower();
+                if (!searchProperties.ContainsKey(propertyName)) continue;
+                whereClause += " AND " + propertyName + " = " + "@" + propertyName;
+            }
+
+            //remove first AND
+            whereClause = whereClause.Substring(4);
+
+            using (IDbConnection dbConnection = Connection)
+            {
+                Console.WriteLine("\n GetByParam::" + sqlQuery + whereClause);
+                if (possibleProperties.Length == 0)
+                {
+                    return await GetAll();
+                }
+
+                return await dbConnection.QueryAsync<View>(sqlQuery+whereClause,tableObj);
+            }
+        }
     }
 }

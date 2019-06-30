@@ -10,15 +10,11 @@ namespace WinfADD.Repositories
         {
             this._config = _config;
 
-            //TODO add all key names here //TODO in extended class
-            // keys.Add("KeyString");
             Keys.Add("name");
             Keys.Add("line");
 
-            //TODO write tableName
             TableName = "reachable_by_bus";
 
-            //TODO Mapping
             _MappingM2DB = Models.Mapping.MappingM2DB.BusStationMap;
 
 

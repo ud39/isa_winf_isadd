@@ -86,7 +86,7 @@ namespace WinfADD.Models.Mapping
             {"description", "description"},
             {"type", "type"},
             {"vegan", "vegan"},
-            {"preperations", "preperations"}
+            {"preparations", "preparations"}
         };
 
 

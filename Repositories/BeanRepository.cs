@@ -10,17 +10,15 @@ using WinfADD.Models;
 
 namespace WinfADD.Repositories
 {
-    public class BeanRepository : GenericBaseRepository<Bean>
+    public class BeanRepository : GenericBaseRepository<Bean, BeanPreview>
     {
         public BeanRepository(IConfiguration _config) : base(_config)
         {
             this._config = _config;
 
-            // keys
             Keys.Add("name");
             Keys.Add("provenance");
 
-            //TODO write tableName
             TableName = "bean";
 
 
@@ -80,7 +78,7 @@ namespace WinfADD.Repositories
             DeleteString = "DELETE FROM" +" " + TableName + " WHERE " + keyCompare;
         }
 
-        public async Task<List<BeanPreview>> GetAll()
+        public async Task<IEnumerable<BeanPreview>> GetAll()
         {
                         
             using (IDbConnection conn = Connection)

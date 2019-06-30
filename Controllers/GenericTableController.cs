@@ -20,12 +20,8 @@ namespace WinfADD.Controllers
             _tableRepo = tableRepo;
         }
 
-
-        [HttpGet]
-        [Route("all")]
-        public virtual async Task<ActionResult<List<Table>>> GetAll()
+        public virtual async Task<IEnumerable<Table>> GetAll()
         {
-
             return await  _tableRepo.GetAll();
         }
 
@@ -91,9 +87,6 @@ namespace WinfADD.Controllers
         }
 
 
-
-
-
         [Route("pupdate")]
         [HttpPatch]
         public async Task<bool> PartialUpdate(JToken tableJson)
@@ -106,5 +99,17 @@ namespace WinfADD.Controllers
 
             return await _tableRepo.PartialUpdateTable(tableObj, fieldsToChange);
         }
+    }
+
+    public abstract class GenericTableController<Table, View> : GenericTableController<Table>
+    {
+        public new readonly ITableRepository<Table, View> _tableRepo;
+
+        public GenericTableController(ITableRepository<Table, View> tableRepo) : base (tableRepo)
+        {
+            _tableRepo = tableRepo;
+        }
+
+
     }
 }

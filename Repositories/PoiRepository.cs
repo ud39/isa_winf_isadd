@@ -20,7 +20,7 @@ namespace WinfADD.Repositories
             Keys.Add("name");
             Keys.Add("address");
 
-            //TODO write tableName
+
             TableName = "Poi";
 
 

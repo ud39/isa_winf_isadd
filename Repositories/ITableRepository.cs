@@ -1,12 +1,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using WinfADD.Models;
 
 namespace WinfADD.Repositories
 {
     public interface ITableRepository<Table>
     {
-        Task<List<Table>> GetAll();
+        Task<IEnumerable<Table>> GetAll();
 
         Task<Table> GetById(Table tableObj);
         
@@ -20,6 +19,14 @@ namespace WinfADD.Repositories
 
         Task<bool> PartialUpdateTable(Table tableObj, IDictionary<string, dynamic> fieldsToChange);
 
+
+    }
+
+    public interface ITableRepository<Table, View> : ITableRepository<Table>
+    {
+        Task<IEnumerable<View>> GetAll();
+
+        Task<IEnumerable<View>> GetTables(Table tableObj, IDictionary<string, dynamic> searchProperties);
 
     }
 }

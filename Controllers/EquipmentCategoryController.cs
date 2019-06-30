@@ -14,8 +14,8 @@ namespace WinfADD.Controllers
         }
         
         
-        [HttpGet("allpreview")]
-        public async Task<List<EquipmentCategory>> GetAll()
+        [HttpGet("all")]
+        public override async Task<IEnumerable<EquipmentCategory>> GetAll()
         {
             return await _tableRepo.GetAll();
         }
