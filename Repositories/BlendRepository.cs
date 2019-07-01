@@ -59,7 +59,7 @@ namespace WinfADD.Repositories
             UpdateString = "UPDATE " + TableName + " SET ";
             
             
-            PropertyInfo[] possibleProperties = typeof(Blend).GetProperties();
+            var possibleProperties = typeof(Blend).GetProperties();
             var temp = "";
             foreach (PropertyInfo property in possibleProperties)
             {
@@ -87,7 +87,7 @@ namespace WinfADD.Repositories
             }
         }
 
-        public async Task<BlendPreview> GetById([FromQuery] Blend blend)
+        public new async Task<BlendPreview> GetById([FromQuery] Blend blend)
         {            
             using (IDbConnection conn = Connection)
             {

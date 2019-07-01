@@ -48,7 +48,7 @@ namespace WinfADD.Repositories
         }
         
         
-        public async Task<IEnumerable<Event>> GetAll()
+        public new async Task<IEnumerable<Event>> GetAll()
         {
             
             using (IDbConnection conn = Connection)

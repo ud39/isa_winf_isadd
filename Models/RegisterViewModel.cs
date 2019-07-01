@@ -1,6 +1,6 @@
 namespace WinfADD.Models
 {
-    public class LoginViewModel{
+    public class RegisterViewModel{
 
         public string Email { get; set; }
         public string Password { get; set; }

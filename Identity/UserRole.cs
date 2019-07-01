@@ -1,11 +1,13 @@
+using Identity.Dapper.Entities;
+
 namespace WinfADD.Identity
 {
-    public class UserRole
+    public class UserRole : DapperIdentityRole
     {
-        public int Id { get; set; }
 
-        public string Name { get; set; }
-
-        public string NormalizedName { get; set; }
+        public UserRole() { }
+        public UserRole(string roleName) : base(roleName)
+        {
+        }
     }
 }

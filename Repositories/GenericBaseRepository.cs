@@ -294,7 +294,7 @@ namespace WinfADD.Repositories
         }
 
 
-        public virtual async Task<IEnumerable<View>> GetAll()
+        public new virtual async Task<IEnumerable<View>> GetAll()
         {Console.WriteLine("\n GetAll::" + GetAllString);
             using (IDbConnection conn = Connection)
             {
@@ -303,7 +303,7 @@ namespace WinfADD.Repositories
             }
         }
 
-        public virtual async Task<IEnumerable<View>> GetTables(Table tableObj, IDictionary<string, dynamic> searchProperties)
+        public new virtual async Task<IEnumerable<View>> GetTables(Table tableObj, IDictionary<string, dynamic> searchProperties)
         {
 
             var possibleProperties = typeof(Table).GetProperties();

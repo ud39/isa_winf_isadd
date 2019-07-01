@@ -20,7 +20,7 @@ namespace WinfADD.Controllers
         
         
         [HttpGet("all")]
-        public async Task<List<Poi>> GetAll()
+        public new async Task<List<Poi>> GetAll()
         {
             return await  _PoiRepository.GetAll();
         }

@@ -1,14 +1,23 @@
+using System.Text;
+using AspNetCore.Identity.Dapper;
 using Dapper;
+using Identity.Dapper;
+using Identity.Dapper.Models;
+using Identity.Dapper.PostgreSQL.Connections;
+using Identity.Dapper.PostgreSQL.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;    
-using WinfADD.Models;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using WinfADD.Models.Mapping;
-using WinfADD.Repositories;     
-
+using WinfADD.Repositories;
+using WinfADD.Identity;
+using WinfADD.Models;
 
 namespace WinfADD
 {
@@ -32,22 +41,25 @@ namespace WinfADD
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
             
-            
-            // Add framework services.
-
-            //database setup
-            //set path to the ConfigurationBuilder
-           // var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
-           //var config = builder.Build();
            
+           var connectionString = Configuration.GetConnectionString("DefaultConnection");
            
+             services.ConfigureDapperConnectionProvider<PostgreSqlConnectionProvider>(Configuration.GetSection("DapperIdentity"))
+                 .ConfigureDapperIdentityCryptography(Configuration.GetSection("DapperIdentityCryptography"))
+                 .ConfigureDapperIdentityOptions(new DapperIdentityOptions { UseTransactionalBehavior = false }); //Change to True to use Transactions in all operations
 
-        /**     services.AddTransient<IUserStore<User>, UserStore>();
-                         services.AddTransient<IRoleStore<UserRole>, RoleStore>();
+             services.AddIdentity<User, UserRole>(x =>
+                 {
+                     x.Password.RequireDigit = false;
+                     x.Password.RequiredLength = 1;
+                     x.Password.RequireLowercase = false;
+                     x.Password.RequireNonAlphanumeric = false;
+                     x.Password.RequireUppercase = false;
+                 })
+                 .AddDapperIdentityFor<PostgreSqlConfiguration>()
+                 .AddDefaultTokenProviders();
              
-                         services.AddIdentity<User, UserRole>()
-                             .AddDefaultTokenProviders();
-
+             
            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
              .AddJwtBearer(options =>
               {
@@ -63,9 +75,7 @@ namespace WinfADD
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"))
                  };
               });
-                   */
-           //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
+                   
            services.AddCors(options =>
             {
                 options.AddPolicy(MyAllowSpecificOrigins,
@@ -73,11 +83,13 @@ namespace WinfADD
                     {
                         cors.AllowAnyOrigin()
                             .AllowAnyHeader()
-                            .AllowAnyMethod();
+                            .AllowAnyMethod()
+                            .AllowCredentials()
+                            .Build();
                     });
             });
 
-            //TODO add table Repositories here
+           
             services.AddSingleton<ITableRepository<Blend, BlendPreview>, BlendRepository>();
             services.AddSingleton<ITableRepository<Bean, BeanPreview>, BeanRepository>();
             services.AddSingleton<ITableRepository<BusStation>, BusStationRepository>();
@@ -113,7 +125,7 @@ namespace WinfADD
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();       
-         //   app.UseAuthentication();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

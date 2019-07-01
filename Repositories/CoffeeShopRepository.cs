@@ -16,7 +16,7 @@ namespace WinfADD.Repositories
     public class CoffeeShopRepository : GenericBaseRepository<CoffeeShop, CoffeeShopPreview>
     {
         
-        private IDbConnection Connection => new NpgsqlConnection(_config["ConnectionStrings:DefaultConnection"]);
+        //private IDbConnection Connection => new NpgsqlConnection(_config["ConnectionStrings:DefaultConnection"]);
 
         public CoffeeShopRepository(IConfiguration _config) : base(_config)
         {
@@ -463,19 +463,6 @@ namespace WinfADD.Repositories
             var eventSQL = "INSERT INTO organised_by (coffee_shop_id, event_id) VALUES (@coffee_shop_id, @event_id) ON CONFLICT ON CONSTRAINT ()";
             var coffeeShopImageSQL = "";
             var companySQL = "";
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
             using (var conn = Connection)

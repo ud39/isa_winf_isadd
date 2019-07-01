@@ -6,15 +6,17 @@ using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using WinfADD.Models;
-using WinfADD.Identity;
 using Microsoft.AspNetCore.Identity;
                                           
 using System.Threading.Tasks;
-                          
+using AspNetCore.Identity.Dapper;
+using Microsoft.AspNetCore.Authorization;
+using WinfADD.Identity;
+
 
 namespace WinfADD.Controllers
 {
-    
+
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : Controller
@@ -30,7 +32,8 @@ namespace WinfADD.Controllers
 
         // GET api/values
         [HttpPost, Route("login")]
-        public async Task<IActionResult> Login([FromBody]LoginModel user)
+        [AllowAnonymous]
+        public async Task<IActionResult> Login([FromBody]LoginViewModel user)
         {
             if (user == null)
             {
@@ -62,5 +65,34 @@ namespace WinfADD.Controllers
             }
             return Unauthorized();
         }
+        
+        
+        [HttpPost, Route("register")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Register([FromBody]RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new User { UserName = model.Email, Email = model.Email};
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return Ok();
+                }
+               
+            }
+
+            return BadRequest();
+        }
+
+        [Authorize]
+        [HttpGet, Route("test")]
+        public JsonResult Test()
+        {
+
+            return Json("TEST");
+        }
+        
     }
 }
