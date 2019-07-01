@@ -16,7 +16,7 @@ namespace WinfADD.Controllers
     {
         public readonly ITableRepository<Table> _tableRepo;
 
-        public GenericTableController(ITableRepository<Table> tableRepo)
+        protected GenericTableController(ITableRepository<Table> tableRepo)
         {
             _tableRepo = tableRepo;
         }
@@ -93,7 +93,7 @@ namespace WinfADD.Controllers
         public async Task<bool> PartialUpdate(JToken tableJson)
         {
             //create tableObj like: [FromBody] Table tableObj
-            Table tableObj = tableJson.ToObject<Table>();
+            var tableObj = tableJson.ToObject<Table>();
 
             //create a List of all fieldsToChange in the Json
             var fieldsToChange = tableJson.ToObject<Dictionary<string, dynamic>>();

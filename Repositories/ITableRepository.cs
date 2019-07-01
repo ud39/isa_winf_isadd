@@ -24,9 +24,9 @@ namespace WinfADD.Repositories
 
     public interface ITableRepository<Table, View> : ITableRepository<Table>
     {
-        Task<IEnumerable<View>> GetAll();
+        new Task<IEnumerable<View>> GetAll();
 
-        Task<IEnumerable<View>> GetTables(Table tableObj, IDictionary<string, dynamic> searchProperties);
+        new Task<IEnumerable<View>> GetTables(Table tableObj, IDictionary<string, dynamic> searchProperties);
 
     }
 }

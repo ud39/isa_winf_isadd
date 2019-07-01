@@ -13,6 +13,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="AspNetCore.Identity.DapperOrm" Version="2.2.0" />
         <PackageReference Include="Dapper" Version="1.60.6" />
         <PackageReference Include="Dapper.Contrib" Version="1.60.1" />
         <PackageReference Include="Dapper.SqlBuilder" Version="1.60.1" />

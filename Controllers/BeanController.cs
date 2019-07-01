@@ -19,13 +19,13 @@ namespace WinfADD.Controllers
         
         
         [HttpGet("all")]
-        public async Task<IEnumerable<BeanPreview>> GetAll()
+        public new async Task<IEnumerable<BeanPreview>> GetAll()
         {
             return await  _beanRepository.GetAll();
         }
         
         [HttpGet("id")]
-        public async Task<ActionResult<BeanPreview>> GetById([FromQuery] Bean bean)
+        public new async Task<ActionResult<BeanPreview>> GetById([FromQuery] Bean bean)
         {
             return await _beanRepository.GetById(bean);
         }

@@ -15,7 +15,7 @@ namespace WinfADD.Controllers
         }
 
         [HttpGet("all")]
-        public async Task<IEnumerable<BusStation>> GetAll()
+        public new async Task<IEnumerable<BusStation>> GetAll()
         {
             return await  _tableRepo.GetAll();
         }

@@ -27,7 +27,7 @@ namespace WinfADD.Controllers
         
         [HttpGet]
         [Route("all")]
-        public async Task<IEnumerable<Event>> GetAll()
+        public new async Task<IEnumerable<Event>> GetAll()
         {
             return await  _eventRepository.GetAll();
         }

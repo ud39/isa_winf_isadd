@@ -19,13 +19,13 @@ namespace WinfADD.Controllers
         }
         
         [HttpGet("all")]
-        public async Task<IEnumerable<BlendPreview>> GetAll()
+        public new async Task<IEnumerable<BlendPreview>> GetAll()
         {
             return await  _blendRepository.GetAll();
         }
         
         [HttpGet("id")]
-        public async Task<ActionResult<BlendPreview>> GetById([FromQuery] Blend blend)
+        public new async Task<ActionResult<BlendPreview>> GetById([FromQuery] Blend blend)
         {
             return await _blendRepository.GetById(blend);
         }
