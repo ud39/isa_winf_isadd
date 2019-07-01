@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-user-tab',
@@ -8,7 +9,17 @@ import { Component, OnInit } from '@angular/core';
 export class UserTabComponent implements OnInit {
 
   constructor() { }
+  public emailFormControl = new FormControl('',[
+    Validators.maxLength(256)
+  ]);
 
+  public userFormGroup = new FormGroup({
+    email : this.emailFormControl
+  });
+
+  getUserInput() : FormGroup{
+    return this.userFormGroup
+  }
   ngOnInit() {
   }
 

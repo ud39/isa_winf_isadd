@@ -8,7 +8,6 @@ import {ShopService} from "../services/shop/shop.service";
 import {EventService} from "../services/event/event.service";
 import {EquipmentService} from "../services/equipment/equipment.service";
 import {CoffeeService} from "../services/coffee/coffee.service";
-import {FormGroup} from "@angular/forms";
 import {MatTabGroup} from "@angular/material";
 
 

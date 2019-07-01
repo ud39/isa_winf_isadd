@@ -4,9 +4,6 @@
       <input matInput type="text" [formControl]="beanNameFormControl" id='name' placeholder="Kaffee Bohnen" (keydown.enter)="triggerSearchCoffee()">
     </mat-form-field>
     <mat-form-field class="selectedContentCoffee">
-      <input matInput type="text" [formControl]="blendNameFormControl" id='name' placeholder="Blends" (keydown.enter)="triggerSearchCoffee()">
-    </mat-form-field>
-    <mat-form-field>
       <mat-label>Röstung Bohnen</mat-label>
       <mat-select [(ngModel)]="selectedRoast">
         <mat-option *ngFor="let roast of roasts" [value]="roast.value">

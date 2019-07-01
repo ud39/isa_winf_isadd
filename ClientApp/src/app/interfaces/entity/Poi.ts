@@ -4,5 +4,5 @@ export interface Poi {
   name:string;
   address:Address;
   description:string;
-  thumbnail:string;
+  imageFileName:string;
 }

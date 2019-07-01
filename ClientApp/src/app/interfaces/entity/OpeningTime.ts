@@ -1,5 +1,5 @@
 export interface OpeningTime {
-  open: string; //type date?
+  open: string;
   close: string;
   weekday: string;
 }

@@ -15,7 +15,7 @@ export interface Shop {
   foundingYear: number;
   seats: number;
   website: string;
-  food: string;
+  companyName: string
   priceClass: string;
   franchise: boolean;
   wlan:boolean;
@@ -39,5 +39,5 @@ export interface Shop {
   listOfPoi: Poi[];
   reachableByBus: BusStation[];
   equipmentCategories: EquipmentCategory[];
-  OpeningTimes: OpeningTime[];
+  openingTimes: OpeningTime[];
 }

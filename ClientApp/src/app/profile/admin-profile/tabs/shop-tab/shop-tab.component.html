@@ -3,13 +3,15 @@
     <input id="streetName" matInput #address="matInput" type="text" placeholder="Straße" [formControl]="streetFormControl">
   </mat-form-field>
   <mat-form-field class="shop-form-field address">
-    <input id="streetNr" matInput #address="matInput" type="number" placeholder="StraßeNr" min="0" oninput="this.value = Math.abs(this.value)" [formControl]="streetNrFormControl">
+    <input id="streetNr" matInput #address="matInput" type="text" placeholder="StraßeNr" [formControl]="streetNrFormControl" (input)="validateFormControl()">
+    <mat-error *ngIf="streetNrFormControl.hasError('pattern')">Nur Zahlen</mat-error>
   </mat-form-field>
   <mat-form-field  class="shop-form-field address">
     <input id="country" matInput #address="matInput" type="text" placeholder="Land" [formControl]="countryFormControl">
   </mat-form-field>
  <mat-form-field  class="shop-form-field address">
-   <input id="postalCode" matInput #address="matInput" type="number"min="0" oninput="this.value = Math.abs(this.value)" placeholder="Postleitzahl" [formControl]="postalCodeFormControl">
+   <input id="postalCode" matInput #address="matInput" type="text" placeholder="Postleitzahl" [formControl]="postalCodeFormControl" (input)="validateFormControl()">
+   <mat-error *ngIf="postalCodeFormControl.hasError('pattern')">Nur Zahlen und mind. 2</mat-error>
  </mat-form-field>
  <mat-form-field  class="shop-form-field address">
    <input id="town" matInput #address="matInput" type="text" placeholder="Stadt" [formControl]="townFormControl">
@@ -19,55 +21,22 @@
     <mat-error *ngIf="shopNameFormControl.hasError('required')">Es muss einen Namen angebgeben werden</mat-error>
   </mat-form-field>
  <mat-form-field  class="description">
-   <input id="companyName" matInput #inputs="matInput" type="text" required placeholder="Firmen Name" [formControl]="shopNameFormControl">
-   <mat-error *ngIf="shopNameFormControl.hasError('required')">Es muss einen Namen angebgeben werden</mat-error>
+   <input id="companyName" matInput #inputs="matInput" type="text" required placeholder="Firmen Name" [formControl]="companyNameFormControl">
+   <mat-error *ngIf="companyNameFormControl.hasError('required')">Es muss einen Namen angebgeben werden</mat-error>
  </mat-form-field>
 
- <ng-container *ngIf="isLoaded">
- <mat-form-field>
-   <mat-select id=busStation placeholder="Bus Stationen" multiple [(ngModel)]="selectedBusStations">
-     <mat-option *ngFor="let busStation of chooseBusStations" [value]="busStation">{{busStation.name + ' ' + busStation.line}}</mat-option>
-   </mat-select>
+ <mat-form-field class="description">
+   <mat-label>Beschreibung</mat-label>
+   <textarea
+     matInput
+     id="description"
+     #inputs="matInput"
+     [formControl]="shopDescriptionFormControl"
+     maxlength="1000"
+     cdkTextareaAutosize
+     cdkAutosizeMinRows="2"
+   ></textarea>
  </mat-form-field>
- <mat-form-field>
-   <mat-select id=poi placeholder="Landmarken" multiple [(ngModel)]="selectedPoi">
-     <mat-option *ngFor="let poi of choosePois" [value]="poi">{{poi.name}}</mat-option>
-   </mat-select>
- </mat-form-field>
- <mat-form-field>
-   <mat-select id=blends placeholder="Blend" multiple [(ngModel)]="selectedBlend">
-     <mat-option *ngFor="let blend of chooseBlends" [value]="blend">{{blend.name}}</mat-option>
-   </mat-select>
- </mat-form-field>
- <mat-form-field>
-   <mat-select id=equipmentCategories placeholder="Equipment Kategorie" multiple [(ngModel)]="selectedEquipmentCategory">
-     <mat-option *ngFor="let equipmentCategory of chooseEquipmentCategories" [value]="equipmentCategory">{{equipmentCategory.equipmentCategoryName}}</mat-option>
-   </mat-select>
- </mat-form-field>
- <mat-form-field>
-   <mat-select id=coffeeDrinks placeholder="Kaffee Getränke" multiple [(ngModel)]="selectedCoffeeDrinks">
-     <mat-option *ngFor="let coffeeDrink of chooseCoffeeDrinks" [value]="coffeeDrink">{{coffeeDrink.name}}</mat-option>
-   </mat-select>
- </mat-form-field>
- <mat-form-field>
-   <mat-select id=beans placeholder="Bohnen" multiple [(ngModel)]="selectedCoffeeDrinks">
-     <mat-option *ngFor="let bean of chooseBeans" [value]="bean">{{bean.name + " " + bean.provenance}}</mat-option>
-   </mat-select>
- </mat-form-field>
- </ng-container>
-
-  <mat-form-field class="description">
-    <mat-label>Beschreibung</mat-label>
-    <textarea
-              matInput
-              id="description"
-              #inputs="matInput"
-              [formControl]="shopDescriptionFormControl"
-              maxlength="1000"
-              cdkTextareaAutosize
-              cdkAutosizeMinRows="2"
-    ></textarea>
-  </mat-form-field>
  <mat-form-field  class="description">
    <input id="website" matInput #inputs="matInput" type="url" placeholder="Website" [formControl]="shopWebsiteFormControl">
  </mat-form-field>
@@ -76,9 +45,123 @@
    <input id="foundingYear" matInput #inputs="matInput" type="number" placeholder="Gründungs Jahr" min="2" oninput="this.value = Math.abs(this.value)" [formControl]="shopFoundingYearFormControl">
    <mat-hint>Gründung mindesten ab 1700er</mat-hint>
  </mat-form-field>
+
+
+ <ng-container *ngIf="isLoaded">
+   <mat-form-field class="select-form-field">
+     <mat-select id=busStation placeholder="Bus Haltestelle" [formControl]="selectBusStationFromControl" [compareWith]="compareService.compareBusStation" multiple>
+       <mat-option *ngFor="let busStation of chooseBusStations" [value]="busStation">{{busStation.name}}</mat-option>
+     </mat-select>
+   </mat-form-field>
+ <mat-form-field class="select-form-field">
+   <mat-select  id=poi placeholder="Landmarken" multiple [formControl]="selectPoiFormControl" [compareWith]="compareService.comparePoi">
+     <mat-option *ngFor="let poi of choosePois" [value]="poi">{{poi.name}}</mat-option>
+   </mat-select>
+ </mat-form-field>
+ <mat-form-field class="select-form-field">
+   <mat-select  id=blend placeholder="Blend" multiple [formControl]="selectBlendFormControl" [compareWith]="compareService.compareBlend">
+     <mat-option *ngFor="let blend of chooseBlends" [value]="blend">{{blend.name}}</mat-option>
+   </mat-select>
+ </mat-form-field>
+ <mat-form-field class="select-form-field">
+   <mat-select  id=equipmentCategory placeholder="Equipment Kategorie" multiple [formControl]="selectEquipmentCategoryFormControl" [compareWith]="compareService.compareEquipmentCategory">
+     <mat-option *ngFor="let equipmentCategory of chooseEquipmentCategories" [value]="equipmentCategory">{{equipmentCategory.name}}</mat-option>
+   </mat-select>
+ </mat-form-field>
+ <mat-form-field class="select-form-field">
+   <mat-select  id=coffeeDrink placeholder="Kaffee Getränke" multiple [formControl]="selectCoffeeDrinkFormControl" [compareWith]="compareService.compareCoffeeDrink">
+     <mat-option *ngFor="let coffeeDrink of chooseCoffeeDrinks" [value]="coffeeDrink">{{coffeeDrink.name}}</mat-option>
+   </mat-select>
+ </mat-form-field>
+ <mat-form-field class="select-form-field">
+   <mat-select  id=bean placeholder="Bohnen" multiple [formControl]="selectBeanFormCotnrol" [compareWith]="compareService.compareBean">
+     <mat-option *ngFor="let bean of chooseBeans" [value]="bean">{{bean.name + " " + bean.provenance}}</mat-option>
+   </mat-select>
+ </mat-form-field>
+   <h5>Öffnungszeiten Angabe in folgenden Format HH:MM</h5>
+<div class="opening-times">
+    <div class="weekday monday">
+      <p>Montag</p>
+      <mat-form-field>
+      <input matInput placeholder="Offen" type="text" maxlength="5" [formControl]="mondayOpenFormControl" (input)="this.validateFormControl()">
+      <mat-error *ngIf="mondayOpenFormControl.hasError('pattern')">Falsches Format</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+      <input matInput placeholder="Geschlossen" type="text" maxlength="5" [formControl]="mondayCloseFormControl" (input)="this.validateFormControl()">
+      <mat-error *ngIf="mondayCloseFormControl.hasError('pattern')">Falsches Format</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="weekday tuesday">
+      <p>Dienstag</p>
+      <mat-form-field>
+      <input matInput type="text" placeholder="Offen" maxlength="5" [formControl]="tuesdayOpenFormControl" (input)="this.validateFormControl()">
+      <mat-error *ngIf="tuesdayOpenFormControl.hasError('pattern')">Falsches Format</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+      <input matInput type="text" placeholder="Geschlossen" maxlength="5" [formControl]="tuesdayCloseFormControl" (input)="this.validateFormControl()">
+      <mat-error *ngIf="tuesdayCloseFormControl.hasError('pattern')">Falsches Format</mat-error>
+      </mat-form-field></div>
+    <div class="weekday wednesday">
+      <p>Mittwoch</p>
+      <mat-form-field>
+      <input matInput type="text" placeholder="Offen" maxlength="5" [formControl]="wednesdayOpenFormControl" (input)="this.validateFormControl()">
+      <mat-error *ngIf="wednesdayOpenFormControl.hasError('pattern')">Falsches Format</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+      <input matInput type="text" placeholder="Geschlossen" maxlength="5" [formControl]="wednesdayCloseFormControl" (input)="this.validateFormControl()">
+      <mat-error *ngIf="wednesdayCloseFormControl.hasError('pattern')">Falsches Format</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="weekday thursday">
+      <p>Donnerstag</p>
+      <mat-form-field>
+      <input matInput type="text" placeholder="Offen" maxlength="5" [formControl]="thursdayOpenFormControl" (input)="this.validateFormControl()">
+      <mat-error *ngIf="thursdayOpenFormControl.hasError('pattern')">Falsches Format</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+      <input matInput type="text" placeholder="Geschlossen" maxlength="5" [formControl]="thursdayCloseFormControl" (input)="this.validateFormControl()">
+      <mat-error *ngIf="thursdayCloseFormControl.hasError('pattern')">Falsches Format</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="weekday friday">
+      <p>Freitag</p>
+      <mat-form-field>
+      <input matInput type="text" placeholder="Offen" maxlength="5" [formControl]="fridayOpenFormControl" (input)="this.validateFormControl()">
+      <mat-error *ngIf="fridayOpenFormControl.hasError('pattern')">Falsches Format</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+      <input matInput type="text" placeholder="Geschlossen" maxlength="5" [formControl]="fridayCloseFormControl" (input)="this.validateFormControl()">
+      <mat-error *ngIf="fridayCloseFormControl.hasError('pattern')">Falsches Format</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="weekday saturday">
+      <p>Samstag</p>
+      <mat-form-field>
+      <input matInput type="text" placeholder="Offen" maxlength="5" [formControl]="saturdayOpenFormControl" (input)="this.validateFormControl()">
+      <mat-error *ngIf="saturdayOpenFormControl.hasError('pattern')">Falsches Format</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+      <input matInput type="text" placeholder="Geschlossen" maxlength="5" [formControl]="saturdayCloseFormControl" (input)="this.validateFormControl()">
+      <mat-error *ngIf="saturdayCloseFormControl.hasError('pattern')">Falsches Format</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="weekday sunday">
+      <p>Sonntag</p>
+      <mat-form-field>
+      <input matInput type="text" placeholder="Offen" maxlength="5" [formControl]="sundayOpenFormControl" (input)="this.validateFormControl()">
+      <mat-error *ngIf="sundayOpenFormControl.hasError('pattern')">Falsches Format</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+      <input matInput type="text" placeholder="Geschlossen" maxlength="5" [formControl]="sundayCloseFormControl" (input)="this.validateFormControl()">
+      <mat-error *ngIf="sundayCloseFormControl.hasError('pattern')">Falsches Format</mat-error>
+      </mat-form-field>
+    </div>
+</div>
+
+
+ </ng-container>
   <mat-tab-group id="second-mat-tab-group">
     <mat-tab label="Front-Bild">
-
 
 
 

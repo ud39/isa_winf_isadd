@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ImageService} from "../../services/image/image.service";
 
+
 @Component({
   selector: 'app-about-us',
   templateUrl: './about-us.component.html',
@@ -9,7 +10,7 @@ import {ImageService} from "../../services/image/image.service";
 })
 export class AboutUsComponent implements OnInit {
 
-  public brand;
+  public brand:any;
   constructor(public imageBrandService: ImageService) { }
 
   ngOnInit() {

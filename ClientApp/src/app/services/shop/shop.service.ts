@@ -12,6 +12,7 @@ import {CoffeeDrink} from "../../interfaces/entity/CoffeeDrink";
 import {EquipmentCategory} from "../../interfaces/entity/EquipmentCategory";
 import {Blend} from "../../interfaces/entity/Blend";
 import {Bean} from "../../interfaces/entity/Bean";
+import {InputFormService} from "../admin/input-form.service";
 
 
 
@@ -32,20 +33,13 @@ const headers = new HttpHeaders().set('Content-Type', 'application/json');
 export class ShopService {
 
   shops : Shop[];
-  pois : Poi[];
-  blends: Blend[];
-  beans: Bean[];
-  coffeeDrinks: CoffeeDrink[];
-  equipmentCategory: EquipmentCategory[];
 
-  busStations : BusStation[];
-
-  constructor(private http: HttpClient, private routeService: RouteService, private router:Router) {
+  constructor(private http: HttpClient, private routeService: RouteService, private router:Router, private inputFormService: InputFormService) {
   }
 
 
   getShops(): Observable<Shop[]>{
-    return this.http.get<Shop[]>(Global.url + 'coffeeshop/allPreview');
+    return this.http.get<Shop[]>(Global.url + 'coffeeshop/all');
   }
 
 
@@ -60,7 +54,10 @@ export class ShopService {
   }
 
   navigateTo(jsonOfSearch){
+    console.log("Before postRequest");
+    console.log(jsonOfSearch);
     let params = this.routeService.buildHttpParams(jsonOfSearch);
+    console.log(jsonOfSearch.toString());
     console.log(this.getShopWithParams(params).subscribe(next => {
       this.shops = next;
     }));
@@ -76,10 +73,20 @@ export class ShopService {
     });
   }
 
+  sortbyNameAsc(){
+    this.sortByNameDesc();
+    this.shops.reverse();
+  }
+
   sortByRatingDesc(){
     this.shops = this.shops.sort(function(a,b){
       return b.averageTotalRating - a.averageTotalRating ;
     });
+  }
+
+  sortByRatingAsc(){
+    this.sortByRatingDesc();
+    this.shops.reverse();
   }
 
   sortbyPriceDesc(){
@@ -88,6 +95,11 @@ export class ShopService {
         return -1;
       }
     })
+  }
+
+  sortByPriceAsc(){
+    this.sortbyPriceDesc();
+    this.shops.reverse();
   }
 
   sortAscBy():void{
