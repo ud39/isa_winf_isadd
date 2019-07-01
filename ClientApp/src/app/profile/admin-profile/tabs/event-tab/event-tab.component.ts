@@ -18,6 +18,7 @@ export class EventTabComponent implements OnInit {
 
   public shops : Shop[];
   public events: Event[];
+  public selectedEvent;
   public eventNameFormControl = new FormControl('',[
     Validators.required
   ]);
@@ -71,11 +72,10 @@ export class EventTabComponent implements OnInit {
   ngOnInit() {
     this.shopSerivce.getShops().subscribe(value => {
       this.shops = value;
-      console.log(this.shops);
-    })
+    }).unsubscribe();
     this.eventService.getEvents().subscribe(value => {
       this.events = value;
-    })
+    });
   }
 
   public myDate = new Date();
@@ -92,7 +92,22 @@ export class EventTabComponent implements OnInit {
     this.myDate.getDate()
   );
 
+  fillOutInputForm(event:Event){
+    this.eventNameFormControl.setValue(event.name);
+    this.eventDescriptionFormControl.setValue(event.description);
+    this.accessFeeFormControl.setValue(event.accessFee);
+    this.selectShopFormControl.setValue(event.coffeeShop);
+    this.beginDatePickerFormControl.setValue(event.startTime);
+    this.endDatePickerFormControl.setValue(event.endTime);
+  }
 
+  compareShop(shop1: Shop, shop2:Shop){
+    return shop1.id = shop2.id;
+  }
+
+  getJsonOfEvent() : JSON {
+    return null;
+  }
 
   //jan
   onFileChanged(event) {

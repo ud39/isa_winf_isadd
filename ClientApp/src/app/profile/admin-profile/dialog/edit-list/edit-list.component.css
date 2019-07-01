@@ -1,7 +1,8 @@
-app-edit-list .mat-list-item{
+app-edit-list .mat-list-item {
   width: 100%;
   height: 100%;
   clear: both;
+  cursor: pointer;
 }
 
 app-edit-list .mat-list-base .mat-list-item{

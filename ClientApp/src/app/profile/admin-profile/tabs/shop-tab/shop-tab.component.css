@@ -2,6 +2,39 @@ app-shop-tab .mat-grid-tile{
   background-color: #4e555b;
 }
 
+app-shop-tab .opening-times{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+}
+
+app-shop-tab .monday{
+  grid-row: 1 / 1
+}
+app-shop-tab .tuesday{
+
+}
+
+app-shop-tab .wednesday{
+
+}
+
+app-shop-tab .thursday{
+
+}
+
+app-shop-tab .friday{
+
+}
+
+app-shop-tab .satuday{
+
+}
+
+app-shop-tab .sunday{
+
+}
+
 app-shop-tab button .mat-button{
   background-color: white;
   margin-right:10px;
@@ -9,4 +42,9 @@ app-shop-tab button .mat-button{
 
 app-shop-tab .address{
   width: 15%;
+}
+
+app-shop-tab .select-form-field{
+  margin-right: 30px;
+  width:180px;
 }

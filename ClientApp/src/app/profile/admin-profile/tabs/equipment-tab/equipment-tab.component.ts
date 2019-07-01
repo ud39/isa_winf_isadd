@@ -2,6 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CheckboxEquipmentComponent} from "../../../../search/checkbox-equipment/checkbox-equipment.component";
 import {AdminService} from "../../../../services/admin/admin.service";
+import {EquipmentCategory} from "../../../../interfaces/entity/EquipmentCategory";
+import {InputFormService} from "../../../../services/admin/input-form.service";
 
 @Component({
   selector: 'app-equipment-tab',
@@ -11,6 +13,7 @@ import {AdminService} from "../../../../services/admin/admin.service";
 export class EquipmentTabComponent implements OnInit {
   @ViewChild('cbEq') checkBoxes : CheckboxEquipmentComponent;
 
+  public chooseEquipmentCategory: EquipmentCategory[];
   public equipmentNameFormControl = new FormControl('',[
     Validators.required
     ]
@@ -24,7 +27,6 @@ export class EquipmentTabComponent implements OnInit {
 
   public equipmentInput = new FormGroup({
     equipmentName: this.equipmentNameFormControl,
-    equipmentDescrition: this.equipmentDescriptionFormControl,
     equipmentCategory: this.selectEquipmentCategoryFormControl
   });
 
@@ -32,8 +34,19 @@ export class EquipmentTabComponent implements OnInit {
     return this.equipmentInput;
   }
 
-  constructor(public adminService: AdminService ) {}
+  constructor(public adminService: AdminService, public inputFormService : InputFormService) {}
 
+  fillOutInputForm(equipmentCategory:EquipmentCategory){
+    this.equipmentNameFormControl.setValue(equipmentCategory.name);
+  }
+
+  getJsonOfEquipment():JSON{
+    return null
+  }
+
+  compareEquipmentCategory(equipment1 : EquipmentCategory, equipment2:EquipmentCategory){
+    return equipment1.name == equipment2.name;
+  }
   ngOnInit() {
   }
 

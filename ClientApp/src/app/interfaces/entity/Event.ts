@@ -1,7 +1,15 @@
+import {Image} from "./Image";
+import {Shop} from "./Shop";
+
 export interface Event {
-  name: string
-  id: number;
-  time: string;
+  id:number;
+  startTime:string;
+  endTime:string;
+  name:string;
   accessFee: number;
-  description: string;
+  description:string;
+  previewImageFileName:string;
+  images: Image[];
+  coffeeShop: Shop[];
 }
+

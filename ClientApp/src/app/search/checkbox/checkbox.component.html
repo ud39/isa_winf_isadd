@@ -11,7 +11,7 @@
     <mat-form-field class="poi" *ngIf="router.url != urlGlobalPath.get('admin')">
       <mat-label>Landmarken</mat-label>
       <mat-select id="poi" multiple>
-        <mat-option *ngFor="let poi of shopService.pois" [value]="poi.name">
+        <mat-option *ngFor="let poi of checkBoxPois" [value]="poi.name">
           {{poi.name}}
         </mat-option>
       </mat-select>
@@ -29,8 +29,8 @@
       <mat-label>Bus Station</mat-label>
       <mat-select id="busStation">
         <mat-option>--</mat-option>
-        <mat-option *ngFor="let busStation of shopService.busStations" value="busStation">
-          {{busStation.name + busStation.line}}
+        <mat-option *ngFor="let busStation of checkBoxBusStation" [value]="busStation.name">
+          {{busStation.name + ' ' + busStation.line}}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -40,14 +40,13 @@
     <mat-checkbox #cb class="checkbox" id="outdoor" [checked]="false">Outdoor</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id="childFriendly"[checked]="false">Kinderfreundlich</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id="workstation"[checked]="false">Workstation</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" id="shop" [checked]="false">Rösterei</mat-checkbox>
+    <mat-checkbox #cb class="checkbox" id="shop" [checked]="false">Bohnen & Zubehör</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id="disableFriendly" [checked]="false">Behindertengerecht</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id="petFriendly" [checked]="false">Haustierfreundlich</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id="warmFood" [checked]="false">Warm</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id="coldFood" [checked]="false">Kalt</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id="franchise" [checked]="false">Kette</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" id="open" [checked]="false">Offen</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" id="souvenir" [checked]="false">Souvenir</mat-checkbox>
+    <mat-checkbox *ngIf="router.url != urlGlobalPath.get('admin')" #cb class="checkbox" id="open" [checked]="false">Offen</mat-checkbox>
     <div  *ngIf="router.url == urlGlobalPath.get('admin')">
       <button mat-button id="clearbutton" (click)="clear()">Checks aufheben</button>
     </div>

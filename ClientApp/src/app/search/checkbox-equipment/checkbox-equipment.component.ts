@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {MatCheckbox, MatInput, MatSelect} from "@angular/material";
 import {CheckBoxesService} from "../../services/interactive-element/checkboxes.service";
 import {FormControl, FormGroup} from "@angular/forms";
+import {Global} from "../../global";
 
 @Component({
   selector: 'app-checkbox-equipment',
@@ -18,6 +19,7 @@ export class CheckboxEquipmentComponent implements OnInit {
   @ViewChildren(MatSelect) selects : QueryList<MatSelect>;
   @ViewChildren(MatInput) inputs : QueryList<MatInput>;
 
+  public urlGlobalPath = Global.urlName;
   public equipmentNameFormControl = new FormControl('',[]);
   public formGroupEquipment = new FormGroup({
     name: this.equipmentNameFormControl
@@ -36,7 +38,14 @@ export class CheckboxEquipmentComponent implements OnInit {
   @Output() callNavigateToEquipment = new EventEmitter<void>();
 
   triggerSearchEquipment():void{
-    console.log("Call form Equipment");
+    this.callNavigateToEquipment.emit();
+  }
+
+  triggerSearchBlend():void{
+    this.callNavigateToEquipment.emit();
+  }
+
+  triggerSearchBean():void{
     this.callNavigateToEquipment.emit();
   }
 

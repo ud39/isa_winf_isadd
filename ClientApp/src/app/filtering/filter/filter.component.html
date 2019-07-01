@@ -1,4 +1,4 @@
-<div class="sort-options">
+<div class="sort-options" *ngIf="!route.url.includes('wiki')">
 <mat-form-field class="sort-filt sort-properties">
   <mat-select (selectionChange)="sortShops($event.value)">
     <mat-option *ngFor="let sortOption of sortOptions" [value]="sortOption.value">
@@ -6,12 +6,4 @@
     </mat-option>
   </mat-select>
 </mat-form-field>
-  <mat-form-field class="sort-filt sort-asc-desc">
-    <mat-select (selectionChange)="sortDesAsc($event.value)" [formControl]="selectDescAscFormControl" required [disabled]="isSelected">
-      <mat-option *ngFor="let descAsc of sortDescAsc" [value]="descAsc.value">
-        {{descAsc.viewValue}}
-      </mat-option>
-    </mat-select>
-    <mat-hint>Eine </mat-hint>
-  </mat-form-field>
 </div>

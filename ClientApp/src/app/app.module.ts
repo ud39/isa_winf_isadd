@@ -41,6 +41,7 @@ import { ConfirmationComponent } from './profile/admin-profile/dialog/confirmati
 import { ArticleTabComponent } from './profile/admin-profile/tabs/article-tab/article-tab.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +73,6 @@ import { ArticleTabComponent } from './profile/admin-profile/tabs/article-tab/ar
     FilterComponent,
     ConfirmationComponent,
     ArticleTabComponent,
-
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),

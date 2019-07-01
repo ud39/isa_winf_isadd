@@ -1,10 +1,102 @@
-<mat-list id="shop-list">
-  <mat-list-item *ngFor="let shop of data; last as last">
+<h2 mat-dialog-title>{{currentTabActiveLabel}}</h2>
+<mat-dialog-content *ngIf="currentTab == 'Shop'">
+<mat-list class="edit-list">
+  <mat-list-item *ngFor="let shop of shopEditContent; last as last" (click)="getCurrentObjectOfClickedListItem(shop)">
       <img src="https://dummyimage.com/100x100/fff/000" class="preview-img">
     <div class="preview-content">
-      <h6 class="shop_name">{{shop.name}}
+      <h6 class="edit_name">{{shop.name + " " + shop.address.streetName + " " + shop.address.streetNumber}}
       </h6>
     </div>
     <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
   </mat-list-item>
 </mat-list>
+</mat-dialog-content>
+
+<mat-dialog-content *ngIf="currentTab == 'Event'">
+  Event
+  <mat-list class="edit-list">
+    <mat-list-item *ngFor="let event of eventEditContent; last as last" (click)="getCurrentObjectOfClickedListItem(event)">
+      <img src="https://dummyimage.com/100x100/fff/000" class="preview-img">
+      <div class="preview-content">
+        <h6 class="edit_name">{{event.name}}
+        </h6>
+      </div>
+      <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</mat-dialog-content>
+
+<mat-dialog-content *ngIf="currentTab == 'Content'">
+  <div *ngIf="selectedContent == 'Blend'">
+  <mat-list class="edit-list">
+    <mat-list-item *ngFor="let blend of blendEditContent; last as last" (click)="getCurrentObjectOfClickedListItem(blend)">
+      <img src="https://dummyimage.com/100x100/fff/000" class="preview-img">
+      <div class="preview-content">
+        <h6 class="edit_name">{{blend.name + blend.provenance}}
+        </h6>
+      </div>
+      <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+    </mat-list-item>
+  </mat-list>
+  </div>
+
+  <div *ngIf="selectedContent == 'Bean'">
+    <mat-list class="edit-list">
+      <mat-list-item *ngFor="let bean of beanEditContent; last as last" (click)="getCurrentObjectOfClickedListItem(bean)">
+        <img src="https://dummyimage.com/100x100/fff/000" class="preview-img">
+        <div class="preview-content">
+          <h6 class="edit_name">{{bean.name + bean.provenance}}
+          </h6>
+        </div>
+        <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+  <div *ngIf="selectedContent == 'Poi'">
+    <mat-list class="edit-list">
+      <mat-list-item *ngFor="let poi of poiEditControl; last as last" (click)="getCurrentObjectOfClickedListItem(poi)">
+        <img src="https://dummyimage.com/100x100/fff/000" class="preview-img">
+        <div class="preview-content">
+          <h6 class="edit_name">{{poi.name + " " + poi.address.streetName + " " + poi.address.streetNumber + " " + poi.address.town + " " + poi.address.postalCode}}
+          </h6>
+        </div>
+        <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+  <div *ngIf="selectedContent == 'CoffeeDrink'">
+    <mat-list class="edit-list">
+      <mat-list-item *ngFor="let coffeeDrink of coffeeDrinkEditControl; last as last" (click)="getCurrentObjectOfClickedListItem(coffeeDrink)">
+        <img src="https://dummyimage.com/100x100/fff/000" class="preview-img">
+        <div class="preview-content">
+          <h6 class="edit_name">{{coffeeDrink.name}}
+          </h6>
+        </div>
+        <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+  <div *ngIf="selectedContent == 'BusStation'">
+    <mat-list class="edit-list">
+      <mat-list-item *ngFor="let busStation of busStationEditControl; last as last" (click)="getCurrentObjectOfClickedListItem(busStation)">
+        <img src="https://dummyimage.com/100x100/fff/000" class="preview-img">
+        <div class="preview-content">
+          <h6 class="edit_name">{{busStation.name + busStation.line}}
+          </h6>
+        </div>
+        <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</mat-dialog-content>
+
+
+
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Abbrechen</button>
+</mat-dialog-actions>
+

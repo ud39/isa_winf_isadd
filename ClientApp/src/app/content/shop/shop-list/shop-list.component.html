@@ -8,15 +8,15 @@
       <h6 class="shop_name"  [routerLink]="['/shops', shop.id]">{{shop.name}}
         <hr class="shop_name_underline">
       </h6>
-      {{shop.averageTotalRating}}
+      {{(shop.averageTotalRating | number) || 'n/a' }} {{" " + shop.address.streetName + " " + shop.address.streetNumber}}
       <div class="text">
           {{shop.description | words : 50}}
-      </div><div class='read_more'> Read more </div>
+      </div><div class='read_more'> weiterlesen </div>
       </div>
   <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
   </mat-list-item>
   </mat-list>
 </div>
 <ng-template #noShops>
-  Es gibt kein Laden, welches diesen Kriterien erfüllen. )
+  Es gibt kein Laden, welches die gewählte Kriterien erfüllen. :(
 </ng-template>

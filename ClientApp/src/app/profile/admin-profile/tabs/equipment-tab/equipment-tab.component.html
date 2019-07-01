@@ -1,7 +1,4 @@
 <app-checkbox-equipment #cbEq></app-checkbox-equipment>
-<mat-select placeholder="Equipment Kategorie" required [formControl]="selectEquipmentCategoryFormControl">
-  <mat-option></mat-option>
-</mat-select>
 <mat-form-field class="name-form-field">
   <input matInput type="text" placeholder="Name" required [formControl]="equipmentNameFormControl">
   <mat-error *ngIf="equipmentNameFormControl.hasError('required')">Es müss einen Namen angegeben werden.</mat-error>
@@ -18,8 +15,6 @@
   ></textarea>
   <br>
 </mat-form-field>
-
-
 <br>
 
 

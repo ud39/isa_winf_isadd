@@ -36,7 +36,7 @@
   </mat-form-field>
   <mat-form-field class="multipleSelect">
     <mat-label>Wähle die beteiligten Läden</mat-label>
-     <mat-select multiple [formControl]="selectShopFormControl" required>
+     <mat-select multiple [formControl]="selectShopFormControl" [compareWith]="compareShop" required>
        <mat-option *ngFor="let shop of shops" [value]="shop.name">
        {{shop.name}}
        </mat-option>

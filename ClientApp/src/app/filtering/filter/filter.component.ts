@@ -2,6 +2,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ShopService} from "../../services/shop/shop.service";
 
 import {FormControl, FormGroup} from "@angular/forms";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -12,54 +13,41 @@ import {FormControl, FormGroup} from "@angular/forms";
 })
 export class FilterComponent implements OnInit {
 
-  public selectDescAscFormControl = new FormControl('',[]);
-  public isSelected : boolean = true;
-  constructor(public shopService: ShopService) { }
+  constructor(public shopService: ShopService, public route: Router) { }
 
   sortOptions  = [
-    {viewValue:'Rating', value: 'rating'},
-    {viewValue:'Name', value: 'name'},
-    {viewValue:'Preis', value: 'price'}
-  ];
-
-  sortDescAsc = [
-    {viewValue: 'Aufsteigend', value:'desc'},
-    {viewValue: 'Absteigend', value:'asc'}
+    {viewValue:'Rating Aufsteigend', value: 'rating asc'},
+    {viewValue:'Rating Absteigend', value: 'rating desc'},
+    {viewValue:'Name Aufsteigend', value: 'name asc'},
+    {viewValue:'Name Absteigend', value: 'name desc'},
+    {viewValue:'Preis Aufsteigend', value: 'price asc'},
+    {viewValue:'Preis Absteigend', value: 'price desc'}
   ];
 
 
   sortShops(selectedProperty : string):void{
     switch (selectedProperty)
     {
-      case 'rating':
+     case 'rating desc':
         this.shopService.sortByRatingDesc();
-        this.isSelected = false;
         break;
-      case 'name':
+     case 'rating asc':
+        this.shopService.sortByRatingAsc();
+        break;
+      case 'name desc':
         this.shopService.sortByNameDesc();
-        this.isSelected = false;
         break;
-      case 'price':
+      case 'name asc':
+        this.shopService.sortbyNameAsc();
+        break;
+      case 'price desc':
         this.shopService.sortbyPriceDesc();
-        this.isSelected = false;
+        break;
+      case 'price asc':
+        this.shopService.sortByPriceAsc();
         break;
     }
   }
-
-  sortDesAsc(selectedProperty : string):void{
-    switch (selectedProperty)
-    {
-      case 'desc':
-        console.log('Absteigend Sortierung');
-        this.shopService.sortDescBy();
-        break;
-      case 'asc':
-        console.log('Aufsteigend Sortierung');
-        this.shopService.sortAscBy();
-        break;
-    }
-  }
-
 
   ngOnInit() {
   }

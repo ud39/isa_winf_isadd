@@ -1,3 +1,17 @@
-<p>
-  article-tab works!
-</p>
+<mat-form-field>
+  <input matInput type="text" id="title" #inputs="matInput" placeholder="Titel" required [formControl]="articleTitleFormControl">
+  <mat-error *ngIf="articleTitleFormControl.hasError('required')">Es müssen einen Namen angegeben werden</mat-error>
+</mat-form-field>
+
+<mat-form-field class="description">
+  <mat-label>Beschreibung</mat-label>
+  <textarea
+    matInput
+    id="expose"
+    #inputs="matInput"
+    [formControl]="articleExposeFormControl"
+    maxlength="1500"
+    cdkTextareaAutosize
+    cdkAutosizeMinRows="2"
+  ></textarea>
+</mat-form-field>

@@ -1,5 +1,5 @@
 <div class="search-field">
-    <mat-form-field>
+    <mat-form-field *ngIf="router.url != urlGlobalPath.get('admin')">
       <input matInput placeholder="Equipment Name" [formControl]="equipmentNameFormControl" id="name" type="text" (keydown.enter)="triggerSearchEquipment()">
     </mat-form-field>
     <mat-checkbox #cb class="checkbox" id="presser" [checked]="false">Presser</mat-checkbox>
