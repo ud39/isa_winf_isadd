@@ -53,18 +53,18 @@ namespace WinfADD.Controllers
         }
 
 
-        [HttpGet("update")]
+        [HttpPatch("update")]
         public async Task<bool> editCoffeeShop(JToken jToken)
         {
 
-            var coffeeShopObj = jToken.ToObject<CoffeeShop>();
+            var coffeeShopObj = jToken.ToObject<CoffeeShopUpdateModel>();
             var jObj = jToken.ToObject<JObject>();
             IDictionary<string, dynamic> fieldsToChange = new Dictionary<string, dynamic>();
             foreach (var (propertyName, value) in jObj) {fieldsToChange.Add(propertyName, value);}
             // foreach (var pair in jObj) {propertyValues.Add(pair.Key, pair.Value);}
 
 
-            return await _coffeeShopRepo.PartialUpdateTable(coffeeShopObj ,fieldsToChange);
+            return await _coffeeShopRepo.PartialUpdateCoffeeShop(coffeeShopObj ,fieldsToChange);
         }
 
         [HttpGet]

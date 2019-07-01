@@ -206,19 +206,16 @@ namespace WinfADD.Repositories
 
               var coffeeShop = result.Read<CoffeeShop>().FirstOrDefault();
 
-                  if (coffeeShop != null)
-                  {
-                      coffeeShop.Images  = result.Read<Image>().ToList();
-                      coffeeShop.Events = result.Read<Event>().ToList();
-                      coffeeShop.Beans = result.Read<Bean>().ToList();
-                      coffeeShop.Blends = result.Read<Blend>().ToList();
-                      coffeeShop.ReachableByBus = result.Read<BusStation>().ToList();
-                      coffeeShop.CoffeeDrinks = result.Read<CoffeeDrink>().ToList();
-                      coffeeShop.EquipmentCategories = result.Read<EquipmentCategory>().ToList();
-                      coffeeShop.ListOfPoi = result.Read<Poi>().ToList();
-                      coffeeShop.OpeningTimes = result.Read<OpeningTime>().ToList();
-
-                  }
+              if (coffeeShop == null) return coffeeShop;
+                  coffeeShop.Images  = result.Read<Image>().ToList();
+                  coffeeShop.Events = result.Read<Event>().ToList();
+                  coffeeShop.Beans = result.Read<Bean>().ToList();
+                  coffeeShop.Blends = result.Read<Blend>().ToList();
+                  coffeeShop.ReachableByBus = result.Read<BusStation>().ToList();
+                  coffeeShop.CoffeeDrinks = result.Read<CoffeeDrink>().ToList();
+                  coffeeShop.EquipmentCategories = result.Read<EquipmentCategory>().ToList();
+                  coffeeShop.ListOfPoi = result.Read<Poi>().ToList();
+                  coffeeShop.OpeningTimes = result.Read<OpeningTime>().ToList();
 
                   return coffeeShop;
            }
@@ -455,27 +452,56 @@ namespace WinfADD.Repositories
         /*
          * update CoffeeShop and Relationship Tables from CoffeeShop
          */
-        public override async Task<bool> PartialUpdateTable(CoffeeShop coffeeShopObj, IDictionary<string, dynamic> fieldsToChange)
+        public async Task<bool> PartialUpdateCoffeeShop(CoffeeShopUpdateModel coffeeShopObj, IDictionary<string, dynamic> fieldsToChange)
         {
 
             //SQL statements for the transaction
-            var coffeeShopSQL = getUpdateQuery(fieldsToChange);
-            var eventSQL = "INSERT INTO organised_by (coffee_shop_id, event_id) VALUES (@coffee_shop_id, @event_id) ON CONFLICT ON CONSTRAINT ()";
-            var coffeeShopImageSQL = "";
-            var companySQL = "";
+            string coffeeShopSQL = getUpdateQuery(fieldsToChange);
+
+            const string eventSqlInsert = "INSERT INTO organised_by (coffee_shop_id, event_id) VALUES (@coffee_shop_id, @event_id) ON CONFLICT ON CONSTRAINT organised_by_pkey DO NOTHING";
+            const string eventSqlDelete = "DELETE FROM organised_by WHERE coffee_shop_id = @coffee_shop_id AND event_id = @event_id ";
+            const string coffeeShopImageSqlInsert = "INSERT INTO coffee_shop_image (coffee_shop_id, image_file_name) VALUES (@coffee_shop_id, @image_file_name) ON CONFLICT ON CONSTRAINT coffee_shop_image_pkey DO NOTHING";
+            const string coffeeShopImageSqlDelete = "DELETE FROM coffee_shop_image WHERE coffee_shop_id = @coffee_shop_id AND image_file_name = @image_file_name";
+            const string companySqlInsert = "INSERT INTO company VALUES (name) ON CONFLICT ON CONSTRAINT company_pkey DO NOTHING";
+            const string companyRelationInsert = "";
+            const string companySqlDelete = "";
 
 
-            using (var conn = Connection)
+            using (IDbConnection conn = Connection)
             {
 
                 conn.Open();
-                using (var transaction = conn.BeginTransaction())
+                using (IDbTransaction transaction = conn.BeginTransaction())
                 {
                     try
                     {
 
 
-                        conn.Execute(eventSQL, new {event_id = 1, coffee_shop_id = 2}, transaction: transaction);
+                        conn.Execute(coffeeShopSQL, coffeeShopObj, transaction: transaction);
+
+                        //
+                        foreach (Event events in coffeeShopObj.EventsInsert)
+                        {
+                            conn.Execute(eventSqlInsert, new {event_id = events.Id,
+                                coffee_shop_id = coffeeShopObj.Id}, transaction: transaction);
+                        }
+                        foreach (Event events in coffeeShopObj.EventsDelete)
+                        {
+                            conn.Execute(eventSqlDelete, new {event_id = events.Id,
+                                coffee_shop_id = coffeeShopObj.Id}, transaction: transaction);
+                        }
+
+                        //images
+                        foreach (Image image in coffeeShopObj.ImagesInsert)
+                        {
+                            conn.Execute(coffeeShopImageSqlInsert, new {coffee_shop_id = coffeeShopObj.Id,
+                                image_file_path = image.FileName}, transaction: transaction);
+                        }
+                        foreach (Image image in coffeeShopObj.ImagesDelete)
+                        {
+                            conn.Execute(coffeeShopImageSqlDelete, new {coffee_shop_id = coffeeShopObj.Id,
+                                image_file_path = image.FileName}, transaction: transaction);
+                        }
 
                         transaction.Commit();
 

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using WinfADD.Models;
 
 namespace WinfADD.Repositories
 {
@@ -27,6 +28,9 @@ namespace WinfADD.Repositories
         new Task<IEnumerable<View>> GetAll();
 
         new Task<IEnumerable<View>> GetTables(Table tableObj, IDictionary<string, dynamic> searchProperties);
+
+       // new Task<bool> PartialUpdateTable(CoffeeShopUpdateModel coffeeShopObj,
+         //   IDictionary<string, dynamic> fieldsToChange);
 
     }
 }
