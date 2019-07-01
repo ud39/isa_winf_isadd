@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Dapper.Contrib.Extensions;
 
@@ -15,7 +16,9 @@ namespace WinfADD.Models
         
         public string Name { get; set; }
         
-        public string Time { get; set; }
+        public DateTime StartTime { get; set; }
+
+        public DateTime EndTime { get; set; }
         
         public int AccessFee { get; set; }
         

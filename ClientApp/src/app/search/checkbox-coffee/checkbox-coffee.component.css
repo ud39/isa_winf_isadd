@@ -1,11 +1,12 @@
-app-checkbox-coffee{
-  margin-top: 20px;
-}
-
 app-checkbox-coffee .selectedContentCoffee{
   margin-right: 10px;
 }
 
 app-checkbox-coffee .coffeeName{
   margin-right: 10px;
+}
+
+app-checkbox-coffee .search-field{
+  margin: 0 0 0 10px;
+  width: fit-content;
 }

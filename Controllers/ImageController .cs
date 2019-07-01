@@ -12,11 +12,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 using WinfADD.Models;
-using Microsoft.Net.Http.Headers;
+using Microsoft.Net.Http.Headers;      
+using Microsoft.AspNetCore.Authorization;
 
 namespace WinfADD.Controllers
 {
-
+    [AllowAnonymous]
     [Produces("application/json")]
     [Route("api/[controller]")]
     public class ImageController  : Controller
@@ -63,14 +64,14 @@ namespace WinfADD.Controllers
             try
             {
 
-                string fromWhere = Request.Form["fromWhere"];
+                var fromWhere = Request.Form["fromWhere"];
 
 
                 var file = Request.Form.Files[0];
-                string folderName = "Image/"+fromWhere;
-                string webRootPath = _hostingEnvironment.WebRootPath;
+                var folderName = "Image/"+fromWhere;
+                var webRootPath = _hostingEnvironment.WebRootPath;
                 Console.WriteLine(webRootPath);
-                string newPath = Path.Combine(webRootPath, folderName);
+                var newPath = Path.Combine(webRootPath, folderName);
                 var fileName = "";
                 var imageType = "";
                 if (!Directory.Exists(newPath))
@@ -95,7 +96,7 @@ namespace WinfADD.Controllers
 
 
 
-                    string fullPath = Path.Combine(newPath, fileName);
+                    var fullPath = Path.Combine(newPath, fileName);
                     using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
                         file.CopyTo(stream);

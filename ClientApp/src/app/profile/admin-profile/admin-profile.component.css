@@ -92,8 +92,8 @@ app-admin-profile .active{
 }
 
 /* Styles for the ink bar */
-app-admin-profile .mat-ink-bar {
-  background-color: green;
+app-admin-profile .mat-tab-group.mat-primary .mat-ink-bar {
+  background-color: white;
 }
 
 app-admin-profile .mat-tab-header, .mat-tab-nav-bar{
@@ -126,15 +126,15 @@ app-admin-profile .mat-tab-body-content {
 app-admin-profile .mat-tab-label {
   min-width: 25px;
   background-color: transparent;
-  color: red;
   font-weight: 700;
 }
 
 /* Styles for the active tab label */
 app-admin-profile .mat-tab-label.mat-tab-label-active {
   min-width: 25px;
-  background-color: transparent;
-  color: red;
+  background-color: black;
+  opacity: 1;
+  color: white;
   font-weight: 700;
 }
 

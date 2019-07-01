@@ -9,6 +9,7 @@ import {ContentTabComponent} from "./tabs/content-tab/content-tab.component";
 import {EquipmentTabComponent} from "./tabs/equipment-tab/equipment-tab.component";
 import {InputFormService} from "../../services/admin/input-form.service";
 import {EditListComponent} from "./dialog/edit-list/edit-list.component";
+import {ConfirmationComponent} from "./dialog/confirmation/confirmation.component";
 
 export interface Content{
   value: string;
@@ -17,7 +18,6 @@ export interface Content{
   selector: 'app-admin-profile',
   templateUrl: './admin-profile.component.html',
   styleUrls: ['./admin-profile.component.css'],
-  providers: [EditListComponent],
   encapsulation: ViewEncapsulation.None
 })
 
@@ -91,7 +91,7 @@ export class AdminProfileComponent implements OnInit {
   }
 
 
-  public openDialog(): any{
+  public openEditListDialog(data:any): any{
     const dialogRef = this.dialog.open(EditListComponent, {
       data: this.shopTab.shops,
       height: '500px',
@@ -103,9 +103,21 @@ export class AdminProfileComponent implements OnInit {
     })
   }
 
+  public openConfirmationDialog(data: any): any{
+    const dialogRef = this.dialog.open(ConfirmationComponent,{
+      data: this.shopTab.shops,
+      height: '500px',
+      width: '800px',
+    });
+    dialogRef.afterClosed().subscribe(value => {
+      console.log(value);
+    });
+  }
+
   addContent(){
     this.getContentJSON();
     this.inputFormService.postContent(this.body);
+    this.openConfirmationDialog('s');
   }
 
   deleteContent(){

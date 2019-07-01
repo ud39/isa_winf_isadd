@@ -13,10 +13,10 @@ using WinfADD.Models.Mapping;
 
 namespace WinfADD.Repositories
 {
-    public class CoffeeShopRepository : GenericBaseRepository<CoffeeShop>
+    public class CoffeeShopRepository : GenericBaseRepository<CoffeeShop, CoffeeShopPreview>
     {
         
-        private IDbConnection Connection => new NpgsqlConnection(_config["ConnectionStrings:DefaultConnection"]);
+        //private IDbConnection Connection => new NpgsqlConnection(_config["ConnectionStrings:DefaultConnection"]);
 
         public CoffeeShopRepository(IConfiguration _config) : base(_config)
         {
@@ -76,32 +76,32 @@ namespace WinfADD.Repositories
 
 
             GetAllString =
-                "select distinct c.*, i.file_name, to_char(AVG (ur.total),'9D9') as average_total from coffee_shop c, coffee_shop_image ci, image i, user_rating ur, rated_by_user rbu " +
-                " where c.id = ci.coffee_shop_id and i.file_name = ci.image_file_name and i.content_type = 'preview'" +
-                " and rbu.coffee_shop_id = c.id and rbu.user_rating_id = ur.rating_id " +
-                "group by c.id, i.file_name";
-
+                "select distinct on (id) id, * from (select distinct c.*, i.file_name, to_char(AVG (ur.total),'9D9') as average_total from coffee_shop c, coffee_shop_image ci, image i, user_rating ur, rated_by_user rbu"+
+            " where c.id = ci.coffee_shop_id and i.file_name = ci.image_file_name and i.content_type = 'preview'"+
+            " and rbu.coffee_shop_id = c.id and rbu.user_rating_id = ur.rating_id "+
+            " group by c.id, i.file_name"+
+                " union select c1.*, null as file_name, null as average_total from coffee_shop c1) as t order by id, file_name ";
         }
 
-        public async Task<List<CoffeeShopPreview>> GetAll()
+        public override async Task<IEnumerable<CoffeeShopPreview>> GetAll()
         {
             
             using (IDbConnection conn = Connection)
             {
-            var result = await conn.QueryMultipleAsync(GetAllString);
-            var coffeeshops = result.Read<CoffeeShopPreview>();
+                var result = await conn.QueryMultipleAsync(GetAllString);
+                var coffeeshops = result.Read<CoffeeShopPreview>();
             
                 return coffeeshops.ToList();
             }
         }
 
-        public async Task<List<CoffeeShopPreview>> GetCoffeeShops(CoffeeShopSearchModel query)
+        public async Task<IEnumerable<CoffeeShopPreview>> GetCoffeeShops(CoffeeShopSearchModel query)
         {
             PropertyInfo[] possibleProperties = typeof(CoffeeShopSearchModel).GetProperties();
             var builder = new SqlBuilder();
 
             var additionalStatements = "";
-          
+            var innerjoin = "";
             var mapping = MappingM2DB.CoffeShopMap;
 
             foreach (PropertyInfo property in possibleProperties)
@@ -112,23 +112,24 @@ namespace WinfADD.Repositories
                 mapping.TryGetValue(property.Name.ToLower(), out string propertyName);
 
                 if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && propertyName == "bus_station_name")
-                {
-                   additionalStatements += " inner join reachable_by_bus r on r.coffee_shop_id = id ";
-                   properties.Add(propertyName, property.GetValue(query));
-                   builder.Where( "r." + propertyName + " = " + "@" + propertyName, properties);
+                { 
+                    innerjoin += " inner join reachable_by_bus r on r.coffee_shop_id = id ";
+                    properties.Add(propertyName, property.GetValue(query));
+                    builder.Where( "r." + propertyName + " = " + "@" + propertyName, properties);
+
                 }
                 else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && propertyName == "poi_name")
                 {
-                    additionalStatements += " inner join near_by n on n.coffee_shop_id = id ";
+                    innerjoin += " inner join near_by n on n.coffee_shop_id = id ";
                    
                     properties.Add("poi", query.Poi);
                     builder.Where( "n.poi_name"  + " = ANY" + "(@poi)", properties);
                 }
                 
-                else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && propertyName == "name")
+                else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && (propertyName == "name" || propertyName.Contains("address")))
                 {
-                    properties.Add(propertyName, "%" + property.GetValue(query)+ "%");
-                    builder.Where(propertyName + " LIKE " + "@" + propertyName, properties);
+                    properties.Add(property.Name, "%" + property.GetValue(query)+ "%");
+                    builder.Where(propertyName +"::citext"+  " LIKE " + "@" + property.Name, properties);
                 }
                 
                 else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName))
@@ -139,16 +140,19 @@ namespace WinfADD.Repositories
                 
             }
 
-            additionalStatements += " inner join coffee_shop_image ci on ci.coffee_shop_id = id ";
-            additionalStatements += " inner join image i on ci.image_file_name = i.file_name ";
-            builder.Where("i.content_type = 'preview'");
+            additionalStatements += " inner join coffee_shop_image ci on ci.coffee_shop_id = c.id ";
+            additionalStatements += " inner join image i on ci.image_file_name = i.file_name and i.content_type = 'preview'";   
+            additionalStatements += " inner join rated_by_user rbu on rbu.coffee_shop_id = c.id ";
+            additionalStatements += " inner join user_rating ur on rbu.user_rating_id = ur.rating_id ";
+           // builder.Where("i.content_type = 'preview'");
 
             using (IDbConnection dbConnection = Connection)
             {
-                var sql = "Select * from coffee_shop" + additionalStatements +  " /**where**/  ";
+                var sql = "Select distinct on (id) id, * from (Select distinct c.*, i.file_name, to_char(AVG (ur.total),'9D9') as average_total from coffee_shop c " + additionalStatements +  "  group by c.id, i.file_name" +
+                    " union select c1.*, null as file_name, null as average_total from coffee_shop c1) as t "+ innerjoin + " /**where**/ order by id, file_name";
 
                 var filterCoffeeShops = builder.AddTemplate(sql);
-
+                           Console.WriteLine(sql);
                 if (possibleProperties.Length == 0)
                     return await GetAll();
                 var result = await dbConnection.QueryAsync<CoffeeShopPreview>(filterCoffeeShops.RawSql,filterCoffeeShops.Parameters);
@@ -165,42 +169,59 @@ namespace WinfADD.Repositories
 
 
 
-           GetByIdString = "select * from coffee_shop where id = @id;" +
-                           "select i.* from image i, coffee_shop_image ci where ci.coffee_shop_id = @id and ci.image_file_name = i.file_name;" +
-                           "select e.* from event e, organised_by o where o.coffee_shop_id = @id and  e.id = o.event_id;" +
-                           "select b.* from provides p, bean b where p.coffee_shop_id = @id and p.bean_name = b.name and p.bean_provenance = b.provenance;" +
-                           "select b.* from offers o, blend b where o.coffee_shop_id = @id and o.blend_name = b.name;" +
-                           "select b.* from reachable_by_bus b where b.coffee_shop_id = @id and b.bus_station_name = b.bus_station_name;" +
-                           "select c.* from coffee_drink c, serves s where s.coffee_shop_id = @id and s.coffee_drink_name = c.name;" +
-                           // Equipment  "select e.* from equipment e, sells s where s.coffee_shop_id = 2 and s.equipment_manufacturer_name = e.manufacturer_name and s.equipment_model_name = e.model_name and s.equipment_year_of_origin = e.year_of_origin;";
-                           "select distinct e.* from equipment_category e, sells s where s.coffee_shop_id = @id and s.equipment_category_name = e.name;" +
-                           //"select o.* from opens o where o.coffee_shop_id = @id;";
-                           "select p.* from poi p, near_by n where n.coffee_shop_id = @id and n.poi_name = p.name and n.poi_address = p.address";
-           
-            using (var conn = Connection)
-            {
+           GetByIdString = //"select * from coffee_shop where id = @id;" +
+               "select distinct on(id) id, * from " +
+               " (select c.*, o.company_name from coffee_shop c " +
+               " inner join owns o on o.coffee_shop_id = c.id and c.id = @id" +
+               " union select c1.*, null as company_name " +
+               " from coffee_shop c1 where c1.id = @id) as t order by id, company_name; " +
+
+               "select i.* from image i, coffee_shop_image ci where ci.coffee_shop_id = @id and ci.image_file_name = i.file_name;" +
+
+               "select distinct on (id) id, * from ( " +
+               " select e.*, i.file_name from event_image ei, image i, event e " +
+               " where e.id = ei.event_id and ei.image_file_name = i.file_name and i.content_type = 'preview' " +
+               " union select e1.*, null as file_name from event e1 order by id, file_name) as t, organised_by o where o.event_id = id and o.coffee_shop_id = @id; " +
 
 
-          var result = await conn.QueryMultipleAsync(GetByIdString, new {id = id});
+               "select b.* from provides p, bean b where p.coffee_shop_id = @id and p.bean_name = b.name and p.bean_provenance = b.provenance;" +
+               "select b.* from offers o, blend b where o.coffee_shop_id = @id and o.blend_name = b.name;" +
+               "select b.* from reachable_by_bus b where b.coffee_shop_id = @id and b.bus_station_name = b.bus_station_name;" +
+               "select c.* from coffee_drink c, serves s where s.coffee_shop_id = @id and s.coffee_drink_name = c.name;" +
+               // Equipment  "select e.* from equipment e, sells s where s.coffee_shop_id = 2 and s.equipment_manufacturer_name = e.manufacturer_name and s.equipment_model_name = e.model_name and s.equipment_year_of_origin = e.year_of_origin;";
+               "select distinct e.* from equipment_category e, sells s where s.coffee_shop_id = @id and s.equipment_category_name = e.name;  "+
+               
+               "select distinct on (name) name, * from (select p1.*, image_file_name from Poi p1 " +
+               "inner join poi_image on name = poi_name and poi_address = address " + 
+               "inner join image on image_file_name = file_name where content_type = 'preview' union select p2.*, null as file_name from poi p2) as t, near_by n "+
+               "where t.name = n.poi_name and t.address = n.poi_address and n.coffee_shop_id = @id order by name, image_file_name;"+
+            
+               "select o.* from opens o where o.coffee_shop_id = @id;";
+            
+           using (var conn = Connection) 
+           {
 
-          var coffeeShop = result.Read<CoffeeShop>().FirstOrDefault();
 
-              if (coffeeShop != null)
-              {
-                  coffeeShop.Images  = result.Read<Image>().ToList();
-                  coffeeShop.Events = result.Read<Event>().ToList();
-                  coffeeShop.Beans = result.Read<Bean>().ToList();
-                  coffeeShop.Blends = result.Read<Blend>().ToList();
-                  coffeeShop.ReachableByBus = result.Read<BusStation>().ToList();
-                  coffeeShop.CoffeeDrinks = result.Read<CoffeeDrink>().ToList();
-                  coffeeShop.EquipmentCategories = result.Read<EquipmentCategory>().ToList();
-               //   coffeeShop.OpeningTimes = result.Read<OpeningTime>().ToList();
-                  coffeeShop.ListOfPoi = result.Read<Poi>().ToList();
+              var result = await conn.QueryMultipleAsync(GetByIdString, new {id = id});
 
-              }
+              var coffeeShop = result.Read<CoffeeShop>().FirstOrDefault();
 
-              return coffeeShop;
-            }
+                  if (coffeeShop != null)
+                  {
+                      coffeeShop.Images  = result.Read<Image>().ToList();
+                      coffeeShop.Events = result.Read<Event>().ToList();
+                      coffeeShop.Beans = result.Read<Bean>().ToList();
+                      coffeeShop.Blends = result.Read<Blend>().ToList();
+                      coffeeShop.ReachableByBus = result.Read<BusStation>().ToList();
+                      coffeeShop.CoffeeDrinks = result.Read<CoffeeDrink>().ToList();
+                      coffeeShop.EquipmentCategories = result.Read<EquipmentCategory>().ToList();
+                      coffeeShop.ListOfPoi = result.Read<Poi>().ToList();
+                      coffeeShop.OpeningTimes = result.Read<OpeningTime>().ToList();
+
+                  }
+
+                  return coffeeShop;
+           }
         }
 
 
@@ -442,19 +463,6 @@ namespace WinfADD.Repositories
             var eventSQL = "INSERT INTO organised_by (coffee_shop_id, event_id) VALUES (@coffee_shop_id, @event_id) ON CONFLICT ON CONSTRAINT ()";
             var coffeeShopImageSQL = "";
             var companySQL = "";
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
             using (var conn = Connection)

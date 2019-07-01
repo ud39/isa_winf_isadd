@@ -10,14 +10,10 @@ namespace WinfADD.Repositories
         {
             this._config = _config;
 
-            //TODO add all key names here //TODO in extended class
-            // Keys.Add("KeyString");
             Keys.Add("name");
 
-            //TODO write tableName
             TableName = "coffee_drink";
 
-            //TODO Mapping
             _MappingM2DB = Models.Mapping.MappingM2DB.CoffeeDrinkMap;
 
 
@@ -47,7 +43,7 @@ namespace WinfADD.Repositories
 
             //Update sql query: UpdateString = "UPDATE table SET property1=@property1, property2=@property2... WHERE key1=@key1, key2=@key2...";
             UpdateString = "UPDATE " + TableName + " SET ";
-            PropertyInfo[] possibleProperties = typeof(Blend).GetProperties();
+            var possibleProperties = typeof(CoffeeDrink).GetProperties();
             var temp = "";
             foreach (PropertyInfo property in possibleProperties)
             {

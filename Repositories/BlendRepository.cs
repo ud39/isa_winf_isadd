@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -8,11 +7,10 @@ using Dapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using WinfADD.Models;
-using WinfADD.Models.Mapping;
 
 namespace WinfADD.Repositories
 {
-    public class BlendRepository : GenericBaseRepository<Blend>
+    public class BlendRepository : GenericBaseRepository<Blend, BlendPreview>
     {
         public BlendRepository(IConfiguration _config) : base(_config)
         {
@@ -61,7 +59,7 @@ namespace WinfADD.Repositories
             UpdateString = "UPDATE " + TableName + " SET ";
             
             
-            PropertyInfo[] possibleProperties = typeof(Blend).GetProperties();
+            var possibleProperties = typeof(Blend).GetProperties();
             var temp = "";
             foreach (PropertyInfo property in possibleProperties)
             {
@@ -79,7 +77,7 @@ namespace WinfADD.Repositories
         }
         
         
-        public async Task<List<BlendPreview>> GetAll()
+        public override async Task<IEnumerable<BlendPreview>> GetAll()
         {          
             using (IDbConnection conn = Connection)
             {
@@ -89,7 +87,7 @@ namespace WinfADD.Repositories
             }
         }
 
-        public async Task<BlendPreview> GetById([FromQuery] Blend blend)
+        public new async Task<BlendPreview> GetById([FromQuery] Blend blend)
         {            
             using (IDbConnection conn = Connection)
             {

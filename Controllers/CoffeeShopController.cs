@@ -3,29 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using WinfADD.Models;
-using WinfADD.Repositories;
+using WinfADD.Repositories;    
+using Microsoft.AspNetCore.Authorization;
 
 namespace WinfADD.Controllers
 {
-    public class CoffeeShopController : GenericTableController<CoffeeShop>
+
+    [AllowAnonymous]
+    public class CoffeeShopController : GenericTableController<CoffeeShop, CoffeeShopPreview>
     {
         private CoffeeShopRepository _coffeeShopRepo;
 
-        public CoffeeShopController(ITableRepository<CoffeeShop> coffeeShopRepo) : base(coffeeShopRepo)
+        public CoffeeShopController(ITableRepository<CoffeeShop, CoffeeShopPreview> coffeeShopRepo) : base(coffeeShopRepo)
         {
             _coffeeShopRepo = (CoffeeShopRepository)coffeeShopRepo;
         }
 
-
-
-        [HttpGet("allpreview")]
-        public async Task<ActionResult<List<CoffeeShopPreview>>> GetAll()
-        {
-            return await  _coffeeShopRepo.GetAll();
-        }
 
         [HttpGet("params")]
         public async Task<IEnumerable<CoffeeShopPreview>> GetCoffeeShops([FromQuery]CoffeeShopSearchModel customerSearch)
@@ -36,7 +31,7 @@ namespace WinfADD.Controllers
         }
 
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}"), Authorize]
         public async Task<ActionResult<CoffeeShop>> GetById(int id)
         {
             return await _coffeeShopRepo.GetById(id);
@@ -72,7 +67,13 @@ namespace WinfADD.Controllers
             return await _coffeeShopRepo.PartialUpdateTable(coffeeShopObj ,fieldsToChange);
         }
 
+        [HttpGet]
+        [Route("all")]
+        public new async Task<IEnumerable<CoffeeShopPreview>> GetAll()
+        {
 
+            return await  _coffeeShopRepo.GetAll();
+        }
 
     }
 }

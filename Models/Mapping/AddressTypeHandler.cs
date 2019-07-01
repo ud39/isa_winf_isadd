@@ -11,7 +11,7 @@ namespace WinfADD.Models.Mapping
         //handles data to save into DB
         public override void SetValue(IDbDataParameter parameter, Address value)
         {
-            parameter.Value = new Address(){Country = value.Country, Town = value.Town, PostalCode = value.PostalCode,
+            parameter.Value = new Address{Country = value.Country, Town = value.Town, PostalCode = value.PostalCode,
                 StreetName = value.StreetName, StreetNumber = value.StreetNumber};
         }
 

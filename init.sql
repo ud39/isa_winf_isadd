@@ -499,8 +499,8 @@ insert into equipment_category values ('categorydummy1');
 insert into supplies values ('Kaffeemühle', 1);
 insert into supplies values ('Kaffeemühle', 2);
 
-insert into coffee_drink values ('coffeedrinkdummyname', 'descriptiondummy');
-insert into coffee_drink values ('coffeedrinkdummyname1', 'descriptiondummy1');
+insert into coffee_drink values ('coffeedrinkdummyname', 'descriptiondummy', 't1');
+insert into coffee_drink values ('coffeedrinkdummyname1', 'descriptiondummy1', 't2');
 
 
 insert into serves values ('coffeedrinkdummyname' , 2);
@@ -558,9 +558,9 @@ insert into composed values ('blenddummy', 'dummybean','beanprovenance', 'dummym
 insert into composed values ('blenddummy', 'dummybean1','beanprovenance1', 'dummymanufacturer');
 
 
-insert into event (time, name, access_fee, description) values ('2019-12-26', 'dummyevent1', 5, 'eventdescriptiondummy');
-insert into event (time, name, access_fee, description) values ('2019-12-25', 'dummyevent', 5, 'eventdescriptiondummy');
-insert into event (time, name, access_fee, description) values ('2019-12-25', 'dummyevent', 5, 'eventdescriptiondummy');
+insert into event (start_time, end_time, name, access_fee, description) values ('2019-12-26', '2019-12-27', 'dummyevent1', 5, 'eventdescriptiondummy');
+insert into event (start_time, end_time, name, access_fee, description) values ('2019-12-21', '2019-12-25', 'dummyevent', 5, 'eventdescriptiondummy');
+insert into event (start_time, end_time, name, access_fee, description) values ('2019-12-22', '2019-12-29', 'dummyevent', 5, 'eventdescriptiondummy');
 
 insert into organised_by values (2, 1);
 insert into organised_by values (2, 2);

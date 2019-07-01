@@ -20,7 +20,7 @@ namespace WinfADD.Repositories
             Keys.Add("name");
             Keys.Add("address");
 
-            //TODO write tableName
+
             TableName = "Poi";
 
 
@@ -60,7 +60,7 @@ namespace WinfADD.Repositories
             
             //Update sql query: UpdateString = "UPDATE table SET property1=@property1, property2=@property2... WHERE key1=@key1, key2=@key2...";
             UpdateString = "UPDATE " + TableName + " SET ";
-            PropertyInfo[] possibleProperties = typeof(Poi).GetProperties();
+            var possibleProperties = typeof(Poi).GetProperties();
             var temp = "";
             foreach (PropertyInfo property in possibleProperties)
             {
@@ -77,7 +77,7 @@ namespace WinfADD.Repositories
             DeleteString = "DELETE FROM" +" " + TableName + " WHERE " + keyCompare;
         }
 
-        public async Task<List<Poi>> GetAll()
+        public new async Task<List<Poi>> GetAll()
         {
                         
             using (IDbConnection conn = Connection)

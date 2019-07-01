@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ShopService} from "../../../services/shop/shop.service";
-import {ActivatedRoute} from "@angular/router";
+
 
 
 

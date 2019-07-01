@@ -25,7 +25,8 @@ namespace WinfADD.Models.Mapping
                 {"id", "Id"},
                 {"name", "Name"},
                 {"description", "Description"},
-                {"time", "Time"},
+                {"start_time", "StartTime"},
+                {"end_time", "EndTime"},
                 {"access_fee", "AccessFee"}
             };
             

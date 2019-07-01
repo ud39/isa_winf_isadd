@@ -4,28 +4,25 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using WinfADD.Models;
-using WinfADD.Repositories;
+using WinfADD.Repositories;     
+using Microsoft.AspNetCore.Authorization;
 
 namespace WinfADD.Controllers
 {
-
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public abstract class GenericTableController<Table> : Controller
     {
         public readonly ITableRepository<Table> _tableRepo;
 
-        public GenericTableController(ITableRepository<Table> tableRepo)
+        protected GenericTableController(ITableRepository<Table> tableRepo)
         {
             _tableRepo = tableRepo;
         }
 
-
-        [HttpGet]
-        [Route("all")]
-        public virtual async Task<ActionResult<List<Table>>> GetAll()
+        public virtual async Task<IEnumerable<Table>> GetAll()
         {
-
             return await  _tableRepo.GetAll();
         }
 
@@ -91,20 +88,29 @@ namespace WinfADD.Controllers
         }
 
 
-
-
-
         [Route("pupdate")]
         [HttpPatch]
         public async Task<bool> PartialUpdate(JToken tableJson)
         {
             //create tableObj like: [FromBody] Table tableObj
-            Table tableObj = tableJson.ToObject<Table>();
+            var tableObj = tableJson.ToObject<Table>();
 
             //create a List of all fieldsToChange in the Json
             var fieldsToChange = tableJson.ToObject<Dictionary<string, dynamic>>();
 
             return await _tableRepo.PartialUpdateTable(tableObj, fieldsToChange);
         }
+    }
+
+    public abstract class GenericTableController<Table, View> : GenericTableController<Table>
+    {
+        public new readonly ITableRepository<Table, View> _tableRepo;
+
+        public GenericTableController(ITableRepository<Table, View> tableRepo) : base (tableRepo)
+        {
+            _tableRepo = tableRepo;
+        }
+
+
     }
 }

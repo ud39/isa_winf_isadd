@@ -26,7 +26,7 @@
       <mat-grid-tile id="events">
         <h6>Rating:</h6>
         <ul>
-          <li>Stuff</li>
+          <li>Gesamtwertung: {{shop$.averageTotalRating}}</li>
           <li>Stuff</li>
           <li>Stuff</li>
         </ul>
@@ -58,7 +58,7 @@
           {{shop$.description}}
         </div>
       </mat-tab>
-      <mat-tab label="Menü">
+      <mat-tab label="Menü" *ngIf="shop$.coffeeDrinks.length != 0">
       <mat-list>
         <mat-list-item *ngFor="let coffee of shop$.coffeeDrinks; last as last ">
           {{coffee.name}}
@@ -67,7 +67,7 @@
         </mat-list-item>
       </mat-list>
       </mat-tab>
-      <mat-tab label="Events">
+      <mat-tab label="Events" *ngIf="shop$.events.length != 0">
       <mat-list>
         <mat-list-item *ngFor="let event of shop$.events; last as last">
           <div>
@@ -79,7 +79,7 @@
         </mat-list-item>
       </mat-list>
       </mat-tab>
-      <mat-tab label="Landmarken">
+      <mat-tab label="Landmarken" *ngIf="shop$.listOfPoi.length != 0">
       <mat-list>
         <mat-list-item *ngFor="let poi of shop$.listOfPoi; last as last">
           <div class="container-poi">
@@ -97,7 +97,7 @@
         </mat-list-item>
       </mat-list>
       </mat-tab>
-      <mat-tab label="Equipment">
+      <mat-tab label="Equipment" *ngIf="shop$.equipmentCategories.length != 0">
       <mat-list>
         <mat-list-item *ngFor="let equipment of shop$.equipmentCategories">
           {{equipment.equipmentCategoryName}}

@@ -4,16 +4,12 @@
   <nav class='navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3' *ngIf="currentWindowWidth > 500">
     <div class="container">
       <button mat-button class="nav-item" [routerLinkActive]='["link-active"]' [routerLink]="['/shops']">Café</button>
-      <button mat-button class="nav-item" [routerLinkActive]='["link-active"]' [routerLink]="['/shops']">Bohnen & Zubehör</button>
-      <button mat-button [matMenuTriggerFor]="menuWiki"
+      <button mat-button class="nav-item" [routerLinkActive]='["link-active"]' [routerLink]="['/supplies']">Bohnen & Zubehör</button>
+      <button mat-button
               class="nav-item"
               [routerLinkActive]='["link-active"]' [routerLink]="['/wiki']"
       >Wiki
       </button>
-      <mat-menu #menuWiki>
-        <button mat-menu-item [routerLink]='["/wiki/equipment"]' [routerLinkActive]='["link-active"]' mouse>Equipment</button>
-        <button mat-menu-item [routerLink]='["/wiki/coffee"]' [routerLinkActive]='["link-active"]'>Kaffee</button>
-      </mat-menu>
       <button mat-button class="nav-item" [routerLinkActive]='["link-active"]' [routerLink]='["/admin"]'>Events</button>
       <button mat-button class="nav-item" [routerLinkActive]='["link-active"]' [routerLink]='["/about-us"]'>Über uns</button>
       <div *ngIf="currentWindowWidth >= 768">

@@ -36,6 +36,9 @@ import {SlideshowModule} from "ng-simple-slideshow";
 import { UserTabComponent } from './profile/admin-profile/tabs/user-tab/user-tab/user-tab.component';
 import {EditListComponent} from "./profile/admin-profile/dialog/edit-list/edit-list.component";
 import {Global} from "./global";
+import { FilterComponent } from './filtering/filter/filter.component';
+import { ConfirmationComponent } from './profile/admin-profile/dialog/confirmation/confirmation.component';
+import { ArticleTabComponent } from './profile/admin-profile/tabs/article-tab/article-tab.component';
 
 
 @NgModule({
@@ -66,6 +69,9 @@ import {Global} from "./global";
     CheckboxCoffeeComponent,
     UserTabComponent,
     EditListComponent,
+    FilterComponent,
+    ConfirmationComponent,
+    ArticleTabComponent,
 
   ],
   imports: [
@@ -83,9 +89,16 @@ import {Global} from "./global";
       {path: 'shops', component: ShopListComponent},
       {path: 'shops/:id', component: ShopDetailComponent},
       {path: 'user', component: UserProfileComponent},
+
+      {path: 'supplies', component: EquipmentListComponent,
+        children:[
+          {path: '', redirectTo: 'supplies', pathMatch: 'full'},
+          {path: 'equipment', component: EquipmentDetailComponent},
+          {path: 'ingredients', component: EquipmentDetailComponent}
+        ]
+      },
+
       {path: 'wiki', component: ArticleListComponent},
-      {path: 'wiki/equipment', component: EquipmentListComponent},
-      {path: 'wiki/coffee', component: EquipmentListComponent},
       {path: 'admin', component: AdminProfileComponent},
       {path: 'about-us', component: AboutUsComponent},
       {path: '**', component: PageNotFoundComponent}
@@ -99,7 +112,7 @@ import {Global} from "./global";
   providers: [ { provide: MAT_DATE_LOCALE, useValue: 'de-DE' },
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
     {provide: Global}],
-  entryComponents: [EditListComponent],
+  entryComponents: [EditListComponent, ConfirmationComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

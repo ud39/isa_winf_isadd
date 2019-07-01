@@ -13,12 +13,14 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="AspNetCore.Identity.DapperOrm" Version="2.2.0" />
         <PackageReference Include="Dapper" Version="1.60.6" />
         <PackageReference Include="Dapper.Contrib" Version="1.60.1" />
         <PackageReference Include="Dapper.SqlBuilder" Version="1.60.1" />
+        <PackageReference Include="Identity.Dapper.PostgreSQL" Version="0.8.5-alpha" />
         <PackageReference Include="Microsoft.AspNetCore.App" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
         <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
         <PackageReference Include="Npgsql" Version="4.0.7" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.2.0" />
         <PackageReference Include="System.Linq" Version="4.3.0" />
@@ -58,6 +60,7 @@
     <ItemGroup>
       <Folder Include="ClientApp\src\app\common" />
       <Folder Include="ClientApp\src\app\content\shop" />
+      <Folder Include="ClientApp\src\app\filtering" />
       <Folder Include="ClientApp\src\app\interfaces\cluster\rating" />
       <Folder Include="ClientApp\src\app\layout" />
       <Folder Include="ClientApp\src\app\profile" />

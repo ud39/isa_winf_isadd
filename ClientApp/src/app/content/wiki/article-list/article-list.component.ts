@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Equipment} from "../../../interfaces/entity/Equipment";
 
 @Component({
   selector: 'app-article-list',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticleListComponent implements OnInit {
 
+  public equipments: Equipment[];
   constructor() { }
 
   ngOnInit() {

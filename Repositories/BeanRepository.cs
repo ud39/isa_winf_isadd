@@ -10,17 +10,15 @@ using WinfADD.Models;
 
 namespace WinfADD.Repositories
 {
-    public class BeanRepository : GenericBaseRepository<Bean>
+    public class BeanRepository : GenericBaseRepository<Bean, BeanPreview>
     {
         public BeanRepository(IConfiguration _config) : base(_config)
         {
             this._config = _config;
 
-            // keys
             Keys.Add("name");
             Keys.Add("provenance");
 
-            //TODO write tableName
             TableName = "bean";
 
 
@@ -63,7 +61,7 @@ namespace WinfADD.Repositories
 
             //Update sql query: UpdateString = "UPDATE table SET property1=@property1, property2=@property2... WHERE key1=@key1, key2=@key2...";
             UpdateString = "UPDATE " + TableName + " SET ";
-            PropertyInfo[] possibleProperties = typeof(Bean).GetProperties();
+            var possibleProperties = typeof(Bean).GetProperties();
             var temp = "";
             foreach (PropertyInfo property in possibleProperties)
             {
@@ -80,7 +78,7 @@ namespace WinfADD.Repositories
             DeleteString = "DELETE FROM" +" " + TableName + " WHERE " + keyCompare;
         }
 
-        public async Task<List<BeanPreview>> GetAll()
+        public new async Task<IEnumerable<BeanPreview>> GetAll()
         {
                         
             using (IDbConnection conn = Connection)
@@ -91,7 +89,7 @@ namespace WinfADD.Repositories
             }
         }
 
-        public async Task<BeanPreview> GetById([FromQuery] Bean bean)
+        public new async Task<BeanPreview> GetById([FromQuery] Bean bean)
         {            
             using (IDbConnection conn = Connection)
             {

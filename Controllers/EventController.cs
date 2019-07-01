@@ -2,10 +2,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WinfADD.Models;
-using WinfADD.Repositories;
+using WinfADD.Repositories;     
+using Microsoft.AspNetCore.Authorization;
 
 namespace WinfADD.Controllers
 {
+[AllowAnonymous]
     public class EventController : GenericTableController<Event>
     {
         private EventRepository _eventRepository;
@@ -25,7 +27,7 @@ namespace WinfADD.Controllers
         
         [HttpGet]
         [Route("all")]
-        public async Task<ActionResult<List<Event>>> GetAll()
+        public new async Task<IEnumerable<Event>> GetAll()
         {
             return await  _eventRepository.GetAll();
         }

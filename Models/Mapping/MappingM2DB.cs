@@ -32,9 +32,14 @@ namespace WinfADD.Models.Mapping
             {"busstation", "bus_station_name"},
             {"warmFood", "warm_food"},
             {"coldFood", "cold_food"},
-            {"poi", "poi_name"}
-        };
+            {"poi", "poi_name"},
+            {"streetnumber", "(address).street_number"},
+            {"streetname", "(address).street_name"},
+            {"town", "(address).town"},
+            {"country", "(address).country"},
+            {"postalcode", "(address).postal_code"}
 
+        };
 
 
         public static Dictionary<string, string> BlendMap = new Dictionary<string, string>
@@ -52,7 +57,12 @@ namespace WinfADD.Models.Mapping
             {"name", "name"},
             {"address", "address"},
             {"description", "description"},
-            {"imagefilename", "image_file_name"}
+            {"imagefilename", "image_file_name"}  ,
+            {"streetnumber", "(address).street_number"},
+            {"streetname", "(address).street_name"},
+            {"town", "(address).town"},
+            {"country", "(address).country"},
+            {"postalcode", "(address).postal_code"}
         };
 
        
@@ -86,7 +96,7 @@ namespace WinfADD.Models.Mapping
             {"description", "description"},
             {"type", "type"},
             {"vegan", "vegan"},
-            {"preperations", "preperations"}
+            {"preparations", "preparations"}
         };
 
 

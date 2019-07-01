@@ -1,17 +1,23 @@
-using System;
-using System.IO;
+using System.Text;
+using AspNetCore.Identity.Dapper;
 using Dapper;
+using Identity.Dapper;
+using Identity.Dapper.Models;
+using Identity.Dapper.PostgreSQL.Connections;
+using Identity.Dapper.PostgreSQL.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using WinfADD.Models;
+using Microsoft.IdentityModel.Tokens;
 using WinfADD.Models.Mapping;
 using WinfADD.Repositories;
+using WinfADD.Identity;
+using WinfADD.Models;
 
 namespace WinfADD
 {
@@ -35,15 +41,41 @@ namespace WinfADD
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
             
-            
-            // Add framework services.
+           
+           var connectionString = Configuration.GetConnectionString("DefaultConnection");
+           
+             services.ConfigureDapperConnectionProvider<PostgreSqlConnectionProvider>(Configuration.GetSection("DapperIdentity"))
+                 .ConfigureDapperIdentityCryptography(Configuration.GetSection("DapperIdentityCryptography"))
+                 .ConfigureDapperIdentityOptions(new DapperIdentityOptions { UseTransactionalBehavior = false }); //Change to True to use Transactions in all operations
 
-            //database setup
-            //set path to the ConfigurationBuilder
-           // var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
-           //var config = builder.Build();
-
-
+             services.AddIdentity<User, UserRole>(x =>
+                 {
+                     x.Password.RequireDigit = false;
+                     x.Password.RequiredLength = 1;
+                     x.Password.RequireLowercase = false;
+                     x.Password.RequireNonAlphanumeric = false;
+                     x.Password.RequireUppercase = false;
+                 })
+                 .AddDapperIdentityFor<PostgreSqlConfiguration>()
+                 .AddDefaultTokenProviders();
+             
+             
+           services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+             .AddJwtBearer(options =>
+              {
+                 options.TokenValidationParameters = new TokenValidationParameters
+                 {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+             
+                        ValidIssuer = "http://localhost:5001",
+                        ValidAudience = "http://localhost:5001",
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"))
+                 };
+              });
+                   
            services.AddCors(options =>
             {
                 options.AddPolicy(MyAllowSpecificOrigins,
@@ -51,15 +83,17 @@ namespace WinfADD
                     {
                         cors.AllowAnyOrigin()
                             .AllowAnyHeader()
-                            .AllowAnyMethod();
+                            .AllowAnyMethod()
+                            .AllowCredentials()
+                            .Build();
                     });
             });
 
-            //TODO add table Repositories here
-            services.AddSingleton<ITableRepository<Blend>, BlendRepository>();
-            services.AddSingleton<ITableRepository<Bean>, BeanRepository>();
+           
+            services.AddSingleton<ITableRepository<Blend, BlendPreview>, BlendRepository>();
+            services.AddSingleton<ITableRepository<Bean, BeanPreview>, BeanRepository>();
             services.AddSingleton<ITableRepository<BusStation>, BusStationRepository>();
-            services.AddSingleton<ITableRepository<CoffeeShop>, CoffeeShopRepository>();
+            services.AddSingleton<ITableRepository<CoffeeShop, CoffeeShopPreview>, CoffeeShopRepository>();
             services.AddSingleton<ITableRepository<Event>, EventRepository>();
             services.AddSingleton<ITableRepository<CoffeeDrink>, CoffeeDrinkRepository>();
             services.AddSingleton<ITableRepository<Poi>, PoiRepository>();
@@ -68,9 +102,6 @@ namespace WinfADD
 
             //TypeHandler for complex data types in Model
             SqlMapper.AddTypeHandler(new AddressTypeHandler());
-
-          
-            
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -93,7 +124,8 @@ namespace WinfADD
             app.UseCors(MyAllowSpecificOrigins);
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseSpaStaticFiles();
+            app.UseSpaStaticFiles();       
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

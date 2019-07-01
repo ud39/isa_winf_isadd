@@ -2,10 +2,13 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WinfADD.Models;
-using WinfADD.Repositories;
+using WinfADD.Repositories;        
+using Microsoft.AspNetCore.Authorization;
 
 namespace WinfADD.Controllers
-{
+{       
+
+    [AllowAnonymous]
     public class PoiController : GenericTableController<Poi>
     {
         private PoiRepository _PoiRepository;
@@ -16,8 +19,8 @@ namespace WinfADD.Controllers
         }
         
         
-        [HttpGet("allpreview")]
-        public async Task<List<Poi>> GetAll()
+        [HttpGet("all")]
+        public new async Task<List<Poi>> GetAll()
         {
             return await  _PoiRepository.GetAll();
         }

@@ -25,9 +25,12 @@ export class EventTabComponent implements OnInit {
     Validators.maxLength(500),
   ]);
 
-  public datePickerFormControl = new FormControl('',[
+  public beginDatePickerFormControl = new FormControl('',[
+    Validators.required
   ]);
-
+  public endDatePickerFormControl = new FormControl('',[
+    Validators.required
+  ]);
   public selectShopFormControl = new FormControl('', [
     Validators.required,
   ]);
@@ -40,6 +43,7 @@ export class EventTabComponent implements OnInit {
   public locationStreetNrFormControl = new FormControl('',[]);
   public locationTownFormControl = new FormControl('',[]);
   public locationPostalCodeFormControl = new FormControl('',[]);
+  public locationCountryFormControl = new FormControl('',[]);
 
   public locationFormGroup = new FormGroup({
     street:this.locationStreetFormControl,
@@ -52,7 +56,8 @@ export class EventTabComponent implements OnInit {
     eventName: this.eventNameFormControl,
     eventDescription: this.eventDescriptionFormControl,
     eventAccessFee: this.accessFeeFormControl,
-    eventDate: this.datePickerFormControl,
+    beginEventDate: this.beginDatePickerFormControl,
+    endEventDate: this.endDatePickerFormControl,
     location: this.locationFormGroup,
     selectShop: this.selectShopFormControl
   });

@@ -7,8 +7,9 @@ export class Global{
     ['shop', '/shops'],
     ['admin', '/admin'],
     ['wiki', '/wiki'],
-    ["wikiEquipment", '/wiki/equipment'],
-    ['wikiCoffee', '/wiki/coffee'],
+    ['supplies', '/supplies'],
+    ['suppliesEq', '/supplies/equipment'],
+    ['suppliesIng', '/supplies/ingredients']
   ]);
  static url="https://localhost:5001/api/";
 }
