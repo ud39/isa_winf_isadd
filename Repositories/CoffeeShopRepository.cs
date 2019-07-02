@@ -330,6 +330,7 @@ namespace WinfADD.Repositories
 
                        foreach (var image in coffeeShopObj.Images)
                        {
+
                            Console.WriteLine(image.FileName + "<->" + image.ContentType);
 
                            conn.Execute(sqlCoffeeShopImage,
@@ -356,6 +357,7 @@ namespace WinfADD.Repositories
                                    poi_address = poi.Address
                                }, transaction: transaction);
                        }
+
 
 
                        conn.Execute(sqlCompanyRelation,

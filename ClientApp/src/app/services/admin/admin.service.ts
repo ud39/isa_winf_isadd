@@ -12,7 +12,6 @@ export class AdminService {
   constructor(private http: HttpClient, private domSanitizer: DomSanitizer) { }
 
   public progress: number;
-  public message: string;
   public fromTab: string;
   public contentType: string;
 
@@ -42,15 +41,14 @@ export class AdminService {
   public event_Filename: string;
   public equipment_Filename: string;
 
-  public gallery_1: SafeUrl;
-  public gallery_2: SafeUrl;
-  public gallery_3: SafeUrl;
-  public gallery_4: SafeUrl;
-  public previewImage: SafeUrl;
-  public frontImage: SafeUrl;
-  public eventImage: SafeUrl;
-  public equipmentImage: SafeUrl;
-  public eventPreview: any;
+  public gallery_1: SafeUrl = "";
+  public gallery_2: SafeUrl= "";
+  public gallery_3: SafeUrl= "";
+  public gallery_4: SafeUrl= "";
+  public previewImage: SafeUrl= "";
+  public frontImage: SafeUrl= "";
+  public eventImage: SafeUrl= "";
+  public equipmentImage: SafeUrl= "";
 
 
   private selectedFile: File;
@@ -233,10 +231,6 @@ export class AdminService {
 
     reader.onload = (_event) => {
 
-      console.log("--------");
-      console.log("::"+this.fromTab);
-      console.log("::"+this.contentType);
-
       switch (this.fromTab) {
         case "shop":
           if(this.contentType.match("gallery")) {
@@ -285,9 +279,36 @@ export class AdminService {
   }
 
 
+//all images which are not empty
+  public getAllCoffeeShopImages(){
+    let imageMap = new Map();
 
+    if(this.gallery_1.toString().length > 0 && this.gallery_1_Filename.length >0){
 
+      imageMap.set(this.gallery_1_Filename, 'gallery');
+    }
+    if(this.gallery_2.toString().length > 0 && this.gallery_2_Filename.length >0){
 
+      imageMap.set(this.gallery_2_Filename, 'gallery');
+    }
+    if(this.gallery_3.toString().length > 0 && this.gallery_3_Filename.length >0){
+
+      imageMap.set(this.gallery_3_Filename, 'gallery');
+    }
+    if(this.gallery_4.toString().length > 0 && this.gallery_4_Filename.length >0){
+
+      imageMap.set(this.gallery_4_Filename, 'gallery');
+    }
+    if(this.frontImage.toString().length > 0 && this.front_Filename.length >0){
+
+      imageMap.set(this.front_Filename, 'front');
+    }
+    if(this.previewImage.toString().length > 0 && this.preview_Filename.length >0){
+
+      imageMap.set(this.preview_Filename, 'preview');
+    }
+    return imageMap;
+  }
 
 
 

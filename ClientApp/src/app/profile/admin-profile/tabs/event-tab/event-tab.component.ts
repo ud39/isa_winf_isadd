@@ -106,7 +106,16 @@ export class EventTabComponent implements OnInit {
   }
 
   getJsonOfEvent() : JSON {
-    return null;
+    let json : JSON;
+
+    //add images
+    if(this.adminService.eventImage.toString().length > 0 && this.adminService.event_Filename.length >0){
+      let eventImages = JSON.parse('"images:' + this.adminService.event_Filename)
+      json["images"] = eventImages;
+    }
+
+
+    return json;
   }
 
   //jan
