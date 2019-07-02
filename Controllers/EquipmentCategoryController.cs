@@ -22,5 +22,11 @@ namespace WinfADD.Controllers
         {
             return await _tableRepo.GetAll();
         }
+        
+        [HttpGet("GetById")]
+        public new async Task<ActionResult<EquipmentCategory>> GetById([FromQuery] EquipmentCategory equipmentCategory)
+        {
+            return await base.GetById(equipmentCategory);
+        }
     }
 }

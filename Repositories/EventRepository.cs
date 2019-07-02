@@ -18,8 +18,9 @@ namespace WinfADD.Repositories
 
             TableName = "event";
 
-            GetByIdString =
-                "select e .*, i.file_name from event_image ei, image i, event e where e.id = ei.event_id and e.id = @id and ei.image_file_name = i.file_name and content_type = 'preview'; " +
+            GetByIdString = "select distinct on (id) id, * from ( " +
+                "select e .*, i.file_name from event_image ei, image i, event e where e.id = ei.event_id and e.id = @id and ei.image_file_name = i.file_name and content_type = 'preview' "+
+                "union select e1.*, null as file_name from event e1 where e1.id = @id order by id, file_name) as t where id =@id; " +
                 "select i.* from event_image ei, image i, event e where e.id = ei.event_id and e.id = @id and ei.image_file_name = i.file_name and i.content_type != 'preview'";
 
 
@@ -30,7 +31,7 @@ namespace WinfADD.Repositories
 
         }
         
-        [HttpGet("{id}")]
+        
         public virtual async Task<Event> GetById(int id)
         {
             using (IDbConnection conn = Connection)

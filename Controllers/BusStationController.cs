@@ -19,5 +19,11 @@ namespace WinfADD.Controllers
         {
             return await  _tableRepo.GetAll();
         }
+        
+        [HttpGet("GetById")]
+        public new async Task<ActionResult<BusStation>> GetById([FromQuery] BusStation busStation)
+        {
+            return await base.GetById(busStation);
+        }
     }
 }

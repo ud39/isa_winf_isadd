@@ -19,5 +19,11 @@ namespace WinfADD.Controllers
         {
             return await  _tableRepo.GetAll();
         }
+        
+        [HttpGet("GetById")]
+        public new async Task<ActionResult<CoffeeDrink>> GetById([FromQuery] CoffeeDrink coffeeDrink)
+        {
+            return await base.GetById(coffeeDrink);
+        }
     }
 }

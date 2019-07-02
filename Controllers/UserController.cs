@@ -25,6 +25,10 @@ namespace WinfADD.Controllers
             return await  _userRepository.GetAll();
         }
 
- 
+        [HttpGet("GetById")]
+        public new async Task<ActionResult<User>> GetById([FromQuery] User user)
+        {
+            return await base.GetById(user);
+        }
     }
 }
