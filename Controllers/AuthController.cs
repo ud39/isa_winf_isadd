@@ -10,7 +10,6 @@ using WinfADD.Models;
 using System.Threading.Tasks;
 using Identity.Dapper.Entities;
 using Identity.Dapper.Stores;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -44,13 +43,7 @@ namespace WinfADD.Controllers
          private async Task init()
          {
 
-             if (null == await _dapperStore.FindByEmailAsync("admin@.com", new CancellationToken(false)))
-             {
-                 var u = new User {UserName = "admin@.com", Email = "admin@.com"};
-                 await _dapperStore.CreateAsync(u, CancellationToken.None);
-                 await _dapperStore.AddToRoleAsync(u, "admin", CancellationToken.None);
-
-             }
+         
              
              // var result = await _userManager.FindByEmailAsync("admin@.com");
             // if (result == null)
@@ -145,6 +138,14 @@ namespace WinfADD.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Register([FromBody]RegisterViewModel model)
         {
+            if (null == await _userManager.FindByEmailAsync("admin@.com"))
+            {
+                var u = new User {UserName = "admin@.com", Email = "admin@.com"};
+                await _userManager.CreateAsync(u, "admin123");
+                var result = await _userManager.AddToRoleAsync(u, "admin");
+
+            }
+            
             if (ModelState.IsValid)
             {
                 var user = new User { UserName = model.Email, Email = model.Email};
@@ -161,15 +162,25 @@ namespace WinfADD.Controllers
             return BadRequest();
         }
 
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        [HttpGet, Route("test")]
+        [Authorize(Roles = "admin")]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpGet, Route("testadmin")]
         public JsonResult Test()
         {
 
-            return Json("TEST");
+            return Json("TEST ERFOLGREICH: ADMIN");
         }
 
+        [Authorize(Policy = "HasUserRights")]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpGet, Route("testuser")]
+        public JsonResult Test1()
+        {
 
+            return Json("TEST ERFOLGREICH: USER");
+        }
+
+        
         private async Task<object> GenerateJwtToken(string email, User user)
         {
             var userRoles = await _userManager.GetRolesAsync(user);

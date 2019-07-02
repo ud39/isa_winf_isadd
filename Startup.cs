@@ -74,7 +74,8 @@ namespace WinfADD
             });
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("HasAdminRights", policy => policy.RequireRole("ADMIN"));
+                options.AddPolicy("HasAdminRights", policy => policy.RequireRole("admin"));
+                options.AddPolicy("HasUserRights", policy => policy.RequireRole("user"));
             });
 
 
@@ -145,6 +146,7 @@ namespace WinfADD
             services.AddSingleton<ITableRepository<CoffeeDrink>, CoffeeDrinkRepository>();
             services.AddSingleton<ITableRepository<Poi>, PoiRepository>();
             services.AddSingleton<ITableRepository<EquipmentCategory>, EquipmentCategoryRepository>();
+            services.AddSingleton<ITableRepository<User,UserView>, UserRepository>();
 
 
             //TypeHandler for complex data types in Model

@@ -75,10 +75,10 @@ CREATE TABLE dbo."IdentityUserRole"
   CONSTRAINT "IdentityUserRole_pkey" PRIMARY KEY ("UserId", "RoleId"),
   CONSTRAINT "IdentityUserRole_RoleId_fkey" FOREIGN KEY ("RoleId")
       REFERENCES dbo."IdentityRole" ("Id") MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION,
+      ON UPDATE NO ACTION ON DELETE CASCADE,
   CONSTRAINT "IdentityUserRole_UserId_fkey" FOREIGN KEY ("UserId")
       REFERENCES dbo."IdentityUser" ("Id") MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION
+      ON UPDATE NO ACTION ON DELETE CASCADE
 )
 WITH (
   OIDS=FALSE
