@@ -1,10 +1,15 @@
+using System;
+using System.IdentityModel.Tokens.Jwt;
 using System.Text;
+using System.Threading.Tasks;
 using AspNetCore.Identity.Dapper;
 using Dapper;
 using Identity.Dapper;
+using Identity.Dapper.Entities;
 using Identity.Dapper.Models;
 using Identity.Dapper.PostgreSQL.Connections;
 using Identity.Dapper.PostgreSQL.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -18,6 +23,7 @@ using WinfADD.Models.Mapping;
 using WinfADD.Repositories;
 using WinfADD.Identity;
 using WinfADD.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace WinfADD
 {
@@ -36,8 +42,67 @@ namespace WinfADD
         public void ConfigureServices(IServiceCollection services)
         {
             
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); // => remove default claims
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    
+            }).AddJwtBearer(cfg =>
+            {
+                cfg.RequireHttpsMetadata = false;
+                cfg.SaveToken = true;
+                cfg.TokenValidationParameters = new TokenValidationParameters
+                {
+                    //Validate the JWT Issuer (iss) claim
+                    ValidateIssuer = true,
+                    ValidIssuer = Configuration["Jwt:Issuer"],
+                    
+                    //Validate the JWT Audience (aud) claim
+                    ValidateAudience = true,
+                    ValidAudience = Configuration["Jwt:Issuer"],
+                    
+                    //Validate the token expiry
+                    ValidateLifetime = true,
+                    
+                    // Remove delay of token when expire
+                    ClockSkew = TimeSpan.Zero, 
+                    
+                    // The signing key must match!
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                };
+            });
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("HasAdminRights", policy => policy.RequireRole("ADMIN"));
+            });
 
 
+
+
+           /* JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); // => remove default claims
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+             
+                        ValidIssuer = "http://localhost:5001",
+                        ValidAudience = "http://localhost:5001",
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"))
+                    };
+                });
+              */
+       //  services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+       //  {
+      //       options.SlidingExpiration = true;
+       //      options.Cookie.HttpOnly = false;
+             // Dynamically set the domain name of the prod env and dev env
+     //    });
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
             
@@ -48,7 +113,7 @@ namespace WinfADD
                  .ConfigureDapperIdentityCryptography(Configuration.GetSection("DapperIdentityCryptography"))
                  .ConfigureDapperIdentityOptions(new DapperIdentityOptions { UseTransactionalBehavior = false }); //Change to True to use Transactions in all operations
 
-             services.AddIdentity<User, UserRole>(x =>
+             services.AddIdentity<User, DapperIdentityRole>(x =>
                  {
                      x.Password.RequireDigit = false;
                      x.Password.RequiredLength = 1;
@@ -58,24 +123,7 @@ namespace WinfADD
                  })
                  .AddDapperIdentityFor<PostgreSqlConfiguration>()
                  .AddDefaultTokenProviders();
-             
-             
-           services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-             .AddJwtBearer(options =>
-              {
-                 options.TokenValidationParameters = new TokenValidationParameters
-                 {
-                        ValidateIssuer = true,
-                        ValidateAudience = true,
-                        ValidateLifetime = true,
-                        ValidateIssuerSigningKey = true,
-             
-                        ValidIssuer = "http://localhost:5001",
-                        ValidAudience = "http://localhost:5001",
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"))
-                 };
-              });
-                   
+       
            services.AddCors(options =>
             {
                 options.AddPolicy(MyAllowSpecificOrigins,
@@ -83,9 +131,7 @@ namespace WinfADD
                     {
                         cors.AllowAnyOrigin()
                             .AllowAnyHeader()
-                            .AllowAnyMethod()
-                            .AllowCredentials()
-                            .Build();
+                            .AllowAnyMethod();
                     });
             });
 
@@ -110,6 +156,8 @@ namespace WinfADD
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            var serviceProvider = app.ApplicationServices;
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -134,6 +182,7 @@ namespace WinfADD
                     template: "{controller}/{action=Index}/{id?}");
             });
 
+           
             app.UseSpa(spa =>
             {
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,
@@ -147,5 +196,9 @@ namespace WinfADD
                 }
             });
         }
+
+        
+        
+
     }
 }

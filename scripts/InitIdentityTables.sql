@@ -98,3 +98,7 @@ CREATE TABLE dbo."IdentityRoleClaim"
 WITH (
   OIDS=FALSE
 );
+            
+insert into dbo."IdentityRole" values ('0', 'admin');
+insert into dbo."IdentityRole" values ('1', 'contentmanager');
+insert into dbo."IdentityRole" values ('2', 'user');

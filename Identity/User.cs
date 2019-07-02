@@ -1,4 +1,3 @@
-using System;
 using Identity.Dapper.Entities;
 
 namespace WinfADD.Identity

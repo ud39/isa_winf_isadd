@@ -76,6 +76,7 @@
       <Folder Include="ClientApp\src\app\services\user" />
       <Folder Include="ClientApp\src\assets\Images" />
       <Folder Include="documentation\Content\Templates" />
+      <Folder Include="Services" />
     </ItemGroup>
 
     <ItemGroup>

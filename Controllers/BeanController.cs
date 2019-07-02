@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace WinfADD.Controllers
 {
-    [AllowAnonymous]
+    
     public class BeanController : GenericTableController<Bean, BeanPreview>
     {
         private BeanRepository _beanRepository;
@@ -17,7 +17,8 @@ namespace WinfADD.Controllers
             _beanRepository = (BeanRepository) tableRepo;
         }
         
-        
+        [Authorize(Roles = "ADMIN")]
+        [ValidateAntiForgeryToken]
         [HttpGet("all")]
         public new async Task<IEnumerable<BeanPreview>> GetAll()
         {

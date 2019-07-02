@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using WinfADD.Models;
@@ -11,7 +12,6 @@ using Microsoft.AspNetCore.Authorization;
 namespace WinfADD.Controllers
 {
 
-    [AllowAnonymous]
     public class CoffeeShopController : GenericTableController<CoffeeShop, CoffeeShopPreview>
     {
         private CoffeeShopRepository _coffeeShopRepo;
@@ -29,9 +29,8 @@ namespace WinfADD.Controllers
 
             return coffeeShops;
         }
-
-
-        [HttpGet("{id:int}"), Authorize]
+      //  [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<CoffeeShop>> GetById(int id)
         {
             return await _coffeeShopRepo.GetById(id);
