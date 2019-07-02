@@ -50,7 +50,7 @@ namespace WinfADD.Repositories
             }
 
             //build GetByID sql query
-           // GetByIdString = "SELECT name FROM " + tableName + " WHERE "+ keyCompare;
+            GetByIdString = "SELECT * FROM " + TableName + " WHERE id = @id";
            
             //Update sql query: UpdateString = "UPDATE table SET property1=@property1, property2=@property2... WHERE key1=@key1, key2=@key2...";
             UpdateString = "UPDATE " + TableName + " SET ";
@@ -161,7 +161,7 @@ namespace WinfADD.Repositories
             }
         }
 
-        public async Task<CoffeeShop> GetById(int id)
+        public new async Task<CoffeeShop> GetById(CoffeeShop c)
         {
 
           
@@ -202,7 +202,7 @@ namespace WinfADD.Repositories
            {
 
 
-              var result = await conn.QueryMultipleAsync(GetByIdString, new {id = id});
+              var result = await conn.QueryMultipleAsync(GetByIdString, c);
 
               var coffeeShop = result.Read<CoffeeShop>().FirstOrDefault();
 

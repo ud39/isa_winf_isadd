@@ -21,6 +21,8 @@ namespace WinfADD.Controllers
             _tableRepo = tableRepo;
         }
 
+        
+        
         public virtual async Task<IEnumerable<Table>> GetAll()
         {
             return await  _tableRepo.GetAll();
