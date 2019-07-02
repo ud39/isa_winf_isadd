@@ -1,0 +1,3 @@
+Coarse
+Medium
+Fine
