@@ -30,7 +30,7 @@ namespace WinfADD.Controllers
         [HttpGet("GetById")]
         public new async Task<ActionResult<Event>> GetById([FromQuery] Event e)
         {
-            return await base.GetById(e);
+            return await _eventRepository.GetById(e);
         }
         
     }

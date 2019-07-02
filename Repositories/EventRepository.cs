@@ -32,12 +32,12 @@ namespace WinfADD.Repositories
         }
         
         
-        public virtual async Task<Event> GetById(int id)
+        public new virtual async Task<Event> GetById(Event e)
         {
             using (IDbConnection conn = Connection)
             {
                 
-                var queryResult = await conn.QueryMultipleAsync(GetByIdString, new {id = id});
+                var queryResult = await conn.QueryMultipleAsync(GetByIdString, e);
                 
                 var result = queryResult.Read<Event>().FirstOrDefault();
                 
