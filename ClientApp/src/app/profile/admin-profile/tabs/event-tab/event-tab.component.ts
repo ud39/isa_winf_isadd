@@ -110,8 +110,8 @@ export class EventTabComponent implements OnInit {
   }
 
   //jan
-  onFileChanged(event) {
-    this.adminService.onFileChanged(event)
+  onFileChanged(file, event) {
+    this.adminService.onFileChanged2(file, event, "event")
   }
 
   onUpload(fromWhere) {

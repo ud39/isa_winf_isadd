@@ -15,6 +15,7 @@ import {CoffeeDrink} from "../../../../interfaces/entity/CoffeeDrink";
 import {InputFormService} from "../../../../services/admin/input-form.service";
 import {Bean} from "../../../../interfaces/entity/Bean";
 import {CompareService} from "../../../../services/compare/compare.service";
+import {forEach} from "@angular/router/src/utils/collection";
 
 
 @Component({
@@ -209,19 +210,23 @@ export class ShopTabComponent implements OnInit {
   }
 
   getJsonOfShop(): JSON{
-    return this.checkBoxService.getJsonOfShopInput(this.addressInputs.toArray(), this.nameDescriptionInputs.toArray(), this.checkBoxes.cbs.toArray(),this.selects.toArray())
+    let json = this.checkBoxService.getJsonOfShopInput(this.addressInputs.toArray(), this.nameDescriptionInputs.toArray(), this.checkBoxes.cbs.toArray(),this.selects.toArray());
+
+    //json["images"] = "[{},{}]";
+    return json;
   }
 
-  onFileChanged(event) {
-    this.admin_service.onFileChanged(event)
+  onFileChanged(files, event, fromWhere) {
+    console.log("?????????????????????????"+fromWhere);
+    this.adminService.onFileChangedShop(files, event,"shop", fromWhere)
   }
 
   onUpload(fromWhere) {
-    this.admin_service.onUpload(fromWhere);
+    this.adminService.onUpload(fromWhere);
   }
 
   deleteImage(fromWhere) {
-    this.admin_service.deleteImage(fromWhere);
+    this.adminService.deleteImage(fromWhere);
   }
 
   ngOnInit() {
@@ -290,7 +295,7 @@ export class ShopTabComponent implements OnInit {
     this.sundayCloseFormControl.markAsTouched({onlySelf:true});
 
   }
-  constructor(public admin_service: AdminService, public shopService: ShopService,
+  constructor(public adminService: AdminService, public shopService: ShopService,
               public checkBoxService: CheckBoxesService, public inputService: InputFormService,
               public compareService: CompareService) { }
 }

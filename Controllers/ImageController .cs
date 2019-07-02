@@ -65,7 +65,7 @@ namespace WinfADD.Controllers
             {
 
                 var fromWhere = Request.Form["fromWhere"];
-
+                Console.WriteLine("FROM WHERE {}::" + fromWhere);
 
                 var file = Request.Form.Files[0];
                 var folderName = "Image/"+fromWhere;
@@ -108,7 +108,7 @@ namespace WinfADD.Controllers
                 {
                     Console.WriteLine("\n CreateImage::");
                     var sql = "INSERT INTO image (file_name, content_type) VALUES (@file_name, @content_type)";
-                    var affectedRows =  conn.Query<Image>(sql,new{file_name = fileName, content_type = fromWhere });
+                    var affectedRows =  conn.Query<Image>(sql,new{file_name = fileName, content_type = fromWhere.ToString() });
                 }
 
 

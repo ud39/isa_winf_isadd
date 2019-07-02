@@ -166,16 +166,17 @@
 
 
   <div>Shop Bild Laden</div>
-      <input
-        style="display: none"
-        type="file" (change)="onFileChanged($event)"
-        #fileInput>
-      <button mat-button (click)="fileInput.click()">Select File</button>
+
+
+      <input #fileInputF
+             style="display: none"
+             type="file" accept='image/*' (change)="onFileChanged(fileInputF.files, $event, 'front')" #fileInputF>
+      <button mat-button (click)="fileInputF.click()">Select File</button>
       <button mat-button (click)="onUpload('front')">Upload!</button>
       <button mat-button (click)="deleteImage('front')" class="button">Löschen</button>
-
       <br>
-      <img  [src]="admin_service.frontImage" height="100px">
+      <img [src]="adminService.frontImage" height="200" *ngIf="adminService.frontImage">
+
 
 
 
@@ -185,20 +186,19 @@
 
 
       <div>Gallerie Laden</div>
-      <input
-        style="display: none"
-        type="file" (change)="onFileChanged($event)"
-        accept="image/png, image/jpeg"
-         #fileInput>
-      <button mat-button (click)="fileInput.click()">Gallery Bild</button>
+      <input #fileInputG
+             style="display: none"
+             type="file" accept='image/*' (change)="onFileChanged(fileInputG.files, $event, 'gallery')" >
+      <button mat-button (click)="fileInputG.click()">Select File</button>
       <button mat-button (click)="onUpload('gallery')">Upload!</button>
       <button mat-button (click)="deleteImage('gallery')" class="button">Löschen</button>
+      <br>
 
 <br>
 
 
-      <mat-radio-group [(ngModel)]="admin_service.galleryNumber">
-        <div>Gewählte Bild: {{admin_service.galleryNumber}}</div>
+      <mat-radio-group [(ngModel)]="adminService.galleryNumber">
+        <div>Gewählte Bild: {{adminService.galleryNumber}}</div>
         <br>
       <mat-radio-button value="1">Bild 1</mat-radio-button>
       <mat-radio-button value="2">Bild 2</mat-radio-button>
@@ -214,13 +214,13 @@
         <mat-grid-tile>
           1
           <br>
-          <img  [src]="admin_service.gallery_1" >
+          <img [src]="adminService.gallery_1" height="200" *ngIf="adminService.gallery_1">
         </mat-grid-tile>
 
         <mat-grid-tile>
           2
           <br>
-          <img  [src]="admin_service.gallery_2" >
+          <img [src]="adminService.gallery_2" height="200" *ngIf="adminService.gallery_2">
 
         </mat-grid-tile>
 
@@ -229,13 +229,13 @@
         <mat-grid-tile>
           3
           <br>
-          <img  [src]="admin_service.gallery_3" >
+          <img [src]="adminService.gallery_3" height="200" *ngIf="adminService.gallery_3">
         </mat-grid-tile>
 
         <mat-grid-tile>
           4
           <br>
-          <img  [src]="admin_service.gallery_4" >
+          <img [src]="adminService.gallery_4" height="200" *ngIf="adminService.gallery_4">
         </mat-grid-tile>
 
       </mat-grid-list>
@@ -251,15 +251,13 @@
     </mat-tab>
 
          <mat-tab label="Preview">
-           <input
-             style="display: none"
-             type="file" (change)="onFileChanged($event)"
-             #fileInput>
-           <button mat-button (click)="fileInput.click()">Event Bild</button>
-           <button mat-button (click)="onUpload('preview')">Upload</button>
+           <input #fileInputP
+                  style="display: none"
+                  type="file" accept='image/*' (change)="onFileChanged(fileInputP.files, $event, 'preview')" >
+           <button mat-button (click)="fileInputP.click()">Select File</button>
+           <button mat-button (click)="onUpload('preview')">Upload!</button>
            <button mat-button (click)="deleteImage('preview')" class="button">Löschen</button>
-           <br>
-           <img  [src]="admin_service.previewImage" height="20%">
+           <img [src]="adminService.previewImage" height="200" *ngIf="adminService.previewImage">
 
 
 
