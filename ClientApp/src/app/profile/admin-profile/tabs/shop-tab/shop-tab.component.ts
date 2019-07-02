@@ -209,14 +209,23 @@ export class ShopTabComponent implements OnInit {
   }
 
   getJsonOfShop(): JSON{
-    let json = this.checkBoxService.getJsonOfShopInput(this.addressInputs.toArray(), this.nameDescriptionInputs.toArray(), this.checkBoxes.cbs.toArray(),this.selects.toArray());
+    let json : JSON = this.checkBoxService.getJsonOfShopInput(this.addressInputs.toArray(), this.nameDescriptionInputs.toArray(), this.checkBoxes.cbs.toArray(),this.selects.toArray());
 
-    //json["images"] = "[{},{}]";
+    let temp ='';
+    this.adminService.getAllCoffeeShopImages().forEach((value: string, key: string) => {
+      temp +=  ',{"fileName":"' + key + '"}';
+    });
+    temp = temp.slice(1);
+    let jsonImageList = JSON.parse('[' + temp + ']');
+
+
+    console.log(JSON.stringify(jsonImageList));
+    json["images"] = jsonImageList;
+
     return json;
   }
 
   onFileChanged(files, event, fromWhere) {
-    console.log("?????????????????????????"+fromWhere);
     this.adminService.onFileChangedShop(files, event,"shop", fromWhere)
   }
 
