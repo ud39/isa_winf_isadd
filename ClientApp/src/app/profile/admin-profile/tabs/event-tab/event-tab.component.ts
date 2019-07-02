@@ -72,7 +72,7 @@ export class EventTabComponent implements OnInit {
   ngOnInit() {
     this.shopSerivce.getShops().subscribe(value => {
       this.shops = value;
-    }).unsubscribe();
+    });
     this.eventService.getEvents().subscribe(value => {
       this.events = value;
     });
