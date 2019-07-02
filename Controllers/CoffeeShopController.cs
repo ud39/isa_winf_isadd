@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace WinfADD.Controllers
 {
-
+    [AllowAnonymous]
     public class CoffeeShopController : GenericTableController<CoffeeShop, CoffeeShopPreview>
     {
         private CoffeeShopRepository _coffeeShopRepo;

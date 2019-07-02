@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WinfADD.Models;
 using WinfADD.Repositories;
@@ -7,7 +8,7 @@ using WinfADD.Identity;
 
 namespace WinfADD.Controllers
 {
-    
+    [AllowAnonymous]
     public class UserController : GenericTableController<User, UserView>
     {
         private UserRepository _userRepository;

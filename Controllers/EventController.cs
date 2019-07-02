@@ -8,7 +8,7 @@ using WinfADD.Repositories;
 
 namespace WinfADD.Controllers
 {
-
+    [AllowAnonymous]
     public class EventController : GenericTableController<Event>
     {
         private EventRepository _eventRepository;

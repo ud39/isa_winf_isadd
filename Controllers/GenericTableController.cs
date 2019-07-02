@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace WinfADD.Controllers
 {
-
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public abstract class GenericTableController<Table> : Controller

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace WinfADD.Controllers
 {
-    
+    [AllowAnonymous]
     public class BeanController : GenericTableController<Bean, BeanPreview>
     {
         private BeanRepository _beanRepository;

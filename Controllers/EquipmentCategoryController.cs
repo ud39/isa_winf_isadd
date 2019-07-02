@@ -7,7 +7,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace WinfADD.Controllers
 {
-[AllowAnonymous]
+    
+    [AllowAnonymous]
     public class EquipmentCategoryController : GenericTableController<EquipmentCategory>
     {
         
