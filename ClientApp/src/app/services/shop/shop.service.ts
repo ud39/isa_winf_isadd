@@ -48,16 +48,12 @@ export class ShopService {
   }
 
   getShopWithParams(queryParams: Params): Observable<Shop[]>{
-    console.log(queryParams);
     console.log('https://localhost:5001/api/coffeeshop/params?' + queryParams.toString());
     return this.http.get<Shop[]>(Global.url + 'coffeeshop/params?' , {params: queryParams,headers: headers});
   }
 
   navigateTo(jsonOfSearch){
-    console.log("Before postRequest");
-    console.log(jsonOfSearch);
     let params = this.routeService.buildHttpParams(jsonOfSearch);
-    console.log(jsonOfSearch.toString());
     console.log(this.getShopWithParams(params).subscribe(next => {
       this.shops = next;
     }));

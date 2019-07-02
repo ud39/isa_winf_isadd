@@ -52,7 +52,9 @@ export class ContentTabComponent implements OnInit {
   public blendProvenanceFormControl = new FormControl('',[
     Validators.required
   ]);
-  public selectBlendBeanFormControl = new FormControl('',[]);
+  public selectBlendBeanFormControl = new FormControl('',[
+    this.compareService.atLeastTwoBeanSelected
+  ]);
   public selectBlendPriceClassFormControl = new FormControl('',[]);
   public avaibleBeans : Bean[];
 
@@ -85,7 +87,7 @@ export class ContentTabComponent implements OnInit {
 
 
 
-  public blendFormGroup = new FormGroup({name: this.blendNameFormControl,blends: this.blendProvenanceFormControl, beans: this.selectBlendBeanFormControl,priceclass: this.selectBlendPriceClassFormControl});
+  public blendFormGroup = new FormGroup({name: this.blendNameFormControl,blends: this.blendProvenanceFormControl, beans: this.selectBlendBeanFormControl});
   public beanFormGroup = new FormGroup({name: this.beanNameFormControl, select: this.selectContentFormControl});
   public equipmentFormGroup = new FormGroup({name: this.equipmentNameFormControl, select: this.selectContentFormControl});
   public coffeeDrinkFormGroup = new FormGroup({name: this.coffeeDrinkNameFormControl, select: this.selectContentFormControl});
@@ -100,8 +102,7 @@ export class ContentTabComponent implements OnInit {
         let blend : Blend = <Blend> data;
         this.blendNameFormControl.setValue(blend.name);
         this.blendProvenanceFormControl.setValue(blend.provenance);
-        console.log(blend.priceRange);
-        this.selectBlendPriceClassFormControl.setValue(blend.priceRange);
+        this.selectBlendBeanFormControl.setValue('');
       break;
       case 'Bean':
         let bean : Bean = <Bean> data;
@@ -158,6 +159,7 @@ export class ContentTabComponent implements OnInit {
       case 'Blend':
         this.json['name'] = this.blendNameFormControl.value;
         this.json['provenance'] = this.blendProvenanceFormControl.value;
+        this.json['bean'] = this.selectBlendBeanFormControl.value;
         console.log(this.json);
         return <JSON> this.json;
       case 'Bean':

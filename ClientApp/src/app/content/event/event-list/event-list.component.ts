@@ -9,7 +9,7 @@ import {EventService} from "../../../services/event/event.service";
 export class EventListComponent implements OnInit {
 
 
-  constructor(private eventService: EventService) { }
+  constructor(public eventService: EventService) { }
 
   ngOnInit() {
     this.eventService.getEvents().subscribe(value => {

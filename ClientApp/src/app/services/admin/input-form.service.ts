@@ -9,7 +9,6 @@ import {Blend} from "../../interfaces/entity/Blend";
 import {Bean} from "../../interfaces/entity/Bean";
 import {EquipmentCategory} from "../../interfaces/entity/EquipmentCategory";
 import {Shop} from "../../interfaces/entity/Shop";
-import {QueryParamsHandling} from "@angular/router/src/config";
 import {User} from "../../interfaces/entity/User";
 
 

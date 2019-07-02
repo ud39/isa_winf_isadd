@@ -29,10 +29,9 @@ export class EquipmentService {
   }
 
   navigateTo(jsonOfSearch : JSON):void{
-    console.log('Equipment' + jsonOfSearch);
     let params = this.routeService.buildHttpParams(jsonOfSearch);
-    console.log(this.getEquipmentsWithParams(params).subscribe(next => {
+    this.getEquipmentsWithParams(params).subscribe(next => {
       this.equipmentsCategories = next;
-    }));
+    });
   }
 }

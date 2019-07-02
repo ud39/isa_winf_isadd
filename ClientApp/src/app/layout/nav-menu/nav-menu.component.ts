@@ -1,7 +1,9 @@
-import {Component, HostListener, QueryList, ViewChild, ViewChildren} from '@angular/core';
+import {Component, HostListener} from '@angular/core';
 import {ImageService} from "../../services/image/image.service";
-import {MatMenuTrigger} from "@angular/material";
 import {Global} from "../../global";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {HttpClient} from "@angular/common/http";
+import {UserService} from "../../services/user/user.service";
 
 
 @Component({
@@ -17,7 +19,7 @@ export class NavMenuComponent {
   public brand = Global.url + 'image/GetById?ContentType=brand&fileName=kaffeesatt.png';
   isExpanded = false;
   public currentWindowWidth: number = window.innerWidth;
-  constructor(public imageService: ImageService){}
+  constructor(public imageService: ImageService, private http: HttpClient,  public userService: UserService){}
   @HostListener('window:resize')
   onResize() {
     this.currentWindowWidth = window.innerWidth
@@ -36,7 +38,22 @@ export class NavMenuComponent {
     }
   }
 
+  public emailFormControl = new FormControl('',[
+    Validators.required
+  ]);
+  public passwordFormControl = new FormControl('',[
+    Validators.required,
+    Validators.minLength(4)
+  ]);
 
+  public loginFormGroup = new FormGroup({
+    email: this.emailFormControl,
+    password: this.passwordFormControl
+  });
+
+  public login(){
+    this.userService.login(this.loginFormGroup);
+  }
 }
 
 

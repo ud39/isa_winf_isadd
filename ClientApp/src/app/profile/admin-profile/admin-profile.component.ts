@@ -8,10 +8,11 @@ import {EventTabComponent} from "./tabs/event-tab/event-tab.component";
 import {ContentTabComponent} from "./tabs/content-tab/content-tab.component";
 import {EquipmentTabComponent} from "./tabs/equipment-tab/equipment-tab.component";
 import {InputFormService} from "../../services/admin/input-form.service";
-import {EditListComponent} from "./dialog/edit-list/edit-list.component";
 import {ConfirmationComponent} from "./dialog/confirmation/confirmation.component";
 import {UserTabComponent} from "./tabs/user-tab/user-tab/user-tab.component";
 import {ArticleTabComponent} from "./tabs/article-tab/article-tab.component";
+import {EditDialogService} from "../../services/dialog/edit-dialog.service";
+import {Shop} from "../../interfaces/entity/Shop";
 
 
 export interface Content{
@@ -44,6 +45,7 @@ export class AdminProfileComponent implements OnInit {
   public activeFormGroup : FormGroup;
   public editStatus : boolean = true;
   public restorePossible : boolean = true;
+  public currentSelectedObject : any;
   ngOnInit() {
     this.whichTabIsActive();
     this.matTabGroup.selectedIndex = 0;
@@ -117,114 +119,36 @@ export class AdminProfileComponent implements OnInit {
     this.editStatus = false;
     switch (this.matTabActive) {
       case 'Shop':
-        const dialogRefShop = this.dialog.open(EditListComponent, {
-          data: {data: this.shopTab, tabActive:this.matTabActive},
-          height: '500px',
-          width: '800px',
-        });
+       this.editDialogService.openShopDialog(this.shopTab,this.matTabActive,this.dialog);
 
-        dialogRefShop.afterClosed().subscribe(value => {
-          if(value)
-          {
-          this.shopTab.fillOutInputForm(value);
-          this.shopTab.shop = value;
-          this.restorePossible = false;
-          }
-        });
+       this.restorePossible = false;
         break;
       case 'Bohnen & Zubehör':
-        const dialogRefEquipment = this.dialog.open(EditListComponent, {
-          data: {data: this.equipmentTab, tabActive:this.matTabActive},
-          height: '500px',
-          width: '800px',
-        });
-
-        dialogRefEquipment.afterClosed().subscribe(value => {
-          if(value){
-          this.equipmentTab.fillOutInputForm(value);
-          this.restorePossible = false;
-          }
-        });
         break;
       case 'Event':
-        console.log('Hallo Event');
-        const dialogRefEvent= this.dialog.open(EditListComponent, {
-          data: {data: this.eventTab, tabActive:this.matTabActive},
-          height: '500px',
-          width: '800px',
-        });
-
-        dialogRefEvent.afterClosed().subscribe(value => {
-          if(value){
-          console.log('Fillout');
-          this.eventTab.fillOutInputForm(value);
-          this.eventTab.selectedEvent = value;
-          this.restorePossible = false;
-          }
-        });
+        this.editDialogService.openEventDialog(this.eventTab,this.matTabActive,this.dialog);
+        this.restorePossible = false;
         break;
       case 'Content':
         switch (this.contentTab.selectContentFormControl.value) {
           case 'Blend':
-            const dialogRefBlend = this.dialog.open(EditListComponent, {
-              data: {data: this.contentTab, tabActive:this.matTabActive},
-              height: '500px',
-              width: '800px',
-            });
-            dialogRefBlend.afterClosed().subscribe(value => {
-              if(value){
-              this.contentTab.selectedContent = value;
-              this.contentTab.fillOutInputForm(value);
-              this.restorePossible = false;
-              }
-            });
+          this.editDialogService.openBlendDialog(this.contentTab,this.matTabActive,this.dialog);
+          this.restorePossible = false;
           break;
           case 'Bean':
-            const dialogRefBean = this.dialog.open(EditListComponent,{
-              data: {data: this.contentTab, tabActive:this.matTabActive},
-              height: '500px',
-              width: '800px',
-            });
-            dialogRefBean.afterClosed().subscribe(value =>{
-              if(value){
-              this.contentTab.fillOutInputForm(value);
-              this.restorePossible = false;
-              }
-            });
+          this.editDialogService.openBeanDialog(this.contentTab,this.matTabActive,this.dialog);
+          this.restorePossible = false;
           break;
           case 'CoffeeDrink':
-            const dialogRefCoffeeDrink = this.dialog.open(EditListComponent,{
-              data: {data: this.contentTab, tabActive:this.matTabActive},
-              height: '500px',
-              width: '800px',
-            });
-            dialogRefCoffeeDrink.afterClosed().subscribe(value =>{
-              if(value){
-              this.contentTab.fillOutInputForm(value);
-              this.restorePossible = false;
-              }
-            });
+          this.editDialogService.openCoffeeDrinkDialog(this.contentTab,this.matTabActive,this.dialog);
+          this.restorePossible = false;
           break;
           case 'Poi':
-            const dialogRefPoi= this.dialog.open(EditListComponent, {
-              data: {data: this.contentTab, tabActive:this.matTabActive},
-              height: '500px',
-              width: '800px',
-            });
-
-            dialogRefPoi.afterClosed().subscribe(value => {
-              if(value){
-                this.contentTab.fillOutInputForm(value);
-                this.restorePossible = false;
-              }
-            });
+          this.editDialogService.openPoiDialog(this.contentTab,this.matTabActive,this.dialog);
+          this.restorePossible = false;
           break;
           case 'Equipment-category':
-            const dialogRefEquipmentCategory = this.dialog.open(EditListComponent,{
-              data: {data: this.contentTab, tabActive:this.matTabActive},
-              height: '500px',
-              width: '800px'
-            })
+          this.editDialogService.openEquipmentCategoryDialog(this.contentTab,this.matTabActive,this.dialog);
         }
     }
     this.editStatus = true;
@@ -307,7 +231,7 @@ export class AdminProfileComponent implements OnInit {
         break;
     }
   }
-
+  t
   deleteContent(){
     switch (this.matTabActive) {
       case 'Shop':
@@ -365,10 +289,11 @@ export class AdminProfileComponent implements OnInit {
   }
 
   emptyInput(){
+    console.log(this.activeFormGroup);
     this.activeFormGroup.reset('');
     this.clearCheckBox();
   }
 
-  constructor(private inputFormService: InputFormService, public dialog: MatDialog) { }
+  constructor(private inputFormService: InputFormService, public dialog: MatDialog, public editDialogService: EditDialogService) { }
 
 }
