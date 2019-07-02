@@ -17,19 +17,13 @@
 </mat-form-field>
   <mat-form-field>
     <mat-label>Wähle eine Mischung</mat-label>
-    <mat-select multiple #multipleSelectBlend [formControl]="selectBlendBeanFormControl">
+    <mat-select multiple #multipleSelectBlend required [formControl]="selectBlendBeanFormControl">
       <mat-option *ngFor="let beans of avaibleBeans" [value]="beans">
         {{beans.name}}
       </mat-option>
     </mat-select>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Wähle eine Preisklasse</mat-label>
-    <mat-select #blendSelectPriceClass [formControl]="selectBlendPriceClassFormControl" [compareWith]="compareService.comparePriceClass">
-      <mat-option *ngFor="let blendpc  of blendPriceClass" [value]="blendpc.value">
-        {{blendpc.value}}
-      </mat-option>
-    </mat-select>
+    <mat-error *ngIf="selectBlendBeanFormControl.hasError('required')">Es würde nichts ausgewählt</mat-error>
+    <mat-error *ngIf="selectBlendBeanFormControl.hasError('beans')">Es müssen mindesten zwei ausgewählt sein.</mat-error>
   </mat-form-field>
 </div>
 
@@ -47,14 +41,14 @@
 
 <div class="content bus-station" *ngIf="selectContentFormControl.value  == 'BusStation'">
   <mat-form-field class="name-form-field">
-    <input matInput type="text" placeholder="Name"  required [formControl]="busStationNameFormControl">
+    <input matInput type="text" placeholder="Bus Haltestelle"  required [formControl]="busStationNameFormControl">
     <mat-error *ngIf="busStationNameFormControl.hasError('required')">Es müss einen Namen angegeben werden</mat-error>
     <button mat-button *ngIf="!busStationNameFormControl.hasError('required')" matSuffix mat-icon-button aria-label="Clear" (click)="equipmentNameFormControl.reset('')">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
   <mat-form-field class="name-form-field">
-    <input matInput type="text" placeholder="Name"  required [formControl]="busStationLineFormControl">
+    <input matInput type="text" placeholder="Linie"  required [formControl]="busStationLineFormControl">
     <mat-error *ngIf="busStationLineFormControl.hasError('required')">Es müss einen Namen angegeben werden</mat-error>
   </mat-form-field>
 </div>

@@ -5,7 +5,7 @@ import {Bean} from "../../interfaces/entity/Bean";
 import {Poi} from "../../interfaces/entity/Poi";
 import {EquipmentCategory} from "../../interfaces/entity/EquipmentCategory";
 import {CoffeeDrink} from "../../interfaces/entity/CoffeeDrink";
-import {FormGroup} from "@angular/forms";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Injectable({
   providedIn: 'root'
@@ -47,15 +47,33 @@ export class CompareService {
     return priceClass1 == priceClass2;
   }
 
-  matchingOpeningClosingTime(openingTime: string, closingTime: string) {
-    return (group: FormGroup) => {
-      let openingTimeOfDay = group.controls[openingTime];
-      let closingTimeOfDay = group.controls[closingTime];
-      if (openingTimeOfDay.value < closingTimeOfDay.value) {
-        return closingTimeOfDay.setErrors({notEquivalent: true})
-      }else{
-        return closingTimeOfDay.setErrors({notEquivalent: true})
+  public openingClosingTimeValidator(openingformGroup:FormGroup) {
+    let opening: string = openingformGroup.get('monday').value;
+    let closing: string = openingformGroup.get('tuesday').value;
+    if(opening.length > 0 && closing.length > 0) {
+      let openingTime: number = Number(opening.replace(':', ''));
+      let closingTime: number = Number(closing.replace(':', ''));
+
+    if (openingTime > closingTime && (openingTime.toString().length == 4 && closingTime.toString().length == 4)){
+      console.log('setError');
+      openingformGroup.get('tuesday').setErrors({
+        notMatch: 'closing time must be later than opening time'
+      })
+    }else{
+      return null;
+    }}else{
+      return null;
+    }
+  }
+
+  public atLeastTwoBeanSelected(formControl:FormControl){
+    let beans : Bean[] = formControl.value;
+    if(beans.length < 2){
+      return {
+        beans: 'only one bean was selected'
       }
+    }else{
+      return null;
     }
   }
 }

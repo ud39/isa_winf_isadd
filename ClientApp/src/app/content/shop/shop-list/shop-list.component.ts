@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ShopService} from "../../../services/shop/shop.service";
+import {Shop} from "../../../interfaces/entity/Shop";
 
 
 
@@ -15,9 +16,9 @@ import {ShopService} from "../../../services/shop/shop.service";
 })
 export class ShopListComponent implements OnInit {
 
+  public currentShops: Shop[];
 
-
-  constructor(private service: ShopService)
+  constructor(public service: ShopService)
   {
   }
 

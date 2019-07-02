@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatButton} from "@angular/material";
 import {Router} from "@angular/router";
+import {UserService} from "../../services/user/user.service";
 
 
 @Component({
@@ -28,16 +29,16 @@ export class RegistrationComponent implements OnInit {
     password: this.passwordFromControl
   });
 
-  public submitRegistration(){
-    let email = this.registrationForm.value.email;
-    let password = this.registrationForm.value.password;
+  public registerUser(){
+    this.userService.submitRegistration(this.registrationForm);
     this.navigateToProfil();
   }
 
   public navigateToProfil(){
     this.router.navigate(['user'])
   }
-  constructor(public router : Router) {
+
+  constructor(public router : Router, public userService:UserService) {
 
   }
   ngOnInit() {

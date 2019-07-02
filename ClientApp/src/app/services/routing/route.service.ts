@@ -24,7 +24,6 @@ export class RouteService {
           }
         }
       });
-      console.log('Juti Boottawong' + ' ' + params);
       return params;
   }
 

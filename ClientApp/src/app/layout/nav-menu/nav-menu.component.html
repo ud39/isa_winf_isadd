@@ -18,14 +18,14 @@
       <div id="login-dropdown-content">
         <form class="login-registration-form">
           <div class="form-group">
-            <input type="text" class="form-control" id="email" required>
+            <input type="email" class="form-control" id="email" required [formControl]="emailFormControl">
             <label for="email">Email</label>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" id="passwort" required>
+            <input type="text" class="form-control" id="passwort" required [formControl]="passwordFormControl">
             <label for="passwort">Passwort</label>
           </div>
-          <button mat-button id="btn-login-logout" [routerLink]='["/user"]' class="nav-btn-login">
+          <button mat-button id="btn-login-logout" [routerLink]='["/user"]' (click)="login()" class="nav-btn-login">
             Login
           </button>
           <button mat-button id="btn-register" class="nav-btn-login" [routerLink]='["/registration"]'>Registierung</button>

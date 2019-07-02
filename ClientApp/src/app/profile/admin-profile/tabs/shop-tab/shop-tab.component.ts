@@ -15,6 +15,7 @@ import {CoffeeDrink} from "../../../../interfaces/entity/CoffeeDrink";
 import {InputFormService} from "../../../../services/admin/input-form.service";
 import {Bean} from "../../../../interfaces/entity/Bean";
 import {CompareService} from "../../../../services/compare/compare.service";
+import {EventService} from "../../../../services/event/event.service";
 
 
 @Component({
@@ -28,52 +29,53 @@ import {CompareService} from "../../../../services/compare/compare.service";
 
 export class ShopTabComponent implements OnInit {
   @ViewChildren('address') addressInputs: QueryList<MatInput>;
-  @ViewChild('checkbox') checkBoxes : CheckboxComponent;
-  @ViewChildren('inputs') nameDescriptionInputs : QueryList<MatInput>;
-  @ViewChildren(MatOption) bus : QueryList<MatOption>;
-  @ViewChildren(MatSelect) selects : QueryList<MatSelect>;
+  @ViewChild('checkbox') checkBoxes: CheckboxComponent;
+  @ViewChildren('inputs') nameDescriptionInputs: QueryList<MatInput>;
+  @ViewChildren(MatOption) bus: QueryList<MatOption>;
+  @ViewChildren(MatSelect) selects: QueryList<MatSelect>;
 
-  public isLoaded = false;
+  public isLoaded = true;
 
-  public selectBusStationFromControl = new FormControl('',[]);
-  public selectPoiFormControl = new FormControl('',[]);
-  public selectBlendFormControl = new FormControl('',[]);
-  public selectEquipmentCategoryFormControl = new FormControl('',[]);
-  public selectCoffeeDrinkFormControl = new FormControl('',[]);
-  public selectBeanFormCotnrol = new FormControl('',[]);
+  public selectBusStationFromControl = new FormControl('', []);
+  public selectPoiFormControl = new FormControl('', []);
+  public selectBlendFormControl = new FormControl('', []);
+  public selectEquipmentCategoryFormControl = new FormControl('', []);
+  public selectCoffeeDrinkFormControl = new FormControl('', []);
+  public selectBeanFormCotnrol = new FormControl('', []);
 
   public choosePois: Poi[];
   public chooseBlends: Blend[];
   public chooseCoffeeDrinks: CoffeeDrink[];
   public chooseEquipmentCategories: EquipmentCategory[];
-  public chooseBusStations : BusStation[];
-  public chooseBeans : Bean[];
+  public chooseBusStations: BusStation[];
+  public chooseBeans: Bean[];
 
+  public addBusStation: BusStation[];
+  public removeBusStation: BusStation[];
 
+  public mondayOpenFormControl = new FormControl('', [
+    Validators.pattern('([01]?[0-9]|2[0-3]):[0-5][0-9]')
+  ]);
+  public tuesdayOpenFormControl = new FormControl('', [
+    Validators.pattern('([01]?[0-9]|2[0-3]):[0-5][0-9]')
+  ]);
+  public wednesdayOpenFormControl = new FormControl('', [
+    Validators.pattern('([01]?[0-9]|2[0-3]):[0-5][0-9]')
+  ]);
+  public thursdayOpenFormControl = new FormControl('', [
+    Validators.pattern('([01]?[0-9]|2[0-3]):[0-5][0-9]')
+  ]);
+  public fridayOpenFormControl = new FormControl('', [
+    Validators.pattern('([01]?[0-9]|2[0-3]):[0-5][0-9]')
+  ]);
+  public saturdayOpenFormControl = new FormControl('', [
+    Validators.pattern('([01]?[0-9]|2[0-3]):[0-5][0-9]')
+  ]);
+  public sundayOpenFormControl = new FormControl('', [
+    Validators.pattern('([01]?[0-9]|2[0-3]):[0-5][0-9]')
+  ]);
 
-  public mondayOpenFormControl = new FormControl('',[
-    Validators.pattern('([01]?[0-9]|2[0-3]):[0-5][0-9]')
-  ]);
-  public tuesdayOpenFormControl = new FormControl('',[
-    Validators.pattern('([01]?[0-9]|2[0-3]):[0-5][0-9]')
-  ]);
-  public wednesdayOpenFormControl = new FormControl('',[
-    Validators.pattern('([01]?[0-9]|2[0-3]):[0-5][0-9]')
-  ]);
-  public thursdayOpenFormControl = new FormControl('',[
-    Validators.pattern('([01]?[0-9]|2[0-3]):[0-5][0-9]')
-  ]);
-  public fridayOpenFormControl = new FormControl('',[
-    Validators.pattern('([01]?[0-9]|2[0-3]):[0-5][0-9]')
-  ]);
-  public saturdayOpenFormControl = new FormControl('',[
-    Validators.pattern('([01]?[0-9]|2[0-3]):[0-5][0-9]')
-  ]);
-  public sundayOpenFormControl = new FormControl('',[
-    Validators.pattern('([01]?[0-9]|2[0-3]):[0-5][0-9]')
-  ]);
-
-  public openTimeFormGrouo = new FormGroup({
+  public openTimeFormGroup = new FormGroup({
     monday: this.mondayOpenFormControl,
     tuesday: this.tuesdayOpenFormControl,
     wednesday: this.wednesdayOpenFormControl,
@@ -81,8 +83,7 @@ export class ShopTabComponent implements OnInit {
     friday: this.fridayOpenFormControl,
     saturday: this.saturdayOpenFormControl,
     sunday: this.sundayOpenFormControl,
-  });
-
+  }, {validators: this.compareService.openingClosingTimeValidator});
 
 
   public mondayCloseFormControl = new FormControl('',[
@@ -107,7 +108,7 @@ export class ShopTabComponent implements OnInit {
     Validators.pattern('([01]?[0-9]|2[0-3]):[0-5][0-9]')
   ]);
 
-  public closeTimeFormGrouo = new FormGroup({
+  public closeTimeFormGroup = new FormGroup({
     monday: this.mondayCloseFormControl,
     tuesday: this.tuesdayCloseFormControl,
     wednesday: this.wednesdayCloseFormControl,
@@ -158,8 +159,6 @@ export class ShopTabComponent implements OnInit {
 
   ]);
   inputShop = new FormGroup({
-      openingTime: this.openTimeFormGrouo,
-      closingTime: this.closeTimeFormGrouo,
       street: this.streetFormControl,
       streetNr: this.streetNrFormControl,
       country: this.countryFormControl,
@@ -203,7 +202,7 @@ export class ShopTabComponent implements OnInit {
     this.selectEquipmentCategoryFormControl.setValue(selectedShop.equipmentCategories);
     this.selectCoffeeDrinkFormControl.setValue(selectedShop.coffeeDrinks);
 
-    this.inputService.fillOutOpenCloseTime(selectedShop,this.openTimeFormGrouo,this.closeTimeFormGrouo)
+    this.inputService.fillOutOpenCloseTime(selectedShop,this.openTimeFormGroup,this.closeTimeFormGroup);
     this.checkBoxService.fillOutCheckBoxes(selectedShop,this.checkBoxes.cbs.toArray());
 
   }
@@ -224,6 +223,8 @@ export class ShopTabComponent implements OnInit {
     this.admin_service.deleteImage(fromWhere);
   }
 
+
+
   ngOnInit() {
     this.values$ = forkJoin(
       [
@@ -232,8 +233,8 @@ export class ShopTabComponent implements OnInit {
         this.inputService.getBlends(),
         this.inputService.getBusStations(),
         this.inputService.getPois(),
-        this.inputService.getEquipmentCategories()
-      ]
+        this.inputService.getEquipmentCategories(),
+        ],
     ).subscribe(
       ([coffeeDrinks, beans, blends, busStations, pois, equipmentCategories]) => {
         this.chooseCoffeeDrinks = coffeeDrinks;
@@ -242,56 +243,26 @@ export class ShopTabComponent implements OnInit {
         this.chooseBusStations = busStations;
         this.choosePois = pois;
         this.chooseEquipmentCategories = equipmentCategories;
-        console.log(this.chooseBusStations);
-        this.isLoaded =true;
       }
     );
+    forkJoin([]);
     this.shopService.getShops().subscribe(value => {
       this.shops = value;
     })
   }
-
-  public loadData(){
-  }
-
   public validateFormControl(){
-    this.postalCodeFormControl.updateValueAndValidity();
-    this.postalCodeFormControl.markAsTouched({onlySelf:true});
-    this.streetNrFormControl.updateValueAndValidity();
-    this.streetNrFormControl.markAsTouched({onlySelf:true});
-    this.mondayOpenFormControl.updateValueAndValidity();
-    this.mondayOpenFormControl.markAsTouched({onlySelf:true});
-    this.tuesdayOpenFormControl.updateValueAndValidity();
-    this.tuesdayOpenFormControl.markAsTouched({onlySelf:true});
-    this.wednesdayOpenFormControl.updateValueAndValidity();
-    this.wednesdayOpenFormControl.markAsTouched({onlySelf:true});
-    this.thursdayOpenFormControl.updateValueAndValidity();
-    this.thursdayOpenFormControl.markAsTouched({onlySelf:true});
-    this.fridayOpenFormControl.updateValueAndValidity();
-    this.fridayOpenFormControl.markAsTouched({onlySelf:true});
-    this.saturdayOpenFormControl.updateValueAndValidity();
-    this.saturdayOpenFormControl.markAsTouched({onlySelf:true});
-    this.sundayOpenFormControl.updateValueAndValidity();
-    this.sundayOpenFormControl.markAsTouched({onlySelf:true});
-
-    this.mondayCloseFormControl.updateValueAndValidity();
-    this.mondayCloseFormControl.markAsTouched({onlySelf:true});
-    this.tuesdayCloseFormControl.updateValueAndValidity();
-    this.tuesdayCloseFormControl.markAsTouched({onlySelf:true});
-    this.wednesdayCloseFormControl.updateValueAndValidity();
-    this.wednesdayCloseFormControl.markAsTouched({onlySelf:true});
-    this.thursdayCloseFormControl.updateValueAndValidity();
-    this.thursdayCloseFormControl.markAsTouched({onlySelf:true});
-    this.fridayCloseFormControl.updateValueAndValidity();
-    this.fridayCloseFormControl.markAsTouched({onlySelf:true});
-    this.saturdayCloseFormControl.updateValueAndValidity();
-    this.saturdayCloseFormControl.markAsTouched({onlySelf:true});
-    this.sundayCloseFormControl.updateValueAndValidity();
-    this.sundayCloseFormControl.markAsTouched({onlySelf:true});
-
   }
+  public addBusStationToArray(busStation: any){
+      if(this.chooseBusStations.length > 1)
+      {
+
+
+      }
+  }
+
   constructor(public admin_service: AdminService, public shopService: ShopService,
               public checkBoxService: CheckBoxesService, public inputService: InputFormService,
-              public compareService: CompareService) { }
+              public compareService: CompareService, public eventService : EventService) { }
+
 }
 

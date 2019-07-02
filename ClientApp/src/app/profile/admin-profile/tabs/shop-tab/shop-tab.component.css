@@ -11,28 +11,9 @@ app-shop-tab .opening-times{
 app-shop-tab .monday{
   grid-row: 1 / 1
 }
-app-shop-tab .tuesday{
 
-}
-
-app-shop-tab .wednesday{
-
-}
-
-app-shop-tab .thursday{
-
-}
-
-app-shop-tab .friday{
-
-}
-
-app-shop-tab .satuday{
-
-}
-
-app-shop-tab .sunday{
-
+app-shop-tab p.weekday{
+  margin-bottom: 10px;
 }
 
 app-shop-tab button .mat-button{

@@ -31,7 +31,6 @@ export class AppComponent {
 
   ngOnInit() {
     console.log("Before" + this.urlSearchPath);
-    // on route change to '/login', set the variable showNavigation to false
     this.router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
         if(this.checkUrlCheckBox((event)))

@@ -16,7 +16,7 @@ const headers = new HttpHeaders().set('Content-Type', 'application/json');
 export class EventService {
 
   public events : Event[];
-  constructor(private http: HttpClient, private routeService:RouteService, private router: Router) {
+  constructor(private http: HttpClient, private routeService:RouteService) {
   }
 
   getEvents(): Observable<Event[]>{
@@ -34,9 +34,9 @@ export class EventService {
   navigateTo(jsonOfSearch : JSON):void{
     console.log('Event' + jsonOfSearch.stringify(jsonOfSearch));
     let params = this.routeService.buildHttpParams(jsonOfSearch);
-    console.log(this.getEventWithParams(params).subscribe(next => {
+    this.getEventWithParams(params).subscribe(next => {
       this.events = next;
-    }));
+    });
   }
 
 }
