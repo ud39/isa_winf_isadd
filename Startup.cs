@@ -113,7 +113,8 @@ namespace WinfADD
                  .ConfigureDapperIdentityCryptography(Configuration.GetSection("DapperIdentityCryptography"))
                  .ConfigureDapperIdentityOptions(new DapperIdentityOptions { UseTransactionalBehavior = false }); //Change to True to use Transactions in all operations
 
-             services.AddIdentity<User, DapperIdentityRole>(x =>
+             
+             services.AddIdentity<User, UserRole>(x =>
                  {
                      x.Password.RequireDigit = false;
                      x.Password.RequiredLength = 1;

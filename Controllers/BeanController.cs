@@ -18,7 +18,6 @@ namespace WinfADD.Controllers
         }
         
         [Authorize(Roles = "ADMIN")]
-        [ValidateAntiForgeryToken]
         [HttpGet("all")]
         public new async Task<IEnumerable<BeanPreview>> GetAll()
         {

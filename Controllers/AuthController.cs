@@ -10,6 +10,7 @@ using WinfADD.Models;
 using System.Threading.Tasks;
 using Identity.Dapper.Entities;
 using Identity.Dapper.Stores;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -26,62 +27,74 @@ namespace WinfADD.Controllers
     {
            private readonly UserManager<User> _userManager;
            private readonly SignInManager<User> _signInManager;
-           private readonly RoleManager<DapperIdentityRole> _roleManager;
+           private readonly RoleManager<UserRole> _roleManager;
            private readonly DapperUserStore<User, int, DapperIdentityUserRole<int>, DapperIdentityRoleClaim<int>, DapperIdentityUserClaim<int>, DapperIdentityUserLogin<int>, UserRole> _dapperStore;
            private readonly IConfiguration _configuration;
 
-         public AuthController(IUserStore<User> dapperStore, UserManager<User> userManager, IConfiguration configuration)
+         public AuthController(IUserStore<User> dapperStore, UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<UserRole> roleManager, IConfiguration configuration)
          {
              _userManager = userManager;
              _dapperStore = dapperStore as DapperUserStore<User, int, DapperIdentityUserRole<int>, DapperIdentityRoleClaim<int>, DapperIdentityUserClaim<int>, DapperIdentityUserLogin<int>, UserRole>;
              _configuration = configuration;
+             _roleManager = roleManager;
+             _signInManager = signInManager;
              init();
          }
 
          private async Task init()
          {
-            // var result = await _userManager.FindByEmailAsync("admin@.com");
-            // if (result == null)
+
+             if (null == await _dapperStore.FindByEmailAsync("admin@.com", new CancellationToken(false)))
              {
-              //   var admin = new User {UserName = "admin@.com", Email = "admin@.com"};
-                 //var manager = new User {UserName = "manager@.com", Email = "manager@.com"};
-                 //var user = new User {UserName = "manager@.com", Email = "manager@.com"};
+                 var u = new User {UserName = "admin@.com", Email = "admin@.com"};
+                 await _dapperStore.CreateAsync(u, CancellationToken.None);
+                 await _dapperStore.AddToRoleAsync(u, "admin", CancellationToken.None);
+
+             }
+             
+             // var result = await _userManager.FindByEmailAsync("admin@.com");
+            // if (result == null)
+            {
+                //   var admin = new User {UserName = "admin@.com", Email = "admin@.com"};
+                //var manager = new User {UserName = "manager@.com", Email = "manager@.com"};
+                //var user = new User {UserName = "manager@.com", Email = "manager@.com"};
 
                 // var admin = await _userManager.CreateAsync(new User {UserName = "admin@.com", Email = "admin@.com"}, "admin123");
                 // var manager = await _userManager.CreateAsync( new User {UserName = "manager@.com", Email = "manager@.com"}, "manager123");
-                 //var user = await  _userManager.CreateAsync(new User {UserName = "manager@.com", Email = "manager@.com"}, "user123");
-                 //await _userManager.AddToRoleAsync(admin, "ADMIN");
-                 //await _userManager.AddToRoleAsync(admin, "contentmanager");
-                 //await _userManager.AddToRoleAsync(admin, "user");
-               //  await _userManager.AddToRoleAsync(manager, "contentmanager");
-               //  await _userManager.AddToRoleAsync(manager, "user");
+                //var user = await  _userManager.CreateAsync(new User {UserName = "manager@.com", Email = "manager@.com"}, "user123");
+                //await _userManager.AddToRoleAsync(admin, "ADMIN");
+                //await _userManager.AddToRoleAsync(admin, "contentmanager");
+                //await _userManager.AddToRoleAsync(admin, "user");
+                //  await _userManager.AddToRoleAsync(manager, "contentmanager");
+                //  await _userManager.AddToRoleAsync(manager, "user");
                 // await _userManager.AddToRoleAsync(user, "user");
 
-                        
-                string[] roleNames = { "admin", "manager", "user" };
-                IdentityResult roleResult;
+                /*       
+               string[] roleNames = { "admin", "manager", "user" };
+               IdentityResult roleResult;
 
-                //creating a super user who could maintain the web app
-                var poweruser = new User
-                {
-                    UserName = "Test7@com",
-                    Email = "Test7@com"
-                };
-                string UserPassword = "Test123";
-                var user = await _userManager.FindByEmailAsync("Test7@com");
-                if(user == null)
-                {
-                    var createPowerUser = await _userManager.CreateAsync(poweruser, UserPassword);
-                    if (createPowerUser.Succeeded)
-                    {
-                    
-                      //  if(_dapperStore.)
-                        //here we tie the new user to the "Admin" role 
-                        await _dapperStore.AddToRoleAsync(poweruser, "ADMIN", CancellationToken.None);
-                    }
-                }
-                await _dapperStore.AddToRoleAsync(poweruser, "ADMIN", CancellationToken.None);
-             }
+               //creating a super user who could maintain the web app
+               var poweruser = new User
+               {
+                   UserName = "Test7@com",
+                   Email = "Test7@com"
+               };
+               string UserPassword = "Test123";
+               var user = await _userManager.FindByEmailAsync("Test7@com");
+               if(user == null)
+               {
+                   var createPowerUser = await _userManager.CreateAsync(poweruser, UserPassword);
+                   if (createPowerUser.Succeeded)
+                   {
+                   
+                     //  if(_dapperStore.)
+                       //here we tie the new user to the "Admin" role 
+                       await _dapperStore.AddToRoleAsync(poweruser, "ADMIN", CancellationToken.None);
+                   }
+               }
+               await _dapperStore.AddToRoleAsync(poweruser, "ADMIN", CancellationToken.None);
+            }*/
+            }
          }
 
          // GET api/values
@@ -138,7 +151,8 @@ namespace WinfADD.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    
+                    //await _signInManager.SignInAsync(user, isPersistent: false);
                     return Ok();
                 }
                
@@ -147,7 +161,7 @@ namespace WinfADD.Controllers
             return BadRequest();
         }
 
-        [Authorize]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet, Route("test")]
         public JsonResult Test()
         {
