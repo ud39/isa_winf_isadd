@@ -19,18 +19,18 @@ namespace WinfADD.Controllers
             _eventRepository = (EventRepository)eventRepository;
 
         }
-        //       [Authorize]
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Event>> GetById(int id)
-        {
-            return await _eventRepository.GetById(id);
-        }
-        [AllowAnonymous]
+
         [HttpGet]
         [Route("all")]
         public new async Task<IEnumerable<Event>> GetAll()
         {
             return await  _eventRepository.GetAll();
+        }
+        
+        [HttpGet("GetById")]
+        public new async Task<ActionResult<Event>> GetById([FromQuery] Event e)
+        {
+            return await base.GetById(e);
         }
         
     }

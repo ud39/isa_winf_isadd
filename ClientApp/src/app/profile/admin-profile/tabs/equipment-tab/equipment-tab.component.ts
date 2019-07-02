@@ -52,8 +52,8 @@ export class EquipmentTabComponent implements OnInit {
 
 
   //jan
-  onFileChanged(event) {
-    this.adminService.onFileChanged(event)
+  onFileChanged(files, event) {
+    this.adminService.onFileChanged2(files, event, "equipment")
   }
 
   onUpload(fromWhere) {

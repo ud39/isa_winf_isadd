@@ -30,12 +30,11 @@ namespace WinfADD.Controllers
             return coffeeShops;
         }
       //  [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        [HttpGet("{id:int}")]
-        public async Task<ActionResult<CoffeeShop>> GetById(int id)
-        {
-            return await _coffeeShopRepo.GetById(id);
-        }
-
+          [HttpGet("GetById")]
+          public new async Task<ActionResult<CoffeeShop>> GetById([FromQuery] CoffeeShop c)
+          {
+              return await _coffeeShopRepo.GetById(c);
+          }
 
         [HttpPost("insert")]
         public override async Task<bool> insert(JToken jToken)
@@ -66,8 +65,7 @@ namespace WinfADD.Controllers
             return await _coffeeShopRepo.PartialUpdateCoffeeShop(coffeeShopObj ,fieldsToChange);
         }
 
-        [HttpGet]
-        [Route("all")]
+        [HttpGet ("all")]
         public new async Task<IEnumerable<CoffeeShopPreview>> GetAll()
         {
 

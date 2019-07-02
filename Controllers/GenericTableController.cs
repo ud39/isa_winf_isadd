@@ -21,15 +21,13 @@ namespace WinfADD.Controllers
             _tableRepo = tableRepo;
         }
 
+        
+        
         public virtual async Task<IEnumerable<Table>> GetAll()
         {
             return await  _tableRepo.GetAll();
         }
 
-
-
-        [HttpGet]
-        [Route("GetById")]
         public virtual async Task<ActionResult<Table>> GetById([FromQuery] Table tableObj)
         {
             return await _tableRepo.GetById(tableObj);

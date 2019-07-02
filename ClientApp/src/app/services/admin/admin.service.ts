@@ -13,6 +13,8 @@ export class AdminService {
 
   public progress: number;
   public message: string;
+  public fromTab: string;
+  public contentType: string;
 
   //radiobutton
   public galleryNumber = "1";
@@ -53,16 +55,26 @@ export class AdminService {
 
   private selectedFile: File;
 
-  onFileChanged(event) {
-    this.selectedFile = event;
-    console.log("FILE NAME::"+this.selectedFile.name)
-    this.showImage(event);
+
+  onFileChanged2(files, event, fromTab) {
+    this.fromTab = fromTab;
+    this.selectedFile = event.target.files[0];
+    this.showImage(files);
+  }
+
+
+  onFileChangedShop(files, event, fromTab, contentType) {
+    this.fromTab = fromTab;
+    this.contentType = contentType;
+    this.selectedFile = event.target.files[0];
+    this.showImage(files);
   }
 
 
   onUpload(fromWhere) {
     console.log(":::::::::::::::"+fromWhere);
 
+    console.log("ABCDEFG::"+this.selectedFile.name)
     //set meta data
     const uploadData = new FormData();
     uploadData.append('fromWhere', fromWhere);
@@ -205,6 +217,7 @@ export class AdminService {
   public error_message_image: string;
 
   showImage(files) {
+
     if (files.length === 0)
       return;
 
@@ -217,8 +230,57 @@ export class AdminService {
     var reader = new FileReader();
     this.imagePath = files;
     reader.readAsDataURL(files[0]);
+
     reader.onload = (_event) => {
-      this.eventImage = reader.result;
+
+      console.log("--------");
+      console.log("::"+this.fromTab);
+      console.log("::"+this.contentType);
+
+      switch (this.fromTab) {
+        case "shop":
+          if(this.contentType.match("gallery")) {
+            switch (this.galleryNumber) {
+              case "1":
+                this.gallery_1 = reader.result;
+                break;
+              case "2":
+                this.gallery_2 = reader.result;
+                break;
+              case "3":
+                this.gallery_3 = reader.result;
+                break;
+              case "4":
+                this.gallery_4 = reader.result;
+                break;
+            }
+          }
+          else if(this.contentType.match("front")){
+            this.frontImage = reader.result;
+          }
+          else if(this.contentType.match("preview")){
+            this.previewImage = reader.result;
+          }
+          break;
+        case "event":
+          this.eventImage = reader.result;
+          break;
+        case "equipment":
+          this.equipmentImage = reader.result;
+          break;
+        case "article":
+          this ;
+          break;
+        case "poi":
+          this ;
+          break;
+        case "location":
+          this ;
+          break;
+        case "quipment-category":
+          this ;
+          break;
+      }
     }
   }
 

@@ -18,6 +18,7 @@ import {CompareService} from "../../../../services/compare/compare.service";
 import {EventService} from "../../../../services/event/event.service";
 
 
+
 @Component({
   selector: 'app-shop-tab',
   templateUrl: './shop-tab.component.html',
@@ -208,19 +209,23 @@ export class ShopTabComponent implements OnInit {
   }
 
   getJsonOfShop(): JSON{
-    return this.checkBoxService.getJsonOfShopInput(this.addressInputs.toArray(), this.nameDescriptionInputs.toArray(), this.checkBoxes.cbs.toArray(),this.selects.toArray())
+    let json = this.checkBoxService.getJsonOfShopInput(this.addressInputs.toArray(), this.nameDescriptionInputs.toArray(), this.checkBoxes.cbs.toArray(),this.selects.toArray());
+
+    //json["images"] = "[{},{}]";
+    return json;
   }
 
-  onFileChanged(event) {
-    this.admin_service.onFileChanged(event)
+  onFileChanged(files, event, fromWhere) {
+    console.log("?????????????????????????"+fromWhere);
+    this.adminService.onFileChangedShop(files, event,"shop", fromWhere)
   }
 
   onUpload(fromWhere) {
-    this.admin_service.onUpload(fromWhere);
+    this.adminService.onUpload(fromWhere);
   }
 
   deleteImage(fromWhere) {
-    this.admin_service.deleteImage(fromWhere);
+    this.adminService.deleteImage(fromWhere);
   }
 
 
@@ -259,8 +264,7 @@ export class ShopTabComponent implements OnInit {
 
       }
   }
-
-  constructor(public admin_service: AdminService, public shopService: ShopService,
+  constructor(public adminService: AdminService, public shopService: ShopService,
               public checkBoxService: CheckBoxesService, public inputService: InputFormService,
               public compareService: CompareService, public eventService : EventService) { }
 

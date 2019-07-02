@@ -25,10 +25,11 @@ namespace WinfADD.Controllers
             return await  _PoiRepository.GetAll();
         }
         
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Poi>> GetById(string id)
+        [HttpGet("GetById")]
+        public new async Task<ActionResult<Poi>> GetById([FromQuery] Poi poi)
         {
-            return await _PoiRepository.GetById(id);
+            return await base.GetById(poi);
         }
+        
     }
 }

@@ -24,7 +24,7 @@ namespace WinfADD.Controllers
             return await  _blendRepository.GetAll();
         }
         
-        [HttpGet("id")]
+        [HttpGet("GetById")]
         public new async Task<ActionResult<BlendPreview>> GetById([FromQuery] Blend blend)
         {
             return await _blendRepository.GetById(blend);
