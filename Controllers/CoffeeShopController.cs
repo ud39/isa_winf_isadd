@@ -32,7 +32,7 @@ namespace WinfADD.Controllers
         
         
         [HttpGet("supplies")]
-        public async Task<IEnumerable<CoffeeShopPreview>> GetCoffeeShops([FromQuery]SearchSupplyShopModel searchQuery)
+        public async Task<IEnumerable<CoffeeShopPreview>> GetSupplyShops([FromQuery]SearchSupplyShopModel searchQuery)
         {
             var coffeeShops = await _coffeeShopRepo.GetSupplyShops(searchQuery);
 
@@ -82,6 +82,13 @@ namespace WinfADD.Controllers
         {
 
             return await  _coffeeShopRepo.GetAll();
+        }
+
+        [HttpGet ("supplies/all")]
+        public new async Task<IEnumerable<CoffeeShopPreview>> GetAllSupplies()
+        {
+
+            return await  _coffeeShopRepo.GetAllSupply();
         }
 
     }

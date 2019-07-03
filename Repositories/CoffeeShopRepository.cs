@@ -80,11 +80,9 @@ namespace WinfADD.Repositories
             " where c.id = ci.coffee_shop_id and i.file_name = ci.image_file_name and i.content_type = 'preview'"+
             " and rbu.coffee_shop_id = c.id and rbu.user_rating_id = ur.rating_id "+
             " group by c.id, i.file_name"+
-                " union select c1.*, null as file_name, null as average_total from coffee_shop c1) as t" +
-                " where exists(select * from offers o where o.coffee_shop_id = id) " +
-                " or exists(select p from provides p where p.coffee_shop_id = id) " +
-                " or exists (select * from supplies s where s.coffee_shop_id = id) "+
-                " order by id, file_name ";
+                " union select c1.*, null as file_name, null as average_total from coffee_shop c1) as t order by id, file_name ";
+
+            
         }
 
         public override async Task<IEnumerable<CoffeeShopPreview>> GetAll()
@@ -93,6 +91,28 @@ namespace WinfADD.Repositories
             using (IDbConnection conn = Connection)
             {
                 var result = await conn.QueryMultipleAsync(GetAllString);
+                var coffeeshops = result.Read<CoffeeShopPreview>();
+            
+                return coffeeshops.ToList();
+            }
+        }        
+        public async Task<IEnumerable<CoffeeShopPreview>> GetAllSupply()
+        {
+            var allSupply = "select distinct on (id) id, * from (select distinct c.*, i.file_name, to_char(AVG (ur.total),'9D9') as average_total from coffee_shop c, coffee_shop_image ci, image i, user_rating ur, rated_by_user rbu"+
+                " where c.id = ci.coffee_shop_id and i.file_name = ci.image_file_name and i.content_type = 'preview'"+
+                " and rbu.coffee_shop_id = c.id and rbu.user_rating_id = ur.rating_id "+
+                " group by c.id, i.file_name" +
+                " union select c1.*, null as file_name, null as average_total from coffee_shop c1) as t " +
+                " where exists(select * from offers o where o.coffee_shop_id = id) " +
+                " or exists(select p from provides p where p.coffee_shop_id = id) " +
+                " or exists (select * from supplies s where s.coffee_shop_id = id) " +
+                " order by id, file_name ";
+    
+
+
+            using (IDbConnection conn = Connection)
+            {
+                var result = await conn.QueryMultipleAsync(allSupply);
                 var coffeeshops = result.Read<CoffeeShopPreview>();
             
                 return coffeeshops.ToList();
