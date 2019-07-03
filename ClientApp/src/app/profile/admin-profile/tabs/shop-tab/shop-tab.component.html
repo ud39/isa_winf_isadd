@@ -1,16 +1,16 @@
-<app-checkbox #checkbox class="checkbox"></app-checkbox>
+<app-checkbox-shop-admin #checkbox class="checkbox"></app-checkbox-shop-admin>
   <mat-form-field class="shop-form-field address">
     <input id="streetName" matInput #address="matInput" type="text" placeholder="Straße" [formControl]="streetFormControl">
   </mat-form-field>
   <mat-form-field class="shop-form-field address">
-    <input id="streetNr" matInput #address="matInput" type="text" placeholder="StraßeNr" [formControl]="streetNrFormControl" (input)="validateFormControl()">
+    <input id="streetNr" matInput #address="matInput" type="text" placeholder="StraßeNr" [formControl]="streetNrFormControl" (input)="streetNrFormControl.updateValueAndValidity({onlySelf:true})">
     <mat-error *ngIf="streetNrFormControl.hasError('pattern')">Nur Zahlen</mat-error>
   </mat-form-field>
   <mat-form-field  class="shop-form-field address">
     <input id="country" matInput #address="matInput" type="text" placeholder="Land" [formControl]="countryFormControl">
   </mat-form-field>
  <mat-form-field  class="shop-form-field address">
-   <input id="postalCode" matInput #address="matInput" type="text" placeholder="Postleitzahl" [formControl]="postalCodeFormControl" (input)="validateFormControl()">
+   <input id="postalCode" matInput #address="matInput" type="text" placeholder="Postleitzahl" [formControl]="postalCodeFormControl" (input)="postalCodeFormControl.updateValueAndValidity({onlySelf:true})">
    <mat-error *ngIf="postalCodeFormControl.hasError('pattern')">Nur Zahlen und mind. 2</mat-error>
  </mat-form-field>
  <mat-form-field  class="shop-form-field address">
@@ -49,7 +49,7 @@
 
  <ng-container *ngIf="isLoaded">
    <mat-form-field class="select-form-field">
-     <mat-select id=busStation placeholder="Bus Haltestelle" [formControl]="selectBusStationFromControl" [compareWith]="compareService.compareBusStation" multiple (selectionChange)="addEvents($event.value)">
+     <mat-select id=busStation placeholder="Bus Haltestelle" [formControl]="selectBusStationFromControl" [compareWith]="compareService.compareBusStation" multiple>
        <mat-option *ngFor="let busStation of chooseBusStations" [value]="busStation">{{busStation.name}}</mat-option>
      </mat-select>
    </mat-form-field>
@@ -78,17 +78,17 @@
      <mat-option *ngFor="let bean of chooseBeans" [value]="bean">{{bean.name + " " + bean.provenance}}</mat-option>
    </mat-select>
  </mat-form-field>
-   <h5>Öffnungszeiten Angabe in folgenden Format HH:MM</h5>
+   <h5>Öffnungszeiten (HH:MM)</h5>
 <div class="opening-times">
     <div class="weekday monday">
       <p class="weekday">Montag</p>
       <mat-form-field>
-      <input matInput placeholder="Offen" type="text" maxlength="5" [formControl]="mondayOpenFormControl" (input)="this.validateFormControl()">
+      <input matInput placeholder="Offen" type="text" maxlength="5" [formControl]="mondayOpenFormControl">
       <mat-hint>Format(HH:MM)</mat-hint>
       <mat-error *ngIf="mondayOpenFormControl.hasError('pattern')">Benötigtes Format(HH::MM)</mat-error>
       </mat-form-field>
       <mat-form-field>
-      <input matInput placeholder="Geschlossen" type="text" maxlength="5" [formControl]="mondayCloseFormControl" (input)="this.validateFormControl()">
+      <input matInput placeholder="Geschlossen" type="text" maxlength="5" [formControl]="mondayCloseFormControl" (input)="mondayCloseFormControl.updateValueAndValidity({onlySelf:true})">
       <mat-hint>Format(HH:MM)</mat-hint>
       <mat-error *ngIf="mondayCloseFormControl.hasError('pattern')">Benötigtes Format(HH::MM)</mat-error>
       </mat-form-field>
@@ -96,25 +96,25 @@
     <div class="weekday tuesday">
       <p class="weekday">Dienstag</p>
       <mat-form-field>
-      <input matInput type="text" placeholder="Offen" maxlength="5" [formControl]="tuesdayOpenFormControl" (input)="this.validateFormControl()">
+      <input matInput type="text" placeholder="Offen" maxlength="5" [formControl]="tuesdayOpenFormControl">
       <mat-hint>Format(HH:MM)</mat-hint>
       <mat-error *ngIf="tuesdayOpenFormControl.hasError('pattern')">Benötigtes Format(HH::MM)</mat-error>
-      <mat-error *ngIf="openTimeFormGroup.get('tuesday').hasError('notMatch')">Geschlossen Zeitpunkt musst größer sein als geöffnet</mat-error>
+      <mat-error *ngIf="openingCloseTimeFormGroup.get('tuesdayOpen').hasError('notMatch')">Geschlossen Zeitpunkt musst größer sein als geöffnet</mat-error>
       </mat-form-field>
       <mat-form-field>
-      <input matInput type="text" placeholder="Geschlossen" maxlength="5" [formControl]="tuesdayCloseFormControl" (input)="this.validateFormControl()">
+      <input matInput type="text" placeholder="Geschlossen" maxlength="5" [formControl]="tuesdayCloseFormControl" (input)="tuesdayCloseFormControl.updateValueAndValidity({onlySelf:true})">
       <mat-hint>Format(HH:MM)</mat-hint>
       <mat-error *ngIf="tuesdayCloseFormControl.hasError('pattern')">Benötigtes Format(HH::MM)</mat-error>
       </mat-form-field></div>
     <div class="weekday wednesday">
       <p class="weekday">Mittwoch</p>
       <mat-form-field>
-      <input matInput type="text" placeholder="Offen" maxlength="5" [formControl]="wednesdayOpenFormControl" (input)="this.validateFormControl()">
+      <input matInput type="text" placeholder="Offen" maxlength="5" [formControl]="wednesdayOpenFormControl" (input)="wednesdayOpenFormControl.updateValueAndValidity({onlySelf:true})">
       <mat-hint>Format(HH:MM)</mat-hint>
       <mat-error *ngIf="wednesdayOpenFormControl.hasError('pattern')">Benötigtes Format(HH::MM)</mat-error>
       </mat-form-field>
       <mat-form-field>
-      <input matInput type="text" placeholder="Geschlossen" maxlength="5" [formControl]="wednesdayCloseFormControl" (input)="this.validateFormControl()">
+      <input matInput type="text" placeholder="Geschlossen" maxlength="5" [formControl]="wednesdayCloseFormControl" (input)="wednesdayCloseFormControl.updateValueAndValidity({onlySelf:true})">
       <mat-hint>Format(HH:MM)</mat-hint>
       <mat-error *ngIf="wednesdayCloseFormControl.hasError('pattern')">Benötigtes Format(HH::MM)</mat-error>
       </mat-form-field>
@@ -122,12 +122,12 @@
     <div class="weekday thursday">
       <p class="weekday">Donnerstag</p>
       <mat-form-field>
-      <input matInput type="text" placeholder="Offen" maxlength="5" [formControl]="thursdayOpenFormControl" (input)="this.validateFormControl()">
+      <input matInput type="text" placeholder="Offen" maxlength="5" [formControl]="thursdayOpenFormControl" (input)="thursdayOpenFormControl.updateValueAndValidity({onlySelf:true})">
       <mat-hint>Format(HH:MM)</mat-hint>
       <mat-error *ngIf="thursdayOpenFormControl.hasError('pattern')">Benötigtes Format(HH::MM)</mat-error>
       </mat-form-field>
       <mat-form-field>
-      <input matInput type="text" placeholder="Geschlossen" maxlength="5" [formControl]="thursdayCloseFormControl" (input)="this.validateFormControl()">
+      <input matInput type="text" placeholder="Geschlossen" maxlength="5" [formControl]="thursdayCloseFormControl" (input)="thursdayCloseFormControl.updateValueAndValidity({onlySelf:true})">
       <mat-hint>Format(HH:MM)</mat-hint>
       <mat-error *ngIf="thursdayCloseFormControl.hasError('pattern')">Benötigtes Format(HH::MM)</mat-error>
       </mat-form-field>
@@ -135,12 +135,12 @@
     <div class="weekday friday">
       <p class="weekday">Freitag</p>
       <mat-form-field>
-      <input matInput type="text" placeholder="Offen" maxlength="5" [formControl]="fridayOpenFormControl" (input)="this.validateFormControl()">
+      <input matInput type="text" placeholder="Offen" maxlength="5" [formControl]="fridayOpenFormControl" (input)="fridayOpenFormControl.updateValueAndValidity({onlySelf:true})">
       <mat-hint>Format(HH:MM)</mat-hint>
       <mat-error *ngIf="fridayOpenFormControl.hasError('pattern')">Benötigtes Format(HH::MM)</mat-error>
       </mat-form-field>
       <mat-form-field>
-      <input matInput type="text" placeholder="Geschlossen" maxlength="5" [formControl]="fridayCloseFormControl" (input)="this.validateFormControl()">
+      <input matInput type="text" placeholder="Geschlossen" maxlength="5" [formControl]="fridayCloseFormControl" (input)="fridayCloseFormControl.updateValueAndValidity({onlySelf:true})">
       <mat-hint>Format(HH:MM)</mat-hint>
       <mat-error *ngIf="fridayCloseFormControl.hasError('pattern')">Falsches Format</mat-error>
       </mat-form-field>
@@ -148,12 +148,12 @@
     <div class="weekday saturday">
       <p class="weekday">Samstag</p>
       <mat-form-field>
-      <input matInput type="text" placeholder="Offen" maxlength="5" [formControl]="saturdayOpenFormControl" (input)="this.validateFormControl()">
+      <input matInput type="text" placeholder="Offen" maxlength="5" [formControl]="saturdayOpenFormControl" (input)="saturdayOpenFormControl.updateValueAndValidity({onlySelf:true})">
       <mat-hint>Format(HH:MM)</mat-hint>
       <mat-error *ngIf="saturdayOpenFormControl.hasError('pattern')">Benötigtes Format(HH::MM)</mat-error>
       </mat-form-field>
       <mat-form-field>
-      <input matInput type="text" placeholder="Geschlossen" maxlength="5" [formControl]="saturdayCloseFormControl" (input)="this.validateFormControl()">
+      <input matInput type="text" placeholder="Geschlossen" maxlength="5" [formControl]="saturdayCloseFormControl" (input)="saturdayCloseFormControl.updateValueAndValidity({onlySelf:true})">
       <mat-hint>Format(HH:MM)</mat-hint>
       <mat-error *ngIf="saturdayCloseFormControl.hasError('pattern')">Benötigtes Format(HH::MM)</mat-error>
       </mat-form-field>
@@ -161,12 +161,12 @@
     <div class="weekday sunday">
       <p class="weekday">Sonntag</p>
       <mat-form-field>
-      <input matInput type="text" placeholder="Offen" maxlength="5" [formControl]="sundayOpenFormControl" (input)="this.validateFormControl()">
+      <input matInput type="text" placeholder="Offen" maxlength="5" [formControl]="sundayOpenFormControl" (input)="sundayOpenFormControl.updateValueAndValidity({onlySelf:true})">
       <mat-error *ngIf="sundayOpenFormControl.hasError('pattern')">Benötigtes Format(HH::MM)</mat-error>
       <mat-hint>Format(HH:MM)</mat-hint>
       </mat-form-field>
       <mat-form-field>
-      <input matInput type="text" placeholder="Geschlossen" maxlength="5" [formControl]="sundayCloseFormControl" (input)="this.validateFormControl()">
+      <input matInput type="text" placeholder="Geschlossen" maxlength="5" [formControl]="sundayCloseFormControl" (input)="sundayCloseFormControl.updateValueAndValidity({onlySelf:true})">
       <mat-hint>Format(HH:MM)</mat-hint>
       <mat-error *ngIf="sundayCloseFormControl.hasError('pattern')">Benötigtes Format(HH::MM)</mat-error>
       </mat-form-field>

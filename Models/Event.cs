@@ -7,10 +7,6 @@ namespace WinfADD.Models
     public class Event
     {
 
-        public Event(){
-            Images = new List<Image>();
-        }
-        
         [Key] 
         public int Id { get; set; }
         
@@ -26,7 +22,12 @@ namespace WinfADD.Models
         
         public string PreviewImageFileName { get; set; }
         
-        public List<Image> Images { get; set; }
+        public Address Address { get; set; }
+        
+        public IEnumerable<Image> Images { get; set; }
+        
+        
+        public IEnumerable<CoffeeShopPreview> CoffeeShops { get; set; }
     }
 
 }

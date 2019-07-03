@@ -25,7 +25,7 @@ export class EventService {
 
 
   getEvent(id): Observable<Event>{
-    return this.http.get<Event>(Global.url + 'event/' + id, {headers:headers});
+    return this.http.get<Event>(Global.url + 'event/getbyid?id=' + id, {headers:headers});
   }
 
   getEventWithParams(queryParams : Params):Observable<Event[]>{

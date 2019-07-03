@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace WinfADD.Models
@@ -11,12 +12,6 @@ namespace WinfADD.Models
         public string Provenance { get; set; }
         
         public string PriceClass { get; set; }
-
-        //
-        //public bool FairTrade { get; set; } //TODO change in Herm, Translation or from beans
-
-
-        //bytea
-        //TODO public string Description { get; set; }
+       
     }
 }

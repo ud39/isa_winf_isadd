@@ -48,7 +48,7 @@ export class AdminProfileComponent implements OnInit {
   public currentSelectedObject : any;
   ngOnInit() {
     this.whichTabIsActive();
-    this.matTabGroup.selectedIndex = 0;
+
     this.matTabGroup.selectedTabChange.subscribe(event =>{
       this.matTabActive = event.tab.textLabel;
       this.whichTabIsActive();
@@ -232,7 +232,7 @@ export class AdminProfileComponent implements OnInit {
         break;
     }
   }
-  t
+
   deleteContent(){
     switch (this.matTabActive) {
       case 'Shop':
@@ -243,7 +243,7 @@ export class AdminProfileComponent implements OnInit {
         this.emptyInput();
         break;
       case 'Bohnen & Zubehör':
-        this.inputFormService.postContentEquipment(this.body);
+        this.inputFormService.postContentEquipment(this.body).subscribe();
         this.emptyInput();
         break;
       case 'Event':
@@ -251,15 +251,15 @@ export class AdminProfileComponent implements OnInit {
         this.emptyInput();
         break;
       case 'Content':
-        this.inputFormService.postContent(this.body,this.contentTab.selectContentFormControl.value);
+        this.inputFormService.postContent(this.body,this.contentTab.selectContentFormControl.value).subscribe();
         this.emptyInput();
         break;
       case 'User':
-        this.inputFormService.postUser(this.body);
+        this.inputFormService.postUser(this.body).subscribe();
         this.emptyInput();
         break;
       case 'Artikel':
-        this.inputFormService.postContentArticle(this.body);
+        this.inputFormService.postContentArticle(this.body).subscribe();
         this.emptyInput();
         break;
     }
@@ -290,7 +290,6 @@ export class AdminProfileComponent implements OnInit {
   }
 
   emptyInput(){
-    console.log(this.activeFormGroup);
     this.activeFormGroup.reset('');
     this.clearCheckBox();
   }

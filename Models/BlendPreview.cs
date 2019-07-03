@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace WinfADD.Models
@@ -8,6 +9,7 @@ namespace WinfADD.Models
 
         public string Provenance { get; set; }
         public string ImageFileName { get; set; }
+        public IEnumerable<BeanPreview> Beans { get; set; }
 
     }
 }

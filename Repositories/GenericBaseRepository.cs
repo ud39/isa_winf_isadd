@@ -51,6 +51,7 @@ namespace WinfADD.Repositories
             SqlMapper.SetTypeMap(typeof(Event), MappingConfigurator.CreateMap(typeof(Event), MappingConfigurator.EventMapper));
 
             
+            NpgsqlConnection.GlobalTypeMapper.MapComposite<Address>("address");
             
             //TODO in extended class
             //TODO add all key names here (maybe lowerCase)

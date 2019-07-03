@@ -1,0 +1,100 @@
+<div class="search-field">
+  <div>
+    <mat-form-field class="price-range">
+      <mat-label>Preis Klasse</mat-label>
+      <mat-select id="priceClass">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let price of priceClass" [value]="price">
+          {{price}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-checkbox #cb class="checkbox"
+                  id="wlan"
+                  [formControl]="wlanFormControl"
+                  [indeterminate]="wlanFormControl.value === false"
+                  (click)="wlanFormControl.setValue(tape[(tape.indexOf(wlanFormControl.value) + 1) % tape.length])"
+                  [color]="wlanFormControl.value === false ? 'warn' : 'accent'">
+      Wlan
+    </mat-checkbox>
+    <mat-checkbox #cb
+                  class="checkbox"
+                  id="latteArt"
+                  [formControl]="latteArtFormControl"
+                  [indeterminate]="latteArtFormControl.value === false"
+                  (click)="latteArtFormControl.setValue(tape[(tape.indexOf(latteArtFormControl.value) + 1) % tape.length])"
+                  [color]="latteArtFormControl.value === false ? 'warn' : 'accent'">
+    Latte Art
+    </mat-checkbox>
+    <mat-checkbox #cb
+                  class="checkbox"
+                  id="outdoor"
+                  [formControl]="outdoorFormControl"
+                  [indeterminate]="outdoorFormControl.value === false"
+                  (click)="outdoorFormControl.setValue(tape[(tape.indexOf(outdoorFormControl.value) + 1) % tape.length])"
+                  [color]="outdoorFormControl.value === false ? 'warn' : 'accent'">
+      Outdoor
+    </mat-checkbox>
+    <mat-checkbox #cb
+                  class="checkbox"
+                  id="childFriendly"
+                  [formControl]="childFriendlyFormControl"
+                  [indeterminate]="childFriendlyFormControl.value === false"
+                  (click)="childFriendlyFormControl.setValue(tape[(tape.indexOf(childFriendlyFormControl.value) + 1) % tape.length])"
+                  [color]="childFriendlyFormControl.value === false ? 'warn' : 'accent'">
+      Kinderfreundlich
+    </mat-checkbox>
+    <mat-checkbox #cb
+                  class="checkbox"
+                  id="workstation"
+                  [formControl]="workstationFormControl"
+                  [indeterminate]="workstationFormControl.value === false"
+                  (click)="workstationFormControl.setValue(tape[(tape.indexOf(workstationFormControl.value) + 1) % tape.length])"
+                  [color]="workstationFormControl.value === false ? 'warn' : 'accent'">
+      Workstation</mat-checkbox>
+    <mat-checkbox #cb
+                  class="checkbox"
+                  id="disableFriendly"
+                  [formControl]="disableFriendlyFormControl"
+                  [indeterminate]="disableFriendlyFormControl.value === false"
+                  (click)="disableFriendlyFormControl.setValue(tape[(tape.indexOf(disableFriendlyFormControl.value) + 1) % tape.length])"
+                  [color]="disableFriendlyFormControl.value === false ? 'warn' : 'accent'">
+      Behindertengerecht
+    </mat-checkbox>
+    <mat-checkbox #cb
+                  class="checkbox"
+                  id="petFriendly"
+                  [formControl]="petFriendlyFormControl"
+                  [indeterminate]="petFriendlyFormControl.value === false"
+                  (click)="petFriendlyFormControl.setValue(tape[(tape.indexOf(petFriendlyFormControl.value) + 1) % tape.length])"
+                  [color]="petFriendlyFormControl.value === false ? 'warn' : 'accent'">
+                  Haustierfreundlich
+    </mat-checkbox>
+    <mat-checkbox #cb
+                  class="checkbox"
+                  id="warmFood"
+                  [formControl]="warmFoodFormControl"
+                  [indeterminate]="warmFoodFormControl.value === false"
+                  (click)="warmFoodFormControl.setValue(tape[(tape.indexOf(warmFoodFormControl.value) + 1) % tape.length])"
+                  [color]="warmFoodFormControl.value === false ? 'warn' : 'accent'">
+      Warmes Essen</mat-checkbox>
+    <mat-checkbox #cb
+                  class="checkbox"
+                  id="coldFood"
+                  [formControl]="coldFoodFormControl"
+                  [indeterminate]="coldFoodFormControl.value === false"
+                  (click)="coldFoodFormControl.setValue(tape[(tape.indexOf(coldFoodFormControl.value) + 1) % tape.length])"
+                  [color]="coldFoodFormControl.value === false ? 'warn' : 'accent'">
+      Kaltes Essen</mat-checkbox>
+    <mat-checkbox #cb
+                  class="checkbox"
+                  id="franchise"
+                  [formControl]="franchiseFormControl"
+                  [indeterminate]="franchiseFormControl.value === false"
+                  (click)="franchiseFormControl.setValue(tape[(tape.indexOf(franchiseFormControl.value) + 1) % tape.length])"
+                  [color]="franchiseFormControl.value === false ? 'warn' : 'accent'">Kette</mat-checkbox>
+    <div>
+      <button mat-button id="clearbutton" (click)="clear()">Checks aufheben</button>
+    </div>
+  </div>
+</div>

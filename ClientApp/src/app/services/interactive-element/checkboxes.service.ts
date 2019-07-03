@@ -1,6 +1,6 @@
 import {Injectable, QueryList} from '@angular/core';
 import {MatCheckbox, MatInput, MatSelect} from "@angular/material";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormGroup} from "@angular/forms";
 import {Shop} from "../../interfaces/entity/Shop";
 
 @Injectable({
@@ -89,43 +89,55 @@ export class CheckBoxesService {
     this.resetSelect(select);
   }
 
-  fillOutWlan(cb : Array<MatCheckbox>,wlan: boolean){
-    if(wlan) {return cb.find(val => val.id == 'wlan').checked = true;}
+  public fillOutWlan(fg : FormGroup,wlan: boolean){
+    if(wlan){fg.get('wlan').setValue(true);}
+    if(wlan == false){fg.get('wlan').setValue(false);}
   }
-  fillOutVegan(cb : Array<MatCheckbox>,vegan: boolean){
-    if(vegan) {return cb.find(val => val.id == 'vegan').checked = true;}
+  public fillOutLatteArt(fg : FormGroup,latteArt: boolean){
+    if(latteArt){fg.get('latteArt').setValue(true);}
+    if(latteArt == false){fg.get('latteArt').setValue(false);}
   }
-  fillOutLatteArt(cb : Array<MatCheckbox>,latteArt: boolean){
-    if(latteArt) {return cb.find(val => val.id == 'latteArt').checked = true;}
+  public fillOutOutdoor(fg : FormGroup,outdoor: boolean){
+    console.log("Fill outdoor");
+    if(outdoor){fg.get('outdoor').setValue(true);}
+    if(outdoor == false){
+      console.log(outdoor);
+      fg.get('outdoor').setValue(false);
+    }
   }
-  fillOutOutdoor(cb : Array<MatCheckbox>,outdoor: boolean){
-    if(outdoor) {return cb.find(val => val.id == 'outdoor').checked = true;}
+  public fillOutChildFriendly(fg : FormGroup,childFriendly: boolean){
+    if(childFriendly){fg.get('childFriendly').setValue(true);}
+    if(childFriendly == false){fg.get('childFriendly').setValue(false);}
   }
-  fillOutChildFriendly(cb : Array<MatCheckbox>,childfiendly: boolean){
-    if(childfiendly) {return cb.find(val => val.id == 'childFriendly').checked = true;}
+  public fillOutWorkStation(fg : FormGroup,workstation: boolean){
+    if(workstation){fg.get('workstation').setValue(true);}
+    if(workstation == false){fg.get('workstation').setValue(false);}
   }
-  fillOutWorkStation(cb : Array<MatCheckbox>,workstation: boolean){
-    if(workstation) {return cb.find(val => val.id == 'workstation').checked = true;}
+  public fillOutShop(fg : FormGroup,shop: boolean){
+    if(shop){fg.get('shop').setValue(true);}
+    if(shop == false){fg.get('shop').setValue(false);}
   }
-  fillOutShop(cb : Array<MatCheckbox>,shop: boolean){
-    if(shop) {return cb.find(val => val.id == 'shop').checked = true;}
+  public fillOutDisableFriendly(fg : FormGroup,disableFriendly: boolean){
+    if(disableFriendly){fg.get('disableFriendly').setValue(true);}
+    if(disableFriendly == false){fg.get('disableFriendly').setValue(false);}
   }
-  fillOutDisableFriendly(cb : Array<MatCheckbox>,disableFriendly: boolean){
-    if(disableFriendly) {return cb.find(val => val.id == 'disableFriendly').checked = true;}
+  public fillOutPetFriendly(fg : FormGroup,petFriendly: boolean){
+    if(petFriendly){fg.get('petFriendly').setValue(true);}
+    if(petFriendly == false){fg.get('petFriendly').setValue(false);}
   }
-  fillOutPetFriendly(cb : Array<MatCheckbox>,petFriendly: boolean){
-    if(petFriendly) {return cb.find(val => val.id == 'petFriendly').checked = true;}
+  public fillOutWarmFood(fg : FormGroup,warmFood: boolean){
+    if(warmFood){fg.get('warmFood').setValue(true);}
+    if(warmFood == false){fg.get('warmFood').setValue(false);}
   }
-  fillOutWarmFood(cb : Array<MatCheckbox>,warmFood: boolean){
-    if(warmFood) {return cb.find(val => val.id == 'warmFood').checked = true;}
+  public fillOutColdFood(fg : FormGroup,coldFood: boolean){
+    if(coldFood){fg.get('coldFood').setValue(true);}
+    if(coldFood == false){fg.get('coldFood').setValue(false);}
   }
-  fillOutColdFood(cb : Array<MatCheckbox>,coldFood: boolean){
-    if(coldFood) {return cb.find(val => val.id == 'coldFood').checked = true;}
+  public fillOutFranchise(fg : FormGroup,franchise: boolean){
+    if(franchise){fg.get('franchise').setValue(true);}
+    if(franchise == false){fg.get('franchise').setValue(false);}
   }
-  fillOutFranchise(cb : Array<MatCheckbox>,franchise: boolean){
-    if(franchise) {return cb.find(val => val.id == 'wlan').checked = true;}
-  }
-  fillOutCheckBoxes(shop: Shop, cb : Array<MatCheckbox>){
+  fillOutCheckBoxes(shop: Shop, cb : FormGroup){
     this.fillOutWlan(cb,shop.wlan);
     this.fillOutWarmFood(cb,shop.warmFood);
     this.fillOutColdFood(cb,shop.coldFood);
