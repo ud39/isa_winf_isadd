@@ -56,36 +56,36 @@ insert into coffee_shop (name, address, outdoor, fair_trade, disabled_friendly, 
 
 
 
-insert into bean (name, provenance, type) values ('Arusha', 'Brazil', 'raw');
-insert into bean (name, provenance, type) values ('Benguet', 'Indonesia', 'dark roasted');
-insert into bean (name, provenance, type) values ('Blue Mountain', 'Indonesia', 'raw');
-insert into bean (name, provenance, type) values ('Bourbon', 'Mexico', 'roasted');
-insert into bean (name, provenance, type) values ('Catuai', 'Indonesia', 'raw');
-insert into bean (name, provenance, type) values ('Charrier', 'Indonesia', 'dark roasted');
-insert into bean (name, provenance, type) values ('Colombian', 'Indonesia', 'raw');
-insert into bean (name, provenance, type) values ('Gesha', 'Honduras', 'roasted');
-insert into bean (name, provenance, type) values ('Java', 'Indonesia', 'raw');
-insert into bean (name, provenance, type) values ('K7', 'Indonesia', 'raw');
-insert into bean (name, provenance, type) values ('Mocha', 'Indonesia', 'raw');
-insert into bean (name, provenance, type) values ('Pacas', 'Brazil', 'raw');
-insert into bean (name, provenance, type) values ('Ruiru 11', 'Indonesia', 'raw');
-insert into bean (name, provenance, type) values ('S795', 'Brazil', 'raw');
-insert into bean (name, provenance, type) values ('Sagada', 'Colombia', 'raw');
-insert into bean (name, provenance, type) values ('Santos', 'Brazil', 'raw');
-insert into bean (name, provenance, type) values ('Sarchimor', 'Ethiopia', 'dark roasted');
-insert into bean (name, provenance, type) values ('Selection 9 ', 'Indonesia', 'medium roasted');
-insert into bean (name, provenance, type) values ('SL28', 'Indonesia', 'raw');
-insert into bean (name, provenance, type) values ('Sulawesi', 'Colombia', 'medium roasted');
-insert into bean (name, provenance, type) values ('Timor, Arabusta', 'Indonesia', 'raw');
-insert into bean (name, provenance, type) values ('Typica', 'Indonesia', 'roasted');
-insert into bean (name, provenance, type) values ('Uganda', 'Colombia', 'raw');
-insert into bean (name, provenance, type) values ('Brutte', 'Indonesia', 'roasted');
-insert into bean (name, provenance, type) values ('Catimor', 'Vietnam', 'medium roasted');
-insert into bean (name, provenance, type) values ('Caturra', 'Indonesia', 'raw');
-insert into bean (name, provenance, type) values ('Ethiopian Harar', 'Indonesia', 'raw');
-insert into bean (name, provenance, type) values ('French Mission', 'Mexico', 'raw');
-insert into bean (name, provenance, type) values ('Hawaiian Kona', 'Brazil', 'raw');
-insert into bean (name, provenance, type) values ('Maragogipe', 'Mexico', 'medium roasted');
+insert into bean (name, provenance, roast, grind) values ('Arusha', 'Brazil', 'raw', 'veryFine');
+insert into bean (name, provenance, roast, grind) values ('Benguet', 'Indonesia', 'dark roasted','veryFine');
+insert into bean (name, provenance, roast, grind) values ('Blue Mountain', 'Indonesia', 'raw','veryCoarse');
+insert into bean (name, provenance, roast, grind) values ('Bourbon', 'Mexico', 'roasted','middle');
+insert into bean (name, provenance, roast, grind) values ('Catuai', 'Indonesia', 'raw','middle');
+insert into bean (name, provenance, roast, grind) values ('Charrier', 'Indonesia', 'dark roasted','coarse');
+insert into bean (name, provenance, roast, grind) values ('Colombian', 'Indonesia', 'raw','fine');
+insert into bean (name, provenance, roast, grind) values ('Gesha', 'Honduras', 'roasted','veryFine');
+insert into bean (name, provenance, roast, grind) values ('Java', 'Indonesia', 'raw','veryFine');
+insert into bean (name, provenance, roast, grind) values ('K7', 'Indonesia', 'raw','none');
+insert into bean (name, provenance, roast, grind) values ('Mocha', 'Indonesia', 'raw','none');
+insert into bean (name, provenance, roast, grind) values ('Pacas', 'Brazil', 'raw','middle');
+insert into bean (name, provenance, roast, grind) values ('Ruiru 11', 'Indonesia', 'raw','none');
+insert into bean (name, provenance, roast, grind) values ('S795', 'Brazil', 'raw','coarse');
+insert into bean (name, provenance, roast, grind) values ('Sagada', 'Colombia', 'raw','coarse');
+insert into bean (name, provenance, roast, grind) values ('Santos', 'Brazil', 'raw','fine');
+insert into bean (name, provenance, roast, grind) values ('Sarchimor', 'Ethiopia', 'dark roasted','coarse');
+insert into bean (name, provenance, roast, grind) values ('Selection 9 ', 'Indonesia', 'medium roasted','coarse');
+insert into bean (name, provenance, roast, grind) values ('SL28', 'Indonesia', 'raw','coarseMiddle');
+insert into bean (name, provenance, roast, grind) values ('Sulawesi', 'Colombia', 'medium roasted','coarseMiddle');
+insert into bean (name, provenance, roast, grind) values ('Timor, Arabusta', 'Indonesia', 'raw','coarse');
+insert into bean (name, provenance, roast, grind) values ('Typica', 'Indonesia', 'roasted','middle');
+insert into bean (name, provenance, roast, grind) values ('Uganda', 'Colombia', 'raw','veryFine');
+insert into bean (name, provenance, roast, grind) values ('Brutte', 'Indonesia', 'roasted','coarse');
+insert into bean (name, provenance, roast, grind) values ('Catimor', 'Vietnam', 'medium roasted','veryFine');
+insert into bean (name, provenance, roast, grind) values ('Caturra', 'Indonesia', 'raw','coarseMiddle');
+insert into bean (name, provenance, roast, grind) values ('Ethiopian Harar', 'Indonesia', 'raw','middle');
+insert into bean (name, provenance, roast, grind) values ('French Mission', 'Mexico', 'raw','fine');
+insert into bean (name, provenance, roast, grind) values ('Hawaiian Kona', 'Brazil', 'raw','middle');
+insert into bean (name, provenance, roast, grind) values ('Maragogipe', 'Mexico', 'medium roasted','none');
 
 
 insert into blend (name, provenance, price_class) values ('Varanus albigularis', 'Brazil', '');

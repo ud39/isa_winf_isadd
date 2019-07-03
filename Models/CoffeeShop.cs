@@ -30,8 +30,8 @@ namespace WinfADD.Models
 
 
         //ints
-        public int FoundingYear { get; set; }
-        public int Seats { get; set; }
+        public int ? FoundingYear { get; set; }
+        public int ? Seats { get; set; }
         
         //strings
         public string CompanyName { get; set; }

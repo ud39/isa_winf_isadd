@@ -72,7 +72,8 @@ CREATE TABLE company(
 CREATE TABLE bean(
                    name citext,
                    provenance citext,
-                   type text,
+                   roast text,
+                   grind text,
                    PRIMARY KEY (name, provenance)
 );
 
