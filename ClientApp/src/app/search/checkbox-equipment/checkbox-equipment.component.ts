@@ -8,6 +8,9 @@ import {Global} from "../../global";
 import {CompareService} from "../../services/compare/compare.service";
 import {InputFormService} from "../../services/admin/input-form.service";
 import {EquipmentCategory} from "../../interfaces/entity/EquipmentCategory";
+import {forkJoin, Observable} from "rxjs";
+import {Poi} from "../../interfaces/entity/Poi";
+import {BusStation} from "../../interfaces/entity/BusStation";
 
 @Component({
   selector: 'app-checkbox-equipment',
@@ -22,6 +25,19 @@ export class CheckboxEquipmentComponent implements OnInit {
   @ViewChildren(MatSelect) selects : QueryList<MatSelect>;
   @ViewChildren(MatInput) inputs : QueryList<MatInput>;
 
+  public checkBoxPois : Poi[];
+  public checkBoxBusStation: BusStation[];
+  public streetNameFormControl = new FormControl();
+  public shopNameFormControl = new FormControl();
+  public postalFormControl = new FormControl();
+  public priceClass = ['niedrig', 'mittel', 'hoch'];
+  public options: string[] = [];
+  public filteredOptions: Observable<string[]>;
+  public shopFormControls = new FormGroup({
+    shopName:this.shopNameFormControl,
+    streetName:this.streetNameFormControl
+  });
+
   public equipmentCategory : EquipmentCategory[];
   public selectEquipmentCategoryFormControl = new FormControl('',[]);
   public urlGlobalPath = Global.urlName;
@@ -29,7 +45,7 @@ export class CheckboxEquipmentComponent implements OnInit {
   public formGroupEquipment = new FormGroup({
     name: this.equipmentNameFormControl
   });
-  constructor(public router:Router, public checkBoxService: CheckBoxesService, public compareService: CompareService, public inputFormService:InputFormService) { }
+  constructor(public router:Router, public checkBoxService: CheckBoxesService, public compareService: CompareService, public inputService:InputFormService) { }
 
   getJsonOfSearch(): JSON{
     console.log(this.inputs.toArray(),this.cbs.toArray(),this.selects.toArray());
@@ -55,8 +71,15 @@ export class CheckboxEquipmentComponent implements OnInit {
   }
 
   ngOnInit() {
-  this.inputFormService.getEquipmentCategories().subscribe(value =>{
-   this.equipmentCategory =  value
-  })
+  this.inputService.getEquipmentCategories().subscribe(value =>{
+  this.equipmentCategory =  value
+  });
+    forkJoin([
+      this.inputService.getPois(),
+      this.inputService.getBusStations()
+    ]).subscribe(([pois, busStation]) => {
+      this.checkBoxPois = pois;
+      this.checkBoxBusStation = busStation;
+    })
   }
 }

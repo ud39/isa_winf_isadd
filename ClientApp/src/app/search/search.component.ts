@@ -40,11 +40,9 @@ export class SearchComponent implements OnInit,  AfterViewInit {
       case this.urlGlobalPath.get('shop'):
         this.jsonOfSearch = this.checkBoxComponent.getJsonOfSearchWithSelect();
         break;
-      case this.urlGlobalPath.get('suppliesEq'):
+      case this.urlGlobalPath.get('supplies'):
+        console.log('Supplies build JSON');
         this.jsonOfSearch = this.checkBoxEquipment.getJsonOfSearch();
-        break;
-      case this.urlGlobalPath.get('suppliesIng'):
-        this.jsonOfSearch = this.chechBoxComponentCoffee.getJsonOfSearch();
         break;
       case this.urlGlobalPath.get('wiki'):
         this.jsonOfSearch = this.checkBoxEquipment.getJsonOfSearch();
@@ -70,53 +68,31 @@ export class SearchComponent implements OnInit,  AfterViewInit {
     }
   }
 
-  navigateToEquipmentCoffeeWiki() {
+
+searchShops(){
+  this.getJsonOfSearch();
+  switch (this.urlPath) {
+  case this.urlGlobalPath.get('shop'):
+  console.log('Search Shop');
+  this.shopService.navigateTo(this.jsonOfSearch);
+  break;
+  case this.urlGlobalPath.get('supplies'):
+    console.log('Supplies');
+    console.log(this.jsonOfSearch);
     this.getJsonOfSearch();
-    switch (this.urlPath) {
-      case this.urlGlobalPath.get('wiki'):
-        this.navigateToSupplies();
-        this.navigateToCoffee();
-        break;
-      case this.urlGlobalPath.get('suppliesEq'):
-        this.navigateToSupplies();
-        break;
-      case this.urlGlobalPath.get('suppliesIng'):
-        this.navigateToSupplies();
-        break;
-      case this.urlGlobalPath.get('events'):
-        this.navigateToEvent();
-        break;
-    }
-  }
-
-  //TODO Make if statement from HTML to more compact function
-  displaySearchInterface(): boolean {
-    return null
-  }
-
-  navigateToShop() {
-    this.getJsonOfSearch();
-    this.shopService.navigateTo(this.jsonOfSearch)
-  }
-
-
-  navigateToEvent() {
-    this.eventService.navigateTo(this.jsonOfSearch);
-  }
-
-  navigateToSupplies() {
-    this.equipmentService.navigateTo(this.jsonOfSearch);
-  }
-
-  navigateToCoffee() {
+    this.shopService.searchSupplies(this.jsonOfSearch);
+  break;
+  case this.urlGlobalPath.get('wiki'):
+    console.log('Search Cool');
     this.coffeeService.navigateTo(this.jsonOfSearch);
-  }
+  break;
+}
+}
+
 
   public matTabActive: string = 'Shop';
-  check(){
-    console.log(this.urlPath == this.urlGlobalPath.get('shop'));
-    return this.urlPath == this.urlGlobalPath.get('shop');
-  }
+
+
   ngOnInit() {
 
   }

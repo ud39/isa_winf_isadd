@@ -6,3 +6,7 @@ app-checkbox-equipment .search-field{
 app-checkbox-equipment .checkbox{
   margin-right: 10px;
 }
+
+app-checkbox-equipment .search-equipment{
+  margin-right: 5px;
+}

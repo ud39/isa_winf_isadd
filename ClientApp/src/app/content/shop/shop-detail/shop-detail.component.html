@@ -6,10 +6,9 @@
     <mat-grid-list cols="3" rowHeight="100px" [gutterSize]="'30px'">
       <mat-grid-tile id="opening_times">
         <h6>Öffnungszeiten:</h6>
-        <ul>
-          <li>Stuff</li>
-          <li>Stuff</li>
-        </ul>
+        <mat-list dense *ngFor="let weekday of shop$.openingTimes">
+          <mat-list-item>{{weekday.weekday + weekday.open + weekday.close}}</mat-list-item>
+        </mat-list>
       </mat-grid-tile>
       <mat-grid-tile id="location">
         <h6>Adresse:</h6>

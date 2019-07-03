@@ -23,7 +23,7 @@ export class CheckBoxesService {
 
   public getSelectsValue(selects : Array<MatSelect>):void {
     for (let select of selects) {
-      this.jsonOfSearchParameters[select.id] = select.ngControl.value;
+      this.jsonOfSearchParameters[select.id] = select.value;
     }
   }
 

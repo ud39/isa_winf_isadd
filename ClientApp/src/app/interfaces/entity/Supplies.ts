@@ -5,6 +5,7 @@ import {BusStation} from "./BusStation";
 
 
 export interface Supplies extends Address{
+  id:number;
   name:string;
   priceClass:string;
   poi:Poi[];

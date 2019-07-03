@@ -1,0 +1,51 @@
+app-equipment-list button.nav-item.link-active{
+  color: white;
+  background:black;
+}
+
+app-equipment-list .address{
+  display: inline-block;
+  margin-left: 30px;
+}
+
+.preview-img{
+  float: left;
+  position: relative;
+  width: fit-content;
+  margin-bottom: 5px;
+}
+
+.shop_name{
+  padding: 0;
+  display: inline-block;
+  clear: both;
+  height: fit-content;
+  cursor: pointer;
+}
+
+.shop_name_underline{
+  padding: 0;
+  margin-top: 0;
+  border-top: solid #87cdf1;
+}
+
+.preview-content{
+  display: inline-block;
+  position: relative;
+  clear: both;
+  margin-left: 20px;
+  width: 80%;
+}
+
+.list-content{
+  clear: both;
+}
+
+app-equipment-list .read_more{
+  cursor: pointer;
+  display: inline-block;
+}
+
+app-equipment-list .mat-list-base .mat-list-item{
+  height: fit-content;
+}
