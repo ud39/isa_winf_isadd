@@ -191,6 +191,7 @@ namespace WinfADD.Repositories
                 var propertyName = property.Name.ToLower();
                 //TODO
                 //if(insertProperties)
+                if ((!insertProperties.ContainsKey(propertyName)) || Keys.Contains("id")) continue;
 
                 if (CSProperties.Length > 0)
                 {
