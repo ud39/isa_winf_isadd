@@ -99,6 +99,19 @@ namespace WinfADD.Models.Mapping
             {"preparations", "preparations"}
         };
 
+        public static Dictionary<string, string> EventMap = new Dictionary<string, string>
+        {
+            {"id", "id"},
+            {"name", "name"},
+            {"starttime", "start_time"},
+            {"endtime", "end_time"},
+            {"accessfee", "access_fee"},
+            {"description", "description"},
+            {"previewimagefilename", "preview_image_filename"},
+            {"image", "image"}
+        };
+
+
 
     }
 }

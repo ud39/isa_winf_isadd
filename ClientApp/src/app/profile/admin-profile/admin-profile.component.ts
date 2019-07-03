@@ -214,20 +214,21 @@ export class AdminProfileComponent implements OnInit {
         this.inputFormService.postContentShop(this.body).subscribe();
         break;
       case 'Bohnen & Zubehör':
-        this.inputFormService.postContentEquipment(this.body);
+        this.inputFormService.postContentEquipment(this.body).subscribe();
         break;
       case 'Event':
-        this.inputFormService.postContentEvent(this.body);
+        console.log("Event Add");
+        this.inputFormService.postContentEvent(this.body).subscribe();;
         break;
       case 'Content':
         console.log("Content Add");
-        this.inputFormService.postContent(this.body,this.contentTab.selectContentFormControl.value);
+        this.inputFormService.postContent(this.body,this.contentTab.selectContentFormControl.value).subscribe();;
         break;
       case 'User':
-        this.inputFormService.postUser(this.body);
+        this.inputFormService.postUser(this.body).subscribe();;
         break;
       case 'Artikel':
-        this.inputFormService.postContentArticle(this.body);
+        this.inputFormService.postContentArticle(this.body).subscribe();;
         break;
     }
   }
