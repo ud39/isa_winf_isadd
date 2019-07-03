@@ -13,9 +13,10 @@ namespace WinfADD.Models
             EventsDelete = new Event[] {};
             ImagesInsert = new Image[] {};
             ImagesDelete = new Image[] {};
+            ReachableByBusInsert = new BusStation[] {};
+            ReachableByBusDelete = new BusStation[] {};
             CoffeeDrinks = new CoffeeDrink[] {};
             ListOfPoi = new Poi[] {};
-            ReachableByBus = new BusStation[] {};
             EquipmentCategories = new EquipmentCategory[] {};
             Beans = new Bean[] {};
             Blends = new Blend[] {};
@@ -65,6 +66,8 @@ namespace WinfADD.Models
 
         public IEnumerable<Image> ImagesInsert { get; set; }
         public IEnumerable<Image> ImagesDelete { get; set; }
+        public IEnumerable<BusStation> ReachableByBusInsert { get; set; }
+        public IEnumerable<BusStation> ReachableByBusDelete { get; set; }
 
         public IEnumerable<CoffeeDrink> CoffeeDrinks{ get; set; }
         public IEnumerable<Poi> ListOfPoi { get; set; }
