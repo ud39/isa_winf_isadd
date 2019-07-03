@@ -1,7 +1,8 @@
 import {Image} from "./Image";
 import {Shop} from "./Shop";
+import {Address} from "../complex/Address";
 
-export interface Event {
+export interface Event extends Address{
   id:number;
   startTime:string;
   endTime:string;
@@ -10,6 +11,6 @@ export interface Event {
   description:string;
   previewImageFileName:string;
   images: Image[];
-  coffeeShop: Shop[];
+  coffeeShops: Shop[];
 }
 

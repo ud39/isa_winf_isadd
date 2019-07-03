@@ -191,6 +191,8 @@ namespace WinfADD.Repositories
                 var propertyName = property.Name.ToLower();
                 //TODO
                 //if(insertProperties)
+                //if ((!insertProperties.ContainsKey(propertyName)) || Keys.Contains(_MappingM2DB[propertyName])) continue;
+
 
                 if (CSProperties.Length > 0)
                 {

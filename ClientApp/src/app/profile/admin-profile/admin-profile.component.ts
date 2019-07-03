@@ -45,10 +45,8 @@ export class AdminProfileComponent implements OnInit {
   public activeFormGroup : FormGroup;
   public editStatus : boolean = true;
   public restorePossible : boolean = true;
-  public currentSelectedObject : any;
   ngOnInit() {
     this.whichTabIsActive();
-
     this.matTabGroup.selectedTabChange.subscribe(event =>{
       this.matTabActive = event.tab.textLabel;
       this.whichTabIsActive();
@@ -120,7 +118,6 @@ export class AdminProfileComponent implements OnInit {
     switch (this.matTabActive) {
       case 'Shop':
        this.editDialogService.openShopDialog(this.shopTab,this.matTabActive,this.dialog);
-
        this.restorePossible = false;
         break;
       case 'Bohnen & Zubehör':
@@ -130,6 +127,7 @@ export class AdminProfileComponent implements OnInit {
         this.restorePossible = false;
         break;
       case 'Content':
+        this.whichTabIsActive();
         switch (this.contentTab.selectContentFormControl.value) {
           case 'Blend':
           this.editDialogService.openBlendDialog(this.contentTab,this.matTabActive,this.dialog);
@@ -149,6 +147,12 @@ export class AdminProfileComponent implements OnInit {
           break;
           case 'Equipment-category':
           this.editDialogService.openEquipmentCategoryDialog(this.contentTab,this.matTabActive,this.dialog);
+          this.restorePossible = false;
+          break;
+          case 'BusStation':
+          this.editDialogService.openBusStationDialog(this.contentTab,this.matTabActive,this.dialog);
+          this.restorePossible = false;
+          break;
         }
     }
     this.editStatus = true;
@@ -211,23 +215,24 @@ export class AdminProfileComponent implements OnInit {
     console.log(this.body);
     switch (this.matTabActive) {
       case 'Shop':
+        console.log("Shop Add");
         this.inputFormService.postContentShop(this.body).subscribe();
         break;
-      case 'Bohnen & Zubehör':
-        this.inputFormService.postContentEquipment(this.body);
-        break;
       case 'Event':
-        this.inputFormService.postContentEvent(this.body);
+        console.log("Event Add");
+        this.inputFormService.postContentEvent(this.body).subscribe();
         break;
       case 'Content':
         console.log("Content Add");
-        this.inputFormService.postContent(this.body,this.contentTab.selectContentFormControl.value);
+        this.inputFormService.postContent(this.body,this.contentTab.selectContentFormControl.value).subscribe();
         break;
       case 'User':
-        this.inputFormService.postUser(this.body);
+        console.log("User Add");
+        this.inputFormService.postUser(this.body).subscribe();
         break;
       case 'Artikel':
-        this.inputFormService.postContentArticle(this.body);
+        console.log("Article Add");
+        this.inputFormService.postContentArticle(this.body).subscribe();
         break;
     }
   }
@@ -246,13 +251,66 @@ export class AdminProfileComponent implements OnInit {
         this.emptyInput();
         break;
       case 'Event':
-        this.inputFormService.deleteContentEvent(this.eventTab.selectedEvent.id).subscribe();
-        this.emptyInput();
+        this.inputFormService.deleteContentEvent(this.eventTab.selectedEvent.id).subscribe(value => {
+          console.log(value);
+          if(value){
+            this.emptyInput();
+          }
+        });
         break;
       case 'Content':
-        this.inputFormService.postContent(this.body,this.contentTab.selectContentFormControl.value).subscribe();
-        this.emptyInput();
-        break;
+        switch (this.contentTab.selectContentFormControl.value) {
+          case 'Blend':
+            this.inputFormService.deleteBlend(this.contentTab.getQueryParamsOfContent()).subscribe(value =>{
+              console.log('delete executed');
+              console.log(value);
+            });
+            this.emptyInput();
+            this.restorePossible = false;
+            break;
+          case 'Bean':
+            this.inputFormService.deleteBean(this.contentTab.getQueryParamsOfContent()).subscribe(value =>{
+              if(value) {
+                this.emptyInput();
+              }
+            });
+            this.emptyInput();
+            this.restorePossible = false;
+            break;
+          case 'CoffeeDrink':
+            this.inputFormService.deleteCoffeeDrink(this.contentTab.getQueryParamsOfContent()).subscribe(value =>{
+              if(value){
+                this.emptyInput();
+                this.restorePossible = false;
+              }
+            });
+            break;
+          case 'Poi':
+            this.inputFormService.deletePoi(this.contentTab.getQueryParamsOfContent()).subscribe(value =>{
+              console.log(value);
+              if(value){
+              this.emptyInput();
+              this.restorePossible = false;
+              }
+            });
+            break;
+          case 'BusStation':
+            this.inputFormService.deleteBusStation(this.contentTab.getQueryParamsOfContent()).subscribe(value =>{
+              if(value){
+
+              }
+
+            });
+            break;
+          case 'Equipment-category':
+            this.inputFormService.deleteEquipmentCategory(this.contentTab.getQueryParamsOfContent()).subscribe(value => {
+              if(value){
+              this.emptyInput();
+              }
+
+            })
+        }
+      break;
       case 'User':
         this.inputFormService.postUser(this.body).subscribe();
         this.emptyInput();

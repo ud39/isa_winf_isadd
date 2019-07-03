@@ -36,6 +36,7 @@ export class EditListComponent implements OnInit, OnDestroy {
   public poiEditControl: Poi[];
   public busStationEditControl: BusStation[];
   public coffeeDrinkEditControl: CoffeeDrink[];
+  public equipmentCategoryEditControl: EquipmentCategory[];
 
   public currentTab = this.datas.tabActive;
   public selectedContent : string;
@@ -78,6 +79,7 @@ export class EditListComponent implements OnInit, OnDestroy {
             });
           break;
           case 'BusStation':
+            console.log('BusStation');
             this.inputFormService.getBusStations().subscribe(result =>{
             this.busStationEditControl = result
             });
@@ -91,6 +93,12 @@ export class EditListComponent implements OnInit, OnDestroy {
             this.inputFormService.getCoffeeDrinks().subscribe(result =>{
               this.coffeeDrinkEditControl = result
             });
+          break;
+          case 'Equipment-category':
+            console.log('Get All EquQ');
+            this.inputFormService.getEquipmentCategories().subscribe(result => {
+              this.equipmentCategoryEditControl = result
+            })
           break;
         }
         break;
@@ -140,6 +148,7 @@ export class EditListComponent implements OnInit, OnDestroy {
           case 'Poi':
             let selectedPoi : Poi = id;
             this.subscription = this.inputFormService.getPoi(selectedPoi).subscribe(value => {
+              console.log(value);
               this.dialogRef.close(value);
             });
             break;
@@ -155,7 +164,7 @@ export class EditListComponent implements OnInit, OnDestroy {
               this.dialogRef.close(value)
             });
           break;
-          case 'EquipmentCategory':
+          case 'Equipment-category':
            let selectedEquipmentCategory: EquipmentCategory = id;
            this.subscription = this.inputFormService.getEquipmentCategory(selectedEquipmentCategory).subscribe(value => {
              this.dialogRef.close(value)

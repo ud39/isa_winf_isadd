@@ -1,0 +1,47 @@
+app-event-detailed .mat-list{
+  display: block;
+  margin-top: 5%;
+}
+
+app-event-detailed .flex{
+  display: flex;
+}
+
+.some-page-wrapper {
+  margin: 15px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.blue-column {
+  background-color: blue;
+  height: fit-content;
+}
+
+.green-column {
+  background-color: green;
+}
+
+.list-content{
+  clear: both;
+}
+
+app-event-detailed .read_more{
+  cursor: pointer;
+  display: inline-block;
+}
+
+app-event-detailed .mat-list-base .mat-list-item{
+  height: fit-content;
+}

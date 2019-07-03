@@ -39,6 +39,7 @@ export class EditDialogService {
     dialogRefEvent.afterClosed().subscribe(value => {
       if (value) {
         console.log('Fillout');
+        eventTab.selectedEvent = value;
         eventTab.fillOutInputForm(value);
         return value;
       }
@@ -67,6 +68,7 @@ export class EditDialogService {
     });
     dialogRefBean.afterClosed().subscribe(value => {
       if (value) {
+        contentTab.selectedContent = value;
         contentTab.fillOutInputForm(value);
       }
     });
@@ -81,6 +83,7 @@ export class EditDialogService {
     });
     dialogRefCoffeeDrink.afterClosed().subscribe(value => {
       if (value) {
+        contentTab.selectedContent = value;
         contentTab.fillOutInputForm(value);
       }
     });
@@ -95,6 +98,22 @@ export class EditDialogService {
 
     dialogRefPoi.afterClosed().subscribe(value => {
       if (value) {
+        contentTab.selectedContent = value;
+        contentTab.fillOutInputForm(value);
+      }
+    });
+  }
+
+  openBusStationDialog(contentTab: ContentTabComponent, matTabActive:string,dialog:MatDialog){
+    const dialogRefBusStation = dialog.open(EditListComponent, {
+      data: {data: contentTab, tabActive: matTabActive},
+      height: '500px',
+      width: '800px',
+    });
+
+    dialogRefBusStation.afterClosed().subscribe(value => {
+      if (value) {
+        contentTab.selectedContent = value;
         contentTab.fillOutInputForm(value);
       }
     });
@@ -108,6 +127,7 @@ export class EditDialogService {
     });
     dialogRefEquipmentCategory.afterClosed().subscribe(value => {
       if (value) {
+        contentTab.selectedContent = value;
         contentTab.fillOutInputForm(value);
       }
     });

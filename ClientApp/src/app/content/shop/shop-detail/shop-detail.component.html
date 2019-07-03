@@ -70,6 +70,7 @@
       <mat-list>
         <mat-list-item *ngFor="let event of shop$.events; last as last">
           <div>
+            <h6><a [routerLink]="['/events', event.id]" [routerLinkActive]='["link-active"]'>{{event.name}}</a></h6>
             <a [routerLink]="['/events', event.id]" [routerLinkActive]='["link-active"]'>{{event.description}}</a><br>
           Kosten: {{event.accessFee}}<br>
           Zeitpunkt {{event.startTime}}
