@@ -24,7 +24,6 @@ namespace WinfADD.Models
         public string WarmFood { get; set; }
         public string ColdFood { get; set; }
         public string Description { get; set; }
-        public string BusStation { get; set; }
         public string StreetNumber { get; set; }
         public string StreetName { get; set; }
         public string Town { get; set; }
@@ -33,6 +32,7 @@ namespace WinfADD.Models
         
         public string[] Poi  { get; set; }
 
+        public string[] BusStation { get; set; }
 
     }
 }

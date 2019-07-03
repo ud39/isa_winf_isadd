@@ -219,6 +219,15 @@ CREATE TABLE composed (
                         FOREIGN KEY (manufacturer_name) REFERENCES manufacturer (name) ON DELETE CASCADE
 );
 
+CREATE TABLE composed_essential (
+                        blend_name citext ,
+                        bean_name citext  ,
+                        bean_provenance citext,
+                        PRIMARY KEY (blend_name,bean_name, bean_provenance),
+                        FOREIGN KEY (blend_name) REFERENCES blend (name) ON DELETE CASCADE,
+                        FOREIGN KEY (bean_name, bean_provenance) REFERENCES bean (name, provenance) ON DELETE CASCADE
+);
+
 CREATE TABLE offers (
                       blend_name citext ,
                       coffee_shop_id int,

@@ -114,8 +114,8 @@ namespace WinfADD.Repositories
                 if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && propertyName == "bus_station_name")
                 { 
                     innerjoin += " inner join reachable_by_bus r on r.coffee_shop_id = id ";
-                    properties.Add(propertyName, property.GetValue(query));
-                    builder.Where( "r." + propertyName + " = " + "@" + propertyName, properties);
+                    properties.Add(propertyName, query.BusStation);
+                    builder.Where( "r." + propertyName + " = ANY" + "(@BusStations)", properties);
 
                 }
                 else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && propertyName == "poi_name")
@@ -161,15 +161,86 @@ namespace WinfADD.Repositories
             }
         }
 
+        
+        public async Task<IEnumerable<CoffeeShopPreview>> GetSupplyShops(SearchSupplyShopModel query)
+        {
+            PropertyInfo[] possibleProperties = typeof(SearchSupplyShopModel).GetProperties();
+            var builder = new SqlBuilder();
+
+            var additionalStatements = "";
+            var innerjoin = "";
+            var mapping = MappingM2DB.CoffeShopMap;
+
+            foreach (PropertyInfo property in possibleProperties)
+            {
+                var properties = new Dictionary<string, object>();
+
+       
+                mapping.TryGetValue(property.Name.ToLower(), out string propertyName);
+
+                if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && propertyName == "bus_station_name")
+                { 
+                    innerjoin += " inner join reachable_by_bus r on r.coffee_shop_id = id ";
+                    properties.Add(propertyName, query.BusStation);
+                    builder.Where( "r." + propertyName + " = ANY" + "(@bus_station_name)", properties);
+
+                }
+                else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && propertyName == "poi_name")
+                {
+                    innerjoin += " inner join near_by n on n.coffee_shop_id = id ";
+                   
+                    properties.Add("poi", query.Poi);
+                    builder.Where( "n.poi_name"  + " = ANY" + "(@poi)", properties);
+                }
+                
+                else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && propertyName == "equipment_category_name")
+                {
+                    innerjoin += " inner join sells s on s.coffee_shop_id = id ";
+                   
+                    properties.Add(propertyName, query.EquipmentCategories);
+                    builder.Where( "s.equipment_category_name::text"  + " = ANY" + "(@equipment_category_name)", properties);
+                }
+                
+                else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && (propertyName == "name" || propertyName.Contains("address")))
+                {
+                    properties.Add(property.Name, "%" + property.GetValue(query)+ "%");
+                    builder.Where(propertyName +"::citext"+  " LIKE " + "@" + property.Name, properties);
+                }
+                
+                else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName))
+                {
+                    properties.Add(propertyName, "%" + property.GetValue(query)+ "%");
+                    builder.Where(propertyName + "::text" + " LIKE " + "@" + propertyName, properties);
+                }
+                
+            }
+
+            additionalStatements += " inner join coffee_shop_image ci on ci.coffee_shop_id = c.id ";
+            additionalStatements += " inner join image i on ci.image_file_name = i.file_name and i.content_type = 'preview'";   
+            additionalStatements += " inner join rated_by_user rbu on rbu.coffee_shop_id = c.id ";
+            additionalStatements += " inner join user_rating ur on rbu.user_rating_id = ur.rating_id ";
+           // builder.Where("i.content_type = 'preview'");
+
+            using (IDbConnection dbConnection = Connection)
+            {
+                var sql = "Select distinct on (id) id, * from (Select distinct c.*, i.file_name, to_char(AVG (ur.total),'9D9') as average_total from coffee_shop c " + additionalStatements +  "  group by c.id, i.file_name" +
+                    " union select c1.*, null as file_name, null as average_total from coffee_shop c1) as t "+ innerjoin + " /**where**/ order by id, file_name";
+
+                var filterCoffeeShops = builder.AddTemplate(sql);
+                           Console.WriteLine(sql);
+                if (possibleProperties.Length == 0)
+                    return await GetAll();
+                var result = await dbConnection.QueryAsync<CoffeeShopPreview>(filterCoffeeShops.RawSql,filterCoffeeShops.Parameters);
+
+              return result.ToList();
+            }
+        }
+        
+        
         public new async Task<CoffeeShop> GetById(CoffeeShop c)
         {
 
-          
-           //GetByIdString = "select c.*, i.image_file_name from coffee_shop c inner join coffee_shop_image i on c.id = i.coffee_shop_id where c.id = @id";
-
-
-
-           GetByIdString = //"select * from coffee_shop where id = @id;" +
+           GetByIdString = 
                "select distinct on(id) id, * from " +
                " (select c.*, o.company_name from coffee_shop c " +
                " inner join owns o on o.coffee_shop_id = c.id and c.id = @id" +
@@ -181,7 +252,7 @@ namespace WinfADD.Repositories
                "select distinct on (id) id, * from ( " +
                " select e.*, i.file_name from event_image ei, image i, event e " +
                " where e.id = ei.event_id and ei.image_file_name = i.file_name and i.content_type = 'preview' " +
-               " union select e1.*, null as file_name from event e1 order by id, file_name) as t, organised_by o where o.event_id = id and o.coffee_shop_id = @id; " +
+               " union select e1.*, null as file_name from event e1 order by id, file_name) as t, organised_by o where o.event_id = id and o.coffee_shop_id = @id and t.end_time > Now(); " +
 
 
                "select b.* from provides p, bean b where p.coffee_shop_id = @id and p.bean_name = b.name and p.bean_provenance = b.provenance;" +
