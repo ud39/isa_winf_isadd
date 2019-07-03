@@ -86,6 +86,7 @@ export class AdminProfileComponent implements OnInit {
         this.body = this.equipmentTab.getJsonOfEquipment();
         break;
       case 'Event':
+        console.log('Get Json Event');
         this.body = this.eventTab.getJsonOfEvent();
         break;
       case 'Content':
@@ -323,7 +324,37 @@ export class AdminProfileComponent implements OnInit {
   }
 
   saveContent(){
+    this.getContentJSON();
+    console.log(this.body + 'Before');
+    console.log(this.body);
+    switch (this.matTabActive) {
+      case 'Shop':
+        console.log("Shop Store");
+        console.log(this.body);
+        delete this.body['busstation'];
+        console.log(this.body);
 
+        this.inputFormService.updateShop(this.body).subscribe(value => {
+          console.log(value);
+        });
+        break;
+      case 'Event':
+        console.log("Event Store");
+        this.inputFormService.postContentEvent(this.body).subscribe();
+        break;
+      case 'Content':
+        console.log("Content Store");
+        this.inputFormService.postContent(this.body,this.contentTab.selectContentFormControl.value).subscribe();
+        break;
+      case 'User':
+        console.log("User Store");
+        this.inputFormService.postUser(this.body).subscribe();
+        break;
+      case 'Artikel':
+        console.log("Article Store");
+        this.inputFormService.postContentArticle(this.body).subscribe();
+        break;
+    }
   }
 
   restoreContent(){

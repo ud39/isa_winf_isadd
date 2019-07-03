@@ -22,6 +22,7 @@ export class EditDialogService {
 
     dialogRefShop.afterClosed().subscribe(value => {
       if (value) {
+        shopTab.shop = value;
         shopTab.fillOutInputForm(value);
         return value;
       }

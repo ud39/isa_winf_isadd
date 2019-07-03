@@ -107,6 +107,10 @@ export class InputFormService {
     return this.http.delete(Global.url + 'companyName/delete',{headers:headers,params:queryParams})
   }
 
+  public updateShop(jsonInput:JSON){
+    return this.http.patch(Global.url + 'coffeeshop/update', jsonInput,{headers:headers})
+  }
+
   getBlend(blend:Blend): Observable<Blend>{
     let queryparams = new HttpParams().set('name',blend.name);
     return this.http.get<Blend>(Global.url + 'blend/getbyid?', {headers: headers, params:queryparams})
