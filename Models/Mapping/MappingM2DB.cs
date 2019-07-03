@@ -39,7 +39,10 @@ namespace WinfADD.Models.Mapping
             {"country", "(address).country"},
             {"postalcode", "(address).postal_code"},
             {"equipmentcategories", "equipment_category_name"},
-            {"busstations", "bus_station_name"}
+            {"busstations", "bus_station_name"},
+            {"blends", "blend_name"},
+            {"beans", "bean_name"},
+            {"roast", "roast"}
 
         };
 

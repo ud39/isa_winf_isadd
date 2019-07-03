@@ -13,6 +13,10 @@ namespace WinfADD.Models
         
         public string[] Poi  { get; set; }
         
+        public string[] Beans  { get; set; }
+
+        public string[] Blends  { get; set; }
+
         public string[] EquipmentCategories  { get; set; }
         
         public string[] BusStation  { get; set; }
@@ -22,7 +26,7 @@ namespace WinfADD.Models
         public string Town { get; set; }
         public string Country { get; set; }
         public string PostalCode { get; set; }
-
+        public string Roast { get; set; }
     }
 }
 

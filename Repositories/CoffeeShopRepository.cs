@@ -80,7 +80,11 @@ namespace WinfADD.Repositories
             " where c.id = ci.coffee_shop_id and i.file_name = ci.image_file_name and i.content_type = 'preview'"+
             " and rbu.coffee_shop_id = c.id and rbu.user_rating_id = ur.rating_id "+
             " group by c.id, i.file_name"+
-                " union select c1.*, null as file_name, null as average_total from coffee_shop c1) as t order by id, file_name ";
+                " union select c1.*, null as file_name, null as average_total from coffee_shop c1) as t" +
+                " where exists(select * from offers o where o.coffee_shop_id = id) " +
+                " or exists(select p from provides p where p.coffee_shop_id = id) " +
+                " or exists (select * from supplies s where s.coffee_shop_id = id) "+
+                " order by id, file_name ";
         }
 
         public override async Task<IEnumerable<CoffeeShopPreview>> GetAll()
@@ -131,7 +135,7 @@ namespace WinfADD.Repositories
                     properties.Add(property.Name, "%" + property.GetValue(query)+ "%");
                     builder.Where(propertyName +"::citext"+  " LIKE " + "@" + property.Name, properties);
                 }
-                
+
                 else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName))
                 {
                     properties.Add(propertyName, "%" + property.GetValue(query)+ "%");
@@ -195,18 +199,42 @@ namespace WinfADD.Repositories
                 
                 else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && propertyName == "equipment_category_name")
                 {
+                   
                     innerjoin += " inner join sells s on s.coffee_shop_id = id ";
                    
                     properties.Add(propertyName, query.EquipmentCategories);
                     builder.Where( "s.equipment_category_name::text"  + " = ANY" + "(@equipment_category_name)", properties);
                 }
-                
+
+                else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && propertyName.Contains("bean_name"))
+                {
+                    innerjoin += " inner join provides p on p.coffee_shop_id = id ";
+                   
+                    properties.Add("beans", query.Beans);
+                    builder.Where( "p.bean_name"  + " = ANY" + "(@beans)", properties);
+                }
+
+                else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && propertyName.Contains("blend_name"))
+                {
+                    innerjoin += " inner join offers o on o.coffee_shop_id = id ";
+                   
+                    properties.Add("blends", query.Blends);
+                    builder.Where("o.blend_name" + " = ANY" + "(@blends)", properties);
+                }
                 else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && (propertyName == "name" || propertyName.Contains("address")))
                 {
                     properties.Add(property.Name, "%" + property.GetValue(query)+ "%");
                     builder.Where(propertyName +"::citext"+  " LIKE " + "@" + property.Name, properties);
                 }
-                
+                else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && propertyName == "roast")
+                {
+                    innerjoin += "inner join provides pr on pr.coffee_shop_id = id " +
+                                 "inner join (select provenance, roast, name as bname from bean) br on pr.bean_name = bname and br.provenance = pr.bean_provenance ";
+                    
+                    
+                    properties.Add(property.Name, property.GetValue(query));
+                    builder.Where(propertyName +" = " + "@" + property.Name, properties);
+                }
                 else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName))
                 {
                     properties.Add(propertyName, "%" + property.GetValue(query)+ "%");

@@ -17,7 +17,7 @@ namespace WinfADD.Controllers
             _beanRepository = (BeanRepository) tableRepo;
         }
         
-        [Authorize(Roles = "ADMIN")]
+      //  [Authorize(Roles = "ADMIN")]
         [HttpGet("all")]
         public new async Task<IEnumerable<BeanPreview>> GetAll()
         {

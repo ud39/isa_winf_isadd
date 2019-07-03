@@ -147,6 +147,7 @@ namespace WinfADD
             services.AddSingleton<ITableRepository<Poi>, PoiRepository>();
             services.AddSingleton<ITableRepository<EquipmentCategory>, EquipmentCategoryRepository>();
             services.AddSingleton<ITableRepository<User,UserView>, UserRepository>();
+            services.AddSingleton<ITableRepository<Company>, CompanyRepository>();
 
 
             //TypeHandler for complex data types in Model
