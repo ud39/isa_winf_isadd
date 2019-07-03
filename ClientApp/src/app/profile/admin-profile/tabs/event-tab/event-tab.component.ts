@@ -117,11 +117,7 @@ export class EventTabComponent implements OnInit {
       json["image"] = eventImage;
     }
 
-    console.log("::::::::::::::::::::::::::::::::::::::::"+json);
 
-    console.log((this.adminService.eventImage.toString().length > 0) +"<-->"+(this.adminService.event_Filename.length >0));
-
-    
     return <JSON> json;
   }
 
