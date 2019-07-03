@@ -16,16 +16,16 @@ import {TooltipPosition} from "@angular/material";
 export class ShopDetailComponent implements OnInit {
 
   public priceDescription = "";
-  public symbolWlan = 'stuff';
-  public symbolChildFriendly = 'stuff';
-  public symbolDisabledFriendly = 'stuff';
-  public symbolOutdoor = 'stuff';
-  public symbolLatteArt = 'stuff';
-  public symbolPetsFriendly = 'stuff';
-  public symbolWorkStation = 'stuff';
-  public symbolFairTrade = 'stuff';
-  public symbolFranchise = 'stuff';
-  public symbolVegan = 'stuff';
+  public symbolColdFood = 'kaltes Essen';
+  public symbolWarmFood = 'Warmes Essen';
+  public symbolWlan = 'Wlan';
+  public symbolChildFriendly = 'Kinderfreundlich';
+  public symbolDisabledFriendly = 'Behindertengerecht';
+  public symbolOutdoor = 'Outdoor';
+  public symbolLatteArt = 'Latte Art';
+  public symbolPetsFriendly = 'Haustierfreundlich';
+  public symbolWorkStation = 'Arbeitsmöglichkeit';
+  public symbolFranchise = 'Tante Emma';
   public position : TooltipPosition = 'above';
   public shop$: Shop;
   public priceClass: string;

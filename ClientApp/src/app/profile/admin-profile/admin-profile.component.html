@@ -3,7 +3,6 @@
   <button mat-button (click)="openEditListDialog()">Suchen</button>
   <button mat-button [matMenuTriggerFor]="menu" id="selected_menu" >Aktionen</button>
   <mat-menu #menu="matMenu">
-    <button>Test</button>
     <button mat-menu-item [disabled]="!activeFormGroup.valid" (click)="addContent()">Hinzufügen</button>
     <button mat-menu-item [disabled]="!activeFormGroup.valid" (click)="saveContent()">Speichern</button>
     <button mat-menu-item [disabled]="!activeFormGroup.valid" (click)="deleteContent()">Löschen</button>

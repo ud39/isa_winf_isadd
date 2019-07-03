@@ -4,7 +4,7 @@
     </mat-form-field>
   <mat-form-field class="select-form-field">
     <mat-select  id=equipmentCategory placeholder="Equipment Kategorie" multiple [formControl]="selectEquipmentCategoryFormControl" [compareWith]="compareService.compareEquipmentCategory">
-      <mat-option *ngFor="let equipmentCategory of chooseEquipmentCategories" [value]="equipmentCategory">{{equipmentCategory.name}}</mat-option>
+      <mat-option *ngFor="let equipmentCategory of equipmentCategory" [value]="equipmentCategory">{{equipmentCategory.name}}</mat-option>
     </mat-select>
   </mat-form-field>
   <div  *ngIf="router.url == '/admin'">

@@ -6,12 +6,6 @@ import {Shop} from "../../interfaces/entity/Shop";
 import {Params, Router} from "@angular/router";
 import {Global} from "../../global";
 import {RouteService} from "../routing/route.service";
-import {Poi} from "../../interfaces/entity/Poi";
-import {BusStation} from "../../interfaces/entity/BusStation";
-import {CoffeeDrink} from "../../interfaces/entity/CoffeeDrink";
-import {EquipmentCategory} from "../../interfaces/entity/EquipmentCategory";
-import {Blend} from "../../interfaces/entity/Blend";
-import {Bean} from "../../interfaces/entity/Bean";
 import {InputFormService} from "../admin/input-form.service";
 
 
@@ -42,7 +36,9 @@ export class ShopService {
     return this.http.get<Shop[]>(Global.url + 'coffeeshop/all');
   }
 
+  getSuppliesShops(): Observable<Supplies[]>{
 
+  }
   getShop(id): Observable<Shop>{
     return this.http.get<Shop>(Global.url + 'coffeeshop/getbyid?id=' + id, {headers:headers});
   }

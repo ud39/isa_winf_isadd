@@ -20,7 +20,7 @@ export class CompareService {
 
   public compareBusStation(busStation1: BusStation, busStation2: BusStation) {
     return busStation1.name == busStation2.name
-        && busStation1.line == busStation2.line;
+      && busStation1.line == busStation2.line;
   }
 
   public compareBlend(blend1: Blend, blend2: Blend) {
@@ -35,11 +35,11 @@ export class CompareService {
 
   public comparePoi(poi1: Poi, poi2: Poi) {
     return poi1.name == poi2.name
-        && poi1.address.streetName == poi2.address.streetName
-        && poi1.address.country== poi2.address.country
-        && poi1.address.postalCode== poi2.address.postalCode
-        && poi1.address.streetNumber == poi2.address.streetNumber
-        && poi1.address.town == poi2.address.town
+      && poi1.address.streetName == poi2.address.streetName
+      && poi1.address.country == poi2.address.country
+      && poi1.address.postalCode == poi2.address.postalCode
+      && poi1.address.streetNumber == poi2.address.streetNumber
+      && poi1.address.town == poi2.address.town
   }
 
   public compareEquipmentCategory(equipmentCategory1: EquipmentCategory, equipmentCategory2: EquipmentCategory) {
@@ -50,13 +50,19 @@ export class CompareService {
     return coffeeDrink1.name == coffeeDrink2.name;
   }
 
-  public compareEvent(event1:Event, event2:Event){
+  public compareEvent(event1: Event, event2: Event) {
     return event1.id == event2.id;
   }
 
-  public compareShop(shop1: Shop, shop2:Shop){
-    return shop1.id == shop2.id;
+  public compareShop(shop1: Shop, shop2: Shop) {
+    return shop1.id == shop2.id
+           && shop1.address.streetName == shop2.address.streetName
+           && shop1.address.country == shop2.address.country
+           && shop1.address.postalCode == shop2.address.postalCode
+           && shop1.address.streetNumber == shop2.address.streetNumber
+           && shop1.address.town == shop2.address.town
   }
+
 
   public calculateDifferenceOfArrayBusStation(array1: BusStation[], array2: BusStation[], compareFn: CompareService)
     : [BusStation[], BusStation[]] {
@@ -185,10 +191,10 @@ export class CompareService {
   }
 
   public eventDateValidator(formEventGroup: FormGroup){
-    let beginEventDate = formEventGroup.get('begin').value;
-    let endEventDate = formEventGroup.get('end').value;
+    let beginEventDate = formEventGroup.get('startTime').value;
+    let endEventDate = formEventGroup.get('endTime').value;
     if(beginEventDate > endEventDate){
-      formEventGroup.get('end').setErrors({
+      formEventGroup.get('endTime').setErrors({
         unMatch: 'Dates invalid'
       })
     }else{

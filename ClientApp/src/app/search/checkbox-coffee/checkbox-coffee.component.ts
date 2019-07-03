@@ -4,6 +4,9 @@ import {CheckBoxesService} from "../../services/interactive-element/checkboxes.s
 import {FormControl, FormGroup} from "@angular/forms";
 import {MatCheckbox, MatInput, MatSelect} from "@angular/material";
 import {CheckboxComponent} from "../checkbox/checkbox.component";
+import {Observable} from "rxjs";
+import {InputFormService} from "../../services/admin/input-form.service";
+import {map, startWith} from "rxjs/operators";
 
 @Component({
   selector: 'app-checkbox-coffee',
@@ -18,12 +21,13 @@ export class CheckboxCoffeeComponent implements OnInit {
   @ViewChildren(MatSelect) selects : QueryList<MatSelect>;
   @ViewChildren(MatInput) inputsCoffee : QueryList<MatInput>;
 
-  constructor(public router: Router, public checkBoxService: CheckBoxesService) {
+  constructor(public router: Router, public checkBoxService: CheckBoxesService, public inputFormService:InputFormService) {
   }
 
   public selectedRoast;
   public selectedGrind;
-
+  public options: string[] = [];
+  public filteredOptions: Observable<string[]>;
   public roasts = [
     {value: 'none', viewValue: 'Keine'},
     {value: 'lightRoast', viewValue: 'Helle Röstung'},
@@ -38,11 +42,6 @@ export class CheckboxCoffeeComponent implements OnInit {
     {value: 'middle', viewValue: 'Mittel'},
     {value: 'fine', viewValue: 'Fein'},
     {value: 'veryFine', viewValue: 'Sehr Fein'},
-  ];
-
-  public beans = [
-    {value: 'arabica', viewValue: 'Arabica'},
-    {value: 'robusta', viewValue: 'Robusta'},
   ];
 
   public beanNameFormControl = new FormControl('',[]);
@@ -61,8 +60,20 @@ export class CheckboxCoffeeComponent implements OnInit {
     this.checkBoxService.clear(this.cbs, this.coffeeFormGroup,  this.selects.toArray());
   }
 
-
+  fillOutOptions(){
+    this.inputFormService.getBeans().subscribe(shop =>{
+      shop.forEach( value => {
+        this.options.push(value.name)
+      })
+    })
+  }
   ngOnInit() {
+    this.fillOutOptions();
+    this.filteredOptions = this.beanNameFormControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(val => val.length >= 2 ? this.checkBoxService._filter(val,this.options): []),
+      );
   }
 
   @Output() callNavigateToCoffee = new EventEmitter<void>();

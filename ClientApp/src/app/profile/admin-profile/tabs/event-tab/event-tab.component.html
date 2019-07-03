@@ -1,7 +1,7 @@
 <div class="content">
   <form>
   <mat-form-field class="name-form-field">
-    <input matInput type="text" placeholder="Name" required [formControl]="eventNameFormControl">
+    <input matInput id="name" #myNameDescription="matInput" type="text" placeholder="Name" required [formControl]="eventNameFormControl">
     <mat-error *ngIf="eventNameFormControl.hasError('required')">Es müsst einen Namen für den Event angegeben werden.</mat-error>
     <button mat-button *ngIf="!eventNameFormControl.hasError('required')" matSuffix mat-icon-button aria-label="Clear" (click)="eventNameFormControl.reset('')">
       <mat-icon>close</mat-icon>
@@ -11,6 +11,8 @@
     <mat-label>Beschreibung</mat-label>
     <textarea [formControl]="eventDescriptionFormControl"
               matInput
+              id="description"
+              #myNameDescription="matInput"
               cdkTextareaAutosize
               cdkAutosizeMinRows="2"
               [value]="eventDescriptionFormControl.value"
@@ -18,18 +20,18 @@
   </mat-form-field>
 
   <mat-form-field class="date-picker">
-    <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="beginPicker" required placeholder="Wähle ein Anfangdatum aus" [formControl]="beginDatePickerFormControl">
+    <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="startTime" required placeholder="Wähle ein Anfangdatum aus" [formControl]="beginDatePickerFormControl">
     <mat-error *ngIf="beginDatePickerFormControl.hasError('required')">Es müsst ein Anfangdatum ausgewählt werden.</mat-error>
-    <mat-datepicker-toggle matSuffix [for]="beginPicker"></mat-datepicker-toggle>
-    <mat-datepicker #beginPicker></mat-datepicker>
+    <mat-datepicker-toggle id="cool" matSuffix [for]="startTime"></mat-datepicker-toggle>
+    <mat-datepicker id="startTime" #startTime></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field class="date-picker">
-    <input matInput [min]="beginDatePickerFormControl.value" [max]="maxDate" [matDatepicker]="endPicker" required placeholder="Wähle ein Enddatum aus" [formControl]="endDatePickerFormControl">
+    <input matInput [min]="beginDatePickerFormControl.value" [max]="maxDate" [matDatepicker]="endTime" required placeholder="Wähle ein Enddatum aus" [formControl]="endDatePickerFormControl">
     <mat-error *ngIf="endDatePickerFormControl.hasError('required')">Es müsst ein Enddatum ausgewählt werden.</mat-error>
-    <mat-error *ngIf="beginEndDateFormGroup.get('end').hasError('unMatch')">Enddatum darf nicht vor Anfangdatum sein.</mat-error>
-    <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
-    <mat-datepicker #endPicker></mat-datepicker>
+    <mat-error *ngIf="beginEndDateFormGroup.get('endTime').hasError('unMatch')">Enddatum darf nicht vor Anfangdatum sein.</mat-error>
+    <mat-datepicker-toggle matSuffix [for]="endTime"></mat-datepicker-toggle>
+    <mat-datepicker id="endTime" #endTime></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field>
@@ -37,8 +39,8 @@
   </mat-form-field>
   <mat-form-field class="multipleSelect">
     <mat-label>Wähle die beteiligten Läden</mat-label>
-     <mat-select multiple [formControl]="selectShopFormControl" [compareWith]="this.compareService.compareShop" required>
-       <mat-option *ngFor="let shop of this.shops" [value]="shop.name">
+     <mat-select multiple id="coffeeShop" [formControl]="selectShopFormControl" required [compareWith]="this.compareService.compareShop">
+       <mat-option *ngFor="let shop of shops" [value]="shop.name">
        {{shop.name}}
        </mat-option>
      </mat-select>

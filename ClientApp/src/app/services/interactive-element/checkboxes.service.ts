@@ -23,7 +23,7 @@ export class CheckBoxesService {
 
   public getSelectsValue(selects : Array<MatSelect>):void {
     for (let select of selects) {
-      this.jsonOfSearchParameters[select.id] = select.value
+      this.jsonOfSearchParameters[select.id] = select.ngControl.value;
     }
   }
 
@@ -53,13 +53,27 @@ export class CheckBoxesService {
     return <JSON> this.jsonOfSearchParameters;
   }
 
-  public getJsonOfShopInput(addressInputs: Array<MatInput>, inputs: Array<MatInput>, cbs: Array<MatCheckbox>, selects: Array<MatSelect>) : JSON {
+  public getJsonOfShopInput(addressInputs: Array<MatInput>, inputs: Array<MatInput>, cbs: Array<MatCheckbox>, selects: Array<MatSelect>, inputFormGroup?:FormGroup) : JSON {
     this.getAddressInputsValues(addressInputs);
     this.getCheckBoxesValues(cbs);
     this.getSelectsValue(selects);
     this.getInputsValue(inputs);
     console.log(this.jsonOfSearchParameters);
     return <JSON> this.jsonOfSearchParameters;
+  }
+
+  public getJsonOfEvent(addressInputs: Array<MatInput>, inputs: Array<MatInput>, datePicker:FormGroup, coffeeShopSelect : Array<MatSelect>){
+    this.getAddressInputsValues(addressInputs);
+    this.getInputsValue(inputs);
+    this.getSelectsValue(coffeeShopSelect);
+    this.getValueOfDatePicker(datePicker);
+    console.log(this.jsonOfSearchParameters);
+    return <JSON> this.jsonOfSearchParameters;
+  }
+
+  public getValueOfDatePicker(datePickerFormGroup:FormGroup){
+    this.jsonOfSearchParameters['startTime'] = datePickerFormGroup.get('startTime').value;
+    this.jsonOfSearchParameters['endTIme'] = datePickerFormGroup.get('endTime').value;
   }
 
   public unselectCheckBoxes(cbs : QueryList<MatCheckbox>){

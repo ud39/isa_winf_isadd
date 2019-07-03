@@ -5,7 +5,6 @@ import {AdminService} from "../../../../services/admin/admin.service";
 import {ShopService} from "../../../../services/shop/shop.service";
 import {Shop} from "../../../../interfaces/entity/Shop";
 import {MatInput, MatOption, MatSelect} from "@angular/material";
-import {CheckboxComponent} from "../../../../search/checkbox/checkbox.component";
 import {CheckBoxesService} from "../../../../services/interactive-element/checkboxes.service";
 import {BusStation} from "../../../../interfaces/entity/BusStation";
 import {EquipmentCategory} from "../../../../interfaces/entity/EquipmentCategory";
@@ -199,8 +198,6 @@ export class ShopTabComponent implements OnInit {
     this.townFormControl.setValue(selectedShop.address.town);
     this.adminService.clearImages();
     this.adminService.setImages(selectedShop.images);
-
-
     this.selectBeanFormCotnrol.setValue(selectedShop.beans);
     this.selectBusStationFromControl.setValue(selectedShop.reachableByBus);
     this.selectBlendFormControl.setValue(selectedShop.blends);
@@ -214,9 +211,11 @@ export class ShopTabComponent implements OnInit {
   }
 
   getJsonOfShop(): JSON{
-    console.log(this.compareService.calculateDifferenceOfArrayBusStation(this.shop.reachableByBus,this.selectBusStationFromControl.value,this.compareService));
+    console.log(this.selects.toArray());
     let json : JSON = this.checkBoxService.getJsonOfShopInput(this.addressInputs.toArray(), this.nameDescriptionInputs.toArray(), this.checkBoxes.cbs.toArray(),this.selects.toArray());
-
+    console.log(this.shop.reachableByBus);
+    console.log(this.selectBusStationFromControl);
+    console.log(this.compareService.calculateDifferenceOfArrayBusStation(this.shop.reachableByBus,this.selectBusStationFromControl.value,this.compareService));
     let temp ='';
     this.adminService.getAllCoffeeShopImages().forEach((value: string, key: string) => {
       temp +=  ',{"fileName":"' + key + '"}';
@@ -267,7 +266,6 @@ export class ShopTabComponent implements OnInit {
     ).subscribe(
       ([coffeeDrinks, beans, blends, busStations, pois, equipmentCategories]) => {
         this.chooseCoffeeDrinks = coffeeDrinks;
-        this.chooseBeans = beans;
         this.chooseBlends = blends;
         this.chooseBusStations = busStations;
         this.editBusStation = busStations;
