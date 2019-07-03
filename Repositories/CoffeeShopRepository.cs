@@ -301,8 +301,8 @@ namespace WinfADD.Repositories
             var sqlCoffeeShop = "INSERT INTO coffee_shop ";
             var sqlOpeningTimeRelation = "INSERT INTO opens (coffee_shop_id, close, open, weekday)" +
                                          "VALUES (@id, @close, @open,@weekday)";
-            var sqlCoffeeShopImage = "INSERT INTO coffee_shop_image (image_file_name, coffee_shop_id)"+
-                                     " VALUES (@image_file_name, @coffee_shop_id)";
+            var sqlCoffeeShopImage = "INSERT INTO coffee_shop_image (image_file_name, coffee_shop_id)" +
+              " VALUES (@image_file_name, @coffee_shop_id) ON CONFLICT ON CONSTRAINT coffee_shop_image_image_file_name_key DO NOTHING ";
 
             var sqlBusStation = "INSERT INTO reachable_by_bus (coffee_shop_id, bus_station_name, bus_station_line)" +
             " VALUES (@coffee_shop_id,@bus_station_name, @bus_station_line)";
@@ -539,6 +539,11 @@ namespace WinfADD.Repositories
             const string companySqlInsert = "INSERT INTO company VALUES (name) ON CONFLICT ON CONSTRAINT company_pkey DO NOTHING";
             const string companyRelationInsert = "";
             const string companySqlDelete = "";
+            const string busStationSqlInsert =
+                "INSERT INTO reachable_by_bus (coffee_shop_id, bus_station_name, bus_station_line)"+
+                " VALUES(@coffee_shop_id, @bus_station_name, @bus_station_line) ON CONFLICT ON CONSTRAINT reachable_by_bus_pkey DO NOTHING ";
+            const string busStationSqlDelete = "DELETE FROM reachable_by_bus WHERE coffee_shop_id = @coffee_shop_id AND "+
+                                               " bus_station_name = @bus_station_name AND bus_station_line = @bus_station_line)";
 
 
             using (IDbConnection conn = Connection)
