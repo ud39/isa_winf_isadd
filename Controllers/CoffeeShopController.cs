@@ -23,12 +23,23 @@ namespace WinfADD.Controllers
 
 
         [HttpGet("params")]
-        public async Task<IEnumerable<CoffeeShopPreview>> GetCoffeeShops([FromQuery]CoffeeShopSearchModel customerSearch)
+        public async Task<IEnumerable<CoffeeShopPreview>> GetCoffeeShops([FromQuery]CoffeeShopSearchModel searchQuery)
         {
-            var coffeeShops = await _coffeeShopRepo.GetCoffeeShops(customerSearch);
+            var coffeeShops = await _coffeeShopRepo.GetCoffeeShops(searchQuery);
 
             return coffeeShops;
         }
+        
+        
+        [HttpGet("supplies")]
+        public async Task<IEnumerable<CoffeeShopPreview>> GetCoffeeShops([FromQuery]SearchSupplyShopModel searchQuery)
+        {
+            var coffeeShops = await _coffeeShopRepo.GetSupplyShops(searchQuery);
+
+            return coffeeShops;
+        }
+        
+        
       //  [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
           [HttpGet("GetById")]
           public new async Task<ActionResult<CoffeeShop>> GetById([FromQuery] CoffeeShop c)

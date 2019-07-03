@@ -33,5 +33,12 @@ namespace WinfADD.Controllers
             return await _eventRepository.GetById(e);
         }
         
+        [HttpGet("params")]
+        public async Task<IEnumerable<Event>> GetEvents([FromQuery] SearchEventModel e)
+        {
+            return await _eventRepository.GetEvents(e);
+        }
+        
+        
     }
 }
