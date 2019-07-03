@@ -5,8 +5,6 @@ import {MAT_CHECKBOX_CLICK_ACTION, MatCheckbox, MatInput, MatSelect} from "@angu
 import {Global} from "../../global";
 import {Router} from "@angular/router";
 import {CheckBoxesService} from "../../services/interactive-element/checkboxes.service";
-import {ShopService} from "../../services/shop/shop.service";
-import {InputFormService} from "../../services/admin/input-form.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {forkJoin, Observable} from "rxjs";
 

@@ -188,20 +188,19 @@ namespace WinfADD.Repositories
             {
 
 
-                var propertyName = property.Name.ToLower();
-                //TODO
-                //if(insertProperties)
-                //if ((!insertProperties.ContainsKey(propertyName)) || Keys.Contains(_MappingM2DB[propertyName])) continue;
+                var propertyName = char.ToLower(property.Name[0]).ToString() + property.Name.Substring(1);
+                var lowerPropertyName = propertyName.ToLower();
 
+                if ((!insertProperties.ContainsKey(propertyName)) || lowerPropertyName.Equals("id")) continue;
 
                 if (CSProperties.Length > 0)
                 {
-                    CSProperties   += ","  + propertyName;
+                    CSProperties   += ","  + _MappingM2DB[lowerPropertyName];
                     CSatProperties += ",@" + propertyName;
                 }
                 else
                 {
-                    CSProperties   += propertyName;
+                    CSProperties   += _MappingM2DB[lowerPropertyName];
                     CSatProperties += "@" + propertyName;
                 }
             }

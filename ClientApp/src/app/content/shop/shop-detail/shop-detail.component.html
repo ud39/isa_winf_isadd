@@ -1,7 +1,7 @@
 <div *ngIf="shop$">
-  <h1 id="shop_name">{{shop$.name}}
+  <h2 id="shop_name">{{shop$.name}}
     <hr id="shop_name_underline">
-  </h1>
+  </h2>
   <div class="grid-container">
     <mat-grid-list cols="3" rowHeight="100px" [gutterSize]="'30px'">
       <mat-grid-tile id="opening_times">
@@ -41,6 +41,8 @@
           <div class="symbol" *ngIf="shop$.latteArt" [matTooltipPosition]="position" [matTooltip]="symbolLatteArt"><i class="fas fa-paint-brush"></i></div>
           <div class="symbol" *ngIf="shop$.petsFriendly" [matTooltipPosition]="position" [matTooltip]="symbolPetsFriendly"><i class="fas fa-paw fa-1x"></i></div>
           <div class="symbol" *ngIf="shop$.workstation" [matTooltipPosition]="position" [matTooltip]="symbolWorkStation"><i class="fas fa-desktop fa-1x"></i></div>
+          <div class="symbol" *ngIf="shop$.coldFood" [matTooltipPosition]="position" [matTooltip]="symbolWorkStation"><i class="fas fa-desktop fa-1x"></i></div>
+          <div class="symbol" *ngIf="shop$.warmFood" [matTooltipPosition]="position" [matTooltip]="symbolWorkStation"><i class="fas fa-desktop fa-1x"></i></div>
           <div class="symbol" *ngIf="shop$.franchise" [matTooltipPosition]="position" [matTooltip]="symbolFranchise"><i class="fas fa-store-alt"></i></div>
         </div>
       </mat-grid-tile>
@@ -71,9 +73,10 @@
         <mat-list-item *ngFor="let event of shop$.events; last as last">
           <div>
             <h6><a [routerLink]="['/events', event.id]" [routerLinkActive]='["link-active"]'>{{event.name}}</a></h6>
-            <a [routerLink]="['/events', event.id]" [routerLinkActive]='["link-active"]'>{{event.description}}</a><br>
-          Kosten: {{event.accessFee}}<br>
-          Zeitpunkt {{event.startTime}}
+            {{event.description}}<br>
+          Eintrittsgebühr: {{event.accessFee > 0 ? (event.accessFee | number) : 'kostenlos'}} {{event.accessFee > 0 ? ' €' : ''}}
+            <br>
+          Begin: {{event.startTime | date}} Ende: {{event.endTime | date}}
           </div>
         <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
         </mat-list-item>

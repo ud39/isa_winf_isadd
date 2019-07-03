@@ -5,8 +5,8 @@
         <img src="https://dummyimage.com/100x100/fff/000" class="preview-img">
       </a>
       <div class="preview-content">
-        <h6 class="shop_name"  [routerLink]="['/events', event.id]">{{event.name}}
-          <hr class="shop_name_underline">
+        <h6 class="shop_name"  [routerLink]="['/events', event.id]">{{event.name}} {{event.startTime | date }}  {{event.endTime | date}}
+        <hr class="shop_name_underline">
         </h6>
         <div class="text">
           {{event.description | words : 50}}

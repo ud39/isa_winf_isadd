@@ -2,7 +2,7 @@
   <h1>{{event$.name}}</h1>
 
   <h2>Begin: {{event$.startTime | date }} Ende: {{event$.endTime | date}} </h2>
-  <h6>Eintrittskosten: {{event$.accessFee > 0 ? (event$.accessFee | number) : 'kostenlos'}}
+  <h6>Eintrittsgebühr: {{event$.accessFee > 0 ? (event$.accessFee | number) : 'kostenlos'}}
     {{event$.accessFee > 0 ? ' €' : ''}}</h6>
   <div class="text">
     {{event$.description}}
