@@ -147,7 +147,7 @@ export class ShopTabComponent implements OnInit {
   public shopWebsiteFormControl = new FormControl('',[]);
 
   public shopFoundingYearFormControl = new FormControl('',[
-    Validators.pattern('[1-2][7-9][][3]')
+    Validators.pattern('[1-2][7-9,0][0-9]{2}')
   ]);
 
   public postalCodeFormControl = new FormControl('',[
