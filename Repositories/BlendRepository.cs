@@ -42,13 +42,23 @@ namespace WinfADD.Repositories
 
             //build GetByID sql query
             GetByIdString =
-                "select distinct on (name) name, * from (select b1.*, image_file_name from Blend b1" +
-                " inner join blend_image on name = blend_name" +
-                " inner join image on image_file_name = file_name where content_type = 'preview' union select b2.*, null as file_name from blend b2) as t "+
-                " where " + keyCompare +
-                " order by name, image_file_name";    
+                " select name, * from (select b1.*, image_file_name from Blend b1" +
+                " left join blend_image on name = blend_name" +
+                " left join image on image_file_name = file_name where content_type = 'preview' union select b2.*, null as file_name from blend b2) " +
+                " as t left join composed_essential c on c.blend_name = name" +
+                " where " + keyCompare + 
+                " order by name, image_file_name";
 
+          //  GetByIdString = "select * from blend where " + keyCompare + " ;" +
+           //                 "select i.* from image i inner join blend_image bi on i.file_name = bi.image_file_name where bi.blend_name = @Name and i.content_type = 'preview'";
 
+           GetByIdString =
+            //   "select b.*, i.file_name from blend b, image i, blend_image bi where b.name = bi.blend_name and bi.image_file_name = i.file_name and i.content_type = 'preview' and name = @Name; " 
+            "select * from blend b left join blend_image bi on b.name = bi.blend_name left join image i on bi.image_file_name = i.file_name and i.content_type = 'preview' where b.name = @Name;" +
+              "select be.* from bean be, composed_essential ce where ce.blend_name = @Name and be.name = ce.bean_name";
+
+           
+           
             GetAllString = "select distinct on (name) name, * from (select b1.*, image_file_name from Blend b1" +
                            " inner join blend_image on name = blend_name" +
                            " inner join image on image_file_name = file_name where content_type = 'preview' union select b2.*, null as file_name from blend b2) as t order by name, image_file_name";    
@@ -91,9 +101,14 @@ namespace WinfADD.Repositories
         {            
             using (IDbConnection conn = Connection)
             {
-                var result = await conn.QueryAsync<BlendPreview>(GetByIdString, blend);
+                var result = await conn.QueryMultipleAsync(GetByIdString, blend);
+
+                var b = result.Read<BlendPreview>().FirstOrDefault();
+                
+                if(b != null)
+                    b.Beans= result.Read<BeanPreview>();
             
-                return result.FirstOrDefault();
+                return b;
             }
         }
 
