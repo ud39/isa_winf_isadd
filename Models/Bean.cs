@@ -9,6 +9,7 @@ namespace WinfADD.Models
         [Key] public string Provenance { get; set; }
 
         public string roast { get; set; }
+        public string grind { get; set; }
 
         public string PriceClass { get; set; }
         public bool FairTrade { get; set; }
