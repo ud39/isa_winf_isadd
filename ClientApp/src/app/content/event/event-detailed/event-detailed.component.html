@@ -1,3 +1,39 @@
 <div *ngIf="event$">
+  <h1>{{event$.name}}</h1>
 
+  <h2>Begin: {{event$.startTime | date }} Ende: {{event$.endTime | date}} </h2>
+  <h6>Eintrittsgebühr: {{event$.accessFee > 0 ? (event$.accessFee | number) : 'kostenlos'}}
+    {{event$.accessFee > 0 ? ' €' : ''}}</h6>
+  <div class="text">
+    {{event$.description}}
+  </div>
+  <div class='some-page-wrapper'>
+    <div class='row'>
+      <div class='column'>
+        <div class='blue-column'>
+          <mat-list id="shop-list">
+            <mat-list-item *ngFor="let shop of this.event$.coffeeShops; last as last">
+              <div class="preview-content">
+              <a [routerLink]="['/shops', shop.id]" [routerLinkActive]='["link-active"]'>
+                <img src="https://dummyimage.com/100x100/fff/000" class="preview-img">
+              </a>
+              {{shop.name}}{{" " + shop.address.streetName + " " + shop.address.streetNumber}}
+                <br>
+                Gesamtbewertung: {{(shop.averageTotalRating | number) || 'n/a' }}
+                <div class="text">
+                {{shop.description | words : 20}}
+                </div><div class='read_more'> weiterlesen </div>
+              </div>
+              <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+      <div class='column'>
+        <div class='green-column'>
+          Some Text in Column Two
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

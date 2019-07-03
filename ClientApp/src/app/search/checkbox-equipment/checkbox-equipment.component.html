@@ -2,14 +2,11 @@
     <mat-form-field *ngIf="router.url != urlGlobalPath.get('admin')">
       <input matInput placeholder="Equipment Name" [formControl]="equipmentNameFormControl" id="name" type="text" (keydown.enter)="triggerSearchEquipment()">
     </mat-form-field>
-    <mat-checkbox #cb class="checkbox" id="presser" [checked]="false">Presser</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" id="filter"[checked]="false">Filter</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" id="roast"[checked]="false">Röster</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" id="grinder" [checked]="false">Mühle</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" id='manual' [checked]="false">Manuell</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" id='automatic' [checked]="false">Automatisch</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" id="container" [checked]="false">Aufbewahrung</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" id="frothing-pincher" [checked]="false">Milch Gießer</mat-checkbox>
+  <mat-form-field class="select-form-field">
+    <mat-select  id=equipmentCategory placeholder="Equipment Kategorie" multiple [formControl]="selectEquipmentCategoryFormControl" [compareWith]="compareService.compareEquipmentCategory">
+      <mat-option *ngFor="let equipmentCategory of chooseEquipmentCategories" [value]="equipmentCategory">{{equipmentCategory.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
   <div  *ngIf="router.url == '/admin'">
     <button mat-button id="clearbutton" (click)="clear()">Checks aufheben</button>
   </div>

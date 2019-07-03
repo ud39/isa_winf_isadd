@@ -197,6 +197,9 @@ export class ShopTabComponent implements OnInit {
     this.streetNrFormControl.setValue(selectedShop.address.streetNumber);
     this.streetFormControl.setValue(selectedShop.address.streetName);
     this.townFormControl.setValue(selectedShop.address.town);
+    this.adminService.clearImages();
+    this.adminService.setImages(selectedShop.images);
+
 
     this.selectBeanFormCotnrol.setValue(selectedShop.beans);
     this.selectBusStationFromControl.setValue(selectedShop.reachableByBus);
@@ -211,6 +214,7 @@ export class ShopTabComponent implements OnInit {
   }
 
   getJsonOfShop(): JSON{
+    console.log(this.compareService.calculateDifferenceOfArrayBusStation(this.shop.reachableByBus,this.selectBusStationFromControl.value,this.compareService));
     let json : JSON = this.checkBoxService.getJsonOfShopInput(this.addressInputs.toArray(), this.nameDescriptionInputs.toArray(), this.checkBoxes.cbs.toArray(),this.selects.toArray());
 
     let temp ='';
@@ -272,9 +276,9 @@ export class ShopTabComponent implements OnInit {
         this.isLoaded = true;
       }
     );
-    forkJoin([]);
     this.shopService.getShops().subscribe(value => {
       this.shops = value;
+
     })
   }
 

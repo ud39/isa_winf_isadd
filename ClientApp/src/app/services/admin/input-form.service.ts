@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, ɵQueryValueType} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams, HttpResponse} from "@angular/common/http";
 import {Global} from "../../global";
 import {Observable} from "rxjs";
@@ -67,15 +67,12 @@ export class InputFormService {
       case 'Bean':
         console.log("Add Bean");
         return this.http.post(Global.url + 'bean/insert', jsonInput, {headers: headers, observe:'body'});
-      case 'Manufacturer':
-        console.log("Add Manufacturer");
+      case 'Firmen':
+        console.log("Add CompanyName");
         return this.http.post(Global.url + 'manufacturer/insert', jsonInput, {headers: headers, observe:'body'});
       case 'CoffeeDrink':
         console.log("Add CoffeeDrink");
         return this.http.post(Global.url + 'coffeedrink/insert', jsonInput, {headers: headers, observe:'body'});
-      case 'Equipment':
-        console.log("Add Equipment");
-        return this.http.post(Global.url + 'equipment/insert', jsonInput, {headers: headers, observe:'body'});
       case 'Equipment-category':
         console.log("Add Equipment Category");
         return this.http.post(Global.url + 'equipmentcategory/insert', jsonInput, {headers: headers, observe:'body'});
@@ -86,6 +83,28 @@ export class InputFormService {
         console.log("Add Poi");
         return this.http.post(Global.url + 'poi/insert', jsonInput, {headers: headers, observe:'body'});
     }
+  }
+
+  public deleteBean(queryParams:HttpParams){
+    return this.http.delete(Global.url + 'bean/delete', {headers:headers,params:queryParams})
+  }
+  public deleteBlend(queryParams:HttpParams){
+    return this.http.delete(Global.url + 'blend/delete', {headers:headers,params:queryParams})
+  }
+  public deletePoi(queryParams:HttpParams){
+    return this.http.delete(Global.url + 'poi/delete', {headers:headers,params:queryParams})
+  }
+  public deleteCoffeeDrink(queryParams:HttpParams){
+    return this.http.delete(Global.url + 'coffeedrink/delete', {headers:headers,params:queryParams})
+  }
+  public deleteBusStation(queryParams:HttpParams){
+    return this.http.delete(Global.url + 'busStation/delete', {headers:headers,params:queryParams})
+  }
+  public deleteEquipmentCategory(queryParams:HttpParams){
+    return this.http.delete(Global.url + 'equipmentCategory/delete', {headers:headers,params:queryParams})
+  }
+  public deleteCompanyName(queryParams:HttpParams){
+    return this.http.delete(Global.url + 'companyName/delete',{headers:headers,params:queryParams})
   }
 
   getBlend(blend:Blend): Observable<Blend>{
@@ -99,9 +118,9 @@ export class InputFormService {
   }
 
   getPoi(poi:Poi): Observable<Poi>{
-    let queryparams = new HttpParams().set('name',poi.name).append('streetName',poi.address.streetName);
-    queryparams = queryparams.append('streetNumber', poi.address.streetNumber.toString()).append('town',poi.address.town);
-    queryparams = queryparams.append('postalCode', poi.address.postalCode.toString()).append('country',poi.address.country);
+    let queryparams = new HttpParams().set('name',poi.name).append('address.streetName',poi.address.streetName)
+    .append('address.streetNumber', poi.address.streetNumber.toString()).append('address.town',poi.address.town)
+    .append('address.postalCode', poi.address.postalCode.toString()).append('address.country',poi.address.country);
     console.log(queryparams.toString());
     return this.http.get<Poi>(Global.url + 'poi/getbyid?', {headers: headers, params:queryparams})
   }

@@ -102,7 +102,7 @@ export class EventTabComponent implements OnInit {
     this.eventNameFormControl.setValue(event.name);
     this.eventDescriptionFormControl.setValue(event.description);
     this.accessFeeFormControl.setValue(event.accessFee);
-    this.selectShopFormControl.setValue(event.coffeeShop);
+    this.selectShopFormControl.setValue(event.coffeeShops);
     this.beginDatePickerFormControl.setValue(event.startTime);
     this.endDatePickerFormControl.setValue(event.endTime);
   }
@@ -121,7 +121,7 @@ export class EventTabComponent implements OnInit {
 
     console.log((this.adminService.eventImage.toString().length > 0) +"<-->"+(this.adminService.event_Filename.length >0));
 
-
+    
     return <JSON> json;
   }
 

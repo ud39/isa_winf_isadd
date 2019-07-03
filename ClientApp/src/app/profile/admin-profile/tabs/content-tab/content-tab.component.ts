@@ -9,6 +9,7 @@ import {InputFormService} from "../../../../services/admin/input-form.service";
 import {CompareService} from "../../../../services/compare/compare.service";
 import {BusStation} from "../../../../interfaces/entity/BusStation";
 import {Poi} from "../../../../interfaces/entity/Poi";
+import {HttpParams} from "@angular/common/http";
 
 @Component({
   selector: 'app-content-tab',
@@ -33,8 +34,7 @@ export class ContentTabComponent implements OnInit {
     {value: 'Blend', viewValue: 'Blend'},
     {value: 'Bean', viewValue: 'Bohnen'},
     {value: 'CoffeeDrink', viewValue: 'Kaffee Getränke'},
-    {value: 'Manufacturer', viewValue: 'Hersteller'},
-    {value: 'Equipment', viewValue: 'Equipment'},
+    {value: 'Company', viewValue: 'Firma'},
     {value: 'Equipment-category', viewValue: 'Equipment Kategorie'},
     {value: 'BusStation', viewValue: 'Bus Haltestelle'},
     {value: 'Poi', viewValue: 'Landmarken'}
@@ -69,7 +69,7 @@ export class ContentTabComponent implements OnInit {
 
   public equipmentNameFormControl = new FormControl('',[]);
   public coffeeDrinkNameFormControl = new FormControl('',[]);
-  public manufacturerNameFormControl = new FormControl('',[]);
+  public equipmentCategoryNameFormControl = new FormControl('',[]);
 
   public poiNameFormControl = new FormControl('',[]);
   public streetFormControl = new FormControl('',[]);
@@ -88,11 +88,12 @@ export class ContentTabComponent implements OnInit {
 
 
   public blendFormGroup = new FormGroup({name: this.blendNameFormControl,blends: this.blendProvenanceFormControl, beans: this.selectBlendBeanFormControl});
-  public beanFormGroup = new FormGroup({name: this.beanNameFormControl, select: this.selectContentFormControl});
+  public beanFormGroup = new FormGroup({name: this.beanNameFormControl, select: this.beanProvenanceFormControl});
   public equipmentFormGroup = new FormGroup({name: this.equipmentNameFormControl, select: this.selectContentFormControl});
   public coffeeDrinkFormGroup = new FormGroup({name: this.coffeeDrinkNameFormControl, select: this.selectContentFormControl});
-  public manufacturerFormGroup = new FormGroup({name: this.manufacturerNameFormControl, select: this.selectContentFormControl});
-
+  public equipmentCategoryNameFormGroup = new FormGroup({name: this.equipmentCategoryNameFormControl});
+  public poiFormGroup = new FormGroup({name: this.poiNameFormControl, streetName:this.streetFormControl, streetname: this.streetNrFormControl, postalCode:this.postalCodeFormControl, country:this.countryFormControl,town:this.townFormControl});
+  public busStationFormGroup = new FormGroup({name: this.busStationNameFormControl, line:this.busStationLineFormControl});
   constructor(public inputFormService: InputFormService, public compareService: CompareService) { }
 
   fillOutInputForm(data:Blend|Bean|EquipmentCategory|CoffeeDrink|BusStation|Poi){
@@ -107,7 +108,7 @@ export class ContentTabComponent implements OnInit {
       case 'Bean':
         let bean : Bean = <Bean> data;
         this.beanNameFormControl.setValue(bean.name);
-        this.beanNameFormControl.setValue(bean.provenance);
+        this.beanProvenanceFormControl.setValue(bean.provenance);
       break;
       case 'BusStation':
         let busStation : BusStation = <BusStation> data;
@@ -116,6 +117,7 @@ export class ContentTabComponent implements OnInit {
         break;
       case 'Poi':
         let poi : Poi = <Poi> data;
+        console.log("fill out");
         this.poiNameFormControl.setValue(poi.name);
         this.postalCodeFormControl.setValue(poi.address.postalCode);
         this.streetFormControl.setValue(poi.address.streetName);
@@ -127,6 +129,9 @@ export class ContentTabComponent implements OnInit {
         let coffeeDrink = <CoffeeDrink> data;
         this.coffeeDrinkNameFormControl.setValue(coffeeDrink.name);
         break;
+      case 'Equipment-category':
+        let equipmentCategory = <EquipmentCategory> data;
+        this.equipmentCategoryNameFormControl.setValue(equipmentCategory.name);
     }
   }
 
@@ -134,7 +139,7 @@ export class ContentTabComponent implements OnInit {
     this.selectContentFormControl.setValue('Blend');
     this.inputFormService.getEquipmentCategories().subscribe(result =>{
       this.chooseEquipmentCategory = result;
-    })
+    });
     this.inputFormService.getBeans().subscribe(result => {
       this.avaibleBeans = result;
     })
@@ -145,13 +150,18 @@ export class ContentTabComponent implements OnInit {
       case 'Blend':
         return this.blendFormGroup;
       case 'Bean':
+        console.log('Bean get FormGroup');
         return this.beanFormGroup;
       case 'Equipment':
         return this.equipmentFormGroup;
       case 'CoffeeDrink':
         return this.coffeeDrinkFormGroup;
-      case 'Manfacturer':
-        return this.manufacturerFormGroup;
+      case 'Equipment-category':
+        return this.equipmentCategoryNameFormGroup;
+      case 'Poi':
+        return this.poiFormGroup;
+      case 'BusStation':
+        return this.busStationFormGroup;
     }
   }
   public getJsonOfContent():JSON{
@@ -168,8 +178,41 @@ export class ContentTabComponent implements OnInit {
         return null;
       case 'CoffeeDrink':
         return null;
-      case 'Manfacturer':
+      case 'Equipment-category':
         return null;
+    }
+  }
+
+  public getQueryParamsOfContent():HttpParams{
+    let params = new HttpParams();
+    switch (this.selectContentFormControl.value) {
+      case 'Blend':
+        params = params.set('name',this.blendNameFormControl.value);
+        console.log(params);
+        return params;
+      case 'Bean':
+        params = params.set('name',this.beanNameFormControl.value).append('provenance',this.beanProvenanceFormControl.value);
+        console.log(params);
+        return params;
+      case 'CoffeeDrink':
+        params = params.set('name',this.coffeeDrinkNameFormControl.value.toString().charAt(0).toUpperCase() + this.coffeeDrinkNameFormControl.value.toString().slice(1));
+        console.log(params);
+        return params;
+      case 'Company':
+        return null;
+      case 'BusStation':
+        params = params.set('name',this.busStationNameFormControl.value).append('line',this.busStationLineFormControl.value);
+        console.log(params);
+        return params;
+      case 'Poi':
+        params = params.set('name',this.poiNameFormControl.value).append('address.streetName',this.streetFormControl.value)
+          .append('address.streetNumber',this.streetNrFormControl.value).append('address.postalCode', this.postalCodeFormControl.value)
+          .append('address.country',this.countryFormControl.value).append('address.town',this.townFormControl.value);
+        console.log(params);
+        return params;
+      case 'Equipment-category':
+        params = params.set('name',this.equipmentCategoryNameFormControl.value.toString().charAt(0).toUpperCase() + this.equipmentCategoryNameFormControl.value.toString().slice(1));
+        return params;
     }
   }
   public text() {

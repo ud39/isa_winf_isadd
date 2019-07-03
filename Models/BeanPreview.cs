@@ -8,7 +8,8 @@ namespace WinfADD.Models
         [Key] public string Name { get; set; }
 
         public string Provenance { get; set; }
-        public string Type { get; set; }
+        public string roast { get; set; }
+        public string grind { get; set; }
         public string ImageFileName { get; set; }
 
     }
