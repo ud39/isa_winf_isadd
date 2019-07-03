@@ -91,7 +91,23 @@
       </mat-list-item>
     </mat-list>
   </div>
+
+  <div *ngIf="selectedContent == 'Equipment-category'">
+    <mat-list class="edit-list">
+      <mat-list-item *ngFor="let equipmentCategory of equipmentCategoryEditControl; last as last" (click)="getCurrentObjectOfClickedListItem(equipmentCategory)">
+        <img src="https://dummyimage.com/100x100/fff/000" class="preview-img">
+        <div class="preview-content">
+          <h6 class="edit_name">{{equipmentCategory.name}}
+          </h6>
+        </div>
+        <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </div>
 </mat-dialog-content>
+
+
+
 
 
 

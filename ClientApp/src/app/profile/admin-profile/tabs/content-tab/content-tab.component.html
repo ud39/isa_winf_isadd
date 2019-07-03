@@ -49,7 +49,7 @@
   </mat-form-field>
   <mat-form-field class="name-form-field">
     <input matInput type="text" placeholder="Linie"  required [formControl]="busStationLineFormControl">
-    <mat-error *ngIf="busStationLineFormControl.hasError('required')">Es müss einen Namen angegeben werden</mat-error>
+    <mat-error *ngIf="busStationLineFormControl.hasError('required')">Es müss eine Buslinie angegeben werden</mat-error>
   </mat-form-field>
 </div>
 
@@ -59,21 +59,21 @@
     <mat-error *ngIf="poiNameFormControl.hasError('required')">Es müss einen Namen angegeben werden</mat-error>
   </mat-form-field>
   <mat-form-field class="shop-form-field address">
-    <input id="streetName" matInput #address="matInput" type="text" placeholder="Straße" [formControl]="streetFormControl">
+    <input id="streetName" matInput #address="matInput" required type="text" placeholder="Straße" [formControl]="streetFormControl">
   </mat-form-field>
   <mat-form-field class="shop-form-field address">
-    <input id="streetNr" matInput #address="matInput" type="text" placeholder="StraßeNr" [formControl]="streetNrFormControl" (input)="validateFormControl()">
+    <input id="streetNr" matInput #address="matInput" required type="text" placeholder="StraßeNr" [formControl]="streetNrFormControl" (input)="validateFormControl()">
     <mat-error *ngIf="streetNrFormControl.hasError('pattern')">Nur Zahlen</mat-error>
   </mat-form-field>
   <mat-form-field  class="shop-form-field address">
-    <input id="country" matInput #address="matInput" type="text" placeholder="Land" [formControl]="countryFormControl">
+    <input id="country" matInput #address="matInput" required type="text" placeholder="Land" [formControl]="countryFormControl">
   </mat-form-field>
   <mat-form-field  class="shop-form-field address">
-    <input id="postalCode" matInput #address="matInput" type="text" placeholder="Postleitzahl" [formControl]="postalCodeFormControl" (input)="validateFormControl()">
+    <input id="postalCode" matInput #address="matInput" required type="text" placeholder="Postleitzahl" [formControl]="postalCodeFormControl" (input)="validateFormControl()">
     <mat-error *ngIf="postalCodeFormControl.hasError('pattern')">Nur Zahlen und mind. 2</mat-error>
   </mat-form-field>
   <mat-form-field  class="shop-form-field address">
-    <input id="town" matInput #address="matInput" type="text" placeholder="Stadt" [formControl]="townFormControl">
+    <input id="town" matInput #address="matInput" required type="text" placeholder="Stadt" [formControl]="townFormControl">
   </mat-form-field>
 </div>
 
@@ -82,32 +82,13 @@
     <input matInput type="text" placeholder="Name"  required [formControl]="coffeeDrinkNameFormControl">
     <mat-error *ngIf="coffeeDrinkNameFormControl.hasError('required')">Es müss einen Namen angegeben werden</mat-error>
   </mat-form-field>
-
-
 </div>
-<div class="content Equipment" *ngIf="selectContentFormControl.value  == 'Equipment'">
-<mat-select placeholder="Equipment Kategorie" required [formControl]="selectEquipmentCategoryFormControl" [compareWith]="compareService.compareEquipmentCategory">
-  <mat-option *ngFor="let equipmentCategory of chooseEquipmentCategory" [value]="equipmentCategory">
-    {{equipmentCategory.name}}
-  </mat-option>
-</mat-select>
-</div>
-<div class="content manufacturer" *ngIf="selectContentFormControl.value  == 'Manufacturer'">
-  <mat-form-field class="name-form-field">
-    <input matInput type="text" placeholder="Name"  required [formControl]="manufacturerNameFormControl">
-    <mat-error *ngIf="manufacturerNameFormControl.hasError('required')">Es müss einen Namen angegeben werden</mat-error>
-    <button mat-button *ngIf="!manufacturerNameFormControl.hasError('required')" matSuffix mat-icon-button aria-label="Clear" (click)="manufacturerNameFormControl.reset('')">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
-</div>
-
 
 <div class="content equipment-category" *ngIf="selectContentFormControl.value  == 'Equipment-category'">
   <mat-form-field class="name-form-field">
-    <input matInput type="text" placeholder="Name"  required [formControl]="manufacturerNameFormControl">
-    <mat-error *ngIf="manufacturerNameFormControl.hasError('required')">Es müss einen Namen angegeben werden</mat-error>
-    <button mat-button *ngIf="!manufacturerNameFormControl.hasError('required')" matSuffix mat-icon-button aria-label="Clear" (click)="manufacturerNameFormControl.reset('')">
+    <input matInput type="text" placeholder="Name"  required [formControl]="equipmentCategoryNameFormControl">
+    <mat-error *ngIf="equipmentCategoryNameFormControl.hasError('required')">Es müss einen Namen angegeben werden</mat-error>
+    <button mat-button *ngIf="!equipmentCategoryNameFormControl.hasError('required')" matSuffix mat-icon-button aria-label="Clear" (click)="equipmentCategoryNameFormControl.reset('')">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>

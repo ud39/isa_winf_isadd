@@ -34,6 +34,10 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
+    <mat-form-field>
+      <mat-label>Straße</mat-label>
+      <input id="streetName" type="text" placeholder="Straßen Name" aria-label="Number" matInput [formControl]="streetNameFormControl" (keydown.enter)="this.navigateTo()">
+    </mat-form-field>
     <mat-checkbox #cb class="checkbox" id="wlan" [checked]="false">Wlan</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id="latteArt" [checked]="false">Latte Art</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id="outdoor" [checked]="false">Outdoor</mat-checkbox>

@@ -32,12 +32,15 @@ export class CheckboxComponent implements OnInit {
               public inputService: InputFormService) {
 
   }
-
+  public streetNameFormControl = new FormControl();
   public shopNameFormControl = new FormControl();
   public priceClass = ['niedrig', 'mittel', 'hoch'];
   public options: string[] = [];
   public filteredOptions: Observable<string[]>;
-  public shopFormControls = new FormGroup({shopName:this.shopNameFormControl});
+  public shopFormControls = new FormGroup({
+    shopName:this.shopNameFormControl,
+    streetName:this.streetNameFormControl
+  });
   fillOutOptions(){
     this.shopService.getShops().subscribe(shop =>{
       shop.forEach( value => {

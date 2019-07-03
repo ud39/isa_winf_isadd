@@ -29,7 +29,7 @@ export class CheckBoxesService {
 
   public getInputsValue(inputs : Array<MatInput>):void{
     for(let input of inputs){
-      this.jsonOfSearchParameters[input.id] = input.value
+      this.jsonOfSearchParameters[input.id] = input.value.trim();
     }
   }
 

@@ -214,6 +214,7 @@ export class ShopTabComponent implements OnInit {
   }
 
   getJsonOfShop(): JSON{
+    console.log(this.compareService.calculateDifferenceOfArrayBusStation(this.shop.reachableByBus,this.selectBusStationFromControl.value,this.compareService));
     let json : JSON = this.checkBoxService.getJsonOfShopInput(this.addressInputs.toArray(), this.nameDescriptionInputs.toArray(), this.checkBoxes.cbs.toArray(),this.selects.toArray());
 
     let temp ='';

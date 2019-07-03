@@ -5,6 +5,7 @@ import {MatCheckbox, MatInput, MatSelect} from "@angular/material";
 import {CheckBoxesService} from "../../services/interactive-element/checkboxes.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Global} from "../../global";
+import {CompareService} from "../../services/compare/compare.service";
 
 @Component({
   selector: 'app-checkbox-equipment',
@@ -19,12 +20,13 @@ export class CheckboxEquipmentComponent implements OnInit {
   @ViewChildren(MatSelect) selects : QueryList<MatSelect>;
   @ViewChildren(MatInput) inputs : QueryList<MatInput>;
 
+  public selectEquipmentCategoryFormControl = new FormControl('',[]);
   public urlGlobalPath = Global.urlName;
   public equipmentNameFormControl = new FormControl('',[]);
   public formGroupEquipment = new FormGroup({
     name: this.equipmentNameFormControl
   });
-  constructor(public router:Router, public checkBoxService: CheckBoxesService) { }
+  constructor(public router:Router, public checkBoxService: CheckBoxesService, public compareService: CompareService) { }
 
   getJsonOfSearch(): JSON{
     console.log(this.inputs.toArray(),this.cbs.toArray(),this.selects.toArray());
@@ -50,6 +52,6 @@ export class CheckboxEquipmentComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
 
+  }
 }
