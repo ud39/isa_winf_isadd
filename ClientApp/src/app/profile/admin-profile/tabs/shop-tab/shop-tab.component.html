@@ -42,7 +42,7 @@
  </mat-form-field>
 
  <mat-form-field  class="description">
-   <input id="foundingYear" matInput #inputs="matInput" type="number" placeholder="Gründungs Jahr" min="2" oninput="this.value = Math.abs(this.value)" [formControl]="shopFoundingYearFormControl">
+   <input id="foundingYear" matInput #inputs="matInput" type="text" placeholder="Gründungs Jahr" min="4" oninput="this.value = Math.abs(this.value)" [formControl]="shopFoundingYearFormControl">
    <mat-hint>Gründung mindesten ab 1700er</mat-hint>
  </mat-form-field>
 

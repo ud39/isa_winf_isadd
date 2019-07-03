@@ -119,6 +119,13 @@
       <_ContentIncludedByDefault Remove="wwwroot\Image\event\nqj2rqwz.c1p.jpg" />
       <_ContentIncludedByDefault Remove="wwwroot\Image\event\p1vx1sks.vz3.jpg" />
       <_ContentIncludedByDefault Remove="wwwroot\Image\preview\xxpiufr5.do0.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\Image\event\05mxrr0k.xgt.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\Image\event\2x3ibpex.gj5.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\Image\event\grccuui1.ozi.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\Image\event\hrsjrcyn.ui2.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\Image\gallery\24pwspfw.aus.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\Image\gallery\izwpe00i.u52.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\Image\gallery\nkvlknxk.10h.jpg" />
     </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

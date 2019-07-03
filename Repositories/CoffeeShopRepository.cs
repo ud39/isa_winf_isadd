@@ -346,6 +346,7 @@ namespace WinfADD.Repositories
             var modelFieldNames = "";
             foreach (PropertyInfo property in possibleProperties)
             {
+                //set first character to lower
                 var propertyName = char.ToLower(property.Name[0]).ToString() + property.Name.Substring(1);
                 if(! (propertyValues.ContainsKey(propertyName)) || propertyName.Equals("id")) continue;
                 if (dbFiledNames.Length > 0)
