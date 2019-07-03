@@ -2,6 +2,8 @@ import {Injectable, SecurityContext} from '@angular/core';
 import {HttpClient, HttpEventType, HttpHeaders} from "@angular/common/http";
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 import {Global} from "../../global";
+import {Image} from "../../interfaces/entity/Image";
+import {forEach} from "@angular/router/src/utils/collection";
 
 
 @Injectable({
@@ -310,6 +312,58 @@ export class AdminService {
     return imageMap;
   }
 
+
+  clearImages(){
+    this.gallery_1_Filename = "";
+    this.gallery_1 = "";
+    this.gallery_2_Filename = "";
+    this.gallery_2 = "";
+    this.gallery_3_Filename = "";
+    this.gallery_3 = "";
+    this.gallery_4_Filename = "";
+    this.gallery_4 = "";
+    this.front_Filename = "";
+    this.frontImage = "";
+    this.preview_Filename = "";
+    this.preview_Filename = "";
+  }
+
+  setImages(images: Image[]){
+
+
+    for(let i=0; i < images.length; i++){
+      console.log("-------------------------->"+images[i].fileName);
+
+      switch (images[i].contentType) {
+        case "gallery":
+          if(this.gallery_1.toString().length == 0){
+            this.gallery_1_Filename = images[i].fileName;
+            this.gallery_1 = this.shop_gallery_path + this.gallery_1_Filename;
+          }else if(this.gallery_2.toString().length == 0){
+            this.gallery_2_Filename = images[i].fileName;
+            this.gallery_2 = this.shop_gallery_path + this.gallery_2_Filename;
+          }else if(this.gallery_3.toString().length == 0){
+            this.gallery_3_Filename = images[i].fileName;
+            this.gallery_3 = this.shop_gallery_path + this.gallery_3_Filename;
+          }else if(this.gallery_4.toString().length == 0){
+            this.gallery_4_Filename = images[i].fileName;
+            this.gallery_4 = this.shop_gallery_path + this.gallery_4_Filename;
+          }
+          break;
+        case "front":
+          this.front_Filename = images[i].fileName;
+          this.frontImage = this.shop_front_path + this.front_Filename;
+          break;
+        case "preview":
+          this.preview_Filename = images[i].fileName;
+          this.preview_Filename = this.shop_preview_path + this.preview_Filename;
+            break;
+          }
+
+    }
+
+
+  }
 
 
 
