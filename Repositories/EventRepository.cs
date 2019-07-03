@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -117,14 +118,28 @@ namespace WinfADD.Repositories
 
         public async Task<IEnumerable<Event>> GetEvents(SearchEventModel searchQuery)
         {
-            
-            
-            
-            
-            
+
+            var time = "'" + searchQuery.Time + "'" + "::date";
+            var sql = "select e.* from event e where ";
+
+            if (!string.IsNullOrEmpty(searchQuery.Name))
+            {
+                sql += " name like '%" + searchQuery.Name + "%'";
+                
+                if (!string.IsNullOrEmpty(searchQuery.Time))
+                    sql += " and (" + time +" <= e.start_time or (e.start_time >= " + time + " and " + time +  " >= e.end_time)) " +
+                           " and e.start_time <" + time + " + 90 ";
+
+            }
+            else if (!string.IsNullOrEmpty(searchQuery.Time))
+                sql += " (" + time +" <= e.start_time or (e.start_time >= " + time + " and " + time +  " >= e.end_time)) " +
+                 " and e.start_time <" + time + " + 90 ";
+
+            sql += " and e.end_time > Now() order by end_time";
+            Console.WriteLine(sql);
             using (IDbConnection conn = Connection)
             {
-                var result = await conn.QueryAsync<Event>(GetAllString);
+                var result = await conn.QueryAsync<Event>(sql, searchQuery);
 
                 return result;
             }
