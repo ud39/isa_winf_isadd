@@ -99,6 +99,7 @@
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\Poi.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\Reachable.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\Shop.ts" />
+      <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\Supplies.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\interfaces\entity\User.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\search\checkbox-coffee\checkbox-coffee.component.spec.ts" />
       <TypeScriptCompile Include="ClientApp\src\app\search\checkbox-coffee\checkbox-coffee.component.ts" />

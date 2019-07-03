@@ -34,6 +34,7 @@ export class CheckboxComponent implements OnInit {
   }
   public streetNameFormControl = new FormControl();
   public shopNameFormControl = new FormControl();
+  public postalFormControl = new FormControl();
   public priceClass = ['niedrig', 'mittel', 'hoch'];
   public options: string[] = [];
   public filteredOptions: Observable<string[]>;

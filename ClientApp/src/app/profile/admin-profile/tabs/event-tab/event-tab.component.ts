@@ -1,5 +1,5 @@
-import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
-import {MatSelect} from "@angular/material";
+import {Component, OnInit, QueryList, ViewChild, ViewChildren, ViewEncapsulation} from '@angular/core';
+import {MatInput, MatSelect} from "@angular/material";
 import {ShopService} from "../../../../services/shop/shop.service";
 import {Shop} from "../../../../interfaces/entity/Shop";
 import {Event} from "../../../../interfaces/entity/Event";
@@ -7,6 +7,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {EventService} from "../../../../services/event/event.service";
 import {AdminService} from "../../../../services/admin/admin.service";
 import {CompareService} from "../../../../services/compare/compare.service";
+import {CheckBoxesService} from "../../../../services/interactive-element/checkboxes.service";
+import {forkJoin} from "rxjs";
 
 @Component({
   selector: 'app-event-tab',
@@ -15,11 +17,14 @@ import {CompareService} from "../../../../services/compare/compare.service";
   encapsulation: ViewEncapsulation.None
 })
 export class EventTabComponent implements OnInit {
-  @ViewChild('multipleSelectShop') multipleSelectShop : MatSelect;
-
+  @ViewChildren(MatSelect) multipleSelectShop : QueryList<MatSelect>;
+  @ViewChildren('address') addressInputs : QueryList<MatInput>;
+  @ViewChildren('myNameDescription') nameDescriptionInputs : QueryList<MatInput>;
+  @ViewChild('startTime') datePicker : any;
   public shops : Shop[];
   public events: Event[];
   public selectedEvent;
+
   public eventNameFormControl = new FormControl('',[
     Validators.required
   ]);
@@ -48,8 +53,8 @@ export class EventTabComponent implements OnInit {
   public locationCountryFormControl = new FormControl('',[]);
 
   public beginEndDateFormGroup = new FormGroup({
-    begin: this.beginDatePickerFormControl,
-    end: this.endDatePickerFormControl
+    startTime: this.beginDatePickerFormControl,
+    endTime: this.endDatePickerFormControl
   },{validators:this.compareService.eventDateValidator});
 
   public locationFormGroup = new FormGroup({
@@ -73,15 +78,16 @@ export class EventTabComponent implements OnInit {
   }
 
   constructor(public shopSerivce: ShopService, public eventService: EventService, public adminService: AdminService,
-              public compareService: CompareService) { }
+              public compareService: CompareService, public checkBoxService: CheckBoxesService) { }
 
   ngOnInit() {
-    this.shopSerivce.getShops().subscribe(value => {
-      this.shops = value;
-    });
-    this.eventService.getEvents().subscribe(value => {
-      this.events = value;
-    });
+    forkJoin([
+    this.shopSerivce.getShops(),
+    this.eventService.getEvents(),
+    ]).subscribe(([allShops,allEvents]) => {
+    this.shops = allShops;
+    this.events = allEvents;
+    })
   }
 
   public myDate = new Date();
@@ -108,7 +114,9 @@ export class EventTabComponent implements OnInit {
   }
 
   getJsonOfEvent() : JSON {
-    let json = {};
+    console.log(this.multipleSelectShop.toArray());
+    let json = this.checkBoxService.getJsonOfEvent(this.addressInputs.toArray(),this.nameDescriptionInputs.toArray(),
+      this.beginEndDateFormGroup, this.multipleSelectShop.toArray());
 
     //add images
     if(this.adminService.eventImage.toString().length > 0 && this.adminService.event_Filename.length >0){
@@ -121,7 +129,7 @@ export class EventTabComponent implements OnInit {
 
     console.log((this.adminService.eventImage.toString().length > 0) +"<-->"+(this.adminService.event_Filename.length >0));
 
-    
+
     return <JSON> json;
   }
 

@@ -6,13 +6,9 @@ import {Shop} from "../../interfaces/entity/Shop";
 import {Params, Router} from "@angular/router";
 import {Global} from "../../global";
 import {RouteService} from "../routing/route.service";
-import {Poi} from "../../interfaces/entity/Poi";
-import {BusStation} from "../../interfaces/entity/BusStation";
-import {CoffeeDrink} from "../../interfaces/entity/CoffeeDrink";
-import {EquipmentCategory} from "../../interfaces/entity/EquipmentCategory";
-import {Blend} from "../../interfaces/entity/Blend";
-import {Bean} from "../../interfaces/entity/Bean";
 import {InputFormService} from "../admin/input-form.service";
+import {Supplies} from "../../interfaces/entity/Supplies";
+import {NEXT} from "@angular/core/src/render3/interfaces/view";
 
 
 
@@ -33,7 +29,7 @@ const headers = new HttpHeaders().set('Content-Type', 'application/json');
 export class ShopService {
 
   shops : Shop[];
-
+  suppliesShop: Supplies[];
   constructor(private http: HttpClient, private routeService: RouteService, private router:Router, private inputFormService: InputFormService) {
   }
 
@@ -42,6 +38,9 @@ export class ShopService {
     return this.http.get<Shop[]>(Global.url + 'coffeeshop/all');
   }
 
+  getSuppliesShops(queryParams:Params): Observable<Shop[]>{
+    return this.http.get<Shop[]>(Global.url + 'coffeeshop/supplies?', {headers:headers,params:queryParams});
+  }
 
   getShop(id): Observable<Shop>{
     return this.http.get<Shop>(Global.url + 'coffeeshop/getbyid?id=' + id, {headers:headers});
@@ -57,6 +56,14 @@ export class ShopService {
     console.log(this.getShopWithParams(params).subscribe(next => {
       this.shops = next;
     }));
+  }
+
+  searchSupplies(jsonOfSearch){
+    let params = this.routeService.buildHttpParams(jsonOfSearch);
+    console.log('https://localhost:5001/api/coffeeshop/supplies?' + params.toString());
+    this.getSuppliesShops(params).subscribe(next => {
+      this.shops  = next
+    })
   }
 
   sortByNameDesc(){

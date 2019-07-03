@@ -1,3 +1,4 @@
+<ng-container *ngIf="this.service.shops">
 <div class="container" *ngIf="this.service.shops.length != 0; else noShops">
   <mat-list id="shop-list">
   <mat-list-item *ngFor="let shop of this.service.shops; last as last">
@@ -22,3 +23,4 @@
 <ng-template #noShops>
   Es gibt kein Laden, welches die gewählte Kriterien erfüllen. :(
 </ng-template>
+</ng-container>

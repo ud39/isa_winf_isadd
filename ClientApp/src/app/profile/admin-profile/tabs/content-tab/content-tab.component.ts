@@ -46,6 +46,23 @@ export class ContentTabComponent implements OnInit {
     {value: 'high', viewValue: 'hoch'},
   ];
 
+  public roasts = [
+    {value: 'none', viewValue: 'Keine'},
+    {value: 'lightRoast', viewValue: 'Helle Röstung'},
+    {value: 'middleRoast', viewValue: 'Mittlere Röstung'},
+    {value: 'darkRoast', viewValue: 'Dunkle Röstung'},
+  ];
+  public grinds = [
+    {value: 'none', viewValue: 'Keine'},
+    {value: 'veryCoarse', viewValue: 'Sehr Grob'},
+    {value: 'coarse', viewValue: 'Grob'},
+    {value: 'coarseMiddle', viewValue: 'Grob bis Mittel'},
+    {value: 'middle', viewValue: 'Mittel'},
+    {value: 'fine', viewValue: 'Fein'},
+    {value: 'veryFine', viewValue: 'Sehr Fein'},
+  ];
+
+
   public blendNameFormControl = new FormControl('',[
     Validators.required
   ]);
@@ -55,12 +72,18 @@ export class ContentTabComponent implements OnInit {
   public selectBlendBeanFormControl = new FormControl('',[
     this.compareService.atLeastTwoBeanSelected
   ]);
+
+  public blendRoastFormControl = new FormControl('',[]);
+  public blendGrindFormControl = new FormControl('',[]);
+
   public selectBlendPriceClassFormControl = new FormControl('',[]);
   public avaibleBeans : Bean[];
 
 
   public beanNameFormControl = new FormControl('',[]);
   public beanProvenanceFormControl = new FormControl('',[]);
+  public beanRoastFormControl = new FormControl('',[]);
+  public beanGrindFormControl = new FormControl('',[]);
 
   public selectEquipmentCategoryFormControl = new FormControl('',[]);
 
@@ -87,8 +110,8 @@ export class ContentTabComponent implements OnInit {
 
 
 
-  public blendFormGroup = new FormGroup({name: this.blendNameFormControl,blends: this.blendProvenanceFormControl, beans: this.selectBlendBeanFormControl});
-  public beanFormGroup = new FormGroup({name: this.beanNameFormControl, select: this.beanProvenanceFormControl});
+  public blendFormGroup = new FormGroup({name: this.blendNameFormControl,blends: this.blendProvenanceFormControl, beans: this.selectBlendBeanFormControl, grind: this.blendGrindFormControl, roast:this.blendRoastFormControl});
+  public beanFormGroup = new FormGroup({name: this.beanNameFormControl, select: this.beanProvenanceFormControl, grind:this.beanGrindFormControl,roast:this.beanRoastFormControl});
   public equipmentFormGroup = new FormGroup({name: this.equipmentNameFormControl, select: this.selectContentFormControl});
   public coffeeDrinkFormGroup = new FormGroup({name: this.coffeeDrinkNameFormControl, select: this.selectContentFormControl});
   public equipmentCategoryNameFormGroup = new FormGroup({name: this.equipmentCategoryNameFormControl});
@@ -104,11 +127,14 @@ export class ContentTabComponent implements OnInit {
         this.blendNameFormControl.setValue(blend.name);
         this.blendProvenanceFormControl.setValue(blend.provenance);
         this.selectBlendBeanFormControl.setValue('');
+        this.blendGrindFormControl.setValue(blend);
       break;
       case 'Bean':
         let bean : Bean = <Bean> data;
         this.beanNameFormControl.setValue(bean.name);
         this.beanProvenanceFormControl.setValue(bean.provenance);
+        this.beanGrindFormControl.setValue(bean.grind);
+        this.beanRoastFormControl.setValue(bean.roast);
       break;
       case 'BusStation':
         let busStation : BusStation = <BusStation> data;

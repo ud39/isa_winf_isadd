@@ -1,5 +1,7 @@
 export interface Blend {
   name: string;
   provenance: string;
-  priceRange: string;
+  grind:string;
+  roast:string;
+  priceClass: string;
 }

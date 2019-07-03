@@ -1,13 +1,36 @@
 <div class="search-field">
-    <mat-form-field *ngIf="router.url != urlGlobalPath.get('admin')">
-      <input matInput placeholder="Equipment Name" [formControl]="equipmentNameFormControl" id="name" type="text" (keydown.enter)="triggerSearchEquipment()">
+    <mat-form-field class="search-equipment"*ngIf="router.url != urlGlobalPath.get('admin')">
+      <input matInput placeholder="Name" [formControl]="equipmentNameFormControl" id="name" type="text" (keydown.enter)="triggerSearchEquipment()">
     </mat-form-field>
-  <mat-form-field class="select-form-field">
+  <mat-form-field class="search-equipment">
     <mat-select  id=equipmentCategory placeholder="Equipment Kategorie" multiple [formControl]="selectEquipmentCategoryFormControl" [compareWith]="compareService.compareEquipmentCategory">
-      <mat-option *ngFor="let equipmentCategory of chooseEquipmentCategories" [value]="equipmentCategory">{{equipmentCategory.name}}</mat-option>
+      <mat-option *ngFor="let equipmentCategory of equipmentCategory" [value]="equipmentCategory">{{equipmentCategory.name}}</mat-option>
     </mat-select>
   </mat-form-field>
-  <div  *ngIf="router.url == '/admin'">
-    <button mat-button id="clearbutton" (click)="clear()">Checks aufheben</button>
+    <mat-form-field class="search-equipment">
+      <mat-label>Landmarken</mat-label>
+      <mat-select id="poi" multiple>
+        <mat-option *ngFor="let poi of checkBoxPois" [value]="poi.name">
+          {{poi.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="search-equipment">
+      <mat-label>Preis Klasse</mat-label>
+      <mat-select id="priceClass">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let price of priceClass" [value]="price">
+          {{price}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="search-equipment">
+      <mat-label>Bus Station</mat-label>
+      <mat-select id="busStation">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let busStation of checkBoxBusStation" [value]="busStation.name">
+          {{busStation.name + ' ' + busStation.line}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
-</div>
