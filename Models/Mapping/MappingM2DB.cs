@@ -37,7 +37,9 @@ namespace WinfADD.Models.Mapping
             {"streetname", "(address).street_name"},
             {"town", "(address).town"},
             {"country", "(address).country"},
-            {"postalcode", "(address).postal_code"}
+            {"postalcode", "(address).postal_code"},
+            {"equipmentcategories", "equipment_category_name"},
+            {"busstations", "bus_station_name"}
 
         };
 
