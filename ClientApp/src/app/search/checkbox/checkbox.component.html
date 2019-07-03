@@ -1,6 +1,6 @@
 <div class="search-field">
   <div>
-    <mat-form-field class="direct-shop" *ngIf="router.url != urlGlobalPath.get('admin')">
+    <mat-form-field class="direct-shop">
       <input id="name" type="text" placeholder="Name" aria-label="Number" matInput [formControl]="shopNameFormControl" (keydown.enter)="this.navigateTo()" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
@@ -8,7 +8,7 @@
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-    <mat-form-field class="poi" *ngIf="router.url != urlGlobalPath.get('admin')">
+    <mat-form-field class="poi">
       <mat-label>Landmarken</mat-label>
       <mat-select id="poi" multiple>
         <mat-option *ngFor="let poi of checkBoxPois" [value]="poi.name">
@@ -16,7 +16,7 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field class="price-range" *ngIf="router.url != urlGlobalPath.get('admin')">
+    <mat-form-field class="price-range">
       <mat-label>Preis Klasse</mat-label>
       <mat-select id="priceClass">
         <mat-option>--</mat-option>
@@ -25,7 +25,7 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field *ngIf="router.url != urlGlobalPath.get('admin')">
+    <mat-form-field>
       <mat-label>Bus Station</mat-label>
       <mat-select id="busStation">
         <mat-option>--</mat-option>
@@ -35,20 +35,15 @@
       </mat-select>
     </mat-form-field>
     <mat-checkbox #cb class="checkbox" id="wlan" [checked]="false">Wlan</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" id="vegan" [checked]="false">Vegan</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id="latteArt" [checked]="false">Latte Art</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id="outdoor" [checked]="false">Outdoor</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id="childFriendly"[checked]="false">Kinderfreundlich</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id="workstation"[checked]="false">Workstation</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" id="shop" [checked]="false">Bohnen & Zubehör</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id="disableFriendly" [checked]="false">Behindertengerecht</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id="petFriendly" [checked]="false">Haustierfreundlich</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" id="warmFood" [checked]="false">Warm</mat-checkbox>
-    <mat-checkbox #cb class="checkbox" id="coldFood" [checked]="false">Kalt</mat-checkbox>
+    <mat-checkbox #cb class="checkbox" id="warmFood" [checked]="false">Warmes Essen</mat-checkbox>
+    <mat-checkbox #cb class="checkbox" id="coldFood" [checked]="false">Kaltes Essen</mat-checkbox>
     <mat-checkbox #cb class="checkbox" id="franchise" [checked]="false">Kette</mat-checkbox>
-    <mat-checkbox *ngIf="router.url != urlGlobalPath.get('admin')" #cb class="checkbox" id="open" [checked]="false">Offen</mat-checkbox>
-    <div  *ngIf="router.url == urlGlobalPath.get('admin')">
-      <button mat-button id="clearbutton" (click)="clear()">Checks aufheben</button>
-    </div>
+    <mat-checkbox #cb class="checkbox" id="open" [checked]="false">Offen</mat-checkbox>
   </div>
 </div>

@@ -122,9 +122,5 @@ export class SearchComponent implements OnInit,  AfterViewInit {
   }
 
   ngAfterViewInit(){
-    this.matTabGroup.selectedIndex = 0;
-    this.matTabGroup.selectedTabChange.subscribe(event => {
-      this.matTabActive = event.tab.textLabel;
-    });
   }
 }

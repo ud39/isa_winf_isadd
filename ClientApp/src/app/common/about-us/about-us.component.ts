@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {ImageService} from "../../services/image/image.service";
+import {Global} from "../../global";
 
 
 @Component({
@@ -10,13 +10,10 @@ import {ImageService} from "../../services/image/image.service";
 })
 export class AboutUsComponent implements OnInit {
 
-  public brand:any;
-  constructor(public imageBrandService: ImageService) { }
+  public brand = Global.url + 'image/GetById?ContentType=brand&fileName=kaffeesatt.png';
+  constructor() { }
 
   ngOnInit() {
-    this.imageBrandService.getBrandImage().subscribe(value => {
-      this.imageBrandService.setBrandImage(value).then(data => this.brand = data );
-    })
   }
 
 }

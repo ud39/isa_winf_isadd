@@ -16,6 +16,7 @@ import {InputFormService} from "../../../../services/admin/input-form.service";
 import {Bean} from "../../../../interfaces/entity/Bean";
 import {CompareService} from "../../../../services/compare/compare.service";
 import {EventService} from "../../../../services/event/event.service";
+import {CheckboxShopAdminComponent} from "../../../../search/checkbox-shop-admin/checkbox-shop-admin.component";
 
 
 
@@ -30,7 +31,7 @@ import {EventService} from "../../../../services/event/event.service";
 
 export class ShopTabComponent implements OnInit {
   @ViewChildren('address') addressInputs: QueryList<MatInput>;
-  @ViewChild('checkbox') checkBoxes: CheckboxComponent;
+  @ViewChild('checkbox') checkBoxes: CheckboxShopAdminComponent;
   @ViewChildren('inputs') nameDescriptionInputs: QueryList<MatInput>;
   @ViewChildren(MatOption) bus: QueryList<MatOption>;
   @ViewChildren(MatSelect) selects: QueryList<MatSelect>;
@@ -51,8 +52,8 @@ export class ShopTabComponent implements OnInit {
   public chooseBusStations: BusStation[];
   public chooseBeans: Bean[];
 
-  public addBusStation: BusStation[];
-  public removeBusStation: BusStation[];
+  public editBusStation: BusStation[];
+  public editPos: Poi[];
 
   public mondayOpenFormControl = new FormControl('', [
     Validators.pattern('([01]?[0-9]|2[0-3]):[0-5][0-9]')
@@ -75,16 +76,6 @@ export class ShopTabComponent implements OnInit {
   public sundayOpenFormControl = new FormControl('', [
     Validators.pattern('([01]?[0-9]|2[0-3]):[0-5][0-9]')
   ]);
-
-  public openTimeFormGroup = new FormGroup({
-    monday: this.mondayOpenFormControl,
-    tuesday: this.tuesdayOpenFormControl,
-    wednesday: this.wednesdayOpenFormControl,
-    thursday: this.thursdayOpenFormControl,
-    friday: this.fridayOpenFormControl,
-    saturday: this.saturdayOpenFormControl,
-    sunday: this.sundayOpenFormControl,
-  }, {validators: this.compareService.openingClosingTimeValidator});
 
 
   public mondayCloseFormControl = new FormControl('',[
@@ -109,16 +100,24 @@ export class ShopTabComponent implements OnInit {
     Validators.pattern('([01]?[0-9]|2[0-3]):[0-5][0-9]')
   ]);
 
-  public closeTimeFormGroup = new FormGroup({
-    monday: this.mondayCloseFormControl,
-    tuesday: this.tuesdayCloseFormControl,
-    wednesday: this.wednesdayCloseFormControl,
-    thursday: this.thursdayCloseFormControl,
-    friday: this.fridayCloseFormControl,
-    saturday: this.saturdayCloseFormControl,
-    sunday: this.sundayCloseFormControl,
-  });
 
+
+  public openingCloseTimeFormGroup = new FormGroup({
+    mondayOpen:this.mondayOpenFormControl,
+    tuesdayOpen:this.tuesdayOpenFormControl,
+    wednesdayOpen:this.wednesdayOpenFormControl,
+    thursdayOpen:this.thursdayOpenFormControl,
+    fridayOpen:this.fridayOpenFormControl,
+    saturdayOpen:this.saturdayOpenFormControl,
+    sundayOpen:this.sundayOpenFormControl,
+    mondayClose:this.mondayCloseFormControl,
+    tuesdayClose:this.tuesdayCloseFormControl,
+    wednesdayClose:this.wednesdayCloseFormControl,
+    thursdayClose:this.thursdayCloseFormControl,
+    fridayClose:this.fridayCloseFormControl,
+    saturdayClose:this.saturdayCloseFormControl,
+    sundayClose:this.sundayCloseFormControl,
+  });
 
 
 
@@ -147,7 +146,9 @@ export class ShopTabComponent implements OnInit {
     ]);
   public shopWebsiteFormControl = new FormControl('',[]);
 
-  public shopFoundingYearFormControl = new FormControl('',[]);
+  public shopFoundingYearFormControl = new FormControl('',[
+    Validators.pattern('[1-2][7-9][][3]')
+  ]);
 
   public postalCodeFormControl = new FormControl('',[
     Validators.pattern('[0-9]{2,}|^$')
@@ -175,7 +176,8 @@ export class ShopTabComponent implements OnInit {
       selectCoffeeDrink: this.selectCoffeeDrinkFormControl,
       selectBusStation: this.selectBusStationFromControl,
       selectPoi: this.selectPoiFormControl,
-      selectEquipmentCategory: this.selectEquipmentCategoryFormControl
+      selectEquipmentCategory: this.selectEquipmentCategoryFormControl,
+      openingClosing: this.openingCloseTimeFormGroup
 
     }
   );
@@ -203,8 +205,8 @@ export class ShopTabComponent implements OnInit {
     this.selectEquipmentCategoryFormControl.setValue(selectedShop.equipmentCategories);
     this.selectCoffeeDrinkFormControl.setValue(selectedShop.coffeeDrinks);
 
-    this.inputService.fillOutOpenCloseTime(selectedShop,this.openTimeFormGroup,this.closeTimeFormGroup);
-    this.checkBoxService.fillOutCheckBoxes(selectedShop,this.checkBoxes.cbs.toArray());
+    this.inputService.fillOutOpenCloseTime(selectedShop,this.openingCloseTimeFormGroup);
+    this.checkBoxService.fillOutCheckBoxes(selectedShop,this.checkBoxes.checkBoxFormGroup);
 
   }
 
@@ -237,6 +239,15 @@ export class ShopTabComponent implements OnInit {
     this.adminService.deleteImage(fromWhere);
   }
 
+  public validateControl(){
+    if(!this.openingCloseTimeFormGroup.valid && !this.openingCloseTimeFormGroup.valid)
+    Object.keys(this.openingCloseTimeFormGroup.controls).forEach(key => {
+      const openingFormControl = this.openingCloseTimeFormGroup.controls[key];
+      const closignFormControl = this.openingCloseTimeFormGroup.controls[key];
+      openingFormControl.updateValueAndValidity();
+      closignFormControl.markAsTouched({ onlySelf: true });
+    });
+  }
 
 
   ngOnInit() {
@@ -255,8 +266,10 @@ export class ShopTabComponent implements OnInit {
         this.chooseBeans = beans;
         this.chooseBlends = blends;
         this.chooseBusStations = busStations;
+        this.editBusStation = busStations;
         this.choosePois = pois;
         this.chooseEquipmentCategories = equipmentCategories;
+        this.isLoaded = true;
       }
     );
     forkJoin([]);
@@ -264,15 +277,8 @@ export class ShopTabComponent implements OnInit {
       this.shops = value;
     })
   }
-  public validateFormControl(){
-  }
-  public addBusStationToArray(busStation: any){
-      if(this.chooseBusStations.length > 1)
-      {
 
 
-      }
-  }
   constructor(public adminService: AdminService, public shopService: ShopService,
               public checkBoxService: CheckBoxesService, public inputService: InputFormService,
               public compareService: CompareService, public eventService : EventService) { }

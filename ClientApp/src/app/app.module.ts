@@ -39,6 +39,10 @@ import {Global} from "./global";
 import { FilterComponent } from './filtering/filter/filter.component';
 import { ConfirmationComponent } from './profile/admin-profile/dialog/confirmation/confirmation.component';
 import { ArticleTabComponent } from './profile/admin-profile/tabs/article-tab/article-tab.component';
+import { CheckboxShopAdminComponent } from './search/checkbox-shop-admin/checkbox-shop-admin.component';
+import { CheckboxEquipmentAdminComponent } from './search/checkbox-equipment-admin/checkbox-equipment-admin.component';
+import { CheckboxCoffeeAdminComponent } from './search/checkbox-coffee-admin/checkbox-coffee-admin.component';
+import { RatingShopComponent } from './rating/rating-shop/rating-shop.component';
 
 
 
@@ -73,6 +77,10 @@ import { ArticleTabComponent } from './profile/admin-profile/tabs/article-tab/ar
     FilterComponent,
     ConfirmationComponent,
     ArticleTabComponent,
+    CheckboxShopAdminComponent,
+    CheckboxEquipmentAdminComponent,
+    CheckboxCoffeeAdminComponent,
+    RatingShopComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),

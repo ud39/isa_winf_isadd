@@ -22,13 +22,11 @@ import {BusStation} from "../../interfaces/entity/BusStation";
   encapsulation: ViewEncapsulation.None
 })
 export class CheckboxComponent implements OnInit {
-
   public checkBoxPois : Poi[];
   public checkBoxBusStation: BusStation[];
   @ViewChildren('cb') cbs : QueryList<MatCheckbox>;
   @ViewChildren(MatSelect) selects : QueryList<MatSelect>;
   @ViewChildren(MatInput) inputSearch : QueryList<MatInput>;
-  public urlGlobalPath = Global.urlName;
   constructor(public router: Router, public checkBoxService: CheckBoxesService,
               public shopService: ShopService,
               public inputService: InputFormService) {
@@ -39,7 +37,6 @@ export class CheckboxComponent implements OnInit {
   public priceClass = ['niedrig', 'mittel', 'hoch'];
   public options: string[] = [];
   public filteredOptions: Observable<string[]>;
-  public pois: Poi[];
   public shopFormControls = new FormGroup({shopName:this.shopNameFormControl});
   fillOutOptions(){
     this.shopService.getShops().subscribe(shop =>{

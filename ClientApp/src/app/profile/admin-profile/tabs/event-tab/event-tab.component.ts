@@ -6,6 +6,7 @@ import {Event} from "../../../../interfaces/entity/Event";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {EventService} from "../../../../services/event/event.service";
 import {AdminService} from "../../../../services/admin/admin.service";
+import {CompareService} from "../../../../services/compare/compare.service";
 
 @Component({
   selector: 'app-event-tab',
@@ -46,6 +47,11 @@ export class EventTabComponent implements OnInit {
   public locationPostalCodeFormControl = new FormControl('',[]);
   public locationCountryFormControl = new FormControl('',[]);
 
+  public beginEndDateFormGroup = new FormGroup({
+    begin: this.beginDatePickerFormControl,
+    end: this.endDatePickerFormControl
+  },{validators:this.compareService.eventDateValidator});
+
   public locationFormGroup = new FormGroup({
     street:this.locationStreetFormControl,
     streetNr:this.locationStreetNrFormControl,
@@ -57,8 +63,7 @@ export class EventTabComponent implements OnInit {
     eventName: this.eventNameFormControl,
     eventDescription: this.eventDescriptionFormControl,
     eventAccessFee: this.accessFeeFormControl,
-    beginEventDate: this.beginDatePickerFormControl,
-    endEventDate: this.endDatePickerFormControl,
+    beginEndDate: this.beginEndDateFormGroup,
     location: this.locationFormGroup,
     selectShop: this.selectShopFormControl
   });
@@ -67,7 +72,8 @@ export class EventTabComponent implements OnInit {
     return this.eventInput;
   }
 
-  constructor(public shopSerivce: ShopService, public eventService: EventService, public adminService: AdminService) { }
+  constructor(public shopSerivce: ShopService, public eventService: EventService, public adminService: AdminService,
+              public compareService: CompareService) { }
 
   ngOnInit() {
     this.shopSerivce.getShops().subscribe(value => {
@@ -99,10 +105,6 @@ export class EventTabComponent implements OnInit {
     this.selectShopFormControl.setValue(event.coffeeShop);
     this.beginDatePickerFormControl.setValue(event.startTime);
     this.endDatePickerFormControl.setValue(event.endTime);
-  }
-
-  compareShop(shop1: Shop, shop2:Shop){
-    return shop1.id = shop2.id;
   }
 
   getJsonOfEvent() : JSON {

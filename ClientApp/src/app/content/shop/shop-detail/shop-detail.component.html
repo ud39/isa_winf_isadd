@@ -34,16 +34,14 @@
       <mat-grid-tile>
         <div id="symbols">
           <h6>Feature:</h6>
-          <div class="symbol" *ngIf="shop$.wlan || true" [matTooltipPosition]="position" [matTooltip]="symbolWlan"><i class="fas fa-wifi fa-1x"></i></div>
-          <div class="symbol" *ngIf="shop$.childFriendly || true" [matTooltipPosition]="position" [matTooltip]="symbolChildFriendly"><i class="fas fa-baby fa-1x"></i></div>
-          <div class="symbol" *ngIf="shop$.disabledFriendly || true" [matTooltipPosition]="position" [matTooltip]="symbolDisabledFriendly"><i class="fas fa-wheelchair fa-1x"></i></div>
-          <div class="symbol" *ngIf="shop$.outdoor || true" [matTooltipPosition]="position" [matTooltip]="symbolOutdoor"><i class="fas fa-sun fa-1x"></i></div>
-          <div class="symbol" *ngIf="shop$.latteArt || true" [matTooltipPosition]="position" [matTooltip]="symbolLatteArt"><i class="fas fa-paint-brush"></i></div>
-          <div class="symbol" *ngIf="shop$.petsFriendly || true" [matTooltipPosition]="position" [matTooltip]="symbolPetsFriendly"><i class="fas fa-paw fa-1x"></i></div>
-          <div class="symbol" *ngIf="shop$.workstation || true" [matTooltipPosition]="position" [matTooltip]="symbolWorkStation"><i class="fas fa-desktop fa-1x"></i></div>
-          <div class="symbol" *ngIf="shop$.fairTrade || true" [matTooltipPosition]="position" [matTooltip]="symbolFairTrade"><i class="fas fa-seedling fa-1fx"></i></div>
-          <div class="symbol" *ngIf="shop$.franchise || true" [matTooltipPosition]="position" [matTooltip]="symbolFranchise"><i class="fas fa-store-alt"></i></div>
-          <div class="symbol" *ngIf="shop$.foundingYear || true" [matTooltipPosition]="position" [matTooltip]="symbolVegan"><i class="fas fa-leaf"></i></div>
+          <div class="symbol" *ngIf="shop$.wlan" [matTooltipPosition]="position" [matTooltip]="symbolWlan"><i class="fas fa-wifi fa-1x"></i></div>
+          <div class="symbol" *ngIf="shop$.childFriendly" [matTooltipPosition]="position" [matTooltip]="symbolChildFriendly"><i class="fas fa-baby fa-1x"></i></div>
+          <div class="symbol" *ngIf="shop$.disabledFriendly" [matTooltipPosition]="position" [matTooltip]="symbolDisabledFriendly"><i class="fas fa-wheelchair fa-1x"></i></div>
+          <div class="symbol" *ngIf="shop$.outdoor" [matTooltipPosition]="position" [matTooltip]="symbolOutdoor"><i class="fas fa-sun fa-1x"></i></div>
+          <div class="symbol" *ngIf="shop$.latteArt" [matTooltipPosition]="position" [matTooltip]="symbolLatteArt"><i class="fas fa-paint-brush"></i></div>
+          <div class="symbol" *ngIf="shop$.petsFriendly" [matTooltipPosition]="position" [matTooltip]="symbolPetsFriendly"><i class="fas fa-paw fa-1x"></i></div>
+          <div class="symbol" *ngIf="shop$.workstation" [matTooltipPosition]="position" [matTooltip]="symbolWorkStation"><i class="fas fa-desktop fa-1x"></i></div>
+          <div class="symbol" *ngIf="shop$.franchise" [matTooltipPosition]="position" [matTooltip]="symbolFranchise"><i class="fas fa-store-alt"></i></div>
         </div>
       </mat-grid-tile>
       <mat-grid-tile>
@@ -58,11 +56,12 @@
           {{shop$.description}}
         </div>
       </mat-tab>
-      <mat-tab label="Menü" *ngIf="shop$.coffeeDrinks.length != 0">
+      <mat-tab label="Kaffee Getränke" *ngIf="shop$.coffeeDrinks.length != 0">
       <mat-list>
         <mat-list-item *ngFor="let coffee of shop$.coffeeDrinks; last as last ">
-          {{coffee.name}}
-          {{coffee.description}}
+          Name: {{coffee.name}}
+          <br>
+          Beschreibung: {{coffee.description}}
         <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
         </mat-list-item>
       </mat-list>
@@ -73,7 +72,7 @@
           <div>
             <a [routerLink]="['/events', event.id]" [routerLinkActive]='["link-active"]'>{{event.description}}</a><br>
           Kosten: {{event.accessFee}}<br>
-          Zeitpunkt {{event.time}}
+          Zeitpunkt {{event.startTime}}
           </div>
         <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
         </mat-list-item>
@@ -100,7 +99,7 @@
       <mat-tab label="Equipment" *ngIf="shop$.equipmentCategories.length != 0">
       <mat-list>
         <mat-list-item *ngFor="let equipment of shop$.equipmentCategories">
-          {{equipment.equipmentCategoryName}}
+          {{equipment.name}}
         </mat-list-item>
       </mat-list>
       </mat-tab>

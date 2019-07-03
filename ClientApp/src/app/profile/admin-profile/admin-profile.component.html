@@ -3,6 +3,7 @@
   <button mat-button (click)="openEditListDialog()">Suchen</button>
   <button mat-button [matMenuTriggerFor]="menu" id="selected_menu" >Aktionen</button>
   <mat-menu #menu="matMenu">
+    <button>Test</button>
     <button mat-menu-item [disabled]="!activeFormGroup.valid" (click)="addContent()">Hinzufügen</button>
     <button mat-menu-item [disabled]="!activeFormGroup.valid" (click)="saveContent()">Speichern</button>
     <button mat-menu-item [disabled]="!activeFormGroup.valid" (click)="deleteContent()">Löschen</button>
@@ -14,9 +15,6 @@
     <mat-tab-group #matTabShop class="first-mat-tab-group">
       <mat-tab [disabled]="!editStatus" id="shop-tab" label="Shop">
       <app-shop-tab></app-shop-tab>
-      </mat-tab>
-      <mat-tab  [disabled]="!editStatus" id="equipment-tab" label="Bohnen & Zubehör" class="first-mat-group">
-      <app-equipment-tab></app-equipment-tab>
       </mat-tab>
       <mat-tab  [disabled]="!editStatus" id="event-tab" label="Event" class="first-mat-group">
       <app-event-tab></app-event-tab>

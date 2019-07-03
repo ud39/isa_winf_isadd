@@ -10,6 +10,7 @@ import {Bean} from "../../interfaces/entity/Bean";
 import {EquipmentCategory} from "../../interfaces/entity/EquipmentCategory";
 import {Shop} from "../../interfaces/entity/Shop";
 import {User} from "../../interfaces/entity/User";
+import {FormGroup} from "@angular/forms";
 
 
 
@@ -61,32 +62,40 @@ export class InputFormService {
     jsonInput = this.filterUndefinedAndEmptyStrings(jsonInput);
     switch (selectedContent) {
       case 'Blend':
+        console.log("Add Blend");
         return this.http.post(Global.url + 'blend/insert', jsonInput, {headers: headers, observe:'body'});
       case 'Bean':
+        console.log("Add Bean");
         return this.http.post(Global.url + 'bean/insert', jsonInput, {headers: headers, observe:'body'});
       case 'Manufacturer':
+        console.log("Add Manufacturer");
         return this.http.post(Global.url + 'manufacturer/insert', jsonInput, {headers: headers, observe:'body'});
       case 'CoffeeDrink':
+        console.log("Add CoffeeDrink");
         return this.http.post(Global.url + 'coffeedrink/insert', jsonInput, {headers: headers, observe:'body'});
       case 'Equipment':
+        console.log("Add Equipment");
         return this.http.post(Global.url + 'equipment/insert', jsonInput, {headers: headers, observe:'body'});
       case 'Equipment-category':
+        console.log("Add Equipment Category");
         return this.http.post(Global.url + 'equipmentcategory/insert', jsonInput, {headers: headers, observe:'body'});
       case 'BusStation':
+        console.log("Add BusStation");
         return this.http.post(Global.url + 'busstation/insert', jsonInput, {headers: headers, observe:'body'});
       case 'Poi':
+        console.log("Add Poi");
         return this.http.post(Global.url + 'poi/insert', jsonInput, {headers: headers, observe:'body'});
     }
   }
 
   getBlend(blend:Blend): Observable<Blend>{
     let queryparams = new HttpParams().set('name',blend.name);
-    return this.http.get<Blend>(Global.url + 'blend/id?', {headers: headers, params:queryparams})
+    return this.http.get<Blend>(Global.url + 'blend/getbyid?', {headers: headers, params:queryparams})
   }
 
   getBean(bean:Bean): Observable<Bean>{
     let queryparams = new HttpParams().set('name',bean.name).append('provenance',bean.provenance)
-    return this.http.get<Bean>(Global.url + 'bean/id?', {headers: headers, params:queryparams})
+    return this.http.get<Bean>(Global.url + 'bean/getbyid?', {headers: headers, params:queryparams})
   }
 
   getPoi(poi:Poi): Observable<Poi>{
@@ -94,27 +103,27 @@ export class InputFormService {
     queryparams = queryparams.append('streetNumber', poi.address.streetNumber.toString()).append('town',poi.address.town);
     queryparams = queryparams.append('postalCode', poi.address.postalCode.toString()).append('country',poi.address.country);
     console.log(queryparams.toString());
-    return this.http.get<Poi>(Global.url + 'poi/GetById?', {headers: headers, params:queryparams})
+    return this.http.get<Poi>(Global.url + 'poi/getbyid?', {headers: headers, params:queryparams})
   }
 
   getCoffeeDrink(coffeeDrink: CoffeeDrink): Observable<CoffeeDrink>{
-    let queryparams = new HttpParams().set('name',coffeeDrink.name)
-    return this.http.get<CoffeeDrink>(Global.url + 'coffeeDrink/GetById?', {headers:headers, params:queryparams})
+    let queryparams = new HttpParams().set('name',coffeeDrink.name);
+    return this.http.get<CoffeeDrink>(Global.url + 'coffeeDrink/getbyid?', {headers:headers, params:queryparams})
   }
 
   getBusStation(busStation: BusStation): Observable<BusStation>{
     let queryparams = new HttpParams().set('name',busStation.name).append('line',busStation.line.toString());
-    return this.http.get<BusStation>(Global.url + 'busstation/GetById?', {headers:headers, params:queryparams});
+    return this.http.get<BusStation>(Global.url + 'busstation/getbyid?', {headers:headers, params:queryparams});
   }
 
   getEquipmentCategory(equipmentCategory: EquipmentCategory) : Observable<EquipmentCategory>{
     let queryparams = new HttpParams().set('name',equipmentCategory.name);
-    return this.http.get<EquipmentCategory>(Global.url + 'equipmentCategory/GetById?', {headers:headers, params:queryparams});
+    return this.http.get<EquipmentCategory>(Global.url + 'equipmentCategory/getbyid?', {headers:headers, params:queryparams});
   }
 
   getUser(user:User){
     let queryparams = new HttpParams().set('email',user.email);
-    return this.http.get<User>(Global.url + 'user/GetById?', {headers:headers, params:queryparams});
+    return this.http.get<User>(Global.url + 'user/getbyid?', {headers:headers, params:queryparams});
   }
 
   getBusStations(): Observable<BusStation[]>{
@@ -164,36 +173,36 @@ export class InputFormService {
     return jsonInput;
   }
 
-  public fillOutOpenCloseTime(shop:Shop, openFormGroup, closeFormGroup){
+  public fillOutOpenCloseTime(shop:Shop, openCloseFormGroup:FormGroup){
   for(let i=0; i < shop.openingTimes.length; i++){
   switch (shop.openingTimes[i].weekday) {
   case 'monday':
-  openFormGroup.get('monday').setValue(shop.openingTimes[i].open.substr(0,5));
-  closeFormGroup.get('monday').setValue(shop.openingTimes[i].close.substr(0,5));
+  openCloseFormGroup.get('mondayOpen').setValue(shop.openingTimes[i].open.substr(0,5));
+  openCloseFormGroup.get('mondayClose').setValue(shop.openingTimes[i].close.substr(0,5));
   break;
   case 'tuesday':
-  openFormGroup.get('tuesday').setValue(shop.openingTimes[i].open.substr(0,5));
-  closeFormGroup.get('tuesday').setValue(shop.openingTimes[i].close.substr(0,5));
+  openCloseFormGroup.get('tuesdayOpen').setValue(shop.openingTimes[i].open.substr(0,5));
+  openCloseFormGroup.get('tuesdayClose').setValue(shop.openingTimes[i].close.substr(0,5));
   break;
   case 'wednesday':
-  openFormGroup.get('wednesday').setValue(shop.openingTimes[i].open.substr(0,5));
-  closeFormGroup.get('wednesday').setValue(shop.openingTimes[i].close.substr(0,5));
+  openCloseFormGroup.get('wednesdayOpen').setValue(shop.openingTimes[i].open.substr(0,5));
+  openCloseFormGroup.get('wednesdayClose').setValue(shop.openingTimes[i].close.substr(0,5));
   break;
   case 'thursday':
-  openFormGroup.get('thursday').setValue(shop.openingTimes[i].open.substr(0,5));
-  closeFormGroup.get('thursday').setValue(shop.openingTimes[i].close.substr(0,5));
+  openCloseFormGroup.get('thursdayOpen').setValue(shop.openingTimes[i].open.substr(0,5));
+  openCloseFormGroup.get('thursdayClose').setValue(shop.openingTimes[i].close.substr(0,5));
   break;
   case 'friday':
-  openFormGroup.get('friday').setValue(shop.openingTimes[i].open.substr(0,5));
-  closeFormGroup.get('friday').setValue(shop.openingTimes[i].close.substr(0,5));
+  openCloseFormGroup.get('fridayOpen').setValue(shop.openingTimes[i].open.substr(0,5));
+  openCloseFormGroup.get('fridayClose').setValue(shop.openingTimes[i].close.substr(0,5));
   break;
   case 'saturday':
-  openFormGroup.get('saturday').setValue(shop.openingTimes[i].open.substr(0,5));
-  closeFormGroup.get('saturday').setValue(shop.openingTimes[i].close.substr(0,5));
+  openCloseFormGroup.get('saturdayOpen').setValue(shop.openingTimes[i].open.substr(0,5));
+  openCloseFormGroup.get('saturdayClose').setValue(shop.openingTimes[i].close.substr(0,5));
   break;
   case 'sunday':
-  openFormGroup.get('sunday').setValue(shop.openingTimes[i].open.substr(0,5));
-  closeFormGroup.get('sunday').setValue(shop.openingTimes[i].close.substr(0,5));
+  openCloseFormGroup.get('sundayOpen').setValue(shop.openingTimes[i].open.substr(0,5));
+  openCloseFormGroup.get('sundayClose').setValue(shop.openingTimes[i].close.substr(0,5));
   break;
 }
 }
@@ -206,12 +215,12 @@ export class InputFormService {
   }
 
   public deleteContentEvent(id:any){
-    let queryparams = new HttpParams().set('id',id)
+    let queryparams = new HttpParams().set('id',id);
     return this.http.delete(Global.url + 'event/delete?',{headers:headers, params:queryparams, observe:"response"})
   }
 
   public deleteContentUser(eMail:string){
-    let queryparams = new HttpParams().set('email',eMail)
+    let queryparams = new HttpParams().set('email',eMail);
     return this.http.delete(Global.url + 'user/delete?',{headers:headers, params:queryparams, observe:"response"})
   }
 }
