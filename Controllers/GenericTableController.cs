@@ -81,8 +81,6 @@ namespace WinfADD.Controllers
             //create a List of all search properties
             var hashtableJson = tableJson.ToObject<Dictionary<string, dynamic>>();
 
-            Console.WriteLine("----------------------------->"+(tableObj as Event).CoffeeShops);
-            Console.WriteLine("----------------------------->"+(tableObj as Event).CoffeeShops);
 
             return await _tableRepo.InsertTable(tableObj, hashtableJson);
         }

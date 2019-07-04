@@ -533,7 +533,7 @@ namespace WinfADD.Repositories
                                new
                                {
                                    coffee_drink_name = coffeeDrink.Name,
-                                   coffee_shop_id = coffeShopID, vegan = coffeeDrink.vegan
+                                   coffee_shop_id = coffeShopID, vegan = coffeeDrink.Vegan
                                }, transaction: transaction);
 
                            if (coffeeDrink.Preparations == null || !coffeeDrink.Preparations.Any()) continue;

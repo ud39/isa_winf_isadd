@@ -12,7 +12,7 @@ namespace WinfADD.Models
         
         public string Type{ get; set; }
 
-        public bool vegan { get; set; }
+        public bool Vegan { get; set; }
 
         public IEnumerable<Preparation> Preparations{ get; set; }
 
