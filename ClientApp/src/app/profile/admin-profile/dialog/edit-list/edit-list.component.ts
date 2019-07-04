@@ -22,7 +22,7 @@ import {Global} from "../../../../global";
   templateUrl: './edit-list.component.html',
   styleUrls: ['./edit-list.component.css'],
   encapsulation: ViewEncapsulation.None,
-  providers: [  {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}]
+  providers: []
 })
 export class EditListComponent implements OnInit, OnDestroy {
 
@@ -46,7 +46,8 @@ export class EditListComponent implements OnInit, OnDestroy {
               public shopService:ShopService,
               private dialogRef: MatDialogRef<EditListComponent>,
               public eventService:EventService,
-              public userService:UserService) {}
+              public userService:UserService) {
+  }
 
 
   public imagePreviewPath = Global.url + 'image/GetById?ContentType=preview&fileName=';

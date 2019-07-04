@@ -5,10 +5,13 @@
   align-content: center;
   align-items: start;
   grid-column-gap: 3%;
+  width: 100%;
+  height: 40%;
 }
 
 #opening_times {
-  background-color: red;
+  height: 50px;
+  overflow-y: auto;
 }
 
 #shop_name{
@@ -93,7 +96,6 @@ img {vertical-align: middle; object-fit: cover}
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
   background-color: rgba(0,0,0,0.8);
-  color: red;
 }
 
 /* Caption text */
@@ -167,6 +169,7 @@ app-shop-detail .text {
 app-shop-detail .mat-grid-tile .mat-figure{
   display: inherit;
   margin-bottom: 5px;
+  height: fit-content;
 }
 
 app-shop-detail .mat-tab-body-content {
@@ -189,6 +192,7 @@ app-shop-detail #link_to_shop{
 app-shop-detail .mat-tab-group{
   grid-row: 3;
   grid-column: 1 / span 4;
+  width:70%!important;
 }
 
 app-shop-detail .container-poi{
@@ -211,4 +215,9 @@ app-shop-detail .mat-list-base .mat-list-item{
 
 app-shop-detail .poi-image{
   margin-bottom: 5px;
+}
+
+app-shop-detail .weekday{
+  height: 200px;
+  overflow-y: hidden;
 }

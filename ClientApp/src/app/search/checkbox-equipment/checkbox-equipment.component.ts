@@ -1,7 +1,16 @@
-import {Component, EventEmitter, OnInit, Output, QueryList, ViewChildren, ViewEncapsulation} from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+  ViewEncapsulation
+} from '@angular/core';
 import {CheckboxComponent} from "../checkbox/checkbox.component";
 import {Router} from "@angular/router";
-import {MatCheckbox, MatInput, MatSelect} from "@angular/material";
+import {MatCheckbox, MatInput, MatSelect, MatTabGroup} from "@angular/material";
 import {CheckBoxesService} from "../../services/interactive-element/checkboxes.service";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Global} from "../../global";
@@ -25,12 +34,11 @@ export class CheckboxEquipmentComponent implements OnInit {
   @ViewChildren(MatSelect) selects : QueryList<MatSelect>;
   @ViewChildren(MatInput) inputs : QueryList<MatInput>;
 
+  public matTabActive;
   public checkBoxPois : Poi[];
   public checkBoxBusStation: BusStation[];
   public streetNameFormControl = new FormControl();
   public shopNameFormControl = new FormControl();
-  public postalFormControl = new FormControl();
-  public priceClass = ['niedrig', 'mittel', 'hoch'];
   public options: string[] = [];
   public filteredOptions: Observable<string[]>;
   public shopFormControls = new FormGroup({

@@ -10,7 +10,7 @@
     </mat-form-field>
     <mat-form-field class="selectedContentCoffee">
       <mat-label>Röstung Bohnen</mat-label>
-      <mat-select [(ngModel)]="selectedRoast">
+      <mat-select id="roast" [formControl]="selectedRoast">
         <mat-option *ngFor="let roast of roasts" [value]="roast.value">
           {{roast.viewValue}}
         </mat-option>
@@ -18,7 +18,7 @@
     </mat-form-field>
     <mat-form-field class="selectedContentCoffee">
       <mat-label>Mahlgrad Bohnen</mat-label>
-      <mat-select [(ngModel)]="selectedGrind">
+      <mat-select id="grind" [formControl]="selectedGrind">
         <mat-option *ngFor="let grind of grinds" [value]="grind.value">
           {{grind.viewValue}}
         </mat-option>

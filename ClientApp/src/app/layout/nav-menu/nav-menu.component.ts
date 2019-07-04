@@ -57,6 +57,9 @@ export class NavMenuComponent {
       }
     );
   }
+  public logout(){
+    this.userService.logout();
+  }
 }
 
 

@@ -7,10 +7,10 @@
       Leeren
     </button>
     <app-checkbox (callNavigateToShop)="searchShops()" #cb *ngIf="urlPath == urlGlobalPath.get('shop')"></app-checkbox>
-    <mat-tab-group *ngIf="urlPath == urlGlobalPath.get('supplies') || urlPath == urlGlobalPath.get('wiki')">
+    <app-home-check-box #cbhome *ngIf="urlPath == urlGlobalPath.get('home')"></app-home-check-box>
+    <mat-tab-group #matTabGroup *ngIf="urlPath == urlGlobalPath.get('supplies') || urlPath == urlGlobalPath.get('wiki')">
       <mat-tab label="Equipment"><app-checkbox-equipment #cbeq  (callNavigateToEquipment)="searchShops()"></app-checkbox-equipment> </mat-tab>
-      <mat-tab label="Bohnen"><app-checkbox-coffee  #cbcof (callNavigateToCoffee)="searchShops()"></app-checkbox-coffee></mat-tab>
-      <mat-tab label="Blends"> Content 3 </mat-tab>
+      <mat-tab label="Bohnen"><app-checkbox-coffee  #cbcof (callNavigateToCoffee)="searchShops()"></app-checkbox-coffee></mat-tab>s
     </mat-tab-group>
   </div>
 </div>

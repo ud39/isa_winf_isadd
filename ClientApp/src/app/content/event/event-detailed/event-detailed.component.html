@@ -7,10 +7,10 @@
   <div class="text">
     {{event$.description}}
   </div>
-  <div class='some-page-wrapper'>
+  <div class='wrapper'>
     <div class='row'>
       <div class='column'>
-        <div class='blue-column'>
+        <div class='shops'>
           <mat-list id="shop-list">
             <mat-list-item *ngFor="let shop of this.event$.coffeeShops; last as last">
               <div class="preview-content">
@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class='column'>
-        <div class='green-column'>
+        <div class='image'>
           Some Text in Column Two
         </div>
       </div>

@@ -1,0 +1,43 @@
+<div class="search-field">
+  <div>
+    <mat-form-field class="direct-shop">
+      <input id="name" type="text" placeholder="Name" aria-label="Number" matInput [formControl]="shopNameFormControl" (keydown.enter)="this.navigateTo()" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field class="poi">
+      <mat-label>Landmarken</mat-label>
+      <mat-select id="poi" multiple>
+        <mat-option *ngFor="let poi of checkBoxPois" [value]="poi.name">
+          {{poi.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="price-range">
+      <mat-label>Preis Klasse</mat-label>
+      <mat-select id="priceClass">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let price of priceClass" [value]="price">
+          {{price}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Bus Station</mat-label>
+      <mat-select id="busStation">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let busStation of checkBoxBusStation" [value]="busStation.name">
+          {{busStation.name + ' ' + busStation.line}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input id="streetName" type="text" placeholder="Straßen Name" aria-label="Number" matInput [formControl]="streetNameFormControl" (keydown.enter)="this.navigateTo()">
+    </mat-form-field>
+    <mat-checkbox #cb class="checkbox" id="workstation"[checked]="false">Workstation</mat-checkbox>
+    <mat-checkbox #cb class="checkbox" id="open" [checked]="false">Offen</mat-checkbox>
+  </div>
+</div>

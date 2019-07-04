@@ -3,7 +3,7 @@
       <input matInput placeholder="Name" [formControl]="equipmentNameFormControl" id="name" type="text" (keydown.enter)="triggerSearchEquipment()">
     </mat-form-field>
   <mat-form-field class="search-equipment">
-    <mat-select  id=equipmentCategory placeholder="Equipment Kategorie" multiple [formControl]="selectEquipmentCategoryFormControl" [compareWith]="compareService.compareEquipmentCategory">
+    <mat-select  id="equipmentCategories" placeholder="Equipment Kategorie" multiple [formControl]="selectEquipmentCategoryFormControl" [compareWith]="compareService.compareEquipmentCategory">
       <mat-option *ngFor="let equipmentCategory of equipmentCategory" [value]="equipmentCategory">{{equipmentCategory.name}}</mat-option>
     </mat-select>
   </mat-form-field>
@@ -12,15 +12,6 @@
       <mat-select id="poi" multiple>
         <mat-option *ngFor="let poi of checkBoxPois" [value]="poi.name">
           {{poi.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field class="search-equipment">
-      <mat-label>Preis Klasse</mat-label>
-      <mat-select id="priceClass">
-        <mat-option>--</mat-option>
-        <mat-option *ngFor="let price of priceClass" [value]="price">
-          {{price}}
         </mat-option>
       </mat-select>
     </mat-form-field>

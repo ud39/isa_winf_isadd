@@ -9,6 +9,7 @@ import {EventService} from "../services/event/event.service";
 import {EquipmentService} from "../services/equipment/equipment.service";
 import {CoffeeService} from "../services/coffee/coffee.service";
 import {MatTabGroup} from "@angular/material";
+import {HomeCheckBoxComponent} from "./home-check-box/home-check-box.component";
 
 
 
@@ -24,7 +25,8 @@ export class SearchComponent implements OnInit,  AfterViewInit {
   @ViewChild("cb") checkBoxComponent: CheckboxComponent;
   @ViewChild("cbeq") checkBoxEquipment: CheckboxEquipmentComponent;
   @ViewChild("cbcof") chechBoxComponentCoffee: CheckboxCoffeeComponent;
-  @ViewChild(MatTabGroup) matTabGroup : MatTabGroup;
+  @ViewChild("cbhome") checkBoxHomeEquipment: HomeCheckBoxComponent;
+  @ViewChild('matTabGroup') matTabGroup : MatTabGroup;
   @Input() urlPath: string;
   public jsonOfSearch: JSON;
   public urlGlobalPath = Global.urlName;
@@ -35,14 +37,23 @@ export class SearchComponent implements OnInit,  AfterViewInit {
   }
 
   getJsonOfSearch(): JSON {
-
     switch (this.urlPath) {
+      case this.urlGlobalPath.get('home'):
+        this.jsonOfSearch = this.checkBoxHomeEquipment.getJsonOfSearchWithSelect();
+        break;
       case this.urlGlobalPath.get('shop'):
         this.jsonOfSearch = this.checkBoxComponent.getJsonOfSearchWithSelect();
         break;
       case this.urlGlobalPath.get('supplies'):
-        console.log('Supplies build JSON');
-        this.jsonOfSearch = this.checkBoxEquipment.getJsonOfSearch();
+        switch(this.matTabGroup.selectedIndex){
+          case 0:
+          this.jsonOfSearch = this.checkBoxEquipment.getJsonOfSearch();
+          break;
+          case 1:
+          this.jsonOfSearch = this.chechBoxComponentCoffee.getJsonOfSearch();
+          console.log(this.jsonOfSearch);
+          break;
+        }
         break;
       case this.urlGlobalPath.get('wiki'):
         this.jsonOfSearch = this.checkBoxEquipment.getJsonOfSearch();
@@ -54,14 +65,23 @@ export class SearchComponent implements OnInit,  AfterViewInit {
 
   clearCheckBoxes(): void {
     switch (this.urlPath) {
+      case this.urlGlobalPath.get('home'):
+        this.checkBoxHomeEquipment.clear();
+        break;
       case this.urlGlobalPath.get('shop'):
         this.checkBoxComponent.clear();
         break;
       case this.urlGlobalPath.get('supplies'):
-        this.checkBoxEquipment.clear();
-        this.chechBoxComponentCoffee.clear();
-        break;
-      case this.urlGlobalPath.get('wiki'):
+        switch(this.matTabGroup.selectedIndex){
+          case 0:
+          this.checkBoxEquipment.clear();
+          break;
+          case 1:
+          this.chechBoxComponentCoffee.clear();
+          this.chechBoxComponentCoffee.clear();
+        }
+      break;
+      case this.urlGlobalPath.get('event'):
         this.checkBoxEquipment.clear();
         this.chechBoxComponentCoffee.clear();
         break;
@@ -72,15 +92,25 @@ export class SearchComponent implements OnInit,  AfterViewInit {
 searchShops(){
   this.getJsonOfSearch();
   switch (this.urlPath) {
-  case this.urlGlobalPath.get('shop'):
-  console.log('Search Shop');
-  this.shopService.navigateTo(this.jsonOfSearch);
-  break;
-  case this.urlGlobalPath.get('supplies'):
-    console.log('Supplies');
-    console.log(this.jsonOfSearch);
-    this.getJsonOfSearch();
-    this.shopService.searchSupplies(this.jsonOfSearch);
+    case this.urlGlobalPath.get('home'):
+    console.log('Search Home');
+    this.shopService.navigateTo(this.jsonOfSearch);
+    break;
+    case this.urlGlobalPath.get('shop'):
+    this.shopService.navigateTo(this.jsonOfSearch);
+    break;
+    case this.urlGlobalPath.get('supplies'):
+      switch(this.matTabGroup.selectedIndex){
+        case 0:
+        this.getJsonOfSearch();
+        this.shopService.searchSupplies(this.jsonOfSearch);
+        break;
+        case 1:
+        this.getJsonOfSearch();
+        this.shopService.searchSupplies(this.jsonOfSearch);
+      }
+
+
   break;
   case this.urlGlobalPath.get('wiki'):
     console.log('Search Cool');
@@ -89,14 +119,11 @@ searchShops(){
 }
 }
 
-
-  public matTabActive: string = 'Shop';
-
-
   ngOnInit() {
-
   }
+
 
   ngAfterViewInit(){
   }
+
 }

@@ -47,7 +47,6 @@ export class ShopDetailComponent implements OnInit {
     }
   }
 
-
   public slideIndex = 1;
   plusSlides(n) {
     this.showSlides(this.slideIndex += n);

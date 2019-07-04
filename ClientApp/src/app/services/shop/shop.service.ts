@@ -29,7 +29,6 @@ const headers = new HttpHeaders().set('Content-Type', 'application/json');
 export class ShopService {
 
   shops : Shop[];
-  suppliesShop: Supplies[];
   constructor(private http: HttpClient, private routeService: RouteService, private router:Router, private inputFormService: InputFormService) {
   }
 
@@ -38,8 +37,12 @@ export class ShopService {
     return this.http.get<Shop[]>(Global.url + 'coffeeshop/all');
   }
 
-  getSuppliesShops(queryParams:Params): Observable<Shop[]>{
+  getSuppliesShopsWithParams(queryParams:Params): Observable<Shop[]>{
     return this.http.get<Shop[]>(Global.url + 'coffeeshop/supplies?', {headers:headers,params:queryParams});
+  }
+
+  getSuppliesShops(): Observable<Shop[]>{
+    return this.http.get<Shop[]>(Global.url + 'coffeeshop/supplies/all', {headers:headers});
   }
 
   getShop(id): Observable<Shop>{
@@ -47,7 +50,6 @@ export class ShopService {
   }
 
   getShopWithParams(queryParams: Params): Observable<Shop[]>{
-    console.log('https://localhost:5001/api/coffeeshop/params?' + queryParams.toString());
     return this.http.get<Shop[]>(Global.url + 'coffeeshop/params?' , {params: queryParams,headers: headers});
   }
 
@@ -59,9 +61,10 @@ export class ShopService {
   }
 
   searchSupplies(jsonOfSearch){
+    console.log(jsonOfSearch);
     let params = this.routeService.buildHttpParams(jsonOfSearch);
     console.log('https://localhost:5001/api/coffeeshop/supplies?' + params.toString());
-    this.getSuppliesShops(params).subscribe(next => {
+    this.getSuppliesShopsWithParams(params).subscribe(next => {
       this.shops  = next
     })
   }
@@ -89,19 +92,6 @@ export class ShopService {
 
   sortByRatingAsc(){
     this.sortByRatingDesc();
-    this.shops.reverse();
-  }
-
-  sortbyPriceDesc(){
-    this.shops = this.shops.sort(function(a,b){
-      if(b.priceClass.length > a.priceClass.length){
-        return -1;
-      }
-    })
-  }
-
-  sortByPriceAsc(){
-    this.sortbyPriceDesc();
     this.shops.reverse();
   }
 
