@@ -73,6 +73,7 @@ namespace WinfADD.Controllers
             Console.WriteLine("############################");
             Console.WriteLine("::"+coffeeShopObj.EquipmentCategoriesInsert);
             Console.WriteLine(":empty?:"+coffeeShopObj.EquipmentCategoriesInsert.Length);
+            Console.WriteLine(":empty?:"+coffeeShopObj.EquipmentCategoriesDelete.Length);
 
 
 

@@ -187,7 +187,7 @@ namespace WinfADD.Repositories
                 if (!(insertProperties.ContainsKey(propertyName))
                     || propertyName.Equals("id")
                     || propertyName.Equals("image")) continue;
-                if (propertyName.Equals("address")) //TODO Address description from event to Location
+                if (propertyName.Equals("address")) 
                 {
                     Console.WriteLine("IN ADDRESS");
                     locationSqlInsert = "INSERT INTO location (address, description) VALUES(@address, @description) ON CONFLICT ON CONSTRAINT location_pkey DO NOTHING ";

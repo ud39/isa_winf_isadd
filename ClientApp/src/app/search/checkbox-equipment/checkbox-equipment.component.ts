@@ -56,7 +56,6 @@ export class CheckboxEquipmentComponent implements OnInit {
   constructor(public router:Router, public checkBoxService: CheckBoxesService, public compareService: CompareService, public inputService:InputFormService) { }
 
   getJsonOfSearch(): JSON{
-    console.log(this.inputs.toArray(),this.cbs.toArray(),this.selects.toArray());
     return this.checkBoxService.getJsonOfSearchWithSelect(this.inputs.toArray(),this.cbs.toArray(),this.selects.toArray());
   }
 

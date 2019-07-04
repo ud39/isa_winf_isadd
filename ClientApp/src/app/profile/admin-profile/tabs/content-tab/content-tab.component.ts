@@ -129,7 +129,6 @@ export class ContentTabComponent implements OnInit {
       break;
       case 'Bean':
         let bean : Bean = <Bean> data;
-        console.log(bean);
         this.beanNameFormControl.setValue(bean.name);
         this.beanProvenanceFormControl.setValue(bean.provenance);
         this.beanGrindFormControl.setValue(bean.grind);
@@ -142,7 +141,6 @@ export class ContentTabComponent implements OnInit {
         break;
       case 'Poi':
         let poi : Poi = <Poi> data;
-        console.log("fill out");
         this.poiNameFormControl.setValue(poi.name);
         this.postalCodeFormControl.setValue(poi.address.postalCode);
         this.streetFormControl.setValue(poi.address.streetName);

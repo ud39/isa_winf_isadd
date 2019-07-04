@@ -14,8 +14,7 @@ namespace WinfADD.Repositories
 
             // keys
             Keys.Add("name");
-
-            //TODO write tableName
+            
             TableName = "equipment_category";
 
 

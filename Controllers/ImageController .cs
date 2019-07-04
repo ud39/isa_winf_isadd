@@ -226,10 +226,10 @@ namespace WinfADD.Controllers
        public static bool deleteImageInternal(string fileName, string contentType)
        {
 
-           //TODO change path
+           
            var path = "C:/Users/Jan/RiderProjects/isa_winf_isadd/wwwroot/Image/";
 
-           //TODO add to list
+           
            var _accessibleFolders = new List<string>();
            _accessibleFolders.Add("gallery");
            _accessibleFolders.Add("front");

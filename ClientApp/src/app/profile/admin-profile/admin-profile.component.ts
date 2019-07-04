@@ -6,7 +6,6 @@ import {MatDialog, MatTabGroup} from "@angular/material";
 import {ShopTabComponent} from "./tabs/shop-tab/shop-tab.component";
 import {EventTabComponent} from "./tabs/event-tab/event-tab.component";
 import {ContentTabComponent} from "./tabs/content-tab/content-tab.component";
-import {EquipmentTabComponent} from "./tabs/equipment-tab/equipment-tab.component";
 import {InputFormService} from "../../services/admin/input-form.service";
 import {UserTabComponent} from "./tabs/user-tab/user-tab/user-tab.component";
 import {ArticleTabComponent} from "./tabs/article-tab/article-tab.component";
@@ -36,7 +35,6 @@ export class AdminProfileComponent implements OnInit {
   @ViewChild(ShopTabComponent) shopTab: ShopTabComponent;
   @ViewChild(EventTabComponent) eventTab: EventTabComponent;
   @ViewChild(ContentTabComponent) contentTab: ContentTabComponent;
-  @ViewChild(EquipmentTabComponent) equipmentTab: EquipmentTabComponent;
   @ViewChild(UserTabComponent) userTab :UserTabComponent;
   @ViewChild(ArticleTabComponent) articleTab: ArticleTabComponent;
 
@@ -59,9 +57,6 @@ export class AdminProfileComponent implements OnInit {
       case 'Shop':
         this.activeFormGroup = this.shopTab.getInputShop();
         break;
-      case 'Equipment':
-        this.activeFormGroup = this.equipmentTab.getEquipmentInput();
-        break;
       case 'Event':
         this.activeFormGroup = this.eventTab.getEventInput();
         break;
@@ -82,16 +77,11 @@ export class AdminProfileComponent implements OnInit {
       case 'Shop':
         this.body = this.shopTab.getJsonOfShop();
         break;
-      case 'Bohnen & Zubehör':
-        this.body = this.equipmentTab.getJsonOfEquipment();
-        break;
       case 'Event':
-        console.log('Get Json Event');
         this.body = this.eventTab.getJsonOfEvent();
         break;
       case 'Content':
         this.body = this.contentTab.getJsonOfContent();
-        console.log(this.body);
         break;
       case 'User':
         this.body = this.contentTab.getJsonOfContent();
@@ -106,9 +96,6 @@ export class AdminProfileComponent implements OnInit {
     switch (this.matTabActive) {
       case 'Shop':
         this.shopTab.checkBoxes.clear();
-        break;
-      case 'Bohnen & Zubehör':
-        this.equipmentTab.checkBoxes.clear();
         break;
     }
   }
@@ -179,8 +166,7 @@ export class AdminProfileComponent implements OnInit {
           console.log(value.body);
           if(value){
 
-            console.log("------------------------------------------");
-            console.log(value);
+
             this.confirmationDialogService.openEventDialog(this.body,this.matTabActive,this.dialog)
           }
         });
@@ -333,14 +319,11 @@ export class AdminProfileComponent implements OnInit {
 
   saveContent(){
     this.getContentJSON();
-    console.log(this.body + 'Before');
-    console.log(this.body);
     switch (this.matTabActive) {
       case 'Shop':
         delete this.body['busstation'];
         this.body = <JSON> {};
         this.body = this.shopTab.getJsonOfShopEdit();
-        console.log(this.body);
         this.inputFormService.updateShop(this.body).subscribe(value => {
           console.log(value);
         });
@@ -353,15 +336,12 @@ export class AdminProfileComponent implements OnInit {
         switch (this.contentTab.selectContentFormControl.value) {
           case 'Blend':
             this.inputFormService.updateBlend(this.body).subscribe(value =>{
-              console.log('update Blend');
-              console.log(value);
             });
             this.restorePossible = false;
             break;
           case 'Bean':
             this.inputFormService.updateBean(this.body).subscribe(value =>{
               if(value) {
-                console.log('update Bean');
                 this.restorePossible = false;
               }
             });
@@ -369,22 +349,18 @@ export class AdminProfileComponent implements OnInit {
           case 'CoffeeDrink':
             this.inputFormService.updateCoffeeDrink(this.body).subscribe(value =>{
               if(value){
-                console.log('update CoffeeDrink');
               }
             });
             break;
           case 'Poi':
             this.inputFormService.updatePoi(this.body).subscribe(value =>{
               if(value){
-                console.log('update Poi');
-
               }
             });
             break;
           case 'BusStation':
             this.inputFormService.updateBusStation(this.body).subscribe(value =>{
               if(value){
-              console.log('update BusStation');
               this.emptyInput();
               }
             });
@@ -392,17 +368,14 @@ export class AdminProfileComponent implements OnInit {
           case 'Equipment-category':
             this.inputFormService.updateEquipmentCategory(this.body).subscribe(value => {
               if(value){
-                console.log('update Equipment-Category');
                 this.emptyInput();
               }
             })
         }break;
       case 'User':
-        console.log("User Store");
         this.inputFormService.postUser(this.body).subscribe();
         break;
       case 'Artikel':
-        console.log("Article Store");
         this.inputFormService.postContentArticle(this.body).subscribe();
         break;
     }
@@ -417,8 +390,6 @@ export class AdminProfileComponent implements OnInit {
        this.eventTab.fillOutInputForm(this.eventTab.selectedEvent);
      break;
      case 'Content':
-       console.log(this.contentTab.selectedContent);
-       console.log("Content");
        this.contentTab.fillOutInputForm(this.contentTab.selectedContent);
      break;
      case 'User':
