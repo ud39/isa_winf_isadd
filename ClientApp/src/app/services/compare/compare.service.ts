@@ -55,8 +55,8 @@ export class CompareService {
     return event1.id == event2.id;
   }
 
-  public compareShop(shop1: number, shop2: number) {
-    return shop1 && shop2 ? shop1 === shop2 : shop1 === shop2
+  public compareShop(shop1: Shop, shop2: Shop) {
+    return shop1.id === shop2.id;
   }
 
   public compareCompany(company1 :Company, company2:Company){

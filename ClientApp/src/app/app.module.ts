@@ -43,6 +43,7 @@ import { CheckboxShopAdminComponent } from './search/checkbox-shop-admin/checkbo
 import { CheckboxEquipmentAdminComponent } from './search/checkbox-equipment-admin/checkbox-equipment-admin.component';
 import { CheckboxCoffeeAdminComponent } from './search/checkbox-coffee-admin/checkbox-coffee-admin.component';
 import { RatingShopComponent } from './rating/rating-shop/rating-shop.component';
+import { HomeCheckBoxComponent } from './search/home-check-box/home-check-box.component';
 
 
 
@@ -81,6 +82,7 @@ import { RatingShopComponent } from './rating/rating-shop/rating-shop.component'
     CheckboxEquipmentAdminComponent,
     CheckboxCoffeeAdminComponent,
     RatingShopComponent,
+    HomeCheckBoxComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),

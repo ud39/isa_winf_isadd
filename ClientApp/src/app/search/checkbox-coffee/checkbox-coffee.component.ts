@@ -24,18 +24,18 @@ export class CheckboxCoffeeComponent implements OnInit {
   constructor(public router: Router, public checkBoxService: CheckBoxesService, public inputFormService:InputFormService) {
   }
 
-  public selectedRoast;
-  public selectedGrind;
+  public selectedRoast = new FormControl('',[]);
+  public selectedGrind = new FormControl('',[]);
   public options: string[] = [];
   public filteredOptions: Observable<string[]>;
   public roasts = [
-    {value: 'none', viewValue: 'Keine'},
-    {value: 'lightRoast', viewValue: 'Helle Röstung'},
-    {value: 'middleRoast', viewValue: 'Mittlere Röstung'},
-    {value: 'darkRoast', viewValue: 'Dunkle Röstung'},
+    {value: '', viewValue: 'Keine'},
+    {value: 'raw', viewValue: 'Roh'},
+    {value: 'roasted', viewValue: 'Helle Röstung'},
+    {value: 'medium roasted', viewValue: 'Mittlere Röstung'},
+    {value: 'dark roasted', viewValue: 'Dunkle Röstung'},
   ];
   public grinds = [
-    {value: 'none', viewValue: 'Keine'},
     {value: 'veryCoarse', viewValue: 'Sehr Grob'},
     {value: 'coarse', viewValue: 'Grob'},
     {value: 'coarseMiddle', viewValue: 'Grob bis Mittel'},
@@ -45,15 +45,15 @@ export class CheckboxCoffeeComponent implements OnInit {
   ];
 
   public beanNameFormControl = new FormControl('',[]);
-  public blendNameFormControl = new FormControl('',[]);
   public coffeeFormGroup = new FormGroup({
     nameBean: this.beanNameFormControl,
-    nameBlend: this.blendNameFormControl
+    grind: this.selectedGrind,
+    roast: this.selectedRoast
   });
 
   getJsonOfSearch(): JSON {
-    console.log(this.checkBoxService.getJsonOfSearch(this.inputsCoffee.toArray(), this.cbs.toArray()));
-    return this.checkBoxService.getJsonOfSearch(this.inputsCoffee.toArray(), this.cbs.toArray());
+    console.log('Coffee');
+    return this.checkBoxService.getJsonOfSearchWithSelect(this.inputsCoffee.toArray(), this.cbs.toArray(),this.selects.toArray());
   }
 
   clear() {

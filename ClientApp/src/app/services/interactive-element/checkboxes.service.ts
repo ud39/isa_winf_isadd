@@ -47,6 +47,11 @@ export class CheckBoxesService {
     return <JSON> this.jsonOfSearchParameters;
   }
 
+  public getJsonOFInputsSelects(inputs: Array<MatInput>, selects : Array<MatSelect>):JSON{
+    this.getInputsValue(inputs);
+    this.getSelectsValue(selects);
+    return <JSON> this.jsonOfSearchParameters;
+  }
   public getJsonOfSearchWithSelect(inputs : Array<MatInput>, cbs: Array<MatCheckbox>, selects: Array<MatSelect>) : JSON{
     this.getInputsValue(inputs);
     this.getCheckBoxesValues(cbs);
@@ -58,6 +63,14 @@ export class CheckBoxesService {
     this.getAddressInputsValues(addressInputs);
     this.getCheckBoxesValues(cbs);
     this.getSelectsValue(selects);
+    this.getInputsValue(inputs);
+    console.log(this.jsonOfSearchParameters);
+    return <JSON> this.jsonOfSearchParameters;
+  }
+
+  public getJsonOfShopUpdate(addressInputs: Array<MatInput>, inputs: Array<MatInput>, cbs: Array<MatCheckbox>) : JSON {
+    this.getAddressInputsValues(addressInputs);
+    this.getCheckBoxesValues(cbs);
     this.getInputsValue(inputs);
     console.log(this.jsonOfSearchParameters);
     return <JSON> this.jsonOfSearchParameters;

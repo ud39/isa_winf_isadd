@@ -43,7 +43,7 @@ export class ShopTabComponent implements OnInit {
   public selectBlendFormControl = new FormControl('', []);
   public selectEquipmentCategoryFormControl = new FormControl('', []);
   public selectCoffeeDrinkFormControl = new FormControl('', []);
-  public selectBeanFormCotnrol = new FormControl('', []);
+  public selectBeanFormControl = new FormControl('', []);
 
   public choosePois: Poi[];
   public chooseBlends: Blend[];
@@ -172,7 +172,7 @@ export class ShopTabComponent implements OnInit {
       companyName: this.companyNameFormControl,
       foundingyear : this.shopFoundingYearFormControl,
       shopDescription: this.shopDescriptionFormControl,
-      selectBean: this.selectBeanFormCotnrol,
+      selectBean: this.selectBeanFormControl,
       selectBlend: this.selectBlendFormControl,
       selectCoffeeDrink: this.selectCoffeeDrinkFormControl,
       selectBusStation: this.selectBusStationFromControl,
@@ -200,7 +200,7 @@ export class ShopTabComponent implements OnInit {
     this.townFormControl.setValue(selectedShop.address.town);
     this.adminService.clearImages();
     this.adminService.setImages(selectedShop.images);
-    this.selectBeanFormCotnrol.setValue(selectedShop.beans);
+    this.selectBeanFormControl.setValue(selectedShop.beans);
     this.selectBusStationFromControl.setValue(selectedShop.reachableByBus);
     this.selectBlendFormControl.setValue(selectedShop.blends);
     this.selectPoiFormControl.setValue(selectedShop.listOfPoi);
@@ -213,7 +213,6 @@ export class ShopTabComponent implements OnInit {
   }
 
   getJsonOfShop(): JSON{
-    console.log(this.selects.toArray());
     let json : JSON = this.checkBoxService.getJsonOfShopInput(this.addressInputs.toArray(), this.nameDescriptionInputs.toArray(), this.checkBoxes.cbs.toArray(),this.selects.toArray());
     let temp ='';
     this.adminService.getAllCoffeeShopImages().forEach((value: string, key: string) => {
@@ -227,6 +226,62 @@ export class ShopTabComponent implements OnInit {
     json["images"] = jsonImageList;
 
     return json;
+  }
+
+  getJsonOfShopEdit():JSON{
+    let json = {};
+    let differenceBusStation : [BusStation[],BusStation[]] = this.compareService.calculateDifferenceOfArrayBusStation(this.shop.reachableByBus,this.selectBusStationFromControl.value,this.compareService);
+    let differencePoi : [Poi[],Poi[]] = this.compareService.calculateDifferenceOfArrayPoi(this.shop.listOfPoi,this.selectPoiFormControl.value,this.compareService);
+    let differenceBean : [Bean[],Bean[]] = this.compareService.calculateDifferenceOfArrayBean(this.shop.beans,this.selectBeanFormControl.value,this.compareService);
+    let differenceBlend : [Blend[], Blend[]] = this.compareService.calculateDifferenceOfArrayBlend(this.shop.blends,this.selectBlendFormControl.value,this.compareService);
+    let differenceCoffeeDrinks : [CoffeeDrink[], CoffeeDrink[]] = this.compareService.calculateDifferenceOfArrayCoffeeDrink(this.shop.coffeeDrinks,this.selectCoffeeDrinkFormControl.value,this.compareService);
+    let differenceEquipmentCategory : [EquipmentCategory[], EquipmentCategory[]] = this.compareService.calculateDifferenceOfArrayEquipmentCategory(this.shop.equipmentCategories,this.selectEquipmentCategoryFormControl.value,this.compareService);
+
+    let addBusStation : BusStation[] = differenceBusStation[1];
+    let deleteBusStation : BusStation[] = differenceBusStation[0];
+
+    let addPoi:Poi[] = differencePoi[1];
+    let deletePoi:Poi[] = differencePoi[0];
+
+    let addBean:Bean[] = differenceBean[1];
+    let deleteBean:Bean[] = differenceBean[0];
+
+    let addBlend:Blend[] = differenceBlend[1];
+    let deleteBlend:Blend[] = differenceBlend[0];
+
+    let addCoffeeDrink:CoffeeDrink[] = differenceCoffeeDrinks[1];
+    let deleteCoffeeDrink:CoffeeDrink[] = differenceCoffeeDrinks[0];
+
+    let addEquipmentCategory:EquipmentCategory[] = differenceEquipmentCategory[1];
+    let deleteEquipmentCategory:EquipmentCategory[] = differenceEquipmentCategory[0];
+
+    json['addBusStation'] = addBusStation;
+    json['deleteBusStation'] = deleteBusStation;
+    json['addPoi'] = addPoi;
+    json['deletePoi'] = deletePoi;
+    json['addBean'] = addBean;
+    json['deleteBean'] = deleteBean;
+    json['addBlend'] = addBlend;
+    json['deleteBlend'] = deleteBlend;
+    json['addCoffeeDrink'] = addCoffeeDrink;
+    json['deleteCoffeeDrink'] = deleteCoffeeDrink;
+    json['addEquipmentCategory'] = addEquipmentCategory;
+    json['deleteEquipmentCategory'] = deleteEquipmentCategory;
+
+    console.log(json);
+
+    let temp ='';
+    this.adminService.getAllCoffeeShopImages().forEach((value: string, key: string) => {
+      temp +=  ',{"fileName":"' + key + '"}';
+    });
+    temp = temp.slice(1);
+    let jsonImageList = JSON.parse('[' + temp + ']');
+
+
+    console.log(JSON.stringify(jsonImageList));
+    json["images"] = jsonImageList;
+
+    return <JSON> json;
   }
 
   onFileChanged(files, event, fromWhere) {
@@ -265,6 +320,7 @@ export class ShopTabComponent implements OnInit {
     ).subscribe(
       ([coffeeDrinks, beans, blends, busStations, pois, equipmentCategories]) => {
         this.chooseCoffeeDrinks = coffeeDrinks;
+        this.chooseBeans = beans;
         this.chooseBlends = blends;
         this.chooseBusStations = busStations;
         this.editBusStation = busStations;

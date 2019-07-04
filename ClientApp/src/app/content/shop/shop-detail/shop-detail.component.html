@@ -6,9 +6,18 @@
     <mat-grid-list cols="3" rowHeight="100px" [gutterSize]="'30px'">
       <mat-grid-tile id="opening_times">
         <h6>Öffnungszeiten:</h6>
-        <mat-list dense *ngFor="let weekday of shop$.openingTimes">
-          <mat-list-item>{{weekday.weekday + weekday.open + weekday.close}}</mat-list-item>
-        </mat-list>
+        <ul *ngFor="let weekday of shop$.openingTimes">
+          <li class="weeks">{{weekday.weekday.match('monday') ? 'Montag' : ''}}
+            {{weekday.weekday.match('tuesday') ? 'Dienstag' : ''}}
+            {{weekday.weekday.match('wednesday') ? 'Mittwoch' : ''}}
+            {{weekday.weekday.match('thursday') ? 'Donnerstag' : ''}}
+            {{weekday.weekday.match('friday') ? 'Freitag' : ''}}
+            {{weekday.weekday.match('saturday') ? 'Samstag' : ''}}
+            {{weekday.weekday.match('sunday') ? 'Sonntag' : ''}}
+            <br>
+            {{weekday.open.slice(0,5)}}-{{weekday.close.slice(0,5)}}
+          </li>
+        </ul>
       </mat-grid-tile>
       <mat-grid-tile id="location">
         <h6>Adresse:</h6>
@@ -47,7 +56,7 @@
       </mat-grid-tile>
       <mat-grid-tile>
         <div id="link_to_shop">Website:</div>
-        <a href="http://wikipedia.de">{{shop$.website}}</a>
+        <a href="http://wikipedia.de">{{shop$.website | truncate : 10}}</a>
       </mat-grid-tile>
     </mat-grid-list>
     <mat-tab-group>

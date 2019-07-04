@@ -17,6 +17,7 @@ export class RouteService {
         {
           if(Array.isArray(jsonOfSearch[key]))
           {
+            console.log(jsonOfSearch[key]);
             let json = <Array<string>> jsonOfSearch[key];
             params = this.buildHttpParamsWithArray(params,key,json);
           }else{
@@ -24,12 +25,16 @@ export class RouteService {
           }
         }
       });
+      console.log(params);
       return params;
   }
 
   buildHttpParamsWithArray(params : HttpParams, key: string, jsonOfArray: Array<string>):HttpParams{
     for(let i = 0; i<jsonOfArray.length; i++){
-      params = params.append(key,jsonOfArray[i])
+      if(jsonOfArray[i]['name'] != ""){
+        params = params.append(key,jsonOfArray[i]['name'])
+      }
+        params = params.append(key,jsonOfArray[i])
     }
     return params
   }

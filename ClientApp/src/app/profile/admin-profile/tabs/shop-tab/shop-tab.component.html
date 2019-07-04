@@ -75,7 +75,7 @@
    </mat-select>
  </mat-form-field>
  <mat-form-field class="select-form-field">
-   <mat-select  id=bean placeholder="Bohnen" multiple [formControl]="selectBeanFormCotnrol" [compareWith]="compareService.compareBean">
+   <mat-select  id=beans placeholder="Bohnen" multiple [formControl]="selectBeanFormControl" [compareWith]="compareService.compareBean">
      <mat-option *ngFor="let bean of chooseBeans" [value]="bean">{{bean.name + " " + bean.provenance}}</mat-option>
    </mat-select>
  </mat-form-field>

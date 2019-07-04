@@ -18,6 +18,7 @@ export class EditDialogService {
       data: {data: shopTab, tabActive: matTabActive},
       height: '500px',
       width: '800px',
+      disableClose :false
     });
 
     dialogRefShop.afterClosed().subscribe(value => {
@@ -35,6 +36,7 @@ export class EditDialogService {
       data: {data: eventTab, tabActive: matTabActive},
       height: '500px',
       width: '800px',
+      disableClose :false
     });
 
     dialogRefEvent.afterClosed().subscribe(value => {
@@ -52,6 +54,7 @@ export class EditDialogService {
       data: {data: contentTab, tabActive: matTabActive},
       height: '500px',
       width: '800px',
+      disableClose :false
     });
     dialogRefBlend.afterClosed().subscribe(value => {
       if (value) {
@@ -66,6 +69,7 @@ export class EditDialogService {
       data: {data: contentTab, tabActive: matTabActive},
       height: '500px',
       width: '800px',
+      disableClose :false
     });
     dialogRefBean.afterClosed().subscribe(value => {
       if (value) {
@@ -81,6 +85,7 @@ export class EditDialogService {
       data: {data: contentTab, tabActive: matTabActive},
       height: '500px',
       width: '800px',
+      disableClose :false
     });
     dialogRefCoffeeDrink.afterClosed().subscribe(value => {
       if (value) {
@@ -95,6 +100,7 @@ export class EditDialogService {
       data: {data: contentTab, tabActive: matTabActive},
       height: '500px',
       width: '800px',
+      disableClose :false
     });
 
     dialogRefPoi.afterClosed().subscribe(value => {
@@ -110,6 +116,7 @@ export class EditDialogService {
       data: {data: contentTab, tabActive: matTabActive},
       height: '500px',
       width: '800px',
+      disableClose :false
     });
 
     dialogRefBusStation.afterClosed().subscribe(value => {
@@ -124,7 +131,8 @@ export class EditDialogService {
     const dialogRefEquipmentCategory = dialog.open(EditListComponent, {
       data: {data: contentTab, tabActive: matTabActive},
       height: '500px',
-      width: '800px'
+      width: '800px',
+      disableClose :false
     });
     dialogRefEquipmentCategory.afterClosed().subscribe(value => {
       if (value) {

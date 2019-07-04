@@ -12,20 +12,21 @@ const headers = new HttpHeaders().set('Content-Type', 'application/json');
 })
 export class UserService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   public IsLogin: boolean;
   public userName: string;
 
-  registerUser(jsonOfUser : JSON){
+  registerUser(jsonOfUser: JSON) {
     this.http.post(Global.url + 'auth/register', jsonOfUser, {headers: headers}).subscribe();
   }
 
-  public submitRegistration(registerForm : FormGroup){
+  public submitRegistration(registerForm: FormGroup) {
     let email = registerForm.get('email').value;
     let password = registerForm.get('password').value;
-    let submitJson:JSON;
-    let registrationObject : any = {
+    let submitJson: JSON;
+    let registrationObject: any = {
       "email": email,
       "password": password
     };
@@ -44,10 +45,16 @@ export class UserService {
       .post(
         Global.url + 'auth/login',
         {email: email, password: password},
-        { headers , responseType: "text"}).pipe(
-      map(res =>{
-        localStorage.setItem('auth_token', res);
-        this.IsLogin = true;
-      }))
-      };
-    }
+        {headers, responseType: "text"}).pipe(
+        map(res => {
+          localStorage.setItem('auth_token', res);
+          console.log(localStorage.getItem('auth_token'));
+          this.IsLogin = true;
+        }))
+  };
+
+  public logout() {
+    localStorage.removeItem('auth_token');
+    this.IsLogin = false;
+  }
+}

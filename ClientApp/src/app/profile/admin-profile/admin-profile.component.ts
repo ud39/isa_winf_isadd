@@ -8,7 +8,6 @@ import {EventTabComponent} from "./tabs/event-tab/event-tab.component";
 import {ContentTabComponent} from "./tabs/content-tab/content-tab.component";
 import {EquipmentTabComponent} from "./tabs/equipment-tab/equipment-tab.component";
 import {InputFormService} from "../../services/admin/input-form.service";
-import {ConfirmationComponent} from "./dialog/confirmation/confirmation.component";
 import {UserTabComponent} from "./tabs/user-tab/user-tab/user-tab.component";
 import {ArticleTabComponent} from "./tabs/article-tab/article-tab.component";
 import {EditDialogService} from "../../services/dialog/edit-dialog.service";
@@ -168,7 +167,8 @@ export class AdminProfileComponent implements OnInit {
       case 'Shop':
         console.log("Shop Add");
         this.inputFormService.postContentShop(this.body).subscribe(value => {
-          if(value){
+          if(value.body){
+          console.log('Shop Dialog');
           this.confirmationDialogService.openShopDialog(this.body,this.matTabActive,this.dialog)
           }
         });
@@ -176,6 +176,7 @@ export class AdminProfileComponent implements OnInit {
       case 'Event':
         console.log("Event Add");
         this.inputFormService.postContentEvent(this.body).subscribe(value => {
+          console.log(value.body);
           if(value){
 
             console.log("------------------------------------------");
@@ -189,18 +190,15 @@ export class AdminProfileComponent implements OnInit {
         this.getContentJSON();
         switch (this.contentTab.selectContentFormControl.value) {
           case 'Blend':
-            console.log("aasas");
-            console.log(this.body);
             this.inputFormService.postContent(this.body,this.contentTab.selectContentFormControl.value).subscribe(value => {
-              console.log(value);
-              if(value){
+              if(value.body){
                 this.confirmationDialogService.openBlendDialog(this.body,this.matTabActive,this.dialog,this.contentTab.selectContentFormControl.value);
               }
             });
             break;
           case 'Bean':
             this.inputFormService.postContent(this.body,this.contentTab.selectContentFormControl.value).subscribe(value => {
-              if(value){
+              if(value.body){
                 this.confirmationDialogService.openBeanDialog(this.body,this.matTabActive,this.dialog,this.contentTab.selectContentFormControl.value);
                 this.restorePossible = false;
               }
@@ -208,7 +206,7 @@ export class AdminProfileComponent implements OnInit {
             break;
           case 'CoffeeDrink':
             this.inputFormService.postContent(this.body,this.contentTab.selectContentFormControl.value).subscribe(value => {
-              if(value){
+              if(value.body){
                 this.confirmationDialogService.openEventDialog(this.body,this.matTabActive,this.dialog)
                 this.confirmationDialogService.openCoffeeDrinkDialog(this.body,this.matTabActive,this.dialog, this.contentTab.selectContentFormControl.value);
                 this.restorePossible = false;
@@ -217,7 +215,7 @@ export class AdminProfileComponent implements OnInit {
             break;
           case 'Poi':
             this.inputFormService.postContent(this.body,this.contentTab.selectContentFormControl.value).subscribe(value => {
-              if(value){
+              if(value.body){
                 this.confirmationDialogService.openPoiDialog(this.body,this.matTabActive,this.dialog, this.contentTab.selectContentFormControl.value);
                 this.restorePossible = false;
               }
@@ -225,7 +223,7 @@ export class AdminProfileComponent implements OnInit {
             break;
           case 'Equipment-category':
             this.inputFormService.postContent(this.body,this.contentTab.selectContentFormControl.value).subscribe(value => {
-              if(value){
+              if(value.body){
                 this.confirmationDialogService.openEquipmentCategoryDialog(this.body,this.matTabActive,this.dialog, this.contentTab.selectContentFormControl.value);
                 this.restorePossible = false;
               }
@@ -233,7 +231,7 @@ export class AdminProfileComponent implements OnInit {
             break;
           case 'BusStation':
             this.inputFormService.postContent(this.body,this.contentTab.selectContentFormControl.value).subscribe(value => {
-              if(value){
+              if(value.body){
                 this.confirmationDialogService.openBusStationDialog(this.body,this.matTabActive,this.dialog, this.contentTab.selectContentFormControl.value);
                 this.restorePossible = false;
               }
@@ -241,11 +239,9 @@ export class AdminProfileComponent implements OnInit {
             break;
         }break;
       case 'User':
-        console.log("User Add");
         this.inputFormService.postUser(this.body).subscribe();
         break;
       case 'Artikel':
-        console.log("Article Add");
         this.inputFormService.postContentArticle(this.body).subscribe();
         break;
     }
@@ -260,15 +256,12 @@ export class AdminProfileComponent implements OnInit {
         });
         this.emptyInput();
         break;
-      case 'Bohnen & Zubehör':
-        this.inputFormService.postContentEquipment(this.body).subscribe();
-        this.emptyInput();
-        break;
       case 'Event':
         this.inputFormService.deleteContentEvent(this.eventTab.selectedEvent.id).subscribe(value => {
-          console.log(value);
           if(value){
-            this.emptyInput();
+            this.eventTab.eventService.getEvents().subscribe(value => {
+              this.eventTab.events = value;
+            })
           }
         });
         break;
@@ -276,11 +269,12 @@ export class AdminProfileComponent implements OnInit {
         switch (this.contentTab.selectContentFormControl.value) {
           case 'Blend':
             this.inputFormService.deleteBlend(this.contentTab.getQueryParamsOfContent()).subscribe(value =>{
-              console.log('delete executed');
-              console.log(value);
+              if(value){
+              this.emptyInput();
+              this.restorePossible = false;
+              }
             });
-            this.emptyInput();
-            this.restorePossible = false;
+
             break;
           case 'Bean':
             this.inputFormService.deleteBean(this.contentTab.getQueryParamsOfContent()).subscribe(value =>{
@@ -302,7 +296,6 @@ export class AdminProfileComponent implements OnInit {
             break;
           case 'Poi':
             this.inputFormService.deletePoi(this.contentTab.getQueryParamsOfContent()).subscribe(value =>{
-              console.log(value);
               if(value){
               this.emptyInput();
               this.restorePossible = false;
@@ -344,10 +337,9 @@ export class AdminProfileComponent implements OnInit {
     console.log(this.body);
     switch (this.matTabActive) {
       case 'Shop':
-        console.log("Shop Store");
-        console.log(this.body);
         delete this.body['busstation'];
-        console.log(this.body);
+        this.body = <JSON> {};
+        this.shopTab.getJsonOfShopEdit();
         this.inputFormService.updateShop(this.body).subscribe(value => {
           console.log(value);
         });

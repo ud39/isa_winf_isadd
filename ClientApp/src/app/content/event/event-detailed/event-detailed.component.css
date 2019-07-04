@@ -7,7 +7,7 @@ app-event-detailed .flex{
   display: flex;
 }
 
-.some-page-wrapper {
+.wrapper {
   margin: 15px;
 }
 
@@ -24,13 +24,8 @@ app-event-detailed .flex{
   flex: 1;
 }
 
-.blue-column {
-  background-color: blue;
+.shops {
   height: fit-content;
-}
-
-.green-column {
-  background-color: green;
 }
 
 .list-content{
