@@ -328,6 +328,7 @@ insert into located (location_address, coffee_shop_id, event_id) values (('Schil
 insert into located (location_address, coffee_shop_id, event_id) values (('Morrow Straße',76,26925,'Wuppertal','Germany'), 16, 31);
 insert into located (location_address, coffee_shop_id, event_id) values (('Bunker Hill Straße',83,25578,'Frankfurt am Main','Germany'), 27, 32);
 insert into located (location_address, coffee_shop_id, event_id) values (('Meadow Vale Straße',90,23004,'Berlin','Germany'), 49, 33);
+insert into located (location_address, coffee_shop_id, event_id) values (('Meadow Vale Straße',90,23004,'Berlin','Germany'), 50, 33);
 
 
 insert into offers (blend_name, coffee_shop_id) values ('Varanus albigularis', 1);

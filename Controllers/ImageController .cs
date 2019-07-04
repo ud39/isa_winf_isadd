@@ -14,6 +14,8 @@ using Npgsql;
 using WinfADD.Models;
 using Microsoft.Net.Http.Headers;      
 using Microsoft.AspNetCore.Authorization;
+using System.Drawing;
+using Image = WinfADD.Models.Image;
 
 namespace WinfADD.Controllers
 {
@@ -58,7 +60,7 @@ namespace WinfADD.Controllers
 
 
         [HttpPost, DisableRequestSizeLimit]
-        public ActionResult UploadFile()
+        public async Task<ActionResult> UploadFile()
         {
 
             try
@@ -73,6 +75,7 @@ namespace WinfADD.Controllers
                 Console.WriteLine(webRootPath);
                 var newPath = Path.Combine(webRootPath, folderName);
                 var fileName = "";
+                var thumbnail = "";
                 var imageType = "";
                 if (!Directory.Exists(newPath))
                 {
@@ -99,16 +102,71 @@ namespace WinfADD.Controllers
                     var fullPath = Path.Combine(newPath, fileName);
                     using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
-                        file.CopyTo(stream);
+                        //file.CopyTo(stream);
+                        Console.WriteLine("File_Name::" + file.FileName);
+                        Console.WriteLine("Name::" + file.Name);
+
+
+                        if (fromWhere.Equals("preview") || fromWhere.Equals("poi"))
+                        {
+
+                            using (var img = System.Drawing.Image.FromStream(stream))
+                            {
+
+                                var width = img.Width / (img.Width / 150);
+                                var height = img.Height / (img.Height / 150);
+                                Bitmap newImg = new Bitmap(width, height,
+                                    System.Drawing.Imaging.PixelFormat.Format16bppRgb555);
+                                Graphics newGraphic = Graphics.FromImage(newImg);
+                                newGraphic.DrawImage(img, 0, 0, width, height);
+                                newGraphic.Dispose();
+                                newImg.Save(Path.Combine(newPath, fileName + "preview.png"));
+                            }
+                        }
+                        else if(fromWhere.Equals("event"))
+                        {
+                            await file.CopyToAsync(stream);
+                            using (var img = System.Drawing.Image.FromStream(stream))
+                            {
+                                var width = img.Width / (img.Width / 150);
+                                var height = img.Height / (img.Height / 150);
+                                Bitmap newImg = new Bitmap(width, height,
+                                    System.Drawing.Imaging.PixelFormat.Format16bppRgb555);
+                                Graphics newGraphic = Graphics.FromImage(newImg);
+                                newGraphic.DrawImage(img, 0, 0, width, height);
+                                newGraphic.Dispose();
+                                thumbnail = fileName + "-thumbnail.png";
+                                newImg.Save(Path.Combine(newPath, thumbnail));
+                            }
+                        }
+                        else
+                        {
+                            await file.CopyToAsync(stream);
+                        }
+
+
+
+
+
                     }
                 }
+
+
+
+
+
 
                 //Insert into Table
                 using (IDbConnection conn = Connection)
                 {
                     Console.WriteLine("\n CreateImage::");
                     var sql = "INSERT INTO image (file_name, content_type) VALUES (@file_name, @content_type)";
-                    var affectedRows =  conn.Query<Image>(sql,new{file_name = fileName, content_type = fromWhere.ToString() });
+                    var affectedRows =  await conn.QueryAsync<Image>(sql,new{file_name = fileName, content_type = fromWhere.ToString() });
+                    if (thumbnail.Length > 0)
+                    {
+                        affectedRows =  await conn.QueryAsync<Image>(sql,new{file_name = thumbnail, content_type = fromWhere.ToString() });
+
+                    }
                 }
 
 

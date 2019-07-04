@@ -118,11 +118,12 @@ export class EventTabComponent implements OnInit {
     let json = this.checkBoxService.getJsonOfEvent(this.addressInputs.toArray(),this.nameDescriptionInputs.toArray(),
       this.beginEndDateFormGroup, this.multipleSelectShop.toArray());
 
+
     //add images
     if(this.adminService.eventImage.toString().length > 0 && this.adminService.event_Filename.length >0){
-      let eventImage = JSON.parse('{"fileName": "' + this.adminService.event_Filename + '"}');
+      let eventImage = JSON.parse('[{"fileName": "' + this.adminService.event_Filename + '"}]');
       console.log("-------------------------------------->"+ eventImage["fileName"]);
-      json["image"] = eventImage;
+      json["images"] = eventImage;
     }
 
     console.log("::::::::::::::::::::::::::::::::::::::::"+json);

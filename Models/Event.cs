@@ -7,6 +7,12 @@ namespace WinfADD.Models
     public class Event
     {
 
+        public Event()
+        {
+            Images = new Image[] {};
+            CoffeeShops = new CoffeeShopPreview[] {};
+        }
+
         [Key] 
         public int Id { get; set; }
         

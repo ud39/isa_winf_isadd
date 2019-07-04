@@ -40,7 +40,7 @@ export class AdminService {
   public gallery_4_Filename: string;
   public front_Filename: string;
   public preview_Filename: string;
-  public event_Filename: string;
+  public event_Filename: string ="";
   public equipment_Filename: string;
 
   public gallery_1: SafeUrl = "";

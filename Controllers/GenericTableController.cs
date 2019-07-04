@@ -74,13 +74,15 @@ namespace WinfADD.Controllers
         [HttpPost]
         public virtual async Task<bool> insert(JToken tableJson)
         {
+            Console.WriteLine("INSERT EVENT NOW");
             //create tableObj like: [FromBody] Table tableObj
             var tableObj = tableJson.ToObject<Table>();
 
             //create a List of all search properties
             var hashtableJson = tableJson.ToObject<Dictionary<string, dynamic>>();
 
-
+            Console.WriteLine("----------------------------->"+(tableObj as Event).CoffeeShops);
+            Console.WriteLine("----------------------------->"+(tableObj as Event).CoffeeShops);
 
             return await _tableRepo.InsertTable(tableObj, hashtableJson);
         }

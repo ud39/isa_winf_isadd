@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
+using Newtonsoft.Json.Linq;
 using WinfADD.Models;
 using WinfADD.Repositories;
 
@@ -38,6 +38,9 @@ namespace WinfADD.Controllers
         {
             return await _eventRepository.GetEvents(e);
         }
+
+
+
         
         
     }
