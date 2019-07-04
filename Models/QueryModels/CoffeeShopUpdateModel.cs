@@ -15,12 +15,18 @@ namespace WinfADD.Models
             ImagesDelete = new Image[] {};
             ReachableByBusInsert = new BusStation[] {};
             ReachableByBusDelete = new BusStation[] {};
-            CoffeeDrinks = new CoffeeDrink[] {};
-            ListOfPoi = new Poi[] {};
-            EquipmentCategories = new EquipmentCategory[] {};
-            Beans = new Bean[] {};
-            Blends = new Blend[] {};
-            OpeningTimes = new OpeningTime[] {};
+            CoffeeDrinksInsert = new CoffeeDrink[] {};
+            CoffeeDrinksDelete = new CoffeeDrink[] {};
+            POIsInsert = new Poi[] {};
+            POIsDelete = new Poi[] {};
+            EquipmentCategoriesInsert = new EquipmentCategory[] {};
+            EquipmentCategoriesDelete = new EquipmentCategory[] {};
+            BeansInsert = new Bean[] {};
+            BeansDelete = new Bean[] {};
+            BlendsInsert = new Blend[] {};
+            BlendsDelete = new Blend[] {};
+            OpeningTimesInsert = new OpeningTime[] {};
+            OpeningTimesDelete = new OpeningTime[] {};
 
         }
         
@@ -69,15 +75,21 @@ namespace WinfADD.Models
         public IEnumerable<BusStation> ReachableByBusInsert { get; set; }
         public IEnumerable<BusStation> ReachableByBusDelete { get; set; }
 
-        public IEnumerable<CoffeeDrink> CoffeeDrinks{ get; set; }
-        public IEnumerable<Poi> ListOfPoi { get; set; }
-        public IEnumerable<BusStation> ReachableByBus { get; set; }
-        public IEnumerable<EquipmentCategory> EquipmentCategories { get; set; }
-        public IEnumerable<Bean> Beans{ get; set; }
-        public IEnumerable<Blend> Blends{ get; set; }
-        public IEnumerable<OpeningTime> OpeningTimes{ get; set; }
+        public IEnumerable<CoffeeDrink> CoffeeDrinksInsert{ get; set; }
+        public IEnumerable<CoffeeDrink> CoffeeDrinksDelete{ get; set; }
+        public IEnumerable<Poi> POIsInsert { get; set; }
+        public IEnumerable<Poi> POIsDelete { get; set; }
 
-        
-        
+        public IEnumerable<EquipmentCategory> EquipmentCategoriesInsert { get; set; }
+        public IEnumerable<EquipmentCategory> EquipmentCategoriesDelete { get; set; }
+        public IEnumerable<Bean> BeansInsert{ get; set; }
+        public IEnumerable<Bean> BeansDelete{ get; set; }
+        public IEnumerable<Blend> BlendsInsert{ get; set; }
+        public IEnumerable<Blend> BlendsDelete{ get; set; }
+        public IEnumerable<OpeningTime> OpeningTimesInsert{ get; set; }
+        public IEnumerable<OpeningTime> OpeningTimesDelete{ get; set; }
+
+
+
     }
 }

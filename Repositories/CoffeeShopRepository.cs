@@ -574,71 +574,222 @@ namespace WinfADD.Repositories
         /*
          * update CoffeeShop and Relationship Tables from CoffeeShop
          */
-        public async Task<bool> PartialUpdateCoffeeShop(CoffeeShopUpdateModel coffeeShopObj, IDictionary<string, dynamic> fieldsToChange)
+        public async Task<bool> PartialUpdateCoffeeShop(CoffeeShopUpdateModel coffeeShopObj,
+            IDictionary<string, dynamic> fieldsToChange)
         {
 
             //SQL statements for the transaction
             var coffeeShopSQL = getUpdateQuery(fieldsToChange);
 
-            const string eventSqlInsert = "INSERT INTO organised_by (coffee_shop_id, event_id) VALUES (@coffee_shop_id, @event_id) ON CONFLICT ON CONSTRAINT organised_by_pkey DO NOTHING";
-            const string eventSqlDelete = "DELETE FROM organised_by WHERE coffee_shop_id = @coffee_shop_id AND event_id = @event_id ";
-            const string coffeeShopImageSqlInsert = "INSERT INTO coffee_shop_image (coffee_shop_id, image_file_name) VALUES (@coffee_shop_id, @image_file_name) ON CONFLICT ON CONSTRAINT coffee_shop_image_pkey DO NOTHING";
-            const string coffeeShopImageSqlDelete = "DELETE FROM coffee_shop_image WHERE coffee_shop_id = @coffee_shop_id AND image_file_name = @image_file_name";
+            const string eventSqlInsert =
+                "INSERT INTO organised_by (coffee_shop_id, event_id) VALUES (@coffee_shop_id, @event_id) ON CONFLICT ON CONSTRAINT organised_by_pkey DO NOTHING";
+            const string eventSqlDelete =
+                "DELETE FROM organised_by WHERE coffee_shop_id = @coffee_shop_id AND event_id = @event_id ";
+            const string coffeeShopImageSqlInsert =
+                "INSERT INTO coffee_shop_image (coffee_shop_id, image_file_name) VALUES (@coffee_shop_id, @image_file_name) ON CONFLICT ON CONSTRAINT coffee_shop_image_pkey DO NOTHING";
+            const string coffeeShopImageSqlDelete =
+                "DELETE FROM coffee_shop_image WHERE coffee_shop_id = @coffee_shop_id AND image_file_name = @image_file_name";
             const string companyRelationDelete = "DELETE FROM owns WHERE coffee_shop_id = coffee_shop_id";
-            const string companyRelationInsert = "INSERT INTO owns (company_name, coffee_shop_id) VALUES (@company_name, @coffee_shop_id) ON CONFLICT ON CONSTRAINT owns_pkey DO NOTHING ";
-            const string busStationSqlInsert = "INSERT INTO reachable_by_bus (coffee_shop_id, bus_station_name, bus_station_line)"+
+            const string companyRelationInsert =
+                "INSERT INTO owns (company_name, coffee_shop_id) VALUES (@company_name, @coffee_shop_id) ON CONFLICT ON CONSTRAINT owns_pkey DO NOTHING ";
+            const string busStationSqlInsert =
+                "INSERT INTO reachable_by_bus (coffee_shop_id, bus_station_name, bus_station_line)" +
                 " VALUES(@coffee_shop_id, @bus_station_name, @bus_station_line) ON CONFLICT ON CONSTRAINT reachable_by_bus_pkey DO NOTHING ";
-            const string busStationSqlDelete = "DELETE FROM reachable_by_bus WHERE coffee_shop_id = @coffee_shop_id AND "+
-                                               " bus_station_name = @bus_station_name AND bus_station_line = @bus_station_line)";
-            const string poiSqlInsert = "INSERT INTO near_by (coffee_shop_id, poi_name, poi_address) VALUES (@coffee_shop_id, @poi_name, @poi_address)";
-            const string poiSqlDelete = "DELETE FROM near_by WHERE coffee_shop_id = @coffee_shop_id AND poi_name = @poi_name AND poi_address = @poi_address";
-            const string coffeeDrinkSqlInsert = "INSERT INTO serves (coffee_drink_name, coffee_shop_id, vegan) VALUES (@coffee_drink_name, @coffee_shop_id, @vegan) ";
-            const string coffeeDrinkSqlDelete = "DELETE FROM serves WHERE coffee_drink_name = @coffee_drink_name AND coffee_shop_id = @coffee_shop_id ";
-            const string beanSqlInsert = "INSERT INTO provides (bean_name, bean_provenance, coffee_shop_id) VALUES (@bean_name, @bean_provenance, @coffee_shop_id)";
-            const string beanSqlDelete = "DELETE FROM provides WHERE bean_name = @bean_name AND bean_provenance = @bean_provenance "+
-                "AND coffee_shop_id = @coffee_shop_id";
-            const string blendSqlInsert = "INSERT INTO offers (blend_name, coffee_shop_id) VALUES (@blend_name, @coffee_shop_id) ";
-            const string blendSqlDelete = "DELETE FROM offers WHERE blend_name = @blend_name AND coffee_shop_id = @coffee_shop_id";
-            const string equipmentCategorySqlInsert = "INSERT INTO supplies (equipment_category_name, coffee_shop_id) VALUES (@equipment_category_name, @coffee_shop_id) ";
-            const string equipmentCategorySqlDelete = "DELETE FROM supplies WHERE equipment_category_name = @equipment_category_name AND coffee_shop_id = @coffee_shop_id";
-
+            const string busStationSqlDelete =
+                "DELETE FROM reachable_by_bus WHERE coffee_shop_id = @coffee_shop_id AND " +
+                " bus_station_name = @bus_station_name AND bus_station_line = @bus_station_line)";
+            const string poiSqlInsert =
+                "INSERT INTO near_by (coffee_shop_id, poi_name, poi_address) VALUES (@coffee_shop_id, @poi_name, @poi_address)";
+            const string poiSqlDelete =
+                "DELETE FROM near_by WHERE coffee_shop_id = @coffee_shop_id AND poi_name = @poi_name AND poi_address = @poi_address";
+            const string coffeeDrinkSqlInsert =
+                "INSERT INTO serves (coffee_drink_name, coffee_shop_id, vegan) VALUES (@coffee_drink_name, @coffee_shop_id, @vegan) ";
+            const string coffeeDrinkSqlDelete =
+                "DELETE FROM serves WHERE coffee_drink_name = @coffee_drink_name AND coffee_shop_id = @coffee_shop_id ";
+            const string beanSqlInsert =
+                "INSERT INTO provides (bean_name, bean_provenance, coffee_shop_id) VALUES (@bean_name, @bean_provenance, @coffee_shop_id)";
+            const string beanSqlDelete =
+                "DELETE FROM provides WHERE coffee_shop_id = @coffee_shop_id AND bean_name = @bean_name AND bean_provenance = @bean_provenance";
+            const string blendSqlInsert =
+                "INSERT INTO offers (blend_name, coffee_shop_id) VALUES (@blend_name, @coffee_shop_id) ";
+            const string blendSqlDelete =
+                "DELETE FROM offers WHERE blend_name = @blend_name AND coffee_shop_id = @coffee_shop_id";
+            const string equipmentCategorySqlInsert =
+                "INSERT INTO supplies (equipment_category_name, coffee_shop_id) VALUES (@equipment_category_name, @coffee_shop_id) ";
+            const string equipmentCategorySqlDelete =
+                "DELETE FROM supplies WHERE equipment_category_name = @equipment_category_name AND coffee_shop_id = @coffee_shop_id";
+            const string opensSqlInsert =
+                "INSERT INTO opens (coffee_shop_id, close, open, weekday) VALUES (@coffee_shop_id, @close, @open, @weekday) ON CONFLICT ON CONSTRAINT opens_pkey DO NOTHING ";
+            const string opensSqlDelete =
+                "DELETE FROM opens WHERE coffee_shop_id = @coffee_shop_id AND close = @close AND open = @open AND weekday = @weekday";
 
 
             using (IDbConnection conn = Connection)
             {
 
                 conn.Open();
-                using (IDbTransaction transaction = conn.BeginTransaction())
+                using (var transaction = conn.BeginTransaction())
                 {
                     try
                     {
 
 
-                        conn.Execute(coffeeShopSQL, coffeeShopObj, transaction: transaction);
+                        conn.ExecuteAsync(coffeeShopSQL, coffeeShopObj, transaction: transaction);
 
-                        //
-                        foreach (Event events in coffeeShopObj.EventsInsert)
-                        {
-                            conn.Execute(eventSqlInsert, new {event_id = events.Id,
-                                coffee_shop_id = coffeeShopObj.Id}, transaction: transaction);
-                        }
-                        foreach (Event events in coffeeShopObj.EventsDelete)
-                        {
-                            conn.Execute(eventSqlDelete, new {event_id = events.Id,
-                                coffee_shop_id = coffeeShopObj.Id}, transaction: transaction);
-                        }
+                        /* TODO in Event
+                            foreach (Event events in coffeeShopObj.EventsInsert)
+                            {
+                                conn.Execute(eventSqlInsert, new {event_id = events.Id,
+                                    coffee_shop_id = coffeeShopObj.Id}, transaction: transaction);
+                            }
+                            foreach (Event events in coffeeShopObj.EventsDelete)
+                            {
+                                conn.Execute(eventSqlDelete, new {event_id = events.Id,
+                                    coffee_shop_id = coffeeShopObj.Id}, transaction: transaction);
+                            }
+                            */
 
                         //images
                         foreach (Image image in coffeeShopObj.ImagesInsert)
                         {
-                            conn.Execute(coffeeShopImageSqlInsert, new {coffee_shop_id = coffeeShopObj.Id,
-                                image_file_path = image.FileName}, transaction: transaction);
+                            await conn.ExecuteAsync(coffeeShopImageSqlInsert, new
+                            {
+                                coffee_shop_id = coffeeShopObj.Id,
+                                image_file_path = image.FileName
+                            }, transaction: transaction);
                         }
                         foreach (Image image in coffeeShopObj.ImagesDelete)
                         {
-                            conn.Execute(coffeeShopImageSqlDelete, new {coffee_shop_id = coffeeShopObj.Id,
-                                image_file_path = image.FileName}, transaction: transaction);
+                            conn.ExecuteAsync(coffeeShopImageSqlDelete, new
+                            {
+                                coffee_shop_id = coffeeShopObj.Id,
+                                image_file_path = image.FileName
+                            }, transaction: transaction);
                         }
+
+                        //update Company
+                        if (fieldsToChange.ContainsKey("company"))
+                        {
+                            await conn.ExecuteAsync(companyRelationDelete,
+                                new {coffee_shop_id = coffeeShopObj.Id}, transaction: transaction);
+                            conn.ExecuteAsync(companyRelationInsert,
+                                new
+                                {
+                                    coffe_shop_id = coffeeShopObj.Id,
+                                    company_name = ((Company) fieldsToChange["company"]).Name
+                                });
+                        }
+
+                        //update Bus
+                        foreach (var bus in coffeeShopObj.ReachableByBusDelete)
+                        {
+                            await conn.ExecuteAsync(busStationSqlDelete,
+                                new {coffee_shop_id = coffeeShopObj.Id,
+                                    bus_station_name = bus.Name, bus_station_line = bus.Line
+                                }, transaction: transaction);
+                        }
+
+                        foreach (var bus in coffeeShopObj.ReachableByBusInsert)
+                        {
+                            conn.ExecuteAsync(busStationSqlInsert, new
+                            {
+                                coffee_shop_id = coffeeShopObj.Id,
+                                bus_station_name = bus.Name, bus_station_line = bus.Line
+                            }, transaction: transaction);
+                        }
+
+                        //update POI
+                        foreach (var poi in coffeeShopObj.POIsDelete)
+                        {
+                            await conn.ExecuteAsync(poiSqlDelete, new {coffe_shop_id = coffeeShopObj.Id,
+                                poi_name = poi.Name, poi_address = poi.Address
+                            }, transaction: transaction);
+                        }
+
+                        foreach (var poi in coffeeShopObj.POIsInsert)
+                        {
+                            conn.ExecuteAsync(poiSqlInsert, new
+                            {
+                                coffee_shop_id = coffeeShopObj.Id,
+                                poi_name = poi.Name, poi_address = poi.Address
+                            }, transaction: transaction);
+                        }
+
+                        //update CoffeDrink
+                        foreach (var drink in coffeeShopObj.CoffeeDrinksDelete)
+                        {
+                            await conn.ExecuteAsync(coffeeDrinkSqlDelete, new {coffee_shop_id = coffeeShopObj.Id,
+                                coffee_drink_name = drink.Name
+                            }, transaction: transaction);
+                        }
+                        foreach (var drink in coffeeShopObj.CoffeeDrinksInsert)
+                        {
+                            conn.ExecuteAsync(coffeeDrinkSqlInsert, new
+                            {
+                                coffee_shop_id = coffeeShopObj.Id,
+                                coffee_drink_name = drink.Name
+                            }, transaction: transaction);
+                        }
+
+                        //update Bean
+                        foreach (var bean in coffeeShopObj.BeansDelete)
+                        {
+                            await conn.ExecuteAsync(beanSqlDelete,
+                                new {coffee_shop_id = coffeeShopObj.Id,
+                                    bean_name = bean.Name, bean_provenance = bean.Provenance
+                                }, transaction: transaction);
+                        }
+                        foreach (var bean in coffeeShopObj.BeansInsert)
+                        {
+                            conn.ExecuteAsync(beanSqlDelete, new {coffee_shop_id = coffeeShopObj.Id,
+                                bean_name = bean.Name, bean_provenance = bean.Provenance
+                                },transaction: transaction);
+                        }
+
+
+                        //update blend
+                        foreach (var blend in coffeeShopObj.BlendsDelete)
+                        {
+                            await conn.ExecuteAsync(blendSqlDelete, new {blend_name = blend.Name,
+                                coffee_shop_id = coffeeShopObj.Id }, transaction: transaction);
+                        }
+                        foreach (var blend in coffeeShopObj.BlendsInsert)
+                        {
+                            await conn.ExecuteAsync(blendSqlInsert, new {blend_name = blend.Name,
+                                coffee_shop_id = coffeeShopObj.Id}, transaction: transaction);
+                        }
+
+
+                        //update EquipmentCategory
+                        foreach (var category in coffeeShopObj.EquipmentCategoriesDelete)
+                        {
+                            await conn.ExecuteAsync(equipmentCategorySqlDelete,
+                                new {equipment_category_name = category.Name, coffee_shop_id = coffeeShopObj.Id},
+                                transaction: transaction);
+                        }
+                        foreach (var category in coffeeShopObj.EquipmentCategoriesInsert)
+                        {
+                            conn.ExecuteAsync(equipmentCategorySqlInsert,
+                                new {equipment_category_name = category.Name, coffee_shop_id = coffeeShopObj.Id},
+                                transaction: transaction);
+                        }
+
+                        //update Opening Time
+                        foreach (var time in coffeeShopObj.OpeningTimesDelete)
+                        {
+                            await conn.ExecuteAsync(opensSqlDelete, new{coffee_shop_id = coffeeShopObj.Id,
+                                close = time.Close, open = time.Open, weekday = time.Weekday}, transaction: transaction);
+                        }
+                        foreach (var time in coffeeShopObj.OpeningTimesInsert)
+                        {
+                            conn.ExecuteAsync(opensSqlInsert, new {coffee_shop_id = coffeeShopObj.Id,
+                                close = time.Close, open = time.Open, weekday = time.Weekday
+                            }, transaction: transaction);
+                        }
+
+
+
+
 
                         transaction.Commit();
 
@@ -651,12 +802,12 @@ namespace WinfADD.Repositories
                         return false;
                     }
 
+
+
+
+                    return true;
                 }
             }
-
-
-
-            return true;
         }
 
 
