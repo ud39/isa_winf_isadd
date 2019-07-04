@@ -16,10 +16,10 @@
   Event
   <mat-list class="edit-list">
     <mat-list-item *ngFor="let event of eventEditContent; last as last" (click)="getCurrentObjectOfClickedListItem(event)">
-      <img [src]='getImage(event.image)' class="preview-img">
+      <img src="/assets/Images/event.jpg" width="125" />
       <div class="preview-content">
         <h6 class="edit_name">{{event.name}}
-        </h6>e
+        </h6>
       </div>
       <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
     </mat-list-item>
