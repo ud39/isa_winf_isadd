@@ -654,7 +654,7 @@ namespace WinfADD.Repositories
 
                         await conn.ExecuteAsync(coffeeShopSQL, coffeeShopObj, transaction: transaction);
 
-                        /* TODO in Event
+                        /* 
                             foreach (Event events in coffeeShopObj.EventsInsert)
                             {
                                 await conn.Execute(eventSqlInsert, new {event_id = events.Id,
@@ -781,6 +781,7 @@ namespace WinfADD.Repositories
                         //update EquipmentCategory
                         foreach (var category in coffeeShopObj.EquipmentCategoriesDelete)
                         {
+                            Console.WriteLine("fFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
                             await conn.ExecuteAsync(equipmentCategorySqlDelete,
                                 new {equipment_category_name = category.Name, coffee_shop_id = coffeeShopObj.Id},
                                 transaction: transaction);

@@ -55,75 +55,7 @@ namespace WinfADD.Repositories
             
             NpgsqlConnection.GlobalTypeMapper.MapComposite<Address>("address");
             
-            //TODO in extended class
-            //TODO add all key names here (maybe lowerCase)
-            // keys.Add("key1");
-
-            //TODO write tableName
-            //tableName = tableName;
-
-            //TODO Mapping
-            //_MappingM2DB = Models.Mapping.MappingM2DB.TableMap;
-
-            /*
-           //helper strings
-            var keyCompare = "";        //key=@key for all key in keys
-            var CSKeys = "";            //key1,key2,key3
-            var CSatKeys = "";          //@key1,@key2,@key3
- 
- 
-            //compute keyCompare, CSKeys, AtCSKeys
-            foreach (var keyString in keys)
-            {
-                //compute keyCompare, CSKeys, AtCSKeys
-                if(keyCompare.Length >0){
-                    keyCompare += " AND " + keyString + "=@" + keyString;
-                    CSKeys += ", " + keyString;
-                    CSatKeys += ",@" + keyString;
-                }
- 
-                else
-                {
-                 keyCompare += keyString + "=@" + keyString;
-                 CSKeys += keyString;
-                 CSatKeys += "@" + keyString;
-                }
-            }
- 
-            //build GetByID sql query
-            GetByIdString = "SELECT * FROM " + tableName + " WHERE "+ keyCompare;
- 
- 
-            //GetAll sql query
-            GetAllString = "SELECT * FROM " + tableName;
- 
- 
-            //Update sql query: UpdateString = "UPDATE table SET property1=@property1, property2=@property2... WHERE key1=@key1, key2=@key2...";
-            UpdateString = "UPDATE " + tableName + " SET ";
-            PropertyInfo[] possibleProperties = typeof(Table).GetProperties();
- 
-            //all possible fields
-            var temp = "";
-            foreach (PropertyInfo property in possibleProperties)
-            {
-                var propertyName = property.Name.ToLower();
-                if(temp.Length > 0) temp += ", " + propertyName + "= @" + propertyName;
-                else
-                {
-                    temp += propertyName + "= @" + propertyName;
-                }
-            }
- 
-            UpdateString += temp + " WHERE " + keyCompare;
- 
- 
-            //Delete sql query
-            DeleteString = "DELETE FROM " + tableName + " WHERE " + keyCompare;
- 
-            */
-
-
-
+            
         }
         
 

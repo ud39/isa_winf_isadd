@@ -57,8 +57,6 @@ export class EditListComponent implements OnInit, OnDestroy {
 
 
     var name = this.imagePreviewPath + filenName;
-    console.log(":::::::::::::::::::::::::::::");
-    console.log("-->"+name);
     return name;
   }
 
@@ -96,7 +94,6 @@ export class EditListComponent implements OnInit, OnDestroy {
             });
           break;
           case 'BusStation':
-            console.log('BusStation');
             this.inputFormService.getBusStations().subscribe(result =>{
             this.busStationEditControl = result
             });
@@ -112,7 +109,6 @@ export class EditListComponent implements OnInit, OnDestroy {
             });
           break;
           case 'Equipment-category':
-            console.log('Get All EquQ');
             this.inputFormService.getEquipmentCategories().subscribe(result => {
               this.equipmentCategoryEditControl = result
             })
@@ -133,10 +129,7 @@ export class EditListComponent implements OnInit, OnDestroy {
         });
       break;
       case 'Event':
-        console.log('Current Tab');
-        console.log(id);
         let seletecEvent : Event = id;
-        console.log(seletecEvent);
         this.subscription = this.eventService.getEvent(seletecEvent.id).subscribe(value => {
         this.dialogRef.close(value);
         });
@@ -165,7 +158,6 @@ export class EditListComponent implements OnInit, OnDestroy {
           case 'Poi':
             let selectedPoi : Poi = id;
             this.subscription = this.inputFormService.getPoi(selectedPoi).subscribe(value => {
-              console.log(value);
               this.dialogRef.close(value);
             });
             break;

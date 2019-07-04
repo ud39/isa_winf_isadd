@@ -32,7 +32,6 @@ export class EventService {
     return this.http.get<Event[]>(Global.url + 'event/params?' , {params: queryParams,headers: headers});
   }
   navigateTo(jsonOfSearch : JSON):void{
-    console.log('Event' + jsonOfSearch.stringify(jsonOfSearch));
     let params = this.routeService.buildHttpParams(jsonOfSearch);
     this.getEventWithParams(params).subscribe(next => {
       this.events = next;

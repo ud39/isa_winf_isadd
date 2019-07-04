@@ -24,7 +24,6 @@ import { EquipmentDetailComponent } from './content/equipment/equipment-detail/e
 import { EventListComponent } from './content/event/event-list/event-list.component';
 import { EventDetailedComponent } from './content/event/event-detailed/event-detailed.component';
 import {ShopTabComponent} from "./profile/admin-profile/tabs/shop-tab/shop-tab.component";
-import { EquipmentTabComponent } from './profile/admin-profile/tabs/equipment-tab/equipment-tab.component';
 import { EventTabComponent } from './profile/admin-profile/tabs/event-tab/event-tab.component';
 import { ContentTabComponent } from './profile/admin-profile/tabs/content-tab/content-tab.component';
 import {MAT_DATE_LOCALE, MAT_DIALOG_DEFAULT_OPTIONS, MatRadioModule} from "@angular/material";
@@ -67,7 +66,6 @@ import { HomeCheckBoxComponent } from './search/home-check-box/home-check-box.co
     EventListComponent,
     EventDetailedComponent,
     ShopTabComponent,
-    EquipmentTabComponent,
     EventTabComponent,
     ContentTabComponent,
     ArticleListComponent,

@@ -51,7 +51,7 @@ namespace WinfADD.Controllers
         }
 
 
-        //TODO maybe handle chaning natural key-> new insert+delete
+        
         [Route("update")]
         [HttpPut]
         public async Task<bool> Update([FromBody] Table tableObj)

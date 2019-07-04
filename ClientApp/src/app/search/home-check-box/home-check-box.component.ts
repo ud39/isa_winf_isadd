@@ -29,7 +29,6 @@ export class HomeCheckBoxComponent implements OnInit {
   }
   public streetNameFormControl = new FormControl();
   public shopNameFormControl = new FormControl();
-  public postalFormControl = new FormControl();
   public priceClass = ['niedrig', 'mittel', 'hoch'];
   public options: string[] = [];
   public filteredOptions: Observable<string[]>;
@@ -71,7 +70,6 @@ export class HomeCheckBoxComponent implements OnInit {
 
   @Output() callNavigateToShop = new EventEmitter<void>();
   navigateTo(){
-    console.log("Call form Shop");
     this.callNavigateToShop.emit();
   }
 }

@@ -76,7 +76,6 @@ export class CheckboxComponent implements OnInit {
 
   @Output() callNavigateToShop = new EventEmitter<void>();
   navigateTo(){
-   console.log("Call form Shop");
    this.callNavigateToShop.emit();
   }
 }

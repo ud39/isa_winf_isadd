@@ -60,7 +60,7 @@ export class CompareService {
   }
 
   public compareCompany(company1 :Company, company2:Company){
-    return company1 && company2 ? company1.name == company2.name : company1.name = company2.name;
+    return company1 && company2 ? company1.name == company2.name : company1.name == company2.name;
   }
 
 
@@ -210,7 +210,6 @@ export class CompareService {
       let closingTime: number = Number(closing.replace(':', ''));
 
       if (openingTime > closingTime && (openingTime.toString().length == 4 && closingTime.toString().length == 4)) {
-        console.log('setError');
         openingformGroup.get('tuesday').setErrors({
           notMatch: 'closing time must be later than opening time'
         })

@@ -192,7 +192,7 @@ export class ShopTabComponent implements OnInit {
     this.shopDescriptionFormControl.setValue(selectedShop.description);
     this.shopWebsiteFormControl.setValue(selectedShop.website);
     this.shopFoundingYearFormControl.setValue(selectedShop.foundingYear);
-    this.companyNameFormControl.setValue(selectedShop.company);
+    this.companyNameFormControl.setValue('Juti');
     this.countryFormControl.setValue(selectedShop.address.country);
     this.postalCodeFormControl.setValue(selectedShop.address.postalCode);
     this.streetNrFormControl.setValue(selectedShop.address.streetNumber);
@@ -239,7 +239,7 @@ export class ShopTabComponent implements OnInit {
 
     let addBusStation : BusStation[] = differenceBusStation[1];
     let deleteBusStation : BusStation[] = differenceBusStation[0];
-
+    json['id'] = this.shop.id;
     let addPoi:Poi[] = differencePoi[1];
     let deletePoi:Poi[] = differencePoi[0];
 
@@ -255,42 +255,31 @@ export class ShopTabComponent implements OnInit {
     let addEquipmentCategory:EquipmentCategory[] = differenceEquipmentCategory[1];
     let deleteEquipmentCategory:EquipmentCategory[] = differenceEquipmentCategory[0];
 
-    json['ReachableByBusInsert'] = addBusStation;
-    json['ReachableByBusDelete'] = deleteBusStation;
-    json['POIsInsert'] = addPoi;
-    json['POIsDelete'] = deletePoi;
-    json['BeansInsert'] = addBean;
-    json['BeansDelete'] = deleteBean;
-    json['BlendsInsert'] = addBlend;
-    json['BlendsDelete'] = deleteBlend;
-    json['CoffeeDrinksInsert'] = addCoffeeDrink;
-    json['CoffeeDrinksDelete'] = deleteCoffeeDrink;
-    json['EquipmentCategoriesInsert'] = addEquipmentCategory;
-    json['EquipmentCategoriesDelete'] = deleteEquipmentCategory;
-
-    console.log(json);
-
+    json['ReachableByBusInsert']= JSON.parse(JSON.stringify(addBusStation));
+    json['ReachableByBusDelete']= JSON.parse(JSON.stringify(deleteBusStation));
+    json['CoffeeDrinksInsert']= JSON.parse(JSON.stringify(addCoffeeDrink));
+    json['CoffeeDrinksDelete']= JSON.parse(JSON.stringify(deleteCoffeeDrink));
+    json['POIsInsert']= JSON.parse(JSON.stringify(addPoi));
+    json['POIsDelete']= JSON.parse(JSON.stringify(deletePoi));
+    json['BeansInsert']= JSON.parse(JSON.stringify(addBean));
+    json['BeansDelete']= JSON.parse(JSON.stringify(deleteBean));
+    json['BlendsInsert']= JSON.parse(JSON.stringify(addBlend));
+    json['BlendsDelete']= JSON.parse(JSON.stringify(deleteBlend));
+    json['EquipmentCategoriesInsert'] = JSON.parse(JSON.stringify(addEquipmentCategory));
+    json['EquipmentCategoriesDelete'] = JSON.parse(JSON.stringify(deleteEquipmentCategory));
     let temp ='';
     this.adminService.getAllCoffeeShopImages().forEach((value: string, key: string) => {
       temp +=  ',{"fileName":"' + key + '"}';
     });
     temp = temp.slice(1);
     let jsonImageList = JSON.parse('[' + temp + ']');
-
     delete  json['busStation'];
     delete  json['beans'];
     delete  json['blend'];
     delete  json['poi'];
     delete  json['equipmentCategory'];
     delete  json['coffeeDrink'];
-    console.log(JSON.stringify(jsonImageList));
     json["images"] = jsonImageList;
-
-    console.log(json["EquipmentCategoriesInsert"]);
-
-
-    console.log("almost there");
-    console.log(<JSON> json);
     return <JSON> json;
   }
 
