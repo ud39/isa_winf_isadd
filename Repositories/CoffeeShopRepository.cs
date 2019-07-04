@@ -483,13 +483,13 @@ namespace WinfADD.Repositories
 
 
 
-                       await conn.ExecuteAsync(sqlCompany, new {name = coffeeShopObj.CompanyName},
+                       await conn.ExecuteAsync(sqlCompany, new {name = coffeeShopObj.Company.Name},
                            transaction: transaction);
 
                        conn.Execute(sqlCompanyRelation,
                            new
                            {
-                               company_name = coffeeShopObj.CompanyName,
+                               company_name = coffeeShopObj.Company.Name,
                                coffee_shop_id = coffeShopID
                            }, transaction: transaction);
 
