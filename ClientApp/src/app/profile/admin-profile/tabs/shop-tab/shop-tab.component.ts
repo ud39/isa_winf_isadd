@@ -285,6 +285,10 @@ export class ShopTabComponent implements OnInit {
     delete  json['coffeeDrink'];
     console.log(JSON.stringify(jsonImageList));
     json["images"] = jsonImageList;
+
+    console.log(json["EquipmentCategoriesInsert"]);
+
+
     console.log("almost there");
     console.log(<JSON> json);
     return <JSON> json;

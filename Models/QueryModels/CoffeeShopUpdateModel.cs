@@ -80,11 +80,11 @@ namespace WinfADD.Models
         public IEnumerable<Poi> POIsInsert { get; set; }
         public IEnumerable<Poi> POIsDelete { get; set; }
 
-        public IEnumerable<EquipmentCategory> EquipmentCategoriesInsert { get; set; }
-        public IEnumerable<EquipmentCategory> EquipmentCategoriesDelete { get; set; }
+        public EquipmentCategory[] EquipmentCategoriesInsert { get; set; }
+        public EquipmentCategory[] EquipmentCategoriesDelete { get; set; }
         public IEnumerable<Bean> BeansInsert{ get; set; }
         public IEnumerable<Bean> BeansDelete{ get; set; }
-        public IEnumerable<Blend> BlendsInsert{ get; set; }
+        public   Blend[] BlendsInsert { get; set; }
         public IEnumerable<Blend> BlendsDelete{ get; set; }
         public IEnumerable<OpeningTime> OpeningTimesInsert{ get; set; }
         public IEnumerable<OpeningTime> OpeningTimesDelete{ get; set; }

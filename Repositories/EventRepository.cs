@@ -226,11 +226,10 @@ namespace WinfADD.Repositories
                         var eventID =
                             await conn.ExecuteScalarAsync<int>(eventSqlInsert, eventObj, transaction: transaction);
 
-                        Console.WriteLine("##############################################################################");
                        if(eventObj.Image != null )
                        {
                            var image = eventObj.Image;
-                            Console.WriteLine("#######################IMAGES####################################");
+
                             await conn.ExecuteAsync(eventImageSqlInsert,
                                 new {image_file_name = image.FileName, event_id = eventID},
                                 transaction: transaction);
