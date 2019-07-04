@@ -578,20 +578,30 @@ namespace WinfADD.Repositories
         {
 
             //SQL statements for the transaction
-            string coffeeShopSQL = getUpdateQuery(fieldsToChange);
+            var coffeeShopSQL = getUpdateQuery(fieldsToChange);
 
             const string eventSqlInsert = "INSERT INTO organised_by (coffee_shop_id, event_id) VALUES (@coffee_shop_id, @event_id) ON CONFLICT ON CONSTRAINT organised_by_pkey DO NOTHING";
             const string eventSqlDelete = "DELETE FROM organised_by WHERE coffee_shop_id = @coffee_shop_id AND event_id = @event_id ";
             const string coffeeShopImageSqlInsert = "INSERT INTO coffee_shop_image (coffee_shop_id, image_file_name) VALUES (@coffee_shop_id, @image_file_name) ON CONFLICT ON CONSTRAINT coffee_shop_image_pkey DO NOTHING";
             const string coffeeShopImageSqlDelete = "DELETE FROM coffee_shop_image WHERE coffee_shop_id = @coffee_shop_id AND image_file_name = @image_file_name";
-            const string companySqlInsert = "INSERT INTO company VALUES (name) ON CONFLICT ON CONSTRAINT company_pkey DO NOTHING";
-            const string companyRelationInsert = "";
-            const string companySqlDelete = "";
-            const string busStationSqlInsert =
-                "INSERT INTO reachable_by_bus (coffee_shop_id, bus_station_name, bus_station_line)"+
+            const string companyRelationDelete = "DELETE FROM owns WHERE coffee_shop_id = coffee_shop_id";
+            const string companyRelationInsert = "INSERT INTO owns (company_name, coffee_shop_id) VALUES (@company_name, @coffee_shop_id) ON CONFLICT ON CONSTRAINT owns_pkey DO NOTHING ";
+            const string busStationSqlInsert = "INSERT INTO reachable_by_bus (coffee_shop_id, bus_station_name, bus_station_line)"+
                 " VALUES(@coffee_shop_id, @bus_station_name, @bus_station_line) ON CONFLICT ON CONSTRAINT reachable_by_bus_pkey DO NOTHING ";
             const string busStationSqlDelete = "DELETE FROM reachable_by_bus WHERE coffee_shop_id = @coffee_shop_id AND "+
                                                " bus_station_name = @bus_station_name AND bus_station_line = @bus_station_line)";
+            const string poiSqlInsert = "INSERT INTO near_by (coffee_shop_id, poi_name, poi_address) VALUES (@coffee_shop_id, @poi_name, @poi_address)";
+            const string poiSqlDelete = "DELETE FROM near_by WHERE coffee_shop_id = @coffee_shop_id AND poi_name = @poi_name AND poi_address = @poi_address";
+            const string coffeeDrinkSqlInsert = "INSERT INTO serves (coffee_drink_name, coffee_shop_id, vegan) VALUES (@coffee_drink_name, @coffee_shop_id, @vegan) ";
+            const string coffeeDrinkSqlDelete = "DELETE FROM serves WHERE coffee_drink_name = @coffee_drink_name AND coffee_shop_id = @coffee_shop_id ";
+            const string beanSqlInsert = "INSERT INTO provides (bean_name, bean_provenance, coffee_shop_id) VALUES (@bean_name, @bean_provenance, @coffee_shop_id)";
+            const string beanSqlDelete = "DELETE FROM provides WHERE bean_name = @bean_name AND bean_provenance = @bean_provenance "+
+                "AND coffee_shop_id = @coffee_shop_id";
+            const string blendSqlInsert = "INSERT INTO offers (blend_name, coffee_shop_id) VALUES (@blend_name, @coffee_shop_id) ";
+            const string blendSqlDelete = "DELETE FROM offers WHERE blend_name = @blend_name AND coffee_shop_id = @coffee_shop_id";
+            const string equipmentCategorySqlInsert = "INSERT INTO supplies (equipment_category_name, coffee_shop_id) VALUES (@equipment_category_name, @coffee_shop_id) ";
+            const string equipmentCategorySqlDelete = "DELETE FROM supplies WHERE equipment_category_name = @equipment_category_name AND coffee_shop_id = @coffee_shop_id";
+
 
 
             using (IDbConnection conn = Connection)
@@ -668,8 +678,6 @@ namespace WinfADD.Repositories
 
                 foreach (var image in Images)
                 {
-                    Console.WriteLine("\n \n \n \n \n \n \n \n \n \n NAME::"+image.FileName);
-                    Console.WriteLine("Content::"+image.ContentType);
                     ImageController.deleteImageInternal(image.FileName, image.ContentType);
                 }
 

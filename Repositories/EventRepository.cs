@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Dapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using WinfADD.Controllers;
 using WinfADD.Models;
 
 namespace WinfADD.Repositories
@@ -177,9 +178,6 @@ namespace WinfADD.Repositories
                 if (!(insertProperties.ContainsKey(propertyName))
                     || propertyName.Equals("id")
                     || propertyName.Equals("images")) continue;
-                Console.WriteLine("----------------------------------------------------");
-                Console.WriteLine(propertyName);
-                Console.WriteLine(propertyName.Equals("address"));
                 if (propertyName.Equals("address")) //TODO Address description from event to Location
                 {
                     Console.WriteLine("IN ADDRESS");
@@ -261,10 +259,32 @@ namespace WinfADD.Repositories
                     return false;
                 }
 
-
             }
 
+        }
 
+
+        public override async Task<bool> DeleteTable(Event eventObj)
+        {
+            using (IDbConnection conn = Connection)
+            {Console.WriteLine("\n Delete::" + DeleteString);
+
+
+                var imageSQL = "select i.* from image i, event_image ei where ei.event_id = "
+                               + eventObj.Id+ " AND ei.image_file_name = i.file_name";
+
+                var imageResult = conn.QueryMultiple(imageSQL);
+
+                var Images  = imageResult.Read<Image>().ToList();
+
+                foreach (var image in Images)
+                {
+                    ImageController.deleteImageInternal(image.FileName, image.ContentType);
+                }
+
+                var rowsAffected = await conn.ExecuteAsync(DeleteString, eventObj );
+                return (rowsAffected > 0);
+            }
         }
     }
 }
