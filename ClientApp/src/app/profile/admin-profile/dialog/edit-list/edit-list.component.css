@@ -13,3 +13,8 @@ app-edit-list .mat-list-base .mat-list-item{
   padding: 0;
 }
 
+app-edit-list .preview-img {
+  height: 100px;
+  width: 100px;
+}
+

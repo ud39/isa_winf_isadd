@@ -72,7 +72,6 @@ namespace WinfADD.Controllers
                 var file = Request.Form.Files[0];
                 var folderName = "Image/"+fromWhere;
                 var webRootPath = _hostingEnvironment.WebRootPath;
-                Console.WriteLine(webRootPath);
                 var newPath = Path.Combine(webRootPath, folderName);
                 var fileName = "";
                 var thumbnail = "";
@@ -102,13 +101,10 @@ namespace WinfADD.Controllers
                     var fullPath = Path.Combine(newPath, fileName);
                     using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
-                        //file.CopyTo(stream);
-                        Console.WriteLine("File_Name::" + file.FileName);
-                        Console.WriteLine("Name::" + file.Name);
-
 
                         if (fromWhere.Equals("preview") || fromWhere.Equals("poi"))
                         {
+                            await file.CopyToAsync(stream);
 
                             using (var img = System.Drawing.Image.FromStream(stream))
                             {
@@ -120,7 +116,7 @@ namespace WinfADD.Controllers
                                 Graphics newGraphic = Graphics.FromImage(newImg);
                                 newGraphic.DrawImage(img, 0, 0, width, height);
                                 newGraphic.Dispose();
-                                newImg.Save(Path.Combine(newPath, fileName + "preview.png"));
+                                newImg.Save(Path.Combine(newPath, fileName + "-preview.png"));
                             }
                         }
                         else if(fromWhere.Equals("event"))
@@ -135,8 +131,8 @@ namespace WinfADD.Controllers
                                 Graphics newGraphic = Graphics.FromImage(newImg);
                                 newGraphic.DrawImage(img, 0, 0, width, height);
                                 newGraphic.Dispose();
-                                thumbnail = fileName + "-thumbnail.png";
-                                newImg.Save(Path.Combine(newPath, thumbnail));
+
+                                newImg.Save(Path.Combine(newPath, fileName + "-preview.png"));
                             }
                         }
                         else
@@ -159,12 +155,13 @@ namespace WinfADD.Controllers
                 //Insert into Table
                 using (IDbConnection conn = Connection)
                 {
+                    Console.WriteLine("in SQL IMAGE CREATE");
                     Console.WriteLine("\n CreateImage::");
                     var sql = "INSERT INTO image (file_name, content_type) VALUES (@file_name, @content_type)";
-                    var affectedRows =  await conn.QueryAsync<Image>(sql,new{file_name = fileName, content_type = fromWhere.ToString() });
+                    var affectedRows =  await conn.ExecuteAsync(sql,new{file_name = fileName, content_type = fromWhere.ToString() });
                     if (thumbnail.Length > 0)
                     {
-                        affectedRows =  await conn.QueryAsync<Image>(sql,new{file_name = thumbnail, content_type = fromWhere.ToString() });
+                        affectedRows += await conn.ExecuteAsync(sql,new{file_name = thumbnail, content_type = "preview" });
 
                     }
                 }
@@ -187,6 +184,7 @@ namespace WinfADD.Controllers
 
 
             var path = Path.Combine("/Image/"+imageObj.ContentType, imageObj.FileName);
+
             return base.File(path, "image/" + imageObj.FileName.Substring(imageObj.FileName.Length-3));
         }
 

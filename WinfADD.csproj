@@ -145,6 +145,8 @@
       <_ContentIncludedByDefault Remove="wwwroot\Image\gallery\xyb2v0fu.yeg.jpg" />
       <_ContentIncludedByDefault Remove="wwwroot\Image\gallery\y55d0x1l.h1h.jpg" />
       <_ContentIncludedByDefault Remove="wwwroot\Image\gallery\zcqt51wy.ckh.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\Image\front\53jryyk1.iwt.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\Image\front\vv32j3fh.but.png" />
     </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

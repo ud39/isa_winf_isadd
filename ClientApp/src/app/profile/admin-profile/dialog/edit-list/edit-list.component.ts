@@ -14,6 +14,7 @@ import {Poi} from "../../../../interfaces/entity/Poi";
 import {BusStation} from "../../../../interfaces/entity/BusStation";
 import {CoffeeDrink} from "../../../../interfaces/entity/CoffeeDrink";
 import {EquipmentCategory} from "../../../../interfaces/entity/EquipmentCategory";
+import {Global} from "../../../../global";
 
 
 @Component({
@@ -48,6 +49,18 @@ export class EditListComponent implements OnInit, OnDestroy {
               public userService:UserService) {}
 
 
+  public imagePreviewPath = Global.url + 'image/GetById?ContentType=preview&fileName=';
+
+  public getImage(filenName){
+
+
+    var name = this.imagePreviewPath + filenName +"-preview.png";
+    console.log(":::::::::::::::::::::::::::::");
+    console.log("-->"+name);
+    return name;
+  }
+
+
   ngOnInit() {
     this.getCurrentActiveDataToEdit();
   }
@@ -57,6 +70,9 @@ export class EditListComponent implements OnInit, OnDestroy {
       case 'Shop':
         this.datas.data.shopService.getShops().subscribe(value => {
         this.shopEditContent = value;
+
+
+        console.log(this.shopEditContent);
         });
         break;
       case 'Event':

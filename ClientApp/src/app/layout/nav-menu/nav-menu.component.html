@@ -12,7 +12,7 @@
       </button>
       <button mat-button class="nav-item" [routerLinkActive]='["link-active"]' [routerLink]='["/events"]'>Events</button>
       <button mat-button class="nav-item" [routerLinkActive]='["link-active"]' [routerLink]='["/about-us"]'>Über uns</button>
-      <button mat-button class="nav-item"  [routerLinkActive]='["link-active"]' *ngIf="this.userService.IsLogin" [routerLink]='["/admin"]'>Admin Bereich</button>
+      <button mat-button class="nav-item"  [routerLinkActive]='["link-active"]'  [routerLink]='["/admin"]'>Admin Bereich</button>
       <div *ngIf="currentWindowWidth >= 768">
       <div id="login-dropdown">
       <span (click)="dropdown()"> Login </span>
