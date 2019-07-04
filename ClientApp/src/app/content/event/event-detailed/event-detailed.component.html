@@ -15,9 +15,9 @@
             <mat-list-item *ngFor="let shop of this.event$.coffeeShops; last as last">
               <div class="preview-content">
               <a [routerLink]="['/shops', shop.id]" [routerLinkActive]='["link-active"]'>
-                <img src="https://dummyimage.com/100x100/fff/000" class="preview-img">
+                <img src="/assets/Images/coffeeshop.jpg" width="100" />
               </a>
-              {{shop.name}}{{" " + shop.address.streetName + " " + shop.address.streetNumber}}
+              {{shop.name}}<br>{{" " + shop.address.streetName + " " + shop.address.streetNumber}}
                 <br>
                 Gesamtbewertung: {{(shop.averageTotalRating | number) || 'n/a' }}
                 <div class="text">
@@ -27,11 +27,6 @@
               <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
             </mat-list-item>
           </mat-list>
-        </div>
-      </div>
-      <div class='column'>
-        <div class='image'>
-          Some Text in Column Two
         </div>
       </div>
     </div>

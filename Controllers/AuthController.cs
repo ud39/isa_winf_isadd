@@ -37,58 +37,11 @@ namespace WinfADD.Controllers
              _configuration = configuration;
              _roleManager = roleManager;
              _signInManager = signInManager;
-             init();
-         }
-
-         private async Task init()
-         {
-
          
-             
-             // var result = await _userManager.FindByEmailAsync("admin@.com");
-            // if (result == null)
-            {
-                //   var admin = new User {UserName = "admin@.com", Email = "admin@.com"};
-                //var manager = new User {UserName = "manager@.com", Email = "manager@.com"};
-                //var user = new User {UserName = "manager@.com", Email = "manager@.com"};
-
-                // var admin = await _userManager.CreateAsync(new User {UserName = "admin@.com", Email = "admin@.com"}, "admin123");
-                // var manager = await _userManager.CreateAsync( new User {UserName = "manager@.com", Email = "manager@.com"}, "manager123");
-                //var user = await  _userManager.CreateAsync(new User {UserName = "manager@.com", Email = "manager@.com"}, "user123");
-                //await _userManager.AddToRoleAsync(admin, "ADMIN");
-                //await _userManager.AddToRoleAsync(admin, "contentmanager");
-                //await _userManager.AddToRoleAsync(admin, "user");
-                //  await _userManager.AddToRoleAsync(manager, "contentmanager");
-                //  await _userManager.AddToRoleAsync(manager, "user");
-                // await _userManager.AddToRoleAsync(user, "user");
-
-                /*       
-               string[] roleNames = { "admin", "manager", "user" };
-               IdentityResult roleResult;
-
-               //creating a super user who could maintain the web app
-               var poweruser = new User
-               {
-                   UserName = "Test7@com",
-                   Email = "Test7@com"
-               };
-               string UserPassword = "Test123";
-               var user = await _userManager.FindByEmailAsync("Test7@com");
-               if(user == null)
-               {
-                   var createPowerUser = await _userManager.CreateAsync(poweruser, UserPassword);
-                   if (createPowerUser.Succeeded)
-                   {
-                   
-                     //  if(_dapperStore.)
-                       //here we tie the new user to the "Admin" role 
-                       await _dapperStore.AddToRoleAsync(poweruser, "ADMIN", CancellationToken.None);
-                   }
-               }
-               await _dapperStore.AddToRoleAsync(poweruser, "ADMIN", CancellationToken.None);
-            }*/
-            }
          }
+
+       
+         
 
          // GET api/values
          [HttpPost, Route("login")]
@@ -110,21 +63,6 @@ namespace WinfADD.Controllers
 
                      if (result)
                      {
-                         /*
-                         var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
-                         var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
-
-                         var tokeOptions = new JwtSecurityToken(
-                             issuer: "http://localhost:5001",
-                             audience: "http://localhost:5001",
-                             claims: new List<Claim>(),
-                             expires: DateTime.Now.AddMinutes(5),
-                             signingCredentials: signinCredentials
-                         );
-
-                         var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
-                         return Ok(new {Token = tokenString});
-                         */ 
                          return await GenerateJwtToken(user.Email, u);
                      }
 
@@ -161,25 +99,6 @@ namespace WinfADD.Controllers
 
             return BadRequest();
         }
-
-        [Authorize(Roles = "admin")]
-        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        [HttpGet, Route("testadmin")]
-        public JsonResult Test()
-        {
-
-            return Json("TEST ERFOLGREICH: ADMIN");
-        }
-
-        [Authorize(Policy = "HasUserRights")]
-        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        [HttpGet, Route("testuser")]
-        public JsonResult Test1()
-        {
-
-            return Json("TEST ERFOLGREICH: USER");
-        }
-
         
         private async Task<object> GenerateJwtToken(string email, User user)
         {
