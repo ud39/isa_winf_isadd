@@ -1,0 +1,11 @@
+1. change IP to current docker IP in ClientApp/src/app/global.ts  property: "url"
+
+2. change in appsettings.json  Host:localhost to Host:db for "DefaultConnection" and "ConnectionString"
+
+3. Comment line 155 " app.UseHttpsRedirection(); " - Doesn't work for docker yet
+
+4. "docker-compose up -d"Errorhandling: "npm ERR! File exists: /app/ClientApp/node_modules/.bin/uuid
+
+ npm ERR! Move it away, and try again."
+
+-> Delete folder /app/ClientApp/node_modules (bearbeitet) 
