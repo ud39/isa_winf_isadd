@@ -345,10 +345,10 @@ namespace WinfADD.Repositories
         {
 
 
-            //SQL Statements //TODO CONST STATIC
+            //SQL Statements
             var sqlCoffeeShop = "INSERT INTO coffee_shop ";
-            var sqlOpeningTimeRelation = "INSERT INTO opens (coffee_shop_id, close, open, weekday)" +
-                                         "VALUES (@id, @close, @open,@weekday)";
+            var sqlOpeningTimeRelation = "INSERT INTO opens (coffee_shop_id, close, open, weekday) "+
+                                         " VALUES (@id, @close, @open,@weekday) ON CONFLICT ON CONSTRAINT opens_pkey DO NOTHING ";
             var sqlCoffeeShopImage = "INSERT INTO coffee_shop_image (image_file_name, coffee_shop_id)" +
               " VALUES (@image_file_name, @coffee_shop_id) ON CONFLICT ON CONSTRAINT coffee_shop_image_image_file_name_key DO NOTHING ";
 
@@ -372,8 +372,8 @@ namespace WinfADD.Repositories
                 "VALUES (@bean_name, @bean_provenance, @coffee_shop_id)";
 
             var sqlEquipmentCategoriesRelation =
-                "INSERT INTO supplies (equipment_category_name, coffee_shop_id) " +
-                "VALUES (@equipment_category_name, @coffee_shop_id)";
+                "INSERT INTO supplies (equipment_category_name, coffee_shop_id) "+
+                " VALUES (@equipment_category_name, @coffee_shop_id) ON CONFLICT ON CONSTRAINT supplies_pkey DO NOTHING ";
 
             var sqlEventRelation =
                 "INSERT INTO organised_by (coffee_shop_id, event_id) " +
@@ -586,6 +586,13 @@ namespace WinfADD.Repositories
             IDictionary<string, dynamic> fieldsToChange)
         {
 
+
+            foreach (var (s,d) in fieldsToChange)
+            {
+                Console.WriteLine("KEY::"+s);
+                Console.WriteLine("value::"+d);
+            }
+
             //SQL statements for the transaction
             var coffeeShopSQL = getUpdateQuery(fieldsToChange);
 
@@ -623,7 +630,8 @@ namespace WinfADD.Repositories
             const string blendSqlDelete =
                 "DELETE FROM offers WHERE blend_name = @blend_name AND coffee_shop_id = @coffee_shop_id";
             const string equipmentCategorySqlInsert =
-                "INSERT INTO supplies (equipment_category_name, coffee_shop_id) VALUES (@equipment_category_name, @coffee_shop_id) ";
+                "INSERT INTO supplies (equipment_category_name, coffee_shop_id) "+
+                " VALUES (@equipment_category_name, @coffee_shop_id) ON CONFLICT ON CONSTRAINT supplies_pkey DO NOTHING ";
             const string equipmentCategorySqlDelete =
                 "DELETE FROM supplies WHERE equipment_category_name = @equipment_category_name AND coffee_shop_id = @coffee_shop_id";
             const string opensSqlInsert =
@@ -632,6 +640,7 @@ namespace WinfADD.Repositories
                 "DELETE FROM opens WHERE coffee_shop_id = @coffee_shop_id AND close = @close AND open = @open AND weekday = @weekday";
 
 
+            Console.WriteLine("UPDATE START");
             using (IDbConnection conn = Connection)
             {
 
@@ -642,17 +651,17 @@ namespace WinfADD.Repositories
                     {
 
 
-                        conn.ExecuteAsync(coffeeShopSQL, coffeeShopObj, transaction: transaction);
+                        await conn.ExecuteAsync(coffeeShopSQL, coffeeShopObj, transaction: transaction);
 
                         /* TODO in Event
                             foreach (Event events in coffeeShopObj.EventsInsert)
                             {
-                                conn.Execute(eventSqlInsert, new {event_id = events.Id,
+                                await conn.Execute(eventSqlInsert, new {event_id = events.Id,
                                     coffee_shop_id = coffeeShopObj.Id}, transaction: transaction);
                             }
                             foreach (Event events in coffeeShopObj.EventsDelete)
                             {
-                                conn.Execute(eventSqlDelete, new {event_id = events.Id,
+                                await conn.Execute(eventSqlDelete, new {event_id = events.Id,
                                     coffee_shop_id = coffeeShopObj.Id}, transaction: transaction);
                             }
                             */
@@ -668,7 +677,7 @@ namespace WinfADD.Repositories
                         }
                         foreach (Image image in coffeeShopObj.ImagesDelete)
                         {
-                            conn.ExecuteAsync(coffeeShopImageSqlDelete, new
+                            await conn.ExecuteAsync(coffeeShopImageSqlDelete, new
                             {
                                 coffee_shop_id = coffeeShopObj.Id,
                                 image_file_path = image.FileName
@@ -680,7 +689,7 @@ namespace WinfADD.Repositories
                         {
                             await conn.ExecuteAsync(companyRelationDelete,
                                 new {coffee_shop_id = coffeeShopObj.Id}, transaction: transaction);
-                            conn.ExecuteAsync(companyRelationInsert,
+                            await conn.ExecuteAsync(companyRelationInsert,
                                 new
                                 {
                                     coffe_shop_id = coffeeShopObj.Id,
@@ -699,7 +708,7 @@ namespace WinfADD.Repositories
 
                         foreach (var bus in coffeeShopObj.ReachableByBusInsert)
                         {
-                            conn.ExecuteAsync(busStationSqlInsert, new
+                            await conn.ExecuteAsync(busStationSqlInsert, new
                             {
                                 coffee_shop_id = coffeeShopObj.Id,
                                 bus_station_name = bus.Name, bus_station_line = bus.Line
@@ -716,7 +725,7 @@ namespace WinfADD.Repositories
 
                         foreach (var poi in coffeeShopObj.POIsInsert)
                         {
-                            conn.ExecuteAsync(poiSqlInsert, new
+                            await conn.ExecuteAsync(poiSqlInsert, new
                             {
                                 coffee_shop_id = coffeeShopObj.Id,
                                 poi_name = poi.Name, poi_address = poi.Address
@@ -732,7 +741,7 @@ namespace WinfADD.Repositories
                         }
                         foreach (var drink in coffeeShopObj.CoffeeDrinksInsert)
                         {
-                            conn.ExecuteAsync(coffeeDrinkSqlInsert, new
+                            await conn.ExecuteAsync(coffeeDrinkSqlInsert, new
                             {
                                 coffee_shop_id = coffeeShopObj.Id,
                                 coffee_drink_name = drink.Name
@@ -749,7 +758,7 @@ namespace WinfADD.Repositories
                         }
                         foreach (var bean in coffeeShopObj.BeansInsert)
                         {
-                            conn.ExecuteAsync(beanSqlDelete, new {coffee_shop_id = coffeeShopObj.Id,
+                            await conn.ExecuteAsync(beanSqlDelete, new {coffee_shop_id = coffeeShopObj.Id,
                                 bean_name = bean.Name, bean_provenance = bean.Provenance
                                 },transaction: transaction);
                         }
@@ -777,7 +786,7 @@ namespace WinfADD.Repositories
                         }
                         foreach (var category in coffeeShopObj.EquipmentCategoriesInsert)
                         {
-                            conn.ExecuteAsync(equipmentCategorySqlInsert,
+                            await conn.ExecuteAsync(equipmentCategorySqlInsert,
                                 new {equipment_category_name = category.Name, coffee_shop_id = coffeeShopObj.Id},
                                 transaction: transaction);
                         }
@@ -790,7 +799,7 @@ namespace WinfADD.Repositories
                         }
                         foreach (var time in coffeeShopObj.OpeningTimesInsert)
                         {
-                            conn.ExecuteAsync(opensSqlInsert, new {coffee_shop_id = coffeeShopObj.Id,
+                            await conn.ExecuteAsync(opensSqlInsert, new {coffee_shop_id = coffeeShopObj.Id,
                                 close = time.Close, open = time.Open, weekday = time.Weekday
                             }, transaction: transaction);
                         }

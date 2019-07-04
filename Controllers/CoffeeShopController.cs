@@ -67,10 +67,23 @@ namespace WinfADD.Controllers
         public async Task<bool> editCoffeeShop(JToken jToken)
         {
 
+            Console.WriteLine("------------------------------------------->");
             var coffeeShopObj = jToken.ToObject<CoffeeShopUpdateModel>();
+
+            Console.WriteLine("############################");
+            Console.WriteLine("::"+coffeeShopObj.EquipmentCategoriesInsert);
+            Console.WriteLine(":empty?:"+coffeeShopObj.EquipmentCategoriesInsert.Length);
+
+
+
+
             var jObj = jToken.ToObject<JObject>();
             IDictionary<string, dynamic> fieldsToChange = new Dictionary<string, dynamic>();
-            foreach (var (propertyName, value) in jObj) {fieldsToChange.Add(propertyName, value);}
+            foreach (var (propertyName, value) in jObj)
+            {
+                fieldsToChange.Add(propertyName, value);
+                Console.WriteLine(propertyName+"<-->"+value);
+            }
             // foreach (var pair in jObj) {propertyValues.Add(pair.Key, pair.Value);}
 
 

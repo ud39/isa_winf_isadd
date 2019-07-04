@@ -192,7 +192,7 @@ export class ShopTabComponent implements OnInit {
     this.shopDescriptionFormControl.setValue(selectedShop.description);
     this.shopWebsiteFormControl.setValue(selectedShop.website);
     this.shopFoundingYearFormControl.setValue(selectedShop.foundingYear);
-    this.companyNameFormControl.setValue(selectedShop.companyName);
+    this.companyNameFormControl.setValue(selectedShop.company);
     this.countryFormControl.setValue(selectedShop.address.country);
     this.postalCodeFormControl.setValue(selectedShop.address.postalCode);
     this.streetNrFormControl.setValue(selectedShop.address.streetNumber);
@@ -280,6 +280,9 @@ export class ShopTabComponent implements OnInit {
 
     console.log(JSON.stringify(jsonImageList));
     json["images"] = jsonImageList;
+
+    console.log(json["EquipmentCategoriesInsert"]);
+
 
     return <JSON> json;
   }
