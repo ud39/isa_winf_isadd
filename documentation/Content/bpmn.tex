@@ -8,9 +8,6 @@ Endpoints are always possible. Therefor we leave out the modeling of it to not o
 \item[Web-Application]\hfill \\ 
 The Web-Application consist of the back-end as well as the front-end.
 It is always listening for events, for that reason the Web-Application has a unconditional starting point.
-\item[Web-Application non reachability]\hfill \\
-We assume the system is allays reachable, for the point the system is not reachable we model in BPMN \textit{Content} for the login a work flow.
-This could happen in a Web-Application at any point, therefore we do not consider it farther in the models. Also we usually not consider that the Actor can went through its history and can so revisited sites.
 \item[Communication]\hfill \\ The communication between front-end(also client) and back-end uses a restful Api through sending JSON datas. 
 \item[Roles]\hfill \\ 
 The behavior of the Content-Manager is known, from the general Actor not.
@@ -20,11 +17,10 @@ Therefore the pool in the BPMN Model \textit{CRUD Content} of the Content-Manage
 
 \newpage
 \subsection{Content-Manager: CRUD Content}
-The \textit{Content-Manager}(CM) is on the login page. The CM sends the \textit{Input-Form} for the login to the \textit{Web-Application}(WA). The System processes the data and eventually sends a response back.
-Meanwhile the \textit{Content-Manager} waits for the response. The time for the WA might be to long and the CM gets a server error. This presents an endpoint.\\
-Otherwise, if the CM gets a response back from the WA and it is a valid input the CM can proceed, or exclusively the response is  not valid and the CM can try to enter the input data again. The WA checks the input until it accept the login data.\\
+The \textit{Content-Manager}(CM) is on the admin area.
 The CM can now chooses which kind of content\{CoffeeShop, Article, Bean, Blend, BusStation, POI, Events \} he/she/it wants to processed by clicking on a corresponding tab. The WA gets the choice and renders the response for the CM.\\
-The Content-Manager fills out the Input-Form of the tab and sends it to the WA. It might be a search request for a Content to edit or delete, as well as newly created content. The WA~(here the front-end) checks validate the input data. It gives a feedback and let the CM edit the input data to resend it if the input data is not valid. Otherwise, the WA response positive: this could be the Content to edit, or just that the input data is valid. The CM can keep editing and let the WA validate the new input, this process is presented in the \textit{finish?} loop. In the last cycle the CM sends the \textit{safe} command and the WA executes the corresponding data base operation. It sends back a response about the success status of the operation to  the CM.\\
+The Content-Manager fills out the Input-Form of the tab and sends it to the WA. It might be a search request for a Content to edit or delete, as well as newly created content. The WA~(here the front-end) checks validate the input data. It gives a feedback and let the CM edit the input data to resend it if the input data is not valid. Otherwise, the WA response positive: this could be the Content to edit, or just that the input data is valid.\\
+If the input is not valid the system gives a feedback and let the CM retry the input and awaits a new filled input form. The CM also goes through the loop back and can fill out the input form further.  The CM can keep editing and let the WA validate the new input, this process is presented in the \textit{finish?} loop. In the last cycle the CM sends the \textit{safe} command and the WA executes the corresponding data base operation. It sends back a response about the success status of the operation to  the CM.\\
 The Content-Manager can chooses other Content to work on or end the Process. The log out process is not model here.
 
 
@@ -73,3 +69,4 @@ The Actor can now select a CoffeeShop from the list or add further search parame
 \caption{BPMN: Search Process from Landingpage}
 \end{figure}
 
+\clearpage
