@@ -12,6 +12,7 @@ export class ConfirmationDialogService {
       data: {data: shop, tabActive: matTabActive},
       height: '500px',
       width: '500px',
+
     });
 
     dialogRefShop.afterClosed().subscribe(value => {
@@ -26,6 +27,7 @@ export class ConfirmationDialogService {
       data: {data: event, tabActive: matTabActive},
       height: '200px',
       width: '500px',
+
     });
 
     dialogRefEvent.afterClosed().subscribe(value => {
@@ -39,7 +41,8 @@ export class ConfirmationDialogService {
     const dialogRefBlend = dialog.open(ConfirmationComponent, {
       data: {data: contentTab, tabActive: matTabActive, selectedContent:selectedContent},
       height: '500px',
-      width: '800px',
+      width: '500px',
+
     });
     dialogRefBlend.afterClosed().subscribe(value => {
       if (value) {
@@ -52,7 +55,8 @@ export class ConfirmationDialogService {
     const dialogRefBean = dialog.open(ConfirmationComponent, {
       data: {data: contentTab, tabActive: matTabActive,selectedContent:selectedContent},
       height: '500px',
-      width: '800px',
+      width: '500px',
+
     });
     dialogRefBean.afterClosed().subscribe(value => {
       if (value) {
@@ -66,7 +70,8 @@ export class ConfirmationDialogService {
     const dialogRefCoffeeDrink = dialog.open(ConfirmationComponent, {
       data: {data: contentTab, tabActive: matTabActive,selectedContent:selectedContent},
       height: '500px',
-      width: '800px',
+      width: '500px',
+
     });
     dialogRefCoffeeDrink.afterClosed().subscribe(value => {
       if (value) {
@@ -79,7 +84,8 @@ export class ConfirmationDialogService {
     const dialogRefPoi = dialog.open(ConfirmationComponent, {
       data: {data: contentTab, tabActive: matTabActive,selectedContent:selectedContent},
       height: '500px',
-      width: '800px',
+      width: '500px',
+
     });
 
     dialogRefPoi.afterClosed().subscribe(value => {
@@ -93,7 +99,8 @@ export class ConfirmationDialogService {
     const dialogRefBusStation = dialog.open(ConfirmationComponent, {
       data: {data: contentTab, tabActive: matTabActive,selectedContent:selectedContent},
       height: '500px',
-      width: '800px',
+      width: '500px',
+
     });
 
     dialogRefBusStation.afterClosed().subscribe(value => {
@@ -107,7 +114,8 @@ export class ConfirmationDialogService {
     const dialogRefEquipmentCategory = dialog.open(ConfirmationComponent, {
       data: {data: contentTab, tabActive: matTabActive, selectedContent:selectedContent},
       height: '500px',
-      width: '800px'
+      width: '500px',
+
     });
     dialogRefEquipmentCategory.afterClosed().subscribe(value => {
       if (value) {

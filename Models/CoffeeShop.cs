@@ -52,6 +52,8 @@ namespace WinfADD.Models
         public bool ? ColdFood { get; set; }
 
 
+
+        public Company Company { get; set; }
         //byte
         public string Description { get; set; }
 

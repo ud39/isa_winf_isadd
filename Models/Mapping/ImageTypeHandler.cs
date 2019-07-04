@@ -9,13 +9,13 @@ namespace WinfADD.Models.Mapping
         //handles data to save into DB
         public override void SetValue(IDbDataParameter parameter, Image value)
         {
-            parameter.Value = new Image{FileName = value.FileName.ToString(), ContentType = value.ContentType.ToString()};
+            parameter.Value = new Image{FileName = value.FileName, ContentType = value.ContentType};
         }
 
         //deserialized data from DB into object
         public override Image Parse(object value)
         {
-            return (Image) value;
+            return  (Image)value;
         }
     }
 }

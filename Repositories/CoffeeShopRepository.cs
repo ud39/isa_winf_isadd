@@ -360,6 +360,8 @@ namespace WinfADD.Repositories
 
             var sqlCompanyRelation =
                 "INSERT INTO owns (company_name, coffee_shop_id) VALUES (@company_name, @coffee_shop_id)";
+            var sqlCompany =
+                "INSERT INTO company (name) VALUES (@name) ON CONFLICT ON CONSTRAINT company_pkey DO NOTHING ";
 
             var sqlBlendRelation =
                 "INSERT INTO offers (blend_name, coffee_shop_id) " +
@@ -480,12 +482,18 @@ namespace WinfADD.Repositories
 
 
 
+
+                       await conn.ExecuteAsync(sqlCompany, new {name = coffeeShopObj.CompanyName},
+                           transaction: transaction);
+
                        conn.Execute(sqlCompanyRelation,
                            new
                            {
                                company_name = coffeeShopObj.CompanyName,
                                coffee_shop_id = coffeShopID
                            }, transaction: transaction);
+
+
 
 
                        foreach (var blend in coffeeShopObj.Blends)

@@ -40,12 +40,6 @@ export class FilterComponent implements OnInit {
       case 'name asc':
         this.shopService.sortbyNameAsc();
         break;
-      case 'price desc':
-        this.shopService.sortbyPriceDesc();
-        break;
-      case 'price asc':
-        this.shopService.sortByPriceAsc();
-        break;
     }
   }
 

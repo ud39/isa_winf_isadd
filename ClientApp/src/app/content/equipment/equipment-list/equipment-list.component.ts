@@ -13,7 +13,7 @@ export class EquipmentListComponent implements OnInit {
   constructor(public shopService:ShopService){}
   public equipments: Equipment[];
   ngOnInit() {
-    this.shopService.getShops().subscribe(result => {
+    this.shopService.getSuppliesShops().subscribe(result => {
       this.shopService.shops = result;
     }, error => console.error(error));
   }
