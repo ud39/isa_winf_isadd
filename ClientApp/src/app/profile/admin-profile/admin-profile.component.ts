@@ -13,6 +13,7 @@ import {UserTabComponent} from "./tabs/user-tab/user-tab/user-tab.component";
 import {ArticleTabComponent} from "./tabs/article-tab/article-tab.component";
 import {EditDialogService} from "../../services/dialog/edit-dialog.service";
 import {Shop} from "../../interfaces/entity/Shop";
+import {ConfirmationDialogService} from "../../services/dialog/confirmation-dialog.service";
 
 
 export interface Content{
@@ -159,57 +160,6 @@ export class AdminProfileComponent implements OnInit {
     this.editStatus = true;
   }
 
-  public openConfirmationDialog(data: any): any{
-    this.editStatus = false;
-    switch (this.matTabActive) {
-      case 'Shop':
-        const dialogRefShop = this.dialog.open(ConfirmationComponent, {
-          data: {data: this.shopTab, tabActive:this.matTabActive},
-          height: '500px',
-          width: '800px',
-        });
-
-        dialogRefShop.afterClosed().subscribe(value => {
-          console.log(value);
-          this.shopTab.fillOutInputForm(value);
-          this.shopTab.shop = value;
-        });
-        break;
-      case 'Bohnen & Zubehör':
-        const dialogRefEquipment = this.dialog.open(ConfirmationComponent, {
-          data: {data: this.equipmentTab, tabActive:this.matTabActive},
-          height: '500px',
-          width: '800px',
-        });
-
-        dialogRefEquipment.afterClosed().subscribe(value => {
-          this.equipmentTab.fillOutInputForm(value);
-        });
-        break;
-      case 'Event':
-        const dialogRefEvent= this.dialog.open(ConfirmationComponent, {
-          data: {data: this.eventTab, tabActive:this.matTabActive},
-          height: '500px',
-          width: '800px',
-        });
-
-        dialogRefEvent.afterClosed().subscribe(value => {
-          this.eventTab.fillOutInputForm(value);
-        });
-        break;
-      case 'Content':
-        const dialogRefContent = this.dialog.open(ConfirmationComponent, {
-          data: {data: this.contentTab, tabActive:this.matTabActive},
-          height: '500px',
-          width: '800px',
-        });
-        dialogRefContent.afterClosed().subscribe(value => {
-          console.log(value);
-          this.contentTab.selectedContent = value;
-          this.contentTab.fillOutInputForm(value);
-        });
-    }
-  }
 
   addContent(){
     this.getContentJSON();
@@ -217,16 +167,76 @@ export class AdminProfileComponent implements OnInit {
     switch (this.matTabActive) {
       case 'Shop':
         console.log("Shop Add");
-        this.inputFormService.postContentShop(this.body).subscribe();
+        this.inputFormService.postContentShop(this.body).subscribe(value => {
+          if(value){
+          this.confirmationDialogService.openShopDialog(this.body,this.matTabActive,this.dialog)
+          }
+        });
         break;
       case 'Event':
         console.log("Event Add");
-        this.inputFormService.postContentEvent(this.body).subscribe();
+        this.inputFormService.postContentEvent(this.body).subscribe(value => {
+          if(value){
+            this.confirmationDialogService.openEventDialog(this.body,this.matTabActive,this.dialog)
+          }
+        });
         break;
       case 'Content':
-        console.log("Content Add");
-        this.inputFormService.postContent(this.body,this.contentTab.selectContentFormControl.value).subscribe();
-        break;
+        this.whichTabIsActive();
+        this.getContentJSON();
+        switch (this.contentTab.selectContentFormControl.value) {
+          case 'Blend':
+            console.log("aasas");
+            console.log(this.body);
+            this.inputFormService.postContent(this.body,this.contentTab.selectContentFormControl.value).subscribe(value => {
+              console.log(value);
+              if(value){
+                this.confirmationDialogService.openBlendDialog(this.body,this.matTabActive,this.dialog,this.contentTab.selectContentFormControl.value);
+              }
+            });
+            break;
+          case 'Bean':
+            this.inputFormService.postContent(this.body,this.contentTab.selectContentFormControl.value).subscribe(value => {
+              if(value){
+                this.confirmationDialogService.openBeanDialog(this.body,this.matTabActive,this.dialog,this.contentTab.selectContentFormControl.value);
+                this.restorePossible = false;
+              }
+            });
+            break;
+          case 'CoffeeDrink':
+            this.inputFormService.postContent(this.body,this.contentTab.selectContentFormControl.value).subscribe(value => {
+              if(value){
+                this.confirmationDialogService.openEventDialog(this.body,this.matTabActive,this.dialog)
+                this.confirmationDialogService.openCoffeeDrinkDialog(this.body,this.matTabActive,this.dialog, this.contentTab.selectContentFormControl.value);
+                this.restorePossible = false;
+              }
+            });
+            break;
+          case 'Poi':
+            this.inputFormService.postContent(this.body,this.contentTab.selectContentFormControl.value).subscribe(value => {
+              if(value){
+                this.confirmationDialogService.openPoiDialog(this.body,this.matTabActive,this.dialog, this.contentTab.selectContentFormControl.value);
+                this.restorePossible = false;
+              }
+            });
+            break;
+          case 'Equipment-category':
+            this.inputFormService.postContent(this.body,this.contentTab.selectContentFormControl.value).subscribe(value => {
+              if(value){
+                this.confirmationDialogService.openEquipmentCategoryDialog(this.body,this.matTabActive,this.dialog, this.contentTab.selectContentFormControl.value);
+                this.restorePossible = false;
+              }
+            });
+            break;
+          case 'BusStation':
+            this.inputFormService.postContent(this.body,this.contentTab.selectContentFormControl.value).subscribe(value => {
+              if(value){
+                this.confirmationDialogService.openBusStationDialog(this.body,this.matTabActive,this.dialog, this.contentTab.selectContentFormControl.value);
+                this.restorePossible = false;
+              }
+            });
+            break;
+        }break;
       case 'User':
         console.log("User Add");
         this.inputFormService.postUser(this.body).subscribe();
@@ -299,7 +309,8 @@ export class AdminProfileComponent implements OnInit {
           case 'BusStation':
             this.inputFormService.deleteBusStation(this.contentTab.getQueryParamsOfContent()).subscribe(value =>{
               if(value){
-
+              this.emptyInput();
+              this.restorePossible = false;
               }
 
             });
@@ -308,8 +319,8 @@ export class AdminProfileComponent implements OnInit {
             this.inputFormService.deleteEquipmentCategory(this.contentTab.getQueryParamsOfContent()).subscribe(value => {
               if(value){
               this.emptyInput();
+              this.restorePossible = false;
               }
-
             })
         }
       break;
@@ -345,50 +356,47 @@ export class AdminProfileComponent implements OnInit {
       case 'Content':
         switch (this.contentTab.selectContentFormControl.value) {
           case 'Blend':
-            this.inputFormService.deleteBlend(this.contentTab.getQueryParamsOfContent()).subscribe(value =>{
-              console.log('delete executed');
+            this.inputFormService.updateBlend(this.body).subscribe(value =>{
+              console.log('update Blend');
               console.log(value);
             });
-            this.emptyInput();
             this.restorePossible = false;
             break;
           case 'Bean':
-            this.inputFormService.deleteBean(this.contentTab.getQueryParamsOfContent()).subscribe(value =>{
+            this.inputFormService.updateBean(this.body).subscribe(value =>{
               if(value) {
-                this.emptyInput();
+                console.log('update Bean');
                 this.restorePossible = false;
               }
             });
-            this.emptyInput();
-            this.restorePossible = false;
             break;
           case 'CoffeeDrink':
-            this.inputFormService.deleteCoffeeDrink(this.contentTab.getQueryParamsOfContent()).subscribe(value =>{
+            this.inputFormService.updateCoffeeDrink(this.body).subscribe(value =>{
               if(value){
-                this.emptyInput();
-                this.restorePossible = false;
+                console.log('update CoffeeDrink');
               }
             });
             break;
           case 'Poi':
-            this.inputFormService.deletePoi(this.contentTab.getQueryParamsOfContent()).subscribe(value =>{
-              console.log(value);
+            this.inputFormService.updatePoi(this.body).subscribe(value =>{
               if(value){
-                this.emptyInput();
-                this.restorePossible = false;
+                console.log('update Poi');
+
               }
             });
             break;
           case 'BusStation':
-            this.inputFormService.deleteBusStation(this.contentTab.getQueryParamsOfContent()).subscribe(value =>{
+            this.inputFormService.updateBusStation(this.body).subscribe(value =>{
               if(value){
+              console.log('update BusStation');
               this.emptyInput();
               }
             });
             break;
           case 'Equipment-category':
-            this.inputFormService.deleteEquipmentCategory(this.contentTab.getQueryParamsOfContent()).subscribe(value => {
+            this.inputFormService.updateEquipmentCategory(this.body).subscribe(value => {
               if(value){
+                console.log('update Equipment-Category');
                 this.emptyInput();
               }
             })
@@ -429,6 +437,7 @@ export class AdminProfileComponent implements OnInit {
     this.clearCheckBox();
   }
 
-  constructor(private inputFormService: InputFormService, public dialog: MatDialog, public editDialogService: EditDialogService) { }
+  constructor(private inputFormService: InputFormService, public dialog: MatDialog, public editDialogService: EditDialogService,
+              public confirmationDialogService:ConfirmationDialogService) { }
 
 }

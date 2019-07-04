@@ -33,7 +33,7 @@
   </mat-form-field>
   <mat-form-field>
     <mat-label>Wähle eine Mischung</mat-label>
-    <mat-select multiple #multipleSelectBlend required [formControl]="selectBlendBeanFormControl">
+    <mat-select multiple #multipleSelectBlend required [formControl]="selectBlendBeanFormControl" [compareWith]="this.compareService.compareBean">
       <mat-option *ngFor="let beans of avaibleBeans" [value]="beans">
         {{beans.name}}
       </mat-option>
@@ -121,6 +121,16 @@
     <input matInput type="text" placeholder="Name"  required [formControl]="equipmentCategoryNameFormControl">
     <mat-error *ngIf="equipmentCategoryNameFormControl.hasError('required')">Es müss einen Namen angegeben werden</mat-error>
     <button mat-button *ngIf="!equipmentCategoryNameFormControl.hasError('required')" matSuffix mat-icon-button aria-label="Clear" (click)="equipmentCategoryNameFormControl.reset('')">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+
+<div class="content equipment-category" *ngIf="selectContentFormControl.value  == 'Company'">
+  <mat-form-field class="name-form-field">
+    <input matInput type="text" placeholder="Firmen Name"  required [formControl]="companyNameFormControl">
+    <mat-error *ngIf="equipmentCategoryNameFormControl.hasError('required')">Es müss einen Namen angegeben werden</mat-error>
+    <button mat-button *ngIf="!companyNameFormControl.hasError('required')" matSuffix mat-icon-button aria-label="Clear" (click)="companyNameFormControl.reset('')">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>

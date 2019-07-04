@@ -16,6 +16,7 @@ import {Bean} from "../../../../interfaces/entity/Bean";
 import {CompareService} from "../../../../services/compare/compare.service";
 import {EventService} from "../../../../services/event/event.service";
 import {CheckboxShopAdminComponent} from "../../../../search/checkbox-shop-admin/checkbox-shop-admin.component";
+import {Company} from "../../../../interfaces/entity/Company";
 
 
 
@@ -50,6 +51,7 @@ export class ShopTabComponent implements OnInit {
   public chooseEquipmentCategories: EquipmentCategory[];
   public chooseBusStations: BusStation[];
   public chooseBeans: Bean[];
+  public chooseCompany: Company[];
 
   public editBusStation: BusStation[];
   public editPos: Poi[];
@@ -273,7 +275,9 @@ export class ShopTabComponent implements OnInit {
     );
     this.shopService.getShops().subscribe(value => {
       this.shops = value;
-
+    });
+    this.inputService.getCompanies().subscribe(value =>{
+      this.chooseCompany = value
     })
   }
 
