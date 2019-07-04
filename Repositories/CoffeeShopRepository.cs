@@ -307,7 +307,6 @@ namespace WinfADD.Repositories
                "select b.* from offers o, blend b where o.coffee_shop_id = @id and o.blend_name = b.name;" +
                "select b.* from reachable_by_bus b where b.coffee_shop_id = @id and b.bus_station_name = b.bus_station_name;" +
                "select c.* from coffee_drink c, serves s where s.coffee_shop_id = @id and s.coffee_drink_name = c.name;" +
-               // Equipment  "select e.* from equipment e, sells s where s.coffee_shop_id = 2 and s.equipment_manufacturer_name = e.manufacturer_name and s.equipment_model_name = e.model_name and s.equipment_year_of_origin = e.year_of_origin;";
                "select distinct e.* from equipment_category e, supplies s where s.coffee_shop_id = @id and s.equipment_category_name = e.name;  "+
                
                "select distinct on (name) name, * from (select p1.*, image_file_name from Poi p1 " +
@@ -315,7 +314,8 @@ namespace WinfADD.Repositories
                "inner join image on image_file_name = file_name where content_type = 'preview' union select p2.*, null as file_name from poi p2) as t, near_by n "+
                "where t.name = n.poi_name and t.address = n.poi_address and n.coffee_shop_id = @id order by name, image_file_name;"+
             
-               "select o.* from opens o where o.coffee_shop_id = @id;";
+               "select o.* from opens o where o.coffee_shop_id = @id;" +
+                "select co.company_name from owns co, coffee_shop c where c.id = co.coffee_shop_id and c.id =@id;";
             
            using (var conn = Connection) 
            {
@@ -335,7 +335,8 @@ namespace WinfADD.Repositories
                   coffeeShop.EquipmentCategories = result.Read<EquipmentCategory>().ToList();
                   coffeeShop.ListOfPoi = result.Read<Poi>().ToList();
                   coffeeShop.OpeningTimes = result.Read<OpeningTime>().ToList();
-
+                  coffeeShop.Company = result.Read<Company>().FirstOrDefault(); 
+                  
                   return coffeeShop;
            }
         }
@@ -344,8 +345,6 @@ namespace WinfADD.Repositories
         public override async Task<bool> InsertTable(CoffeeShop coffeeShopObj, IDictionary<string, dynamic> propertyValues)
         {
 
-
-            //SQL Statements //TODO CONST STATIC
             var sqlCoffeeShop = "INSERT INTO coffee_shop ";
             var sqlOpeningTimeRelation = "INSERT INTO opens (coffee_shop_id, close, open, weekday)" +
                                          "VALUES (@id, @close, @open,@weekday)";

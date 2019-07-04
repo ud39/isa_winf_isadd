@@ -2,7 +2,7 @@
   <mat-list id="shop-list">
     <mat-list-item *ngFor="let event of this.eventService.events; last as last">
       <a [routerLink]="['/events', event.id]" [routerLinkActive]='["link-active"]'>
-        <img src="https://dummyimage.com/100x100/fff/000" class="preview-img">
+        <img src="/assets/Images/event.jpg" width="250" />
       </a>
       <div class="preview-content">
         <h6 class="shop_name"  [routerLink]="['/events', event.id]">{{event.name}} {{event.startTime | date }}  {{event.endTime | date}}

@@ -50,6 +50,7 @@ namespace WinfADD.Repositories
             SqlMapper.SetTypeMap(typeof(CoffeeShopPreview), MappingConfigurator.CreateMap(typeof(CoffeeShopPreview), MappingConfigurator.CoffeeShopPreviewMapper));
             SqlMapper.SetTypeMap(typeof(Event), MappingConfigurator.CreateMap(typeof(Event), MappingConfigurator.EventMapper));
             SqlMapper.SetTypeMap(typeof(EventViewModel), MappingConfigurator.CreateMap(typeof(EventViewModel), MappingConfigurator.EventMapper));
+            SqlMapper.SetTypeMap(typeof(Company), MappingConfigurator.CreateMap(typeof(Company), MappingConfigurator.CompanyMapper));
 
             
             NpgsqlConnection.GlobalTypeMapper.MapComposite<Address>("address");

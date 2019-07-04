@@ -3,7 +3,7 @@
     <mat-list id="shop-list">
       <mat-list-item *ngFor="let shop of this.service.shops; last as last">
         <a [routerLink]="['/shops', shop.id]" [routerLinkActive]='["link-active"]'>
-          <img src="https://dummyimage.com/100x100/fff/000" class="preview-img">
+          <img src="/assets/Images/coffeeshop.jpg" width="250" />
         </a>
         <div class="preview-content">
           <h6 class="shop_name"  [routerLink]="['/shops', shop.id]">{{shop.name}}

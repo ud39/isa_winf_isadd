@@ -169,7 +169,6 @@ export class ShopTabComponent implements OnInit {
       postalCode: this.postalCodeFormControl,
       shopName: this.shopNameFormControl,
       shopWebsite: this.shopWebsiteFormControl,
-      companyName: this.companyNameFormControl,
       foundingyear : this.shopFoundingYearFormControl,
       shopDescription: this.shopDescriptionFormControl,
       selectBean: this.selectBeanFormControl,
@@ -192,7 +191,6 @@ export class ShopTabComponent implements OnInit {
     this.shopDescriptionFormControl.setValue(selectedShop.description);
     this.shopWebsiteFormControl.setValue(selectedShop.website);
     this.shopFoundingYearFormControl.setValue(selectedShop.foundingYear);
-    this.companyNameFormControl.setValue(selectedShop.companyName);
     this.countryFormControl.setValue(selectedShop.address.country);
     this.postalCodeFormControl.setValue(selectedShop.address.postalCode);
     this.streetNrFormControl.setValue(selectedShop.address.streetNumber);

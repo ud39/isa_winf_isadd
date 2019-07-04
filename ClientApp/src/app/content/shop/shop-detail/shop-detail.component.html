@@ -79,13 +79,16 @@
       <mat-tab label="Events" *ngIf="shop$.events.length != 0">
       <mat-list>
         <mat-list-item *ngFor="let event of shop$.events; last as last">
+          <img src="/assets/Images/event.jpg" height="100" />
           <div>
-            <h6><a [routerLink]="['/events', event.id]" [routerLinkActive]='["link-active"]'>{{event.name}}</a></h6>
+            <h6>{{event.name}}</h6>
+            <br>
             {{event.description}}<br>
           Eintrittsgebühr: {{event.accessFee > 0 ? (event.accessFee | number) : 'kostenlos'}} {{event.accessFee > 0 ? ' €' : ''}}
             <br>
           Begin: {{event.startTime | date}} Ende: {{event.endTime | date}}
           </div>
+
         <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
         </mat-list-item>
       </mat-list>
@@ -93,15 +96,14 @@
       <mat-tab label="Landmarken" *ngIf="shop$.listOfPoi.length != 0">
       <mat-list>
         <mat-list-item *ngFor="let poi of shop$.listOfPoi; last as last">
+          <img src="/assets/Images/poi.jpg" width="100" />
           <div class="container-poi">
           <div class="poi-description">
-          {{poi.name + " " + poi.address.streetName + " " + poi.address.streetNumber}}
+            <h6>{{poi.name}}</h6>
+          {{poi.address.streetName + " " + poi.address.streetNumber}}
           <br>
           {{poi.address.postalCode + " " + poi.address.town}}
           {{poi.description}}
-          </div>
-          <div class="poi-thumbnail">
-            <img src="https://dummyimage.com/100x100/fff/000" class="poi-image">
           </div>
           </div>
         <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
