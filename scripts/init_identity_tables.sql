@@ -98,7 +98,30 @@ CREATE TABLE dbo."IdentityRoleClaim"
 WITH (
   OIDS=FALSE
 );
-            
+
+------INSERT DUMMY DATA---------
+
+
 insert into dbo."IdentityRole" values ('0', 'admin');
 insert into dbo."IdentityRole" values ('1', 'contentmanager');
 insert into dbo."IdentityRole" values ('2', 'user');
+
+INSERT INTO dbo."IdentityUser" ("UserName", "Email", "EmailConfirmed", "SecurityStamp", "TwoFactorEnabled", "AccessFailedCount", "LockoutEnabled") VALUES ('user1@winfadd', 'user1@winfadd', true, 'fd945da1-207d-440c-860b-f424532fd13e', false, 0, false);
+INSERT INTO dbo."IdentityUser" ("UserName", "Email", "EmailConfirmed", "SecurityStamp", "TwoFactorEnabled", "AccessFailedCount", "LockoutEnabled") VALUES ('user2@winfadd', 'user1@winfadd', true, 'fd945da1-207d-440c-860b-f424532fd13e', false, 0, false);
+INSERT INTO dbo."IdentityUser" ("UserName", "Email", "EmailConfirmed", "SecurityStamp", "TwoFactorEnabled", "AccessFailedCount", "LockoutEnabled") VALUES ('user3@winfadd', 'user1@winfadd', true, 'fd945da1-207d-440c-860b-f424532fd13e', false, 0, false);
+INSERT INTO dbo."IdentityUser" ("UserName", "Email", "EmailConfirmed", "SecurityStamp", "TwoFactorEnabled", "AccessFailedCount", "LockoutEnabled") VALUES ('user4@winfadd', 'user1@winfadd', true, 'fd945da1-207d-440c-860b-f424532fd13e', false, 0, false);
+INSERT INTO dbo."IdentityUser" ("UserName", "Email", "EmailConfirmed", "SecurityStamp", "TwoFactorEnabled", "AccessFailedCount", "LockoutEnabled") VALUES ('user5@winfadd', 'user1@winfadd', true, 'fd945da1-207d-440c-860b-f424532fd13e', false, 0, false);
+INSERT INTO dbo."IdentityUser" ("UserName", "Email", "EmailConfirmed", "SecurityStamp", "TwoFactorEnabled", "AccessFailedCount", "LockoutEnabled") VALUES ('user6@winfadd', 'user1@winfadd', true, 'fd945da1-207d-440c-860b-f424532fd13e', false, 0, false);
+INSERT INTO dbo."IdentityUser" ("UserName", "Email", "EmailConfirmed", "SecurityStamp", "TwoFactorEnabled", "AccessFailedCount", "LockoutEnabled") VALUES ('user7@winfadd', 'user1@winfadd', true, 'fd945da1-207d-440c-860b-f424532fd13e', false, 0, false);
+INSERT INTO dbo."IdentityUser" ("UserName", "Email", "EmailConfirmed", "SecurityStamp", "TwoFactorEnabled", "AccessFailedCount", "LockoutEnabled") VALUES ('user8@winfadd', 'user1@winfadd', true, 'fd945da1-207d-440c-860b-f424532fd13e', false, 0, false);
+INSERT INTO dbo."IdentityUser" ("UserName", "Email", "EmailConfirmed", "SecurityStamp", "TwoFactorEnabled", "AccessFailedCount", "LockoutEnabled") VALUES ('user9@winfadd', 'user1@winfadd', true, 'fd945da1-207d-440c-860b-f424532fd13e', false, 0, false);
+INSERT INTO dbo."IdentityUser" ("UserName", "Email", "EmailConfirmed", "SecurityStamp", "TwoFactorEnabled", "AccessFailedCount", "LockoutEnabled") VALUES ('user10@winfadd', 'user1@winfadd', true, 'fd945da1-207d-440c-860b-f424532fd13e', false, 0, false);
+INSERT INTO dbo."IdentityUser" ("UserName", "Email", "EmailConfirmed", "SecurityStamp", "TwoFactorEnabled", "AccessFailedCount", "LockoutEnabled") VALUES ('user11@winfadd', 'user1@winfadd', true, 'fd945da1-207d-440c-860b-f424532fd13e', false, 0, false);
+INSERT INTO dbo."IdentityUser" ("UserName", "Email", "EmailConfirmed", "SecurityStamp", "TwoFactorEnabled", "AccessFailedCount", "LockoutEnabled") VALUES ('user11@winfadd', 'user1@winfadd', true, 'fd945da1-207d-440c-860b-f424532fd13e', false, 0, false);
+INSERT INTO dbo."IdentityUser" ("UserName", "Email", "EmailConfirmed", "SecurityStamp", "TwoFactorEnabled", "AccessFailedCount", "LockoutEnabled") VALUES ('user12@winfadd', 'user1@winfadd', true, 'fd945da1-207d-440c-860b-f424532fd13e', false, 0, false);
+INSERT INTO dbo."IdentityUser" ("UserName", "Email", "EmailConfirmed", "SecurityStamp", "TwoFactorEnabled", "AccessFailedCount", "LockoutEnabled") VALUES ('user13@winfadd', 'user1@winfadd', true, 'fd945da1-207d-440c-860b-f424532fd13e', false, 0, false);
+INSERT INTO dbo."IdentityUser" ("UserName", "Email", "EmailConfirmed", "SecurityStamp", "TwoFactorEnabled", "AccessFailedCount", "LockoutEnabled") VALUES ('user14@winfadd', 'user1@winfadd', true, 'fd945da1-207d-440c-860b-f424532fd13e', false, 0, false);
+INSERT INTO dbo."IdentityUser" ("UserName", "Email", "EmailConfirmed", "SecurityStamp", "TwoFactorEnabled", "AccessFailedCount", "LockoutEnabled") VALUES ('user15@winfadd', 'user1@winfadd', true, 'fd945da1-207d-440c-860b-f424532fd13e', false, 0, false);
+INSERT INTO dbo."IdentityUser" ("UserName", "Email", "EmailConfirmed", "SecurityStamp", "TwoFactorEnabled", "AccessFailedCount", "LockoutEnabled") VALUES ('user16@winfadd', 'user1@winfadd', true, 'fd945da1-207d-440c-860b-f424532fd13e', false, 0, false);
+INSERT INTO dbo."IdentityUser" ("UserName", "Email", "EmailConfirmed", "SecurityStamp", "TwoFactorEnabled", "AccessFailedCount", "LockoutEnabled") VALUES ('user17@winfadd', 'user1@winfadd', true, 'fd945da1-207d-440c-860b-f424532fd13e', false, 0, false);
+INSERT INTO dbo."IdentityUser" ("UserName", "Email", "EmailConfirmed", "SecurityStamp", "TwoFactorEnabled", "AccessFailedCount", "LockoutEnabled") VALUES ('user18@winfadd', 'user1@winfadd', true, 'fd945da1-207d-440c-860b-f424532fd13e', false, 0, false);
