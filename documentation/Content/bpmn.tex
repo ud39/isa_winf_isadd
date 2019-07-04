@@ -1,6 +1,5 @@
 \newpage
 \section{BPMN}
-
 \subsection{Assumptions}
 \begin{description}
 \item[Website]\hfill \\
@@ -11,9 +10,6 @@ It is always listening for events, for that reason the Web-Application has a unc
 \item[Communication]\hfill \\ The communication between front-end(also client) and back-end uses a restful Api through sending JSON datas. 
 \item[Roles]\hfill \\ 
 The behavior of the Content-Manager is known, from the general Actor not.
-Therefore the pool in the BPMN Model \textit{CRUD Content} of the Content-Manager is not a black box. The pool in the BPMN Model \textit{Search  CoffeeShop from Landingpage} of the Actor is a black box.
-\end{description}
-
 
 \newpage
 \subsection{Content-Manager: CRUD Content}
@@ -24,6 +20,9 @@ If the input is not valid the system gives a feedback and let the CM retry the i
 The Content-Manager can chooses other Content to work on or end the Process. The log out process is not model here.
 
 
+\caption{BPMN: Search Process from Landingpage}
+\end{figure}
+\clearpage
 \begin{figure}[ht]
 \includegraphics[
     page=1,

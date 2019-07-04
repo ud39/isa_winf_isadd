@@ -47,10 +47,10 @@ The RATING cluster with the connection to the following entities: GOOGLE-RATING,
 \subsubsection{Entities}
 (EQUIPMENT(Manufacturer, Year\_of\_origin, Name)(Manufacturer, Year\_of\_origin, Name)),\\
 (EVENT(EventID,Start\_Time,Name,Access\_Fee,Description,End\_Time)(EventID)),\\
-(COFFEE-SHOP(Name, Address, Outdoor, Fair\_Trade, Disabled\_Friendly, Description, Wlan, Child\_Friendly, Website, Fouding\_Year, Pet\_Friendly, Latte\_Art, Seats, Workstation, Food, Price\_Class, Franchise)(Name, Address)), \\
+(COFFEE-SHOP(Name, Address, Outdoor, Fair\_Trade, Disabled\_Friendly, Description, Wlan, Child\_Friendly, Website, Fouding\_Year, Pet\_Friendly, Latte\_Art, Seats, Workstation, Warm food, Cold food, Price\_Class, Franchise)(Name, Address)), \\
 (BUS-STATION(Name, Line)(Name,Line)),\\
 (COMPANY(Name)(Name)),\\
-(BEAN(Name,Provenance,Type)(Name,Provenance)),\\
+(BEAN(Name,Provenance,Roast,Grind)(Name,Provenance)),\\
 (POI(Name,Address,Description)(Name, Address)), \\
 (GOOGLE-RATING()()), \\
 (USER-RATING()()), \\
@@ -94,7 +94,7 @@ The RATING cluster with the connection to the following entities: GOOGLE-RATING,
 (ARTICLEEQUIPMENT(ArticleID, Manufacturer, Year\_of\_origin, Name, Exposition, Title)(ArticleID)), \\
 (ARTICLEBLEND(ArticleID, Name, Exposition, Title)(ArticleID)), \\
 (ARTICLEBEAN(ArticleID, Name, Provenance, Exposition, Title)(ArticleID)), \\
-(ARTICLECOFFEE\_DRINK(ArticleID, Name, Exposition, Title)(ArticleID)), \\
+(ARTICLECOFFEE\_DRINK(ArticleID, Name, Exposition, Title)(ArticleID)), \\\\
 \subsubsection{Specialisation}
 (STUDENT(Email)(Email)), \\
 (TOURIST(Email)(Email)), \\
