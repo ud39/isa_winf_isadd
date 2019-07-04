@@ -220,7 +220,7 @@ namespace WinfADD.Repositories
                 else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && propertyName == "equipment_category_name")
                 {
                    
-                    innerjoin += " inner join sells s on s.coffee_shop_id = id ";
+                    innerjoin += " inner join supplies s on s.coffee_shop_id = id ";
                    
                     properties.Add(propertyName, query.EquipmentCategories);
                     builder.Where( "s.equipment_category_name::text"  + " = ANY" + "(@equipment_category_name)", properties);
