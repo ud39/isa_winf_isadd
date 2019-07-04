@@ -103,7 +103,7 @@ namespace WinfADD.Repositories
 
                 if (result != null)
                 {
-                    result.Images = queryResult.Read<Image>();
+                    result.Image  = queryResult.Read<Image>().FirstOrDefault();
                     result.CoffeeShops = queryResult.Read<CoffeeShopPreview>();
                     result.Address = queryResult.Read<Address>().FirstOrDefault();
 
@@ -186,7 +186,7 @@ namespace WinfADD.Repositories
 
                 if (!(insertProperties.ContainsKey(propertyName))
                     || propertyName.Equals("id")
-                    || propertyName.Equals("images")) continue;
+                    || propertyName.Equals("image")) continue;
                 if (propertyName.Equals("address")) //TODO Address description from event to Location
                 {
                     Console.WriteLine("IN ADDRESS");
@@ -227,8 +227,9 @@ namespace WinfADD.Repositories
                             await conn.ExecuteScalarAsync<int>(eventSqlInsert, eventObj, transaction: transaction);
 
                         Console.WriteLine("##############################################################################");
-                        foreach (var image in eventObj.Images)
-                        {
+                       if(eventObj.Image != null )
+                       {
+                           var image = eventObj.Image;
                             Console.WriteLine("#######################IMAGES####################################");
                             await conn.ExecuteAsync(eventImageSqlInsert,
                                 new {image_file_name = image.FileName, event_id = eventID},
@@ -238,11 +239,11 @@ namespace WinfADD.Repositories
                                 new { image_file_name = image.FileName + "-preview.png", event_id = eventID}, transaction: transaction);
                         }
 
-                        foreach (var shop in insertProperties["coffeeShop"])
+                        foreach (var shop in eventObj.CoffeeShops)
                         {
-                            var coffeeShopID = (int) shop;
+
                             await conn.ExecuteAsync(organisedSqlInsert,
-                                new {event_id = eventID, coffee_shop_id = coffeeShopID}, transaction: transaction);
+                                new {event_id = eventID, coffee_shop_id = shop.Id}, transaction: transaction);
 
                             if (locationSqlInsert.Length > 0)
                             {
@@ -252,7 +253,7 @@ namespace WinfADD.Repositories
                                     new {address = eventObj.Address, description = eventObj.Description},
                                     transaction: transaction);
                                 await conn.ExecuteAsync(locatedSqlInsert,
-                                    new {event_id = eventID, coffee_shop_id = coffeeShopID,
+                                    new {event_id = eventID, coffee_shop_id = shop.Id,
                                         location_address = eventObj.Address}, transaction: transaction);
 
                             }
@@ -269,7 +270,7 @@ namespace WinfADD.Repositories
                         return false;
                     }
 
-                    return false;
+                    return true;
                 }
 
             }

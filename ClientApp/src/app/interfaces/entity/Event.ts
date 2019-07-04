@@ -10,7 +10,7 @@ export interface Event extends Address{
   accessFee: number;
   description:string;
   previewImageFileName:string;
-  images: Image[];
+  image: Image;
   coffeeShops: Shop[];
 }
 

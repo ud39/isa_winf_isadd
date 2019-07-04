@@ -116,7 +116,7 @@ namespace WinfADD.Models.Mapping
             {"description", "description"},
             {"previewimagefilename", "preview_image_filename"},
             {"address", "address"},
-            {"images", "images"},
+            {"image", "image"},
             {"coffeeshops", "coffeeshops"}
 
         };

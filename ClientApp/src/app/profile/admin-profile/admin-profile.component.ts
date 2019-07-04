@@ -177,6 +177,9 @@ export class AdminProfileComponent implements OnInit {
         console.log("Event Add");
         this.inputFormService.postContentEvent(this.body).subscribe(value => {
           if(value){
+
+            console.log("------------------------------------------");
+            console.log(value);
             this.confirmationDialogService.openEventDialog(this.body,this.matTabActive,this.dialog)
           }
         });

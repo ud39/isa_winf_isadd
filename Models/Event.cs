@@ -9,7 +9,6 @@ namespace WinfADD.Models
 
         public Event()
         {
-            Images = new Image[] {};
             CoffeeShops = new CoffeeShopPreview[] {};
         }
 
@@ -26,11 +25,11 @@ namespace WinfADD.Models
         
         public string Description { get; set; }
         
-        public string PreviewImageFileName { get; set; }
+        public Image Image { get; set; }
         
         public Address Address { get; set; }
         
-        public IEnumerable<Image> Images { get; set; }
+
         
         
         public IEnumerable<CoffeeShopPreview> CoffeeShops { get; set; }

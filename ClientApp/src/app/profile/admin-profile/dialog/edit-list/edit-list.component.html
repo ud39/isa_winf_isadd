@@ -16,8 +16,7 @@
   Event
   <mat-list class="edit-list">
     <mat-list-item *ngFor="let event of eventEditContent; last as last" (click)="getCurrentObjectOfClickedListItem(event)">
-      <img  [src]="getImage(event.previewImageFileName)" class="preview-img"
-            onError="this.src='https://dummyimage.com/100x100/fff/000'">
+      <img src="https://dummyimage.com/100x100/fff/000" class="preview-img">
       <div class="preview-content">
         <h6 class="edit_name">{{event.name}}
         </h6>

@@ -132,7 +132,8 @@ namespace WinfADD.Controllers
                                 newGraphic.DrawImage(img, 0, 0, width, height);
                                 newGraphic.Dispose();
 
-                                newImg.Save(Path.Combine(newPath, fileName + "-preview.png"));
+                                thumbnail = fileName + "-preview.png";
+                                newImg.Save(Path.Combine(newPath, thumbnail));
                             }
                         }
                         else
