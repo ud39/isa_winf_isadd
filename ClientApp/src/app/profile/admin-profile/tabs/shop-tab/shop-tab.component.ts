@@ -255,18 +255,18 @@ export class ShopTabComponent implements OnInit {
     let addEquipmentCategory:EquipmentCategory[] = differenceEquipmentCategory[1];
     let deleteEquipmentCategory:EquipmentCategory[] = differenceEquipmentCategory[0];
 
-    json['addBusStation'] = addBusStation;
-    json['deleteBusStation'] = deleteBusStation;
-    json['addPoi'] = addPoi;
-    json['deletePoi'] = deletePoi;
-    json['addBean'] = addBean;
-    json['deleteBean'] = deleteBean;
-    json['addBlend'] = addBlend;
-    json['deleteBlend'] = deleteBlend;
-    json['addCoffeeDrink'] = addCoffeeDrink;
-    json['deleteCoffeeDrink'] = deleteCoffeeDrink;
-    json['addEquipmentCategory'] = addEquipmentCategory;
-    json['deleteEquipmentCategory'] = deleteEquipmentCategory;
+    json['ReachableByBusInsert'] = addBusStation;
+    json['ReachableByBusDelete'] = deleteBusStation;
+    json['POIsInsert'] = addPoi;
+    json['POIsDelete'] = deletePoi;
+    json['BeansInsert'] = addBean;
+    json['BeansDelete'] = deleteBean;
+    json['BlendsInsert'] = addBlend;
+    json['BlendsDelete'] = deleteBlend;
+    json['CoffeeDrinksInsert'] = addCoffeeDrink;
+    json['CoffeeDrinksDelete'] = deleteCoffeeDrink;
+    json['EquipmentCategoriesInsert'] = addEquipmentCategory;
+    json['EquipmentCategoriesDelete'] = deleteEquipmentCategory;
 
     console.log(json);
 
