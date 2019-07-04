@@ -89,9 +89,7 @@ export class EventTabComponent implements OnInit {
     this.events = allEvents;
 
     for(let i=0; i < allEvents.length; i++){
-      console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
-      console.log(allEvents[i].image.fileName );
-      console.log("TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT")
+      console.log(allEvents[i].image );
 
     }
 

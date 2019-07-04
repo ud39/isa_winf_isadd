@@ -53,12 +53,12 @@ export class EditListComponent implements OnInit, OnDestroy {
 
   public getImage(filenName){
 
-    console.log(filenName);
 
-    //var name = this.imagePreviewPath + filenName +"-preview.png";
-    //console.log(":::::::::::::::::::::::::::::");
-    //console.log("-->"+name);
-    return "https://praxistipps-images.chip.de/bQFl8dm-bdyjnlj423Krjh26AyQ=/0x0/filters:format(jpeg):fill(000,true):no_upscale()/praxistipps.s3.amazonaws.com%2Furl-zum-datei-aufruf_1734feb4.png";
+
+    var name = this.imagePreviewPath + filenName +"-preview.png";
+    console.log(":::::::::::::::::::::::::::::");
+    console.log("-->"+name);
+    return name;
   }
 
 
