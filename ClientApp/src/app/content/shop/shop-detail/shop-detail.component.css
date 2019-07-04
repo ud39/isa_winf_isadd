@@ -192,7 +192,7 @@ app-shop-detail #link_to_shop{
 app-shop-detail .mat-tab-group{
   grid-row: 3;
   grid-column: 1 / span 4;
-  width:70%!important;
+  width:100%!important;
 }
 
 app-shop-detail .container-poi{
