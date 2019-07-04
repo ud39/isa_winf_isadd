@@ -9,12 +9,12 @@ using WinfADD.Repositories;
 namespace WinfADD.Controllers
 {
     [AllowAnonymous]
-    public class EventController : GenericTableController<Event>
+    public class EventController : GenericTableController<Event, EventViewModel>
     {
         private EventRepository _eventRepository;
         
         
-        public EventController(ITableRepository<Event> eventRepository) : base(eventRepository)
+        public EventController(ITableRepository<Event, EventViewModel> eventRepository) : base(eventRepository)
         {
             _eventRepository = (EventRepository)eventRepository;
 
@@ -22,7 +22,7 @@ namespace WinfADD.Controllers
 
         [HttpGet]
         [Route("all")]
-        public new async Task<IEnumerable<Event>> GetAll()
+        public new async Task<IEnumerable<EventViewModel>> GetAll()
         {
             return await  _eventRepository.GetAll();
         }
