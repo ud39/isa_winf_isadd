@@ -35,8 +35,6 @@
         <h6>Rating:</h6>
         <ul>
           <li>Gesamtwertung: {{shop$.averageTotalRating}}</li>
-          <li>Stuff</li>
-          <li>Stuff</li>
         </ul>
       </mat-grid-tile>
       <mat-grid-tile>
@@ -69,12 +67,34 @@
       <mat-tab label="Kaffee Getränke" *ngIf="shop$.coffeeDrinks.length != 0">
       <mat-list>
         <mat-list-item *ngFor="let coffee of shop$.coffeeDrinks; last as last ">
-          Name: {{coffee.name}}
+          <h6>{{coffee.name}}</h6>
           <br>
           Beschreibung: {{coffee.description}}
         <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
         </mat-list-item>
       </mat-list>
+      </mat-tab>
+      <mat-tab label="Bohnen" *ngIf="shop$.beans.length != 0">
+        <mat-list>
+          <mat-list-item *ngFor="let bean of shop$.beans;  last as last ">
+            <div>
+            <h6>{{bean.name}}</h6>
+            Herkunft: {{bean.provenance}}
+            </div>
+            <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+          </mat-list-item>
+        </mat-list>
+      </mat-tab>
+      <mat-tab label="Blend" *ngIf="shop$.blends.length != 0">
+        <mat-list>
+          <mat-list-item *ngFor="let blend of shop$.beans;  last as last ">
+            <div>
+            <h6>{{blend.name}}</h6>
+            Herkunft {{blend.provenance}}
+            </div>
+            <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+          </mat-list-item>
+        </mat-list>
       </mat-tab>
       <mat-tab label="Events" *ngIf="shop$.events.length != 0">
       <mat-list>
