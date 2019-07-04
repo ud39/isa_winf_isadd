@@ -33,6 +33,15 @@
         <Content Include="ClientApp\src\app\common\home\home.component.css" />
         <Content Include="ClientApp\src\app\search\checkbox-coffee\checkbox-coffee.component.css" />
         <Content Include="ClientApp\src\app\search\checkbox-coffee\checkbox-coffee.component.html" />
+        <Content Include="ClientApp\src\assets\Images\coffeeshop2.jpg">
+          <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        </Content>
+        <Content Include="ClientApp\src\assets\Images\event.jpg">
+          <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        </Content>
+        <Content Include="ClientApp\src\assets\Images\poi.jpg">
+          <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        </Content>
         <None Remove="$(SpaRoot)**" />
         <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
         <None Include="ClientApp\src\app\common\home\home.component.html" />

@@ -21,7 +21,7 @@ namespace WinfADD.Models.Mapping
 
             public static readonly Dictionary<string, string> EventMap = new Dictionary<string, string>
             {
-                {"file_name", "Image"},
+                {"file_name", "FileName"},
                 {"image", "Image"},
                 {"id", "Id"},
                 {"name", "Name"},
@@ -40,7 +40,11 @@ namespace WinfADD.Models.Mapping
 
             };
 
-            
+            public static readonly Dictionary<string, string> CompanyMap = new Dictionary<string, string>
+            {
+                {"company_name", "Name"}
+
+            };
             public static readonly Func<Type, string, PropertyInfo> CoffeeShopPreviewMapper =
               new Func<Type, string, PropertyInfo>((type, columnName)
                   => type.GetProperty(CoffeeShopPreviewMap.ContainsKey(columnName) ? CoffeeShopPreviewMap[columnName] : columnName));
@@ -52,7 +56,10 @@ namespace WinfADD.Models.Mapping
             public static readonly Func<Type, string, PropertyInfo>  BusStationMapper =
                 new Func<Type, string, PropertyInfo>((type, columnName)
                     => type.GetProperty(BusStationMap.ContainsKey(columnName) ? BusStationMap[columnName] : columnName));
-
+           
+            public static readonly Func<Type, string, PropertyInfo>  CompanyMapper =
+                new Func<Type, string, PropertyInfo>((type, columnName)
+                    => type.GetProperty(CompanyMap.ContainsKey(columnName) ? CompanyMap[columnName] : columnName));
 
             
             public readonly static Func<Type, string, PropertyInfo> DefaultMapper = new Func<Type, string, PropertyInfo>((type, columnName) => {

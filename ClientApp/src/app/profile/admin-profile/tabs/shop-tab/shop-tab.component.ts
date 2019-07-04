@@ -229,7 +229,7 @@ export class ShopTabComponent implements OnInit {
   }
 
   getJsonOfShopEdit():JSON{
-    let json = {};
+    let json : JSON = this.checkBoxService.getJsonOfShopInput(this.addressInputs.toArray(), this.nameDescriptionInputs.toArray(), this.checkBoxes.cbs.toArray(),this.selects.toArray());
     let differenceBusStation : [BusStation[],BusStation[]] = this.compareService.calculateDifferenceOfArrayBusStation(this.shop.reachableByBus,this.selectBusStationFromControl.value,this.compareService);
     let differencePoi : [Poi[],Poi[]] = this.compareService.calculateDifferenceOfArrayPoi(this.shop.listOfPoi,this.selectPoiFormControl.value,this.compareService);
     let differenceBean : [Bean[],Bean[]] = this.compareService.calculateDifferenceOfArrayBean(this.shop.beans,this.selectBeanFormControl.value,this.compareService);
@@ -277,13 +277,20 @@ export class ShopTabComponent implements OnInit {
     temp = temp.slice(1);
     let jsonImageList = JSON.parse('[' + temp + ']');
 
-
+    delete  json['busStation'];
+    delete  json['beans'];
+    delete  json['blend'];
+    delete  json['poi'];
+    delete  json['equipmentCategory'];
+    delete  json['coffeeDrink'];
     console.log(JSON.stringify(jsonImageList));
     json["images"] = jsonImageList;
 
     console.log(json["EquipmentCategoriesInsert"]);
 
 
+    console.log("almost there");
+    console.log(<JSON> json);
     return <JSON> json;
   }
 
