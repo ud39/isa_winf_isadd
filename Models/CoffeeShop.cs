@@ -34,7 +34,6 @@ namespace WinfADD.Models
         public int ? Seats { get; set; }
         
         //strings
-        public string CompanyName { get; set; }
         public string Website { get; set; }
         public string PriceClass { get; set; }
         public string Franchise { get; set; }
