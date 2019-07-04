@@ -73,7 +73,7 @@ export class CheckBoxesService {
 
   public getValueOfDatePicker(datePickerFormGroup:FormGroup){
     this.jsonOfSearchParameters['startTime'] = datePickerFormGroup.get('startTime').value;
-    this.jsonOfSearchParameters['endTIme'] = datePickerFormGroup.get('endTime').value;
+    this.jsonOfSearchParameters['endTime'] = datePickerFormGroup.get('endTime').value;
   }
 
   public unselectCheckBoxes(cbs : QueryList<MatCheckbox>){
