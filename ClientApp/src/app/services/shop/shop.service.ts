@@ -55,15 +55,13 @@ export class ShopService {
 
   navigateTo(jsonOfSearch){
     let params = this.routeService.buildHttpParams(jsonOfSearch);
-    console.log(this.getShopWithParams(params).subscribe(next => {
+    this.getShopWithParams(params).subscribe(next => {
       this.shops = next;
-    }));
+    });
   }
 
   searchSupplies(jsonOfSearch){
-    console.log(jsonOfSearch);
     let params = this.routeService.buildHttpParams(jsonOfSearch);
-    console.log('https://localhost:5001/api/coffeeshop/supplies?' + params.toString());
     this.getSuppliesShopsWithParams(params).subscribe(next => {
       this.shops  = next
     })

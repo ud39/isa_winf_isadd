@@ -192,7 +192,7 @@ export class ShopTabComponent implements OnInit {
     this.shopDescriptionFormControl.setValue(selectedShop.description);
     this.shopWebsiteFormControl.setValue(selectedShop.website);
     this.shopFoundingYearFormControl.setValue(selectedShop.foundingYear);
-    this.companyNameFormControl.setValue(selectedShop.company);
+    this.companyNameFormControl.setValue('Juti');
     this.countryFormControl.setValue(selectedShop.address.country);
     this.postalCodeFormControl.setValue(selectedShop.address.postalCode);
     this.streetNrFormControl.setValue(selectedShop.address.streetNumber);
@@ -236,7 +236,7 @@ export class ShopTabComponent implements OnInit {
     let differenceBlend : [Blend[], Blend[]] = this.compareService.calculateDifferenceOfArrayBlend(this.shop.blends,this.selectBlendFormControl.value,this.compareService);
     let differenceCoffeeDrinks : [CoffeeDrink[], CoffeeDrink[]] = this.compareService.calculateDifferenceOfArrayCoffeeDrink(this.shop.coffeeDrinks,this.selectCoffeeDrinkFormControl.value,this.compareService);
     let differenceEquipmentCategory : [EquipmentCategory[], EquipmentCategory[]] = this.compareService.calculateDifferenceOfArrayEquipmentCategory(this.shop.equipmentCategories,this.selectEquipmentCategoryFormControl.value,this.compareService);
-
+    json['id'] = this.shop.id;
     let addBusStation : BusStation[] = differenceBusStation[1];
     let deleteBusStation : BusStation[] = differenceBusStation[0];
 
@@ -254,19 +254,15 @@ export class ShopTabComponent implements OnInit {
 
     let addEquipmentCategory:EquipmentCategory[] = differenceEquipmentCategory[1];
     let deleteEquipmentCategory:EquipmentCategory[] = differenceEquipmentCategory[0];
-
-    json['ReachableByBusInsert'] = addBusStation;
-    json['ReachableByBusDelete'] = deleteBusStation;
-    json['POIsInsert'] = addPoi;
-    json['POIsDelete'] = deletePoi;
-    json['BeansInsert'] = addBean;
-    json['BeansDelete'] = deleteBean;
-    json['BlendsInsert'] = addBlend;
-    json['BlendsDelete'] = deleteBlend;
-    json['CoffeeDrinksInsert'] = addCoffeeDrink;
-    json['CoffeeDrinksDelete'] = deleteCoffeeDrink;
+    let eq = "{"  + "name:" + addEquipmentCategory[1].name + "}";
+    console.log(eq + "adsadasjiodjasij");
+    for(let i = 0; i < addEquipmentCategory.length;i++){
+      let eq = "{"  + "name:" + addEquipmentCategory[i].name + "}";
+      console.log(eq);
+      json['EquipmentCategoriesInsert'] = eq;
+    }
     json['EquipmentCategoriesInsert'] = addEquipmentCategory;
-    json['EquipmentCategoriesDelete'] = deleteEquipmentCategory;
+    json['EquipmentCategoriesDelete'] = JSON.parse(JSON.stringify(deleteEquipmentCategory));
 
     console.log(json);
 
@@ -283,6 +279,9 @@ export class ShopTabComponent implements OnInit {
     delete  json['poi'];
     delete  json['equipmentCategory'];
     delete  json['coffeeDrink'];
+    Object.keys(json['EquipmentCategoriesInsert']).forEach(key => {
+      console.log(key)
+    });
     console.log(JSON.stringify(jsonImageList));
     json["images"] = jsonImageList;
 

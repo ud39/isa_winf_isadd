@@ -72,9 +72,6 @@ export class AdminService {
 
 
   onUpload(fromWhere) {
-    console.log(":::::::::::::::"+fromWhere);
-
-    console.log("ABCDEFG::"+this.selectedFile.name)
     //set meta data
     const uploadData = new FormData();
     uploadData.append('fromWhere', fromWhere);
@@ -86,7 +83,6 @@ export class AdminService {
     })
       .subscribe(event => {
         if(event.type === HttpEventType.Response) {
-          console.log("IMAGE::" + event.body.toString());
 
           if (fromWhere == "gallery") {
             switch (this.galleryNumber) {
@@ -125,8 +121,6 @@ export class AdminService {
             this.equipmentImage = this.sanitize(this.equipment_path + this.equipment_Filename);
           }
         }
-
-        else {console.log(event)}
       });
   }
 
@@ -137,13 +131,11 @@ export class AdminService {
     if(fromWhere.match("gallery")) {
       switch (this.galleryNumber) {
         case "1":
-          console.log("In::" + 1);
           name = this.gallery_1_Filename;
           this.gallery_1 = '';
           this.gallery_1_Filename ='';
           break;
         case "2":
-          console.log("In::" + 2);
           name = this.gallery_2_Filename;
           this.gallery_2 = '';
           this.gallery_3_Filename ='';
@@ -181,14 +173,11 @@ export class AdminService {
       this.equipment_Filename =''
     }
 
-    console.log("Lösche::"+name +", from: " +fromWhere);
-    console.log(":::::->"+'https://localhost:5001/api/image/delete?fileName='+name+'&contentType='+ fromWhere);
 
     this.http.delete(Global.url + 'image/delete?fileName='+name+'&contentType='+ fromWhere,   {
       reportProgress: false,}).subscribe(value =>{
 
-        console.log("value::" +value);
-      },error1 => console.log("ERROR:"+error1)
+      },error1 => console.log(+error1)
 
     );
 
@@ -332,8 +321,6 @@ export class AdminService {
 
 
     for(let i=0; i < images.length; i++){
-      console.log("-------------------------->"+images[i].fileName);
-
       switch (images[i].contentType) {
         case "gallery":
           if(this.gallery_1.toString().length == 0){

@@ -43,14 +43,14 @@ export class CoffeeService {
     return this.httpClient.get<Blend[]>(Global.url + "blend", {params: queryParams, headers: headers});
   }
   navigateTo(jsonOfSearch){
-    console.log('Coffee' + jsonOfSearch);
+
     let params = this.routeService.buildHttpParams(jsonOfSearch);
-    console.log(this.getCoffeeBeanWithParams(params).subscribe(next => {
+    this.getCoffeeBeanWithParams(params).subscribe(next => {
       this.beans = next;
-    }));
-    console.log(this.getCoffeeBlendWithParams(params).subscribe(next =>{
+    });
+    this.getCoffeeBlendWithParams(params).subscribe(next =>{
       this.blends = next;
-    }));
+    });
   }
 
 }

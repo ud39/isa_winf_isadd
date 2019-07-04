@@ -31,7 +31,6 @@ export class EditDialogService {
   }
 
   openEventDialog(eventTab: EventTabComponent, matTabActive: string, dialog: MatDialog) {
-    console.log('Hallo Event');
     const dialogRefEvent = dialog.open(EditListComponent, {
       data: {data: eventTab, tabActive: matTabActive},
       height: '500px',
@@ -41,7 +40,6 @@ export class EditDialogService {
 
     dialogRefEvent.afterClosed().subscribe(value => {
       if (value) {
-        console.log('Fillout');
         eventTab.selectedEvent = value;
         eventTab.fillOutInputForm(value);
         return value;
