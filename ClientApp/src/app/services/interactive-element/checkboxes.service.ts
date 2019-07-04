@@ -17,7 +17,8 @@ export class CheckBoxesService {
   }
 
   public getCheckBoxesValues(cbs: Array<MatCheckbox>):void{for(let cb of cbs){
-      this.jsonOfSearchParameters[cb.id] = cb.checked
+    console.log(cb.id + cb.checked);
+    this.jsonOfSearchParameters[cb.id] = cb.checked
     }
   }
 

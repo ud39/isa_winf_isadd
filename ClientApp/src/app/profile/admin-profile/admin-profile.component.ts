@@ -273,6 +273,7 @@ export class AdminProfileComponent implements OnInit {
             this.inputFormService.deleteBean(this.contentTab.getQueryParamsOfContent()).subscribe(value =>{
               if(value) {
                 this.emptyInput();
+                this.restorePossible = false;
               }
             });
             this.emptyInput();
@@ -333,7 +334,6 @@ export class AdminProfileComponent implements OnInit {
         console.log(this.body);
         delete this.body['busstation'];
         console.log(this.body);
-
         this.inputFormService.updateShop(this.body).subscribe(value => {
           console.log(value);
         });
@@ -343,9 +343,56 @@ export class AdminProfileComponent implements OnInit {
         this.inputFormService.postContentEvent(this.body).subscribe();
         break;
       case 'Content':
-        console.log("Content Store");
-        this.inputFormService.postContent(this.body,this.contentTab.selectContentFormControl.value).subscribe();
-        break;
+        switch (this.contentTab.selectContentFormControl.value) {
+          case 'Blend':
+            this.inputFormService.deleteBlend(this.contentTab.getQueryParamsOfContent()).subscribe(value =>{
+              console.log('delete executed');
+              console.log(value);
+            });
+            this.emptyInput();
+            this.restorePossible = false;
+            break;
+          case 'Bean':
+            this.inputFormService.deleteBean(this.contentTab.getQueryParamsOfContent()).subscribe(value =>{
+              if(value) {
+                this.emptyInput();
+                this.restorePossible = false;
+              }
+            });
+            this.emptyInput();
+            this.restorePossible = false;
+            break;
+          case 'CoffeeDrink':
+            this.inputFormService.deleteCoffeeDrink(this.contentTab.getQueryParamsOfContent()).subscribe(value =>{
+              if(value){
+                this.emptyInput();
+                this.restorePossible = false;
+              }
+            });
+            break;
+          case 'Poi':
+            this.inputFormService.deletePoi(this.contentTab.getQueryParamsOfContent()).subscribe(value =>{
+              console.log(value);
+              if(value){
+                this.emptyInput();
+                this.restorePossible = false;
+              }
+            });
+            break;
+          case 'BusStation':
+            this.inputFormService.deleteBusStation(this.contentTab.getQueryParamsOfContent()).subscribe(value =>{
+              if(value){
+              this.emptyInput();
+              }
+            });
+            break;
+          case 'Equipment-category':
+            this.inputFormService.deleteEquipmentCategory(this.contentTab.getQueryParamsOfContent()).subscribe(value => {
+              if(value){
+                this.emptyInput();
+              }
+            })
+        }break;
       case 'User':
         console.log("User Store");
         this.inputFormService.postUser(this.body).subscribe();

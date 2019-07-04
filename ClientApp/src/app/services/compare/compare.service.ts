@@ -55,12 +55,7 @@ export class CompareService {
   }
 
   public compareShop(shop1: Shop, shop2: Shop) {
-    return shop1.id == shop2.id
-           && shop1.address.streetName == shop2.address.streetName
-           && shop1.address.country == shop2.address.country
-           && shop1.address.postalCode == shop2.address.postalCode
-           && shop1.address.streetNumber == shop2.address.streetNumber
-           && shop1.address.town == shop2.address.town
+    return shop1 && shop2 ? shop1.id === shop2.id : shop1 === shop2
   }
 
 

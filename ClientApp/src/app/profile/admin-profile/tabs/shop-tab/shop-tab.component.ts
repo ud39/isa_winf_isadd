@@ -213,9 +213,6 @@ export class ShopTabComponent implements OnInit {
   getJsonOfShop(): JSON{
     console.log(this.selects.toArray());
     let json : JSON = this.checkBoxService.getJsonOfShopInput(this.addressInputs.toArray(), this.nameDescriptionInputs.toArray(), this.checkBoxes.cbs.toArray(),this.selects.toArray());
-    console.log(this.shop.reachableByBus);
-    console.log(this.selectBusStationFromControl);
-    console.log(this.compareService.calculateDifferenceOfArrayBusStation(this.shop.reachableByBus,this.selectBusStationFromControl.value,this.compareService));
     let temp ='';
     this.adminService.getAllCoffeeShopImages().forEach((value: string, key: string) => {
       temp +=  ',{"fileName":"' + key + '"}';
