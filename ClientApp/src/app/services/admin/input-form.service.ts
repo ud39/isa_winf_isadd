@@ -11,6 +11,7 @@ import {EquipmentCategory} from "../../interfaces/entity/EquipmentCategory";
 import {Shop} from "../../interfaces/entity/Shop";
 import {User} from "../../interfaces/entity/User";
 import {FormGroup} from "@angular/forms";
+import {Company} from "../../interfaces/entity/Company";
 
 
 
@@ -111,7 +112,34 @@ export class InputFormService {
     return this.http.patch(Global.url + 'coffeeshop/update', jsonInput,{headers:headers})
   }
 
-  
+  public updateBean(jsonInput:JSON){
+    return this.http.patch(Global.url + 'bean/pupdate', jsonInput,{headers:headers})
+  }
+
+  public updateBlend(jsonInput:JSON){
+    return this.http.patch(Global.url + 'blend/pupdate', jsonInput,{headers:headers})
+  }
+  public updatePoi(jsonInput:JSON){
+    return this.http.patch(Global.url + 'poi/pupdate', jsonInput,{headers:headers})
+  }
+  public updateCoffeeDrink(jsonInput:JSON){
+    return this.http.patch(Global.url + 'coffeedrink/pupdate', jsonInput,{headers:headers})
+  }
+  public updateBusStation(jsonInput:JSON){
+    return this.http.patch(Global.url + 'busStation/pupdate', jsonInput,{headers:headers})
+  }
+  public updateEquipmentCategory(jsonInput:JSON){
+    return this.http.patch(Global.url + 'equipmentCategory/pupdate', jsonInput,{headers:headers})
+  }
+
+  public updateCompanyName(jsonInput:JSON){
+    return this.http.patch(Global.url + 'companyName/pupdate',jsonInput,{headers:headers})
+  }
+
+  getCompany(company:Company): Observable<Company>{
+    let queryparams = new HttpParams().set('name',company.name);
+    return this.http.get<Blend>(Global.url + 'blend/getbyid?', {headers: headers, params:queryparams})
+  }
 
   getBlend(blend:Blend): Observable<Blend>{
     let queryparams = new HttpParams().set('name',blend.name);
@@ -149,6 +177,10 @@ export class InputFormService {
   getUser(user:User){
     let queryparams = new HttpParams().set('email',user.email);
     return this.http.get<User>(Global.url + 'user/getbyid?', {headers:headers, params:queryparams});
+  }
+
+  getCompanies(): Observable<Company[]>{
+    return this.http.get<Company[]>(Global.url + 'company/all', {headers:headers});
   }
 
   getBusStations(): Observable<BusStation[]>{

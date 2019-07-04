@@ -1,10 +1,40 @@
-<mat-list id="shop-list">
-  <mat-list-item *ngFor="let shop of data; last as last">
-    <img src="https://dummyimage.com/100x100/fff/000" class="preview-img">
-    <div class="preview-content">
-      <h6 class="shop_name">{{shop.name}}
-      </h6>
-    </div>
-    <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
-  </mat-list-item>
-</mat-list>
+<h2 mat-dialog-title>{{currentTabActiveLabel}}</h2>
+<mat-dialog-content *ngIf="currentTab == 'Shop' && datas">
+  Es würde erfolgreich ein Shop erstellt.
+</mat-dialog-content>
+
+<mat-dialog-content *ngIf="currentTab == 'Event' && datas.data">
+  Es würde erfolgreich ein Event erstellt.
+</mat-dialog-content>
+
+<mat-dialog-content *ngIf="currentTab == 'Content'">
+  <div *ngIf="datas.selectedContent == 'Blend'">
+      Es würde erfolgreich ein Blend erstellt.
+  </div>
+
+  <div *ngIf="datas.selectedContent == 'Bean'">
+    Es würde erfolgreich ein Bohne erstellt.
+  </div>
+
+  <div *ngIf="datas.selectedContent == 'Poi'">
+    Es würde erfolgreich eine Landmarke erstellt.
+  </div>
+
+  <div *ngIf="datas.selectedContent == 'CoffeeDrink'">
+    Es würde erfolgreich ein Kaffee Getränk erstellt.
+  </div>
+
+  <div *ngIf="datas.selectedContent == 'BusStation'">
+    Es würde erfolgreich eine Bushaltestelle erstellt.
+  </div>
+
+  <div *ngIf="datas.selectedContent == 'Equipment-category'">
+    Es würde erfolgreich ein Equipment Kategorie erstellt.
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="test()">Test</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>OK</button>
+</mat-dialog-actions>
+

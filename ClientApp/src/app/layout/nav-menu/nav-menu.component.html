@@ -12,25 +12,21 @@
       </button>
       <button mat-button class="nav-item" [routerLinkActive]='["link-active"]' [routerLink]='["/events"]'>Events</button>
       <button mat-button class="nav-item" [routerLinkActive]='["link-active"]' [routerLink]='["/about-us"]'>Über uns</button>
-      <button mat-button class="nav-item" [routerLinkActive]='["link-active"]' [routerLink]='["/admin"]'>Admin Bereich</button>
+      <button mat-button class="nav-item"  [routerLinkActive]='["link-active"]' *ngIf="this.userService.IsLogin" [routerLink]='["/admin"]'>Admin Bereich</button>
       <div *ngIf="currentWindowWidth >= 768">
       <div id="login-dropdown">
       <span (click)="dropdown()"> Login </span>
       <div id="login-dropdown-content">
-        <form class="login-registration-form">
-          <div class="form-group">
-            <input type="email" class="form-control" id="email" required [formControl]="emailFormControl">
-            <label for="email">Email</label>
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" id="passwort" required [formControl]="passwordFormControl">
-            <label for="passwort">Passwort</label>
-          </div>
-          <button mat-button id="btn-login-logout" [routerLink]='["/user"]' (click)="login()" class="nav-btn-login">
+            <mat-form-field>
+            <input type="email" matInput placeholder="Email" class="form-control" id="email" required [formControl]="emailFormControl">
+            </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Passwort" type="password" class="form-control" id="password" required [formControl]="passwordFormControl">
+          </mat-form-field>
+          <button mat-button id="btn-login-logout" (click)="login()" class="nav-btn-login">
             Login
           </button>
           <button mat-button id="btn-register" class="nav-btn-login" [routerLink]='["/registration"]'>Registierung</button>
-        </form>
       </div>
       </div>
     </div>

@@ -35,12 +35,12 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput type="number" placeholder="Eintrittskosten:" [formControl]="accessFeeFormControl">
+    <input matInput id="accessFee" #myNameDescription="matInput" type="number" placeholder="Eintrittskosten:" [formControl]="accessFeeFormControl">
   </mat-form-field>
   <mat-form-field class="multipleSelect">
     <mat-label>Wähle die beteiligten Läden</mat-label>
      <mat-select multiple id="coffeeShop" [formControl]="selectShopFormControl" required [compareWith]="this.compareService.compareShop">
-       <mat-option *ngFor="let shop of shops" [value]="shop">
+       <mat-option *ngFor="let shop of shops" [value]="shop.id">
        {{shop.name}}
        </mat-option>
      </mat-select>

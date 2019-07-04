@@ -20,6 +20,7 @@ export class UserTabComponent implements OnInit {
   getUserInput() : FormGroup{
     return this.userFormGroup
   }
+
   ngOnInit() {
   }
 

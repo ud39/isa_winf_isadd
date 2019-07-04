@@ -14,6 +14,9 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
 
+  public IsLogin: boolean;
+  public userName: string;
+
   registerUser(jsonOfUser : JSON){
     this.http.post(Global.url + 'auth/register', jsonOfUser, {headers: headers}).subscribe();
   }
@@ -44,6 +47,7 @@ export class UserService {
         { headers , responseType: "text"}).pipe(
       map(res =>{
         localStorage.setItem('auth_token', res);
-      })).subscribe()
+        this.IsLogin = true;
+      }))
       };
     }

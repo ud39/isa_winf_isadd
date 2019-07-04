@@ -52,7 +52,10 @@ export class NavMenuComponent {
   });
 
   public login(){
-    this.userService.login(this.loginFormGroup);
+    this.userService.login(this.loginFormGroup).subscribe(value => {
+      console.log(value);
+      }
+    );
   }
 }
 

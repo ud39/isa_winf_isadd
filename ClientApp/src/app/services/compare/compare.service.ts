@@ -8,6 +8,7 @@ import {EquipmentCategory} from "../../interfaces/entity/EquipmentCategory";
 import {CoffeeDrink} from "../../interfaces/entity/CoffeeDrink";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Shop} from "../../interfaces/entity/Shop";
+import {Company} from "../../interfaces/entity/Company";
 
 @Injectable({
   providedIn: 'root'
@@ -54,8 +55,12 @@ export class CompareService {
     return event1.id == event2.id;
   }
 
-  public compareShop(shop1: Shop, shop2: Shop) {
-    return shop1 && shop2 ? shop1.id === shop2.id : shop1 === shop2
+  public compareShop(shop1: number, shop2: number) {
+    return shop1 && shop2 ? shop1 === shop2 : shop1 === shop2
+  }
+
+  public compareCompany(company1 :Company, company2:Company){
+    return company1.name == company2.name;
   }
 
 
