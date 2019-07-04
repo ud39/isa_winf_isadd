@@ -22,6 +22,7 @@ namespace WinfADD.Models.Mapping
             public static readonly Dictionary<string, string> EventMap = new Dictionary<string, string>
             {
                 {"file_name", "Image"},
+                {"image", "Image"},
                 {"id", "Id"},
                 {"name", "Name"},
                 {"description", "Description"},

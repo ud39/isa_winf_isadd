@@ -220,7 +220,7 @@ namespace WinfADD.Repositories
                 else if (property.GetValue(query) != null && !string.IsNullOrEmpty(propertyName) && propertyName == "equipment_category_name")
                 {
                    
-                    innerjoin += " inner join sells s on s.coffee_shop_id = id ";
+                    innerjoin += " inner join supplies s on s.coffee_shop_id = id ";
                    
                     properties.Add(propertyName, query.EquipmentCategories);
                     builder.Where( "s.equipment_category_name::text"  + " = ANY" + "(@equipment_category_name)", properties);
@@ -308,7 +308,7 @@ namespace WinfADD.Repositories
                "select b.* from reachable_by_bus b where b.coffee_shop_id = @id and b.bus_station_name = b.bus_station_name;" +
                "select c.* from coffee_drink c, serves s where s.coffee_shop_id = @id and s.coffee_drink_name = c.name;" +
                // Equipment  "select e.* from equipment e, sells s where s.coffee_shop_id = 2 and s.equipment_manufacturer_name = e.manufacturer_name and s.equipment_model_name = e.model_name and s.equipment_year_of_origin = e.year_of_origin;";
-               "select distinct e.* from equipment_category e, sells s where s.coffee_shop_id = @id and s.equipment_category_name = e.name;  "+
+               "select distinct e.* from equipment_category e, supplies s where s.coffee_shop_id = @id and s.equipment_category_name = e.name;  "+
                
                "select distinct on (name) name, * from (select p1.*, image_file_name from Poi p1 " +
                "inner join poi_image on name = poi_name and poi_address = address " + 
@@ -533,7 +533,7 @@ namespace WinfADD.Repositories
                                new
                                {
                                    coffee_drink_name = coffeeDrink.Name,
-                                   coffee_shop_id = coffeShopID, vegan = coffeeDrink.vegan
+                                   coffee_shop_id = coffeShopID, vegan = coffeeDrink.Vegan
                                }, transaction: transaction);
 
                            if (coffeeDrink.Preparations == null || !coffeeDrink.Preparations.Any()) continue;

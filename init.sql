@@ -123,12 +123,17 @@ CREATE TABLE public.user (
   email citext primary key
 );
 
-create table image (
+CREATE TABLE image (
                      file_name text primary key,
                      content_type text,
                      unique (file_name, content_type)
 );
 
+CREATE TABLE bus_station (
+                      bus_station_name citext,
+                      bus_station_line citext,
+                     primary key (file_name, content_type)
+);
 
 
 ------ RELATIONSHIPS ------
@@ -165,7 +170,8 @@ CREATE TABLE reachable_by_bus(
                                bus_station_name citext,
                                bus_station_line citext,
                                PRIMARY KEY (coffee_shop_id, bus_station_name, bus_station_line),
-                               FOREIGN KEY (coffee_shop_id) REFERENCES  coffee_shop (id) ON DELETE CASCADE
+                               FOREIGN KEY (coffee_shop_id) REFERENCES  coffee_shop (id) ON DELETE CASCADE,
+                               
 
 );
 
