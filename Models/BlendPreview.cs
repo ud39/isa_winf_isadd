@@ -8,6 +8,10 @@ namespace WinfADD.Models
         [Key] public string Name { get; set; }
 
         public string Provenance { get; set; }
+        
+        public string Roast { get; set; }
+        
+        public string Grind { get; set; }
         public string ImageFileName { get; set; }
         public IEnumerable<BeanPreview> Beans { get; set; }
 
