@@ -141,16 +141,18 @@ namespace WinfADD.Repositories
                        
                        conn.Execute(sqlBlend, blendObj, transaction: transaction);
 
-                       
-                       foreach (var bean in blendObj.Beans)
+                       if (blendObj.Beans != null)
                        {
-                           conn.Execute(sqlBeans,
-                               new
-                               {
-                                   blend_name = blendObj.Name,
-                                   bean_name = bean.Name,
-                                   bean_provenance = bean.Provenance
-                               }, transaction: transaction);
+                           foreach (var bean in blendObj.Beans)
+                           {
+                               conn.Execute(sqlBeans,
+                                   new
+                                   {
+                                       blend_name = blendObj.Name,
+                                       bean_name = bean.Name,
+                                       bean_provenance = bean.Provenance
+                                   }, transaction: transaction);
+                           }
                        }
                        
                        transaction.Commit();
