@@ -63,25 +63,18 @@ export class InputFormService {
     jsonInput = this.filterUndefinedAndEmptyStrings(jsonInput);
     switch (selectedContent) {
       case 'Blend':
-        console.log("Add Blend");
         return this.http.post(Global.url + 'blend/insert', jsonInput, {headers: headers, observe:'response'});
       case 'Bean':
-        console.log("Add Bean");
         return this.http.post(Global.url + 'bean/insert', jsonInput, {headers: headers, observe:'response'});
       case 'Firmen':
-        console.log("Add CompanyName");
         return this.http.post(Global.url + 'manufacturer/insert', jsonInput, {headers: headers, observe:'response'});
       case 'CoffeeDrink':
-        console.log("Add CoffeeDrink");
         return this.http.post(Global.url + 'coffeedrink/insert', jsonInput, {headers: headers, observe:'response'});
       case 'Equipment-category':
-        console.log("Add Equipment Category");
         return this.http.post(Global.url + 'equipmentcategory/insert', jsonInput, {headers: headers, observe:'response'});
       case 'BusStation':
-        console.log("Add BusStation");
         return this.http.post(Global.url + 'busstation/insert', jsonInput, {headers: headers, observe:'response'});
       case 'Poi':
-        console.log("Add Poi");
         return this.http.post(Global.url + 'poi/insert', jsonInput, {headers: headers, observe:'response'});
     }
   }
@@ -155,7 +148,6 @@ export class InputFormService {
     let queryparams = new HttpParams().set('name',poi.name).append('address.streetName',poi.address.streetName)
     .append('address.streetNumber', poi.address.streetNumber.toString()).append('address.town',poi.address.town)
     .append('address.postalCode', poi.address.postalCode.toString()).append('address.country',poi.address.country);
-    console.log(queryparams.toString());
     return this.http.get<Poi>(Global.url + 'poi/getbyid?', {headers: headers, params:queryparams})
   }
 
@@ -267,7 +259,6 @@ export class InputFormService {
 
   public deleteContentShop(id :any){
     let queryparams = new HttpParams().set('id',id);
-    console.log(Global.url + 'coffeeshop/delete?' + queryparams.toString());
     return this.http.delete(Global.url + 'coffeeshop/delete?',{headers:headers, params:queryparams, observe:"response"})
   }
 

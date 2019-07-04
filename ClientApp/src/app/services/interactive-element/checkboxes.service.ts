@@ -17,7 +17,6 @@ export class CheckBoxesService {
   }
 
   public getCheckBoxesValues(cbs: Array<MatCheckbox>):void{for(let cb of cbs){
-    console.log(cb.id + cb.checked);
     this.jsonOfSearchParameters[cb.id] = cb.checked
     }
   }
@@ -64,7 +63,7 @@ export class CheckBoxesService {
     this.getCheckBoxesValues(cbs);
     this.getSelectsValue(selects);
     this.getInputsValue(inputs);
-    console.log(this.jsonOfSearchParameters);
+
     return <JSON> this.jsonOfSearchParameters;
   }
 
@@ -72,7 +71,7 @@ export class CheckBoxesService {
     this.getAddressInputsValues(addressInputs);
     this.getCheckBoxesValues(cbs);
     this.getInputsValue(inputs);
-    console.log(this.jsonOfSearchParameters);
+
     return <JSON> this.jsonOfSearchParameters;
   }
 
@@ -81,7 +80,7 @@ export class CheckBoxesService {
     this.getInputsValue(inputs);
     this.getSelectsValue(coffeeShopSelect);
     this.getValueOfDatePicker(datePicker);
-    console.log(this.jsonOfSearchParameters);
+
     return <JSON> this.jsonOfSearchParameters;
   }
 
@@ -126,10 +125,9 @@ export class CheckBoxesService {
     if(latteArt == false){fg.get('latteArt').setValue(false);}
   }
   public fillOutOutdoor(fg : FormGroup,outdoor: boolean){
-    console.log("Fill outdoor");
+
     if(outdoor){fg.get('outdoor').setValue(true);}
     if(outdoor == false){
-      console.log(outdoor);
       fg.get('outdoor').setValue(false);
     }
   }

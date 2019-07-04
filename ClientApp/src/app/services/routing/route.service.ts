@@ -17,7 +17,6 @@ export class RouteService {
         {
           if(Array.isArray(jsonOfSearch[key]))
           {
-            console.log(jsonOfSearch[key]);
             let json = <Array<string>> jsonOfSearch[key];
             params = this.buildHttpParamsWithArray(params,key,json);
           }else{
@@ -25,7 +24,6 @@ export class RouteService {
           }
         }
       });
-      console.log(params);
       return params;
   }
 

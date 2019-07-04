@@ -52,7 +52,7 @@ export class CheckboxCoffeeComponent implements OnInit {
   });
 
   getJsonOfSearch(): JSON {
-    console.log('Coffee');
+
     return this.checkBoxService.getJsonOfSearchWithSelect(this.inputsCoffee.toArray(), this.cbs.toArray(),this.selects.toArray());
   }
 
@@ -78,7 +78,6 @@ export class CheckboxCoffeeComponent implements OnInit {
 
   @Output() callNavigateToCoffee = new EventEmitter<void>();
   triggerSearchCoffee():void{
-    console.log("Call form Coffee");
     this.callNavigateToCoffee.emit();
   }
 }

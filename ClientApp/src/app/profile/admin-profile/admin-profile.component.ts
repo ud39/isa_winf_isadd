@@ -339,7 +339,8 @@ export class AdminProfileComponent implements OnInit {
       case 'Shop':
         delete this.body['busstation'];
         this.body = <JSON> {};
-        this.shopTab.getJsonOfShopEdit();
+        this.body = this.shopTab.getJsonOfShopEdit();
+        console.log(this.body);
         this.inputFormService.updateShop(this.body).subscribe(value => {
           console.log(value);
         });

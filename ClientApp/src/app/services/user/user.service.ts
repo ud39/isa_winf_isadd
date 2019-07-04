@@ -48,7 +48,6 @@ export class UserService {
         {headers, responseType: "text"}).pipe(
         map(res => {
           localStorage.setItem('auth_token', res);
-          console.log(localStorage.getItem('auth_token'));
           this.IsLogin = true;
         }))
   };

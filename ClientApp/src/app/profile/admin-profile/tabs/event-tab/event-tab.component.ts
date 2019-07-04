@@ -88,12 +88,6 @@ export class EventTabComponent implements OnInit {
     this.shops = allShops;
     this.events = allEvents;
 
-    for(let i=0; i < allEvents.length; i++){
-      console.log(allEvents[i].image );
-
-    }
-
-
     })
   }
 
@@ -121,7 +115,6 @@ export class EventTabComponent implements OnInit {
   }
 
   getJsonOfEvent() : JSON {
-    console.log(this.multipleSelectShop.toArray());
     let json = this.checkBoxService.getJsonOfEvent(this.addressInputs.toArray(),this.nameDescriptionInputs.toArray(),
       this.beginEndDateFormGroup, this.multipleSelectShop.toArray());
 
@@ -131,11 +124,6 @@ export class EventTabComponent implements OnInit {
       let eventImage = JSON.parse('{"fileName": "' + this.adminService.event_Filename + '"}');
       json["image"] = eventImage;
     }
-
-    console.log("::::::::::::::::::::::::::::::::::::::::"+json);
-
-
-
     return <JSON> json;
   }
 

@@ -51,7 +51,6 @@ export class SearchComponent implements OnInit,  AfterViewInit {
           break;
           case 1:
           this.jsonOfSearch = this.chechBoxComponentCoffee.getJsonOfSearch();
-          console.log(this.jsonOfSearch);
           break;
         }
         break;
@@ -93,7 +92,6 @@ searchShops(){
   this.getJsonOfSearch();
   switch (this.urlPath) {
     case this.urlGlobalPath.get('home'):
-    console.log('Search Home');
     this.shopService.navigateTo(this.jsonOfSearch);
     break;
     case this.urlGlobalPath.get('shop'):
@@ -113,7 +111,6 @@ searchShops(){
 
   break;
   case this.urlGlobalPath.get('wiki'):
-    console.log('Search Cool');
     this.coffeeService.navigateTo(this.jsonOfSearch);
   break;
 }
