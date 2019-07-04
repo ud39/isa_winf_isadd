@@ -35,7 +35,7 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput type="number" placeholder="Eintrittskosten:" [formControl]="accessFeeFormControl">
+    <input matInput id="accessFee" #myNameDescription="matInput" type="number" placeholder="Eintrittskosten:" [formControl]="accessFeeFormControl">
   </mat-form-field>
   <mat-form-field class="multipleSelect">
     <mat-label>Wähle die beteiligten Läden</mat-label>

@@ -17,7 +17,7 @@
    <input id="town" matInput #address="matInput" type="text" placeholder="Stadt" [formControl]="townFormControl">
  </mat-form-field>
   <mat-form-field class="select-form-field">
-    <mat-select  id=company placeholder="Firmen Name" multiple [formControl]="companyNameFormControl" [compareWith]="compareService.compareCompany">
+    <mat-select  id=company placeholder="Firmen Name" [formControl]="companyNameFormControl" [compareWith]="compareService.compareCompany">
     <mat-option *ngFor="let company of chooseCompany" [value]="company">{{company.name}}</mat-option>
   </mat-select>
   </mat-form-field>
