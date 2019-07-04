@@ -54,7 +54,8 @@ export class EditListComponent implements OnInit, OnDestroy {
   public getImage(filenName){
 
 
-    var name = this.imagePreviewPath + filenName +"-preview.png";
+
+    var name = this.imagePreviewPath + filenName;
     console.log(":::::::::::::::::::::::::::::");
     console.log("-->"+name);
     return name;

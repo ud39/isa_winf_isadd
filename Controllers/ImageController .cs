@@ -71,8 +71,10 @@ namespace WinfADD.Controllers
 
                 var file = Request.Form.Files[0];
                 var folderName = "Image/"+fromWhere;
+                var eventFolerName = "Image/preview";
                 var webRootPath = _hostingEnvironment.WebRootPath;
                 var newPath = Path.Combine(webRootPath, folderName);
+                var previewPath = Path.Combine(webRootPath, eventFolerName);
                 var fileName = "";
                 var thumbnail = "";
                 var imageType = "";
@@ -80,6 +82,11 @@ namespace WinfADD.Controllers
                 {
                     Directory.CreateDirectory(newPath);
                 }
+                if (!Directory.Exists(previewPath))
+                {
+                    Directory.CreateDirectory(previewPath);
+                }
+
                 if (file.Length > 0)
                 {
 
@@ -116,7 +123,7 @@ namespace WinfADD.Controllers
                                 Graphics newGraphic = Graphics.FromImage(newImg);
                                 newGraphic.DrawImage(img, 0, 0, width, height);
                                 newGraphic.Dispose();
-                                newImg.Save(Path.Combine(newPath, fileName + "-preview.png"));
+                                newImg.Save(Path.Combine(previewPath, fileName + "-preview.png"));
                             }
                         }
                         else if(fromWhere.Equals("event"))
@@ -132,7 +139,8 @@ namespace WinfADD.Controllers
                                 newGraphic.DrawImage(img, 0, 0, width, height);
                                 newGraphic.Dispose();
 
-                                newImg.Save(Path.Combine(newPath, fileName + "-preview.png"));
+                                thumbnail = fileName + "-preview.png";
+                                newImg.Save(Path.Combine(previewPath, thumbnail));
                             }
                         }
                         else

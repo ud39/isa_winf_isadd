@@ -87,6 +87,13 @@ export class EventTabComponent implements OnInit {
     ]).subscribe(([allShops,allEvents]) => {
     this.shops = allShops;
     this.events = allEvents;
+
+    for(let i=0; i < allEvents.length; i++){
+      console.log(allEvents[i].image );
+
+    }
+
+
     })
   }
 
