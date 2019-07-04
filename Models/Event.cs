@@ -26,7 +26,7 @@ namespace WinfADD.Models
         
         public string Description { get; set; }
         
-        public string PreviewImageFileName { get; set; }
+        public string Image { get; set; }
         
         public Address Address { get; set; }
         

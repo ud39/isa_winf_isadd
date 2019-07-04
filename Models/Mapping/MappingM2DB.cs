@@ -115,6 +115,7 @@ namespace WinfADD.Models.Mapping
             {"accessfee", "access_fee"},
             {"description", "description"},
             {"previewimagefilename", "preview_image_filename"},
+            {"image", "image_filename"},
             {"address", "address"},
             {"images", "images"},
             {"coffeeshops", "coffeeshops"}
