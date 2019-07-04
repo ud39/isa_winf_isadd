@@ -132,7 +132,7 @@ export class ContentTabComponent implements OnInit {
         this.selectBlendBeanFormControl.setValue('');
         this.blendGrindFormControl.setValue(blend);
       break;
-      case 'Bean':
+      case 'Beans':
         let bean : Bean = <Bean> data;
         this.beanNameFormControl.setValue(bean.name);
         this.beanProvenanceFormControl.setValue(bean.provenance);

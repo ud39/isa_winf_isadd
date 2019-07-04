@@ -7,6 +7,7 @@ using Dapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using WinfADD.Models;
+using WinfADD.Models.Mapping;
 
 namespace WinfADD.Repositories
 {
@@ -21,7 +22,8 @@ namespace WinfADD.Repositories
             DefaultTypeMap.MatchNamesWithUnderscores = true;
 
             var keyCompare = "name" + " = @" + "name";
-                
+
+            _MappingM2DB = MappingM2DB.CompanyMap;
 
             GetByIdString = "select * from company where "+ keyCompare;
 

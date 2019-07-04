@@ -5,4 +5,5 @@ export interface Blend {
   provenance: string;
   beans: Bean[];
   priceClass: string;
+  beans: Bean[];
 }

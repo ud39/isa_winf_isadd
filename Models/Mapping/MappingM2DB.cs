@@ -97,6 +97,12 @@ namespace WinfADD.Models.Mapping
             {"line", "bus_station_line"}
         };
 
+        public static Dictionary<string, string> CompanyMap = new Dictionary<string, string>
+        {
+            {"name", "name"}
+        };
+
+        
         public static Dictionary<string, string> CoffeeDrinkMap = new Dictionary<string, string>
         {
             {"name", "name"},
