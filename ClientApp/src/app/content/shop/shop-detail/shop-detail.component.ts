@@ -5,6 +5,7 @@ import {ShopService} from "../../../services/shop/shop.service";
 import {Shop} from "../../../interfaces/entity/Shop";
 import {switchMap} from "rxjs/operators";
 import {TooltipPosition} from "@angular/material";
+import {AdminService} from "../../../services/admin/admin.service";
 
 
 @Component({
@@ -80,6 +81,7 @@ export class ShopDetailComponent implements OnInit {
     public route: ActivatedRoute,
     public router: Router,
     public service: ShopService,
+    public adminService: AdminService
   ) { }
 
   ngOnInit() {

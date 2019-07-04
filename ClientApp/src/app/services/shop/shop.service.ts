@@ -35,7 +35,7 @@ export class ShopService {
 
 
   getShops(): Observable<Shop[]>{
-    return this.http.get<Shop[]>(Global.url + 'coffeeshop/all');
+    return this.http.get<Shop[]>(Global.url + 'coffeeshop/>');
   }
 
   getSuppliesShops(queryParams:Params): Observable<Shop[]>{

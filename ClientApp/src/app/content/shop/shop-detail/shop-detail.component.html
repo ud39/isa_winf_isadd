@@ -109,10 +109,10 @@
     </mat-tab-group>
     <div class="slideshow-container">
       <div class="mySlides first">
-        <img src="https://dummyimage.com/600x700/fff/000" style="width:100%">
+        <img *ngIf [src]="this.adminService.frontImage" style="width:100%">
       </div>
       <div class="mySlides">
-        <img src="https://dummyimage.com/600x700/fff/000" style="width:100%">
+        <img [src]="this.adminService.gallery_1" style="width:100%">
       </div>
       <div class="mySlides">
         <img src="https://dummyimage.com/600x700/fff/fff" style="width:100%">

@@ -22,6 +22,7 @@ namespace WinfADD.Models
         public string Website { get; set; }
         public string PriceClass { get; set; }
         public string Franchise { get; set; }
+        public string CompanyName { get; set; }
 
         //boolean flags
         public bool Wlan { get; set; }
