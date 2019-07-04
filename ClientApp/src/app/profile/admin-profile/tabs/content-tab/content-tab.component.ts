@@ -35,9 +35,7 @@ export class ContentTabComponent implements OnInit {
     {value: 'Blend', viewValue: 'Blend'},
     {value: 'Bean', viewValue: 'Bohnen'},
     {value: 'CoffeeDrink', viewValue: 'Kaffee Getränke'},
-    {value: 'Company', viewValue: 'Firma'},
     {value: 'Equipment-category', viewValue: 'Equipment Kategorie'},
-    {value: 'BusStation', viewValue: 'Bus Haltestelle'},
     {value: 'Poi', viewValue: 'Landmarken'}
   ];
 
@@ -48,13 +46,13 @@ export class ContentTabComponent implements OnInit {
   ];
 
   public roasts = [
-    {value: 'none', viewValue: 'Keine'},
-    {value: 'lightRoast', viewValue: 'Helle Röstung'},
-    {value: 'middleRoast', viewValue: 'Mittlere Röstung'},
-    {value: 'darkRoast', viewValue: 'Dunkle Röstung'},
+    {value: '', viewValue: 'Keine'},
+    {value: 'raw', viewValue: 'Roh'},
+    {value: 'roasted', viewValue: 'Helle Röstung'},
+    {value: 'medium roasted', viewValue: 'Mittlere Röstung'},
+    {value: 'dark roasted', viewValue: 'Dunkle Röstung'},
   ];
   public grinds = [
-    {value: 'none', viewValue: 'Keine'},
     {value: 'veryCoarse', viewValue: 'Sehr Grob'},
     {value: 'coarse', viewValue: 'Grob'},
     {value: 'coarseMiddle', viewValue: 'Grob bis Mittel'},
@@ -129,8 +127,9 @@ export class ContentTabComponent implements OnInit {
         this.blendNameFormControl.setValue(blend.name);
         this.blendProvenanceFormControl.setValue(blend.provenance);
       break;
-      case 'Beans':
+      case 'Bean':
         let bean : Bean = <Bean> data;
+        console.log(bean);
         this.beanNameFormControl.setValue(bean.name);
         this.beanProvenanceFormControl.setValue(bean.provenance);
         this.beanGrindFormControl.setValue(bean.grind);

@@ -60,7 +60,7 @@ export class CompareService {
   }
 
   public compareCompany(company1 :Company, company2:Company){
-    return company1.name == company2.name;
+    return company1 && company2 ? company1.name == company2.name : company1.name = company2.name;
   }
 
 

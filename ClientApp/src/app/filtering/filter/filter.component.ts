@@ -20,8 +20,6 @@ export class FilterComponent implements OnInit {
     {viewValue:'Rating Absteigend', value: 'rating desc'},
     {viewValue:'Name Aufsteigend', value: 'name asc'},
     {viewValue:'Name Absteigend', value: 'name desc'},
-    {viewValue:'Preis Aufsteigend', value: 'price asc'},
-    {viewValue:'Preis Absteigend', value: 'price desc'}
   ];
 
 
