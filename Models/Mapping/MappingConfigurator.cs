@@ -21,13 +21,15 @@ namespace WinfADD.Models.Mapping
 
             public static readonly Dictionary<string, string> EventMap = new Dictionary<string, string>
             {
-                {"file_name", "PreviewImageFileName"},
+                {"file_name", "Image"},
                 {"id", "Id"},
                 {"name", "Name"},
                 {"description", "Description"},
                 {"start_time", "StartTime"},
                 {"end_time", "EndTime"},
-                {"access_fee", "AccessFee"}
+                {"access_fee", "AccessFee"},
+                {"address", "Address"},
+                {"location_address", "Address"}
             };
             
             public static readonly Dictionary<string, string> BusStationMap = new Dictionary<string, string>
