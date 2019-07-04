@@ -70,15 +70,14 @@ export class EditListComponent implements OnInit, OnDestroy {
   getCurrentActiveDataToEdit():void{
     switch(this.currentTab){
       case 'Shop':
-        this.datas.data.shopService.getShops().subscribe(value => {
+        this.shopService.getShops().subscribe(value => {
         this.shopEditContent = value;
-
-
-        console.log(this.shopEditContent);
         });
         break;
       case 'Event':
-        this.eventEditContent = this.datas.data.events;
+        this.eventService.getEvents().subscribe(value => {
+          this.eventEditContent = value;
+        });
         break;
       case 'Bohnen & Zubehör':
         this.shopEquipmentEditContent = this.datas.data.shops;

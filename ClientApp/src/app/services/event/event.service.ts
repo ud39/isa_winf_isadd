@@ -21,7 +21,6 @@ export class EventService {
 
   getEvents(): Observable<Event[]>{
     return this.http.get<Event[]>(Global.url + 'event/all');
-
   }
 
 

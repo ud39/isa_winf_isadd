@@ -118,7 +118,6 @@ export class ContentTabComponent implements OnInit {
   public coffeeDrinkFormGroup = new FormGroup({name: this.coffeeDrinkNameFormControl, select: this.selectContentFormControl});
   public equipmentCategoryNameFormGroup = new FormGroup({name: this.equipmentCategoryNameFormControl});
   public poiFormGroup = new FormGroup({name: this.poiNameFormControl, streetName:this.streetFormControl, streetname: this.streetNrFormControl, postalCode:this.postalCodeFormControl, country:this.countryFormControl,town:this.townFormControl});
-  public busStationFormGroup = new FormGroup({name: this.busStationNameFormControl, line:this.busStationLineFormControl});
   public companyFormGroup = new FormGroup({name: this.companyNameFormControl});
   constructor(public inputFormService: InputFormService, public compareService: CompareService) { }
 
@@ -129,8 +128,6 @@ export class ContentTabComponent implements OnInit {
         let blend : Blend = <Blend> data;
         this.blendNameFormControl.setValue(blend.name);
         this.blendProvenanceFormControl.setValue(blend.provenance);
-        this.selectBlendBeanFormControl.setValue('');
-        this.blendGrindFormControl.setValue(blend);
       break;
       case 'Beans':
         let bean : Bean = <Bean> data;
@@ -162,10 +159,7 @@ export class ContentTabComponent implements OnInit {
         let equipmentCategory = <EquipmentCategory> data;
         this.equipmentCategoryNameFormControl.setValue(equipmentCategory.name);
         break;
-      case 'Company':
-        let company = <Company> data;
-        this.companyNameFormControl.setValue(company.name);
-        break;
+
     }
   }
 
@@ -194,8 +188,6 @@ export class ContentTabComponent implements OnInit {
         return this.equipmentCategoryNameFormGroup;
       case 'Poi':
         return this.poiFormGroup;
-      case 'BusStation':
-        return this.busStationFormGroup;
       case 'Company':
         return this.companyFormGroup;
     }
@@ -224,14 +216,6 @@ export class ContentTabComponent implements OnInit {
         this.json['name'] = this.equipmentCategoryNameFormControl.value;
         console.log(this.json);
         return <JSON> this.json;
-      case 'Company':
-        this.json['name'] = this.companyNameFormControl;
-        console.log(this.json);
-        return  <JSON> this.json;
-      case 'BusStation':
-        this.json['name'] = this.busStationNameFormControl.value;
-        this.json['line']     = this.busStationLineFormControl.value;
-        return  <JSON> this.json;
       case 'Poi':
         this.json['name'] = this.poiNameFormControl.value;
         this.json['address']['streetName'] = this.streetFormControl.value;
@@ -259,8 +243,6 @@ export class ContentTabComponent implements OnInit {
         params = params.set('name',this.coffeeDrinkNameFormControl.value.toString().charAt(0).toUpperCase() + this.coffeeDrinkNameFormControl.value.toString().slice(1));
         console.log(params);
         return params;
-      case 'Company':
-        return null;
       case 'BusStation':
         params = params.set('name',this.busStationNameFormControl.value).append('line',this.busStationLineFormControl.value);
         console.log(params);

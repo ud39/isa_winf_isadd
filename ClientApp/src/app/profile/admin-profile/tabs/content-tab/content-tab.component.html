@@ -70,21 +70,6 @@
   </mat-form-field>
 </div>
 
-
-<div class="content bus-station" *ngIf="selectContentFormControl.value  == 'BusStation'">
-  <mat-form-field class="name-form-field">
-    <input matInput type="text" placeholder="Bus Haltestelle"  required [formControl]="busStationNameFormControl">
-    <mat-error *ngIf="busStationNameFormControl.hasError('required')">Es müss einen Namen angegeben werden</mat-error>
-    <button mat-button *ngIf="!busStationNameFormControl.hasError('required')" matSuffix mat-icon-button aria-label="Clear" (click)="equipmentNameFormControl.reset('')">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
-  <mat-form-field class="name-form-field">
-    <input matInput type="text" placeholder="Linie"  required [formControl]="busStationLineFormControl">
-    <mat-error *ngIf="busStationLineFormControl.hasError('required')">Es müss eine Buslinie angegeben werden</mat-error>
-  </mat-form-field>
-</div>
-
 <div class="content poi" *ngIf="selectContentFormControl.value  == 'Poi'">
   <mat-form-field class="name-form-field">
     <input matInput type="text" placeholder="Name" required [formControl]="poiNameFormControl">

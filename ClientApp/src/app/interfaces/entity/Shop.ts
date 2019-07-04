@@ -8,6 +8,7 @@ import {Blend} from "./Blend";
 import {Poi} from "./Poi";
 import {OpeningTime} from "./OpeningTime";
 import {Event} from "./Event";
+import {Company} from "./Company";
 
 export interface Shop {
   id:number;
@@ -15,7 +16,7 @@ export interface Shop {
   foundingYear: number;
   seats: number;
   website: string;
-  companyName: string
+  company: string;
   priceClass: string;
   franchise: boolean;
   wlan:boolean;

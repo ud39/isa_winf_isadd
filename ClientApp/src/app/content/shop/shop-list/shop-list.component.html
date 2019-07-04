@@ -14,7 +14,7 @@
       Gesamtbewertung: {{(shop.averageTotalRating | number) || 'n/a' }}
       <div class="text">
           {{shop.description | words : 50}}
-      </div><div class='read_more'> weiterlesen </div>
+      </div><div class='read_more' [routerLink]="['/shops', shop.id]" [routerLinkActive]='["link-active"]'> weiterlesen </div>
       </div>
   <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
   </mat-list-item>
