@@ -152,7 +152,6 @@ namespace WinfADD
 
             //TypeHandler for complex data types in Model
             SqlMapper.AddTypeHandler(new AddressTypeHandler());
-            SqlMapper.AddTypeHandler(new ImageTypeHandler());
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

@@ -56,6 +56,7 @@
         <None Include="ClientApp\src\app\services\interactive-element\checkboxes.service.ts" />
         <None Include="ClientApp\src\app\services\shop\shop.service.spec.ts" />
         <None Include="ClientApp\src\app\services\shop\shop.service.ts" />
+        <None Include="ClientApp\src\assets\Images\coffeeshop.jpg" />
     </ItemGroup>
 
     <ItemGroup>
@@ -76,7 +77,6 @@
       <Folder Include="ClientApp\src\app\services\image" />
       <Folder Include="ClientApp\src\app\services\routing" />
       <Folder Include="ClientApp\src\app\services\user" />
-      <Folder Include="ClientApp\src\assets\Images" />
       <Folder Include="documentation\Content\Templates" />
     </ItemGroup>
 
