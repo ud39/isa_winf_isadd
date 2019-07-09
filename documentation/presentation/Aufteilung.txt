@@ -1,0 +1,24 @@
+Outline			Juti
+Misson			Juti
+Target Features		Juti
+Usage:
+	(Sebastian)	Basti
+	(Jana)		Jan
+	(Jubi)		Basti
+Content Mangement	Juti
+D&M Herm:
+	all		Basti
+	Entities	Basti
+	Article		Basti
+	Rating		Jan
+Site Lang:
+	-		
+BPMN:
+	-		
+
+Development Tools	Jan
+Personal Contribution	Jan
+Conclusion		Juti
+
+Q&A			all
+		
